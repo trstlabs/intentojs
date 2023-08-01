@@ -41,6 +41,13 @@ const createLCDClient = async ({ restEndpoint }) => {
                     requestClient
                 })
             },
+            base: {
+                reflection: {
+                    v2alpha1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/base/reflection/v2alpha1/reflection.lcd")))).LCDQueryClient({
+                        requestClient
+                    })
+                }
+            },
             distribution: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/distribution/v1beta1/query.lcd")))).LCDQueryClient({
                     requestClient
@@ -51,6 +58,11 @@ const createLCDClient = async ({ restEndpoint }) => {
                     requestClient
                 }),
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/gov/v1beta1/query.lcd")))).LCDQueryClient({
+                    requestClient
+                })
+            },
+            params: {
+                v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/params/v1beta1/query.lcd")))).LCDQueryClient({
                     requestClient
                 })
             },

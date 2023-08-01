@@ -24,20 +24,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.osmosis = void 0;
-const _86 = __importStar(require("./gamm/v1beta1/gamm"));
-const _87 = __importStar(require("./poolmanager/v1beta1/swap_route"));
+const _88 = __importStar(require("./gamm/v1beta1/gamm"));
+const _89 = __importStar(require("./poolmanager/v1beta1/swap_route"));
 var osmosis;
 (function (osmosis) {
     let gamm;
     (function (gamm) {
         gamm.v1beta1 = {
-            ..._86
+            ..._88
         };
     })(gamm = osmosis.gamm || (osmosis.gamm = {}));
     let poolmanager;
     (function (poolmanager) {
         poolmanager.v1beta1 = {
-            ..._87
+            ..._89
         };
     })(poolmanager = osmosis.poolmanager || (osmosis.poolmanager = {}));
 })(osmosis || (exports.osmosis = osmosis = {}));

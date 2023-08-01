@@ -24,44 +24,50 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tendermint = void 0;
-const _74 = __importStar(require("./abci/types"));
-const _75 = __importStar(require("./crypto/keys"));
-const _76 = __importStar(require("./crypto/proof"));
-const _77 = __importStar(require("./libs/bits/types"));
-const _78 = __importStar(require("./p2p/types"));
-const _79 = __importStar(require("./types/block"));
-const _80 = __importStar(require("./types/evidence"));
-const _81 = __importStar(require("./types/params"));
-const _82 = __importStar(require("./types/types"));
-const _83 = __importStar(require("./types/validator"));
-const _84 = __importStar(require("./version/types"));
+const _76 = __importStar(require("./abci/types"));
+const _77 = __importStar(require("./crypto/keys"));
+const _78 = __importStar(require("./crypto/proof"));
+const _79 = __importStar(require("./libs/bits/types"));
+const _80 = __importStar(require("./p2p/types"));
+const _81 = __importStar(require("./types/block"));
+const _82 = __importStar(require("./types/evidence"));
+const _83 = __importStar(require("./types/params"));
+const _84 = __importStar(require("./types/types"));
+const _85 = __importStar(require("./types/validator"));
+const _86 = __importStar(require("./version/types"));
+const _144 = __importStar(require("./abci/types.rpc.ABCIApplication"));
+const _159 = __importStar(require("./lcd"));
 var tendermint;
 (function (tendermint) {
     tendermint.abci = {
-        ..._74
+        ..._76,
+        ..._144
     };
     tendermint.crypto = {
-        ..._75,
-        ..._76
+        ..._77,
+        ..._78
     };
     let libs;
     (function (libs) {
         libs.bits = {
-            ..._77
+            ..._79
         };
     })(libs = tendermint.libs || (tendermint.libs = {}));
     tendermint.p2p = {
-        ..._78
+        ..._80
     };
     tendermint.types = {
-        ..._79,
-        ..._80,
         ..._81,
         ..._82,
-        ..._83
+        ..._83,
+        ..._84,
+        ..._85
     };
     tendermint.version = {
-        ..._84
+        ..._86
+    };
+    tendermint.ClientFactory = {
+        ..._159
     };
 })(tendermint || (exports.tendermint = tendermint = {}));
 //# sourceMappingURL=bundle.js.map

@@ -1,52 +1,52 @@
-import * as _52 from "./applications/transfer/v1/genesis";
-import * as _53 from "./applications/transfer/v1/query";
-import * as _54 from "./applications/transfer/v1/transfer";
-import * as _55 from "./applications/transfer/v1/tx";
-import * as _56 from "./applications/transfer/v2/packet";
-import * as _57 from "./core/channel/v1/channel";
-import * as _58 from "./core/channel/v1/genesis";
-import * as _59 from "./core/channel/v1/query";
-import * as _60 from "./core/channel/v1/tx";
-import * as _61 from "./core/client/v1/client";
-import * as _62 from "./core/client/v1/genesis";
-import * as _63 from "./core/client/v1/query";
-import * as _64 from "./core/client/v1/tx";
-import * as _65 from "./core/commitment/v1/commitment";
-import * as _66 from "./core/connection/v1/connection";
-import * as _67 from "./core/connection/v1/genesis";
-import * as _68 from "./core/connection/v1/query";
-import * as _69 from "./core/connection/v1/tx";
-import * as _70 from "./lightclients/localhost/v1/localhost";
-import * as _71 from "./lightclients/solomachine/v1/solomachine";
-import * as _72 from "./lightclients/solomachine/v2/solomachine";
-import * as _73 from "./lightclients/tendermint/v1/tendermint";
-import * as _126 from "./applications/transfer/v1/query.lcd";
-import * as _127 from "./core/channel/v1/query.lcd";
-import * as _128 from "./core/client/v1/query.lcd";
-import * as _129 from "./core/connection/v1/query.lcd";
-import * as _130 from "./applications/transfer/v1/query.rpc.Query";
-import * as _131 from "./core/channel/v1/query.rpc.Query";
-import * as _132 from "./core/client/v1/query.rpc.Query";
-import * as _133 from "./core/connection/v1/query.rpc.Query";
-import * as _134 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _135 from "./core/channel/v1/tx.rpc.msg";
-import * as _136 from "./core/client/v1/tx.rpc.msg";
-import * as _137 from "./core/connection/v1/tx.rpc.msg";
+import * as _54 from "./applications/transfer/v1/genesis";
+import * as _55 from "./applications/transfer/v1/query";
+import * as _56 from "./applications/transfer/v1/transfer";
+import * as _57 from "./applications/transfer/v1/tx";
+import * as _58 from "./applications/transfer/v2/packet";
+import * as _59 from "./core/channel/v1/channel";
+import * as _60 from "./core/channel/v1/genesis";
+import * as _61 from "./core/channel/v1/query";
+import * as _62 from "./core/channel/v1/tx";
+import * as _63 from "./core/client/v1/client";
+import * as _64 from "./core/client/v1/genesis";
+import * as _65 from "./core/client/v1/query";
+import * as _66 from "./core/client/v1/tx";
+import * as _67 from "./core/commitment/v1/commitment";
+import * as _68 from "./core/connection/v1/connection";
+import * as _69 from "./core/connection/v1/genesis";
+import * as _70 from "./core/connection/v1/query";
+import * as _71 from "./core/connection/v1/tx";
+import * as _72 from "./lightclients/localhost/v1/localhost";
+import * as _73 from "./lightclients/solomachine/v1/solomachine";
+import * as _74 from "./lightclients/solomachine/v2/solomachine";
+import * as _75 from "./lightclients/tendermint/v1/tendermint";
+import * as _132 from "./applications/transfer/v1/query.lcd";
+import * as _133 from "./core/channel/v1/query.lcd";
+import * as _134 from "./core/client/v1/query.lcd";
+import * as _135 from "./core/connection/v1/query.lcd";
+import * as _136 from "./applications/transfer/v1/query.rpc.Query";
+import * as _137 from "./core/channel/v1/query.rpc.Query";
+import * as _138 from "./core/client/v1/query.rpc.Query";
+import * as _139 from "./core/connection/v1/query.rpc.Query";
+import * as _140 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _141 from "./core/channel/v1/tx.rpc.msg";
+import * as _142 from "./core/client/v1/tx.rpc.msg";
+import * as _143 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _134.MsgClientImpl;
-                QueryClientImpl: typeof _130.QueryClientImpl;
+                MsgClientImpl: typeof _140.MsgClientImpl;
+                QueryClientImpl: typeof _136.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    denomTrace(request: _53.QueryDenomTraceRequest): Promise<_53.QueryDenomTraceResponse>;
-                    denomTraces(request?: _53.QueryDenomTracesRequest): Promise<_53.QueryDenomTracesResponse>;
-                    params(request?: _53.QueryParamsRequest): Promise<_53.QueryParamsResponse>;
+                    denomTrace(request: _55.QueryDenomTraceRequest): Promise<_55.QueryDenomTraceResponse>;
+                    denomTraces(request?: _55.QueryDenomTracesRequest): Promise<_55.QueryDenomTracesResponse>;
+                    params(request?: _55.QueryParamsRequest): Promise<_55.QueryParamsResponse>;
                 };
-                LCDQueryClient: typeof _126.LCDQueryClient;
+                LCDQueryClient: typeof _132.LCDQueryClient;
                 MsgTransfer: {
-                    encode(message: _55.MsgTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.MsgTransfer;
+                    encode(message: _57.MsgTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.MsgTransfer;
                     fromPartial(object: {
                         sourcePort?: string;
                         sourceChannel?: string;
@@ -61,49 +61,49 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         timeoutTimestamp?: bigint;
-                    }): _55.MsgTransfer;
+                    }): _57.MsgTransfer;
                 };
                 MsgTransferResponse: {
-                    encode(_: _55.MsgTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.MsgTransferResponse;
-                    fromPartial(_: {}): _55.MsgTransferResponse;
+                    encode(_: _57.MsgTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.MsgTransferResponse;
+                    fromPartial(_: {}): _57.MsgTransferResponse;
                 };
                 DenomTrace: {
-                    encode(message: _54.DenomTrace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.DenomTrace;
+                    encode(message: _56.DenomTrace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DenomTrace;
                     fromPartial(object: {
                         path?: string;
                         baseDenom?: string;
-                    }): _54.DenomTrace;
+                    }): _56.DenomTrace;
                 };
                 Params: {
-                    encode(message: _54.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.Params;
+                    encode(message: _56.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.Params;
                     fromPartial(object: {
                         sendEnabled?: boolean;
                         receiveEnabled?: boolean;
-                    }): _54.Params;
+                    }): _56.Params;
                 };
                 QueryDenomTraceRequest: {
-                    encode(message: _53.QueryDenomTraceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.QueryDenomTraceRequest;
+                    encode(message: _55.QueryDenomTraceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDenomTraceRequest;
                     fromPartial(object: {
                         hash?: string;
-                    }): _53.QueryDenomTraceRequest;
+                    }): _55.QueryDenomTraceRequest;
                 };
                 QueryDenomTraceResponse: {
-                    encode(message: _53.QueryDenomTraceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.QueryDenomTraceResponse;
+                    encode(message: _55.QueryDenomTraceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDenomTraceResponse;
                     fromPartial(object: {
                         denomTrace?: {
                             path?: string;
                             baseDenom?: string;
                         };
-                    }): _53.QueryDenomTraceResponse;
+                    }): _55.QueryDenomTraceResponse;
                 };
                 QueryDenomTracesRequest: {
-                    encode(message: _53.QueryDenomTracesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.QueryDenomTracesRequest;
+                    encode(message: _55.QueryDenomTracesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDenomTracesRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -112,11 +112,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _53.QueryDenomTracesRequest;
+                    }): _55.QueryDenomTracesRequest;
                 };
                 QueryDenomTracesResponse: {
-                    encode(message: _53.QueryDenomTracesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.QueryDenomTracesResponse;
+                    encode(message: _55.QueryDenomTracesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDenomTracesResponse;
                     fromPartial(object: {
                         denomTraces?: {
                             path?: string;
@@ -126,26 +126,26 @@ export declare namespace ibc {
                             nextKey?: Uint8Array;
                             total?: bigint;
                         };
-                    }): _53.QueryDenomTracesResponse;
+                    }): _55.QueryDenomTracesResponse;
                 };
                 QueryParamsRequest: {
-                    encode(_: _53.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.QueryParamsRequest;
-                    fromPartial(_: {}): _53.QueryParamsRequest;
+                    encode(_: _55.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryParamsRequest;
+                    fromPartial(_: {}): _55.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
-                    encode(message: _53.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.QueryParamsResponse;
+                    encode(message: _55.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryParamsResponse;
                     fromPartial(object: {
                         params?: {
                             sendEnabled?: boolean;
                             receiveEnabled?: boolean;
                         };
-                    }): _53.QueryParamsResponse;
+                    }): _55.QueryParamsResponse;
                 };
                 GenesisState: {
-                    encode(message: _52.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.GenesisState;
+                    encode(message: _54.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.GenesisState;
                     fromPartial(object: {
                         portId?: string;
                         denomTraces?: {
@@ -156,19 +156,19 @@ export declare namespace ibc {
                             sendEnabled?: boolean;
                             receiveEnabled?: boolean;
                         };
-                    }): _52.GenesisState;
+                    }): _54.GenesisState;
                 };
             };
             const v2: {
                 FungibleTokenPacketData: {
-                    encode(message: _56.FungibleTokenPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FungibleTokenPacketData;
+                    encode(message: _58.FungibleTokenPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.FungibleTokenPacketData;
                     fromPartial(object: {
                         denom?: string;
                         amount?: string;
                         sender?: string;
                         receiver?: string;
-                    }): _56.FungibleTokenPacketData;
+                    }): _58.FungibleTokenPacketData;
                 };
             };
         }
@@ -176,32 +176,32 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _135.MsgClientImpl;
-                QueryClientImpl: typeof _131.QueryClientImpl;
+                MsgClientImpl: typeof _141.MsgClientImpl;
+                QueryClientImpl: typeof _137.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    channel(request: _59.QueryChannelRequest): Promise<_59.QueryChannelResponse>;
-                    channels(request?: _59.QueryChannelsRequest): Promise<_59.QueryChannelsResponse>;
-                    connectionChannels(request: _59.QueryConnectionChannelsRequest): Promise<_59.QueryConnectionChannelsResponse>;
-                    channelClientState(request: _59.QueryChannelClientStateRequest): Promise<_59.QueryChannelClientStateResponse>;
-                    channelConsensusState(request: _59.QueryChannelConsensusStateRequest): Promise<_59.QueryChannelConsensusStateResponse>;
-                    packetCommitment(request: _59.QueryPacketCommitmentRequest): Promise<_59.QueryPacketCommitmentResponse>;
-                    packetCommitments(request: _59.QueryPacketCommitmentsRequest): Promise<_59.QueryPacketCommitmentsResponse>;
-                    packetReceipt(request: _59.QueryPacketReceiptRequest): Promise<_59.QueryPacketReceiptResponse>;
-                    packetAcknowledgement(request: _59.QueryPacketAcknowledgementRequest): Promise<_59.QueryPacketAcknowledgementResponse>;
-                    packetAcknowledgements(request: _59.QueryPacketAcknowledgementsRequest): Promise<_59.QueryPacketAcknowledgementsResponse>;
-                    unreceivedPackets(request: _59.QueryUnreceivedPacketsRequest): Promise<_59.QueryUnreceivedPacketsResponse>;
-                    unreceivedAcks(request: _59.QueryUnreceivedAcksRequest): Promise<_59.QueryUnreceivedAcksResponse>;
-                    nextSequenceReceive(request: _59.QueryNextSequenceReceiveRequest): Promise<_59.QueryNextSequenceReceiveResponse>;
+                    channel(request: _61.QueryChannelRequest): Promise<_61.QueryChannelResponse>;
+                    channels(request?: _61.QueryChannelsRequest): Promise<_61.QueryChannelsResponse>;
+                    connectionChannels(request: _61.QueryConnectionChannelsRequest): Promise<_61.QueryConnectionChannelsResponse>;
+                    channelClientState(request: _61.QueryChannelClientStateRequest): Promise<_61.QueryChannelClientStateResponse>;
+                    channelConsensusState(request: _61.QueryChannelConsensusStateRequest): Promise<_61.QueryChannelConsensusStateResponse>;
+                    packetCommitment(request: _61.QueryPacketCommitmentRequest): Promise<_61.QueryPacketCommitmentResponse>;
+                    packetCommitments(request: _61.QueryPacketCommitmentsRequest): Promise<_61.QueryPacketCommitmentsResponse>;
+                    packetReceipt(request: _61.QueryPacketReceiptRequest): Promise<_61.QueryPacketReceiptResponse>;
+                    packetAcknowledgement(request: _61.QueryPacketAcknowledgementRequest): Promise<_61.QueryPacketAcknowledgementResponse>;
+                    packetAcknowledgements(request: _61.QueryPacketAcknowledgementsRequest): Promise<_61.QueryPacketAcknowledgementsResponse>;
+                    unreceivedPackets(request: _61.QueryUnreceivedPacketsRequest): Promise<_61.QueryUnreceivedPacketsResponse>;
+                    unreceivedAcks(request: _61.QueryUnreceivedAcksRequest): Promise<_61.QueryUnreceivedAcksResponse>;
+                    nextSequenceReceive(request: _61.QueryNextSequenceReceiveRequest): Promise<_61.QueryNextSequenceReceiveResponse>;
                 };
-                LCDQueryClient: typeof _127.LCDQueryClient;
+                LCDQueryClient: typeof _133.LCDQueryClient;
                 MsgChannelOpenInit: {
-                    encode(message: _60.MsgChannelOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenInit;
+                    encode(message: _62.MsgChannelOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenInit;
                     fromPartial(object: {
                         portId?: string;
                         channel?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -210,22 +210,22 @@ export declare namespace ibc {
                             version?: string;
                         };
                         signer?: string;
-                    }): _60.MsgChannelOpenInit;
+                    }): _62.MsgChannelOpenInit;
                 };
                 MsgChannelOpenInitResponse: {
-                    encode(_: _60.MsgChannelOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenInitResponse;
-                    fromPartial(_: {}): _60.MsgChannelOpenInitResponse;
+                    encode(_: _62.MsgChannelOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenInitResponse;
+                    fromPartial(_: {}): _62.MsgChannelOpenInitResponse;
                 };
                 MsgChannelOpenTry: {
-                    encode(message: _60.MsgChannelOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenTry;
+                    encode(message: _62.MsgChannelOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenTry;
                     fromPartial(object: {
                         portId?: string;
                         previousChannelId?: string;
                         channel?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -240,16 +240,16 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _60.MsgChannelOpenTry;
+                    }): _62.MsgChannelOpenTry;
                 };
                 MsgChannelOpenTryResponse: {
-                    encode(_: _60.MsgChannelOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenTryResponse;
-                    fromPartial(_: {}): _60.MsgChannelOpenTryResponse;
+                    encode(_: _62.MsgChannelOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenTryResponse;
+                    fromPartial(_: {}): _62.MsgChannelOpenTryResponse;
                 };
                 MsgChannelOpenAck: {
-                    encode(message: _60.MsgChannelOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenAck;
+                    encode(message: _62.MsgChannelOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenAck;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -261,16 +261,16 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _60.MsgChannelOpenAck;
+                    }): _62.MsgChannelOpenAck;
                 };
                 MsgChannelOpenAckResponse: {
-                    encode(_: _60.MsgChannelOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenAckResponse;
-                    fromPartial(_: {}): _60.MsgChannelOpenAckResponse;
+                    encode(_: _62.MsgChannelOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenAckResponse;
+                    fromPartial(_: {}): _62.MsgChannelOpenAckResponse;
                 };
                 MsgChannelOpenConfirm: {
-                    encode(message: _60.MsgChannelOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenConfirm;
+                    encode(message: _62.MsgChannelOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenConfirm;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -280,30 +280,30 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _60.MsgChannelOpenConfirm;
+                    }): _62.MsgChannelOpenConfirm;
                 };
                 MsgChannelOpenConfirmResponse: {
-                    encode(_: _60.MsgChannelOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelOpenConfirmResponse;
-                    fromPartial(_: {}): _60.MsgChannelOpenConfirmResponse;
+                    encode(_: _62.MsgChannelOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelOpenConfirmResponse;
+                    fromPartial(_: {}): _62.MsgChannelOpenConfirmResponse;
                 };
                 MsgChannelCloseInit: {
-                    encode(message: _60.MsgChannelCloseInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelCloseInit;
+                    encode(message: _62.MsgChannelCloseInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelCloseInit;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         signer?: string;
-                    }): _60.MsgChannelCloseInit;
+                    }): _62.MsgChannelCloseInit;
                 };
                 MsgChannelCloseInitResponse: {
-                    encode(_: _60.MsgChannelCloseInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelCloseInitResponse;
-                    fromPartial(_: {}): _60.MsgChannelCloseInitResponse;
+                    encode(_: _62.MsgChannelCloseInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelCloseInitResponse;
+                    fromPartial(_: {}): _62.MsgChannelCloseInitResponse;
                 };
                 MsgChannelCloseConfirm: {
-                    encode(message: _60.MsgChannelCloseConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelCloseConfirm;
+                    encode(message: _62.MsgChannelCloseConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelCloseConfirm;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -313,16 +313,16 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _60.MsgChannelCloseConfirm;
+                    }): _62.MsgChannelCloseConfirm;
                 };
                 MsgChannelCloseConfirmResponse: {
-                    encode(_: _60.MsgChannelCloseConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgChannelCloseConfirmResponse;
-                    fromPartial(_: {}): _60.MsgChannelCloseConfirmResponse;
+                    encode(_: _62.MsgChannelCloseConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgChannelCloseConfirmResponse;
+                    fromPartial(_: {}): _62.MsgChannelCloseConfirmResponse;
                 };
                 MsgRecvPacket: {
-                    encode(message: _60.MsgRecvPacket, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgRecvPacket;
+                    encode(message: _62.MsgRecvPacket, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgRecvPacket;
                     fromPartial(object: {
                         packet?: {
                             sequence?: bigint;
@@ -343,16 +343,16 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _60.MsgRecvPacket;
+                    }): _62.MsgRecvPacket;
                 };
                 MsgRecvPacketResponse: {
-                    encode(_: _60.MsgRecvPacketResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgRecvPacketResponse;
-                    fromPartial(_: {}): _60.MsgRecvPacketResponse;
+                    encode(_: _62.MsgRecvPacketResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgRecvPacketResponse;
+                    fromPartial(_: {}): _62.MsgRecvPacketResponse;
                 };
                 MsgTimeout: {
-                    encode(message: _60.MsgTimeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgTimeout;
+                    encode(message: _62.MsgTimeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgTimeout;
                     fromPartial(object: {
                         packet?: {
                             sequence?: bigint;
@@ -374,16 +374,16 @@ export declare namespace ibc {
                         };
                         nextSequenceRecv?: bigint;
                         signer?: string;
-                    }): _60.MsgTimeout;
+                    }): _62.MsgTimeout;
                 };
                 MsgTimeoutResponse: {
-                    encode(_: _60.MsgTimeoutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgTimeoutResponse;
-                    fromPartial(_: {}): _60.MsgTimeoutResponse;
+                    encode(_: _62.MsgTimeoutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgTimeoutResponse;
+                    fromPartial(_: {}): _62.MsgTimeoutResponse;
                 };
                 MsgTimeoutOnClose: {
-                    encode(message: _60.MsgTimeoutOnClose, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgTimeoutOnClose;
+                    encode(message: _62.MsgTimeoutOnClose, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgTimeoutOnClose;
                     fromPartial(object: {
                         packet?: {
                             sequence?: bigint;
@@ -406,16 +406,16 @@ export declare namespace ibc {
                         };
                         nextSequenceRecv?: bigint;
                         signer?: string;
-                    }): _60.MsgTimeoutOnClose;
+                    }): _62.MsgTimeoutOnClose;
                 };
                 MsgTimeoutOnCloseResponse: {
-                    encode(_: _60.MsgTimeoutOnCloseResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgTimeoutOnCloseResponse;
-                    fromPartial(_: {}): _60.MsgTimeoutOnCloseResponse;
+                    encode(_: _62.MsgTimeoutOnCloseResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgTimeoutOnCloseResponse;
+                    fromPartial(_: {}): _62.MsgTimeoutOnCloseResponse;
                 };
                 MsgAcknowledgement: {
-                    encode(message: _60.MsgAcknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgAcknowledgement;
+                    encode(message: _62.MsgAcknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgAcknowledgement;
                     fromPartial(object: {
                         packet?: {
                             sequence?: bigint;
@@ -437,28 +437,28 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _60.MsgAcknowledgement;
+                    }): _62.MsgAcknowledgement;
                 };
                 MsgAcknowledgementResponse: {
-                    encode(_: _60.MsgAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgAcknowledgementResponse;
-                    fromPartial(_: {}): _60.MsgAcknowledgementResponse;
+                    encode(_: _62.MsgAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.MsgAcknowledgementResponse;
+                    fromPartial(_: {}): _62.MsgAcknowledgementResponse;
                 };
                 QueryChannelRequest: {
-                    encode(message: _59.QueryChannelRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelRequest;
+                    encode(message: _61.QueryChannelRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _59.QueryChannelRequest;
+                    }): _61.QueryChannelRequest;
                 };
                 QueryChannelResponse: {
-                    encode(message: _59.QueryChannelResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelResponse;
+                    encode(message: _61.QueryChannelResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelResponse;
                     fromPartial(object: {
                         channel?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -471,11 +471,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryChannelResponse;
+                    }): _61.QueryChannelResponse;
                 };
                 QueryChannelsRequest: {
-                    encode(message: _59.QueryChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelsRequest;
+                    encode(message: _61.QueryChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelsRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -484,15 +484,15 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _59.QueryChannelsRequest;
+                    }): _61.QueryChannelsRequest;
                 };
                 QueryChannelsResponse: {
-                    encode(message: _59.QueryChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelsResponse;
+                    encode(message: _61.QueryChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelsResponse;
                     fromPartial(object: {
                         channels?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -510,11 +510,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryChannelsResponse;
+                    }): _61.QueryChannelsResponse;
                 };
                 QueryConnectionChannelsRequest: {
-                    encode(message: _59.QueryConnectionChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryConnectionChannelsRequest;
+                    encode(message: _61.QueryConnectionChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryConnectionChannelsRequest;
                     fromPartial(object: {
                         connection?: string;
                         pagination?: {
@@ -524,15 +524,15 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _59.QueryConnectionChannelsRequest;
+                    }): _61.QueryConnectionChannelsRequest;
                 };
                 QueryConnectionChannelsResponse: {
-                    encode(message: _59.QueryConnectionChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryConnectionChannelsResponse;
+                    encode(message: _61.QueryConnectionChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryConnectionChannelsResponse;
                     fromPartial(object: {
                         channels?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -550,19 +550,19 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryConnectionChannelsResponse;
+                    }): _61.QueryConnectionChannelsResponse;
                 };
                 QueryChannelClientStateRequest: {
-                    encode(message: _59.QueryChannelClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelClientStateRequest;
+                    encode(message: _61.QueryChannelClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelClientStateRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _59.QueryChannelClientStateRequest;
+                    }): _61.QueryChannelClientStateRequest;
                 };
                 QueryChannelClientStateResponse: {
-                    encode(message: _59.QueryChannelClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelClientStateResponse;
+                    encode(message: _61.QueryChannelClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelClientStateResponse;
                     fromPartial(object: {
                         identifiedClientState?: {
                             clientId?: string;
@@ -576,21 +576,21 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryChannelClientStateResponse;
+                    }): _61.QueryChannelClientStateResponse;
                 };
                 QueryChannelConsensusStateRequest: {
-                    encode(message: _59.QueryChannelConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelConsensusStateRequest;
+                    encode(message: _61.QueryChannelConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelConsensusStateRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         revisionNumber?: bigint;
                         revisionHeight?: bigint;
-                    }): _59.QueryChannelConsensusStateRequest;
+                    }): _61.QueryChannelConsensusStateRequest;
                 };
                 QueryChannelConsensusStateResponse: {
-                    encode(message: _59.QueryChannelConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryChannelConsensusStateResponse;
+                    encode(message: _61.QueryChannelConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryChannelConsensusStateResponse;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -602,20 +602,20 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryChannelConsensusStateResponse;
+                    }): _61.QueryChannelConsensusStateResponse;
                 };
                 QueryPacketCommitmentRequest: {
-                    encode(message: _59.QueryPacketCommitmentRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketCommitmentRequest;
+                    encode(message: _61.QueryPacketCommitmentRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketCommitmentRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: bigint;
-                    }): _59.QueryPacketCommitmentRequest;
+                    }): _61.QueryPacketCommitmentRequest;
                 };
                 QueryPacketCommitmentResponse: {
-                    encode(message: _59.QueryPacketCommitmentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketCommitmentResponse;
+                    encode(message: _61.QueryPacketCommitmentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketCommitmentResponse;
                     fromPartial(object: {
                         commitment?: Uint8Array;
                         proof?: Uint8Array;
@@ -623,11 +623,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryPacketCommitmentResponse;
+                    }): _61.QueryPacketCommitmentResponse;
                 };
                 QueryPacketCommitmentsRequest: {
-                    encode(message: _59.QueryPacketCommitmentsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketCommitmentsRequest;
+                    encode(message: _61.QueryPacketCommitmentsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketCommitmentsRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -638,11 +638,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _59.QueryPacketCommitmentsRequest;
+                    }): _61.QueryPacketCommitmentsRequest;
                 };
                 QueryPacketCommitmentsResponse: {
-                    encode(message: _59.QueryPacketCommitmentsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketCommitmentsResponse;
+                    encode(message: _61.QueryPacketCommitmentsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketCommitmentsResponse;
                     fromPartial(object: {
                         commitments?: {
                             portId?: string;
@@ -658,20 +658,20 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryPacketCommitmentsResponse;
+                    }): _61.QueryPacketCommitmentsResponse;
                 };
                 QueryPacketReceiptRequest: {
-                    encode(message: _59.QueryPacketReceiptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketReceiptRequest;
+                    encode(message: _61.QueryPacketReceiptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketReceiptRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: bigint;
-                    }): _59.QueryPacketReceiptRequest;
+                    }): _61.QueryPacketReceiptRequest;
                 };
                 QueryPacketReceiptResponse: {
-                    encode(message: _59.QueryPacketReceiptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketReceiptResponse;
+                    encode(message: _61.QueryPacketReceiptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketReceiptResponse;
                     fromPartial(object: {
                         received?: boolean;
                         proof?: Uint8Array;
@@ -679,20 +679,20 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryPacketReceiptResponse;
+                    }): _61.QueryPacketReceiptResponse;
                 };
                 QueryPacketAcknowledgementRequest: {
-                    encode(message: _59.QueryPacketAcknowledgementRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketAcknowledgementRequest;
+                    encode(message: _61.QueryPacketAcknowledgementRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketAcknowledgementRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: bigint;
-                    }): _59.QueryPacketAcknowledgementRequest;
+                    }): _61.QueryPacketAcknowledgementRequest;
                 };
                 QueryPacketAcknowledgementResponse: {
-                    encode(message: _59.QueryPacketAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketAcknowledgementResponse;
+                    encode(message: _61.QueryPacketAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketAcknowledgementResponse;
                     fromPartial(object: {
                         acknowledgement?: Uint8Array;
                         proof?: Uint8Array;
@@ -700,11 +700,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryPacketAcknowledgementResponse;
+                    }): _61.QueryPacketAcknowledgementResponse;
                 };
                 QueryPacketAcknowledgementsRequest: {
-                    encode(message: _59.QueryPacketAcknowledgementsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketAcknowledgementsRequest;
+                    encode(message: _61.QueryPacketAcknowledgementsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketAcknowledgementsRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -716,11 +716,11 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                         packetCommitmentSequences?: bigint[];
-                    }): _59.QueryPacketAcknowledgementsRequest;
+                    }): _61.QueryPacketAcknowledgementsRequest;
                 };
                 QueryPacketAcknowledgementsResponse: {
-                    encode(message: _59.QueryPacketAcknowledgementsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryPacketAcknowledgementsResponse;
+                    encode(message: _61.QueryPacketAcknowledgementsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryPacketAcknowledgementsResponse;
                     fromPartial(object: {
                         acknowledgements?: {
                             portId?: string;
@@ -736,59 +736,59 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryPacketAcknowledgementsResponse;
+                    }): _61.QueryPacketAcknowledgementsResponse;
                 };
                 QueryUnreceivedPacketsRequest: {
-                    encode(message: _59.QueryUnreceivedPacketsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryUnreceivedPacketsRequest;
+                    encode(message: _61.QueryUnreceivedPacketsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryUnreceivedPacketsRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         packetCommitmentSequences?: bigint[];
-                    }): _59.QueryUnreceivedPacketsRequest;
+                    }): _61.QueryUnreceivedPacketsRequest;
                 };
                 QueryUnreceivedPacketsResponse: {
-                    encode(message: _59.QueryUnreceivedPacketsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryUnreceivedPacketsResponse;
+                    encode(message: _61.QueryUnreceivedPacketsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryUnreceivedPacketsResponse;
                     fromPartial(object: {
                         sequences?: bigint[];
                         height?: {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryUnreceivedPacketsResponse;
+                    }): _61.QueryUnreceivedPacketsResponse;
                 };
                 QueryUnreceivedAcksRequest: {
-                    encode(message: _59.QueryUnreceivedAcksRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryUnreceivedAcksRequest;
+                    encode(message: _61.QueryUnreceivedAcksRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryUnreceivedAcksRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         packetAckSequences?: bigint[];
-                    }): _59.QueryUnreceivedAcksRequest;
+                    }): _61.QueryUnreceivedAcksRequest;
                 };
                 QueryUnreceivedAcksResponse: {
-                    encode(message: _59.QueryUnreceivedAcksResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryUnreceivedAcksResponse;
+                    encode(message: _61.QueryUnreceivedAcksResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryUnreceivedAcksResponse;
                     fromPartial(object: {
                         sequences?: bigint[];
                         height?: {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryUnreceivedAcksResponse;
+                    }): _61.QueryUnreceivedAcksResponse;
                 };
                 QueryNextSequenceReceiveRequest: {
-                    encode(message: _59.QueryNextSequenceReceiveRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryNextSequenceReceiveRequest;
+                    encode(message: _61.QueryNextSequenceReceiveRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryNextSequenceReceiveRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _59.QueryNextSequenceReceiveRequest;
+                    }): _61.QueryNextSequenceReceiveRequest;
                 };
                 QueryNextSequenceReceiveResponse: {
-                    encode(message: _59.QueryNextSequenceReceiveResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryNextSequenceReceiveResponse;
+                    encode(message: _61.QueryNextSequenceReceiveResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryNextSequenceReceiveResponse;
                     fromPartial(object: {
                         nextSequenceReceive?: bigint;
                         proof?: Uint8Array;
@@ -796,15 +796,15 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _59.QueryNextSequenceReceiveResponse;
+                    }): _61.QueryNextSequenceReceiveResponse;
                 };
                 GenesisState: {
-                    encode(message: _58.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.GenesisState;
+                    encode(message: _60.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.GenesisState;
                     fromPartial(object: {
                         channels?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -848,45 +848,45 @@ export declare namespace ibc {
                             sequence?: bigint;
                         }[];
                         nextChannelSequence?: bigint;
-                    }): _58.GenesisState;
+                    }): _60.GenesisState;
                 };
                 PacketSequence: {
-                    encode(message: _58.PacketSequence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.PacketSequence;
+                    encode(message: _60.PacketSequence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.PacketSequence;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: bigint;
-                    }): _58.PacketSequence;
+                    }): _60.PacketSequence;
                 };
-                stateFromJSON(object: any): _57.State;
-                stateToJSON(object: _57.State): string;
-                orderFromJSON(object: any): _57.Order;
-                orderToJSON(object: _57.Order): string;
-                State: typeof _57.State;
-                StateSDKType: typeof _57.State;
-                Order: typeof _57.Order;
-                OrderSDKType: typeof _57.Order;
+                stateFromJSON(object: any): _59.State;
+                stateToJSON(object: _59.State): string;
+                orderFromJSON(object: any): _59.Order;
+                orderToJSON(object: _59.Order): string;
+                State: typeof _59.State;
+                StateSDKType: typeof _59.State;
+                Order: typeof _59.Order;
+                OrderSDKType: typeof _59.Order;
                 Channel: {
-                    encode(message: _57.Channel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Channel;
+                    encode(message: _59.Channel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Channel;
                     fromPartial(object: {
-                        state?: _57.State;
-                        ordering?: _57.Order;
+                        state?: _59.State;
+                        ordering?: _59.Order;
                         counterparty?: {
                             portId?: string;
                             channelId?: string;
                         };
                         connectionHops?: string[];
                         version?: string;
-                    }): _57.Channel;
+                    }): _59.Channel;
                 };
                 IdentifiedChannel: {
-                    encode(message: _57.IdentifiedChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.IdentifiedChannel;
+                    encode(message: _59.IdentifiedChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.IdentifiedChannel;
                     fromPartial(object: {
-                        state?: _57.State;
-                        ordering?: _57.Order;
+                        state?: _59.State;
+                        ordering?: _59.Order;
                         counterparty?: {
                             portId?: string;
                             channelId?: string;
@@ -895,19 +895,19 @@ export declare namespace ibc {
                         version?: string;
                         portId?: string;
                         channelId?: string;
-                    }): _57.IdentifiedChannel;
+                    }): _59.IdentifiedChannel;
                 };
                 Counterparty: {
-                    encode(message: _57.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Counterparty;
+                    encode(message: _59.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Counterparty;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _57.Counterparty;
+                    }): _59.Counterparty;
                 };
                 Packet: {
-                    encode(message: _57.Packet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Packet;
+                    encode(message: _59.Packet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Packet;
                     fromPartial(object: {
                         sequence?: bigint;
                         sourcePort?: string;
@@ -920,46 +920,46 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         timeoutTimestamp?: bigint;
-                    }): _57.Packet;
+                    }): _59.Packet;
                 };
                 PacketState: {
-                    encode(message: _57.PacketState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.PacketState;
+                    encode(message: _59.PacketState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.PacketState;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: bigint;
                         data?: Uint8Array;
-                    }): _57.PacketState;
+                    }): _59.PacketState;
                 };
                 Acknowledgement: {
-                    encode(message: _57.Acknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Acknowledgement;
+                    encode(message: _59.Acknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Acknowledgement;
                     fromPartial(object: {
                         result?: Uint8Array;
                         error?: string;
-                    }): _57.Acknowledgement;
+                    }): _59.Acknowledgement;
                 };
             };
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _136.MsgClientImpl;
-                QueryClientImpl: typeof _132.QueryClientImpl;
+                MsgClientImpl: typeof _142.MsgClientImpl;
+                QueryClientImpl: typeof _138.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    clientState(request: _63.QueryClientStateRequest): Promise<_63.QueryClientStateResponse>;
-                    clientStates(request?: _63.QueryClientStatesRequest): Promise<_63.QueryClientStatesResponse>;
-                    consensusState(request: _63.QueryConsensusStateRequest): Promise<_63.QueryConsensusStateResponse>;
-                    consensusStates(request: _63.QueryConsensusStatesRequest): Promise<_63.QueryConsensusStatesResponse>;
-                    clientStatus(request: _63.QueryClientStatusRequest): Promise<_63.QueryClientStatusResponse>;
-                    clientParams(request?: _63.QueryClientParamsRequest): Promise<_63.QueryClientParamsResponse>;
-                    upgradedClientState(request?: _63.QueryUpgradedClientStateRequest): Promise<_63.QueryUpgradedClientStateResponse>;
-                    upgradedConsensusState(request?: _63.QueryUpgradedConsensusStateRequest): Promise<_63.QueryUpgradedConsensusStateResponse>;
+                    clientState(request: _65.QueryClientStateRequest): Promise<_65.QueryClientStateResponse>;
+                    clientStates(request?: _65.QueryClientStatesRequest): Promise<_65.QueryClientStatesResponse>;
+                    consensusState(request: _65.QueryConsensusStateRequest): Promise<_65.QueryConsensusStateResponse>;
+                    consensusStates(request: _65.QueryConsensusStatesRequest): Promise<_65.QueryConsensusStatesResponse>;
+                    clientStatus(request: _65.QueryClientStatusRequest): Promise<_65.QueryClientStatusResponse>;
+                    clientParams(request?: _65.QueryClientParamsRequest): Promise<_65.QueryClientParamsResponse>;
+                    upgradedClientState(request?: _65.QueryUpgradedClientStateRequest): Promise<_65.QueryUpgradedClientStateResponse>;
+                    upgradedConsensusState(request?: _65.QueryUpgradedConsensusStateRequest): Promise<_65.QueryUpgradedConsensusStateResponse>;
                 };
-                LCDQueryClient: typeof _128.LCDQueryClient;
+                LCDQueryClient: typeof _134.LCDQueryClient;
                 MsgCreateClient: {
-                    encode(message: _64.MsgCreateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgCreateClient;
+                    encode(message: _66.MsgCreateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgCreateClient;
                     fromPartial(object: {
                         clientState?: {
                             typeUrl?: string;
@@ -970,16 +970,16 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         signer?: string;
-                    }): _64.MsgCreateClient;
+                    }): _66.MsgCreateClient;
                 };
                 MsgCreateClientResponse: {
-                    encode(_: _64.MsgCreateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgCreateClientResponse;
-                    fromPartial(_: {}): _64.MsgCreateClientResponse;
+                    encode(_: _66.MsgCreateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgCreateClientResponse;
+                    fromPartial(_: {}): _66.MsgCreateClientResponse;
                 };
                 MsgUpdateClient: {
-                    encode(message: _64.MsgUpdateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgUpdateClient;
+                    encode(message: _66.MsgUpdateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgUpdateClient;
                     fromPartial(object: {
                         clientId?: string;
                         header?: {
@@ -987,16 +987,16 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         signer?: string;
-                    }): _64.MsgUpdateClient;
+                    }): _66.MsgUpdateClient;
                 };
                 MsgUpdateClientResponse: {
-                    encode(_: _64.MsgUpdateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgUpdateClientResponse;
-                    fromPartial(_: {}): _64.MsgUpdateClientResponse;
+                    encode(_: _66.MsgUpdateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgUpdateClientResponse;
+                    fromPartial(_: {}): _66.MsgUpdateClientResponse;
                 };
                 MsgUpgradeClient: {
-                    encode(message: _64.MsgUpgradeClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgUpgradeClient;
+                    encode(message: _66.MsgUpgradeClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgUpgradeClient;
                     fromPartial(object: {
                         clientId?: string;
                         clientState?: {
@@ -1010,16 +1010,16 @@ export declare namespace ibc {
                         proofUpgradeClient?: Uint8Array;
                         proofUpgradeConsensusState?: Uint8Array;
                         signer?: string;
-                    }): _64.MsgUpgradeClient;
+                    }): _66.MsgUpgradeClient;
                 };
                 MsgUpgradeClientResponse: {
-                    encode(_: _64.MsgUpgradeClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgUpgradeClientResponse;
-                    fromPartial(_: {}): _64.MsgUpgradeClientResponse;
+                    encode(_: _66.MsgUpgradeClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgUpgradeClientResponse;
+                    fromPartial(_: {}): _66.MsgUpgradeClientResponse;
                 };
                 MsgSubmitMisbehaviour: {
-                    encode(message: _64.MsgSubmitMisbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgSubmitMisbehaviour;
+                    encode(message: _66.MsgSubmitMisbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgSubmitMisbehaviour;
                     fromPartial(object: {
                         clientId?: string;
                         misbehaviour?: {
@@ -1027,23 +1027,23 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         signer?: string;
-                    }): _64.MsgSubmitMisbehaviour;
+                    }): _66.MsgSubmitMisbehaviour;
                 };
                 MsgSubmitMisbehaviourResponse: {
-                    encode(_: _64.MsgSubmitMisbehaviourResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.MsgSubmitMisbehaviourResponse;
-                    fromPartial(_: {}): _64.MsgSubmitMisbehaviourResponse;
+                    encode(_: _66.MsgSubmitMisbehaviourResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MsgSubmitMisbehaviourResponse;
+                    fromPartial(_: {}): _66.MsgSubmitMisbehaviourResponse;
                 };
                 QueryClientStateRequest: {
-                    encode(message: _63.QueryClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientStateRequest;
+                    encode(message: _65.QueryClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientStateRequest;
                     fromPartial(object: {
                         clientId?: string;
-                    }): _63.QueryClientStateRequest;
+                    }): _65.QueryClientStateRequest;
                 };
                 QueryClientStateResponse: {
-                    encode(message: _63.QueryClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientStateResponse;
+                    encode(message: _65.QueryClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientStateResponse;
                     fromPartial(object: {
                         clientState?: {
                             typeUrl?: string;
@@ -1054,11 +1054,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _63.QueryClientStateResponse;
+                    }): _65.QueryClientStateResponse;
                 };
                 QueryClientStatesRequest: {
-                    encode(message: _63.QueryClientStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientStatesRequest;
+                    encode(message: _65.QueryClientStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientStatesRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -1067,11 +1067,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _63.QueryClientStatesRequest;
+                    }): _65.QueryClientStatesRequest;
                 };
                 QueryClientStatesResponse: {
-                    encode(message: _63.QueryClientStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientStatesResponse;
+                    encode(message: _65.QueryClientStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientStatesResponse;
                     fromPartial(object: {
                         clientStates?: {
                             clientId?: string;
@@ -1084,21 +1084,21 @@ export declare namespace ibc {
                             nextKey?: Uint8Array;
                             total?: bigint;
                         };
-                    }): _63.QueryClientStatesResponse;
+                    }): _65.QueryClientStatesResponse;
                 };
                 QueryConsensusStateRequest: {
-                    encode(message: _63.QueryConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryConsensusStateRequest;
+                    encode(message: _65.QueryConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryConsensusStateRequest;
                     fromPartial(object: {
                         clientId?: string;
                         revisionNumber?: bigint;
                         revisionHeight?: bigint;
                         latestHeight?: boolean;
-                    }): _63.QueryConsensusStateRequest;
+                    }): _65.QueryConsensusStateRequest;
                 };
                 QueryConsensusStateResponse: {
-                    encode(message: _63.QueryConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryConsensusStateResponse;
+                    encode(message: _65.QueryConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryConsensusStateResponse;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -1109,11 +1109,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _63.QueryConsensusStateResponse;
+                    }): _65.QueryConsensusStateResponse;
                 };
                 QueryConsensusStatesRequest: {
-                    encode(message: _63.QueryConsensusStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryConsensusStatesRequest;
+                    encode(message: _65.QueryConsensusStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryConsensusStatesRequest;
                     fromPartial(object: {
                         clientId?: string;
                         pagination?: {
@@ -1123,11 +1123,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _63.QueryConsensusStatesRequest;
+                    }): _65.QueryConsensusStatesRequest;
                 };
                 QueryConsensusStatesResponse: {
-                    encode(message: _63.QueryConsensusStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryConsensusStatesResponse;
+                    encode(message: _65.QueryConsensusStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryConsensusStatesResponse;
                     fromPartial(object: {
                         consensusStates?: {
                             height?: {
@@ -1143,69 +1143,69 @@ export declare namespace ibc {
                             nextKey?: Uint8Array;
                             total?: bigint;
                         };
-                    }): _63.QueryConsensusStatesResponse;
+                    }): _65.QueryConsensusStatesResponse;
                 };
                 QueryClientStatusRequest: {
-                    encode(message: _63.QueryClientStatusRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientStatusRequest;
+                    encode(message: _65.QueryClientStatusRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientStatusRequest;
                     fromPartial(object: {
                         clientId?: string;
-                    }): _63.QueryClientStatusRequest;
+                    }): _65.QueryClientStatusRequest;
                 };
                 QueryClientStatusResponse: {
-                    encode(message: _63.QueryClientStatusResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientStatusResponse;
+                    encode(message: _65.QueryClientStatusResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientStatusResponse;
                     fromPartial(object: {
                         status?: string;
-                    }): _63.QueryClientStatusResponse;
+                    }): _65.QueryClientStatusResponse;
                 };
                 QueryClientParamsRequest: {
-                    encode(_: _63.QueryClientParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientParamsRequest;
-                    fromPartial(_: {}): _63.QueryClientParamsRequest;
+                    encode(_: _65.QueryClientParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientParamsRequest;
+                    fromPartial(_: {}): _65.QueryClientParamsRequest;
                 };
                 QueryClientParamsResponse: {
-                    encode(message: _63.QueryClientParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryClientParamsResponse;
+                    encode(message: _65.QueryClientParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryClientParamsResponse;
                     fromPartial(object: {
                         params?: {
                             allowedClients?: string[];
                         };
-                    }): _63.QueryClientParamsResponse;
+                    }): _65.QueryClientParamsResponse;
                 };
                 QueryUpgradedClientStateRequest: {
-                    encode(_: _63.QueryUpgradedClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryUpgradedClientStateRequest;
-                    fromPartial(_: {}): _63.QueryUpgradedClientStateRequest;
+                    encode(_: _65.QueryUpgradedClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryUpgradedClientStateRequest;
+                    fromPartial(_: {}): _65.QueryUpgradedClientStateRequest;
                 };
                 QueryUpgradedClientStateResponse: {
-                    encode(message: _63.QueryUpgradedClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryUpgradedClientStateResponse;
+                    encode(message: _65.QueryUpgradedClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryUpgradedClientStateResponse;
                     fromPartial(object: {
                         upgradedClientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _63.QueryUpgradedClientStateResponse;
+                    }): _65.QueryUpgradedClientStateResponse;
                 };
                 QueryUpgradedConsensusStateRequest: {
-                    encode(_: _63.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryUpgradedConsensusStateRequest;
-                    fromPartial(_: {}): _63.QueryUpgradedConsensusStateRequest;
+                    encode(_: _65.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryUpgradedConsensusStateRequest;
+                    fromPartial(_: {}): _65.QueryUpgradedConsensusStateRequest;
                 };
                 QueryUpgradedConsensusStateResponse: {
-                    encode(message: _63.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryUpgradedConsensusStateResponse;
+                    encode(message: _65.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.QueryUpgradedConsensusStateResponse;
                     fromPartial(object: {
                         upgradedConsensusState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _63.QueryUpgradedConsensusStateResponse;
+                    }): _65.QueryUpgradedConsensusStateResponse;
                 };
                 GenesisState: {
-                    encode(message: _62.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.GenesisState;
+                    encode(message: _64.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.GenesisState;
                     fromPartial(object: {
                         clients?: {
                             clientId?: string;
@@ -1239,41 +1239,41 @@ export declare namespace ibc {
                         };
                         createLocalhost?: boolean;
                         nextClientSequence?: bigint;
-                    }): _62.GenesisState;
+                    }): _64.GenesisState;
                 };
                 GenesisMetadata: {
-                    encode(message: _62.GenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.GenesisMetadata;
+                    encode(message: _64.GenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.GenesisMetadata;
                     fromPartial(object: {
                         key?: Uint8Array;
                         value?: Uint8Array;
-                    }): _62.GenesisMetadata;
+                    }): _64.GenesisMetadata;
                 };
                 IdentifiedGenesisMetadata: {
-                    encode(message: _62.IdentifiedGenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.IdentifiedGenesisMetadata;
+                    encode(message: _64.IdentifiedGenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.IdentifiedGenesisMetadata;
                     fromPartial(object: {
                         clientId?: string;
                         clientMetadata?: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                         }[];
-                    }): _62.IdentifiedGenesisMetadata;
+                    }): _64.IdentifiedGenesisMetadata;
                 };
                 IdentifiedClientState: {
-                    encode(message: _61.IdentifiedClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.IdentifiedClientState;
+                    encode(message: _63.IdentifiedClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.IdentifiedClientState;
                     fromPartial(object: {
                         clientId?: string;
                         clientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _61.IdentifiedClientState;
+                    }): _63.IdentifiedClientState;
                 };
                 ConsensusStateWithHeight: {
-                    encode(message: _61.ConsensusStateWithHeight, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.ConsensusStateWithHeight;
+                    encode(message: _63.ConsensusStateWithHeight, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.ConsensusStateWithHeight;
                     fromPartial(object: {
                         height?: {
                             revisionNumber?: bigint;
@@ -1283,11 +1283,11 @@ export declare namespace ibc {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _61.ConsensusStateWithHeight;
+                    }): _63.ConsensusStateWithHeight;
                 };
                 ClientConsensusStates: {
-                    encode(message: _61.ClientConsensusStates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.ClientConsensusStates;
+                    encode(message: _63.ClientConsensusStates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.ClientConsensusStates;
                     fromPartial(object: {
                         clientId?: string;
                         consensusStates?: {
@@ -1300,21 +1300,21 @@ export declare namespace ibc {
                                 value?: Uint8Array;
                             };
                         }[];
-                    }): _61.ClientConsensusStates;
+                    }): _63.ClientConsensusStates;
                 };
                 ClientUpdateProposal: {
-                    encode(message: _61.ClientUpdateProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.ClientUpdateProposal;
+                    encode(message: _63.ClientUpdateProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.ClientUpdateProposal;
                     fromPartial(object: {
                         title?: string;
                         description?: string;
                         subjectClientId?: string;
                         substituteClientId?: string;
-                    }): _61.ClientUpdateProposal;
+                    }): _63.ClientUpdateProposal;
                 };
                 UpgradeProposal: {
-                    encode(message: _61.UpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.UpgradeProposal;
+                    encode(message: _63.UpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.UpgradeProposal;
                     fromPartial(object: {
                         title?: string;
                         description?: string;
@@ -1335,51 +1335,51 @@ export declare namespace ibc {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _61.UpgradeProposal;
+                    }): _63.UpgradeProposal;
                 };
                 Height: {
-                    encode(message: _61.Height, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Height;
+                    encode(message: _63.Height, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.Height;
                     fromPartial(object: {
                         revisionNumber?: bigint;
                         revisionHeight?: bigint;
-                    }): _61.Height;
+                    }): _63.Height;
                 };
                 Params: {
-                    encode(message: _61.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Params;
+                    encode(message: _63.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.Params;
                     fromPartial(object: {
                         allowedClients?: string[];
-                    }): _61.Params;
+                    }): _63.Params;
                 };
             };
         }
         namespace commitment {
             const v1: {
                 MerkleRoot: {
-                    encode(message: _65.MerkleRoot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MerkleRoot;
+                    encode(message: _67.MerkleRoot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.MerkleRoot;
                     fromPartial(object: {
                         hash?: Uint8Array;
-                    }): _65.MerkleRoot;
+                    }): _67.MerkleRoot;
                 };
                 MerklePrefix: {
-                    encode(message: _65.MerklePrefix, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MerklePrefix;
+                    encode(message: _67.MerklePrefix, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.MerklePrefix;
                     fromPartial(object: {
                         keyPrefix?: Uint8Array;
-                    }): _65.MerklePrefix;
+                    }): _67.MerklePrefix;
                 };
                 MerklePath: {
-                    encode(message: _65.MerklePath, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MerklePath;
+                    encode(message: _67.MerklePath, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.MerklePath;
                     fromPartial(object: {
                         keyPath?: string[];
-                    }): _65.MerklePath;
+                    }): _67.MerklePath;
                 };
                 MerkleProof: {
-                    encode(message: _65.MerkleProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MerkleProof;
+                    encode(message: _67.MerkleProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.MerkleProof;
                     fromPartial(object: {
                         proofs?: {
                             exist?: {
@@ -1537,25 +1537,25 @@ export declare namespace ibc {
                                 }[];
                             };
                         }[];
-                    }): _65.MerkleProof;
+                    }): _67.MerkleProof;
                 };
             };
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _137.MsgClientImpl;
-                QueryClientImpl: typeof _133.QueryClientImpl;
+                MsgClientImpl: typeof _143.MsgClientImpl;
+                QueryClientImpl: typeof _139.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    connection(request: _68.QueryConnectionRequest): Promise<_68.QueryConnectionResponse>;
-                    connections(request?: _68.QueryConnectionsRequest): Promise<_68.QueryConnectionsResponse>;
-                    clientConnections(request: _68.QueryClientConnectionsRequest): Promise<_68.QueryClientConnectionsResponse>;
-                    connectionClientState(request: _68.QueryConnectionClientStateRequest): Promise<_68.QueryConnectionClientStateResponse>;
-                    connectionConsensusState(request: _68.QueryConnectionConsensusStateRequest): Promise<_68.QueryConnectionConsensusStateResponse>;
+                    connection(request: _70.QueryConnectionRequest): Promise<_70.QueryConnectionResponse>;
+                    connections(request?: _70.QueryConnectionsRequest): Promise<_70.QueryConnectionsResponse>;
+                    clientConnections(request: _70.QueryClientConnectionsRequest): Promise<_70.QueryClientConnectionsResponse>;
+                    connectionClientState(request: _70.QueryConnectionClientStateRequest): Promise<_70.QueryConnectionClientStateResponse>;
+                    connectionConsensusState(request: _70.QueryConnectionConsensusStateRequest): Promise<_70.QueryConnectionConsensusStateResponse>;
                 };
-                LCDQueryClient: typeof _129.LCDQueryClient;
+                LCDQueryClient: typeof _135.LCDQueryClient;
                 MsgConnectionOpenInit: {
-                    encode(message: _69.MsgConnectionOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenInit;
+                    encode(message: _71.MsgConnectionOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenInit;
                     fromPartial(object: {
                         clientId?: string;
                         counterparty?: {
@@ -1571,16 +1571,16 @@ export declare namespace ibc {
                         };
                         delayPeriod?: bigint;
                         signer?: string;
-                    }): _69.MsgConnectionOpenInit;
+                    }): _71.MsgConnectionOpenInit;
                 };
                 MsgConnectionOpenInitResponse: {
-                    encode(_: _69.MsgConnectionOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenInitResponse;
-                    fromPartial(_: {}): _69.MsgConnectionOpenInitResponse;
+                    encode(_: _71.MsgConnectionOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenInitResponse;
+                    fromPartial(_: {}): _71.MsgConnectionOpenInitResponse;
                 };
                 MsgConnectionOpenTry: {
-                    encode(message: _69.MsgConnectionOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenTry;
+                    encode(message: _71.MsgConnectionOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenTry;
                     fromPartial(object: {
                         clientId?: string;
                         previousConnectionId?: string;
@@ -1612,16 +1612,16 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _69.MsgConnectionOpenTry;
+                    }): _71.MsgConnectionOpenTry;
                 };
                 MsgConnectionOpenTryResponse: {
-                    encode(_: _69.MsgConnectionOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenTryResponse;
-                    fromPartial(_: {}): _69.MsgConnectionOpenTryResponse;
+                    encode(_: _71.MsgConnectionOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenTryResponse;
+                    fromPartial(_: {}): _71.MsgConnectionOpenTryResponse;
                 };
                 MsgConnectionOpenAck: {
-                    encode(message: _69.MsgConnectionOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenAck;
+                    encode(message: _71.MsgConnectionOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenAck;
                     fromPartial(object: {
                         connectionId?: string;
                         counterpartyConnectionId?: string;
@@ -1645,16 +1645,16 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _69.MsgConnectionOpenAck;
+                    }): _71.MsgConnectionOpenAck;
                 };
                 MsgConnectionOpenAckResponse: {
-                    encode(_: _69.MsgConnectionOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenAckResponse;
-                    fromPartial(_: {}): _69.MsgConnectionOpenAckResponse;
+                    encode(_: _71.MsgConnectionOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenAckResponse;
+                    fromPartial(_: {}): _71.MsgConnectionOpenAckResponse;
                 };
                 MsgConnectionOpenConfirm: {
-                    encode(message: _69.MsgConnectionOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenConfirm;
+                    encode(message: _71.MsgConnectionOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenConfirm;
                     fromPartial(object: {
                         connectionId?: string;
                         proofAck?: Uint8Array;
@@ -1663,23 +1663,23 @@ export declare namespace ibc {
                             revisionHeight?: bigint;
                         };
                         signer?: string;
-                    }): _69.MsgConnectionOpenConfirm;
+                    }): _71.MsgConnectionOpenConfirm;
                 };
                 MsgConnectionOpenConfirmResponse: {
-                    encode(_: _69.MsgConnectionOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgConnectionOpenConfirmResponse;
-                    fromPartial(_: {}): _69.MsgConnectionOpenConfirmResponse;
+                    encode(_: _71.MsgConnectionOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.MsgConnectionOpenConfirmResponse;
+                    fromPartial(_: {}): _71.MsgConnectionOpenConfirmResponse;
                 };
                 QueryConnectionRequest: {
-                    encode(message: _68.QueryConnectionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionRequest;
+                    encode(message: _70.QueryConnectionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionRequest;
                     fromPartial(object: {
                         connectionId?: string;
-                    }): _68.QueryConnectionRequest;
+                    }): _70.QueryConnectionRequest;
                 };
                 QueryConnectionResponse: {
-                    encode(message: _68.QueryConnectionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionResponse;
+                    encode(message: _70.QueryConnectionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionResponse;
                     fromPartial(object: {
                         connection?: {
                             clientId?: string;
@@ -1687,7 +1687,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _66.State;
+                            state?: _68.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -1702,11 +1702,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _68.QueryConnectionResponse;
+                    }): _70.QueryConnectionResponse;
                 };
                 QueryConnectionsRequest: {
-                    encode(message: _68.QueryConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionsRequest;
+                    encode(message: _70.QueryConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionsRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -1715,11 +1715,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _68.QueryConnectionsRequest;
+                    }): _70.QueryConnectionsRequest;
                 };
                 QueryConnectionsResponse: {
-                    encode(message: _68.QueryConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionsResponse;
+                    encode(message: _70.QueryConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionsResponse;
                     fromPartial(object: {
                         connections?: {
                             id?: string;
@@ -1728,7 +1728,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _66.State;
+                            state?: _68.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -1746,18 +1746,18 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _68.QueryConnectionsResponse;
+                    }): _70.QueryConnectionsResponse;
                 };
                 QueryClientConnectionsRequest: {
-                    encode(message: _68.QueryClientConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryClientConnectionsRequest;
+                    encode(message: _70.QueryClientConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryClientConnectionsRequest;
                     fromPartial(object: {
                         clientId?: string;
-                    }): _68.QueryClientConnectionsRequest;
+                    }): _70.QueryClientConnectionsRequest;
                 };
                 QueryClientConnectionsResponse: {
-                    encode(message: _68.QueryClientConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryClientConnectionsResponse;
+                    encode(message: _70.QueryClientConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryClientConnectionsResponse;
                     fromPartial(object: {
                         connectionPaths?: string[];
                         proof?: Uint8Array;
@@ -1765,18 +1765,18 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _68.QueryClientConnectionsResponse;
+                    }): _70.QueryClientConnectionsResponse;
                 };
                 QueryConnectionClientStateRequest: {
-                    encode(message: _68.QueryConnectionClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionClientStateRequest;
+                    encode(message: _70.QueryConnectionClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionClientStateRequest;
                     fromPartial(object: {
                         connectionId?: string;
-                    }): _68.QueryConnectionClientStateRequest;
+                    }): _70.QueryConnectionClientStateRequest;
                 };
                 QueryConnectionClientStateResponse: {
-                    encode(message: _68.QueryConnectionClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionClientStateResponse;
+                    encode(message: _70.QueryConnectionClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionClientStateResponse;
                     fromPartial(object: {
                         identifiedClientState?: {
                             clientId?: string;
@@ -1790,20 +1790,20 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _68.QueryConnectionClientStateResponse;
+                    }): _70.QueryConnectionClientStateResponse;
                 };
                 QueryConnectionConsensusStateRequest: {
-                    encode(message: _68.QueryConnectionConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionConsensusStateRequest;
+                    encode(message: _70.QueryConnectionConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionConsensusStateRequest;
                     fromPartial(object: {
                         connectionId?: string;
                         revisionNumber?: bigint;
                         revisionHeight?: bigint;
-                    }): _68.QueryConnectionConsensusStateRequest;
+                    }): _70.QueryConnectionConsensusStateRequest;
                 };
                 QueryConnectionConsensusStateResponse: {
-                    encode(message: _68.QueryConnectionConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryConnectionConsensusStateResponse;
+                    encode(message: _70.QueryConnectionConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.QueryConnectionConsensusStateResponse;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -1815,11 +1815,11 @@ export declare namespace ibc {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _68.QueryConnectionConsensusStateResponse;
+                    }): _70.QueryConnectionConsensusStateResponse;
                 };
                 GenesisState: {
-                    encode(message: _67.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.GenesisState;
+                    encode(message: _69.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.GenesisState;
                     fromPartial(object: {
                         connections?: {
                             id?: string;
@@ -1828,7 +1828,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _66.State;
+                            state?: _68.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -1846,22 +1846,22 @@ export declare namespace ibc {
                         params?: {
                             maxExpectedTimePerBlock?: bigint;
                         };
-                    }): _67.GenesisState;
+                    }): _69.GenesisState;
                 };
-                stateFromJSON(object: any): _66.State;
-                stateToJSON(object: _66.State): string;
-                State: typeof _66.State;
-                StateSDKType: typeof _66.State;
+                stateFromJSON(object: any): _68.State;
+                stateToJSON(object: _68.State): string;
+                State: typeof _68.State;
+                StateSDKType: typeof _68.State;
                 ConnectionEnd: {
-                    encode(message: _66.ConnectionEnd, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.ConnectionEnd;
+                    encode(message: _68.ConnectionEnd, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.ConnectionEnd;
                     fromPartial(object: {
                         clientId?: string;
                         versions?: {
                             identifier?: string;
                             features?: string[];
                         }[];
-                        state?: _66.State;
+                        state?: _68.State;
                         counterparty?: {
                             clientId?: string;
                             connectionId?: string;
@@ -1870,11 +1870,11 @@ export declare namespace ibc {
                             };
                         };
                         delayPeriod?: bigint;
-                    }): _66.ConnectionEnd;
+                    }): _68.ConnectionEnd;
                 };
                 IdentifiedConnection: {
-                    encode(message: _66.IdentifiedConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.IdentifiedConnection;
+                    encode(message: _68.IdentifiedConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.IdentifiedConnection;
                     fromPartial(object: {
                         id?: string;
                         clientId?: string;
@@ -1882,7 +1882,7 @@ export declare namespace ibc {
                             identifier?: string;
                             features?: string[];
                         }[];
-                        state?: _66.State;
+                        state?: _68.State;
                         counterparty?: {
                             clientId?: string;
                             connectionId?: string;
@@ -1891,48 +1891,48 @@ export declare namespace ibc {
                             };
                         };
                         delayPeriod?: bigint;
-                    }): _66.IdentifiedConnection;
+                    }): _68.IdentifiedConnection;
                 };
                 Counterparty: {
-                    encode(message: _66.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.Counterparty;
+                    encode(message: _68.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.Counterparty;
                     fromPartial(object: {
                         clientId?: string;
                         connectionId?: string;
                         prefix?: {
                             keyPrefix?: Uint8Array;
                         };
-                    }): _66.Counterparty;
+                    }): _68.Counterparty;
                 };
                 ClientPaths: {
-                    encode(message: _66.ClientPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.ClientPaths;
+                    encode(message: _68.ClientPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.ClientPaths;
                     fromPartial(object: {
                         paths?: string[];
-                    }): _66.ClientPaths;
+                    }): _68.ClientPaths;
                 };
                 ConnectionPaths: {
-                    encode(message: _66.ConnectionPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.ConnectionPaths;
+                    encode(message: _68.ConnectionPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.ConnectionPaths;
                     fromPartial(object: {
                         clientId?: string;
                         paths?: string[];
-                    }): _66.ConnectionPaths;
+                    }): _68.ConnectionPaths;
                 };
                 Version: {
-                    encode(message: _66.Version, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.Version;
+                    encode(message: _68.Version, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.Version;
                     fromPartial(object: {
                         identifier?: string;
                         features?: string[];
-                    }): _66.Version;
+                    }): _68.Version;
                 };
                 Params: {
-                    encode(message: _66.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.Params;
+                    encode(message: _68.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.Params;
                     fromPartial(object: {
                         maxExpectedTimePerBlock?: bigint;
-                    }): _66.Params;
+                    }): _68.Params;
                 };
             };
         }
@@ -1941,27 +1941,27 @@ export declare namespace ibc {
         namespace localhost {
             const v1: {
                 ClientState: {
-                    encode(message: _70.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.ClientState;
+                    encode(message: _72.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ClientState;
                     fromPartial(object: {
                         chainId?: string;
                         height?: {
                             revisionNumber?: bigint;
                             revisionHeight?: bigint;
                         };
-                    }): _70.ClientState;
+                    }): _72.ClientState;
                 };
             };
         }
         namespace solomachine {
             const v1: {
-                dataTypeFromJSON(object: any): _71.DataType;
-                dataTypeToJSON(object: _71.DataType): string;
-                DataType: typeof _71.DataType;
-                DataTypeSDKType: typeof _71.DataType;
+                dataTypeFromJSON(object: any): _73.DataType;
+                dataTypeToJSON(object: _73.DataType): string;
+                DataType: typeof _73.DataType;
+                DataTypeSDKType: typeof _73.DataType;
                 ClientState: {
-                    encode(message: _71.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ClientState;
+                    encode(message: _73.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ClientState;
                     fromPartial(object: {
                         sequence?: bigint;
                         frozenSequence?: bigint;
@@ -1974,11 +1974,11 @@ export declare namespace ibc {
                             timestamp?: bigint;
                         };
                         allowUpdateAfterProposal?: boolean;
-                    }): _71.ClientState;
+                    }): _73.ClientState;
                 };
                 ConsensusState: {
-                    encode(message: _71.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ConsensusState;
+                    encode(message: _73.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConsensusState;
                     fromPartial(object: {
                         publicKey?: {
                             typeUrl?: string;
@@ -1986,11 +1986,11 @@ export declare namespace ibc {
                         };
                         diversifier?: string;
                         timestamp?: bigint;
-                    }): _71.ConsensusState;
+                    }): _73.ConsensusState;
                 };
                 Header: {
-                    encode(message: _71.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.Header;
+                    encode(message: _73.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Header;
                     fromPartial(object: {
                         sequence?: bigint;
                         timestamp?: bigint;
@@ -2000,93 +2000,93 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         newDiversifier?: string;
-                    }): _71.Header;
+                    }): _73.Header;
                 };
                 Misbehaviour: {
-                    encode(message: _71.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.Misbehaviour;
+                    encode(message: _73.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Misbehaviour;
                     fromPartial(object: {
                         clientId?: string;
                         sequence?: bigint;
                         signatureOne?: {
                             signature?: Uint8Array;
-                            dataType?: _71.DataType;
+                            dataType?: _73.DataType;
                             data?: Uint8Array;
                             timestamp?: bigint;
                         };
                         signatureTwo?: {
                             signature?: Uint8Array;
-                            dataType?: _71.DataType;
+                            dataType?: _73.DataType;
                             data?: Uint8Array;
                             timestamp?: bigint;
                         };
-                    }): _71.Misbehaviour;
+                    }): _73.Misbehaviour;
                 };
                 SignatureAndData: {
-                    encode(message: _71.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.SignatureAndData;
+                    encode(message: _73.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.SignatureAndData;
                     fromPartial(object: {
                         signature?: Uint8Array;
-                        dataType?: _71.DataType;
+                        dataType?: _73.DataType;
                         data?: Uint8Array;
                         timestamp?: bigint;
-                    }): _71.SignatureAndData;
+                    }): _73.SignatureAndData;
                 };
                 TimestampedSignatureData: {
-                    encode(message: _71.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.TimestampedSignatureData;
+                    encode(message: _73.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.TimestampedSignatureData;
                     fromPartial(object: {
                         signatureData?: Uint8Array;
                         timestamp?: bigint;
-                    }): _71.TimestampedSignatureData;
+                    }): _73.TimestampedSignatureData;
                 };
                 SignBytes: {
-                    encode(message: _71.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.SignBytes;
+                    encode(message: _73.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.SignBytes;
                     fromPartial(object: {
                         sequence?: bigint;
                         timestamp?: bigint;
                         diversifier?: string;
-                        dataType?: _71.DataType;
+                        dataType?: _73.DataType;
                         data?: Uint8Array;
-                    }): _71.SignBytes;
+                    }): _73.SignBytes;
                 };
                 HeaderData: {
-                    encode(message: _71.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.HeaderData;
+                    encode(message: _73.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.HeaderData;
                     fromPartial(object: {
                         newPubKey?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
                         newDiversifier?: string;
-                    }): _71.HeaderData;
+                    }): _73.HeaderData;
                 };
                 ClientStateData: {
-                    encode(message: _71.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ClientStateData;
+                    encode(message: _73.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ClientStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         clientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _71.ClientStateData;
+                    }): _73.ClientStateData;
                 };
                 ConsensusStateData: {
-                    encode(message: _71.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ConsensusStateData;
+                    encode(message: _73.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConsensusStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         consensusState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _71.ConsensusStateData;
+                    }): _73.ConsensusStateData;
                 };
                 ConnectionStateData: {
-                    encode(message: _71.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ConnectionStateData;
+                    encode(message: _73.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConnectionStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         connection?: {
@@ -2095,7 +2095,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _66.State;
+                            state?: _68.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -2105,16 +2105,16 @@ export declare namespace ibc {
                             };
                             delayPeriod?: bigint;
                         };
-                    }): _71.ConnectionStateData;
+                    }): _73.ConnectionStateData;
                 };
                 ChannelStateData: {
-                    encode(message: _71.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ChannelStateData;
+                    encode(message: _73.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ChannelStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         channel?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -2122,48 +2122,48 @@ export declare namespace ibc {
                             connectionHops?: string[];
                             version?: string;
                         };
-                    }): _71.ChannelStateData;
+                    }): _73.ChannelStateData;
                 };
                 PacketCommitmentData: {
-                    encode(message: _71.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.PacketCommitmentData;
+                    encode(message: _73.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.PacketCommitmentData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         commitment?: Uint8Array;
-                    }): _71.PacketCommitmentData;
+                    }): _73.PacketCommitmentData;
                 };
                 PacketAcknowledgementData: {
-                    encode(message: _71.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.PacketAcknowledgementData;
+                    encode(message: _73.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.PacketAcknowledgementData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         acknowledgement?: Uint8Array;
-                    }): _71.PacketAcknowledgementData;
+                    }): _73.PacketAcknowledgementData;
                 };
                 PacketReceiptAbsenceData: {
-                    encode(message: _71.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.PacketReceiptAbsenceData;
+                    encode(message: _73.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.PacketReceiptAbsenceData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                    }): _71.PacketReceiptAbsenceData;
+                    }): _73.PacketReceiptAbsenceData;
                 };
                 NextSequenceRecvData: {
-                    encode(message: _71.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.NextSequenceRecvData;
+                    encode(message: _73.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.NextSequenceRecvData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         nextSeqRecv?: bigint;
-                    }): _71.NextSequenceRecvData;
+                    }): _73.NextSequenceRecvData;
                 };
             };
             const v2: {
-                dataTypeFromJSON(object: any): _72.DataType;
-                dataTypeToJSON(object: _72.DataType): string;
-                DataType: typeof _72.DataType;
-                DataTypeSDKType: typeof _72.DataType;
+                dataTypeFromJSON(object: any): _74.DataType;
+                dataTypeToJSON(object: _74.DataType): string;
+                DataType: typeof _74.DataType;
+                DataTypeSDKType: typeof _74.DataType;
                 ClientState: {
-                    encode(message: _72.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ClientState;
+                    encode(message: _74.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ClientState;
                     fromPartial(object: {
                         sequence?: bigint;
                         isFrozen?: boolean;
@@ -2176,11 +2176,11 @@ export declare namespace ibc {
                             timestamp?: bigint;
                         };
                         allowUpdateAfterProposal?: boolean;
-                    }): _72.ClientState;
+                    }): _74.ClientState;
                 };
                 ConsensusState: {
-                    encode(message: _72.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ConsensusState;
+                    encode(message: _74.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConsensusState;
                     fromPartial(object: {
                         publicKey?: {
                             typeUrl?: string;
@@ -2188,11 +2188,11 @@ export declare namespace ibc {
                         };
                         diversifier?: string;
                         timestamp?: bigint;
-                    }): _72.ConsensusState;
+                    }): _74.ConsensusState;
                 };
                 Header: {
-                    encode(message: _72.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.Header;
+                    encode(message: _74.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Header;
                     fromPartial(object: {
                         sequence?: bigint;
                         timestamp?: bigint;
@@ -2202,93 +2202,93 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         newDiversifier?: string;
-                    }): _72.Header;
+                    }): _74.Header;
                 };
                 Misbehaviour: {
-                    encode(message: _72.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.Misbehaviour;
+                    encode(message: _74.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Misbehaviour;
                     fromPartial(object: {
                         clientId?: string;
                         sequence?: bigint;
                         signatureOne?: {
                             signature?: Uint8Array;
-                            dataType?: _72.DataType;
+                            dataType?: _74.DataType;
                             data?: Uint8Array;
                             timestamp?: bigint;
                         };
                         signatureTwo?: {
                             signature?: Uint8Array;
-                            dataType?: _72.DataType;
+                            dataType?: _74.DataType;
                             data?: Uint8Array;
                             timestamp?: bigint;
                         };
-                    }): _72.Misbehaviour;
+                    }): _74.Misbehaviour;
                 };
                 SignatureAndData: {
-                    encode(message: _72.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.SignatureAndData;
+                    encode(message: _74.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.SignatureAndData;
                     fromPartial(object: {
                         signature?: Uint8Array;
-                        dataType?: _72.DataType;
+                        dataType?: _74.DataType;
                         data?: Uint8Array;
                         timestamp?: bigint;
-                    }): _72.SignatureAndData;
+                    }): _74.SignatureAndData;
                 };
                 TimestampedSignatureData: {
-                    encode(message: _72.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.TimestampedSignatureData;
+                    encode(message: _74.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.TimestampedSignatureData;
                     fromPartial(object: {
                         signatureData?: Uint8Array;
                         timestamp?: bigint;
-                    }): _72.TimestampedSignatureData;
+                    }): _74.TimestampedSignatureData;
                 };
                 SignBytes: {
-                    encode(message: _72.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.SignBytes;
+                    encode(message: _74.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.SignBytes;
                     fromPartial(object: {
                         sequence?: bigint;
                         timestamp?: bigint;
                         diversifier?: string;
-                        dataType?: _72.DataType;
+                        dataType?: _74.DataType;
                         data?: Uint8Array;
-                    }): _72.SignBytes;
+                    }): _74.SignBytes;
                 };
                 HeaderData: {
-                    encode(message: _72.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.HeaderData;
+                    encode(message: _74.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.HeaderData;
                     fromPartial(object: {
                         newPubKey?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
                         newDiversifier?: string;
-                    }): _72.HeaderData;
+                    }): _74.HeaderData;
                 };
                 ClientStateData: {
-                    encode(message: _72.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ClientStateData;
+                    encode(message: _74.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ClientStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         clientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _72.ClientStateData;
+                    }): _74.ClientStateData;
                 };
                 ConsensusStateData: {
-                    encode(message: _72.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ConsensusStateData;
+                    encode(message: _74.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConsensusStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         consensusState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _72.ConsensusStateData;
+                    }): _74.ConsensusStateData;
                 };
                 ConnectionStateData: {
-                    encode(message: _72.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ConnectionStateData;
+                    encode(message: _74.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConnectionStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         connection?: {
@@ -2297,7 +2297,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _66.State;
+                            state?: _68.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -2307,16 +2307,16 @@ export declare namespace ibc {
                             };
                             delayPeriod?: bigint;
                         };
-                    }): _72.ConnectionStateData;
+                    }): _74.ConnectionStateData;
                 };
                 ChannelStateData: {
-                    encode(message: _72.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ChannelStateData;
+                    encode(message: _74.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ChannelStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         channel?: {
-                            state?: _57.State;
-                            ordering?: _57.Order;
+                            state?: _59.State;
+                            ordering?: _59.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -2324,46 +2324,46 @@ export declare namespace ibc {
                             connectionHops?: string[];
                             version?: string;
                         };
-                    }): _72.ChannelStateData;
+                    }): _74.ChannelStateData;
                 };
                 PacketCommitmentData: {
-                    encode(message: _72.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.PacketCommitmentData;
+                    encode(message: _74.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.PacketCommitmentData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         commitment?: Uint8Array;
-                    }): _72.PacketCommitmentData;
+                    }): _74.PacketCommitmentData;
                 };
                 PacketAcknowledgementData: {
-                    encode(message: _72.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.PacketAcknowledgementData;
+                    encode(message: _74.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.PacketAcknowledgementData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         acknowledgement?: Uint8Array;
-                    }): _72.PacketAcknowledgementData;
+                    }): _74.PacketAcknowledgementData;
                 };
                 PacketReceiptAbsenceData: {
-                    encode(message: _72.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.PacketReceiptAbsenceData;
+                    encode(message: _74.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.PacketReceiptAbsenceData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                    }): _72.PacketReceiptAbsenceData;
+                    }): _74.PacketReceiptAbsenceData;
                 };
                 NextSequenceRecvData: {
-                    encode(message: _72.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.NextSequenceRecvData;
+                    encode(message: _74.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.NextSequenceRecvData;
                     fromPartial(object: {
                         path?: Uint8Array;
                         nextSeqRecv?: bigint;
-                    }): _72.NextSequenceRecvData;
+                    }): _74.NextSequenceRecvData;
                 };
             };
         }
         namespace tendermint {
             const v1: {
                 ClientState: {
-                    encode(message: _73.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ClientState;
+                    encode(message: _75.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ClientState;
                     fromPartial(object: {
                         chainId?: string;
                         trustLevel?: {
@@ -2412,11 +2412,11 @@ export declare namespace ibc {
                         upgradePath?: string[];
                         allowUpdateAfterExpiry?: boolean;
                         allowUpdateAfterMisbehaviour?: boolean;
-                    }): _73.ClientState;
+                    }): _75.ClientState;
                 };
                 ConsensusState: {
-                    encode(message: _73.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConsensusState;
+                    encode(message: _75.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ConsensusState;
                     fromPartial(object: {
                         timestamp?: {
                             seconds?: bigint;
@@ -2426,11 +2426,11 @@ export declare namespace ibc {
                             hash?: Uint8Array;
                         };
                         nextValidatorsHash?: Uint8Array;
-                    }): _73.ConsensusState;
+                    }): _75.ConsensusState;
                 };
                 Misbehaviour: {
-                    encode(message: _73.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Misbehaviour;
+                    encode(message: _75.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Misbehaviour;
                     fromPartial(object: {
                         clientId?: string;
                         header1?: {
@@ -2629,11 +2629,11 @@ export declare namespace ibc {
                                 totalVotingPower?: bigint;
                             };
                         };
-                    }): _73.Misbehaviour;
+                    }): _75.Misbehaviour;
                 };
                 Header: {
-                    encode(message: _73.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Header;
+                    encode(message: _75.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Header;
                     fromPartial(object: {
                         signedHeader?: {
                             header?: {
@@ -2731,211 +2731,20 @@ export declare namespace ibc {
                             };
                             totalVotingPower?: bigint;
                         };
-                    }): _73.Header;
+                    }): _75.Header;
                 };
                 Fraction: {
-                    encode(message: _73.Fraction, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Fraction;
+                    encode(message: _75.Fraction, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Fraction;
                     fromPartial(object: {
                         numerator?: bigint;
                         denominator?: bigint;
-                    }): _73.Fraction;
+                    }): _75.Fraction;
                 };
             };
         }
     }
     const ClientFactory: {
-        createRPCMsgClient: ({ rpc }: {
-            rpc: import("../helpers").Rpc;
-        }) => Promise<{
-            cosmos: {
-                authz: {
-                    v1beta1: import("../cosmos/authz/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                bank: {
-                    v1beta1: import("../cosmos/bank/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                distribution: {
-                    v1beta1: import("../cosmos/distribution/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                gov: {
-                    v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
-                    v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                staking: {
-                    v1beta1: import("../cosmos/staking/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                upgrade: {
-                    v1beta1: import("../cosmos/upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-            };
-            ibc: {
-                applications: {
-                    transfer: {
-                        v1: _134.MsgClientImpl;
-                    };
-                };
-                core: {
-                    channel: {
-                        v1: _135.MsgClientImpl;
-                    };
-                    client: {
-                        v1: _136.MsgClientImpl;
-                    };
-                    connection: {
-                        v1: _137.MsgClientImpl;
-                    };
-                };
-            };
-        }>;
-        createRPCQueryClient: ({ rpcEndpoint }: {
-            rpcEndpoint: string | import("@cosmjs/tendermint-rpc").HttpEndpoint;
-        }) => Promise<{
-            cosmos: {
-                authz: {
-                    v1beta1: {
-                        grants(request: import("../cosmos/authz/v1beta1/query").QueryGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGrantsResponse>;
-                        granterGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranterGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranterGrantsResponse>;
-                        granteeGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsResponse>;
-                    };
-                };
-                bank: {
-                    v1beta1: {
-                        balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponse>;
-                        allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponse>;
-                        spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponse>;
-                        totalSupply(request?: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponse>;
-                        supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponse>;
-                        params(request?: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponse>;
-                        denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponse>;
-                        denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponse>;
-                        denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponse>;
-                    };
-                };
-                distribution: {
-                    v1beta1: {
-                        params(request?: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponse>;
-                        validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponse>;
-                        validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponse>;
-                        validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponse>;
-                        delegationRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsResponse>;
-                        delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponse>;
-                        delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponse>;
-                        delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponse>;
-                        communityPool(request?: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponse>;
-                    };
-                };
-                gov: {
-                    v1: {
-                        proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponse>;
-                        proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponse>;
-                        vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponse>;
-                        votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponse>;
-                        params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponse>;
-                        deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponse>;
-                        deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponse>;
-                        tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponse>;
-                    };
-                    v1beta1: {
-                        proposal(request: import("../cosmos/gov/v1beta1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalResponse>;
-                        proposals(request: import("../cosmos/gov/v1beta1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalsResponse>;
-                        vote(request: import("../cosmos/gov/v1beta1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVoteResponse>;
-                        votes(request: import("../cosmos/gov/v1beta1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVotesResponse>;
-                        params(request: import("../cosmos/gov/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryParamsResponse>;
-                        deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponse>;
-                        deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponse>;
-                        tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponse>;
-                    };
-                };
-                staking: {
-                    v1beta1: {
-                        validators(request: import("../cosmos/staking/v1beta1/query").QueryValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorsResponse>;
-                        validator(request: import("../cosmos/staking/v1beta1/query").QueryValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorResponse>;
-                        validatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsResponse>;
-                        validatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsResponse>;
-                        delegation(request: import("../cosmos/staking/v1beta1/query").QueryDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegationResponse>;
-                        unbondingDelegation(request: import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationResponse>;
-                        delegatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsResponse>;
-                        delegatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsResponse>;
-                        redelegations(request: import("../cosmos/staking/v1beta1/query").QueryRedelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryRedelegationsResponse>;
-                        delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponse>;
-                        delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponse>;
-                        historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponse>;
-                        pool(request?: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponse>;
-                        params(request?: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponse>;
-                    };
-                };
-                tx: {
-                    v1beta1: {
-                        simulate(request: import("../cosmos/tx/v1beta1/service").SimulateRequest): Promise<import("../cosmos/tx/v1beta1/service").SimulateResponse>;
-                        getTx(request: import("../cosmos/tx/v1beta1/service").GetTxRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxResponse>;
-                        broadcastTx(request: import("../cosmos/tx/v1beta1/service").BroadcastTxRequest): Promise<import("../cosmos/tx/v1beta1/service").BroadcastTxResponse>;
-                        getTxsEvent(request: import("../cosmos/tx/v1beta1/service").GetTxsEventRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxsEventResponse>;
-                        getBlockWithTxs(request: import("../cosmos/tx/v1beta1/service").GetBlockWithTxsRequest): Promise<import("../cosmos/tx/v1beta1/service").GetBlockWithTxsResponse>;
-                    };
-                };
-                upgrade: {
-                    v1beta1: {
-                        currentPlan(request?: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponse>;
-                        appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponse>;
-                        upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponse>;
-                        moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponse>;
-                        authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponse>;
-                    };
-                };
-            };
-            ibc: {
-                applications: {
-                    transfer: {
-                        v1: {
-                            denomTrace(request: _53.QueryDenomTraceRequest): Promise<_53.QueryDenomTraceResponse>;
-                            denomTraces(request?: _53.QueryDenomTracesRequest): Promise<_53.QueryDenomTracesResponse>;
-                            params(request?: _53.QueryParamsRequest): Promise<_53.QueryParamsResponse>;
-                        };
-                    };
-                };
-                core: {
-                    channel: {
-                        v1: {
-                            channel(request: _59.QueryChannelRequest): Promise<_59.QueryChannelResponse>;
-                            channels(request?: _59.QueryChannelsRequest): Promise<_59.QueryChannelsResponse>;
-                            connectionChannels(request: _59.QueryConnectionChannelsRequest): Promise<_59.QueryConnectionChannelsResponse>;
-                            channelClientState(request: _59.QueryChannelClientStateRequest): Promise<_59.QueryChannelClientStateResponse>;
-                            channelConsensusState(request: _59.QueryChannelConsensusStateRequest): Promise<_59.QueryChannelConsensusStateResponse>;
-                            packetCommitment(request: _59.QueryPacketCommitmentRequest): Promise<_59.QueryPacketCommitmentResponse>;
-                            packetCommitments(request: _59.QueryPacketCommitmentsRequest): Promise<_59.QueryPacketCommitmentsResponse>;
-                            packetReceipt(request: _59.QueryPacketReceiptRequest): Promise<_59.QueryPacketReceiptResponse>;
-                            packetAcknowledgement(request: _59.QueryPacketAcknowledgementRequest): Promise<_59.QueryPacketAcknowledgementResponse>;
-                            packetAcknowledgements(request: _59.QueryPacketAcknowledgementsRequest): Promise<_59.QueryPacketAcknowledgementsResponse>;
-                            unreceivedPackets(request: _59.QueryUnreceivedPacketsRequest): Promise<_59.QueryUnreceivedPacketsResponse>;
-                            unreceivedAcks(request: _59.QueryUnreceivedAcksRequest): Promise<_59.QueryUnreceivedAcksResponse>;
-                            nextSequenceReceive(request: _59.QueryNextSequenceReceiveRequest): Promise<_59.QueryNextSequenceReceiveResponse>;
-                        };
-                    };
-                    client: {
-                        v1: {
-                            clientState(request: _63.QueryClientStateRequest): Promise<_63.QueryClientStateResponse>;
-                            clientStates(request?: _63.QueryClientStatesRequest): Promise<_63.QueryClientStatesResponse>;
-                            consensusState(request: _63.QueryConsensusStateRequest): Promise<_63.QueryConsensusStateResponse>;
-                            consensusStates(request: _63.QueryConsensusStatesRequest): Promise<_63.QueryConsensusStatesResponse>;
-                            clientStatus(request: _63.QueryClientStatusRequest): Promise<_63.QueryClientStatusResponse>;
-                            clientParams(request?: _63.QueryClientParamsRequest): Promise<_63.QueryClientParamsResponse>;
-                            upgradedClientState(request?: _63.QueryUpgradedClientStateRequest): Promise<_63.QueryUpgradedClientStateResponse>;
-                            upgradedConsensusState(request?: _63.QueryUpgradedConsensusStateRequest): Promise<_63.QueryUpgradedConsensusStateResponse>;
-                        };
-                    };
-                    connection: {
-                        v1: {
-                            connection(request: _68.QueryConnectionRequest): Promise<_68.QueryConnectionResponse>;
-                            connections(request?: _68.QueryConnectionsRequest): Promise<_68.QueryConnectionsResponse>;
-                            clientConnections(request: _68.QueryClientConnectionsRequest): Promise<_68.QueryClientConnectionsResponse>;
-                            connectionClientState(request: _68.QueryConnectionClientStateRequest): Promise<_68.QueryConnectionClientStateResponse>;
-                            connectionConsensusState(request: _68.QueryConnectionConsensusStateRequest): Promise<_68.QueryConnectionConsensusStateResponse>;
-                        };
-                    };
-                };
-            };
-        }>;
         createLCDClient: ({ restEndpoint }: {
             restEndpoint: string;
         }) => Promise<{
@@ -2946,12 +2755,20 @@ export declare namespace ibc {
                 bank: {
                     v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
                 };
+                base: {
+                    reflection: {
+                        v2alpha1: import("../cosmos/base/reflection/v2alpha1/reflection.lcd").LCDQueryClient;
+                    };
+                };
                 distribution: {
                     v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
                 };
                 gov: {
                     v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
                     v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;
                 };
                 staking: {
                     v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
@@ -2966,18 +2783,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _126.LCDQueryClient;
+                        v1: _132.LCDQueryClient;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _127.LCDQueryClient;
+                        v1: _133.LCDQueryClient;
                     };
                     client: {
-                        v1: _128.LCDQueryClient;
+                        v1: _134.LCDQueryClient;
                     };
                     connection: {
-                        v1: _129.LCDQueryClient;
+                        v1: _135.LCDQueryClient;
                     };
                 };
             };

@@ -19,6 +19,13 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      base: {
+        reflection: {
+          v2alpha1: new (await import("./base/reflection/v2alpha1/reflection.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
       distribution: {
         v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -29,6 +36,11 @@ export const createLCDClient = async ({
           requestClient
         }),
         v1beta1: new (await import("./gov/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      params: {
+        v1beta1: new (await import("./params/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

@@ -1,5 +1,5 @@
-import * as _46 from "./gogo";
+import * as _48 from "./gogo";
 export const gogoproto = {
-    ..._46
+    ..._48
 };
 //# sourceMappingURL=bundle.js.map

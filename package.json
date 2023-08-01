@@ -1,6 +1,6 @@
 {
   "name": "trustlessjs",
-  "version": "v0.7.1-alpha.4",
+  "version": "v0.7.1-alpha.5",
   "description": "trustlessjs",
   "homepage": "https://github.com/trstlabs/trustlessjs#readme",
   "license": "SEE LICENSE IN LICENSE",
@@ -12,7 +12,10 @@
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "main",
+    "module",
+    "src"
   ],
   "scripts": {
     "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
@@ -73,7 +76,7 @@
     "@confio/relayer": "0.7.0",
     "@cosmjs/cosmwasm-stargate": "0.29.4",
     "@cosmjs/crypto": "0.29.4",
-    "@cosmology/telescope": "0.102.0",
+    "@cosmology/telescope": "^0.102.1",
     "@protobufs/confio": "^0.0.6",
     "@protobufs/cosmos": "^0.1.0",
     "@protobufs/cosmos_proto": "^0.0.10",
@@ -115,7 +118,6 @@
     "@cosmjs/proto-signing": "0.29.3",
     "@cosmjs/stargate": "0.29.3",
     "@cosmjs/tendermint-rpc": "^0.29.3",
-    "@cosmology/lcd": "^0.12.0",
-    "@osmonauts/lcd": "^0.11.1"
+    "@cosmology/lcd": "^0.12.0"
   }
 }

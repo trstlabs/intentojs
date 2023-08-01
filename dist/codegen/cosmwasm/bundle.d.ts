@@ -1,10 +1,10 @@
-import * as _85 from "./wasm/v1/cosmwasm";
+import * as _87 from "./wasm/v1/cosmwasm";
 export declare namespace cosmwasm {
     namespace wasm {
         const v1: {
             MsgInstantiateContract: {
-                encode(message: _85.MsgInstantiateContract, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.MsgInstantiateContract;
+                encode(message: _87.MsgInstantiateContract, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MsgInstantiateContract;
                 fromPartial(object: {
                     sender?: string;
                     admin?: string;
@@ -15,11 +15,11 @@ export declare namespace cosmwasm {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _85.MsgInstantiateContract;
+                }): _87.MsgInstantiateContract;
             };
             MsgInstantiateContract2: {
-                encode(message: _85.MsgInstantiateContract2, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.MsgInstantiateContract2;
+                encode(message: _87.MsgInstantiateContract2, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MsgInstantiateContract2;
                 fromPartial(object: {
                     sender?: string;
                     admin?: string;
@@ -32,27 +32,27 @@ export declare namespace cosmwasm {
                     }[];
                     salt?: Uint8Array;
                     fixMsg?: boolean;
-                }): _85.MsgInstantiateContract2;
+                }): _87.MsgInstantiateContract2;
             };
             MsgInstantiateContractResponse: {
-                encode(message: _85.MsgInstantiateContractResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.MsgInstantiateContractResponse;
+                encode(message: _87.MsgInstantiateContractResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MsgInstantiateContractResponse;
                 fromPartial(object: {
                     address?: string;
                     data?: Uint8Array;
-                }): _85.MsgInstantiateContractResponse;
+                }): _87.MsgInstantiateContractResponse;
             };
             MsgInstantiateContract2Response: {
-                encode(message: _85.MsgInstantiateContract2Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.MsgInstantiateContract2Response;
+                encode(message: _87.MsgInstantiateContract2Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MsgInstantiateContract2Response;
                 fromPartial(object: {
                     address?: string;
                     data?: Uint8Array;
-                }): _85.MsgInstantiateContract2Response;
+                }): _87.MsgInstantiateContract2Response;
             };
             MsgExecuteContract: {
-                encode(message: _85.MsgExecuteContract, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.MsgExecuteContract;
+                encode(message: _87.MsgExecuteContract, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MsgExecuteContract;
                 fromPartial(object: {
                     sender?: string;
                     contract?: string;
@@ -61,14 +61,14 @@ export declare namespace cosmwasm {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _85.MsgExecuteContract;
+                }): _87.MsgExecuteContract;
             };
             MsgExecuteContractResponse: {
-                encode(message: _85.MsgExecuteContractResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.MsgExecuteContractResponse;
+                encode(message: _87.MsgExecuteContractResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MsgExecuteContractResponse;
                 fromPartial(object: {
                     data?: Uint8Array;
-                }): _85.MsgExecuteContractResponse;
+                }): _87.MsgExecuteContractResponse;
             };
         };
     }

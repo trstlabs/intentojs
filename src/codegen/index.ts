@@ -4,6 +4,17 @@
   * and run the transpile command or yarn proto command to regenerate this bundle.
   */
  
+export * from "./amino/bundle";
+export * from "./ics23/bundle";
+export * from "./cosmos_proto/bundle";
+export * from "./cosmos/bundle";
+export * from "./gogoproto/bundle";
+export * from "./google/bundle";
+export * from "./ibc/bundle";
+export * from "./tendermint/bundle";
+export * from "./cosmwasm/bundle";
+export * from "./osmosis/bundle";
+export * from "./trst/bundle";
 export * from "./varint";
 export * from "./utf8";
 export * from "./binary";

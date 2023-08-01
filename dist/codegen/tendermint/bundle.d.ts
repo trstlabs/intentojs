@@ -1,35 +1,54 @@
-import * as _74 from "./abci/types";
-import * as _75 from "./crypto/keys";
-import * as _76 from "./crypto/proof";
-import * as _77 from "./libs/bits/types";
-import * as _78 from "./p2p/types";
-import * as _79 from "./types/block";
-import * as _80 from "./types/evidence";
-import * as _81 from "./types/params";
-import * as _82 from "./types/types";
-import * as _83 from "./types/validator";
-import * as _84 from "./version/types";
+import * as _76 from "./abci/types";
+import * as _77 from "./crypto/keys";
+import * as _78 from "./crypto/proof";
+import * as _79 from "./libs/bits/types";
+import * as _80 from "./p2p/types";
+import * as _81 from "./types/block";
+import * as _82 from "./types/evidence";
+import * as _83 from "./types/params";
+import * as _84 from "./types/types";
+import * as _85 from "./types/validator";
+import * as _86 from "./version/types";
+import * as _144 from "./abci/types.rpc.ABCIApplication";
 export declare namespace tendermint {
     const abci: {
-        checkTxTypeFromJSON(object: any): _74.CheckTxType;
-        checkTxTypeToJSON(object: _74.CheckTxType): string;
-        responseOfferSnapshot_ResultFromJSON(object: any): _74.ResponseOfferSnapshot_Result;
-        responseOfferSnapshot_ResultToJSON(object: _74.ResponseOfferSnapshot_Result): string;
-        responseApplySnapshotChunk_ResultFromJSON(object: any): _74.ResponseApplySnapshotChunk_Result;
-        responseApplySnapshotChunk_ResultToJSON(object: _74.ResponseApplySnapshotChunk_Result): string;
-        evidenceTypeFromJSON(object: any): _74.EvidenceType;
-        evidenceTypeToJSON(object: _74.EvidenceType): string;
-        CheckTxType: typeof _74.CheckTxType;
-        CheckTxTypeSDKType: typeof _74.CheckTxType;
-        ResponseOfferSnapshot_Result: typeof _74.ResponseOfferSnapshot_Result;
-        ResponseOfferSnapshot_ResultSDKType: typeof _74.ResponseOfferSnapshot_Result;
-        ResponseApplySnapshotChunk_Result: typeof _74.ResponseApplySnapshotChunk_Result;
-        ResponseApplySnapshotChunk_ResultSDKType: typeof _74.ResponseApplySnapshotChunk_Result;
-        EvidenceType: typeof _74.EvidenceType;
-        EvidenceTypeSDKType: typeof _74.EvidenceType;
+        ABCIApplicationClientImpl: typeof _144.ABCIApplicationClientImpl;
+        createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+            echo(request: _76.RequestEcho): Promise<_76.ResponseEcho>;
+            flush(request?: _76.RequestFlush): Promise<_76.ResponseFlush>;
+            info(request: _76.RequestInfo): Promise<_76.ResponseInfo>;
+            setOption(request: _76.RequestSetOption): Promise<_76.ResponseSetOption>;
+            deliverTx(request: _76.RequestDeliverTx): Promise<_76.ResponseDeliverTx>;
+            checkTx(request: _76.RequestCheckTx): Promise<_76.ResponseCheckTx>;
+            query(request: _76.RequestQuery): Promise<_76.ResponseQuery>;
+            commit(request?: _76.RequestCommit): Promise<_76.ResponseCommit>;
+            initChain(request: _76.RequestInitChain): Promise<_76.ResponseInitChain>;
+            beginBlock(request: _76.RequestBeginBlock): Promise<_76.ResponseBeginBlock>;
+            endBlock(request: _76.RequestEndBlock): Promise<_76.ResponseEndBlock>;
+            listSnapshots(request?: _76.RequestListSnapshots): Promise<_76.ResponseListSnapshots>;
+            offerSnapshot(request: _76.RequestOfferSnapshot): Promise<_76.ResponseOfferSnapshot>;
+            loadSnapshotChunk(request: _76.RequestLoadSnapshotChunk): Promise<_76.ResponseLoadSnapshotChunk>;
+            applySnapshotChunk(request: _76.RequestApplySnapshotChunk): Promise<_76.ResponseApplySnapshotChunk>;
+        };
+        checkTxTypeFromJSON(object: any): _76.CheckTxType;
+        checkTxTypeToJSON(object: _76.CheckTxType): string;
+        responseOfferSnapshot_ResultFromJSON(object: any): _76.ResponseOfferSnapshot_Result;
+        responseOfferSnapshot_ResultToJSON(object: _76.ResponseOfferSnapshot_Result): string;
+        responseApplySnapshotChunk_ResultFromJSON(object: any): _76.ResponseApplySnapshotChunk_Result;
+        responseApplySnapshotChunk_ResultToJSON(object: _76.ResponseApplySnapshotChunk_Result): string;
+        evidenceTypeFromJSON(object: any): _76.EvidenceType;
+        evidenceTypeToJSON(object: _76.EvidenceType): string;
+        CheckTxType: typeof _76.CheckTxType;
+        CheckTxTypeSDKType: typeof _76.CheckTxType;
+        ResponseOfferSnapshot_Result: typeof _76.ResponseOfferSnapshot_Result;
+        ResponseOfferSnapshot_ResultSDKType: typeof _76.ResponseOfferSnapshot_Result;
+        ResponseApplySnapshotChunk_Result: typeof _76.ResponseApplySnapshotChunk_Result;
+        ResponseApplySnapshotChunk_ResultSDKType: typeof _76.ResponseApplySnapshotChunk_Result;
+        EvidenceType: typeof _76.EvidenceType;
+        EvidenceTypeSDKType: typeof _76.EvidenceType;
         Request: {
-            encode(message: _74.Request, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Request;
+            encode(message: _76.Request, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Request;
             fromPartial(object: {
                 echo?: {
                     message?: string;
@@ -127,7 +146,7 @@ export declare namespace tendermint {
                         }[];
                     };
                     byzantineValidators?: {
-                        type?: _74.EvidenceType;
+                        type?: _76.EvidenceType;
                         validator?: {
                             address?: Uint8Array;
                             power?: bigint;
@@ -142,7 +161,7 @@ export declare namespace tendermint {
                 };
                 checkTx?: {
                     tx?: Uint8Array;
-                    type?: _74.CheckTxType;
+                    type?: _76.CheckTxType;
                 };
                 deliverTx?: {
                     tx?: Uint8Array;
@@ -172,40 +191,40 @@ export declare namespace tendermint {
                     chunk?: Uint8Array;
                     sender?: string;
                 };
-            }): _74.Request;
+            }): _76.Request;
         };
         RequestEcho: {
-            encode(message: _74.RequestEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestEcho;
+            encode(message: _76.RequestEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestEcho;
             fromPartial(object: {
                 message?: string;
-            }): _74.RequestEcho;
+            }): _76.RequestEcho;
         };
         RequestFlush: {
-            encode(_: _74.RequestFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestFlush;
-            fromPartial(_: {}): _74.RequestFlush;
+            encode(_: _76.RequestFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestFlush;
+            fromPartial(_: {}): _76.RequestFlush;
         };
         RequestInfo: {
-            encode(message: _74.RequestInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestInfo;
+            encode(message: _76.RequestInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestInfo;
             fromPartial(object: {
                 version?: string;
                 blockVersion?: bigint;
                 p2pVersion?: bigint;
-            }): _74.RequestInfo;
+            }): _76.RequestInfo;
         };
         RequestSetOption: {
-            encode(message: _74.RequestSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestSetOption;
+            encode(message: _76.RequestSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestSetOption;
             fromPartial(object: {
                 key?: string;
                 value?: string;
-            }): _74.RequestSetOption;
+            }): _76.RequestSetOption;
         };
         RequestInitChain: {
-            encode(message: _74.RequestInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestInitChain;
+            encode(message: _76.RequestInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestInitChain;
             fromPartial(object: {
                 time?: {
                     seconds?: bigint;
@@ -241,21 +260,21 @@ export declare namespace tendermint {
                 }[];
                 appStateBytes?: Uint8Array;
                 initialHeight?: bigint;
-            }): _74.RequestInitChain;
+            }): _76.RequestInitChain;
         };
         RequestQuery: {
-            encode(message: _74.RequestQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestQuery;
+            encode(message: _76.RequestQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestQuery;
             fromPartial(object: {
                 data?: Uint8Array;
                 path?: string;
                 height?: bigint;
                 prove?: boolean;
-            }): _74.RequestQuery;
+            }): _76.RequestQuery;
         };
         RequestBeginBlock: {
-            encode(message: _74.RequestBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestBeginBlock;
+            encode(message: _76.RequestBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestBeginBlock;
             fromPartial(object: {
                 hash?: Uint8Array;
                 header?: {
@@ -297,7 +316,7 @@ export declare namespace tendermint {
                     }[];
                 };
                 byzantineValidators?: {
-                    type?: _74.EvidenceType;
+                    type?: _76.EvidenceType;
                     validator?: {
                         address?: Uint8Array;
                         power?: bigint;
@@ -309,43 +328,43 @@ export declare namespace tendermint {
                     };
                     totalVotingPower?: bigint;
                 }[];
-            }): _74.RequestBeginBlock;
+            }): _76.RequestBeginBlock;
         };
         RequestCheckTx: {
-            encode(message: _74.RequestCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestCheckTx;
+            encode(message: _76.RequestCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestCheckTx;
             fromPartial(object: {
                 tx?: Uint8Array;
-                type?: _74.CheckTxType;
-            }): _74.RequestCheckTx;
+                type?: _76.CheckTxType;
+            }): _76.RequestCheckTx;
         };
         RequestDeliverTx: {
-            encode(message: _74.RequestDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestDeliverTx;
+            encode(message: _76.RequestDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestDeliverTx;
             fromPartial(object: {
                 tx?: Uint8Array;
-            }): _74.RequestDeliverTx;
+            }): _76.RequestDeliverTx;
         };
         RequestEndBlock: {
-            encode(message: _74.RequestEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestEndBlock;
+            encode(message: _76.RequestEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestEndBlock;
             fromPartial(object: {
                 height?: bigint;
-            }): _74.RequestEndBlock;
+            }): _76.RequestEndBlock;
         };
         RequestCommit: {
-            encode(_: _74.RequestCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestCommit;
-            fromPartial(_: {}): _74.RequestCommit;
+            encode(_: _76.RequestCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestCommit;
+            fromPartial(_: {}): _76.RequestCommit;
         };
         RequestListSnapshots: {
-            encode(_: _74.RequestListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestListSnapshots;
-            fromPartial(_: {}): _74.RequestListSnapshots;
+            encode(_: _76.RequestListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestListSnapshots;
+            fromPartial(_: {}): _76.RequestListSnapshots;
         };
         RequestOfferSnapshot: {
-            encode(message: _74.RequestOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestOfferSnapshot;
+            encode(message: _76.RequestOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestOfferSnapshot;
             fromPartial(object: {
                 snapshot?: {
                     height?: bigint;
@@ -355,29 +374,29 @@ export declare namespace tendermint {
                     metadata?: Uint8Array;
                 };
                 appHash?: Uint8Array;
-            }): _74.RequestOfferSnapshot;
+            }): _76.RequestOfferSnapshot;
         };
         RequestLoadSnapshotChunk: {
-            encode(message: _74.RequestLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestLoadSnapshotChunk;
+            encode(message: _76.RequestLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestLoadSnapshotChunk;
             fromPartial(object: {
                 height?: bigint;
                 format?: number;
                 chunk?: number;
-            }): _74.RequestLoadSnapshotChunk;
+            }): _76.RequestLoadSnapshotChunk;
         };
         RequestApplySnapshotChunk: {
-            encode(message: _74.RequestApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.RequestApplySnapshotChunk;
+            encode(message: _76.RequestApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.RequestApplySnapshotChunk;
             fromPartial(object: {
                 index?: number;
                 chunk?: Uint8Array;
                 sender?: string;
-            }): _74.RequestApplySnapshotChunk;
+            }): _76.RequestApplySnapshotChunk;
         };
         Response: {
-            encode(message: _74.Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Response;
+            encode(message: _76.Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Response;
             fromPartial(object: {
                 exception?: {
                     error?: string;
@@ -540,60 +559,60 @@ export declare namespace tendermint {
                     }[];
                 };
                 offerSnapshot?: {
-                    result?: _74.ResponseOfferSnapshot_Result;
+                    result?: _76.ResponseOfferSnapshot_Result;
                 };
                 loadSnapshotChunk?: {
                     chunk?: Uint8Array;
                 };
                 applySnapshotChunk?: {
-                    result?: _74.ResponseApplySnapshotChunk_Result;
+                    result?: _76.ResponseApplySnapshotChunk_Result;
                     refetchChunks?: number[];
                     rejectSenders?: string[];
                 };
-            }): _74.Response;
+            }): _76.Response;
         };
         ResponseException: {
-            encode(message: _74.ResponseException, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseException;
+            encode(message: _76.ResponseException, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseException;
             fromPartial(object: {
                 error?: string;
-            }): _74.ResponseException;
+            }): _76.ResponseException;
         };
         ResponseEcho: {
-            encode(message: _74.ResponseEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseEcho;
+            encode(message: _76.ResponseEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseEcho;
             fromPartial(object: {
                 message?: string;
-            }): _74.ResponseEcho;
+            }): _76.ResponseEcho;
         };
         ResponseFlush: {
-            encode(_: _74.ResponseFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseFlush;
-            fromPartial(_: {}): _74.ResponseFlush;
+            encode(_: _76.ResponseFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseFlush;
+            fromPartial(_: {}): _76.ResponseFlush;
         };
         ResponseInfo: {
-            encode(message: _74.ResponseInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseInfo;
+            encode(message: _76.ResponseInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseInfo;
             fromPartial(object: {
                 data?: string;
                 version?: string;
                 appVersion?: bigint;
                 lastBlockHeight?: bigint;
                 lastBlockAppHash?: Uint8Array;
-            }): _74.ResponseInfo;
+            }): _76.ResponseInfo;
         };
         ResponseSetOption: {
-            encode(message: _74.ResponseSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseSetOption;
+            encode(message: _76.ResponseSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseSetOption;
             fromPartial(object: {
                 code?: number;
                 log?: string;
                 info?: string;
-            }): _74.ResponseSetOption;
+            }): _76.ResponseSetOption;
         };
         ResponseInitChain: {
-            encode(message: _74.ResponseInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseInitChain;
+            encode(message: _76.ResponseInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseInitChain;
             fromPartial(object: {
                 consensusParams?: {
                     block?: {
@@ -623,11 +642,11 @@ export declare namespace tendermint {
                     power?: bigint;
                 }[];
                 appHash?: Uint8Array;
-            }): _74.ResponseInitChain;
+            }): _76.ResponseInitChain;
         };
         ResponseQuery: {
-            encode(message: _74.ResponseQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseQuery;
+            encode(message: _76.ResponseQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseQuery;
             fromPartial(object: {
                 code?: number;
                 log?: string;
@@ -644,11 +663,11 @@ export declare namespace tendermint {
                 };
                 height?: bigint;
                 codespace?: string;
-            }): _74.ResponseQuery;
+            }): _76.ResponseQuery;
         };
         ResponseBeginBlock: {
-            encode(message: _74.ResponseBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseBeginBlock;
+            encode(message: _76.ResponseBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseBeginBlock;
             fromPartial(object: {
                 events?: {
                     type?: string;
@@ -658,11 +677,11 @@ export declare namespace tendermint {
                         index?: boolean;
                     }[];
                 }[];
-            }): _74.ResponseBeginBlock;
+            }): _76.ResponseBeginBlock;
         };
         ResponseCheckTx: {
-            encode(message: _74.ResponseCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseCheckTx;
+            encode(message: _76.ResponseCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseCheckTx;
             fromPartial(object: {
                 code?: number;
                 data?: Uint8Array;
@@ -679,11 +698,11 @@ export declare namespace tendermint {
                     }[];
                 }[];
                 codespace?: string;
-            }): _74.ResponseCheckTx;
+            }): _76.ResponseCheckTx;
         };
         ResponseDeliverTx: {
-            encode(message: _74.ResponseDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseDeliverTx;
+            encode(message: _76.ResponseDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseDeliverTx;
             fromPartial(object: {
                 code?: number;
                 data?: Uint8Array;
@@ -700,11 +719,11 @@ export declare namespace tendermint {
                     }[];
                 }[];
                 codespace?: string;
-            }): _74.ResponseDeliverTx;
+            }): _76.ResponseDeliverTx;
         };
         ResponseEndBlock: {
-            encode(message: _74.ResponseEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseEndBlock;
+            encode(message: _76.ResponseEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseEndBlock;
             fromPartial(object: {
                 validatorUpdates?: {
                     pubKey?: {
@@ -741,19 +760,19 @@ export declare namespace tendermint {
                         index?: boolean;
                     }[];
                 }[];
-            }): _74.ResponseEndBlock;
+            }): _76.ResponseEndBlock;
         };
         ResponseCommit: {
-            encode(message: _74.ResponseCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseCommit;
+            encode(message: _76.ResponseCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseCommit;
             fromPartial(object: {
                 data?: Uint8Array;
                 retainHeight?: bigint;
-            }): _74.ResponseCommit;
+            }): _76.ResponseCommit;
         };
         ResponseListSnapshots: {
-            encode(message: _74.ResponseListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseListSnapshots;
+            encode(message: _76.ResponseListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseListSnapshots;
             fromPartial(object: {
                 snapshots?: {
                     height?: bigint;
@@ -762,34 +781,34 @@ export declare namespace tendermint {
                     hash?: Uint8Array;
                     metadata?: Uint8Array;
                 }[];
-            }): _74.ResponseListSnapshots;
+            }): _76.ResponseListSnapshots;
         };
         ResponseOfferSnapshot: {
-            encode(message: _74.ResponseOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseOfferSnapshot;
+            encode(message: _76.ResponseOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseOfferSnapshot;
             fromPartial(object: {
-                result?: _74.ResponseOfferSnapshot_Result;
-            }): _74.ResponseOfferSnapshot;
+                result?: _76.ResponseOfferSnapshot_Result;
+            }): _76.ResponseOfferSnapshot;
         };
         ResponseLoadSnapshotChunk: {
-            encode(message: _74.ResponseLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseLoadSnapshotChunk;
+            encode(message: _76.ResponseLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseLoadSnapshotChunk;
             fromPartial(object: {
                 chunk?: Uint8Array;
-            }): _74.ResponseLoadSnapshotChunk;
+            }): _76.ResponseLoadSnapshotChunk;
         };
         ResponseApplySnapshotChunk: {
-            encode(message: _74.ResponseApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ResponseApplySnapshotChunk;
+            encode(message: _76.ResponseApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ResponseApplySnapshotChunk;
             fromPartial(object: {
-                result?: _74.ResponseApplySnapshotChunk_Result;
+                result?: _76.ResponseApplySnapshotChunk_Result;
                 refetchChunks?: number[];
                 rejectSenders?: string[];
-            }): _74.ResponseApplySnapshotChunk;
+            }): _76.ResponseApplySnapshotChunk;
         };
         ConsensusParams: {
-            encode(message: _74.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConsensusParams;
+            encode(message: _76.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ConsensusParams;
             fromPartial(object: {
                 block?: {
                     maxBytes?: bigint;
@@ -809,19 +828,19 @@ export declare namespace tendermint {
                 version?: {
                     appVersion?: bigint;
                 };
-            }): _74.ConsensusParams;
+            }): _76.ConsensusParams;
         };
         BlockParams: {
-            encode(message: _74.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.BlockParams;
+            encode(message: _76.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.BlockParams;
             fromPartial(object: {
                 maxBytes?: bigint;
                 maxGas?: bigint;
-            }): _74.BlockParams;
+            }): _76.BlockParams;
         };
         LastCommitInfo: {
-            encode(message: _74.LastCommitInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.LastCommitInfo;
+            encode(message: _76.LastCommitInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.LastCommitInfo;
             fromPartial(object: {
                 round?: number;
                 votes?: {
@@ -831,11 +850,11 @@ export declare namespace tendermint {
                     };
                     signedLastBlock?: boolean;
                 }[];
-            }): _74.LastCommitInfo;
+            }): _76.LastCommitInfo;
         };
         Event: {
-            encode(message: _74.Event, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Event;
+            encode(message: _76.Event, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Event;
             fromPartial(object: {
                 type?: string;
                 attributes?: {
@@ -843,20 +862,20 @@ export declare namespace tendermint {
                     value?: Uint8Array;
                     index?: boolean;
                 }[];
-            }): _74.Event;
+            }): _76.Event;
         };
         EventAttribute: {
-            encode(message: _74.EventAttribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.EventAttribute;
+            encode(message: _76.EventAttribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.EventAttribute;
             fromPartial(object: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 index?: boolean;
-            }): _74.EventAttribute;
+            }): _76.EventAttribute;
         };
         TxResult: {
-            encode(message: _74.TxResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.TxResult;
+            encode(message: _76.TxResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.TxResult;
             fromPartial(object: {
                 height?: bigint;
                 index?: number;
@@ -878,43 +897,43 @@ export declare namespace tendermint {
                     }[];
                     codespace?: string;
                 };
-            }): _74.TxResult;
+            }): _76.TxResult;
         };
         Validator: {
-            encode(message: _74.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Validator;
+            encode(message: _76.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Validator;
             fromPartial(object: {
                 address?: Uint8Array;
                 power?: bigint;
-            }): _74.Validator;
+            }): _76.Validator;
         };
         ValidatorUpdate: {
-            encode(message: _74.ValidatorUpdate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ValidatorUpdate;
+            encode(message: _76.ValidatorUpdate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ValidatorUpdate;
             fromPartial(object: {
                 pubKey?: {
                     ed25519?: Uint8Array;
                     secp256k1?: Uint8Array;
                 };
                 power?: bigint;
-            }): _74.ValidatorUpdate;
+            }): _76.ValidatorUpdate;
         };
         VoteInfo: {
-            encode(message: _74.VoteInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.VoteInfo;
+            encode(message: _76.VoteInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.VoteInfo;
             fromPartial(object: {
                 validator?: {
                     address?: Uint8Array;
                     power?: bigint;
                 };
                 signedLastBlock?: boolean;
-            }): _74.VoteInfo;
+            }): _76.VoteInfo;
         };
         Evidence: {
-            encode(message: _74.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Evidence;
+            encode(message: _76.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Evidence;
             fromPartial(object: {
-                type?: _74.EvidenceType;
+                type?: _76.EvidenceType;
                 validator?: {
                     address?: Uint8Array;
                     power?: bigint;
@@ -925,34 +944,34 @@ export declare namespace tendermint {
                     nanos?: number;
                 };
                 totalVotingPower?: bigint;
-            }): _74.Evidence;
+            }): _76.Evidence;
         };
         Snapshot: {
-            encode(message: _74.Snapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Snapshot;
+            encode(message: _76.Snapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Snapshot;
             fromPartial(object: {
                 height?: bigint;
                 format?: number;
                 chunks?: number;
                 hash?: Uint8Array;
                 metadata?: Uint8Array;
-            }): _74.Snapshot;
+            }): _76.Snapshot;
         };
     };
     const crypto: {
         Proof: {
-            encode(message: _76.Proof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Proof;
+            encode(message: _78.Proof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.Proof;
             fromPartial(object: {
                 total?: bigint;
                 index?: bigint;
                 leafHash?: Uint8Array;
                 aunts?: Uint8Array[];
-            }): _76.Proof;
+            }): _78.Proof;
         };
         ValueOp: {
-            encode(message: _76.ValueOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ValueOp;
+            encode(message: _78.ValueOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.ValueOp;
             fromPartial(object: {
                 key?: Uint8Array;
                 proof?: {
@@ -961,71 +980,71 @@ export declare namespace tendermint {
                     leafHash?: Uint8Array;
                     aunts?: Uint8Array[];
                 };
-            }): _76.ValueOp;
+            }): _78.ValueOp;
         };
         DominoOp: {
-            encode(message: _76.DominoOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.DominoOp;
+            encode(message: _78.DominoOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.DominoOp;
             fromPartial(object: {
                 key?: string;
                 input?: string;
                 output?: string;
-            }): _76.DominoOp;
+            }): _78.DominoOp;
         };
         ProofOp: {
-            encode(message: _76.ProofOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ProofOp;
+            encode(message: _78.ProofOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.ProofOp;
             fromPartial(object: {
                 type?: string;
                 key?: Uint8Array;
                 data?: Uint8Array;
-            }): _76.ProofOp;
+            }): _78.ProofOp;
         };
         ProofOps: {
-            encode(message: _76.ProofOps, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ProofOps;
+            encode(message: _78.ProofOps, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.ProofOps;
             fromPartial(object: {
                 ops?: {
                     type?: string;
                     key?: Uint8Array;
                     data?: Uint8Array;
                 }[];
-            }): _76.ProofOps;
+            }): _78.ProofOps;
         };
         PublicKey: {
-            encode(message: _75.PublicKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.PublicKey;
+            encode(message: _77.PublicKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.PublicKey;
             fromPartial(object: {
                 ed25519?: Uint8Array;
                 secp256k1?: Uint8Array;
-            }): _75.PublicKey;
+            }): _77.PublicKey;
         };
     };
     namespace libs {
         const bits: {
             BitArray: {
-                encode(message: _77.BitArray, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.BitArray;
+                encode(message: _79.BitArray, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.BitArray;
                 fromPartial(object: {
                     bits?: bigint;
                     elems?: bigint[];
-                }): _77.BitArray;
+                }): _79.BitArray;
             };
         };
     }
     const p2p: {
         ProtocolVersion: {
-            encode(message: _78.ProtocolVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.ProtocolVersion;
+            encode(message: _80.ProtocolVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ProtocolVersion;
             fromPartial(object: {
                 p2p?: bigint;
                 block?: bigint;
                 app?: bigint;
-            }): _78.ProtocolVersion;
+            }): _80.ProtocolVersion;
         };
         NodeInfo: {
-            encode(message: _78.NodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.NodeInfo;
+            encode(message: _80.NodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.NodeInfo;
             fromPartial(object: {
                 protocolVersion?: {
                     p2p?: bigint;
@@ -1042,19 +1061,19 @@ export declare namespace tendermint {
                     txIndex?: string;
                     rpcAddress?: string;
                 };
-            }): _78.NodeInfo;
+            }): _80.NodeInfo;
         };
         NodeInfoOther: {
-            encode(message: _78.NodeInfoOther, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.NodeInfoOther;
+            encode(message: _80.NodeInfoOther, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.NodeInfoOther;
             fromPartial(object: {
                 txIndex?: string;
                 rpcAddress?: string;
-            }): _78.NodeInfoOther;
+            }): _80.NodeInfoOther;
         };
         PeerInfo: {
-            encode(message: _78.PeerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.PeerInfo;
+            encode(message: _80.PeerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.PeerInfo;
             fromPartial(object: {
                 id?: string;
                 addressInfo?: {
@@ -1073,11 +1092,11 @@ export declare namespace tendermint {
                     seconds?: bigint;
                     nanos?: number;
                 };
-            }): _78.PeerInfo;
+            }): _80.PeerInfo;
         };
         PeerAddressInfo: {
-            encode(message: _78.PeerAddressInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.PeerAddressInfo;
+            encode(message: _80.PeerAddressInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.PeerAddressInfo;
             fromPartial(object: {
                 address?: string;
                 lastDialSuccess?: {
@@ -1089,13 +1108,13 @@ export declare namespace tendermint {
                     nanos?: number;
                 };
                 dialFailures?: number;
-            }): _78.PeerAddressInfo;
+            }): _80.PeerAddressInfo;
         };
     };
     const types: {
         ValidatorSet: {
-            encode(message: _83.ValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.ValidatorSet;
+            encode(message: _85.ValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.ValidatorSet;
             fromPartial(object: {
                 validators?: {
                     address?: Uint8Array;
@@ -1116,11 +1135,11 @@ export declare namespace tendermint {
                     proposerPriority?: bigint;
                 };
                 totalVotingPower?: bigint;
-            }): _83.ValidatorSet;
+            }): _85.ValidatorSet;
         };
         Validator: {
-            encode(message: _83.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Validator;
+            encode(message: _85.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.Validator;
             fromPartial(object: {
                 address?: Uint8Array;
                 pubKey?: {
@@ -1129,38 +1148,38 @@ export declare namespace tendermint {
                 };
                 votingPower?: bigint;
                 proposerPriority?: bigint;
-            }): _83.Validator;
+            }): _85.Validator;
         };
         SimpleValidator: {
-            encode(message: _83.SimpleValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.SimpleValidator;
+            encode(message: _85.SimpleValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.SimpleValidator;
             fromPartial(object: {
                 pubKey?: {
                     ed25519?: Uint8Array;
                     secp256k1?: Uint8Array;
                 };
                 votingPower?: bigint;
-            }): _83.SimpleValidator;
+            }): _85.SimpleValidator;
         };
-        blockIDFlagFromJSON(object: any): _82.BlockIDFlag;
-        blockIDFlagToJSON(object: _82.BlockIDFlag): string;
-        signedMsgTypeFromJSON(object: any): _82.SignedMsgType;
-        signedMsgTypeToJSON(object: _82.SignedMsgType): string;
-        BlockIDFlag: typeof _82.BlockIDFlag;
-        BlockIDFlagSDKType: typeof _82.BlockIDFlag;
-        SignedMsgType: typeof _82.SignedMsgType;
-        SignedMsgTypeSDKType: typeof _82.SignedMsgType;
+        blockIDFlagFromJSON(object: any): _84.BlockIDFlag;
+        blockIDFlagToJSON(object: _84.BlockIDFlag): string;
+        signedMsgTypeFromJSON(object: any): _84.SignedMsgType;
+        signedMsgTypeToJSON(object: _84.SignedMsgType): string;
+        BlockIDFlag: typeof _84.BlockIDFlag;
+        BlockIDFlagSDKType: typeof _84.BlockIDFlag;
+        SignedMsgType: typeof _84.SignedMsgType;
+        SignedMsgTypeSDKType: typeof _84.SignedMsgType;
         PartSetHeader: {
-            encode(message: _82.PartSetHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.PartSetHeader;
+            encode(message: _84.PartSetHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.PartSetHeader;
             fromPartial(object: {
                 total?: number;
                 hash?: Uint8Array;
-            }): _82.PartSetHeader;
+            }): _84.PartSetHeader;
         };
         Part: {
-            encode(message: _82.Part, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Part;
+            encode(message: _84.Part, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Part;
             fromPartial(object: {
                 index?: number;
                 bytes?: Uint8Array;
@@ -1170,22 +1189,22 @@ export declare namespace tendermint {
                     leafHash?: Uint8Array;
                     aunts?: Uint8Array[];
                 };
-            }): _82.Part;
+            }): _84.Part;
         };
         BlockID: {
-            encode(message: _82.BlockID, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.BlockID;
+            encode(message: _84.BlockID, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.BlockID;
             fromPartial(object: {
                 hash?: Uint8Array;
                 partSetHeader?: {
                     total?: number;
                     hash?: Uint8Array;
                 };
-            }): _82.BlockID;
+            }): _84.BlockID;
         };
         Header: {
-            encode(message: _82.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Header;
+            encode(message: _84.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Header;
             fromPartial(object: {
                 version?: {
                     block?: bigint;
@@ -1213,20 +1232,20 @@ export declare namespace tendermint {
                 lastResultsHash?: Uint8Array;
                 evidenceHash?: Uint8Array;
                 proposerAddress?: Uint8Array;
-            }): _82.Header;
+            }): _84.Header;
         };
         Data: {
-            encode(message: _82.Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Data;
+            encode(message: _84.Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Data;
             fromPartial(object: {
                 txs?: Uint8Array[];
-            }): _82.Data;
+            }): _84.Data;
         };
         Vote: {
-            encode(message: _82.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Vote;
+            encode(message: _84.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Vote;
             fromPartial(object: {
-                type?: _82.SignedMsgType;
+                type?: _84.SignedMsgType;
                 height?: bigint;
                 round?: number;
                 blockId?: {
@@ -1243,11 +1262,11 @@ export declare namespace tendermint {
                 validatorAddress?: Uint8Array;
                 validatorIndex?: number;
                 signature?: Uint8Array;
-            }): _82.Vote;
+            }): _84.Vote;
         };
         Commit: {
-            encode(message: _82.Commit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Commit;
+            encode(message: _84.Commit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Commit;
             fromPartial(object: {
                 height?: bigint;
                 round?: number;
@@ -1259,7 +1278,7 @@ export declare namespace tendermint {
                     };
                 };
                 signatures?: {
-                    blockIdFlag?: _82.BlockIDFlag;
+                    blockIdFlag?: _84.BlockIDFlag;
                     validatorAddress?: Uint8Array;
                     timestamp?: {
                         seconds?: bigint;
@@ -1267,26 +1286,26 @@ export declare namespace tendermint {
                     };
                     signature?: Uint8Array;
                 }[];
-            }): _82.Commit;
+            }): _84.Commit;
         };
         CommitSig: {
-            encode(message: _82.CommitSig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.CommitSig;
+            encode(message: _84.CommitSig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.CommitSig;
             fromPartial(object: {
-                blockIdFlag?: _82.BlockIDFlag;
+                blockIdFlag?: _84.BlockIDFlag;
                 validatorAddress?: Uint8Array;
                 timestamp?: {
                     seconds?: bigint;
                     nanos?: number;
                 };
                 signature?: Uint8Array;
-            }): _82.CommitSig;
+            }): _84.CommitSig;
         };
         Proposal: {
-            encode(message: _82.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Proposal;
+            encode(message: _84.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Proposal;
             fromPartial(object: {
-                type?: _82.SignedMsgType;
+                type?: _84.SignedMsgType;
                 height?: bigint;
                 round?: number;
                 polRound?: number;
@@ -1302,11 +1321,11 @@ export declare namespace tendermint {
                     nanos?: number;
                 };
                 signature?: Uint8Array;
-            }): _82.Proposal;
+            }): _84.Proposal;
         };
         SignedHeader: {
-            encode(message: _82.SignedHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.SignedHeader;
+            encode(message: _84.SignedHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.SignedHeader;
             fromPartial(object: {
                 header?: {
                     version?: {
@@ -1347,7 +1366,7 @@ export declare namespace tendermint {
                         };
                     };
                     signatures?: {
-                        blockIdFlag?: _82.BlockIDFlag;
+                        blockIdFlag?: _84.BlockIDFlag;
                         validatorAddress?: Uint8Array;
                         timestamp?: {
                             seconds?: bigint;
@@ -1356,11 +1375,11 @@ export declare namespace tendermint {
                         signature?: Uint8Array;
                     }[];
                 };
-            }): _82.SignedHeader;
+            }): _84.SignedHeader;
         };
         LightBlock: {
-            encode(message: _82.LightBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.LightBlock;
+            encode(message: _84.LightBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.LightBlock;
             fromPartial(object: {
                 signedHeader?: {
                     header?: {
@@ -1402,7 +1421,7 @@ export declare namespace tendermint {
                             };
                         };
                         signatures?: {
-                            blockIdFlag?: _82.BlockIDFlag;
+                            blockIdFlag?: _84.BlockIDFlag;
                             validatorAddress?: Uint8Array;
                             timestamp?: {
                                 seconds?: bigint;
@@ -1433,11 +1452,11 @@ export declare namespace tendermint {
                     };
                     totalVotingPower?: bigint;
                 };
-            }): _82.LightBlock;
+            }): _84.LightBlock;
         };
         BlockMeta: {
-            encode(message: _82.BlockMeta, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.BlockMeta;
+            encode(message: _84.BlockMeta, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.BlockMeta;
             fromPartial(object: {
                 blockId?: {
                     hash?: Uint8Array;
@@ -1476,11 +1495,11 @@ export declare namespace tendermint {
                     proposerAddress?: Uint8Array;
                 };
                 numTxs?: bigint;
-            }): _82.BlockMeta;
+            }): _84.BlockMeta;
         };
         TxProof: {
-            encode(message: _82.TxProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.TxProof;
+            encode(message: _84.TxProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.TxProof;
             fromPartial(object: {
                 rootHash?: Uint8Array;
                 data?: Uint8Array;
@@ -1490,11 +1509,11 @@ export declare namespace tendermint {
                     leafHash?: Uint8Array;
                     aunts?: Uint8Array[];
                 };
-            }): _82.TxProof;
+            }): _84.TxProof;
         };
         ConsensusParams: {
-            encode(message: _81.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ConsensusParams;
+            encode(message: _83.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.ConsensusParams;
             fromPartial(object: {
                 block?: {
                     maxBytes?: bigint;
@@ -1515,20 +1534,20 @@ export declare namespace tendermint {
                 version?: {
                     appVersion?: bigint;
                 };
-            }): _81.ConsensusParams;
+            }): _83.ConsensusParams;
         };
         BlockParams: {
-            encode(message: _81.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.BlockParams;
+            encode(message: _83.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.BlockParams;
             fromPartial(object: {
                 maxBytes?: bigint;
                 maxGas?: bigint;
                 timeIotaMs?: bigint;
-            }): _81.BlockParams;
+            }): _83.BlockParams;
         };
         EvidenceParams: {
-            encode(message: _81.EvidenceParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.EvidenceParams;
+            encode(message: _83.EvidenceParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.EvidenceParams;
             fromPartial(object: {
                 maxAgeNumBlocks?: bigint;
                 maxAgeDuration?: {
@@ -1536,37 +1555,37 @@ export declare namespace tendermint {
                     nanos?: number;
                 };
                 maxBytes?: bigint;
-            }): _81.EvidenceParams;
+            }): _83.EvidenceParams;
         };
         ValidatorParams: {
-            encode(message: _81.ValidatorParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ValidatorParams;
+            encode(message: _83.ValidatorParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.ValidatorParams;
             fromPartial(object: {
                 pubKeyTypes?: string[];
-            }): _81.ValidatorParams;
+            }): _83.ValidatorParams;
         };
         VersionParams: {
-            encode(message: _81.VersionParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.VersionParams;
+            encode(message: _83.VersionParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.VersionParams;
             fromPartial(object: {
                 appVersion?: bigint;
-            }): _81.VersionParams;
+            }): _83.VersionParams;
         };
         HashedParams: {
-            encode(message: _81.HashedParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.HashedParams;
+            encode(message: _83.HashedParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.HashedParams;
             fromPartial(object: {
                 blockMaxBytes?: bigint;
                 blockMaxGas?: bigint;
-            }): _81.HashedParams;
+            }): _83.HashedParams;
         };
         Evidence: {
-            encode(message: _80.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.Evidence;
+            encode(message: _82.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Evidence;
             fromPartial(object: {
                 duplicateVoteEvidence?: {
                     voteA?: {
-                        type?: _82.SignedMsgType;
+                        type?: _84.SignedMsgType;
                         height?: bigint;
                         round?: number;
                         blockId?: {
@@ -1585,7 +1604,7 @@ export declare namespace tendermint {
                         signature?: Uint8Array;
                     };
                     voteB?: {
-                        type?: _82.SignedMsgType;
+                        type?: _84.SignedMsgType;
                         height?: bigint;
                         round?: number;
                         blockId?: {
@@ -1652,7 +1671,7 @@ export declare namespace tendermint {
                                     };
                                 };
                                 signatures?: {
-                                    blockIdFlag?: _82.BlockIDFlag;
+                                    blockIdFlag?: _84.BlockIDFlag;
                                     validatorAddress?: Uint8Array;
                                     timestamp?: {
                                         seconds?: bigint;
@@ -1700,14 +1719,14 @@ export declare namespace tendermint {
                         nanos?: number;
                     };
                 };
-            }): _80.Evidence;
+            }): _82.Evidence;
         };
         DuplicateVoteEvidence: {
-            encode(message: _80.DuplicateVoteEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.DuplicateVoteEvidence;
+            encode(message: _82.DuplicateVoteEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.DuplicateVoteEvidence;
             fromPartial(object: {
                 voteA?: {
-                    type?: _82.SignedMsgType;
+                    type?: _84.SignedMsgType;
                     height?: bigint;
                     round?: number;
                     blockId?: {
@@ -1726,7 +1745,7 @@ export declare namespace tendermint {
                     signature?: Uint8Array;
                 };
                 voteB?: {
-                    type?: _82.SignedMsgType;
+                    type?: _84.SignedMsgType;
                     height?: bigint;
                     round?: number;
                     blockId?: {
@@ -1750,11 +1769,11 @@ export declare namespace tendermint {
                     seconds?: bigint;
                     nanos?: number;
                 };
-            }): _80.DuplicateVoteEvidence;
+            }): _82.DuplicateVoteEvidence;
         };
         LightClientAttackEvidence: {
-            encode(message: _80.LightClientAttackEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.LightClientAttackEvidence;
+            encode(message: _82.LightClientAttackEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.LightClientAttackEvidence;
             fromPartial(object: {
                 conflictingBlock?: {
                     signedHeader?: {
@@ -1797,7 +1816,7 @@ export declare namespace tendermint {
                                 };
                             };
                             signatures?: {
-                                blockIdFlag?: _82.BlockIDFlag;
+                                blockIdFlag?: _84.BlockIDFlag;
                                 validatorAddress?: Uint8Array;
                                 timestamp?: {
                                     seconds?: bigint;
@@ -1844,16 +1863,16 @@ export declare namespace tendermint {
                     seconds?: bigint;
                     nanos?: number;
                 };
-            }): _80.LightClientAttackEvidence;
+            }): _82.LightClientAttackEvidence;
         };
         EvidenceList: {
-            encode(message: _80.EvidenceList, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.EvidenceList;
+            encode(message: _82.EvidenceList, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.EvidenceList;
             fromPartial(object: {
                 evidence?: {
                     duplicateVoteEvidence?: {
                         voteA?: {
-                            type?: _82.SignedMsgType;
+                            type?: _84.SignedMsgType;
                             height?: bigint;
                             round?: number;
                             blockId?: {
@@ -1872,7 +1891,7 @@ export declare namespace tendermint {
                             signature?: Uint8Array;
                         };
                         voteB?: {
-                            type?: _82.SignedMsgType;
+                            type?: _84.SignedMsgType;
                             height?: bigint;
                             round?: number;
                             blockId?: {
@@ -1939,7 +1958,7 @@ export declare namespace tendermint {
                                         };
                                     };
                                     signatures?: {
-                                        blockIdFlag?: _82.BlockIDFlag;
+                                        blockIdFlag?: _84.BlockIDFlag;
                                         validatorAddress?: Uint8Array;
                                         timestamp?: {
                                             seconds?: bigint;
@@ -1988,11 +2007,11 @@ export declare namespace tendermint {
                         };
                     };
                 }[];
-            }): _80.EvidenceList;
+            }): _82.EvidenceList;
         };
         Block: {
-            encode(message: _79.Block, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.Block;
+            encode(message: _81.Block, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Block;
             fromPartial(object: {
                 header?: {
                     version?: {
@@ -2029,7 +2048,7 @@ export declare namespace tendermint {
                     evidence?: {
                         duplicateVoteEvidence?: {
                             voteA?: {
-                                type?: _82.SignedMsgType;
+                                type?: _84.SignedMsgType;
                                 height?: bigint;
                                 round?: number;
                                 blockId?: {
@@ -2048,7 +2067,7 @@ export declare namespace tendermint {
                                 signature?: Uint8Array;
                             };
                             voteB?: {
-                                type?: _82.SignedMsgType;
+                                type?: _84.SignedMsgType;
                                 height?: bigint;
                                 round?: number;
                                 blockId?: {
@@ -2115,7 +2134,7 @@ export declare namespace tendermint {
                                             };
                                         };
                                         signatures?: {
-                                            blockIdFlag?: _82.BlockIDFlag;
+                                            blockIdFlag?: _84.BlockIDFlag;
                                             validatorAddress?: Uint8Array;
                                             timestamp?: {
                                                 seconds?: bigint;
@@ -2176,7 +2195,7 @@ export declare namespace tendermint {
                         };
                     };
                     signatures?: {
-                        blockIdFlag?: _82.BlockIDFlag;
+                        blockIdFlag?: _84.BlockIDFlag;
                         validatorAddress?: Uint8Array;
                         timestamp?: {
                             seconds?: bigint;
@@ -2185,25 +2204,63 @@ export declare namespace tendermint {
                         signature?: Uint8Array;
                     }[];
                 };
-            }): _79.Block;
+            }): _81.Block;
         };
     };
     const version: {
         App: {
-            encode(message: _84.App, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.App;
+            encode(message: _86.App, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _86.App;
             fromPartial(object: {
                 protocol?: bigint;
                 software?: string;
-            }): _84.App;
+            }): _86.App;
         };
         Consensus: {
-            encode(message: _84.Consensus, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Consensus;
+            encode(message: _86.Consensus, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _86.Consensus;
             fromPartial(object: {
                 block?: bigint;
                 app?: bigint;
-            }): _84.Consensus;
+            }): _86.Consensus;
         };
+    };
+    const ClientFactory: {
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: string;
+        }) => Promise<{
+            cosmos: {
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/query.lcd").LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
+                };
+                base: {
+                    reflection: {
+                        v2alpha1: import("../cosmos/base/reflection/v2alpha1/reflection.lcd").LCDQueryClient;
+                    };
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
+                    v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
+                };
+                tx: {
+                    v1beta1: import("../cosmos/tx/v1beta1/service.lcd").LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
+                };
+            };
+        }>;
     };
 }

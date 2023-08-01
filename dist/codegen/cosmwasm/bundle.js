@@ -24,13 +24,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cosmwasm = void 0;
-const _85 = __importStar(require("./wasm/v1/cosmwasm"));
+const _87 = __importStar(require("./wasm/v1/cosmwasm"));
 var cosmwasm;
 (function (cosmwasm) {
     let wasm;
     (function (wasm) {
         wasm.v1 = {
-            ..._85
+            ..._87
         };
     })(wasm = cosmwasm.wasm || (cosmwasm.wasm = {}));
 })(cosmwasm || (exports.cosmwasm = cosmwasm = {}));
