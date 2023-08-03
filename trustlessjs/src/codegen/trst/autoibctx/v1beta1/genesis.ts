@@ -1,6 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType, AutoTxInfo, AutoTxInfoAmino, AutoTxInfoSDKType } from "./types";
-import { Long, DeepPartial } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState - genesis state of x/auto-ibc-tx */
 export interface GenesisState {
   params: Params;
@@ -33,7 +32,7 @@ export interface GenesisStateSDKType {
 /** Sequence id and value of a counter */
 export interface Sequence {
   idKey: Uint8Array;
-  value: Long;
+  value: bigint;
 }
 export interface SequenceProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.Sequence";
@@ -51,7 +50,7 @@ export interface SequenceAminoMsg {
 /** Sequence id and value of a counter */
 export interface SequenceSDKType {
   id_key: Uint8Array;
-  value: Long;
+  value: bigint;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -62,7 +61,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -77,8 +76,8 @@ export const GenesisState = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -103,7 +102,7 @@ export const GenesisState = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.interchainAccountAddresses = object.interchainAccountAddresses?.map(e => e) || [];
@@ -158,21 +157,21 @@ export const GenesisState = {
 function createBaseSequence(): Sequence {
   return {
     idKey: new Uint8Array(),
-    value: Long.UZERO
+    value: BigInt(0)
   };
 }
 export const Sequence = {
-  encode(message: Sequence, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Sequence, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.idKey.length !== 0) {
       writer.uint32(10).bytes(message.idKey);
     }
-    if (!message.value.isZero()) {
+    if (message.value !== BigInt(0)) {
       writer.uint32(16).uint64(message.value);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Sequence {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Sequence {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSequence();
     while (reader.pos < end) {
@@ -182,7 +181,7 @@ export const Sequence = {
           message.idKey = reader.bytes();
           break;
         case 2:
-          message.value = (reader.uint64() as Long);
+          message.value = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -191,16 +190,16 @@ export const Sequence = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<Sequence>): Sequence {
+  fromPartial(object: Partial<Sequence>): Sequence {
     const message = createBaseSequence();
     message.idKey = object.idKey ?? new Uint8Array();
-    message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.UZERO;
+    message.value = object.value !== undefined && object.value !== null ? BigInt(object.value.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: SequenceAmino): Sequence {
     return {
       idKey: object.id_key,
-      value: Long.fromString(object.value)
+      value: BigInt(object.value)
     };
   },
   toAmino(message: Sequence): SequenceAmino {

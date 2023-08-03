@@ -1,9 +1,6 @@
 # trustlessjs
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/545047/188804067-28e67e5e-0214-4449-ab04-2e0c564a6885.svg" width="80"><br />
-    package to interact with TrustlessHub
-</p>
+<img src="https://docs.trustlesshub.com/assets/img/banner.05ada057.png" width="400">
 
 ## install
 
@@ -11,278 +8,145 @@
 npm install trustlessjs
 ```
 
-## Table of contents
-
-- [trustlessjs](#trustlessjs)
-  - [Install](#install)
-  - [Table of contents](#table-of-contents)
-- [Usage](#usage)
-  - [RPC Clients](#rpc-clients)
-  - [Composing Messages](#composing-messages)
-    - Cosmos, CosmWasm, and IBC
-      - [CosmWasm](#cosmwasm-messages)
-      - [IBC](#ibc-messages)
-      - [Cosmos](#cosmos-messages)
-- [Wallets and Signers](#connecting-with-wallets-and-signing-messages)
-  - [Stargate Client](#initializing-the-stargate-client)
-  - [Creating Signers](#creating-signers)
-  - [Broadcasting Messages](#broadcasting-messages)
-- [Advanced Usage](#advanced-usage)
-- [Developing](#developing)
-- [Credits](#credits)
-
-## Usage
-
-### RPC Clients
-
-```js
-import { trst } from "trustlessjs";
-
-const { createRPCQueryClient } = trst.ClientFactory;
-const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
-
-// now you can query the cosmos modules
-const balance = await client.cosmos.bank.v1beta1.allBalances({
-  address: "trust1addresshere",
-});
-
-// you can also query the trst modules
-const balances = await client.trst.exchange.v1beta1.exchangeBalances();
-```
-
-### Composing Messages
-
-Import the `trst` object from `trustlessjs`.
-
-```js
-import { trst } from "trustlessjs";
-
-const { createSpotLimitOrder, createSpotMarketOrder, deposit } =
-  trst.exchange.v1beta1.MessageComposer.withTypeUrl;
-```
-
-#### CosmWasm Messages
-
-```js
-import { cosmwasm } from "trustlessjs";
-
-const {
-  clearAdmin,
-  executeContract,
-  instantiateContract,
-  migrateContract,
-  storeCode,
-  updateAdmin,
-} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
-```
-
-#### IBC Messages
-
-```js
-import { ibc } from "trustlessjs";
-
-const { transfer } = ibc.applications.transfer.v1.MessageComposer.withTypeUrl;
-```
-
-#### Cosmos Messages
-
-```js
-import { cosmos } from "trustlessjs";
-
-const {
-  fundCommunityPool,
-  setWithdrawAddress,
-  withdrawDelegatorReward,
-  withdrawValidatorCommission,
-} = cosmos.distribution.v1beta1.MessageComposer.fromPartial;
-
-const { multiSend, send } = cosmos.bank.v1beta1.MessageComposer.fromPartial;
-
-const {
-  beginRedelegate,
-  createValidator,
-  delegate,
-  editValidator,
-  undelegate,
-} = cosmos.staking.v1beta1.MessageComposer.fromPartial;
-
-const { deposit, submitProposal, vote, voteWeighted } =
-  cosmos.gov.v1beta1.MessageComposer.fromPartial;
-```
-
 ## Connecting with Wallets and Signing Messages
 
-⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). Continue below to see how to manually construct signers and clients.
-
-Here are the docs on [creating signers](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
-
-### Initializing the Stargate Client
-
-Use `getSigningTrstClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
-
-```js
-import { getTrstSigningClient } from "trustlessjs";
-
-const stargateClient = await getTrstSigningClient({
-  rpcEndpoint,
-  signer, // OfflineSigner
-});
-```
-
-### Creating Signers
-
-To broadcast messages, you can create signers with a variety of options:
+⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). To sign and broadcast messages, you can create signers with a variety of options:
 
 - [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
 - [keplr](https://docs.keplr.app/api/cosmjs.html)
 - [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
 
-### Amino Signer
+### Initializing the Stargate Client
 
-Likely you'll want to use the Amino, so unless you need proto, you should use this one:
+We recommend manually making the `SigningStargateClient` instance yourself by using `getTrstSigningClientOptions`:
 
-```js
-import { getOfflineSignerAmino as getOfflineSigner } from "cosmjs-utils";
-```
+```ts
+import { getTrstSigningClientOptions, trstAccountParser } from "@trustlessjs";
 
-### Proto Signer
+const { registry, aminoTypes } = getTrstSigningClientOptions();
 
-```js
-import { getOfflineSignerProto as getOfflineSigner } from "cosmjs-utils";
-```
-
-WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
-
-```js
-import { chains } from "chain-registry";
-
-const mnemonic =
-  "unfold client turtle either pilot stock floor glow toward bullet car science";
-const chain = chains.find(({ chain_name }) => chain_name === "trst");
-const signer = await getOfflineSigner({
-  mnemonic,
-  chain,
-});
-```
-
-### Broadcasting Messages
-
-Now that you have your `stargateClient`, you can broadcast messages:
-
-```js
-const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
-
-const msg = send({
-  amount: [
-    {
-      denom: "coin",
-      amount: "1000",
-    },
-  ],
-  toAddress: address,
-  fromAddress: address,
-});
-
-const fee: StdFee = {
-  amount: [
-    {
-      denom: "coin",
-      amount: "864",
-    },
-  ],
-  gas: "86364",
-};
-const response = await stargateClient.signAndBroadcast(address, [msg], fee);
-```
-
-## Advanced Usage
-
-If you want to manually construct a stargate client
-
-```js
-import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-
-import {
-    cosmosAminoConverters,
-    cosmosProtoRegistry,
-    cosmwasmAminoConverters,
-    cosmwasmProtoRegistry,
-    ibcProtoRegistry,
-    ibcAminoConverters,
-    trstAminoConverters,
-    trstProtoRegistry
-} from 'trustlessjs';
-
-const signer: OfflineSigner = /* create your signer (see above)  */
-const rpcEndpint = 'https://rpc.cosmos.directory/trst'; // or another URL
-
-const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
-    ...cosmosProtoRegistry,
-    ...cosmwasmProtoRegistry,
-    ...ibcProtoRegistry,
-    ...trstProtoRegistry
-];
-
-const aminoConverters = {
-    ...cosmosAminoConverters,
-    ...cosmwasmAminoConverters,
-    ...ibcAminoConverters,
-    ...trstAminoConverters
-};
-
-const registry = new Registry(protoRegistry);
-const aminoTypes = new AminoTypes(aminoConverters);
-
-const stargateClient = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
+const client = await SigningStargateClient.connectWithSigner(
+  rpc,
+  offlineSigner,
+  {
     registry,
-    aminoTypes
+    aminoTypes,
+    accountParser: trstAccountParser,
+  }
+);
+```
+
+## Usage
+
+We strongly recommend that you check the generated files in `src/codegen/trst` and use it as source of truth for which functions you could use.
+
+The rest of our documentation will cover only the tip of the iceberg &mdash; examples you can take ideas from.
+
+### RPC Client
+
+```ts
+import { trst } from "trustlessjs";
+
+const client = await trst.ClientFactory.createRPCQueryClient({
+  rpcEndpoint: RPC_ENDPOINT,
+});
+
+const balance = await client.cosmos.bank.v1beta1.allBalances({
+  address: "trst1addresshere",
 });
 ```
 
-## Developing
+### Composing & Broadcasting Trst Messages
+
+```ts
+import { trst } from "trustlessjs";
+
+const msgClaimFreeAmount =
+  trst.claim.MessageComposer.withTypeUrl.claimFreeAmount({
+    user: "trst1addresshere",
+  });
+
+const fee = {
+  amount: [
+    {
+      amount: "0",
+      denom: "utrst",
+    },
+  ],
+  gas: 250_000,
+};
+
+const tx = await trstAccount.client.signAndBroadcast(
+  "trst1addresshere",
+  [msgClaimFreeAmount],
+  fee,
+  ""
+);
+
+assertIsDeliverTxSuccess(tx);
+```
+
+If you're unfamiliar with Stargate, you can read their guide [here](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9).
+
+#### Composing IBC Messages
+
+```js
+import { ibc } from "trustlessjs";
+
+const { transfer } =
+  ibc.applications.transfer.v1.MessageComposer.withTypeUrl.transfer({
+    // Redacted (check internal types for the message parameters)
+  });
+```
+
+## Developing & Publishing
 
 When first cloning the repo:
 
-```
-yarn
-yarn build
+```bash
+git submodule update --init
+telescope install
+telescope transpile
 ```
 
 ### Codegen
 
-Contract schemas live in `./contracts`, and protos in `./proto`. Look inside of `scripts/codegen.js` and configure the settings for bundling your SDK and contracts into `trustlessjs`:
+Update the generated ts files:
 
-```
+```bash
 yarn codegen
+```
+
+Build the module and types:
+
+```bash
+yarn build
 ```
 
 ### Publishing
 
-Build the types and then publish:
+If you haven't logged to npm cli, run:
 
+```bash
+npm login
 ```
-yarn build
-yarn publish
+
+Afterwards, update package.json version.
+
+```bash
+# Example: <version> = v0.4.1
+git tag <version>
+git push origin <version>
+git push origin main
+npm publish
 ```
-
-## Related
-
-Checkout these related projects:
-
-- [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) for generated CosmWasm contract Typescript classes
-- [@cosmology/telescope](https://github.com/cosmology-tech/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
-- [chain-registry](https://github.com/cosmology-tech/chain-registry) an npm module for the official Cosmos chain-registry.
-- [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️
-- [create-cosmos-app](https://github.com/cosmology-tech/create-cosmos-app) set up a modern Cosmos app by running one command.
-- [starship](https://github.com/cosmology-tech/starship) a k8s-based unified development environment for Cosmos Ecosystem
 
 ## Credits
 
-🛠 Built by Cosmology — if you like our tools, please consider delegating to [our validator ⚛️](https://cosmology.tech/validator)
+🛠 Built by Cosmology — if you like our tools, please consider delegating to [their validator ⚛️](https://cosmology.tech/validator)
 
-## Disclaimer
+Code built with the help of these related projects:
 
-AS DESCRIBED IN THE LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
-
-No developer or entity involved in creating this software will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the code or software using the code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
+- [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) for generated CosmWasm contract Typescript classes
+- [@cosmology/telescope](https://github.com/cosmology/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
+- [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️

@@ -18,3 +18,6 @@ export * from "./cosmwasm/bundle";
 export * from "./osmosis/bundle";
 export * from "./trst/bundle";
 export * from "./trst/client";
+export * from "./varint";
+export * from "./utf8";
+export * from "./binary";

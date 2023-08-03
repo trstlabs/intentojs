@@ -1,8 +1,7 @@
 import { Counterparty, CounterpartyAmino, CounterpartySDKType, Version, VersionAmino, VersionSDKType } from "./connection";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
-import { Long, DeepPartial } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * MsgConnectionOpenInit defines the msg sent by an account on Chain A to
  * initialize a connection with Chain B.
@@ -11,7 +10,7 @@ export interface MsgConnectionOpenInit {
   clientId: string;
   counterparty: Counterparty;
   version: Version;
-  delayPeriod: Long;
+  delayPeriod: bigint;
   signer: string;
 }
 export interface MsgConnectionOpenInitProtoMsg {
@@ -41,7 +40,7 @@ export interface MsgConnectionOpenInitSDKType {
   client_id: string;
   counterparty: CounterpartySDKType;
   version: VersionSDKType;
-  delay_period: Long;
+  delay_period: bigint;
   signer: string;
 }
 /**
@@ -80,7 +79,7 @@ export interface MsgConnectionOpenTry {
   previousConnectionId: string;
   clientState: Any;
   counterparty: Counterparty;
-  delayPeriod: Long;
+  delayPeriod: bigint;
   counterpartyVersions: Version[];
   proofHeight: Height;
   /**
@@ -140,7 +139,7 @@ export interface MsgConnectionOpenTrySDKType {
   previous_connection_id: string;
   client_state: AnySDKType;
   counterparty: CounterpartySDKType;
-  delay_period: Long;
+  delay_period: bigint;
   counterparty_versions: VersionSDKType[];
   proof_height: HeightSDKType;
   proof_init: Uint8Array;
@@ -313,12 +312,12 @@ function createBaseMsgConnectionOpenInit(): MsgConnectionOpenInit {
     clientId: "",
     counterparty: Counterparty.fromPartial({}),
     version: Version.fromPartial({}),
-    delayPeriod: Long.UZERO,
+    delayPeriod: BigInt(0),
     signer: ""
   };
 }
 export const MsgConnectionOpenInit = {
-  encode(message: MsgConnectionOpenInit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgConnectionOpenInit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
     }
@@ -328,7 +327,7 @@ export const MsgConnectionOpenInit = {
     if (message.version !== undefined) {
       Version.encode(message.version, writer.uint32(26).fork()).ldelim();
     }
-    if (!message.delayPeriod.isZero()) {
+    if (message.delayPeriod !== BigInt(0)) {
       writer.uint32(32).uint64(message.delayPeriod);
     }
     if (message.signer !== "") {
@@ -336,8 +335,8 @@ export const MsgConnectionOpenInit = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInit {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInit {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenInit();
     while (reader.pos < end) {
@@ -353,7 +352,7 @@ export const MsgConnectionOpenInit = {
           message.version = Version.decode(reader, reader.uint32());
           break;
         case 4:
-          message.delayPeriod = (reader.uint64() as Long);
+          message.delayPeriod = reader.uint64();
           break;
         case 5:
           message.signer = reader.string();
@@ -365,12 +364,12 @@ export const MsgConnectionOpenInit = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgConnectionOpenInit>): MsgConnectionOpenInit {
+  fromPartial(object: Partial<MsgConnectionOpenInit>): MsgConnectionOpenInit {
     const message = createBaseMsgConnectionOpenInit();
     message.clientId = object.clientId ?? "";
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
     message.version = object.version !== undefined && object.version !== null ? Version.fromPartial(object.version) : undefined;
-    message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? Long.fromValue(object.delayPeriod) : Long.UZERO;
+    message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? BigInt(object.delayPeriod.toString()) : BigInt(0);
     message.signer = object.signer ?? "";
     return message;
   },
@@ -379,7 +378,7 @@ export const MsgConnectionOpenInit = {
       clientId: object.client_id,
       counterparty: object?.counterparty ? Counterparty.fromAmino(object.counterparty) : undefined,
       version: object?.version ? Version.fromAmino(object.version) : undefined,
-      delayPeriod: Long.fromString(object.delay_period),
+      delayPeriod: BigInt(object.delay_period),
       signer: object.signer
     };
   },
@@ -418,11 +417,11 @@ function createBaseMsgConnectionOpenInitResponse(): MsgConnectionOpenInitRespons
   return {};
 }
 export const MsgConnectionOpenInitResponse = {
-  encode(_: MsgConnectionOpenInitResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgConnectionOpenInitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInitResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenInitResponse();
     while (reader.pos < end) {
@@ -435,7 +434,7 @@ export const MsgConnectionOpenInitResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse {
+  fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse {
     const message = createBaseMsgConnectionOpenInitResponse();
     return message;
   },
@@ -474,7 +473,7 @@ function createBaseMsgConnectionOpenTry(): MsgConnectionOpenTry {
     previousConnectionId: "",
     clientState: Any.fromPartial({}),
     counterparty: Counterparty.fromPartial({}),
-    delayPeriod: Long.UZERO,
+    delayPeriod: BigInt(0),
     counterpartyVersions: [],
     proofHeight: Height.fromPartial({}),
     proofInit: new Uint8Array(),
@@ -485,7 +484,7 @@ function createBaseMsgConnectionOpenTry(): MsgConnectionOpenTry {
   };
 }
 export const MsgConnectionOpenTry = {
-  encode(message: MsgConnectionOpenTry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgConnectionOpenTry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
     }
@@ -498,7 +497,7 @@ export const MsgConnectionOpenTry = {
     if (message.counterparty !== undefined) {
       Counterparty.encode(message.counterparty, writer.uint32(34).fork()).ldelim();
     }
-    if (!message.delayPeriod.isZero()) {
+    if (message.delayPeriod !== BigInt(0)) {
       writer.uint32(40).uint64(message.delayPeriod);
     }
     for (const v of message.counterpartyVersions) {
@@ -524,8 +523,8 @@ export const MsgConnectionOpenTry = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenTry();
     while (reader.pos < end) {
@@ -544,7 +543,7 @@ export const MsgConnectionOpenTry = {
           message.counterparty = Counterparty.decode(reader, reader.uint32());
           break;
         case 5:
-          message.delayPeriod = (reader.uint64() as Long);
+          message.delayPeriod = reader.uint64();
           break;
         case 6:
           message.counterpartyVersions.push(Version.decode(reader, reader.uint32()));
@@ -574,13 +573,13 @@ export const MsgConnectionOpenTry = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgConnectionOpenTry>): MsgConnectionOpenTry {
+  fromPartial(object: Partial<MsgConnectionOpenTry>): MsgConnectionOpenTry {
     const message = createBaseMsgConnectionOpenTry();
     message.clientId = object.clientId ?? "";
     message.previousConnectionId = object.previousConnectionId ?? "";
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
-    message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? Long.fromValue(object.delayPeriod) : Long.UZERO;
+    message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? BigInt(object.delayPeriod.toString()) : BigInt(0);
     message.counterpartyVersions = object.counterpartyVersions?.map(e => Version.fromPartial(e)) || [];
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.proofInit = object.proofInit ?? new Uint8Array();
@@ -596,7 +595,7 @@ export const MsgConnectionOpenTry = {
       previousConnectionId: object.previous_connection_id,
       clientState: object?.client_state ? Any.fromAmino(object.client_state) : undefined,
       counterparty: object?.counterparty ? Counterparty.fromAmino(object.counterparty) : undefined,
-      delayPeriod: Long.fromString(object.delay_period),
+      delayPeriod: BigInt(object.delay_period),
       counterpartyVersions: Array.isArray(object?.counterparty_versions) ? object.counterparty_versions.map((e: any) => Version.fromAmino(e)) : [],
       proofHeight: object?.proof_height ? Height.fromAmino(object.proof_height) : undefined,
       proofInit: object.proof_init,
@@ -652,11 +651,11 @@ function createBaseMsgConnectionOpenTryResponse(): MsgConnectionOpenTryResponse 
   return {};
 }
 export const MsgConnectionOpenTryResponse = {
-  encode(_: MsgConnectionOpenTryResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgConnectionOpenTryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTryResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenTryResponse();
     while (reader.pos < end) {
@@ -669,7 +668,7 @@ export const MsgConnectionOpenTryResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse {
+  fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse {
     const message = createBaseMsgConnectionOpenTryResponse();
     return message;
   },
@@ -717,7 +716,7 @@ function createBaseMsgConnectionOpenAck(): MsgConnectionOpenAck {
   };
 }
 export const MsgConnectionOpenAck = {
-  encode(message: MsgConnectionOpenAck, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgConnectionOpenAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
     }
@@ -750,8 +749,8 @@ export const MsgConnectionOpenAck = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAck {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAck {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenAck();
     while (reader.pos < end) {
@@ -794,7 +793,7 @@ export const MsgConnectionOpenAck = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgConnectionOpenAck>): MsgConnectionOpenAck {
+  fromPartial(object: Partial<MsgConnectionOpenAck>): MsgConnectionOpenAck {
     const message = createBaseMsgConnectionOpenAck();
     message.connectionId = object.connectionId ?? "";
     message.counterpartyConnectionId = object.counterpartyConnectionId ?? "";
@@ -862,11 +861,11 @@ function createBaseMsgConnectionOpenAckResponse(): MsgConnectionOpenAckResponse 
   return {};
 }
 export const MsgConnectionOpenAckResponse = {
-  encode(_: MsgConnectionOpenAckResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgConnectionOpenAckResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAckResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenAckResponse();
     while (reader.pos < end) {
@@ -879,7 +878,7 @@ export const MsgConnectionOpenAckResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse {
+  fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse {
     const message = createBaseMsgConnectionOpenAckResponse();
     return message;
   },
@@ -921,7 +920,7 @@ function createBaseMsgConnectionOpenConfirm(): MsgConnectionOpenConfirm {
   };
 }
 export const MsgConnectionOpenConfirm = {
-  encode(message: MsgConnectionOpenConfirm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgConnectionOpenConfirm, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
     }
@@ -936,8 +935,8 @@ export const MsgConnectionOpenConfirm = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirm {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirm {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenConfirm();
     while (reader.pos < end) {
@@ -962,7 +961,7 @@ export const MsgConnectionOpenConfirm = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm {
+  fromPartial(object: Partial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm {
     const message = createBaseMsgConnectionOpenConfirm();
     message.connectionId = object.connectionId ?? "";
     message.proofAck = object.proofAck ?? new Uint8Array();
@@ -1012,11 +1011,11 @@ function createBaseMsgConnectionOpenConfirmResponse(): MsgConnectionOpenConfirmR
   return {};
 }
 export const MsgConnectionOpenConfirmResponse = {
-  encode(_: MsgConnectionOpenConfirmResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgConnectionOpenConfirmResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConnectionOpenConfirmResponse();
     while (reader.pos < end) {
@@ -1029,7 +1028,7 @@ export const MsgConnectionOpenConfirmResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse {
+  fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse {
     const message = createBaseMsgConnectionOpenConfirmResponse();
     return message;
   },

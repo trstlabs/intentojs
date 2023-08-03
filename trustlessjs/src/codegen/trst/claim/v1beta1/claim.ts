@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export enum Action {
   ActionAutoTxAuthz = 0,
   ActionAutoTxWasm = 1,
@@ -165,7 +164,7 @@ function createBaseClaimRecord(): ClaimRecord {
   };
 }
 export const ClaimRecord = {
-  encode(message: ClaimRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ClaimRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -177,8 +176,8 @@ export const ClaimRecord = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ClaimRecord {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ClaimRecord {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseClaimRecord();
     while (reader.pos < end) {
@@ -200,7 +199,7 @@ export const ClaimRecord = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<ClaimRecord>): ClaimRecord {
+  fromPartial(object: Partial<ClaimRecord>): ClaimRecord {
     const message = createBaseClaimRecord();
     message.address = object.address ?? "";
     message.initialClaimableAmount = object.initialClaimableAmount?.map(e => Coin.fromPartial(e)) || [];
@@ -253,7 +252,7 @@ function createBaseStatus(): Status {
   };
 }
 export const Status = {
-  encode(message: Status, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Status, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionCompleted === true) {
       writer.uint32(8).bool(message.actionCompleted);
     }
@@ -269,8 +268,8 @@ export const Status = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Status {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Status {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseStatus();
     while (reader.pos < end) {
@@ -306,7 +305,7 @@ export const Status = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<Status>): Status {
+  fromPartial(object: Partial<Status>): Status {
     const message = createBaseStatus();
     message.actionCompleted = object.actionCompleted ?? false;
     message.vestingPeriodCompleted = object.vestingPeriodCompleted?.map(e => e) || [];
@@ -357,14 +356,14 @@ function createBaseMsgClaimClaimable(): MsgClaimClaimable {
   };
 }
 export const MsgClaimClaimable = {
-  encode(message: MsgClaimClaimable, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgClaimClaimable, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimClaimable {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgClaimClaimable {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClaimClaimable();
     while (reader.pos < end) {
@@ -380,7 +379,7 @@ export const MsgClaimClaimable = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgClaimClaimable>): MsgClaimClaimable {
+  fromPartial(object: Partial<MsgClaimClaimable>): MsgClaimClaimable {
     const message = createBaseMsgClaimClaimable();
     message.sender = object.sender ?? "";
     return message;
@@ -417,14 +416,14 @@ function createBaseMsgClaimClaimableResponse(): MsgClaimClaimableResponse {
   };
 }
 export const MsgClaimClaimableResponse = {
-  encode(message: MsgClaimClaimableResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgClaimClaimableResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimClaimableResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgClaimClaimableResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClaimClaimableResponse();
     while (reader.pos < end) {
@@ -440,7 +439,7 @@ export const MsgClaimClaimableResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgClaimClaimableResponse>): MsgClaimClaimableResponse {
+  fromPartial(object: Partial<MsgClaimClaimableResponse>): MsgClaimClaimableResponse {
     const message = createBaseMsgClaimClaimableResponse();
     message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;

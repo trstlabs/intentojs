@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryAutoTxRequest, QueryAutoTxResponse, QueryAutoTxsRequest, QueryAutoTxsResponse, QueryAutoTxsForOwnerRequest, QueryAutoTxsForOwnerResponse, QueryParamsRequest, QueryParamsResponse, QueryAutoTxIbcUsageRequest, QueryAutoTxIbcUsageResponse } from "./query";
 /** Query defines the gRPC querier service. */
@@ -37,36 +37,36 @@ export class QueryClientImpl implements Query {
   interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse> {
     const data = QueryInterchainAccountFromAddressRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "InterchainAccountFromAddress", data);
-    return promise.then(data => QueryInterchainAccountFromAddressResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryInterchainAccountFromAddressResponse.decode(new BinaryReader(data)));
   }
   autoTx(request: QueryAutoTxRequest): Promise<QueryAutoTxResponse> {
     const data = QueryAutoTxRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "AutoTx", data);
-    return promise.then(data => QueryAutoTxResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryAutoTxResponse.decode(new BinaryReader(data)));
   }
   autoTxs(request: QueryAutoTxsRequest = {
     pagination: undefined
   }): Promise<QueryAutoTxsResponse> {
     const data = QueryAutoTxsRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "AutoTxs", data);
-    return promise.then(data => QueryAutoTxsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryAutoTxsResponse.decode(new BinaryReader(data)));
   }
   autoTxsForOwner(request: QueryAutoTxsForOwnerRequest): Promise<QueryAutoTxsForOwnerResponse> {
     const data = QueryAutoTxsForOwnerRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "AutoTxsForOwner", data);
-    return promise.then(data => QueryAutoTxsForOwnerResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryAutoTxsForOwnerResponse.decode(new BinaryReader(data)));
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "Params", data);
-    return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
   }
   autoTxIbcTxUsage(request: QueryAutoTxIbcUsageRequest = {
     pagination: undefined
   }): Promise<QueryAutoTxIbcUsageResponse> {
     const data = QueryAutoTxIbcUsageRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "AutoTxIbcTxUsage", data);
-    return promise.then(data => QueryAutoTxIbcUsageResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryAutoTxIbcUsageResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

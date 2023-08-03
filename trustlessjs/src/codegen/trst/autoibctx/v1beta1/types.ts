@@ -1,19 +1,19 @@
-import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long, toTimestamp, fromTimestamp, DeepPartial } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { toTimestamp, fromTimestamp } from "../../../helpers";
 /**
  * AutoTxInfo stores the info for the auto executing interchain accounts
  * transaction
  */
 export interface AutoTxInfo {
-  txId: Long;
+  txId: bigint;
   owner: string;
   label: string;
   feeAddress: string;
-  msgs: Any[];
+  msgs: (Any)[] | Any[];
   interval: Duration;
   startTime: Date;
   execTime: Date;
@@ -25,13 +25,16 @@ export interface AutoTxInfo {
    * optional array of dependent txs that should be executed before execution is
    * allowed
    */
-  dependsOnTxIds: Long[];
+  dependsOnTxIds: bigint[];
   updateHistory: Date[];
 }
 export interface AutoTxInfoProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxInfo";
   value: Uint8Array;
 }
+export type AutoTxInfoEncoded = Omit<AutoTxInfo, "msgs"> & {
+  msgs: (AnyProtoMsg)[];
+};
 /**
  * AutoTxInfo stores the info for the auto executing interchain accounts
  * transaction
@@ -65,11 +68,11 @@ export interface AutoTxInfoAminoMsg {
  * transaction
  */
 export interface AutoTxInfoSDKType {
-  tx_id: Long;
+  tx_id: bigint;
   owner: string;
   label: string;
   fee_address: string;
-  msgs: AnySDKType[];
+  msgs: (AnySDKType)[];
   interval: DurationSDKType;
   start_time: Date;
   exec_time: Date;
@@ -77,7 +80,7 @@ export interface AutoTxInfoSDKType {
   auto_tx_history: AutoTxHistoryEntrySDKType[];
   port_id: string;
   connection_id: string;
-  depends_on_tx_ids: Long[];
+  depends_on_tx_ids: bigint[];
   update_history: Date[];
 }
 /** AutoTxHistoryEntry provides a the history of AutoTx interchain tx call */
@@ -117,10 +120,10 @@ export interface AutoTxHistoryEntrySDKType {
 }
 /** Params defines the params for activeness of AutoTxs on governance proposals. */
 export interface Params {
-  AutoTxFundsCommission: Long;
-  AutoTxFlexFeeMul: Long;
-  AutoTxConstantFee: Long;
-  RecurringAutoTxConstantFee: Long;
+  AutoTxFundsCommission: bigint;
+  AutoTxFlexFeeMul: bigint;
+  AutoTxConstantFee: bigint;
+  RecurringAutoTxConstantFee: bigint;
   /** Maximum period for self-executing AutoTx */
   MaxAutoTxDuration: Duration;
   /** Minimum period for self-executing AutoTx */
@@ -131,7 +134,7 @@ export interface Params {
    * relayer rewards in utrst for each message type 0=SDK,1=Wasm, 2=Osmo.
    * Rewards are in utrst and topped up in the module account by alloc module.
    */
-  relayerRewards: Long[];
+  relayerRewards: bigint[];
 }
 export interface ParamsProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.Params";
@@ -161,18 +164,18 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the params for activeness of AutoTxs on governance proposals. */
 export interface ParamsSDKType {
-  AutoTxFundsCommission: Long;
-  AutoTxFlexFeeMul: Long;
-  AutoTxConstantFee: Long;
-  RecurringAutoTxConstantFee: Long;
+  AutoTxFundsCommission: bigint;
+  AutoTxFlexFeeMul: bigint;
+  AutoTxConstantFee: bigint;
+  RecurringAutoTxConstantFee: bigint;
   MaxAutoTxDuration: DurationSDKType;
   MinAutoTxDuration: DurationSDKType;
   MinAutoTxInterval: DurationSDKType;
-  relayer_rewards: Long[];
+  relayer_rewards: bigint[];
 }
 function createBaseAutoTxInfo(): AutoTxInfo {
   return {
-    txId: Long.UZERO,
+    txId: BigInt(0),
     owner: "",
     label: "",
     feeAddress: "",
@@ -189,8 +192,8 @@ function createBaseAutoTxInfo(): AutoTxInfo {
   };
 }
 export const AutoTxInfo = {
-  encode(message: AutoTxInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.txId.isZero()) {
+  encode(message: AutoTxInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.txId !== BigInt(0)) {
       writer.uint32(8).uint64(message.txId);
     }
     if (message.owner !== "") {
@@ -203,7 +206,7 @@ export const AutoTxInfo = {
       writer.uint32(34).string(message.feeAddress);
     }
     for (const v of message.msgs) {
-      Any.encode(v!, writer.uint32(42).fork()).ldelim();
+      Any.encode((v! as Any), writer.uint32(42).fork()).ldelim();
     }
     if (message.interval !== undefined) {
       Duration.encode(message.interval, writer.uint32(50).fork()).ldelim();
@@ -236,15 +239,15 @@ export const AutoTxInfo = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): AutoTxInfo {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): AutoTxInfo {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAutoTxInfo();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.txId = (reader.uint64() as Long);
+          message.txId = reader.uint64();
           break;
         case 2:
           message.owner = reader.string();
@@ -256,7 +259,7 @@ export const AutoTxInfo = {
           message.feeAddress = reader.string();
           break;
         case 5:
-          message.msgs.push(Any.decode(reader, reader.uint32()));
+          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
           break;
         case 6:
           message.interval = Duration.decode(reader, reader.uint32());
@@ -283,10 +286,10 @@ export const AutoTxInfo = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.dependsOnTxIds.push((reader.uint64() as Long));
+              message.dependsOnTxIds.push(reader.uint64());
             }
           } else {
-            message.dependsOnTxIds.push((reader.uint64() as Long));
+            message.dependsOnTxIds.push(reader.uint64());
           }
           break;
         case 15:
@@ -299,9 +302,9 @@ export const AutoTxInfo = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<AutoTxInfo>): AutoTxInfo {
+  fromPartial(object: Partial<AutoTxInfo>): AutoTxInfo {
     const message = createBaseAutoTxInfo();
-    message.txId = object.txId !== undefined && object.txId !== null ? Long.fromValue(object.txId) : Long.UZERO;
+    message.txId = object.txId !== undefined && object.txId !== null ? BigInt(object.txId.toString()) : BigInt(0);
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
     message.feeAddress = object.feeAddress ?? "";
@@ -313,17 +316,17 @@ export const AutoTxInfo = {
     message.autoTxHistory = object.autoTxHistory?.map(e => AutoTxHistoryEntry.fromPartial(e)) || [];
     message.portId = object.portId ?? "";
     message.connectionId = object.connectionId ?? "";
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => Long.fromValue(e)) || [];
+    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: AutoTxInfoAmino): AutoTxInfo {
     return {
-      txId: Long.fromString(object.tx_id),
+      txId: BigInt(object.tx_id),
       owner: object.owner,
       label: object.label,
       feeAddress: object.fee_address,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
       interval: object?.interval ? Duration.fromAmino(object.interval) : undefined,
       startTime: object.start_time,
       execTime: object.exec_time,
@@ -331,7 +334,7 @@ export const AutoTxInfo = {
       autoTxHistory: Array.isArray(object?.auto_tx_history) ? object.auto_tx_history.map((e: any) => AutoTxHistoryEntry.fromAmino(e)) : [],
       portId: object.port_id,
       connectionId: object.connection_id,
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => e) : [],
+      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : [],
       updateHistory: Array.isArray(object?.update_history) ? object.update_history.map((e: any) => Timestamp.fromAmino(e)) : []
     };
   },
@@ -342,7 +345,7 @@ export const AutoTxInfo = {
     obj.label = message.label;
     obj.fee_address = message.feeAddress;
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Any.toAmino(e) : undefined);
+      obj.msgs = message.msgs.map(e => e ? Sdk_Msg_ToAmino((e as Any)) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -358,7 +361,7 @@ export const AutoTxInfo = {
     obj.port_id = message.portId;
     obj.connection_id = message.connectionId;
     if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e);
+      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
     } else {
       obj.depends_on_tx_ids = [];
     }
@@ -396,7 +399,7 @@ function createBaseAutoTxHistoryEntry(): AutoTxHistoryEntry {
   };
 }
 export const AutoTxHistoryEntry = {
-  encode(message: AutoTxHistoryEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: AutoTxHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
       Timestamp.encode(toTimestamp(message.scheduledExecTime), writer.uint32(10).fork()).ldelim();
     }
@@ -417,8 +420,8 @@ export const AutoTxHistoryEntry = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): AutoTxHistoryEntry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): AutoTxHistoryEntry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAutoTxHistoryEntry();
     while (reader.pos < end) {
@@ -449,7 +452,7 @@ export const AutoTxHistoryEntry = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<AutoTxHistoryEntry>): AutoTxHistoryEntry {
+  fromPartial(object: Partial<AutoTxHistoryEntry>): AutoTxHistoryEntry {
     const message = createBaseAutoTxHistoryEntry();
     message.scheduledExecTime = object.scheduledExecTime ?? undefined;
     message.actualExecTime = object.actualExecTime ?? undefined;
@@ -497,10 +500,10 @@ export const AutoTxHistoryEntry = {
 };
 function createBaseParams(): Params {
   return {
-    AutoTxFundsCommission: Long.ZERO,
-    AutoTxFlexFeeMul: Long.ZERO,
-    AutoTxConstantFee: Long.ZERO,
-    RecurringAutoTxConstantFee: Long.ZERO,
+    AutoTxFundsCommission: BigInt(0),
+    AutoTxFlexFeeMul: BigInt(0),
+    AutoTxConstantFee: BigInt(0),
+    RecurringAutoTxConstantFee: BigInt(0),
     MaxAutoTxDuration: Duration.fromPartial({}),
     MinAutoTxDuration: Duration.fromPartial({}),
     MinAutoTxInterval: Duration.fromPartial({}),
@@ -508,17 +511,17 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.AutoTxFundsCommission.isZero()) {
+  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.AutoTxFundsCommission !== BigInt(0)) {
       writer.uint32(8).int64(message.AutoTxFundsCommission);
     }
-    if (!message.AutoTxFlexFeeMul.isZero()) {
+    if (message.AutoTxFlexFeeMul !== BigInt(0)) {
       writer.uint32(16).int64(message.AutoTxFlexFeeMul);
     }
-    if (!message.AutoTxConstantFee.isZero()) {
+    if (message.AutoTxConstantFee !== BigInt(0)) {
       writer.uint32(24).int64(message.AutoTxConstantFee);
     }
-    if (!message.RecurringAutoTxConstantFee.isZero()) {
+    if (message.RecurringAutoTxConstantFee !== BigInt(0)) {
       writer.uint32(32).int64(message.RecurringAutoTxConstantFee);
     }
     if (message.MaxAutoTxDuration !== undefined) {
@@ -537,24 +540,24 @@ export const Params = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Params {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Params {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.AutoTxFundsCommission = (reader.int64() as Long);
+          message.AutoTxFundsCommission = reader.int64();
           break;
         case 2:
-          message.AutoTxFlexFeeMul = (reader.int64() as Long);
+          message.AutoTxFlexFeeMul = reader.int64();
           break;
         case 3:
-          message.AutoTxConstantFee = (reader.int64() as Long);
+          message.AutoTxConstantFee = reader.int64();
           break;
         case 4:
-          message.RecurringAutoTxConstantFee = (reader.int64() as Long);
+          message.RecurringAutoTxConstantFee = reader.int64();
           break;
         case 5:
           message.MaxAutoTxDuration = Duration.decode(reader, reader.uint32());
@@ -569,10 +572,10 @@ export const Params = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.relayerRewards.push((reader.int64() as Long));
+              message.relayerRewards.push(reader.int64());
             }
           } else {
-            message.relayerRewards.push((reader.int64() as Long));
+            message.relayerRewards.push(reader.int64());
           }
           break;
         default:
@@ -582,28 +585,28 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.AutoTxFundsCommission = object.AutoTxFundsCommission !== undefined && object.AutoTxFundsCommission !== null ? Long.fromValue(object.AutoTxFundsCommission) : Long.ZERO;
-    message.AutoTxFlexFeeMul = object.AutoTxFlexFeeMul !== undefined && object.AutoTxFlexFeeMul !== null ? Long.fromValue(object.AutoTxFlexFeeMul) : Long.ZERO;
-    message.AutoTxConstantFee = object.AutoTxConstantFee !== undefined && object.AutoTxConstantFee !== null ? Long.fromValue(object.AutoTxConstantFee) : Long.ZERO;
-    message.RecurringAutoTxConstantFee = object.RecurringAutoTxConstantFee !== undefined && object.RecurringAutoTxConstantFee !== null ? Long.fromValue(object.RecurringAutoTxConstantFee) : Long.ZERO;
+    message.AutoTxFundsCommission = object.AutoTxFundsCommission !== undefined && object.AutoTxFundsCommission !== null ? BigInt(object.AutoTxFundsCommission.toString()) : BigInt(0);
+    message.AutoTxFlexFeeMul = object.AutoTxFlexFeeMul !== undefined && object.AutoTxFlexFeeMul !== null ? BigInt(object.AutoTxFlexFeeMul.toString()) : BigInt(0);
+    message.AutoTxConstantFee = object.AutoTxConstantFee !== undefined && object.AutoTxConstantFee !== null ? BigInt(object.AutoTxConstantFee.toString()) : BigInt(0);
+    message.RecurringAutoTxConstantFee = object.RecurringAutoTxConstantFee !== undefined && object.RecurringAutoTxConstantFee !== null ? BigInt(object.RecurringAutoTxConstantFee.toString()) : BigInt(0);
     message.MaxAutoTxDuration = object.MaxAutoTxDuration !== undefined && object.MaxAutoTxDuration !== null ? Duration.fromPartial(object.MaxAutoTxDuration) : undefined;
     message.MinAutoTxDuration = object.MinAutoTxDuration !== undefined && object.MinAutoTxDuration !== null ? Duration.fromPartial(object.MinAutoTxDuration) : undefined;
     message.MinAutoTxInterval = object.MinAutoTxInterval !== undefined && object.MinAutoTxInterval !== null ? Duration.fromPartial(object.MinAutoTxInterval) : undefined;
-    message.relayerRewards = object.relayerRewards?.map(e => Long.fromValue(e)) || [];
+    message.relayerRewards = object.relayerRewards?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
     return {
-      AutoTxFundsCommission: Long.fromString(object.AutoTxFundsCommission),
-      AutoTxFlexFeeMul: Long.fromString(object.AutoTxFlexFeeMul),
-      AutoTxConstantFee: Long.fromString(object.AutoTxConstantFee),
-      RecurringAutoTxConstantFee: Long.fromString(object.RecurringAutoTxConstantFee),
+      AutoTxFundsCommission: BigInt(object.AutoTxFundsCommission),
+      AutoTxFlexFeeMul: BigInt(object.AutoTxFlexFeeMul),
+      AutoTxConstantFee: BigInt(object.AutoTxConstantFee),
+      RecurringAutoTxConstantFee: BigInt(object.RecurringAutoTxConstantFee),
       MaxAutoTxDuration: object?.MaxAutoTxDuration ? Duration.fromAmino(object.MaxAutoTxDuration) : undefined,
       MinAutoTxDuration: object?.MinAutoTxDuration ? Duration.fromAmino(object.MinAutoTxDuration) : undefined,
       MinAutoTxInterval: object?.MinAutoTxInterval ? Duration.fromAmino(object.MinAutoTxInterval) : undefined,
-      relayerRewards: Array.isArray(object?.relayer_rewards) ? object.relayer_rewards.map((e: any) => e) : []
+      relayerRewards: Array.isArray(object?.relayer_rewards) ? object.relayer_rewards.map((e: any) => BigInt(e)) : []
     };
   },
   toAmino(message: Params): ParamsAmino {
@@ -616,7 +619,7 @@ export const Params = {
     obj.MinAutoTxDuration = message.MinAutoTxDuration ? Duration.toAmino(message.MinAutoTxDuration) : undefined;
     obj.MinAutoTxInterval = message.MinAutoTxInterval ? Duration.toAmino(message.MinAutoTxInterval) : undefined;
     if (message.relayerRewards) {
-      obj.relayer_rewards = message.relayerRewards.map(e => e);
+      obj.relayer_rewards = message.relayerRewards.map(e => e.toString());
     } else {
       obj.relayer_rewards = [];
     }
@@ -637,4 +640,18 @@ export const Params = {
       value: Params.encode(message).finish()
     };
   }
+};
+export const Sdk_Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  const data = Any.decode(reader, reader.uint32());
+  switch (data.typeUrl) {
+    default:
+      return data;
+  }
+};
+export const Sdk_Msg_FromAmino = (content: AnyAmino) => {
+  return Any.fromAmino(content);
+};
+export const Sdk_Msg_ToAmino = (content: Any) => {
+  return Any.toAmino(content);
 };

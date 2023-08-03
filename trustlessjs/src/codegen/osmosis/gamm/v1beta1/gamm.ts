@@ -1,14 +1,13 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { SwapAmountInRoute, SwapAmountInRouteAmino, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteAmino, SwapAmountOutRouteSDKType } from "../../poolmanager/v1beta1/swap_route";
-import { Long, DeepPartial } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ===================== MsgJoinPool
  * This is really MsgJoinPoolNoSwap
  */
 export interface MsgJoinPool {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
   shareOutAmount: string;
   tokenInMaxs: Coin[];
 }
@@ -36,7 +35,7 @@ export interface MsgJoinPoolAminoMsg {
  */
 export interface MsgJoinPoolSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
   share_out_amount: string;
   token_in_maxs: CoinSDKType[];
 }
@@ -63,7 +62,7 @@ export interface MsgJoinPoolResponseSDKType {
 /** ===================== MsgExitPool */
 export interface MsgExitPool {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
   shareInAmount: string;
   tokenOutMins: Coin[];
 }
@@ -85,7 +84,7 @@ export interface MsgExitPoolAminoMsg {
 /** ===================== MsgExitPool */
 export interface MsgExitPoolSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
   share_in_amount: string;
   token_out_mins: CoinSDKType[];
 }
@@ -201,7 +200,7 @@ export interface MsgSwapExactAmountOutResponseSDKType {
  */
 export interface MsgJoinSwapExternAmountIn {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
   tokenIn: Coin;
   shareOutMinAmount: string;
 }
@@ -229,7 +228,7 @@ export interface MsgJoinSwapExternAmountInAminoMsg {
  */
 export interface MsgJoinSwapExternAmountInSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
   token_in: CoinSDKType;
   share_out_min_amount: string;
 }
@@ -253,7 +252,7 @@ export interface MsgJoinSwapExternAmountInResponseSDKType {
 /** ===================== MsgJoinSwapShareAmountOut */
 export interface MsgJoinSwapShareAmountOut {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
   tokenInDenom: string;
   shareOutAmount: string;
   tokenInMaxAmount: string;
@@ -277,7 +276,7 @@ export interface MsgJoinSwapShareAmountOutAminoMsg {
 /** ===================== MsgJoinSwapShareAmountOut */
 export interface MsgJoinSwapShareAmountOutSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
   token_in_denom: string;
   share_out_amount: string;
   token_in_max_amount: string;
@@ -302,7 +301,7 @@ export interface MsgJoinSwapShareAmountOutResponseSDKType {
 /** ===================== MsgExitSwapShareAmountIn */
 export interface MsgExitSwapShareAmountIn {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
   tokenOutDenom: string;
   shareInAmount: string;
   tokenOutMinAmount: string;
@@ -326,7 +325,7 @@ export interface MsgExitSwapShareAmountInAminoMsg {
 /** ===================== MsgExitSwapShareAmountIn */
 export interface MsgExitSwapShareAmountInSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
   token_out_denom: string;
   share_in_amount: string;
   token_out_min_amount: string;
@@ -351,7 +350,7 @@ export interface MsgExitSwapShareAmountInResponseSDKType {
 /** ===================== MsgExitSwapExternAmountOut */
 export interface MsgExitSwapExternAmountOut {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
   tokenOut: Coin;
   shareInMaxAmount: string;
 }
@@ -373,7 +372,7 @@ export interface MsgExitSwapExternAmountOutAminoMsg {
 /** ===================== MsgExitSwapExternAmountOut */
 export interface MsgExitSwapExternAmountOutSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
   token_out: CoinSDKType;
   share_in_max_amount: string;
 }
@@ -397,17 +396,17 @@ export interface MsgExitSwapExternAmountOutResponseSDKType {
 function createBaseMsgJoinPool(): MsgJoinPool {
   return {
     sender: "",
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     shareOutAmount: "",
     tokenInMaxs: []
   };
 }
 export const MsgJoinPool = {
-  encode(message: MsgJoinPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgJoinPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.shareOutAmount !== "") {
@@ -418,8 +417,8 @@ export const MsgJoinPool = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPool {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinPool {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinPool();
     while (reader.pos < end) {
@@ -429,7 +428,7 @@ export const MsgJoinPool = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 3:
           message.shareOutAmount = reader.string();
@@ -444,10 +443,10 @@ export const MsgJoinPool = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgJoinPool>): MsgJoinPool {
+  fromPartial(object: Partial<MsgJoinPool>): MsgJoinPool {
     const message = createBaseMsgJoinPool();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.shareOutAmount = object.shareOutAmount ?? "";
     message.tokenInMaxs = object.tokenInMaxs?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -455,7 +454,7 @@ export const MsgJoinPool = {
   fromAmino(object: MsgJoinPoolAmino): MsgJoinPool {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       shareOutAmount: object.share_out_amount,
       tokenInMaxs: Array.isArray(object?.token_in_maxs) ? object.token_in_maxs.map((e: any) => Coin.fromAmino(e)) : []
     };
@@ -501,7 +500,7 @@ function createBaseMsgJoinPoolResponse(): MsgJoinPoolResponse {
   };
 }
 export const MsgJoinPoolResponse = {
-  encode(message: MsgJoinPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgJoinPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.shareOutAmount !== "") {
       writer.uint32(10).string(message.shareOutAmount);
     }
@@ -510,8 +509,8 @@ export const MsgJoinPoolResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinPoolResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinPoolResponse();
     while (reader.pos < end) {
@@ -530,7 +529,7 @@ export const MsgJoinPoolResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgJoinPoolResponse>): MsgJoinPoolResponse {
+  fromPartial(object: Partial<MsgJoinPoolResponse>): MsgJoinPoolResponse {
     const message = createBaseMsgJoinPoolResponse();
     message.shareOutAmount = object.shareOutAmount ?? "";
     message.tokenIn = object.tokenIn?.map(e => Coin.fromPartial(e)) || [];
@@ -577,17 +576,17 @@ export const MsgJoinPoolResponse = {
 function createBaseMsgExitPool(): MsgExitPool {
   return {
     sender: "",
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     shareInAmount: "",
     tokenOutMins: []
   };
 }
 export const MsgExitPool = {
-  encode(message: MsgExitPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExitPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.shareInAmount !== "") {
@@ -598,8 +597,8 @@ export const MsgExitPool = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPool {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitPool {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitPool();
     while (reader.pos < end) {
@@ -609,7 +608,7 @@ export const MsgExitPool = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 3:
           message.shareInAmount = reader.string();
@@ -624,10 +623,10 @@ export const MsgExitPool = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgExitPool>): MsgExitPool {
+  fromPartial(object: Partial<MsgExitPool>): MsgExitPool {
     const message = createBaseMsgExitPool();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.shareInAmount = object.shareInAmount ?? "";
     message.tokenOutMins = object.tokenOutMins?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -635,7 +634,7 @@ export const MsgExitPool = {
   fromAmino(object: MsgExitPoolAmino): MsgExitPool {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       shareInAmount: object.share_in_amount,
       tokenOutMins: Array.isArray(object?.token_out_mins) ? object.token_out_mins.map((e: any) => Coin.fromAmino(e)) : []
     };
@@ -680,14 +679,14 @@ function createBaseMsgExitPoolResponse(): MsgExitPoolResponse {
   };
 }
 export const MsgExitPoolResponse = {
-  encode(message: MsgExitPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExitPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.tokenOut) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitPoolResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitPoolResponse();
     while (reader.pos < end) {
@@ -703,7 +702,7 @@ export const MsgExitPoolResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgExitPoolResponse>): MsgExitPoolResponse {
+  fromPartial(object: Partial<MsgExitPoolResponse>): MsgExitPoolResponse {
     const message = createBaseMsgExitPoolResponse();
     message.tokenOut = object.tokenOut?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -753,7 +752,7 @@ function createBaseMsgSwapExactAmountIn(): MsgSwapExactAmountIn {
   };
 }
 export const MsgSwapExactAmountIn = {
-  encode(message: MsgSwapExactAmountIn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSwapExactAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -768,8 +767,8 @@ export const MsgSwapExactAmountIn = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountIn {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSwapExactAmountIn();
     while (reader.pos < end) {
@@ -794,7 +793,7 @@ export const MsgSwapExactAmountIn = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn {
+  fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn {
     const message = createBaseMsgSwapExactAmountIn();
     message.sender = object.sender ?? "";
     message.routes = object.routes?.map(e => SwapAmountInRoute.fromPartial(e)) || [];
@@ -850,14 +849,14 @@ function createBaseMsgSwapExactAmountInResponse(): MsgSwapExactAmountInResponse 
   };
 }
 export const MsgSwapExactAmountInResponse = {
-  encode(message: MsgSwapExactAmountInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSwapExactAmountInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountInResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSwapExactAmountInResponse();
     while (reader.pos < end) {
@@ -873,7 +872,7 @@ export const MsgSwapExactAmountInResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse {
+  fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse {
     const message = createBaseMsgSwapExactAmountInResponse();
     message.tokenOutAmount = object.tokenOutAmount ?? "";
     return message;
@@ -919,7 +918,7 @@ function createBaseMsgSwapExactAmountOut(): MsgSwapExactAmountOut {
   };
 }
 export const MsgSwapExactAmountOut = {
-  encode(message: MsgSwapExactAmountOut, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSwapExactAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -934,8 +933,8 @@ export const MsgSwapExactAmountOut = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountOut {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSwapExactAmountOut();
     while (reader.pos < end) {
@@ -960,7 +959,7 @@ export const MsgSwapExactAmountOut = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut {
+  fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut {
     const message = createBaseMsgSwapExactAmountOut();
     message.sender = object.sender ?? "";
     message.routes = object.routes?.map(e => SwapAmountOutRoute.fromPartial(e)) || [];
@@ -1016,14 +1015,14 @@ function createBaseMsgSwapExactAmountOutResponse(): MsgSwapExactAmountOutRespons
   };
 }
 export const MsgSwapExactAmountOutResponse = {
-  encode(message: MsgSwapExactAmountOutResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSwapExactAmountOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSwapExactAmountOutResponse();
     while (reader.pos < end) {
@@ -1039,7 +1038,7 @@ export const MsgSwapExactAmountOutResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse {
+  fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse {
     const message = createBaseMsgSwapExactAmountOutResponse();
     message.tokenInAmount = object.tokenInAmount ?? "";
     return message;
@@ -1079,17 +1078,17 @@ export const MsgSwapExactAmountOutResponse = {
 function createBaseMsgJoinSwapExternAmountIn(): MsgJoinSwapExternAmountIn {
   return {
     sender: "",
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     tokenIn: Coin.fromPartial({}),
     shareOutMinAmount: ""
   };
 }
 export const MsgJoinSwapExternAmountIn = {
-  encode(message: MsgJoinSwapExternAmountIn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgJoinSwapExternAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.tokenIn !== undefined) {
@@ -1100,8 +1099,8 @@ export const MsgJoinSwapExternAmountIn = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinSwapExternAmountIn();
     while (reader.pos < end) {
@@ -1111,7 +1110,7 @@ export const MsgJoinSwapExternAmountIn = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 3:
           message.tokenIn = Coin.decode(reader, reader.uint32());
@@ -1126,10 +1125,10 @@ export const MsgJoinSwapExternAmountIn = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn {
+  fromPartial(object: Partial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn {
     const message = createBaseMsgJoinSwapExternAmountIn();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.tokenIn = object.tokenIn !== undefined && object.tokenIn !== null ? Coin.fromPartial(object.tokenIn) : undefined;
     message.shareOutMinAmount = object.shareOutMinAmount ?? "";
     return message;
@@ -1137,7 +1136,7 @@ export const MsgJoinSwapExternAmountIn = {
   fromAmino(object: MsgJoinSwapExternAmountInAmino): MsgJoinSwapExternAmountIn {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       tokenIn: object?.token_in ? Coin.fromAmino(object.token_in) : undefined,
       shareOutMinAmount: object.share_out_min_amount
     };
@@ -1178,14 +1177,14 @@ function createBaseMsgJoinSwapExternAmountInResponse(): MsgJoinSwapExternAmountI
   };
 }
 export const MsgJoinSwapExternAmountInResponse = {
-  encode(message: MsgJoinSwapExternAmountInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgJoinSwapExternAmountInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.shareOutAmount !== "") {
       writer.uint32(10).string(message.shareOutAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinSwapExternAmountInResponse();
     while (reader.pos < end) {
@@ -1201,7 +1200,7 @@ export const MsgJoinSwapExternAmountInResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse {
+  fromPartial(object: Partial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse {
     const message = createBaseMsgJoinSwapExternAmountInResponse();
     message.shareOutAmount = object.shareOutAmount ?? "";
     return message;
@@ -1241,18 +1240,18 @@ export const MsgJoinSwapExternAmountInResponse = {
 function createBaseMsgJoinSwapShareAmountOut(): MsgJoinSwapShareAmountOut {
   return {
     sender: "",
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     tokenInDenom: "",
     shareOutAmount: "",
     tokenInMaxAmount: ""
   };
 }
 export const MsgJoinSwapShareAmountOut = {
-  encode(message: MsgJoinSwapShareAmountOut, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgJoinSwapShareAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.tokenInDenom !== "") {
@@ -1266,8 +1265,8 @@ export const MsgJoinSwapShareAmountOut = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinSwapShareAmountOut();
     while (reader.pos < end) {
@@ -1277,7 +1276,7 @@ export const MsgJoinSwapShareAmountOut = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 3:
           message.tokenInDenom = reader.string();
@@ -1295,10 +1294,10 @@ export const MsgJoinSwapShareAmountOut = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut {
+  fromPartial(object: Partial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut {
     const message = createBaseMsgJoinSwapShareAmountOut();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.tokenInDenom = object.tokenInDenom ?? "";
     message.shareOutAmount = object.shareOutAmount ?? "";
     message.tokenInMaxAmount = object.tokenInMaxAmount ?? "";
@@ -1307,7 +1306,7 @@ export const MsgJoinSwapShareAmountOut = {
   fromAmino(object: MsgJoinSwapShareAmountOutAmino): MsgJoinSwapShareAmountOut {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       tokenInDenom: object.token_in_denom,
       shareOutAmount: object.share_out_amount,
       tokenInMaxAmount: object.token_in_max_amount
@@ -1350,14 +1349,14 @@ function createBaseMsgJoinSwapShareAmountOutResponse(): MsgJoinSwapShareAmountOu
   };
 }
 export const MsgJoinSwapShareAmountOutResponse = {
-  encode(message: MsgJoinSwapShareAmountOutResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgJoinSwapShareAmountOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinSwapShareAmountOutResponse();
     while (reader.pos < end) {
@@ -1373,7 +1372,7 @@ export const MsgJoinSwapShareAmountOutResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse {
+  fromPartial(object: Partial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse {
     const message = createBaseMsgJoinSwapShareAmountOutResponse();
     message.tokenInAmount = object.tokenInAmount ?? "";
     return message;
@@ -1413,18 +1412,18 @@ export const MsgJoinSwapShareAmountOutResponse = {
 function createBaseMsgExitSwapShareAmountIn(): MsgExitSwapShareAmountIn {
   return {
     sender: "",
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     tokenOutDenom: "",
     shareInAmount: "",
     tokenOutMinAmount: ""
   };
 }
 export const MsgExitSwapShareAmountIn = {
-  encode(message: MsgExitSwapShareAmountIn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExitSwapShareAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.tokenOutDenom !== "") {
@@ -1438,8 +1437,8 @@ export const MsgExitSwapShareAmountIn = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountIn {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapShareAmountIn {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSwapShareAmountIn();
     while (reader.pos < end) {
@@ -1449,7 +1448,7 @@ export const MsgExitSwapShareAmountIn = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 3:
           message.tokenOutDenom = reader.string();
@@ -1467,10 +1466,10 @@ export const MsgExitSwapShareAmountIn = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn {
+  fromPartial(object: Partial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn {
     const message = createBaseMsgExitSwapShareAmountIn();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.tokenOutDenom = object.tokenOutDenom ?? "";
     message.shareInAmount = object.shareInAmount ?? "";
     message.tokenOutMinAmount = object.tokenOutMinAmount ?? "";
@@ -1479,7 +1478,7 @@ export const MsgExitSwapShareAmountIn = {
   fromAmino(object: MsgExitSwapShareAmountInAmino): MsgExitSwapShareAmountIn {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       tokenOutDenom: object.token_out_denom,
       shareInAmount: object.share_in_amount,
       tokenOutMinAmount: object.token_out_min_amount
@@ -1522,14 +1521,14 @@ function createBaseMsgExitSwapShareAmountInResponse(): MsgExitSwapShareAmountInR
   };
 }
 export const MsgExitSwapShareAmountInResponse = {
-  encode(message: MsgExitSwapShareAmountInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExitSwapShareAmountInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSwapShareAmountInResponse();
     while (reader.pos < end) {
@@ -1545,7 +1544,7 @@ export const MsgExitSwapShareAmountInResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse {
+  fromPartial(object: Partial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse {
     const message = createBaseMsgExitSwapShareAmountInResponse();
     message.tokenOutAmount = object.tokenOutAmount ?? "";
     return message;
@@ -1585,17 +1584,17 @@ export const MsgExitSwapShareAmountInResponse = {
 function createBaseMsgExitSwapExternAmountOut(): MsgExitSwapExternAmountOut {
   return {
     sender: "",
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     tokenOut: Coin.fromPartial({}),
     shareInMaxAmount: ""
   };
 }
 export const MsgExitSwapExternAmountOut = {
-  encode(message: MsgExitSwapExternAmountOut, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExitSwapExternAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.tokenOut !== undefined) {
@@ -1606,8 +1605,8 @@ export const MsgExitSwapExternAmountOut = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOut {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapExternAmountOut {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSwapExternAmountOut();
     while (reader.pos < end) {
@@ -1617,7 +1616,7 @@ export const MsgExitSwapExternAmountOut = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 3:
           message.tokenOut = Coin.decode(reader, reader.uint32());
@@ -1632,10 +1631,10 @@ export const MsgExitSwapExternAmountOut = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut {
+  fromPartial(object: Partial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut {
     const message = createBaseMsgExitSwapExternAmountOut();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.tokenOut = object.tokenOut !== undefined && object.tokenOut !== null ? Coin.fromPartial(object.tokenOut) : undefined;
     message.shareInMaxAmount = object.shareInMaxAmount ?? "";
     return message;
@@ -1643,7 +1642,7 @@ export const MsgExitSwapExternAmountOut = {
   fromAmino(object: MsgExitSwapExternAmountOutAmino): MsgExitSwapExternAmountOut {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       tokenOut: object?.token_out ? Coin.fromAmino(object.token_out) : undefined,
       shareInMaxAmount: object.share_in_max_amount
     };
@@ -1684,14 +1683,14 @@ function createBaseMsgExitSwapExternAmountOutResponse(): MsgExitSwapExternAmount
   };
 }
 export const MsgExitSwapExternAmountOutResponse = {
-  encode(message: MsgExitSwapExternAmountOutResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExitSwapExternAmountOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.shareInAmount !== "") {
       writer.uint32(10).string(message.shareInAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSwapExternAmountOutResponse();
     while (reader.pos < end) {
@@ -1707,7 +1706,7 @@ export const MsgExitSwapExternAmountOutResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse {
+  fromPartial(object: Partial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse {
     const message = createBaseMsgExitSwapExternAmountOutResponse();
     message.shareInAmount = object.shareInAmount ?? "";
     return message;

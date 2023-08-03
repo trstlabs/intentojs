@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { Decimal } from "@cosmjs/math";
 export interface WeightedAddress {
   address: string;
   weight: string;
@@ -102,17 +102,17 @@ function createBaseWeightedAddress(): WeightedAddress {
   };
 }
 export const WeightedAddress = {
-  encode(message: WeightedAddress, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: WeightedAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
     if (message.weight !== "") {
-      writer.uint32(18).string(message.weight);
+      writer.uint32(18).string(Decimal.fromUserInput(message.weight, 18).atomics);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): WeightedAddress {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): WeightedAddress {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseWeightedAddress();
     while (reader.pos < end) {
@@ -122,7 +122,7 @@ export const WeightedAddress = {
           message.address = reader.string();
           break;
         case 2:
-          message.weight = reader.string();
+          message.weight = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         default:
           reader.skipType(tag & 7);
@@ -131,7 +131,7 @@ export const WeightedAddress = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<WeightedAddress>): WeightedAddress {
+  fromPartial(object: Partial<WeightedAddress>): WeightedAddress {
     const message = createBaseWeightedAddress();
     message.address = object.address ?? "";
     message.weight = object.weight ?? "";
@@ -175,45 +175,45 @@ function createBaseDistributionProportions(): DistributionProportions {
   };
 }
 export const DistributionProportions = {
-  encode(message: DistributionProportions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.staking !== "") {
-      writer.uint32(10).string(message.staking);
+      writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
     }
     if (message.trustlessContractIncentives !== "") {
-      writer.uint32(18).string(message.trustlessContractIncentives);
+      writer.uint32(18).string(Decimal.fromUserInput(message.trustlessContractIncentives, 18).atomics);
     }
     if (message.relayerIncentives !== "") {
-      writer.uint32(26).string(message.relayerIncentives);
+      writer.uint32(26).string(Decimal.fromUserInput(message.relayerIncentives, 18).atomics);
     }
     if (message.contributorRewards !== "") {
-      writer.uint32(34).string(message.contributorRewards);
+      writer.uint32(34).string(Decimal.fromUserInput(message.contributorRewards, 18).atomics);
     }
     if (message.communityPool !== "") {
-      writer.uint32(42).string(message.communityPool);
+      writer.uint32(42).string(Decimal.fromUserInput(message.communityPool, 18).atomics);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): DistributionProportions {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): DistributionProportions {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDistributionProportions();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.staking = reader.string();
+          message.staking = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 2:
-          message.trustlessContractIncentives = reader.string();
+          message.trustlessContractIncentives = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 3:
-          message.relayerIncentives = reader.string();
+          message.relayerIncentives = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 4:
-          message.contributorRewards = reader.string();
+          message.contributorRewards = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 5:
-          message.communityPool = reader.string();
+          message.communityPool = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         default:
           reader.skipType(tag & 7);
@@ -222,7 +222,7 @@ export const DistributionProportions = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions {
+  fromPartial(object: Partial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
     message.staking = object.staking ?? "";
     message.trustlessContractIncentives = object.trustlessContractIncentives ?? "";
@@ -272,7 +272,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distributionProportions !== undefined) {
       DistributionProportions.encode(message.distributionProportions, writer.uint32(10).fork()).ldelim();
     }
@@ -281,8 +281,8 @@ export const Params = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Params {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Params {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -301,7 +301,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.distributionProportions = object.distributionProportions !== undefined && object.distributionProportions !== null ? DistributionProportions.fromPartial(object.distributionProportions) : undefined;
     message.weightedContributorRewardsReceivers = object.weightedContributorRewardsReceivers?.map(e => WeightedAddress.fromPartial(e)) || [];

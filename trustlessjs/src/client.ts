@@ -10,14 +10,8 @@ import * as trstClaimV1beta1ClaimRegistry from "./codegen/trst/claim/v1beta1/cla
 import * as trstAutoibctxV1beta1TxAmino from "./codegen/trst/autoibctx/v1beta1/tx.amino";
 import * as trstClaimV1beta1ClaimAmino from "./codegen/trst/claim/v1beta1/claim.amino";
 import { customMsgRegistry } from "./registry";
-export const trstAminoConverters = {
-  ...trstAutoibctxV1beta1TxAmino.AminoConverter,
-  ...trstClaimV1beta1ClaimAmino.AminoConverter,
-};
-export const trstProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
-  ...trstAutoibctxV1beta1TxRegistry.registry,
-  ...trstClaimV1beta1ClaimRegistry.registry,
-];
+import { trstProtoRegistry, trstAminoConverters } from "./codegen";
+
 export const getTrstSigningClientOptions = ({
   defaultTypes = defaultRegistryTypes,
 }: {

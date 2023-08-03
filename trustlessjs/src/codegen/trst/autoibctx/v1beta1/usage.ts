@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface AutoTxIbcUsage {
   address: string;
   txs: AutoIbcTxAck[];
@@ -48,7 +47,7 @@ function createBaseAutoTxIbcUsage(): AutoTxIbcUsage {
   };
 }
 export const AutoTxIbcUsage = {
-  encode(message: AutoTxIbcUsage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: AutoTxIbcUsage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -57,8 +56,8 @@ export const AutoTxIbcUsage = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): AutoTxIbcUsage {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): AutoTxIbcUsage {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAutoTxIbcUsage();
     while (reader.pos < end) {
@@ -77,7 +76,7 @@ export const AutoTxIbcUsage = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<AutoTxIbcUsage>): AutoTxIbcUsage {
+  fromPartial(object: Partial<AutoTxIbcUsage>): AutoTxIbcUsage {
     const message = createBaseAutoTxIbcUsage();
     message.address = object.address ?? "";
     message.txs = object.txs?.map(e => AutoIbcTxAck.fromPartial(e)) || [];
@@ -122,7 +121,7 @@ function createBaseAutoIbcTxAck(): AutoIbcTxAck {
   };
 }
 export const AutoIbcTxAck = {
-  encode(message: AutoIbcTxAck, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: AutoIbcTxAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.coin !== undefined) {
       Coin.encode(message.coin, writer.uint32(10).fork()).ldelim();
     }
@@ -131,8 +130,8 @@ export const AutoIbcTxAck = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): AutoIbcTxAck {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): AutoIbcTxAck {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAutoIbcTxAck();
     while (reader.pos < end) {
@@ -151,7 +150,7 @@ export const AutoIbcTxAck = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<AutoIbcTxAck>): AutoIbcTxAck {
+  fromPartial(object: Partial<AutoIbcTxAck>): AutoIbcTxAck {
     const message = createBaseAutoIbcTxAck();
     message.coin = object.coin !== undefined && object.coin !== null ? Coin.fromPartial(object.coin) : undefined;
     message.connectionId = object.connectionId ?? "";

@@ -1,7 +1,6 @@
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long, DeepPartial } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MsgRegisterAccount registers an interchain account for the given owner over
  * the specified connection pair
@@ -115,7 +114,7 @@ export interface MsgSubmitAutoTx {
    * start_at when set as a unix time after block inclusion, creates a custom
    * start time for execution
    */
-  startAt: Long;
+  startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
   /**
@@ -127,7 +126,7 @@ export interface MsgSubmitAutoTx {
    * optional array of dependent txs that should be executed before execution is
    * allowed
    */
-  dependsOnTxIds: Long[];
+  dependsOnTxIds: bigint[];
 }
 export interface MsgSubmitAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitAutoTx";
@@ -176,10 +175,10 @@ export interface MsgSubmitAutoTxSDKType {
   label: string;
   msgs: AnySDKType[];
   duration: string;
-  start_at: Long;
+  start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  depends_on_tx_ids: Long[];
+  depends_on_tx_ids: bigint[];
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitAutoTxResponse {}
@@ -211,7 +210,7 @@ export interface MsgRegisterAccountAndSubmitAutoTx {
    * start_at when set as a unix time after block inclusion, creates a custom
    * start time for execution
    */
-  startAt: Long;
+  startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
   /**
@@ -223,7 +222,7 @@ export interface MsgRegisterAccountAndSubmitAutoTx {
    * optional array of dependent txs that should be executed before execution is
    * allowed
    */
-  dependsOnTxIds: Long[];
+  dependsOnTxIds: bigint[];
   version: string;
 }
 export interface MsgRegisterAccountAndSubmitAutoTxProtoMsg {
@@ -276,10 +275,10 @@ export interface MsgRegisterAccountAndSubmitAutoTxSDKType {
   label: string;
   msgs: AnySDKType[];
   duration: string;
-  start_at: Long;
+  start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  depends_on_tx_ids: Long[];
+  depends_on_tx_ids: bigint[];
   version: string;
 }
 /**
@@ -311,17 +310,17 @@ export interface MsgRegisterAccountAndSubmitAutoTxResponseSDKType {}
  */
 export interface MsgUpdateAutoTx {
   owner: string;
-  txId: Long;
+  txId: bigint;
   connectionId: string;
   label: string;
   msgs: Any[];
   /** end_time when set defines the time that the code should run for */
-  endTime: Long;
+  endTime: bigint;
   /**
    * start_at when set as a unix time after block inclusion, creates a custom
    * start time for execution
    */
-  startAt: Long;
+  startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
   /**
@@ -333,7 +332,7 @@ export interface MsgUpdateAutoTx {
    * optional array of dependent txs that should be executed before execution is
    * allowed
    */
-  dependsOnTxIds: Long[];
+  dependsOnTxIds: bigint[];
 }
 export interface MsgUpdateAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgUpdateAutoTx";
@@ -379,15 +378,15 @@ export interface MsgUpdateAutoTxAminoMsg {
  */
 export interface MsgUpdateAutoTxSDKType {
   owner: string;
-  tx_id: Long;
+  tx_id: bigint;
   connection_id: string;
   label: string;
   msgs: AnySDKType[];
-  end_time: Long;
-  start_at: Long;
+  end_time: bigint;
+  start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  depends_on_tx_ids: Long[];
+  depends_on_tx_ids: bigint[];
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
 export interface MsgUpdateAutoTxResponse {}
@@ -411,7 +410,7 @@ function createBaseMsgRegisterAccount(): MsgRegisterAccount {
   };
 }
 export const MsgRegisterAccount = {
-  encode(message: MsgRegisterAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgRegisterAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -423,8 +422,8 @@ export const MsgRegisterAccount = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterAccount {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccount {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterAccount();
     while (reader.pos < end) {
@@ -446,7 +445,7 @@ export const MsgRegisterAccount = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgRegisterAccount>): MsgRegisterAccount {
+  fromPartial(object: Partial<MsgRegisterAccount>): MsgRegisterAccount {
     const message = createBaseMsgRegisterAccount();
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
@@ -487,11 +486,11 @@ function createBaseMsgRegisterAccountResponse(): MsgRegisterAccountResponse {
   return {};
 }
 export const MsgRegisterAccountResponse = {
-  encode(_: MsgRegisterAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgRegisterAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterAccountResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterAccountResponse();
     while (reader.pos < end) {
@@ -504,7 +503,7 @@ export const MsgRegisterAccountResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgRegisterAccountResponse>): MsgRegisterAccountResponse {
+  fromPartial(_: Partial<MsgRegisterAccountResponse>): MsgRegisterAccountResponse {
     const message = createBaseMsgRegisterAccountResponse();
     return message;
   },
@@ -539,7 +538,7 @@ function createBaseMsgSubmitTx(): MsgSubmitTx {
   };
 }
 export const MsgSubmitTx = {
-  encode(message: MsgSubmitTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSubmitTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -551,8 +550,8 @@ export const MsgSubmitTx = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitTx {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitTx {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitTx();
     while (reader.pos < end) {
@@ -574,7 +573,7 @@ export const MsgSubmitTx = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgSubmitTx>): MsgSubmitTx {
+  fromPartial(object: Partial<MsgSubmitTx>): MsgSubmitTx {
     const message = createBaseMsgSubmitTx();
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
@@ -615,11 +614,11 @@ function createBaseMsgSubmitTxResponse(): MsgSubmitTxResponse {
   return {};
 }
 export const MsgSubmitTxResponse = {
-  encode(_: MsgSubmitTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSubmitTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitTxResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitTxResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitTxResponse();
     while (reader.pos < end) {
@@ -632,7 +631,7 @@ export const MsgSubmitTxResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgSubmitTxResponse>): MsgSubmitTxResponse {
+  fromPartial(_: Partial<MsgSubmitTxResponse>): MsgSubmitTxResponse {
     const message = createBaseMsgSubmitTxResponse();
     return message;
   },
@@ -666,14 +665,14 @@ function createBaseMsgSubmitAutoTx(): MsgSubmitAutoTx {
     label: "",
     msgs: [],
     duration: "",
-    startAt: Long.UZERO,
+    startAt: BigInt(0),
     interval: "",
     feeFunds: [],
     dependsOnTxIds: []
   };
 }
 export const MsgSubmitAutoTx = {
-  encode(message: MsgSubmitAutoTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSubmitAutoTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -689,7 +688,7 @@ export const MsgSubmitAutoTx = {
     if (message.duration !== "") {
       writer.uint32(42).string(message.duration);
     }
-    if (!message.startAt.isZero()) {
+    if (message.startAt !== BigInt(0)) {
       writer.uint32(48).uint64(message.startAt);
     }
     if (message.interval !== "") {
@@ -705,8 +704,8 @@ export const MsgSubmitAutoTx = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitAutoTx {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitAutoTx {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitAutoTx();
     while (reader.pos < end) {
@@ -728,7 +727,7 @@ export const MsgSubmitAutoTx = {
           message.duration = reader.string();
           break;
         case 6:
-          message.startAt = (reader.uint64() as Long);
+          message.startAt = reader.uint64();
           break;
         case 7:
           message.interval = reader.string();
@@ -740,10 +739,10 @@ export const MsgSubmitAutoTx = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.dependsOnTxIds.push((reader.uint64() as Long));
+              message.dependsOnTxIds.push(reader.uint64());
             }
           } else {
-            message.dependsOnTxIds.push((reader.uint64() as Long));
+            message.dependsOnTxIds.push(reader.uint64());
           }
           break;
         default:
@@ -753,17 +752,17 @@ export const MsgSubmitAutoTx = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgSubmitAutoTx>): MsgSubmitAutoTx {
+  fromPartial(object: Partial<MsgSubmitAutoTx>): MsgSubmitAutoTx {
     const message = createBaseMsgSubmitAutoTx();
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
     message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
     message.duration = object.duration ?? "";
-    message.startAt = object.startAt !== undefined && object.startAt !== null ? Long.fromValue(object.startAt) : Long.UZERO;
+    message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => Long.fromValue(e)) || [];
+    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: MsgSubmitAutoTxAmino): MsgSubmitAutoTx {
@@ -773,10 +772,10 @@ export const MsgSubmitAutoTx = {
       label: object.label,
       msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
       duration: object.duration,
-      startAt: Long.fromString(object.start_at),
+      startAt: BigInt(object.start_at),
       interval: object.interval,
       feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => e) : []
+      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : []
     };
   },
   toAmino(message: MsgSubmitAutoTx): MsgSubmitAutoTxAmino {
@@ -798,7 +797,7 @@ export const MsgSubmitAutoTx = {
       obj.fee_funds = [];
     }
     if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e);
+      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
     } else {
       obj.depends_on_tx_ids = [];
     }
@@ -824,11 +823,11 @@ function createBaseMsgSubmitAutoTxResponse(): MsgSubmitAutoTxResponse {
   return {};
 }
 export const MsgSubmitAutoTxResponse = {
-  encode(_: MsgSubmitAutoTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSubmitAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitAutoTxResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitAutoTxResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitAutoTxResponse();
     while (reader.pos < end) {
@@ -841,7 +840,7 @@ export const MsgSubmitAutoTxResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgSubmitAutoTxResponse>): MsgSubmitAutoTxResponse {
+  fromPartial(_: Partial<MsgSubmitAutoTxResponse>): MsgSubmitAutoTxResponse {
     const message = createBaseMsgSubmitAutoTxResponse();
     return message;
   },
@@ -875,7 +874,7 @@ function createBaseMsgRegisterAccountAndSubmitAutoTx(): MsgRegisterAccountAndSub
     label: "",
     msgs: [],
     duration: "",
-    startAt: Long.UZERO,
+    startAt: BigInt(0),
     interval: "",
     feeFunds: [],
     dependsOnTxIds: [],
@@ -883,7 +882,7 @@ function createBaseMsgRegisterAccountAndSubmitAutoTx(): MsgRegisterAccountAndSub
   };
 }
 export const MsgRegisterAccountAndSubmitAutoTx = {
-  encode(message: MsgRegisterAccountAndSubmitAutoTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgRegisterAccountAndSubmitAutoTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -899,7 +898,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     if (message.duration !== "") {
       writer.uint32(42).string(message.duration);
     }
-    if (!message.startAt.isZero()) {
+    if (message.startAt !== BigInt(0)) {
       writer.uint32(48).uint64(message.startAt);
     }
     if (message.interval !== "") {
@@ -918,8 +917,8 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAutoTx {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAutoTx {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterAccountAndSubmitAutoTx();
     while (reader.pos < end) {
@@ -941,7 +940,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
           message.duration = reader.string();
           break;
         case 6:
-          message.startAt = (reader.uint64() as Long);
+          message.startAt = reader.uint64();
           break;
         case 7:
           message.interval = reader.string();
@@ -953,10 +952,10 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.dependsOnTxIds.push((reader.uint64() as Long));
+              message.dependsOnTxIds.push(reader.uint64());
             }
           } else {
-            message.dependsOnTxIds.push((reader.uint64() as Long));
+            message.dependsOnTxIds.push(reader.uint64());
           }
           break;
         case 10:
@@ -969,17 +968,17 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgRegisterAccountAndSubmitAutoTx>): MsgRegisterAccountAndSubmitAutoTx {
+  fromPartial(object: Partial<MsgRegisterAccountAndSubmitAutoTx>): MsgRegisterAccountAndSubmitAutoTx {
     const message = createBaseMsgRegisterAccountAndSubmitAutoTx();
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
     message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
     message.duration = object.duration ?? "";
-    message.startAt = object.startAt !== undefined && object.startAt !== null ? Long.fromValue(object.startAt) : Long.UZERO;
+    message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => Long.fromValue(e)) || [];
+    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
     message.version = object.version ?? "";
     return message;
   },
@@ -990,10 +989,10 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
       label: object.label,
       msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
       duration: object.duration,
-      startAt: Long.fromString(object.start_at),
+      startAt: BigInt(object.start_at),
       interval: object.interval,
       feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => e) : [],
+      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : [],
       version: object.version
     };
   },
@@ -1016,7 +1015,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
       obj.fee_funds = [];
     }
     if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e);
+      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
     } else {
       obj.depends_on_tx_ids = [];
     }
@@ -1043,11 +1042,11 @@ function createBaseMsgRegisterAccountAndSubmitAutoTxResponse(): MsgRegisterAccou
   return {};
 }
 export const MsgRegisterAccountAndSubmitAutoTxResponse = {
-  encode(_: MsgRegisterAccountAndSubmitAutoTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgRegisterAccountAndSubmitAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAutoTxResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAutoTxResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterAccountAndSubmitAutoTxResponse();
     while (reader.pos < end) {
@@ -1060,7 +1059,7 @@ export const MsgRegisterAccountAndSubmitAutoTxResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgRegisterAccountAndSubmitAutoTxResponse>): MsgRegisterAccountAndSubmitAutoTxResponse {
+  fromPartial(_: Partial<MsgRegisterAccountAndSubmitAutoTxResponse>): MsgRegisterAccountAndSubmitAutoTxResponse {
     const message = createBaseMsgRegisterAccountAndSubmitAutoTxResponse();
     return message;
   },
@@ -1090,23 +1089,23 @@ export const MsgRegisterAccountAndSubmitAutoTxResponse = {
 function createBaseMsgUpdateAutoTx(): MsgUpdateAutoTx {
   return {
     owner: "",
-    txId: Long.UZERO,
+    txId: BigInt(0),
     connectionId: "",
     label: "",
     msgs: [],
-    endTime: Long.UZERO,
-    startAt: Long.UZERO,
+    endTime: BigInt(0),
+    startAt: BigInt(0),
     interval: "",
     feeFunds: [],
     dependsOnTxIds: []
   };
 }
 export const MsgUpdateAutoTx = {
-  encode(message: MsgUpdateAutoTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgUpdateAutoTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
-    if (!message.txId.isZero()) {
+    if (message.txId !== BigInt(0)) {
       writer.uint32(16).uint64(message.txId);
     }
     if (message.connectionId !== "") {
@@ -1118,10 +1117,10 @@ export const MsgUpdateAutoTx = {
     for (const v of message.msgs) {
       Any.encode(v!, writer.uint32(42).fork()).ldelim();
     }
-    if (!message.endTime.isZero()) {
+    if (message.endTime !== BigInt(0)) {
       writer.uint32(48).uint64(message.endTime);
     }
-    if (!message.startAt.isZero()) {
+    if (message.startAt !== BigInt(0)) {
       writer.uint32(56).uint64(message.startAt);
     }
     if (message.interval !== "") {
@@ -1137,8 +1136,8 @@ export const MsgUpdateAutoTx = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAutoTx {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAutoTx {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateAutoTx();
     while (reader.pos < end) {
@@ -1148,7 +1147,7 @@ export const MsgUpdateAutoTx = {
           message.owner = reader.string();
           break;
         case 2:
-          message.txId = (reader.uint64() as Long);
+          message.txId = reader.uint64();
           break;
         case 3:
           message.connectionId = reader.string();
@@ -1160,10 +1159,10 @@ export const MsgUpdateAutoTx = {
           message.msgs.push(Any.decode(reader, reader.uint32()));
           break;
         case 6:
-          message.endTime = (reader.uint64() as Long);
+          message.endTime = reader.uint64();
           break;
         case 7:
-          message.startAt = (reader.uint64() as Long);
+          message.startAt = reader.uint64();
           break;
         case 8:
           message.interval = reader.string();
@@ -1175,10 +1174,10 @@ export const MsgUpdateAutoTx = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.dependsOnTxIds.push((reader.uint64() as Long));
+              message.dependsOnTxIds.push(reader.uint64());
             }
           } else {
-            message.dependsOnTxIds.push((reader.uint64() as Long));
+            message.dependsOnTxIds.push(reader.uint64());
           }
           break;
         default:
@@ -1188,32 +1187,32 @@ export const MsgUpdateAutoTx = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgUpdateAutoTx>): MsgUpdateAutoTx {
+  fromPartial(object: Partial<MsgUpdateAutoTx>): MsgUpdateAutoTx {
     const message = createBaseMsgUpdateAutoTx();
     message.owner = object.owner ?? "";
-    message.txId = object.txId !== undefined && object.txId !== null ? Long.fromValue(object.txId) : Long.UZERO;
+    message.txId = object.txId !== undefined && object.txId !== null ? BigInt(object.txId.toString()) : BigInt(0);
     message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
     message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
-    message.endTime = object.endTime !== undefined && object.endTime !== null ? Long.fromValue(object.endTime) : Long.UZERO;
-    message.startAt = object.startAt !== undefined && object.startAt !== null ? Long.fromValue(object.startAt) : Long.UZERO;
+    message.endTime = object.endTime !== undefined && object.endTime !== null ? BigInt(object.endTime.toString()) : BigInt(0);
+    message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => Long.fromValue(e)) || [];
+    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: MsgUpdateAutoTxAmino): MsgUpdateAutoTx {
     return {
       owner: object.owner,
-      txId: Long.fromString(object.tx_id),
+      txId: BigInt(object.tx_id),
       connectionId: object.connection_id,
       label: object.label,
       msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
-      endTime: Long.fromString(object.end_time),
-      startAt: Long.fromString(object.start_at),
+      endTime: BigInt(object.end_time),
+      startAt: BigInt(object.start_at),
       interval: object.interval,
       feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => e) : []
+      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : []
     };
   },
   toAmino(message: MsgUpdateAutoTx): MsgUpdateAutoTxAmino {
@@ -1236,7 +1235,7 @@ export const MsgUpdateAutoTx = {
       obj.fee_funds = [];
     }
     if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e);
+      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
     } else {
       obj.depends_on_tx_ids = [];
     }
@@ -1262,11 +1261,11 @@ function createBaseMsgUpdateAutoTxResponse(): MsgUpdateAutoTxResponse {
   return {};
 }
 export const MsgUpdateAutoTxResponse = {
-  encode(_: MsgUpdateAutoTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgUpdateAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAutoTxResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAutoTxResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateAutoTxResponse();
     while (reader.pos < end) {
@@ -1279,7 +1278,7 @@ export const MsgUpdateAutoTxResponse = {
     }
     return message;
   },
-  fromPartial(_: DeepPartial<MsgUpdateAutoTxResponse>): MsgUpdateAutoTxResponse {
+  fromPartial(_: Partial<MsgUpdateAutoTxResponse>): MsgUpdateAutoTxResponse {
     const message = createBaseMsgUpdateAutoTxResponse();
     return message;
   },
