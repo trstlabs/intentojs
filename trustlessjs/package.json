@@ -1,6 +1,6 @@
 {
   "name": "trustlessjs",
-  "version": "0.7.2-alpha.5",
+  "version": "0.7.2-alpha.6",
   "description": "package to interact with TrustlessHub",
   "author": "danieljdd <info@trstlabs.xyz>",
   "homepage": "https://github.com/trstlabs/trustlessjs#readme",
@@ -56,9 +56,9 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@cosmjs/amino": "0.29.5",
-    "@cosmjs/proto-signing": "0.29.5",
-    "@cosmjs/stargate": "0.29.5",
-    "@cosmjs/tendermint-rpc": "0.29.5"
+    "@cosmjs/amino": "0.31.0",
+    "@cosmjs/proto-signing": "0.31.0",
+    "@cosmjs/stargate": "0.31.0",
+    "@cosmjs/tendermint-rpc": "0.31.0"
   }
 }
