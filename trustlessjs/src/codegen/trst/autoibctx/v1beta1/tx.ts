@@ -1,10 +1,8 @@
-import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-/**
- * MsgRegisterAccount registers an interchain account for the given owner over
- * the specified connection pair
- */
+/** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
 export interface MsgRegisterAccount {
   owner: string;
   connectionId: string;
@@ -14,10 +12,7 @@ export interface MsgRegisterAccountProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccount";
   value: Uint8Array;
 }
-/**
- * MsgRegisterAccount registers an interchain account for the given owner over
- * the specified connection pair
- */
+/** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
 export interface MsgRegisterAccountAmino {
   owner: string;
   connection_id: string;
@@ -27,10 +22,7 @@ export interface MsgRegisterAccountAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgRegisterAccount";
   value: MsgRegisterAccountAmino;
 }
-/**
- * MsgRegisterAccount registers an interchain account for the given owner over
- * the specified connection pair
- */
+/** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
 export interface MsgRegisterAccountSDKType {
   owner: string;
   connection_id: string;
@@ -50,10 +42,7 @@ export interface MsgRegisterAccountResponseAminoMsg {
 }
 /** MsgRegisterAccountResponse is the response type for Msg/RegisterAccount */
 export interface MsgRegisterAccountResponseSDKType {}
-/**
- * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
- * locally or using an interchain account
- */
+/** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitTx {
   owner: string;
   connectionId: string;
@@ -63,10 +52,7 @@ export interface MsgSubmitTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitTx";
   value: Uint8Array;
 }
-/**
- * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
- * locally or using an interchain account
- */
+/** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitTxAmino {
   owner: string;
   connection_id: string;
@@ -76,10 +62,7 @@ export interface MsgSubmitTxAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgSubmitTx";
   value: MsgSubmitTxAmino;
 }
-/**
- * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
- * locally or using an interchain account
- */
+/** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitTxSDKType {
   owner: string;
   connection_id: string;
@@ -99,43 +82,31 @@ export interface MsgSubmitTxResponseAminoMsg {
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitTxResponseSDKType {}
-/**
- * MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg
- * to be executed locally or using an interchain account
- */
+/** MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitAutoTx {
   owner: string;
   connectionId: string;
   label: string;
-  msgs: Any[];
+  msgs: (Any)[] | Any[];
   /** duration defines the time that the code should run for */
   duration: string;
-  /**
-   * start_at when set as a unix time after block inclusion, creates a custom
-   * start time for execution
-   */
+  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  dependsOnTxIds: bigint[];
+  /** optional parameters for creating interdependent execution */
+  configuration: ExecutionConfiguration;
 }
 export interface MsgSubmitAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitAutoTx";
   value: Uint8Array;
 }
-/**
- * MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg
- * to be executed locally or using an interchain account
- */
+export type MsgSubmitAutoTxEncoded = Omit<MsgSubmitAutoTx, "msgs"> & {
+  msgs: (AnyProtoMsg)[];
+};
+/** MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitAutoTxAmino {
   owner: string;
   connection_id: string;
@@ -143,42 +114,30 @@ export interface MsgSubmitAutoTxAmino {
   msgs: AnyAmino[];
   /** duration defines the time that the code should run for */
   duration: string;
-  /**
-   * start_at when set as a unix time after block inclusion, creates a custom
-   * start time for execution
-   */
+  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
   start_at: string;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   fee_funds: CoinAmino[];
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  depends_on_tx_ids: string[];
+  /** optional parameters for creating interdependent execution */
+  configuration?: ExecutionConfigurationAmino;
 }
 export interface MsgSubmitAutoTxAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgSubmitAutoTx";
   value: MsgSubmitAutoTxAmino;
 }
-/**
- * MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg
- * to be executed locally or using an interchain account
- */
+/** MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitAutoTxSDKType {
   owner: string;
   connection_id: string;
   label: string;
-  msgs: AnySDKType[];
+  msgs: (AnySDKType)[];
   duration: string;
   start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  depends_on_tx_ids: bigint[];
+  configuration: ExecutionConfigurationSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitAutoTxResponse {}
@@ -194,46 +153,32 @@ export interface MsgSubmitAutoTxResponseAminoMsg {
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitAutoTxResponseSDKType {}
-/**
- * MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and
- * schedules an arbitrary transaction msg to be executed by this interchain
- * account
- */
+/** MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
 export interface MsgRegisterAccountAndSubmitAutoTx {
   owner: string;
   connectionId: string;
   label: string;
-  msgs: Any[];
+  msgs: (Any)[] | Any[];
   /** duration defines the time that the code should run for */
   duration: string;
-  /**
-   * start_at when set as a unix time after block inclusion, creates a custom
-   * start time for execution
-   */
+  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  dependsOnTxIds: bigint[];
+  /** optional array of dependent txs that should be executed before execution is allowed */
+  configuration: ExecutionConfiguration;
   version: string;
 }
 export interface MsgRegisterAccountAndSubmitAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTx";
   value: Uint8Array;
 }
-/**
- * MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and
- * schedules an arbitrary transaction msg to be executed by this interchain
- * account
- */
+export type MsgRegisterAccountAndSubmitAutoTxEncoded = Omit<MsgRegisterAccountAndSubmitAutoTx, "msgs"> & {
+  msgs: (AnyProtoMsg)[];
+};
+/** MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
 export interface MsgRegisterAccountAndSubmitAutoTxAmino {
   owner: string;
   connection_id: string;
@@ -241,107 +186,72 @@ export interface MsgRegisterAccountAndSubmitAutoTxAmino {
   msgs: AnyAmino[];
   /** duration defines the time that the code should run for */
   duration: string;
-  /**
-   * start_at when set as a unix time after block inclusion, creates a custom
-   * start time for execution
-   */
+  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
   start_at: string;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   fee_funds: CoinAmino[];
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  depends_on_tx_ids: string[];
+  /** optional array of dependent txs that should be executed before execution is allowed */
+  configuration?: ExecutionConfigurationAmino;
   version: string;
 }
 export interface MsgRegisterAccountAndSubmitAutoTxAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTx";
   value: MsgRegisterAccountAndSubmitAutoTxAmino;
 }
-/**
- * MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and
- * schedules an arbitrary transaction msg to be executed by this interchain
- * account
- */
+/** MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
 export interface MsgRegisterAccountAndSubmitAutoTxSDKType {
   owner: string;
   connection_id: string;
   label: string;
-  msgs: AnySDKType[];
+  msgs: (AnySDKType)[];
   duration: string;
   start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  depends_on_tx_ids: bigint[];
+  configuration: ExecutionConfigurationSDKType;
   version: string;
 }
-/**
- * MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response
- * type
- */
+/** MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response type */
 export interface MsgRegisterAccountAndSubmitAutoTxResponse {}
 export interface MsgRegisterAccountAndSubmitAutoTxResponseProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTxResponse";
   value: Uint8Array;
 }
-/**
- * MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response
- * type
- */
+/** MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response type */
 export interface MsgRegisterAccountAndSubmitAutoTxResponseAmino {}
 export interface MsgRegisterAccountAndSubmitAutoTxResponseAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTxResponse";
   value: MsgRegisterAccountAndSubmitAutoTxResponseAmino;
 }
-/**
- * MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response
- * type
- */
+/** MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response type */
 export interface MsgRegisterAccountAndSubmitAutoTxResponseSDKType {}
-/**
- * MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally
- * or using an interchain account
- */
+/** MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgUpdateAutoTx {
   owner: string;
   txId: bigint;
   connectionId: string;
   label: string;
-  msgs: Any[];
+  msgs: (Any)[] | Any[];
   /** end_time when set defines the time that the code should run for */
   endTime: bigint;
-  /**
-   * start_at when set as a unix time after block inclusion, creates a custom
-   * start time for execution
-   */
+  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  dependsOnTxIds: bigint[];
+  configuration: ExecutionConfiguration;
 }
 export interface MsgUpdateAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgUpdateAutoTx";
   value: Uint8Array;
 }
-/**
- * MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally
- * or using an interchain account
- */
+export type MsgUpdateAutoTxEncoded = Omit<MsgUpdateAutoTx, "msgs"> & {
+  msgs: (AnyProtoMsg)[];
+};
+/** MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgUpdateAutoTxAmino {
   owner: string;
   tx_id: string;
@@ -350,43 +260,30 @@ export interface MsgUpdateAutoTxAmino {
   msgs: AnyAmino[];
   /** end_time when set defines the time that the code should run for */
   end_time: string;
-  /**
-   * start_at when set as a unix time after block inclusion, creates a custom
-   * start time for execution
-   */
+  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
   start_at: string;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   fee_funds: CoinAmino[];
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  depends_on_tx_ids: string[];
+  configuration?: ExecutionConfigurationAmino;
 }
 export interface MsgUpdateAutoTxAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgUpdateAutoTx";
   value: MsgUpdateAutoTxAmino;
 }
-/**
- * MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally
- * or using an interchain account
- */
+/** MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgUpdateAutoTxSDKType {
   owner: string;
   tx_id: bigint;
   connection_id: string;
   label: string;
-  msgs: AnySDKType[];
+  msgs: (AnySDKType)[];
   end_time: bigint;
   start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  depends_on_tx_ids: bigint[];
+  configuration: ExecutionConfigurationSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
 export interface MsgUpdateAutoTxResponse {}
@@ -668,7 +565,7 @@ function createBaseMsgSubmitAutoTx(): MsgSubmitAutoTx {
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    dependsOnTxIds: []
+    configuration: ExecutionConfiguration.fromPartial({})
   };
 }
 export const MsgSubmitAutoTx = {
@@ -683,7 +580,7 @@ export const MsgSubmitAutoTx = {
       writer.uint32(26).string(message.label);
     }
     for (const v of message.msgs) {
-      Any.encode(v!, writer.uint32(34).fork()).ldelim();
+      Any.encode((v! as Any), writer.uint32(34).fork()).ldelim();
     }
     if (message.duration !== "") {
       writer.uint32(42).string(message.duration);
@@ -697,11 +594,9 @@ export const MsgSubmitAutoTx = {
     for (const v of message.feeFunds) {
       Coin.encode(v!, writer.uint32(66).fork()).ldelim();
     }
-    writer.uint32(74).fork();
-    for (const v of message.dependsOnTxIds) {
-      writer.uint64(v);
+    if (message.configuration !== undefined) {
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(74).fork()).ldelim();
     }
-    writer.ldelim();
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitAutoTx {
@@ -721,7 +616,7 @@ export const MsgSubmitAutoTx = {
           message.label = reader.string();
           break;
         case 4:
-          message.msgs.push(Any.decode(reader, reader.uint32()));
+          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
           break;
         case 5:
           message.duration = reader.string();
@@ -736,14 +631,7 @@ export const MsgSubmitAutoTx = {
           message.feeFunds.push(Coin.decode(reader, reader.uint32()));
           break;
         case 9:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.dependsOnTxIds.push(reader.uint64());
-            }
-          } else {
-            message.dependsOnTxIds.push(reader.uint64());
-          }
+          message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -762,7 +650,7 @@ export const MsgSubmitAutoTx = {
     message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
+    message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     return message;
   },
   fromAmino(object: MsgSubmitAutoTxAmino): MsgSubmitAutoTx {
@@ -770,12 +658,12 @@ export const MsgSubmitAutoTx = {
       owner: object.owner,
       connectionId: object.connection_id,
       label: object.label,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
       duration: object.duration,
       startAt: BigInt(object.start_at),
       interval: object.interval,
       feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : []
+      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined
     };
   },
   toAmino(message: MsgSubmitAutoTx): MsgSubmitAutoTxAmino {
@@ -784,7 +672,7 @@ export const MsgSubmitAutoTx = {
     obj.connection_id = message.connectionId;
     obj.label = message.label;
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Any.toAmino(e) : undefined);
+      obj.msgs = message.msgs.map(e => e ? Sdk_Msg_ToAmino((e as Any)) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -796,11 +684,7 @@ export const MsgSubmitAutoTx = {
     } else {
       obj.fee_funds = [];
     }
-    if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
-    } else {
-      obj.depends_on_tx_ids = [];
-    }
+    obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitAutoTxAminoMsg): MsgSubmitAutoTx {
@@ -877,7 +761,7 @@ function createBaseMsgRegisterAccountAndSubmitAutoTx(): MsgRegisterAccountAndSub
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    dependsOnTxIds: [],
+    configuration: ExecutionConfiguration.fromPartial({}),
     version: ""
   };
 }
@@ -893,7 +777,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
       writer.uint32(26).string(message.label);
     }
     for (const v of message.msgs) {
-      Any.encode(v!, writer.uint32(34).fork()).ldelim();
+      Any.encode((v! as Any), writer.uint32(34).fork()).ldelim();
     }
     if (message.duration !== "") {
       writer.uint32(42).string(message.duration);
@@ -907,11 +791,9 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     for (const v of message.feeFunds) {
       Coin.encode(v!, writer.uint32(66).fork()).ldelim();
     }
-    writer.uint32(74).fork();
-    for (const v of message.dependsOnTxIds) {
-      writer.uint64(v);
+    if (message.configuration !== undefined) {
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(74).fork()).ldelim();
     }
-    writer.ldelim();
     if (message.version !== "") {
       writer.uint32(82).string(message.version);
     }
@@ -934,7 +816,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
           message.label = reader.string();
           break;
         case 4:
-          message.msgs.push(Any.decode(reader, reader.uint32()));
+          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
           break;
         case 5:
           message.duration = reader.string();
@@ -949,14 +831,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
           message.feeFunds.push(Coin.decode(reader, reader.uint32()));
           break;
         case 9:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.dependsOnTxIds.push(reader.uint64());
-            }
-          } else {
-            message.dependsOnTxIds.push(reader.uint64());
-          }
+          message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
         case 10:
           message.version = reader.string();
@@ -978,7 +853,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
+    message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.version = object.version ?? "";
     return message;
   },
@@ -987,12 +862,12 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
       owner: object.owner,
       connectionId: object.connection_id,
       label: object.label,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
       duration: object.duration,
       startAt: BigInt(object.start_at),
       interval: object.interval,
       feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : [],
+      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined,
       version: object.version
     };
   },
@@ -1002,7 +877,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     obj.connection_id = message.connectionId;
     obj.label = message.label;
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Any.toAmino(e) : undefined);
+      obj.msgs = message.msgs.map(e => e ? Sdk_Msg_ToAmino((e as Any)) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -1014,11 +889,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     } else {
       obj.fee_funds = [];
     }
-    if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
-    } else {
-      obj.depends_on_tx_ids = [];
-    }
+    obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.version = message.version;
     return obj;
   },
@@ -1097,7 +968,7 @@ function createBaseMsgUpdateAutoTx(): MsgUpdateAutoTx {
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    dependsOnTxIds: []
+    configuration: ExecutionConfiguration.fromPartial({})
   };
 }
 export const MsgUpdateAutoTx = {
@@ -1115,7 +986,7 @@ export const MsgUpdateAutoTx = {
       writer.uint32(34).string(message.label);
     }
     for (const v of message.msgs) {
-      Any.encode(v!, writer.uint32(42).fork()).ldelim();
+      Any.encode((v! as Any), writer.uint32(42).fork()).ldelim();
     }
     if (message.endTime !== BigInt(0)) {
       writer.uint32(48).uint64(message.endTime);
@@ -1129,11 +1000,9 @@ export const MsgUpdateAutoTx = {
     for (const v of message.feeFunds) {
       Coin.encode(v!, writer.uint32(74).fork()).ldelim();
     }
-    writer.uint32(82).fork();
-    for (const v of message.dependsOnTxIds) {
-      writer.uint64(v);
+    if (message.configuration !== undefined) {
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(82).fork()).ldelim();
     }
-    writer.ldelim();
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAutoTx {
@@ -1156,7 +1025,7 @@ export const MsgUpdateAutoTx = {
           message.label = reader.string();
           break;
         case 5:
-          message.msgs.push(Any.decode(reader, reader.uint32()));
+          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
           break;
         case 6:
           message.endTime = reader.uint64();
@@ -1171,14 +1040,7 @@ export const MsgUpdateAutoTx = {
           message.feeFunds.push(Coin.decode(reader, reader.uint32()));
           break;
         case 10:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.dependsOnTxIds.push(reader.uint64());
-            }
-          } else {
-            message.dependsOnTxIds.push(reader.uint64());
-          }
+          message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1198,7 +1060,7 @@ export const MsgUpdateAutoTx = {
     message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
+    message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateAutoTxAmino): MsgUpdateAutoTx {
@@ -1207,12 +1069,12 @@ export const MsgUpdateAutoTx = {
       txId: BigInt(object.tx_id),
       connectionId: object.connection_id,
       label: object.label,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromAmino(e)) : [],
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
       endTime: BigInt(object.end_time),
       startAt: BigInt(object.start_at),
       interval: object.interval,
       feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : []
+      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined
     };
   },
   toAmino(message: MsgUpdateAutoTx): MsgUpdateAutoTxAmino {
@@ -1222,7 +1084,7 @@ export const MsgUpdateAutoTx = {
     obj.connection_id = message.connectionId;
     obj.label = message.label;
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Any.toAmino(e) : undefined);
+      obj.msgs = message.msgs.map(e => e ? Sdk_Msg_ToAmino((e as Any)) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -1234,11 +1096,7 @@ export const MsgUpdateAutoTx = {
     } else {
       obj.fee_funds = [];
     }
-    if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
-    } else {
-      obj.depends_on_tx_ids = [];
-    }
+    obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateAutoTxAminoMsg): MsgUpdateAutoTx {
@@ -1304,4 +1162,18 @@ export const MsgUpdateAutoTxResponse = {
       value: MsgUpdateAutoTxResponse.encode(message).finish()
     };
   }
+};
+export const Sdk_Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  const data = Any.decode(reader, reader.uint32());
+  switch (data.typeUrl) {
+    default:
+      return data;
+  }
+};
+export const Sdk_Msg_FromAmino = (content: AnyAmino) => {
+  return Any.fromAmino(content);
+};
+export const Sdk_Msg_ToAmino = (content: Any) => {
+  return Any.toAmino(content);
 };

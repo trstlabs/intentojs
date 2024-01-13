@@ -4,10 +4,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
-/**
- * AutoTxInfo stores the info for the auto executing interchain accounts
- * transaction
- */
+/** AutoTxInfo stores the info for the auto executing interchain accounts transaction */
 export interface AutoTxInfo {
   txId: bigint;
   owner: string;
@@ -21,12 +18,8 @@ export interface AutoTxInfo {
   autoTxHistory: AutoTxHistoryEntry[];
   portId: string;
   connectionId: string;
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  dependsOnTxIds: bigint[];
   updateHistory: Date[];
+  configuration: ExecutionConfiguration;
 }
 export interface AutoTxInfoProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxInfo";
@@ -35,10 +28,7 @@ export interface AutoTxInfoProtoMsg {
 export type AutoTxInfoEncoded = Omit<AutoTxInfo, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/**
- * AutoTxInfo stores the info for the auto executing interchain accounts
- * transaction
- */
+/** AutoTxInfo stores the info for the auto executing interchain accounts transaction */
 export interface AutoTxInfoAmino {
   tx_id: string;
   owner: string;
@@ -52,21 +42,14 @@ export interface AutoTxInfoAmino {
   auto_tx_history: AutoTxHistoryEntryAmino[];
   port_id: string;
   connection_id: string;
-  /**
-   * optional array of dependent txs that should be executed before execution is
-   * allowed
-   */
-  depends_on_tx_ids: string[];
   update_history: Date[];
+  configuration?: ExecutionConfigurationAmino;
 }
 export interface AutoTxInfoAminoMsg {
   type: "/trst.autoibctx.v1beta1.AutoTxInfo";
   value: AutoTxInfoAmino;
 }
-/**
- * AutoTxInfo stores the info for the auto executing interchain accounts
- * transaction
- */
+/** AutoTxInfo stores the info for the auto executing interchain accounts transaction */
 export interface AutoTxInfoSDKType {
   tx_id: bigint;
   owner: string;
@@ -80,17 +63,96 @@ export interface AutoTxInfoSDKType {
   auto_tx_history: AutoTxHistoryEntrySDKType[];
   port_id: string;
   connection_id: string;
-  depends_on_tx_ids: bigint[];
   update_history: Date[];
+  configuration: ExecutionConfigurationSDKType;
+}
+/** ExecutionConfiguration provides the execution-related configuration of the AutoTx */
+export interface ExecutionConfiguration {
+  /** if true, the AutoTx outputs are saved and can be used in condition-based logic */
+  saveMsgResponses: boolean;
+  /** if true, the AutoTx is not updatable */
+  updatingDisabled: boolean;
+  /** If true, will execute until we get a successful AutoTx, if false/unset will always execute */
+  stopOnSuccess: boolean;
+  /** If true, will execute until successful AutoTx, if false/unset will always execute */
+  stopOnFailure: boolean;
+}
+export interface ExecutionConfigurationProtoMsg {
+  typeUrl: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
+  value: Uint8Array;
+}
+/** ExecutionConfiguration provides the execution-related configuration of the AutoTx */
+export interface ExecutionConfigurationAmino {
+  /** if true, the AutoTx outputs are saved and can be used in condition-based logic */
+  save_msg_responses: boolean;
+  /** if true, the AutoTx is not updatable */
+  updating_disabled: boolean;
+  /** If true, will execute until we get a successful AutoTx, if false/unset will always execute */
+  stop_on_success: boolean;
+  /** If true, will execute until successful AutoTx, if false/unset will always execute */
+  stop_on_failure: boolean;
+}
+export interface ExecutionConfigurationAminoMsg {
+  type: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
+  value: ExecutionConfigurationAmino;
+}
+/** ExecutionConfiguration provides the execution-related configuration of the AutoTx */
+export interface ExecutionConfigurationSDKType {
+  save_msg_responses: boolean;
+  updating_disabled: boolean;
+  stop_on_success: boolean;
+  stop_on_failure: boolean;
+}
+/** ExecutionConditions provides execution conditions for the AutoTx */
+export interface ExecutionConditions {
+  /** optional array of dependent AutoTxs that when executing succesfully, stops further execution */
+  stopOnSuccessOf: bigint[];
+  /** optional array of dependent AutoTxs that when not executing succesfully, stops further execution */
+  stopOnFailureOf: bigint[];
+  /** optional array of dependent AutoTxs that should be executed succesfully in their latest call before upcomming execution is allowed */
+  skipOnFailureOf: bigint[];
+  /** optional array of dependent autotxs that should fail their latest call before upcomming execution is allowed */
+  skipOnSuccessOf: bigint[];
+}
+export interface ExecutionConditionsProtoMsg {
+  typeUrl: "/trst.autoibctx.v1beta1.ExecutionConditions";
+  value: Uint8Array;
+}
+/** ExecutionConditions provides execution conditions for the AutoTx */
+export interface ExecutionConditionsAmino {
+  /** optional array of dependent AutoTxs that when executing succesfully, stops further execution */
+  stop_on_success_of: string[];
+  /** optional array of dependent AutoTxs that when not executing succesfully, stops further execution */
+  stop_on_failure_of: string[];
+  /** optional array of dependent AutoTxs that should be executed succesfully in their latest call before upcomming execution is allowed */
+  skip_on_failure_of: string[];
+  /** optional array of dependent autotxs that should fail their latest call before upcomming execution is allowed */
+  skip_on_success_of: string[];
+}
+export interface ExecutionConditionsAminoMsg {
+  type: "/trst.autoibctx.v1beta1.ExecutionConditions";
+  value: ExecutionConditionsAmino;
+}
+/** ExecutionConditions provides execution conditions for the AutoTx */
+export interface ExecutionConditionsSDKType {
+  stop_on_success_of: bigint[];
+  stop_on_failure_of: bigint[];
+  skip_on_failure_of: bigint[];
+  skip_on_success_of: bigint[];
 }
 /** AutoTxHistoryEntry provides a the history of AutoTx interchain tx call */
 export interface AutoTxHistoryEntry {
   scheduledExecTime: Date;
   actualExecTime: Date;
   execFee: Coin;
+  /** whether all messages are executed, independent of succesfull result */
   executed: boolean;
+  /** timed out from execution over IBC */
   timedOut: boolean;
-  error: string;
+  /** errors from execution, if executed and no error the execution was succesfull */
+  errors: string[];
+  /** will be empty when save_msg_responses is false */
+  msgResponses: Any[];
 }
 export interface AutoTxHistoryEntryProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxHistoryEntry";
@@ -101,9 +163,14 @@ export interface AutoTxHistoryEntryAmino {
   scheduled_exec_time?: Date;
   actual_exec_time?: Date;
   exec_fee?: CoinAmino;
+  /** whether all messages are executed, independent of succesfull result */
   executed: boolean;
+  /** timed out from execution over IBC */
   timed_out: boolean;
-  error: string;
+  /** errors from execution, if executed and no error the execution was succesfull */
+  errors: string[];
+  /** will be empty when save_msg_responses is false */
+  msg_responses: AnyAmino[];
 }
 export interface AutoTxHistoryEntryAminoMsg {
   type: "/trst.autoibctx.v1beta1.AutoTxHistoryEntry";
@@ -116,7 +183,8 @@ export interface AutoTxHistoryEntrySDKType {
   exec_fee: CoinSDKType;
   executed: boolean;
   timed_out: boolean;
-  error: string;
+  errors: string[];
+  msg_responses: AnySDKType[];
 }
 /** Params defines the params for activeness of AutoTxs on governance proposals. */
 export interface Params {
@@ -130,10 +198,7 @@ export interface Params {
   MinAutoTxDuration: Duration;
   /** Minimum period for self-executing AutoTx */
   MinAutoTxInterval: Duration;
-  /**
-   * relayer rewards in utrst for each message type 0=SDK,1=Wasm, 2=Osmo.
-   * Rewards are in utrst and topped up in the module account by alloc module.
-   */
+  /** relayer rewards in utrst for each message type 0=SDK,1=Wasm, 2=Osmo. Rewards are in utrst and topped up in the module account by alloc module. */
   relayerRewards: bigint[];
 }
 export interface ParamsProtoMsg {
@@ -152,10 +217,7 @@ export interface ParamsAmino {
   MinAutoTxDuration?: DurationAmino;
   /** Minimum period for self-executing AutoTx */
   MinAutoTxInterval?: DurationAmino;
-  /**
-   * relayer rewards in utrst for each message type 0=SDK,1=Wasm, 2=Osmo.
-   * Rewards are in utrst and topped up in the module account by alloc module.
-   */
+  /** relayer rewards in utrst for each message type 0=SDK,1=Wasm, 2=Osmo. Rewards are in utrst and topped up in the module account by alloc module. */
   relayer_rewards: string[];
 }
 export interface ParamsAminoMsg {
@@ -187,8 +249,8 @@ function createBaseAutoTxInfo(): AutoTxInfo {
     autoTxHistory: [],
     portId: "",
     connectionId: "",
-    dependsOnTxIds: [],
-    updateHistory: []
+    updateHistory: [],
+    configuration: ExecutionConfiguration.fromPartial({})
   };
 }
 export const AutoTxInfo = {
@@ -229,13 +291,11 @@ export const AutoTxInfo = {
     if (message.connectionId !== "") {
       writer.uint32(98).string(message.connectionId);
     }
-    writer.uint32(114).fork();
-    for (const v of message.dependsOnTxIds) {
-      writer.uint64(v);
-    }
-    writer.ldelim();
     for (const v of message.updateHistory) {
-      Timestamp.encode(v!, writer.uint32(122).fork()).ldelim();
+      Timestamp.encode(v!, writer.uint32(106).fork()).ldelim();
+    }
+    if (message.configuration !== undefined) {
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(114).fork()).ldelim();
     }
     return writer;
   },
@@ -282,18 +342,11 @@ export const AutoTxInfo = {
         case 12:
           message.connectionId = reader.string();
           break;
-        case 14:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.dependsOnTxIds.push(reader.uint64());
-            }
-          } else {
-            message.dependsOnTxIds.push(reader.uint64());
-          }
-          break;
-        case 15:
+        case 13:
           message.updateHistory.push(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 14:
+          message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -316,8 +369,8 @@ export const AutoTxInfo = {
     message.autoTxHistory = object.autoTxHistory?.map(e => AutoTxHistoryEntry.fromPartial(e)) || [];
     message.portId = object.portId ?? "";
     message.connectionId = object.connectionId ?? "";
-    message.dependsOnTxIds = object.dependsOnTxIds?.map(e => BigInt(e.toString())) || [];
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
+    message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     return message;
   },
   fromAmino(object: AutoTxInfoAmino): AutoTxInfo {
@@ -334,8 +387,8 @@ export const AutoTxInfo = {
       autoTxHistory: Array.isArray(object?.auto_tx_history) ? object.auto_tx_history.map((e: any) => AutoTxHistoryEntry.fromAmino(e)) : [],
       portId: object.port_id,
       connectionId: object.connection_id,
-      dependsOnTxIds: Array.isArray(object?.depends_on_tx_ids) ? object.depends_on_tx_ids.map((e: any) => BigInt(e)) : [],
-      updateHistory: Array.isArray(object?.update_history) ? object.update_history.map((e: any) => Timestamp.fromAmino(e)) : []
+      updateHistory: Array.isArray(object?.update_history) ? object.update_history.map((e: any) => Timestamp.fromAmino(e)) : [],
+      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined
     };
   },
   toAmino(message: AutoTxInfo): AutoTxInfoAmino {
@@ -360,16 +413,12 @@ export const AutoTxInfo = {
     }
     obj.port_id = message.portId;
     obj.connection_id = message.connectionId;
-    if (message.dependsOnTxIds) {
-      obj.depends_on_tx_ids = message.dependsOnTxIds.map(e => e.toString());
-    } else {
-      obj.depends_on_tx_ids = [];
-    }
     if (message.updateHistory) {
       obj.update_history = message.updateHistory.map(e => e ? Timestamp.toAmino(e) : undefined);
     } else {
       obj.update_history = [];
     }
+    obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     return obj;
   },
   fromAminoMsg(object: AutoTxInfoAminoMsg): AutoTxInfo {
@@ -388,6 +437,238 @@ export const AutoTxInfo = {
     };
   }
 };
+function createBaseExecutionConfiguration(): ExecutionConfiguration {
+  return {
+    saveMsgResponses: false,
+    updatingDisabled: false,
+    stopOnSuccess: false,
+    stopOnFailure: false
+  };
+}
+export const ExecutionConfiguration = {
+  encode(message: ExecutionConfiguration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.saveMsgResponses === true) {
+      writer.uint32(8).bool(message.saveMsgResponses);
+    }
+    if (message.updatingDisabled === true) {
+      writer.uint32(16).bool(message.updatingDisabled);
+    }
+    if (message.stopOnSuccess === true) {
+      writer.uint32(24).bool(message.stopOnSuccess);
+    }
+    if (message.stopOnFailure === true) {
+      writer.uint32(32).bool(message.stopOnFailure);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ExecutionConfiguration {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseExecutionConfiguration();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.saveMsgResponses = reader.bool();
+          break;
+        case 2:
+          message.updatingDisabled = reader.bool();
+          break;
+        case 3:
+          message.stopOnSuccess = reader.bool();
+          break;
+        case 4:
+          message.stopOnFailure = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ExecutionConfiguration>): ExecutionConfiguration {
+    const message = createBaseExecutionConfiguration();
+    message.saveMsgResponses = object.saveMsgResponses ?? false;
+    message.updatingDisabled = object.updatingDisabled ?? false;
+    message.stopOnSuccess = object.stopOnSuccess ?? false;
+    message.stopOnFailure = object.stopOnFailure ?? false;
+    return message;
+  },
+  fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
+    return {
+      saveMsgResponses: object.save_msg_responses,
+      updatingDisabled: object.updating_disabled,
+      stopOnSuccess: object.stop_on_success,
+      stopOnFailure: object.stop_on_failure
+    };
+  },
+  toAmino(message: ExecutionConfiguration): ExecutionConfigurationAmino {
+    const obj: any = {};
+    obj.save_msg_responses = message.saveMsgResponses;
+    obj.updating_disabled = message.updatingDisabled;
+    obj.stop_on_success = message.stopOnSuccess;
+    obj.stop_on_failure = message.stopOnFailure;
+    return obj;
+  },
+  fromAminoMsg(object: ExecutionConfigurationAminoMsg): ExecutionConfiguration {
+    return ExecutionConfiguration.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ExecutionConfigurationProtoMsg): ExecutionConfiguration {
+    return ExecutionConfiguration.decode(message.value);
+  },
+  toProto(message: ExecutionConfiguration): Uint8Array {
+    return ExecutionConfiguration.encode(message).finish();
+  },
+  toProtoMsg(message: ExecutionConfiguration): ExecutionConfigurationProtoMsg {
+    return {
+      typeUrl: "/trst.autoibctx.v1beta1.ExecutionConfiguration",
+      value: ExecutionConfiguration.encode(message).finish()
+    };
+  }
+};
+function createBaseExecutionConditions(): ExecutionConditions {
+  return {
+    stopOnSuccessOf: [],
+    stopOnFailureOf: [],
+    skipOnFailureOf: [],
+    skipOnSuccessOf: []
+  };
+}
+export const ExecutionConditions = {
+  encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    writer.uint32(42).fork();
+    for (const v of message.stopOnSuccessOf) {
+      writer.int64(v);
+    }
+    writer.ldelim();
+    writer.uint32(50).fork();
+    for (const v of message.stopOnFailureOf) {
+      writer.int64(v);
+    }
+    writer.ldelim();
+    writer.uint32(58).fork();
+    for (const v of message.skipOnFailureOf) {
+      writer.int64(v);
+    }
+    writer.ldelim();
+    writer.uint32(66).fork();
+    for (const v of message.skipOnSuccessOf) {
+      writer.int64(v);
+    }
+    writer.ldelim();
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ExecutionConditions {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseExecutionConditions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 5:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.stopOnSuccessOf.push(reader.int64());
+            }
+          } else {
+            message.stopOnSuccessOf.push(reader.int64());
+          }
+          break;
+        case 6:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.stopOnFailureOf.push(reader.int64());
+            }
+          } else {
+            message.stopOnFailureOf.push(reader.int64());
+          }
+          break;
+        case 7:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.skipOnFailureOf.push(reader.int64());
+            }
+          } else {
+            message.skipOnFailureOf.push(reader.int64());
+          }
+          break;
+        case 8:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.skipOnSuccessOf.push(reader.int64());
+            }
+          } else {
+            message.skipOnSuccessOf.push(reader.int64());
+          }
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
+    const message = createBaseExecutionConditions();
+    message.stopOnSuccessOf = object.stopOnSuccessOf?.map(e => BigInt(e.toString())) || [];
+    message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
+    message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
+    message.skipOnSuccessOf = object.skipOnSuccessOf?.map(e => BigInt(e.toString())) || [];
+    return message;
+  },
+  fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
+    return {
+      stopOnSuccessOf: Array.isArray(object?.stop_on_success_of) ? object.stop_on_success_of.map((e: any) => BigInt(e)) : [],
+      stopOnFailureOf: Array.isArray(object?.stop_on_failure_of) ? object.stop_on_failure_of.map((e: any) => BigInt(e)) : [],
+      skipOnFailureOf: Array.isArray(object?.skip_on_failure_of) ? object.skip_on_failure_of.map((e: any) => BigInt(e)) : [],
+      skipOnSuccessOf: Array.isArray(object?.skip_on_success_of) ? object.skip_on_success_of.map((e: any) => BigInt(e)) : []
+    };
+  },
+  toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
+    const obj: any = {};
+    if (message.stopOnSuccessOf) {
+      obj.stop_on_success_of = message.stopOnSuccessOf.map(e => e.toString());
+    } else {
+      obj.stop_on_success_of = [];
+    }
+    if (message.stopOnFailureOf) {
+      obj.stop_on_failure_of = message.stopOnFailureOf.map(e => e.toString());
+    } else {
+      obj.stop_on_failure_of = [];
+    }
+    if (message.skipOnFailureOf) {
+      obj.skip_on_failure_of = message.skipOnFailureOf.map(e => e.toString());
+    } else {
+      obj.skip_on_failure_of = [];
+    }
+    if (message.skipOnSuccessOf) {
+      obj.skip_on_success_of = message.skipOnSuccessOf.map(e => e.toString());
+    } else {
+      obj.skip_on_success_of = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: ExecutionConditionsAminoMsg): ExecutionConditions {
+    return ExecutionConditions.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ExecutionConditionsProtoMsg): ExecutionConditions {
+    return ExecutionConditions.decode(message.value);
+  },
+  toProto(message: ExecutionConditions): Uint8Array {
+    return ExecutionConditions.encode(message).finish();
+  },
+  toProtoMsg(message: ExecutionConditions): ExecutionConditionsProtoMsg {
+    return {
+      typeUrl: "/trst.autoibctx.v1beta1.ExecutionConditions",
+      value: ExecutionConditions.encode(message).finish()
+    };
+  }
+};
 function createBaseAutoTxHistoryEntry(): AutoTxHistoryEntry {
   return {
     scheduledExecTime: new Date(),
@@ -395,7 +676,8 @@ function createBaseAutoTxHistoryEntry(): AutoTxHistoryEntry {
     execFee: Coin.fromPartial({}),
     executed: false,
     timedOut: false,
-    error: ""
+    errors: [],
+    msgResponses: []
   };
 }
 export const AutoTxHistoryEntry = {
@@ -415,8 +697,11 @@ export const AutoTxHistoryEntry = {
     if (message.timedOut === true) {
       writer.uint32(40).bool(message.timedOut);
     }
-    if (message.error !== "") {
-      writer.uint32(50).string(message.error);
+    for (const v of message.errors) {
+      writer.uint32(50).string(v!);
+    }
+    for (const v of message.msgResponses) {
+      Any.encode(v!, writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -443,7 +728,10 @@ export const AutoTxHistoryEntry = {
           message.timedOut = reader.bool();
           break;
         case 6:
-          message.error = reader.string();
+          message.errors.push(reader.string());
+          break;
+        case 7:
+          message.msgResponses.push(Any.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -459,7 +747,8 @@ export const AutoTxHistoryEntry = {
     message.execFee = object.execFee !== undefined && object.execFee !== null ? Coin.fromPartial(object.execFee) : undefined;
     message.executed = object.executed ?? false;
     message.timedOut = object.timedOut ?? false;
-    message.error = object.error ?? "";
+    message.errors = object.errors?.map(e => e) || [];
+    message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: AutoTxHistoryEntryAmino): AutoTxHistoryEntry {
@@ -469,7 +758,8 @@ export const AutoTxHistoryEntry = {
       execFee: object?.exec_fee ? Coin.fromAmino(object.exec_fee) : undefined,
       executed: object.executed,
       timedOut: object.timed_out,
-      error: object.error
+      errors: Array.isArray(object?.errors) ? object.errors.map((e: any) => e) : [],
+      msgResponses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e: any) => Any.fromAmino(e)) : []
     };
   },
   toAmino(message: AutoTxHistoryEntry): AutoTxHistoryEntryAmino {
@@ -479,7 +769,16 @@ export const AutoTxHistoryEntry = {
     obj.exec_fee = message.execFee ? Coin.toAmino(message.execFee) : undefined;
     obj.executed = message.executed;
     obj.timed_out = message.timedOut;
-    obj.error = message.error;
+    if (message.errors) {
+      obj.errors = message.errors.map(e => e);
+    } else {
+      obj.errors = [];
+    }
+    if (message.msgResponses) {
+      obj.msg_responses = message.msgResponses.map(e => e ? Any.toAmino(e) : undefined);
+    } else {
+      obj.msg_responses = [];
+    }
     return obj;
   },
   fromAminoMsg(object: AutoTxHistoryEntryAminoMsg): AutoTxHistoryEntry {
