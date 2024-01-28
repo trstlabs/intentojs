@@ -76,6 +76,8 @@ export interface ExecutionConfiguration {
   stopOnSuccess: boolean;
   /** If true, will execute until successful AutoTx, if false/unset will always execute */
   stopOnFailure: boolean;
+  /** If true, owner account balance is used when trigger account funds run out */
+  fallbackToOwnerBalance: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
@@ -91,6 +93,8 @@ export interface ExecutionConfigurationAmino {
   stop_on_success?: boolean;
   /** If true, will execute until successful AutoTx, if false/unset will always execute */
   stop_on_failure?: boolean;
+  /** If true, owner account balance is used when trigger account funds run out */
+  fallback_to_owner_balance?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
@@ -102,6 +106,7 @@ export interface ExecutionConfigurationSDKType {
   updating_disabled: boolean;
   stop_on_success: boolean;
   stop_on_failure: boolean;
+  fallback_to_owner_balance: boolean;
 }
 /** ExecutionConditions provides execution conditions for the AutoTx */
 export interface ExecutionConditions {
@@ -465,7 +470,8 @@ function createBaseExecutionConfiguration(): ExecutionConfiguration {
     saveMsgResponses: false,
     updatingDisabled: false,
     stopOnSuccess: false,
-    stopOnFailure: false
+    stopOnFailure: false,
+    fallbackToOwnerBalance: false
   };
 }
 export const ExecutionConfiguration = {
@@ -482,6 +488,9 @@ export const ExecutionConfiguration = {
     }
     if (message.stopOnFailure === true) {
       writer.uint32(32).bool(message.stopOnFailure);
+    }
+    if (message.fallbackToOwnerBalance === true) {
+      writer.uint32(40).bool(message.fallbackToOwnerBalance);
     }
     return writer;
   },
@@ -504,6 +513,9 @@ export const ExecutionConfiguration = {
         case 4:
           message.stopOnFailure = reader.bool();
           break;
+        case 5:
+          message.fallbackToOwnerBalance = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -517,6 +529,7 @@ export const ExecutionConfiguration = {
     message.updatingDisabled = object.updatingDisabled ?? false;
     message.stopOnSuccess = object.stopOnSuccess ?? false;
     message.stopOnFailure = object.stopOnFailure ?? false;
+    message.fallbackToOwnerBalance = object.fallbackToOwnerBalance ?? false;
     return message;
   },
   fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
@@ -533,6 +546,9 @@ export const ExecutionConfiguration = {
     if (object.stop_on_failure !== undefined && object.stop_on_failure !== null) {
       message.stopOnFailure = object.stop_on_failure;
     }
+    if (object.fallback_to_owner_balance !== undefined && object.fallback_to_owner_balance !== null) {
+      message.fallbackToOwnerBalance = object.fallback_to_owner_balance;
+    }
     return message;
   },
   toAmino(message: ExecutionConfiguration): ExecutionConfigurationAmino {
@@ -541,6 +557,7 @@ export const ExecutionConfiguration = {
     obj.updating_disabled = message.updatingDisabled;
     obj.stop_on_success = message.stopOnSuccess;
     obj.stop_on_failure = message.stopOnFailure;
+    obj.fallback_to_owner_balance = message.fallbackToOwnerBalance;
     return obj;
   },
   fromAminoMsg(object: ExecutionConfigurationAminoMsg): ExecutionConfiguration {
