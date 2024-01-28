@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
+import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * MsgInstantiateContract create a new smart contract instance for the given
  * code id.
@@ -29,17 +30,17 @@ export interface MsgInstantiateContractProtoMsg {
  */
 export interface MsgInstantiateContractAmino {
   /** Sender is the that actor that signed the messages */
-  sender: string;
+  sender?: string;
   /** Admin is an optional address that can execute migrations */
-  admin: string;
+  admin?: string;
   /** CodeID is the reference to the stored WASM code */
-  code_id: string;
+  code_id?: string;
   /** Label is optional metadata to be stored with a contract instance. */
-  label: string;
+  label?: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
-  msg: Uint8Array;
+  msg?: any;
   /** Funds coins that are transferred to the contract on instantiation */
-  funds: CoinAmino[];
+  funds?: CoinAmino[];
 }
 export interface MsgInstantiateContractAminoMsg {
   type: "wasm/MsgInstantiateContract";
@@ -92,24 +93,24 @@ export interface MsgInstantiateContract2ProtoMsg {
  */
 export interface MsgInstantiateContract2Amino {
   /** Sender is the that actor that signed the messages */
-  sender: string;
+  sender?: string;
   /** Admin is an optional address that can execute migrations */
-  admin: string;
+  admin?: string;
   /** CodeID is the reference to the stored WASM code */
-  code_id: string;
+  code_id?: string;
   /** Label is optional metadata to be stored with a contract instance. */
-  label: string;
+  label?: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
-  msg: Uint8Array;
+  msg?: any;
   /** Funds coins that are transferred to the contract on instantiation */
-  funds: CoinAmino[];
+  funds?: CoinAmino[];
   /** Salt is an arbitrary value provided by the sender. Size can be 1 to 64. */
-  salt: Uint8Array;
+  salt?: string;
   /**
    * FixMsg include the msg value into the hash for the predictable address.
    * Default is false
    */
-  fix_msg: boolean;
+  fix_msg?: boolean;
 }
 export interface MsgInstantiateContract2AminoMsg {
   type: "wasm/MsgInstantiateContract2";
@@ -143,9 +144,9 @@ export interface MsgInstantiateContractResponseProtoMsg {
 /** MsgInstantiateContractResponse return instantiation result data */
 export interface MsgInstantiateContractResponseAmino {
   /** Address is the bech32 address of the new contract instance. */
-  address: string;
+  address?: string;
   /** Data contains bytes to returned from the contract */
-  data: Uint8Array;
+  data?: string;
 }
 export interface MsgInstantiateContractResponseAminoMsg {
   type: "wasm/MsgInstantiateContractResponse";
@@ -170,9 +171,9 @@ export interface MsgInstantiateContract2ResponseProtoMsg {
 /** MsgInstantiateContract2Response return instantiation result data */
 export interface MsgInstantiateContract2ResponseAmino {
   /** Address is the bech32 address of the new contract instance. */
-  address: string;
+  address?: string;
   /** Data contains bytes to returned from the contract */
-  data: Uint8Array;
+  data?: string;
 }
 export interface MsgInstantiateContract2ResponseAminoMsg {
   type: "wasm/MsgInstantiateContract2Response";
@@ -201,13 +202,13 @@ export interface MsgExecuteContractProtoMsg {
 /** MsgExecuteContract submits the given message data to a smart contract */
 export interface MsgExecuteContractAmino {
   /** Sender is the that actor that signed the messages */
-  sender: string;
+  sender?: string;
   /** Contract is the address of the smart contract */
-  contract: string;
+  contract?: string;
   /** Msg json encoded message to be passed to the contract */
-  msg: Uint8Array;
+  msg?: any;
   /** Funds coins that are transferred to the contract on execution */
-  funds: CoinAmino[];
+  funds?: CoinAmino[];
 }
 export interface MsgExecuteContractAminoMsg {
   type: "wasm/MsgExecuteContract";
@@ -232,7 +233,7 @@ export interface MsgExecuteContractResponseProtoMsg {
 /** MsgExecuteContractResponse returns execution result data. */
 export interface MsgExecuteContractResponseAmino {
   /** Data contains bytes to returned from the contract */
-  data: Uint8Array;
+  data?: string;
 }
 export interface MsgExecuteContractResponseAminoMsg {
   type: "wasm/MsgExecuteContractResponse";
@@ -253,6 +254,7 @@ function createBaseMsgInstantiateContract(): MsgInstantiateContract {
   };
 }
 export const MsgInstantiateContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract",
   encode(message: MsgInstantiateContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -317,14 +319,24 @@ export const MsgInstantiateContract = {
     return message;
   },
   fromAmino(object: MsgInstantiateContractAmino): MsgInstantiateContract {
-    return {
-      sender: object.sender,
-      admin: object.admin,
-      codeId: BigInt(object.code_id),
-      label: object.label,
-      msg: toUtf8(JSON.stringify(object.msg)),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseMsgInstantiateContract();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.code_id !== undefined && object.code_id !== null) {
+      message.codeId = BigInt(object.code_id);
+    }
+    if (object.label !== undefined && object.label !== null) {
+      message.label = object.label;
+    }
+    if (object.msg !== undefined && object.msg !== null) {
+      message.msg = toUtf8(JSON.stringify(object.msg));
+    }
+    message.funds = object.funds?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgInstantiateContract): MsgInstantiateContractAmino {
     const obj: any = {};
@@ -375,6 +387,7 @@ function createBaseMsgInstantiateContract2(): MsgInstantiateContract2 {
   };
 }
 export const MsgInstantiateContract2 = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2",
   encode(message: MsgInstantiateContract2, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -453,16 +466,30 @@ export const MsgInstantiateContract2 = {
     return message;
   },
   fromAmino(object: MsgInstantiateContract2Amino): MsgInstantiateContract2 {
-    return {
-      sender: object.sender,
-      admin: object.admin,
-      codeId: BigInt(object.code_id),
-      label: object.label,
-      msg: toUtf8(JSON.stringify(object.msg)),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromAmino(e)) : [],
-      salt: object.salt,
-      fixMsg: object.fix_msg
-    };
+    const message = createBaseMsgInstantiateContract2();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.code_id !== undefined && object.code_id !== null) {
+      message.codeId = BigInt(object.code_id);
+    }
+    if (object.label !== undefined && object.label !== null) {
+      message.label = object.label;
+    }
+    if (object.msg !== undefined && object.msg !== null) {
+      message.msg = toUtf8(JSON.stringify(object.msg));
+    }
+    message.funds = object.funds?.map(e => Coin.fromAmino(e)) || [];
+    if (object.salt !== undefined && object.salt !== null) {
+      message.salt = bytesFromBase64(object.salt);
+    }
+    if (object.fix_msg !== undefined && object.fix_msg !== null) {
+      message.fixMsg = object.fix_msg;
+    }
+    return message;
   },
   toAmino(message: MsgInstantiateContract2): MsgInstantiateContract2Amino {
     const obj: any = {};
@@ -476,7 +503,7 @@ export const MsgInstantiateContract2 = {
     } else {
       obj.funds = [];
     }
-    obj.salt = message.salt;
+    obj.salt = message.salt ? base64FromBytes(message.salt) : undefined;
     obj.fix_msg = message.fixMsg;
     return obj;
   },
@@ -509,6 +536,7 @@ function createBaseMsgInstantiateContractResponse(): MsgInstantiateContractRespo
   };
 }
 export const MsgInstantiateContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContractResponse",
   encode(message: MsgInstantiateContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -545,15 +573,19 @@ export const MsgInstantiateContractResponse = {
     return message;
   },
   fromAmino(object: MsgInstantiateContractResponseAmino): MsgInstantiateContractResponse {
-    return {
-      address: object.address,
-      data: object.data
-    };
+    const message = createBaseMsgInstantiateContractResponse();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.data !== undefined && object.data !== null) {
+      message.data = bytesFromBase64(object.data);
+    }
+    return message;
   },
   toAmino(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseAmino {
     const obj: any = {};
     obj.address = message.address;
-    obj.data = message.data;
+    obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgInstantiateContractResponseAminoMsg): MsgInstantiateContractResponse {
@@ -585,6 +617,7 @@ function createBaseMsgInstantiateContract2Response(): MsgInstantiateContract2Res
   };
 }
 export const MsgInstantiateContract2Response = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2Response",
   encode(message: MsgInstantiateContract2Response, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -621,15 +654,19 @@ export const MsgInstantiateContract2Response = {
     return message;
   },
   fromAmino(object: MsgInstantiateContract2ResponseAmino): MsgInstantiateContract2Response {
-    return {
-      address: object.address,
-      data: object.data
-    };
+    const message = createBaseMsgInstantiateContract2Response();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.data !== undefined && object.data !== null) {
+      message.data = bytesFromBase64(object.data);
+    }
+    return message;
   },
   toAmino(message: MsgInstantiateContract2Response): MsgInstantiateContract2ResponseAmino {
     const obj: any = {};
     obj.address = message.address;
-    obj.data = message.data;
+    obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgInstantiateContract2ResponseAminoMsg): MsgInstantiateContract2Response {
@@ -663,6 +700,7 @@ function createBaseMsgExecuteContract(): MsgExecuteContract {
   };
 }
 export const MsgExecuteContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
   encode(message: MsgExecuteContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -713,12 +751,18 @@ export const MsgExecuteContract = {
     return message;
   },
   fromAmino(object: MsgExecuteContractAmino): MsgExecuteContract {
-    return {
-      sender: object.sender,
-      contract: object.contract,
-      msg: toUtf8(JSON.stringify(object.msg)),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseMsgExecuteContract();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.contract !== undefined && object.contract !== null) {
+      message.contract = object.contract;
+    }
+    if (object.msg !== undefined && object.msg !== null) {
+      message.msg = toUtf8(JSON.stringify(object.msg));
+    }
+    message.funds = object.funds?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgExecuteContract): MsgExecuteContractAmino {
     const obj: any = {};
@@ -760,6 +804,7 @@ function createBaseMsgExecuteContractResponse(): MsgExecuteContractResponse {
   };
 }
 export const MsgExecuteContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContractResponse",
   encode(message: MsgExecuteContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -789,13 +834,15 @@ export const MsgExecuteContractResponse = {
     return message;
   },
   fromAmino(object: MsgExecuteContractResponseAmino): MsgExecuteContractResponse {
-    return {
-      data: object.data
-    };
+    const message = createBaseMsgExecuteContractResponse();
+    if (object.data !== undefined && object.data !== null) {
+      message.data = bytesFromBase64(object.data);
+    }
+    return message;
   },
   toAmino(message: MsgExecuteContractResponse): MsgExecuteContractResponseAmino {
     const obj: any = {};
-    obj.data = message.data;
+    obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgExecuteContractResponseAminoMsg): MsgExecuteContractResponse {

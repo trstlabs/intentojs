@@ -9,8 +9,8 @@ export interface AutoTxIbcUsageProtoMsg {
   value: Uint8Array;
 }
 export interface AutoTxIbcUsageAmino {
-  address: string;
-  txs: AutoIbcTxAckAmino[];
+  address?: string;
+  txs?: AutoIbcTxAckAmino[];
 }
 export interface AutoTxIbcUsageAminoMsg {
   type: "/trst.autoibctx.v1beta1.AutoTxIbcUsage";
@@ -30,7 +30,7 @@ export interface AutoIbcTxAckProtoMsg {
 }
 export interface AutoIbcTxAckAmino {
   coin?: CoinAmino;
-  connection_id: string;
+  connection_id?: string;
 }
 export interface AutoIbcTxAckAminoMsg {
   type: "/trst.autoibctx.v1beta1.AutoIbcTxAck";
@@ -47,6 +47,7 @@ function createBaseAutoTxIbcUsage(): AutoTxIbcUsage {
   };
 }
 export const AutoTxIbcUsage = {
+  typeUrl: "/trst.autoibctx.v1beta1.AutoTxIbcUsage",
   encode(message: AutoTxIbcUsage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -83,10 +84,12 @@ export const AutoTxIbcUsage = {
     return message;
   },
   fromAmino(object: AutoTxIbcUsageAmino): AutoTxIbcUsage {
-    return {
-      address: object.address,
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => AutoIbcTxAck.fromAmino(e)) : []
-    };
+    const message = createBaseAutoTxIbcUsage();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    message.txs = object.txs?.map(e => AutoIbcTxAck.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: AutoTxIbcUsage): AutoTxIbcUsageAmino {
     const obj: any = {};
@@ -121,6 +124,7 @@ function createBaseAutoIbcTxAck(): AutoIbcTxAck {
   };
 }
 export const AutoIbcTxAck = {
+  typeUrl: "/trst.autoibctx.v1beta1.AutoIbcTxAck",
   encode(message: AutoIbcTxAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.coin !== undefined) {
       Coin.encode(message.coin, writer.uint32(10).fork()).ldelim();
@@ -157,10 +161,14 @@ export const AutoIbcTxAck = {
     return message;
   },
   fromAmino(object: AutoIbcTxAckAmino): AutoIbcTxAck {
-    return {
-      coin: object?.coin ? Coin.fromAmino(object.coin) : undefined,
-      connectionId: object.connection_id
-    };
+    const message = createBaseAutoIbcTxAck();
+    if (object.coin !== undefined && object.coin !== null) {
+      message.coin = Coin.fromAmino(object.coin);
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    return message;
   },
   toAmino(message: AutoIbcTxAck): AutoIbcTxAckAmino {
     const obj: any = {};

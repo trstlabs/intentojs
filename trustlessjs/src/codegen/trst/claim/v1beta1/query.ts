@@ -1,8 +1,7 @@
-import { Action, ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType, actionFromJSON } from "./claim";
+import { Action, ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType, actionFromJSON, actionToJSON } from "./claim";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryModuleAccountBalanceRequest {}
 export interface QueryModuleAccountBalanceRequestProtoMsg {
@@ -29,7 +28,7 @@ export interface QueryModuleAccountBalanceResponseProtoMsg {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryModuleAccountBalanceResponseAmino {
   /** params defines the parameters of the module. */
-  moduleAccountBalance: CoinAmino[];
+  moduleAccountBalance?: CoinAmino[];
 }
 export interface QueryModuleAccountBalanceResponseAminoMsg {
   type: "/trst.claim.v1beta1.QueryModuleAccountBalanceResponse";
@@ -83,7 +82,7 @@ export interface QueryClaimRecordRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryClaimRecordRequestAmino {
-  address: string;
+  address?: string;
 }
 export interface QueryClaimRecordRequestAminoMsg {
   type: "/trst.claim.v1beta1.QueryClaimRecordRequest";
@@ -118,8 +117,8 @@ export interface QueryClaimableForActionRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryClaimableForActionRequestAmino {
-  address: string;
-  action: Action;
+  address?: string;
+  action?: Action;
 }
 export interface QueryClaimableForActionRequestAminoMsg {
   type: "/trst.claim.v1beta1.QueryClaimableForActionRequest";
@@ -137,7 +136,7 @@ export interface QueryClaimableForActionResponseProtoMsg {
   value: Uint8Array;
 }
 export interface QueryClaimableForActionResponseAmino {
-  coins: CoinAmino[];
+  coins?: CoinAmino[];
 }
 export interface QueryClaimableForActionResponseAminoMsg {
   type: "/trst.claim.v1beta1.QueryClaimableForActionResponse";
@@ -154,7 +153,7 @@ export interface QueryTotalClaimableRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryTotalClaimableRequestAmino {
-  address: string;
+  address?: string;
 }
 export interface QueryTotalClaimableRequestAminoMsg {
   type: "/trst.claim.v1beta1.QueryTotalClaimableRequest";
@@ -171,7 +170,7 @@ export interface QueryTotalClaimableResponseProtoMsg {
   value: Uint8Array;
 }
 export interface QueryTotalClaimableResponseAmino {
-  coins: CoinAmino[];
+  coins?: CoinAmino[];
 }
 export interface QueryTotalClaimableResponseAminoMsg {
   type: "/trst.claim.v1beta1.QueryTotalClaimableResponse";
@@ -184,6 +183,7 @@ function createBaseQueryModuleAccountBalanceRequest(): QueryModuleAccountBalance
   return {};
 }
 export const QueryModuleAccountBalanceRequest = {
+  typeUrl: "/trst.claim.v1beta1.QueryModuleAccountBalanceRequest",
   encode(_: QueryModuleAccountBalanceRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -206,7 +206,8 @@ export const QueryModuleAccountBalanceRequest = {
     return message;
   },
   fromAmino(_: QueryModuleAccountBalanceRequestAmino): QueryModuleAccountBalanceRequest {
-    return {};
+    const message = createBaseQueryModuleAccountBalanceRequest();
+    return message;
   },
   toAmino(_: QueryModuleAccountBalanceRequest): QueryModuleAccountBalanceRequestAmino {
     const obj: any = {};
@@ -234,6 +235,7 @@ function createBaseQueryModuleAccountBalanceResponse(): QueryModuleAccountBalanc
   };
 }
 export const QueryModuleAccountBalanceResponse = {
+  typeUrl: "/trst.claim.v1beta1.QueryModuleAccountBalanceResponse",
   encode(message: QueryModuleAccountBalanceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.moduleAccountBalance) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -263,9 +265,9 @@ export const QueryModuleAccountBalanceResponse = {
     return message;
   },
   fromAmino(object: QueryModuleAccountBalanceResponseAmino): QueryModuleAccountBalanceResponse {
-    return {
-      moduleAccountBalance: Array.isArray(object?.moduleAccountBalance) ? object.moduleAccountBalance.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseQueryModuleAccountBalanceResponse();
+    message.moduleAccountBalance = object.moduleAccountBalance?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryModuleAccountBalanceResponse): QueryModuleAccountBalanceResponseAmino {
     const obj: any = {};
@@ -296,6 +298,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
+  typeUrl: "/trst.claim.v1beta1.QueryParamsRequest",
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -318,7 +321,8 @@ export const QueryParamsRequest = {
     return message;
   },
   fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest {
-    return {};
+    const message = createBaseQueryParamsRequest();
+    return message;
   },
   toAmino(_: QueryParamsRequest): QueryParamsRequestAmino {
     const obj: any = {};
@@ -346,6 +350,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
+  typeUrl: "/trst.claim.v1beta1.QueryParamsResponse",
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -375,9 +380,11 @@ export const QueryParamsResponse = {
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseQueryParamsResponse();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
@@ -406,6 +413,7 @@ function createBaseQueryClaimRecordRequest(): QueryClaimRecordRequest {
   };
 }
 export const QueryClaimRecordRequest = {
+  typeUrl: "/trst.claim.v1beta1.QueryClaimRecordRequest",
   encode(message: QueryClaimRecordRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -435,9 +443,11 @@ export const QueryClaimRecordRequest = {
     return message;
   },
   fromAmino(object: QueryClaimRecordRequestAmino): QueryClaimRecordRequest {
-    return {
-      address: object.address
-    };
+    const message = createBaseQueryClaimRecordRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    return message;
   },
   toAmino(message: QueryClaimRecordRequest): QueryClaimRecordRequestAmino {
     const obj: any = {};
@@ -466,6 +476,7 @@ function createBaseQueryClaimRecordResponse(): QueryClaimRecordResponse {
   };
 }
 export const QueryClaimRecordResponse = {
+  typeUrl: "/trst.claim.v1beta1.QueryClaimRecordResponse",
   encode(message: QueryClaimRecordResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.claimRecord !== undefined) {
       ClaimRecord.encode(message.claimRecord, writer.uint32(10).fork()).ldelim();
@@ -495,9 +506,11 @@ export const QueryClaimRecordResponse = {
     return message;
   },
   fromAmino(object: QueryClaimRecordResponseAmino): QueryClaimRecordResponse {
-    return {
-      claimRecord: object?.claim_record ? ClaimRecord.fromAmino(object.claim_record) : undefined
-    };
+    const message = createBaseQueryClaimRecordResponse();
+    if (object.claim_record !== undefined && object.claim_record !== null) {
+      message.claimRecord = ClaimRecord.fromAmino(object.claim_record);
+    }
+    return message;
   },
   toAmino(message: QueryClaimRecordResponse): QueryClaimRecordResponseAmino {
     const obj: any = {};
@@ -527,6 +540,7 @@ function createBaseQueryClaimableForActionRequest(): QueryClaimableForActionRequ
   };
 }
 export const QueryClaimableForActionRequest = {
+  typeUrl: "/trst.claim.v1beta1.QueryClaimableForActionRequest",
   encode(message: QueryClaimableForActionRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -563,15 +577,19 @@ export const QueryClaimableForActionRequest = {
     return message;
   },
   fromAmino(object: QueryClaimableForActionRequestAmino): QueryClaimableForActionRequest {
-    return {
-      address: object.address,
-      action: isSet(object.action) ? actionFromJSON(object.action) : -1
-    };
+    const message = createBaseQueryClaimableForActionRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.action !== undefined && object.action !== null) {
+      message.action = actionFromJSON(object.action);
+    }
+    return message;
   },
   toAmino(message: QueryClaimableForActionRequest): QueryClaimableForActionRequestAmino {
     const obj: any = {};
     obj.address = message.address;
-    obj.action = message.action;
+    obj.action = actionToJSON(message.action);
     return obj;
   },
   fromAminoMsg(object: QueryClaimableForActionRequestAminoMsg): QueryClaimableForActionRequest {
@@ -596,6 +614,7 @@ function createBaseQueryClaimableForActionResponse(): QueryClaimableForActionRes
   };
 }
 export const QueryClaimableForActionResponse = {
+  typeUrl: "/trst.claim.v1beta1.QueryClaimableForActionResponse",
   encode(message: QueryClaimableForActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -625,9 +644,9 @@ export const QueryClaimableForActionResponse = {
     return message;
   },
   fromAmino(object: QueryClaimableForActionResponseAmino): QueryClaimableForActionResponse {
-    return {
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseQueryClaimableForActionResponse();
+    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryClaimableForActionResponse): QueryClaimableForActionResponseAmino {
     const obj: any = {};
@@ -660,6 +679,7 @@ function createBaseQueryTotalClaimableRequest(): QueryTotalClaimableRequest {
   };
 }
 export const QueryTotalClaimableRequest = {
+  typeUrl: "/trst.claim.v1beta1.QueryTotalClaimableRequest",
   encode(message: QueryTotalClaimableRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -689,9 +709,11 @@ export const QueryTotalClaimableRequest = {
     return message;
   },
   fromAmino(object: QueryTotalClaimableRequestAmino): QueryTotalClaimableRequest {
-    return {
-      address: object.address
-    };
+    const message = createBaseQueryTotalClaimableRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    return message;
   },
   toAmino(message: QueryTotalClaimableRequest): QueryTotalClaimableRequestAmino {
     const obj: any = {};
@@ -720,6 +742,7 @@ function createBaseQueryTotalClaimableResponse(): QueryTotalClaimableResponse {
   };
 }
 export const QueryTotalClaimableResponse = {
+  typeUrl: "/trst.claim.v1beta1.QueryTotalClaimableResponse",
   encode(message: QueryTotalClaimableResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -749,9 +772,9 @@ export const QueryTotalClaimableResponse = {
     return message;
   },
   fromAmino(object: QueryTotalClaimableResponseAmino): QueryTotalClaimableResponse {
-    return {
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseQueryTotalClaimableResponse();
+    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryTotalClaimableResponse): QueryTotalClaimableResponseAmino {
     const obj: any = {};

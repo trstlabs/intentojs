@@ -19,7 +19,7 @@ export interface AutoTxInfo {
   portId: string;
   connectionId: string;
   updateHistory: Date[];
-  configuration: ExecutionConfiguration;
+  configuration?: ExecutionConfiguration;
 }
 export interface AutoTxInfoProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxInfo";
@@ -30,19 +30,19 @@ export type AutoTxInfoEncoded = Omit<AutoTxInfo, "msgs"> & {
 };
 /** AutoTxInfo stores the info for the auto executing interchain accounts transaction */
 export interface AutoTxInfoAmino {
-  tx_id: string;
-  owner: string;
-  label: string;
-  fee_address: string;
-  msgs: AnyAmino[];
+  tx_id?: string;
+  owner?: string;
+  label?: string;
+  fee_address?: string;
+  msgs?: AnyAmino[];
   interval?: DurationAmino;
-  start_time?: Date;
-  exec_time?: Date;
-  end_time?: Date;
-  auto_tx_history: AutoTxHistoryEntryAmino[];
-  port_id: string;
-  connection_id: string;
-  update_history: Date[];
+  start_time?: string;
+  exec_time?: string;
+  end_time?: string;
+  auto_tx_history?: AutoTxHistoryEntryAmino[];
+  port_id?: string;
+  connection_id?: string;
+  update_history?: string[];
   configuration?: ExecutionConfigurationAmino;
 }
 export interface AutoTxInfoAminoMsg {
@@ -64,7 +64,7 @@ export interface AutoTxInfoSDKType {
   port_id: string;
   connection_id: string;
   update_history: Date[];
-  configuration: ExecutionConfigurationSDKType;
+  configuration?: ExecutionConfigurationSDKType;
 }
 /** ExecutionConfiguration provides the execution-related configuration of the AutoTx */
 export interface ExecutionConfiguration {
@@ -84,13 +84,13 @@ export interface ExecutionConfigurationProtoMsg {
 /** ExecutionConfiguration provides the execution-related configuration of the AutoTx */
 export interface ExecutionConfigurationAmino {
   /** if true, the AutoTx outputs are saved and can be used in condition-based logic */
-  save_msg_responses: boolean;
+  save_msg_responses?: boolean;
   /** if true, the AutoTx is not updatable */
-  updating_disabled: boolean;
+  updating_disabled?: boolean;
   /** If true, will execute until we get a successful AutoTx, if false/unset will always execute */
-  stop_on_success: boolean;
+  stop_on_success?: boolean;
   /** If true, will execute until successful AutoTx, if false/unset will always execute */
-  stop_on_failure: boolean;
+  stop_on_failure?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
@@ -121,13 +121,13 @@ export interface ExecutionConditionsProtoMsg {
 /** ExecutionConditions provides execution conditions for the AutoTx */
 export interface ExecutionConditionsAmino {
   /** optional array of dependent AutoTxs that when executing succesfully, stops further execution */
-  stop_on_success_of: string[];
+  stop_on_success_of?: string[];
   /** optional array of dependent AutoTxs that when not executing succesfully, stops further execution */
-  stop_on_failure_of: string[];
+  stop_on_failure_of?: string[];
   /** optional array of dependent AutoTxs that should be executed succesfully in their latest call before upcomming execution is allowed */
-  skip_on_failure_of: string[];
+  skip_on_failure_of?: string[];
   /** optional array of dependent autotxs that should fail their latest call before upcomming execution is allowed */
-  skip_on_success_of: string[];
+  skip_on_success_of?: string[];
 }
 export interface ExecutionConditionsAminoMsg {
   type: "/trst.autoibctx.v1beta1.ExecutionConditions";
@@ -160,17 +160,17 @@ export interface AutoTxHistoryEntryProtoMsg {
 }
 /** AutoTxHistoryEntry provides a the history of AutoTx interchain tx call */
 export interface AutoTxHistoryEntryAmino {
-  scheduled_exec_time?: Date;
-  actual_exec_time?: Date;
+  scheduled_exec_time?: string;
+  actual_exec_time?: string;
   exec_fee?: CoinAmino;
   /** whether all messages are executed, independent of succesfull result */
-  executed: boolean;
+  executed?: boolean;
   /** timed out from execution over IBC */
-  timed_out: boolean;
+  timed_out?: boolean;
   /** errors from execution, if executed and no error the execution was succesfull */
-  errors: string[];
+  errors?: string[];
   /** will be empty when save_msg_responses is false */
-  msg_responses: AnyAmino[];
+  msg_responses?: AnyAmino[];
 }
 export interface AutoTxHistoryEntryAminoMsg {
   type: "/trst.autoibctx.v1beta1.AutoTxHistoryEntry";
@@ -207,10 +207,10 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the params for activeness of AutoTxs on governance proposals. */
 export interface ParamsAmino {
-  AutoTxFundsCommission: string;
-  AutoTxFlexFeeMul: string;
-  AutoTxConstantFee: string;
-  RecurringAutoTxConstantFee: string;
+  AutoTxFundsCommission?: string;
+  AutoTxFlexFeeMul?: string;
+  AutoTxConstantFee?: string;
+  RecurringAutoTxConstantFee?: string;
   /** Maximum period for self-executing AutoTx */
   MaxAutoTxDuration?: DurationAmino;
   /** Minimum period for self-executing AutoTx */
@@ -218,7 +218,7 @@ export interface ParamsAmino {
   /** Minimum period for self-executing AutoTx */
   MinAutoTxInterval?: DurationAmino;
   /** relayer rewards in utrst for each message type 0=SDK,1=Wasm, 2=Osmo. Rewards are in utrst and topped up in the module account by alloc module. */
-  relayer_rewards: string[];
+  relayer_rewards?: string[];
 }
 export interface ParamsAminoMsg {
   type: "/trst.autoibctx.v1beta1.Params";
@@ -250,10 +250,11 @@ function createBaseAutoTxInfo(): AutoTxInfo {
     portId: "",
     connectionId: "",
     updateHistory: [],
-    configuration: ExecutionConfiguration.fromPartial({})
+    configuration: undefined
   };
 }
 export const AutoTxInfo = {
+  typeUrl: "/trst.autoibctx.v1beta1.AutoTxInfo",
   encode(message: AutoTxInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.txId !== BigInt(0)) {
       writer.uint32(8).uint64(message.txId);
@@ -319,7 +320,7 @@ export const AutoTxInfo = {
           message.feeAddress = reader.string();
           break;
         case 5:
-          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
+          message.msgs.push((Any(reader) as Any));
           break;
         case 6:
           message.interval = Duration.decode(reader, reader.uint32());
@@ -374,22 +375,44 @@ export const AutoTxInfo = {
     return message;
   },
   fromAmino(object: AutoTxInfoAmino): AutoTxInfo {
-    return {
-      txId: BigInt(object.tx_id),
-      owner: object.owner,
-      label: object.label,
-      feeAddress: object.fee_address,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
-      interval: object?.interval ? Duration.fromAmino(object.interval) : undefined,
-      startTime: object.start_time,
-      execTime: object.exec_time,
-      endTime: object.end_time,
-      autoTxHistory: Array.isArray(object?.auto_tx_history) ? object.auto_tx_history.map((e: any) => AutoTxHistoryEntry.fromAmino(e)) : [],
-      portId: object.port_id,
-      connectionId: object.connection_id,
-      updateHistory: Array.isArray(object?.update_history) ? object.update_history.map((e: any) => Timestamp.fromAmino(e)) : [],
-      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined
-    };
+    const message = createBaseAutoTxInfo();
+    if (object.tx_id !== undefined && object.tx_id !== null) {
+      message.txId = BigInt(object.tx_id);
+    }
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.label !== undefined && object.label !== null) {
+      message.label = object.label;
+    }
+    if (object.fee_address !== undefined && object.fee_address !== null) {
+      message.feeAddress = object.fee_address;
+    }
+    message.msgs = object.msgs?.map(e => Sdk_Msg_FromAmino(e)) || [];
+    if (object.interval !== undefined && object.interval !== null) {
+      message.interval = Duration.fromAmino(object.interval);
+    }
+    if (object.start_time !== undefined && object.start_time !== null) {
+      message.startTime = fromTimestamp(Timestamp.fromAmino(object.start_time));
+    }
+    if (object.exec_time !== undefined && object.exec_time !== null) {
+      message.execTime = fromTimestamp(Timestamp.fromAmino(object.exec_time));
+    }
+    if (object.end_time !== undefined && object.end_time !== null) {
+      message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
+    }
+    message.autoTxHistory = object.auto_tx_history?.map(e => AutoTxHistoryEntry.fromAmino(e)) || [];
+    if (object.port_id !== undefined && object.port_id !== null) {
+      message.portId = object.port_id;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    message.updateHistory = object.update_history?.map(e => Timestamp.fromAmino(e)) || [];
+    if (object.configuration !== undefined && object.configuration !== null) {
+      message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
+    }
+    return message;
   },
   toAmino(message: AutoTxInfo): AutoTxInfoAmino {
     const obj: any = {};
@@ -403,9 +426,9 @@ export const AutoTxInfo = {
       obj.msgs = [];
     }
     obj.interval = message.interval ? Duration.toAmino(message.interval) : undefined;
-    obj.start_time = message.startTime;
-    obj.exec_time = message.execTime;
-    obj.end_time = message.endTime;
+    obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
+    obj.exec_time = message.execTime ? Timestamp.toAmino(toTimestamp(message.execTime)) : undefined;
+    obj.end_time = message.endTime ? Timestamp.toAmino(toTimestamp(message.endTime)) : undefined;
     if (message.autoTxHistory) {
       obj.auto_tx_history = message.autoTxHistory.map(e => e ? AutoTxHistoryEntry.toAmino(e) : undefined);
     } else {
@@ -446,6 +469,7 @@ function createBaseExecutionConfiguration(): ExecutionConfiguration {
   };
 }
 export const ExecutionConfiguration = {
+  typeUrl: "/trst.autoibctx.v1beta1.ExecutionConfiguration",
   encode(message: ExecutionConfiguration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.saveMsgResponses === true) {
       writer.uint32(8).bool(message.saveMsgResponses);
@@ -496,12 +520,20 @@ export const ExecutionConfiguration = {
     return message;
   },
   fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
-    return {
-      saveMsgResponses: object.save_msg_responses,
-      updatingDisabled: object.updating_disabled,
-      stopOnSuccess: object.stop_on_success,
-      stopOnFailure: object.stop_on_failure
-    };
+    const message = createBaseExecutionConfiguration();
+    if (object.save_msg_responses !== undefined && object.save_msg_responses !== null) {
+      message.saveMsgResponses = object.save_msg_responses;
+    }
+    if (object.updating_disabled !== undefined && object.updating_disabled !== null) {
+      message.updatingDisabled = object.updating_disabled;
+    }
+    if (object.stop_on_success !== undefined && object.stop_on_success !== null) {
+      message.stopOnSuccess = object.stop_on_success;
+    }
+    if (object.stop_on_failure !== undefined && object.stop_on_failure !== null) {
+      message.stopOnFailure = object.stop_on_failure;
+    }
+    return message;
   },
   toAmino(message: ExecutionConfiguration): ExecutionConfigurationAmino {
     const obj: any = {};
@@ -536,6 +568,7 @@ function createBaseExecutionConditions(): ExecutionConditions {
   };
 }
 export const ExecutionConditions = {
+  typeUrl: "/trst.autoibctx.v1beta1.ExecutionConditions",
   encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(42).fork();
     for (const v of message.stopOnSuccessOf) {
@@ -622,12 +655,12 @@ export const ExecutionConditions = {
     return message;
   },
   fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
-    return {
-      stopOnSuccessOf: Array.isArray(object?.stop_on_success_of) ? object.stop_on_success_of.map((e: any) => BigInt(e)) : [],
-      stopOnFailureOf: Array.isArray(object?.stop_on_failure_of) ? object.stop_on_failure_of.map((e: any) => BigInt(e)) : [],
-      skipOnFailureOf: Array.isArray(object?.skip_on_failure_of) ? object.skip_on_failure_of.map((e: any) => BigInt(e)) : [],
-      skipOnSuccessOf: Array.isArray(object?.skip_on_success_of) ? object.skip_on_success_of.map((e: any) => BigInt(e)) : []
-    };
+    const message = createBaseExecutionConditions();
+    message.stopOnSuccessOf = object.stop_on_success_of?.map(e => BigInt(e)) || [];
+    message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
+    message.skipOnFailureOf = object.skip_on_failure_of?.map(e => BigInt(e)) || [];
+    message.skipOnSuccessOf = object.skip_on_success_of?.map(e => BigInt(e)) || [];
+    return message;
   },
   toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
     const obj: any = {};
@@ -681,6 +714,7 @@ function createBaseAutoTxHistoryEntry(): AutoTxHistoryEntry {
   };
 }
 export const AutoTxHistoryEntry = {
+  typeUrl: "/trst.autoibctx.v1beta1.AutoTxHistoryEntry",
   encode(message: AutoTxHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
       Timestamp.encode(toTimestamp(message.scheduledExecTime), writer.uint32(10).fork()).ldelim();
@@ -752,20 +786,30 @@ export const AutoTxHistoryEntry = {
     return message;
   },
   fromAmino(object: AutoTxHistoryEntryAmino): AutoTxHistoryEntry {
-    return {
-      scheduledExecTime: object.scheduled_exec_time,
-      actualExecTime: object.actual_exec_time,
-      execFee: object?.exec_fee ? Coin.fromAmino(object.exec_fee) : undefined,
-      executed: object.executed,
-      timedOut: object.timed_out,
-      errors: Array.isArray(object?.errors) ? object.errors.map((e: any) => e) : [],
-      msgResponses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e: any) => Any.fromAmino(e)) : []
-    };
+    const message = createBaseAutoTxHistoryEntry();
+    if (object.scheduled_exec_time !== undefined && object.scheduled_exec_time !== null) {
+      message.scheduledExecTime = fromTimestamp(Timestamp.fromAmino(object.scheduled_exec_time));
+    }
+    if (object.actual_exec_time !== undefined && object.actual_exec_time !== null) {
+      message.actualExecTime = fromTimestamp(Timestamp.fromAmino(object.actual_exec_time));
+    }
+    if (object.exec_fee !== undefined && object.exec_fee !== null) {
+      message.execFee = Coin.fromAmino(object.exec_fee);
+    }
+    if (object.executed !== undefined && object.executed !== null) {
+      message.executed = object.executed;
+    }
+    if (object.timed_out !== undefined && object.timed_out !== null) {
+      message.timedOut = object.timed_out;
+    }
+    message.errors = object.errors?.map(e => e) || [];
+    message.msgResponses = object.msg_responses?.map(e => Any.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: AutoTxHistoryEntry): AutoTxHistoryEntryAmino {
     const obj: any = {};
-    obj.scheduled_exec_time = message.scheduledExecTime;
-    obj.actual_exec_time = message.actualExecTime;
+    obj.scheduled_exec_time = message.scheduledExecTime ? Timestamp.toAmino(toTimestamp(message.scheduledExecTime)) : undefined;
+    obj.actual_exec_time = message.actualExecTime ? Timestamp.toAmino(toTimestamp(message.actualExecTime)) : undefined;
     obj.exec_fee = message.execFee ? Coin.toAmino(message.execFee) : undefined;
     obj.executed = message.executed;
     obj.timed_out = message.timedOut;
@@ -810,6 +854,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
+  typeUrl: "/trst.autoibctx.v1beta1.Params",
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.AutoTxFundsCommission !== BigInt(0)) {
       writer.uint32(8).int64(message.AutoTxFundsCommission);
@@ -897,16 +942,30 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      AutoTxFundsCommission: BigInt(object.AutoTxFundsCommission),
-      AutoTxFlexFeeMul: BigInt(object.AutoTxFlexFeeMul),
-      AutoTxConstantFee: BigInt(object.AutoTxConstantFee),
-      RecurringAutoTxConstantFee: BigInt(object.RecurringAutoTxConstantFee),
-      MaxAutoTxDuration: object?.MaxAutoTxDuration ? Duration.fromAmino(object.MaxAutoTxDuration) : undefined,
-      MinAutoTxDuration: object?.MinAutoTxDuration ? Duration.fromAmino(object.MinAutoTxDuration) : undefined,
-      MinAutoTxInterval: object?.MinAutoTxInterval ? Duration.fromAmino(object.MinAutoTxInterval) : undefined,
-      relayerRewards: Array.isArray(object?.relayer_rewards) ? object.relayer_rewards.map((e: any) => BigInt(e)) : []
-    };
+    const message = createBaseParams();
+    if (object.AutoTxFundsCommission !== undefined && object.AutoTxFundsCommission !== null) {
+      message.AutoTxFundsCommission = BigInt(object.AutoTxFundsCommission);
+    }
+    if (object.AutoTxFlexFeeMul !== undefined && object.AutoTxFlexFeeMul !== null) {
+      message.AutoTxFlexFeeMul = BigInt(object.AutoTxFlexFeeMul);
+    }
+    if (object.AutoTxConstantFee !== undefined && object.AutoTxConstantFee !== null) {
+      message.AutoTxConstantFee = BigInt(object.AutoTxConstantFee);
+    }
+    if (object.RecurringAutoTxConstantFee !== undefined && object.RecurringAutoTxConstantFee !== null) {
+      message.RecurringAutoTxConstantFee = BigInt(object.RecurringAutoTxConstantFee);
+    }
+    if (object.MaxAutoTxDuration !== undefined && object.MaxAutoTxDuration !== null) {
+      message.MaxAutoTxDuration = Duration.fromAmino(object.MaxAutoTxDuration);
+    }
+    if (object.MinAutoTxDuration !== undefined && object.MinAutoTxDuration !== null) {
+      message.MinAutoTxDuration = Duration.fromAmino(object.MinAutoTxDuration);
+    }
+    if (object.MinAutoTxInterval !== undefined && object.MinAutoTxInterval !== null) {
+      message.MinAutoTxInterval = Duration.fromAmino(object.MinAutoTxInterval);
+    }
+    message.relayerRewards = object.relayer_rewards?.map(e => BigInt(e)) || [];
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};

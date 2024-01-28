@@ -1,5 +1,6 @@
 import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../confio/proofs";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
@@ -16,7 +17,7 @@ export interface MerkleRootProtoMsg {
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
  */
 export interface MerkleRootAmino {
-  hash: Uint8Array;
+  hash?: string;
 }
 export interface MerkleRootAminoMsg {
   type: "cosmos-sdk/MerkleRoot";
@@ -47,7 +48,7 @@ export interface MerklePrefixProtoMsg {
  * append(Path.KeyPrefix, key...))
  */
 export interface MerklePrefixAmino {
-  key_prefix: Uint8Array;
+  key_prefix?: string;
 }
 export interface MerklePrefixAminoMsg {
   type: "cosmos-sdk/MerklePrefix";
@@ -79,7 +80,7 @@ export interface MerklePathProtoMsg {
  * MerklePath is represented from root-to-leaf
  */
 export interface MerklePathAmino {
-  key_path: string[];
+  key_path?: string[];
 }
 export interface MerklePathAminoMsg {
   type: "cosmos-sdk/MerklePath";
@@ -115,7 +116,7 @@ export interface MerkleProofProtoMsg {
  * MerkleProofs are ordered from leaf-to-root
  */
 export interface MerkleProofAmino {
-  proofs: CommitmentProofAmino[];
+  proofs?: CommitmentProofAmino[];
 }
 export interface MerkleProofAminoMsg {
   type: "cosmos-sdk/MerkleProof";
@@ -137,6 +138,7 @@ function createBaseMerkleRoot(): MerkleRoot {
   };
 }
 export const MerkleRoot = {
+  typeUrl: "/ibc.core.commitment.v1.MerkleRoot",
   encode(message: MerkleRoot, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.hash.length !== 0) {
       writer.uint32(10).bytes(message.hash);
@@ -166,13 +168,15 @@ export const MerkleRoot = {
     return message;
   },
   fromAmino(object: MerkleRootAmino): MerkleRoot {
-    return {
-      hash: object.hash
-    };
+    const message = createBaseMerkleRoot();
+    if (object.hash !== undefined && object.hash !== null) {
+      message.hash = bytesFromBase64(object.hash);
+    }
+    return message;
   },
   toAmino(message: MerkleRoot): MerkleRootAmino {
     const obj: any = {};
-    obj.hash = message.hash;
+    obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
     return obj;
   },
   fromAminoMsg(object: MerkleRootAminoMsg): MerkleRoot {
@@ -203,6 +207,7 @@ function createBaseMerklePrefix(): MerklePrefix {
   };
 }
 export const MerklePrefix = {
+  typeUrl: "/ibc.core.commitment.v1.MerklePrefix",
   encode(message: MerklePrefix, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.keyPrefix.length !== 0) {
       writer.uint32(10).bytes(message.keyPrefix);
@@ -232,13 +237,15 @@ export const MerklePrefix = {
     return message;
   },
   fromAmino(object: MerklePrefixAmino): MerklePrefix {
-    return {
-      keyPrefix: object.key_prefix
-    };
+    const message = createBaseMerklePrefix();
+    if (object.key_prefix !== undefined && object.key_prefix !== null) {
+      message.keyPrefix = bytesFromBase64(object.key_prefix);
+    }
+    return message;
   },
   toAmino(message: MerklePrefix): MerklePrefixAmino {
     const obj: any = {};
-    obj.key_prefix = message.keyPrefix;
+    obj.key_prefix = message.keyPrefix ? base64FromBytes(message.keyPrefix) : undefined;
     return obj;
   },
   fromAminoMsg(object: MerklePrefixAminoMsg): MerklePrefix {
@@ -269,6 +276,7 @@ function createBaseMerklePath(): MerklePath {
   };
 }
 export const MerklePath = {
+  typeUrl: "/ibc.core.commitment.v1.MerklePath",
   encode(message: MerklePath, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.keyPath) {
       writer.uint32(10).string(v!);
@@ -298,9 +306,9 @@ export const MerklePath = {
     return message;
   },
   fromAmino(object: MerklePathAmino): MerklePath {
-    return {
-      keyPath: Array.isArray(object?.key_path) ? object.key_path.map((e: any) => e) : []
-    };
+    const message = createBaseMerklePath();
+    message.keyPath = object.key_path?.map(e => e) || [];
+    return message;
   },
   toAmino(message: MerklePath): MerklePathAmino {
     const obj: any = {};
@@ -339,6 +347,7 @@ function createBaseMerkleProof(): MerkleProof {
   };
 }
 export const MerkleProof = {
+  typeUrl: "/ibc.core.commitment.v1.MerkleProof",
   encode(message: MerkleProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.proofs) {
       CommitmentProof.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -368,9 +377,9 @@ export const MerkleProof = {
     return message;
   },
   fromAmino(object: MerkleProofAmino): MerkleProof {
-    return {
-      proofs: Array.isArray(object?.proofs) ? object.proofs.map((e: any) => CommitmentProof.fromAmino(e)) : []
-    };
+    const message = createBaseMerkleProof();
+    message.proofs = object.proofs?.map(e => CommitmentProof.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MerkleProof): MerkleProofAmino {
     const obj: any = {};

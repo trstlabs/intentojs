@@ -60,11 +60,11 @@ export interface ClaimRecordProtoMsg {
 /** A Claim Records is the metadata of claim data per address */
 export interface ClaimRecordAmino {
   /** address of recipient */
-  address: string;
+  address?: string;
   /** total initial claimable amount for the address */
-  initial_claimable_amount: CoinAmino[];
+  initial_claimable_amount?: CoinAmino[];
   /** index of status array refers to action enum # */
-  status: StatusAmino[];
+  status?: StatusAmino[];
 }
 export interface ClaimRecordAminoMsg {
   type: "/trst.claim.v1beta1.ClaimRecord";
@@ -98,17 +98,17 @@ export interface StatusProtoMsg {
 /** Status contains for an action if it is completed and claimed */
 export interface StatusAmino {
   /** true if action is completed */
-  action_completed: boolean;
+  action_completed?: boolean;
   /**
    * true if action is completed
    * index refers to the 4 vesting periods for the given action
    */
-  vesting_period_completed: boolean[];
+  vesting_period_completed?: boolean[];
   /**
    * true if action is completed
    * index refers to the 4 vesting periods for the given action
    */
-  vesting_period_claimed: boolean[];
+  vesting_period_claimed?: boolean[];
 }
 export interface StatusAminoMsg {
   type: "/trst.claim.v1beta1.Status";
@@ -128,7 +128,7 @@ export interface MsgClaimClaimableProtoMsg {
   value: Uint8Array;
 }
 export interface MsgClaimClaimableAmino {
-  sender: string;
+  sender?: string;
 }
 export interface MsgClaimClaimableAminoMsg {
   type: "/trst.claim.v1beta1.MsgClaimClaimable";
@@ -147,7 +147,7 @@ export interface MsgClaimClaimableResponseProtoMsg {
 }
 export interface MsgClaimClaimableResponseAmino {
   /** returned claimable amount for the address */
-  claimed_amount: CoinAmino[];
+  claimed_amount?: CoinAmino[];
 }
 export interface MsgClaimClaimableResponseAminoMsg {
   type: "/trst.claim.v1beta1.MsgClaimClaimableResponse";
@@ -164,6 +164,7 @@ function createBaseClaimRecord(): ClaimRecord {
   };
 }
 export const ClaimRecord = {
+  typeUrl: "/trst.claim.v1beta1.ClaimRecord",
   encode(message: ClaimRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -207,11 +208,13 @@ export const ClaimRecord = {
     return message;
   },
   fromAmino(object: ClaimRecordAmino): ClaimRecord {
-    return {
-      address: object.address,
-      initialClaimableAmount: Array.isArray(object?.initial_claimable_amount) ? object.initial_claimable_amount.map((e: any) => Coin.fromAmino(e)) : [],
-      status: Array.isArray(object?.status) ? object.status.map((e: any) => Status.fromAmino(e)) : []
-    };
+    const message = createBaseClaimRecord();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    message.initialClaimableAmount = object.initial_claimable_amount?.map(e => Coin.fromAmino(e)) || [];
+    message.status = object.status?.map(e => Status.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: ClaimRecord): ClaimRecordAmino {
     const obj: any = {};
@@ -252,6 +255,7 @@ function createBaseStatus(): Status {
   };
 }
 export const Status = {
+  typeUrl: "/trst.claim.v1beta1.Status",
   encode(message: Status, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionCompleted === true) {
       writer.uint32(8).bool(message.actionCompleted);
@@ -313,11 +317,13 @@ export const Status = {
     return message;
   },
   fromAmino(object: StatusAmino): Status {
-    return {
-      actionCompleted: object.action_completed,
-      vestingPeriodCompleted: Array.isArray(object?.vesting_period_completed) ? object.vesting_period_completed.map((e: any) => e) : [],
-      vestingPeriodClaimed: Array.isArray(object?.vesting_period_claimed) ? object.vesting_period_claimed.map((e: any) => e) : []
-    };
+    const message = createBaseStatus();
+    if (object.action_completed !== undefined && object.action_completed !== null) {
+      message.actionCompleted = object.action_completed;
+    }
+    message.vestingPeriodCompleted = object.vesting_period_completed?.map(e => e) || [];
+    message.vestingPeriodClaimed = object.vesting_period_claimed?.map(e => e) || [];
+    return message;
   },
   toAmino(message: Status): StatusAmino {
     const obj: any = {};
@@ -356,6 +362,7 @@ function createBaseMsgClaimClaimable(): MsgClaimClaimable {
   };
 }
 export const MsgClaimClaimable = {
+  typeUrl: "/trst.claim.v1beta1.MsgClaimClaimable",
   encode(message: MsgClaimClaimable, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -385,9 +392,11 @@ export const MsgClaimClaimable = {
     return message;
   },
   fromAmino(object: MsgClaimClaimableAmino): MsgClaimClaimable {
-    return {
-      sender: object.sender
-    };
+    const message = createBaseMsgClaimClaimable();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    return message;
   },
   toAmino(message: MsgClaimClaimable): MsgClaimClaimableAmino {
     const obj: any = {};
@@ -416,6 +425,7 @@ function createBaseMsgClaimClaimableResponse(): MsgClaimClaimableResponse {
   };
 }
 export const MsgClaimClaimableResponse = {
+  typeUrl: "/trst.claim.v1beta1.MsgClaimClaimableResponse",
   encode(message: MsgClaimClaimableResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -445,9 +455,9 @@ export const MsgClaimClaimableResponse = {
     return message;
   },
   fromAmino(object: MsgClaimClaimableResponseAmino): MsgClaimClaimableResponse {
-    return {
-      claimedAmount: Array.isArray(object?.claimed_amount) ? object.claimed_amount.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseMsgClaimClaimableResponse();
+    message.claimedAmount = object.claimed_amount?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgClaimClaimableResponse): MsgClaimClaimableResponseAmino {
     const obj: any = {};

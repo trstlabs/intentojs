@@ -12,8 +12,8 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisStateAmino {
-  port_id: string;
-  denom_traces: DenomTraceAmino[];
+  port_id?: string;
+  denom_traces?: DenomTraceAmino[];
   params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {
@@ -34,6 +34,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
+  typeUrl: "/ibc.applications.transfer.v1.GenesisState",
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -77,11 +78,15 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      portId: object.port_id,
-      denomTraces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e: any) => DenomTrace.fromAmino(e)) : [],
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseGenesisState();
+    if (object.port_id !== undefined && object.port_id !== null) {
+      message.portId = object.port_id;
+    }
+    message.denomTraces = object.denom_traces?.map(e => DenomTrace.fromAmino(e)) || [];
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};

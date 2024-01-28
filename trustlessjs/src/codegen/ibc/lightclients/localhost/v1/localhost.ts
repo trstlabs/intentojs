@@ -20,7 +20,7 @@ export interface ClientStateProtoMsg {
  */
 export interface ClientStateAmino {
   /** self chain ID */
-  chain_id: string;
+  chain_id?: string;
   /** self latest block height */
   height?: HeightAmino;
 }
@@ -43,6 +43,7 @@ function createBaseClientState(): ClientState {
   };
 }
 export const ClientState = {
+  typeUrl: "/ibc.lightclients.localhost.v1.ClientState",
   encode(message: ClientState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.chainId !== "") {
       writer.uint32(10).string(message.chainId);
@@ -79,10 +80,14 @@ export const ClientState = {
     return message;
   },
   fromAmino(object: ClientStateAmino): ClientState {
-    return {
-      chainId: object.chain_id,
-      height: object?.height ? Height.fromAmino(object.height) : undefined
-    };
+    const message = createBaseClientState();
+    if (object.chain_id !== undefined && object.chain_id !== null) {
+      message.chainId = object.chain_id;
+    }
+    if (object.height !== undefined && object.height !== null) {
+      message.height = Height.fromAmino(object.height);
+    }
+    return message;
   },
   toAmino(message: ClientState): ClientStateAmino {
     const obj: any = {};

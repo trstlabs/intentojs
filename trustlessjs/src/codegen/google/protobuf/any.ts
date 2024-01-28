@@ -81,6 +81,7 @@ import { BinaryReader, BinaryWriter } from "../../binary";
  *     }
  */
 export interface Any {
+  $typeUrl?: "/google.protobuf.Any";
   /**
    * A URL/resource name that uniquely identifies the type of the serialized
    * protocol buffer message. This string must contain at least
@@ -319,16 +320,19 @@ export interface AnyAminoMsg {
  *     }
  */
 export interface AnySDKType {
+  $typeUrl?: "/google.protobuf.Any";
   type_url: string;
   value: Uint8Array;
 }
 function createBaseAny(): Any {
   return {
+    $typeUrl: "/google.protobuf.Any",
     typeUrl: "",
     value: new Uint8Array()
   };
 }
 export const Any = {
+  typeUrl: "/google.protobuf.Any",
   encode(message: Any, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.typeUrl !== "") {
       writer.uint32(10).string(message.typeUrl);

@@ -14,9 +14,9 @@ export interface MsgRegisterAccountProtoMsg {
 }
 /** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
 export interface MsgRegisterAccountAmino {
-  owner: string;
-  connection_id: string;
-  version: string;
+  owner?: string;
+  connection_id?: string;
+  version?: string;
 }
 export interface MsgRegisterAccountAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgRegisterAccount";
@@ -46,7 +46,7 @@ export interface MsgRegisterAccountResponseSDKType {}
 export interface MsgSubmitTx {
   owner: string;
   connectionId: string;
-  msg: Any;
+  msg?: Any;
 }
 export interface MsgSubmitTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitTx";
@@ -54,8 +54,8 @@ export interface MsgSubmitTxProtoMsg {
 }
 /** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitTxAmino {
-  owner: string;
-  connection_id: string;
+  owner?: string;
+  connection_id?: string;
   msg?: AnyAmino;
 }
 export interface MsgSubmitTxAminoMsg {
@@ -66,7 +66,7 @@ export interface MsgSubmitTxAminoMsg {
 export interface MsgSubmitTxSDKType {
   owner: string;
   connection_id: string;
-  msg: AnySDKType;
+  msg?: AnySDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitTxResponse {}
@@ -97,7 +97,7 @@ export interface MsgSubmitAutoTx {
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
   /** optional parameters for creating interdependent execution */
-  configuration: ExecutionConfiguration;
+  configuration?: ExecutionConfiguration;
 }
 export interface MsgSubmitAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitAutoTx";
@@ -108,18 +108,18 @@ export type MsgSubmitAutoTxEncoded = Omit<MsgSubmitAutoTx, "msgs"> & {
 };
 /** MsgSubmitAutoTx creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgSubmitAutoTxAmino {
-  owner: string;
-  connection_id: string;
-  label: string;
-  msgs: AnyAmino[];
+  owner?: string;
+  connection_id?: string;
+  label?: string;
+  msgs?: AnyAmino[];
   /** duration defines the time that the code should run for */
-  duration: string;
+  duration?: string;
   /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
-  start_at: string;
+  start_at?: string;
   /** interval defines the interval between auto_msg calls */
-  interval: string;
+  interval?: string;
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
-  fee_funds: CoinAmino[];
+  fee_funds?: CoinAmino[];
   /** optional parameters for creating interdependent execution */
   configuration?: ExecutionConfigurationAmino;
 }
@@ -137,7 +137,7 @@ export interface MsgSubmitAutoTxSDKType {
   start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  configuration: ExecutionConfigurationSDKType;
+  configuration?: ExecutionConfigurationSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitAutoTxResponse {}
@@ -168,7 +168,7 @@ export interface MsgRegisterAccountAndSubmitAutoTx {
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
   /** optional array of dependent txs that should be executed before execution is allowed */
-  configuration: ExecutionConfiguration;
+  configuration?: ExecutionConfiguration;
   version: string;
 }
 export interface MsgRegisterAccountAndSubmitAutoTxProtoMsg {
@@ -180,21 +180,21 @@ export type MsgRegisterAccountAndSubmitAutoTxEncoded = Omit<MsgRegisterAccountAn
 };
 /** MsgRegisterAccountAndSubmitAutoTx creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
 export interface MsgRegisterAccountAndSubmitAutoTxAmino {
-  owner: string;
-  connection_id: string;
-  label: string;
-  msgs: AnyAmino[];
+  owner?: string;
+  connection_id?: string;
+  label?: string;
+  msgs?: AnyAmino[];
   /** duration defines the time that the code should run for */
-  duration: string;
+  duration?: string;
   /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
-  start_at: string;
+  start_at?: string;
   /** interval defines the interval between auto_msg calls */
-  interval: string;
+  interval?: string;
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
-  fee_funds: CoinAmino[];
+  fee_funds?: CoinAmino[];
   /** optional array of dependent txs that should be executed before execution is allowed */
   configuration?: ExecutionConfigurationAmino;
-  version: string;
+  version?: string;
 }
 export interface MsgRegisterAccountAndSubmitAutoTxAminoMsg {
   type: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTx";
@@ -210,7 +210,7 @@ export interface MsgRegisterAccountAndSubmitAutoTxSDKType {
   start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  configuration: ExecutionConfigurationSDKType;
+  configuration?: ExecutionConfigurationSDKType;
   version: string;
 }
 /** MsgRegisterAccountAndSubmitAutoTxResponse defines the MsgSubmitTx response type */
@@ -242,7 +242,7 @@ export interface MsgUpdateAutoTx {
   interval: string;
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
-  configuration: ExecutionConfiguration;
+  configuration?: ExecutionConfiguration;
 }
 export interface MsgUpdateAutoTxProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.MsgUpdateAutoTx";
@@ -253,19 +253,19 @@ export type MsgUpdateAutoTxEncoded = Omit<MsgUpdateAutoTx, "msgs"> & {
 };
 /** MsgUpdateAutoTx updates an arbitrary transaction msg to be executed locally or using an interchain account */
 export interface MsgUpdateAutoTxAmino {
-  owner: string;
-  tx_id: string;
-  connection_id: string;
-  label: string;
-  msgs: AnyAmino[];
+  owner?: string;
+  tx_id?: string;
+  connection_id?: string;
+  label?: string;
+  msgs?: AnyAmino[];
   /** end_time when set defines the time that the code should run for */
-  end_time: string;
+  end_time?: string;
   /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
-  start_at: string;
+  start_at?: string;
   /** interval defines the interval between auto_msg calls */
-  interval: string;
+  interval?: string;
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
-  fee_funds: CoinAmino[];
+  fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
 }
 export interface MsgUpdateAutoTxAminoMsg {
@@ -283,7 +283,7 @@ export interface MsgUpdateAutoTxSDKType {
   start_at: bigint;
   interval: string;
   fee_funds: CoinSDKType[];
-  configuration: ExecutionConfigurationSDKType;
+  configuration?: ExecutionConfigurationSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
 export interface MsgUpdateAutoTxResponse {}
@@ -307,6 +307,7 @@ function createBaseMsgRegisterAccount(): MsgRegisterAccount {
   };
 }
 export const MsgRegisterAccount = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccount",
   encode(message: MsgRegisterAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -350,11 +351,17 @@ export const MsgRegisterAccount = {
     return message;
   },
   fromAmino(object: MsgRegisterAccountAmino): MsgRegisterAccount {
-    return {
-      owner: object.owner,
-      connectionId: object.connection_id,
-      version: object.version
-    };
+    const message = createBaseMsgRegisterAccount();
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.version !== undefined && object.version !== null) {
+      message.version = object.version;
+    }
+    return message;
   },
   toAmino(message: MsgRegisterAccount): MsgRegisterAccountAmino {
     const obj: any = {};
@@ -383,6 +390,7 @@ function createBaseMsgRegisterAccountResponse(): MsgRegisterAccountResponse {
   return {};
 }
 export const MsgRegisterAccountResponse = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccountResponse",
   encode(_: MsgRegisterAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -405,7 +413,8 @@ export const MsgRegisterAccountResponse = {
     return message;
   },
   fromAmino(_: MsgRegisterAccountResponseAmino): MsgRegisterAccountResponse {
-    return {};
+    const message = createBaseMsgRegisterAccountResponse();
+    return message;
   },
   toAmino(_: MsgRegisterAccountResponse): MsgRegisterAccountResponseAmino {
     const obj: any = {};
@@ -431,10 +440,11 @@ function createBaseMsgSubmitTx(): MsgSubmitTx {
   return {
     owner: "",
     connectionId: "",
-    msg: Any.fromPartial({})
+    msg: undefined
   };
 }
 export const MsgSubmitTx = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitTx",
   encode(message: MsgSubmitTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -478,11 +488,17 @@ export const MsgSubmitTx = {
     return message;
   },
   fromAmino(object: MsgSubmitTxAmino): MsgSubmitTx {
-    return {
-      owner: object.owner,
-      connectionId: object.connection_id,
-      msg: object?.msg ? Any.fromAmino(object.msg) : undefined
-    };
+    const message = createBaseMsgSubmitTx();
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.msg !== undefined && object.msg !== null) {
+      message.msg = Any.fromAmino(object.msg);
+    }
+    return message;
   },
   toAmino(message: MsgSubmitTx): MsgSubmitTxAmino {
     const obj: any = {};
@@ -511,6 +527,7 @@ function createBaseMsgSubmitTxResponse(): MsgSubmitTxResponse {
   return {};
 }
 export const MsgSubmitTxResponse = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitTxResponse",
   encode(_: MsgSubmitTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -533,7 +550,8 @@ export const MsgSubmitTxResponse = {
     return message;
   },
   fromAmino(_: MsgSubmitTxResponseAmino): MsgSubmitTxResponse {
-    return {};
+    const message = createBaseMsgSubmitTxResponse();
+    return message;
   },
   toAmino(_: MsgSubmitTxResponse): MsgSubmitTxResponseAmino {
     const obj: any = {};
@@ -565,10 +583,11 @@ function createBaseMsgSubmitAutoTx(): MsgSubmitAutoTx {
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    configuration: ExecutionConfiguration.fromPartial({})
+    configuration: undefined
   };
 }
 export const MsgSubmitAutoTx = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitAutoTx",
   encode(message: MsgSubmitAutoTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -616,7 +635,7 @@ export const MsgSubmitAutoTx = {
           message.label = reader.string();
           break;
         case 4:
-          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
+          message.msgs.push((Any(reader) as Any));
           break;
         case 5:
           message.duration = reader.string();
@@ -654,17 +673,31 @@ export const MsgSubmitAutoTx = {
     return message;
   },
   fromAmino(object: MsgSubmitAutoTxAmino): MsgSubmitAutoTx {
-    return {
-      owner: object.owner,
-      connectionId: object.connection_id,
-      label: object.label,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
-      duration: object.duration,
-      startAt: BigInt(object.start_at),
-      interval: object.interval,
-      feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined
-    };
+    const message = createBaseMsgSubmitAutoTx();
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.label !== undefined && object.label !== null) {
+      message.label = object.label;
+    }
+    message.msgs = object.msgs?.map(e => Sdk_Msg_FromAmino(e)) || [];
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = object.duration;
+    }
+    if (object.start_at !== undefined && object.start_at !== null) {
+      message.startAt = BigInt(object.start_at);
+    }
+    if (object.interval !== undefined && object.interval !== null) {
+      message.interval = object.interval;
+    }
+    message.feeFunds = object.fee_funds?.map(e => Coin.fromAmino(e)) || [];
+    if (object.configuration !== undefined && object.configuration !== null) {
+      message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
+    }
+    return message;
   },
   toAmino(message: MsgSubmitAutoTx): MsgSubmitAutoTxAmino {
     const obj: any = {};
@@ -707,6 +740,7 @@ function createBaseMsgSubmitAutoTxResponse(): MsgSubmitAutoTxResponse {
   return {};
 }
 export const MsgSubmitAutoTxResponse = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgSubmitAutoTxResponse",
   encode(_: MsgSubmitAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -729,7 +763,8 @@ export const MsgSubmitAutoTxResponse = {
     return message;
   },
   fromAmino(_: MsgSubmitAutoTxResponseAmino): MsgSubmitAutoTxResponse {
-    return {};
+    const message = createBaseMsgSubmitAutoTxResponse();
+    return message;
   },
   toAmino(_: MsgSubmitAutoTxResponse): MsgSubmitAutoTxResponseAmino {
     const obj: any = {};
@@ -761,11 +796,12 @@ function createBaseMsgRegisterAccountAndSubmitAutoTx(): MsgRegisterAccountAndSub
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    configuration: ExecutionConfiguration.fromPartial({}),
+    configuration: undefined,
     version: ""
   };
 }
 export const MsgRegisterAccountAndSubmitAutoTx = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTx",
   encode(message: MsgRegisterAccountAndSubmitAutoTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -816,7 +852,7 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
           message.label = reader.string();
           break;
         case 4:
-          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
+          message.msgs.push((Any(reader) as Any));
           break;
         case 5:
           message.duration = reader.string();
@@ -858,18 +894,34 @@ export const MsgRegisterAccountAndSubmitAutoTx = {
     return message;
   },
   fromAmino(object: MsgRegisterAccountAndSubmitAutoTxAmino): MsgRegisterAccountAndSubmitAutoTx {
-    return {
-      owner: object.owner,
-      connectionId: object.connection_id,
-      label: object.label,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
-      duration: object.duration,
-      startAt: BigInt(object.start_at),
-      interval: object.interval,
-      feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined,
-      version: object.version
-    };
+    const message = createBaseMsgRegisterAccountAndSubmitAutoTx();
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.label !== undefined && object.label !== null) {
+      message.label = object.label;
+    }
+    message.msgs = object.msgs?.map(e => Sdk_Msg_FromAmino(e)) || [];
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = object.duration;
+    }
+    if (object.start_at !== undefined && object.start_at !== null) {
+      message.startAt = BigInt(object.start_at);
+    }
+    if (object.interval !== undefined && object.interval !== null) {
+      message.interval = object.interval;
+    }
+    message.feeFunds = object.fee_funds?.map(e => Coin.fromAmino(e)) || [];
+    if (object.configuration !== undefined && object.configuration !== null) {
+      message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
+    }
+    if (object.version !== undefined && object.version !== null) {
+      message.version = object.version;
+    }
+    return message;
   },
   toAmino(message: MsgRegisterAccountAndSubmitAutoTx): MsgRegisterAccountAndSubmitAutoTxAmino {
     const obj: any = {};
@@ -913,6 +965,7 @@ function createBaseMsgRegisterAccountAndSubmitAutoTxResponse(): MsgRegisterAccou
   return {};
 }
 export const MsgRegisterAccountAndSubmitAutoTxResponse = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgRegisterAccountAndSubmitAutoTxResponse",
   encode(_: MsgRegisterAccountAndSubmitAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -935,7 +988,8 @@ export const MsgRegisterAccountAndSubmitAutoTxResponse = {
     return message;
   },
   fromAmino(_: MsgRegisterAccountAndSubmitAutoTxResponseAmino): MsgRegisterAccountAndSubmitAutoTxResponse {
-    return {};
+    const message = createBaseMsgRegisterAccountAndSubmitAutoTxResponse();
+    return message;
   },
   toAmino(_: MsgRegisterAccountAndSubmitAutoTxResponse): MsgRegisterAccountAndSubmitAutoTxResponseAmino {
     const obj: any = {};
@@ -968,10 +1022,11 @@ function createBaseMsgUpdateAutoTx(): MsgUpdateAutoTx {
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    configuration: ExecutionConfiguration.fromPartial({})
+    configuration: undefined
   };
 }
 export const MsgUpdateAutoTx = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgUpdateAutoTx",
   encode(message: MsgUpdateAutoTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1025,7 +1080,7 @@ export const MsgUpdateAutoTx = {
           message.label = reader.string();
           break;
         case 5:
-          message.msgs.push((Sdk_Msg_InterfaceDecoder(reader) as Any));
+          message.msgs.push((Any(reader) as Any));
           break;
         case 6:
           message.endTime = reader.uint64();
@@ -1064,18 +1119,34 @@ export const MsgUpdateAutoTx = {
     return message;
   },
   fromAmino(object: MsgUpdateAutoTxAmino): MsgUpdateAutoTx {
-    return {
-      owner: object.owner,
-      txId: BigInt(object.tx_id),
-      connectionId: object.connection_id,
-      label: object.label,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_Msg_FromAmino(e)) : [],
-      endTime: BigInt(object.end_time),
-      startAt: BigInt(object.start_at),
-      interval: object.interval,
-      feeFunds: Array.isArray(object?.fee_funds) ? object.fee_funds.map((e: any) => Coin.fromAmino(e)) : [],
-      configuration: object?.configuration ? ExecutionConfiguration.fromAmino(object.configuration) : undefined
-    };
+    const message = createBaseMsgUpdateAutoTx();
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.tx_id !== undefined && object.tx_id !== null) {
+      message.txId = BigInt(object.tx_id);
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.label !== undefined && object.label !== null) {
+      message.label = object.label;
+    }
+    message.msgs = object.msgs?.map(e => Sdk_Msg_FromAmino(e)) || [];
+    if (object.end_time !== undefined && object.end_time !== null) {
+      message.endTime = BigInt(object.end_time);
+    }
+    if (object.start_at !== undefined && object.start_at !== null) {
+      message.startAt = BigInt(object.start_at);
+    }
+    if (object.interval !== undefined && object.interval !== null) {
+      message.interval = object.interval;
+    }
+    message.feeFunds = object.fee_funds?.map(e => Coin.fromAmino(e)) || [];
+    if (object.configuration !== undefined && object.configuration !== null) {
+      message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
+    }
+    return message;
   },
   toAmino(message: MsgUpdateAutoTx): MsgUpdateAutoTxAmino {
     const obj: any = {};
@@ -1119,6 +1190,7 @@ function createBaseMsgUpdateAutoTxResponse(): MsgUpdateAutoTxResponse {
   return {};
 }
 export const MsgUpdateAutoTxResponse = {
+  typeUrl: "/trst.autoibctx.v1beta1.MsgUpdateAutoTxResponse",
   encode(_: MsgUpdateAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1141,7 +1213,8 @@ export const MsgUpdateAutoTxResponse = {
     return message;
   },
   fromAmino(_: MsgUpdateAutoTxResponseAmino): MsgUpdateAutoTxResponse {
-    return {};
+    const message = createBaseMsgUpdateAutoTxResponse();
+    return message;
   },
   toAmino(_: MsgUpdateAutoTxResponse): MsgUpdateAutoTxResponseAmino {
     const obj: any = {};

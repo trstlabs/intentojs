@@ -9,8 +9,8 @@ export interface WeightedAddressProtoMsg {
   value: Uint8Array;
 }
 export interface WeightedAddressAmino {
-  address: string;
-  weight: string;
+  address?: string;
+  weight?: string;
 }
 export interface WeightedAddressAminoMsg {
   type: "/trst.alloc.v1beta1.WeightedAddress";
@@ -43,9 +43,9 @@ export interface DistributionProportionsProtoMsg {
   value: Uint8Array;
 }
 export interface DistributionProportionsAmino {
-  staking: string;
-  trustless_contract_incentives: string;
-  relayer_incentives: string;
+  staking?: string;
+  trustless_contract_incentives?: string;
+  relayer_incentives?: string;
   /**
    * string item_incentives = 3 [
    * (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
@@ -53,12 +53,12 @@ export interface DistributionProportionsAmino {
    * (gogoproto.nullable) = false
    * ];
    */
-  contributor_rewards: string;
+  contributor_rewards?: string;
   /**
    * community_pool defines the proportion of the minted minted_denom that is
    * to be allocated to the community pool.
    */
-  community_pool: string;
+  community_pool?: string;
 }
 export interface DistributionProportionsAminoMsg {
   type: "/trst.alloc.v1beta1.DistributionProportions";
@@ -85,7 +85,7 @@ export interface ParamsAmino {
   /** distribution_proportions defines the proportion of the minted denom */
   distribution_proportions?: DistributionProportionsAmino;
   /** address to receive developer rewards */
-  weighted_contributor_rewards_receivers: WeightedAddressAmino[];
+  weighted_contributor_rewards_receivers?: WeightedAddressAmino[];
 }
 export interface ParamsAminoMsg {
   type: "/trst.alloc.v1beta1.Params";
@@ -102,6 +102,7 @@ function createBaseWeightedAddress(): WeightedAddress {
   };
 }
 export const WeightedAddress = {
+  typeUrl: "/trst.alloc.v1beta1.WeightedAddress",
   encode(message: WeightedAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -138,10 +139,14 @@ export const WeightedAddress = {
     return message;
   },
   fromAmino(object: WeightedAddressAmino): WeightedAddress {
-    return {
-      address: object.address,
-      weight: object.weight
-    };
+    const message = createBaseWeightedAddress();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.weight !== undefined && object.weight !== null) {
+      message.weight = object.weight;
+    }
+    return message;
   },
   toAmino(message: WeightedAddress): WeightedAddressAmino {
     const obj: any = {};
@@ -175,6 +180,7 @@ function createBaseDistributionProportions(): DistributionProportions {
   };
 }
 export const DistributionProportions = {
+  typeUrl: "/trst.alloc.v1beta1.DistributionProportions",
   encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.staking !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
@@ -232,13 +238,23 @@ export const DistributionProportions = {
     return message;
   },
   fromAmino(object: DistributionProportionsAmino): DistributionProportions {
-    return {
-      staking: object.staking,
-      trustlessContractIncentives: object.trustless_contract_incentives,
-      relayerIncentives: object.relayer_incentives,
-      contributorRewards: object.contributor_rewards,
-      communityPool: object.community_pool
-    };
+    const message = createBaseDistributionProportions();
+    if (object.staking !== undefined && object.staking !== null) {
+      message.staking = object.staking;
+    }
+    if (object.trustless_contract_incentives !== undefined && object.trustless_contract_incentives !== null) {
+      message.trustlessContractIncentives = object.trustless_contract_incentives;
+    }
+    if (object.relayer_incentives !== undefined && object.relayer_incentives !== null) {
+      message.relayerIncentives = object.relayer_incentives;
+    }
+    if (object.contributor_rewards !== undefined && object.contributor_rewards !== null) {
+      message.contributorRewards = object.contributor_rewards;
+    }
+    if (object.community_pool !== undefined && object.community_pool !== null) {
+      message.communityPool = object.community_pool;
+    }
+    return message;
   },
   toAmino(message: DistributionProportions): DistributionProportionsAmino {
     const obj: any = {};
@@ -272,6 +288,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
+  typeUrl: "/trst.alloc.v1beta1.Params",
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distributionProportions !== undefined) {
       DistributionProportions.encode(message.distributionProportions, writer.uint32(10).fork()).ldelim();
@@ -308,10 +325,12 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      distributionProportions: object?.distribution_proportions ? DistributionProportions.fromAmino(object.distribution_proportions) : undefined,
-      weightedContributorRewardsReceivers: Array.isArray(object?.weighted_contributor_rewards_receivers) ? object.weighted_contributor_rewards_receivers.map((e: any) => WeightedAddress.fromAmino(e)) : []
-    };
+    const message = createBaseParams();
+    if (object.distribution_proportions !== undefined && object.distribution_proportions !== null) {
+      message.distributionProportions = DistributionProportions.fromAmino(object.distribution_proportions);
+    }
+    message.weightedContributorRewardsReceivers = object.weighted_contributor_rewards_receivers?.map(e => WeightedAddress.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};

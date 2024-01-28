@@ -17,12 +17,12 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the claim module's parameters. */
 export interface ParamsAmino {
-  airdrop_start_time?: Date;
+  airdrop_start_time?: string;
   duration_until_decay?: DurationAmino;
   duration_of_decay?: DurationAmino;
   /** denom of claimable asset */
-  claim_denom: string;
-  duration_vesting_periods: DurationAmino[];
+  claim_denom?: string;
+  duration_vesting_periods?: DurationAmino[];
 }
 export interface ParamsAminoMsg {
   type: "/trst.claim.v1beta1.Params";
@@ -46,6 +46,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
+  typeUrl: "/trst.claim.v1beta1.Params",
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.airdropStartTime !== undefined) {
       Timestamp.encode(toTimestamp(message.airdropStartTime), writer.uint32(10).fork()).ldelim();
@@ -103,17 +104,25 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      airdropStartTime: object.airdrop_start_time,
-      durationUntilDecay: object?.duration_until_decay ? Duration.fromAmino(object.duration_until_decay) : undefined,
-      durationOfDecay: object?.duration_of_decay ? Duration.fromAmino(object.duration_of_decay) : undefined,
-      claimDenom: object.claim_denom,
-      durationVestingPeriods: Array.isArray(object?.duration_vesting_periods) ? object.duration_vesting_periods.map((e: any) => Duration.fromAmino(e)) : []
-    };
+    const message = createBaseParams();
+    if (object.airdrop_start_time !== undefined && object.airdrop_start_time !== null) {
+      message.airdropStartTime = fromTimestamp(Timestamp.fromAmino(object.airdrop_start_time));
+    }
+    if (object.duration_until_decay !== undefined && object.duration_until_decay !== null) {
+      message.durationUntilDecay = Duration.fromAmino(object.duration_until_decay);
+    }
+    if (object.duration_of_decay !== undefined && object.duration_of_decay !== null) {
+      message.durationOfDecay = Duration.fromAmino(object.duration_of_decay);
+    }
+    if (object.claim_denom !== undefined && object.claim_denom !== null) {
+      message.claimDenom = object.claim_denom;
+    }
+    message.durationVestingPeriods = object.duration_vesting_periods?.map(e => Duration.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.airdrop_start_time = message.airdropStartTime;
+    obj.airdrop_start_time = message.airdropStartTime ? Timestamp.toAmino(toTimestamp(message.airdropStartTime)) : undefined;
     obj.duration_until_decay = message.durationUntilDecay ? Duration.toAmino(message.durationUntilDecay) : undefined;
     obj.duration_of_decay = message.durationOfDecay ? Duration.toAmino(message.durationOfDecay) : undefined;
     obj.claim_denom = message.claimDenom;

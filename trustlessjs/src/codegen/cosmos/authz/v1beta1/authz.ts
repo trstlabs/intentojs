@@ -9,6 +9,7 @@ import { toTimestamp, fromTimestamp } from "../../../helpers";
  * the provided method on behalf of the granter's account.
  */
 export interface GenericAuthorization {
+  $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
   /** Msg, identified by it's type URL, to grant unrestricted permissions to execute */
   msg: string;
 }
@@ -22,7 +23,7 @@ export interface GenericAuthorizationProtoMsg {
  */
 export interface GenericAuthorizationAmino {
   /** Msg, identified by it's type URL, to grant unrestricted permissions to execute */
-  msg: string;
+  msg?: string;
 }
 export interface GenericAuthorizationAminoMsg {
   type: "cosmos-sdk/GenericAuthorization";
@@ -33,6 +34,7 @@ export interface GenericAuthorizationAminoMsg {
  * the provided method on behalf of the granter's account.
  */
 export interface GenericAuthorizationSDKType {
+  $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
   msg: string;
 }
 /**
@@ -40,7 +42,7 @@ export interface GenericAuthorizationSDKType {
  * the provide method with expiration time.
  */
 export interface Grant {
-  authorization: (GenericAuthorization & SendAuthorization & StakeAuthorization & Any) | undefined;
+  authorization?: (GenericAuthorization & SendAuthorization & StakeAuthorization & Any) | undefined;
   /**
    * time when the grant will expire and will be pruned. If null, then the grant
    * doesn't have a time expiration (other conditions  in `authorization`
@@ -66,7 +68,7 @@ export interface GrantAmino {
    * doesn't have a time expiration (other conditions  in `authorization`
    * may apply to invalidate the grant)
    */
-  expiration?: Date;
+  expiration?: string;
 }
 export interface GrantAminoMsg {
   type: "cosmos-sdk/Grant";
@@ -77,7 +79,7 @@ export interface GrantAminoMsg {
  * the provide method with expiration time.
  */
 export interface GrantSDKType {
-  authorization: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
+  authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
   expiration?: Date;
 }
 /**
@@ -87,8 +89,8 @@ export interface GrantSDKType {
 export interface GrantAuthorization {
   granter: string;
   grantee: string;
-  authorization: (GenericAuthorization & SendAuthorization & StakeAuthorization & Any) | undefined;
-  expiration: Date;
+  authorization?: (GenericAuthorization & SendAuthorization & StakeAuthorization & Any) | undefined;
+  expiration?: Date;
 }
 export interface GrantAuthorizationProtoMsg {
   typeUrl: "/cosmos.authz.v1beta1.GrantAuthorization";
@@ -102,10 +104,10 @@ export type GrantAuthorizationEncoded = Omit<GrantAuthorization, "authorization"
  * It is used in genesis.proto and query.proto
  */
 export interface GrantAuthorizationAmino {
-  granter: string;
-  grantee: string;
+  granter?: string;
+  grantee?: string;
   authorization?: AnyAmino;
-  expiration?: Date;
+  expiration?: string;
 }
 export interface GrantAuthorizationAminoMsg {
   type: "cosmos-sdk/GrantAuthorization";
@@ -118,8 +120,8 @@ export interface GrantAuthorizationAminoMsg {
 export interface GrantAuthorizationSDKType {
   granter: string;
   grantee: string;
-  authorization: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
-  expiration: Date;
+  authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
+  expiration?: Date;
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItem {
@@ -133,7 +135,7 @@ export interface GrantQueueItemProtoMsg {
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItemAmino {
   /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-  msg_type_urls: string[];
+  msg_type_urls?: string[];
 }
 export interface GrantQueueItemAminoMsg {
   type: "cosmos-sdk/GrantQueueItem";
@@ -145,10 +147,12 @@ export interface GrantQueueItemSDKType {
 }
 function createBaseGenericAuthorization(): GenericAuthorization {
   return {
+    $typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",
     msg: ""
   };
 }
 export const GenericAuthorization = {
+  typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",
   encode(message: GenericAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msg !== "") {
       writer.uint32(10).string(message.msg);
@@ -178,9 +182,11 @@ export const GenericAuthorization = {
     return message;
   },
   fromAmino(object: GenericAuthorizationAmino): GenericAuthorization {
-    return {
-      msg: object.msg
-    };
+    const message = createBaseGenericAuthorization();
+    if (object.msg !== undefined && object.msg !== null) {
+      message.msg = object.msg;
+    }
+    return message;
   },
   toAmino(message: GenericAuthorization): GenericAuthorizationAmino {
     const obj: any = {};
@@ -211,11 +217,12 @@ export const GenericAuthorization = {
 };
 function createBaseGrant(): Grant {
   return {
-    authorization: Any.fromPartial({}),
+    authorization: undefined,
     expiration: undefined
   };
 }
 export const Grant = {
+  typeUrl: "/cosmos.authz.v1beta1.Grant",
   encode(message: Grant, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authorization !== undefined) {
       Any.encode((message.authorization as Any), writer.uint32(10).fork()).ldelim();
@@ -252,15 +259,19 @@ export const Grant = {
     return message;
   },
   fromAmino(object: GrantAmino): Grant {
-    return {
-      authorization: object?.authorization ? Cosmos_authzAuthorization_FromAmino(object.authorization) : undefined,
-      expiration: object?.expiration
-    };
+    const message = createBaseGrant();
+    if (object.authorization !== undefined && object.authorization !== null) {
+      message.authorization = Cosmos_authzAuthorization_FromAmino(object.authorization);
+    }
+    if (object.expiration !== undefined && object.expiration !== null) {
+      message.expiration = fromTimestamp(Timestamp.fromAmino(object.expiration));
+    }
+    return message;
   },
   toAmino(message: Grant): GrantAmino {
     const obj: any = {};
     obj.authorization = message.authorization ? Cosmos_authzAuthorization_ToAmino((message.authorization as Any)) : undefined;
-    obj.expiration = message.expiration;
+    obj.expiration = message.expiration ? Timestamp.toAmino(toTimestamp(message.expiration)) : undefined;
     return obj;
   },
   fromAminoMsg(object: GrantAminoMsg): Grant {
@@ -289,11 +300,12 @@ function createBaseGrantAuthorization(): GrantAuthorization {
   return {
     granter: "",
     grantee: "",
-    authorization: Any.fromPartial({}),
-    expiration: new Date()
+    authorization: undefined,
+    expiration: undefined
   };
 }
 export const GrantAuthorization = {
+  typeUrl: "/cosmos.authz.v1beta1.GrantAuthorization",
   encode(message: GrantAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.granter !== "") {
       writer.uint32(10).string(message.granter);
@@ -344,19 +356,27 @@ export const GrantAuthorization = {
     return message;
   },
   fromAmino(object: GrantAuthorizationAmino): GrantAuthorization {
-    return {
-      granter: object.granter,
-      grantee: object.grantee,
-      authorization: object?.authorization ? Cosmos_authzAuthorization_FromAmino(object.authorization) : undefined,
-      expiration: object.expiration
-    };
+    const message = createBaseGrantAuthorization();
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    if (object.authorization !== undefined && object.authorization !== null) {
+      message.authorization = Cosmos_authzAuthorization_FromAmino(object.authorization);
+    }
+    if (object.expiration !== undefined && object.expiration !== null) {
+      message.expiration = fromTimestamp(Timestamp.fromAmino(object.expiration));
+    }
+    return message;
   },
   toAmino(message: GrantAuthorization): GrantAuthorizationAmino {
     const obj: any = {};
     obj.granter = message.granter;
     obj.grantee = message.grantee;
     obj.authorization = message.authorization ? Cosmos_authzAuthorization_ToAmino((message.authorization as Any)) : undefined;
-    obj.expiration = message.expiration;
+    obj.expiration = message.expiration ? Timestamp.toAmino(toTimestamp(message.expiration)) : undefined;
     return obj;
   },
   fromAminoMsg(object: GrantAuthorizationAminoMsg): GrantAuthorization {
@@ -387,6 +407,7 @@ function createBaseGrantQueueItem(): GrantQueueItem {
   };
 }
 export const GrantQueueItem = {
+  typeUrl: "/cosmos.authz.v1beta1.GrantQueueItem",
   encode(message: GrantQueueItem, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.msgTypeUrls) {
       writer.uint32(10).string(v!);
@@ -416,9 +437,9 @@ export const GrantQueueItem = {
     return message;
   },
   fromAmino(object: GrantQueueItemAmino): GrantQueueItem {
-    return {
-      msgTypeUrls: Array.isArray(object?.msg_type_urls) ? object.msg_type_urls.map((e: any) => e) : []
-    };
+    const message = createBaseGrantQueueItem();
+    message.msgTypeUrls = object.msg_type_urls?.map(e => e) || [];
+    return message;
   },
   toAmino(message: GrantQueueItem): GrantQueueItemAmino {
     const obj: any = {};
@@ -491,17 +512,17 @@ export const Cosmos_authzAuthorization_ToAmino = (content: Any) => {
     case "/cosmos.authz.v1beta1.GenericAuthorization":
       return {
         type: "cosmos-sdk/GenericAuthorization",
-        value: GenericAuthorization.toAmino(GenericAuthorization.decode(content.value))
+        value: GenericAuthorization.toAmino(GenericAuthorization.decode(content.value, undefined))
       };
     case "/cosmos.bank.v1beta1.SendAuthorization":
       return {
         type: "cosmos-sdk/SendAuthorization",
-        value: SendAuthorization.toAmino(SendAuthorization.decode(content.value))
+        value: SendAuthorization.toAmino(SendAuthorization.decode(content.value, undefined))
       };
     case "/cosmos.staking.v1beta1.StakeAuthorization":
       return {
         type: "cosmos-sdk/StakeAuthorization",
-        value: StakeAuthorization.toAmino(StakeAuthorization.decode(content.value))
+        value: StakeAuthorization.toAmino(StakeAuthorization.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

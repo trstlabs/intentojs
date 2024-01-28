@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType, AutoTxInfo, AutoTxInfoAmino, AutoTxInfoSDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** GenesisState - genesis state of x/auto-ibc-tx */
 export interface GenesisState {
   params: Params;
@@ -14,9 +15,9 @@ export interface GenesisStateProtoMsg {
 /** GenesisState - genesis state of x/auto-ibc-tx */
 export interface GenesisStateAmino {
   params?: ParamsAmino;
-  interchain_account_addresses: string[];
-  auto_tx_infos: AutoTxInfoAmino[];
-  sequences: SequenceAmino[];
+  interchain_account_addresses?: string[];
+  auto_tx_infos?: AutoTxInfoAmino[];
+  sequences?: SequenceAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/trst.autoibctx.v1beta1.GenesisState";
@@ -40,8 +41,8 @@ export interface SequenceProtoMsg {
 }
 /** Sequence id and value of a counter */
 export interface SequenceAmino {
-  id_key: Uint8Array;
-  value: string;
+  id_key?: string;
+  value?: string;
 }
 export interface SequenceAminoMsg {
   type: "/trst.autoibctx.v1beta1.Sequence";
@@ -61,6 +62,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
+  typeUrl: "/trst.autoibctx.v1beta1.GenesisState",
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -111,12 +113,14 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      interchainAccountAddresses: Array.isArray(object?.interchain_account_addresses) ? object.interchain_account_addresses.map((e: any) => e) : [],
-      autoTxInfos: Array.isArray(object?.auto_tx_infos) ? object.auto_tx_infos.map((e: any) => AutoTxInfo.fromAmino(e)) : [],
-      sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.interchainAccountAddresses = object.interchain_account_addresses?.map(e => e) || [];
+    message.autoTxInfos = object.auto_tx_infos?.map(e => AutoTxInfo.fromAmino(e)) || [];
+    message.sequences = object.sequences?.map(e => Sequence.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
@@ -161,6 +165,7 @@ function createBaseSequence(): Sequence {
   };
 }
 export const Sequence = {
+  typeUrl: "/trst.autoibctx.v1beta1.Sequence",
   encode(message: Sequence, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.idKey.length !== 0) {
       writer.uint32(10).bytes(message.idKey);
@@ -197,14 +202,18 @@ export const Sequence = {
     return message;
   },
   fromAmino(object: SequenceAmino): Sequence {
-    return {
-      idKey: object.id_key,
-      value: BigInt(object.value)
-    };
+    const message = createBaseSequence();
+    if (object.id_key !== undefined && object.id_key !== null) {
+      message.idKey = bytesFromBase64(object.id_key);
+    }
+    if (object.value !== undefined && object.value !== null) {
+      message.value = BigInt(object.value);
+    }
+    return message;
   },
   toAmino(message: Sequence): SequenceAmino {
     const obj: any = {};
-    obj.id_key = message.idKey;
+    obj.id_key = message.idKey ? base64FromBytes(message.idKey) : undefined;
     obj.value = message.value ? message.value.toString() : undefined;
     return obj;
   },

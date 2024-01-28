@@ -8,8 +8,8 @@ export interface SwapAmountInRouteProtoMsg {
   value: Uint8Array;
 }
 export interface SwapAmountInRouteAmino {
-  pool_id: string;
-  token_out_denom: string;
+  pool_id?: string;
+  token_out_denom?: string;
 }
 export interface SwapAmountInRouteAminoMsg {
   type: "osmosis/poolmanager/swap-amount-in-route";
@@ -28,8 +28,8 @@ export interface SwapAmountOutRouteProtoMsg {
   value: Uint8Array;
 }
 export interface SwapAmountOutRouteAmino {
-  pool_id: string;
-  token_in_denom: string;
+  pool_id?: string;
+  token_in_denom?: string;
 }
 export interface SwapAmountOutRouteAminoMsg {
   type: "osmosis/poolmanager/swap-amount-out-route";
@@ -46,6 +46,7 @@ function createBaseSwapAmountInRoute(): SwapAmountInRoute {
   };
 }
 export const SwapAmountInRoute = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute",
   encode(message: SwapAmountInRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -82,10 +83,14 @@ export const SwapAmountInRoute = {
     return message;
   },
   fromAmino(object: SwapAmountInRouteAmino): SwapAmountInRoute {
-    return {
-      poolId: BigInt(object.pool_id),
-      tokenOutDenom: object.token_out_denom
-    };
+    const message = createBaseSwapAmountInRoute();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.token_out_denom !== undefined && object.token_out_denom !== null) {
+      message.tokenOutDenom = object.token_out_denom;
+    }
+    return message;
   },
   toAmino(message: SwapAmountInRoute): SwapAmountInRouteAmino {
     const obj: any = {};
@@ -122,6 +127,7 @@ function createBaseSwapAmountOutRoute(): SwapAmountOutRoute {
   };
 }
 export const SwapAmountOutRoute = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute",
   encode(message: SwapAmountOutRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -158,10 +164,14 @@ export const SwapAmountOutRoute = {
     return message;
   },
   fromAmino(object: SwapAmountOutRouteAmino): SwapAmountOutRoute {
-    return {
-      poolId: BigInt(object.pool_id),
-      tokenInDenom: object.token_in_denom
-    };
+    const message = createBaseSwapAmountOutRoute();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.token_in_denom !== undefined && object.token_in_denom !== null) {
+      message.tokenInDenom = object.token_in_denom;
+    }
+    return message;
   },
   toAmino(message: SwapAmountOutRoute): SwapAmountOutRouteAmino {
     const obj: any = {};

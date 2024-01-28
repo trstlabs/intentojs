@@ -5,8 +5,10 @@
   "outPath": "./src/codegen",
   "options": {
     "interfaces": {
-      "enabled": false,
-      "useUnionTypes": false
+      "enabled": true,
+      "useUnionTypes": true,
+      "useByDefault": true,
+      "useGlobalDecoderRegistry": true
     },
     "prototypes": {
       "enabled": true,

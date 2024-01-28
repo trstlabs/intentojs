@@ -287,6 +287,7 @@ function createBaseTimestamp(): Timestamp {
   };
 }
 export const Timestamp = {
+  typeUrl: "/google.protobuf.Timestamp",
   encode(message: Timestamp, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.seconds !== BigInt(0)) {
       writer.uint32(8).int64(message.seconds);
@@ -326,7 +327,7 @@ export const Timestamp = {
     return fromJsonTimestamp(object);
   },
   toAmino(message: Timestamp): TimestampAmino {
-    return fromTimestamp(message).toString();
+    return fromTimestamp(message).toISOString().replace(/\.\d+Z$/, "Z");
   },
   fromAminoMsg(object: TimestampAminoMsg): Timestamp {
     return Timestamp.fromAmino(object.value);

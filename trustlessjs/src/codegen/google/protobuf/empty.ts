@@ -47,6 +47,7 @@ function createBaseEmpty(): Empty {
   return {};
 }
 export const Empty = {
+  typeUrl: "/google.protobuf.Empty",
   encode(_: Empty, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -69,7 +70,8 @@ export const Empty = {
     return message;
   },
   fromAmino(_: EmptyAmino): Empty {
-    return {};
+    const message = createBaseEmpty();
+    return message;
   },
   toAmino(_: Empty): EmptyAmino {
     const obj: any = {};

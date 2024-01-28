@@ -22,7 +22,7 @@ export interface GenesisStateAmino {
   /** params defines all the parameters of the module. */
   params?: ParamsAmino;
   /** list of claim records, one for every airdrop recipient */
-  claim_records: ClaimRecordAmino[];
+  claim_records?: ClaimRecordAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/trst.claim.v1beta1.GenesisState";
@@ -42,6 +42,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
+  typeUrl: "/trst.claim.v1beta1.GenesisState",
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.moduleAccountBalance !== undefined) {
       Coin.encode(message.moduleAccountBalance, writer.uint32(10).fork()).ldelim();
@@ -85,11 +86,15 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      moduleAccountBalance: object?.module_account_balance ? Coin.fromAmino(object.module_account_balance) : undefined,
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      claimRecords: Array.isArray(object?.claim_records) ? object.claim_records.map((e: any) => ClaimRecord.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.module_account_balance !== undefined && object.module_account_balance !== null) {
+      message.moduleAccountBalance = Coin.fromAmino(object.module_account_balance);
+    }
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.claimRecords = object.claim_records?.map(e => ClaimRecord.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};

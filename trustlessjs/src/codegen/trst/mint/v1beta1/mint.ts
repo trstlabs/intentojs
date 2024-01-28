@@ -14,7 +14,7 @@ export interface MinterProtoMsg {
 /** Minter represents the minting state. */
 export interface MinterAmino {
   /** current annual expected provisions */
-  annual_provisions: string;
+  annual_provisions?: string;
 }
 export interface MinterAminoMsg {
   type: "/trst.mint.v1beta1.Minter";
@@ -44,15 +44,15 @@ export interface ParamsProtoMsg {
 /** Params holds parameters for the mint module. */
 export interface ParamsAmino {
   /** type of coin to mint */
-  mint_denom: string;
+  mint_denom?: string;
   /** the time the chain starts */
-  start_time?: Date;
+  start_time?: string;
   /** initial annual provisions */
-  initial_annual_provisions: string;
+  initial_annual_provisions?: string;
   /** factor to reduce inflation by each year */
-  reduction_factor: string;
+  reduction_factor?: string;
   /** expected blocks per year */
-  blocks_per_year: string;
+  blocks_per_year?: string;
 }
 export interface ParamsAminoMsg {
   type: "/trst.mint.v1beta1.Params";
@@ -72,6 +72,7 @@ function createBaseMinter(): Minter {
   };
 }
 export const Minter = {
+  typeUrl: "/trst.mint.v1beta1.Minter",
   encode(message: Minter, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.annualProvisions !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.annualProvisions, 18).atomics);
@@ -101,9 +102,11 @@ export const Minter = {
     return message;
   },
   fromAmino(object: MinterAmino): Minter {
-    return {
-      annualProvisions: object.annual_provisions
-    };
+    const message = createBaseMinter();
+    if (object.annual_provisions !== undefined && object.annual_provisions !== null) {
+      message.annualProvisions = object.annual_provisions;
+    }
+    return message;
   },
   toAmino(message: Minter): MinterAmino {
     const obj: any = {};
@@ -136,6 +139,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
+  typeUrl: "/trst.mint.v1beta1.Params",
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.mintDenom !== "") {
       writer.uint32(10).string(message.mintDenom);
@@ -193,18 +197,28 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      mintDenom: object.mint_denom,
-      startTime: object.start_time,
-      initialAnnualProvisions: object.initial_annual_provisions,
-      reductionFactor: object.reduction_factor,
-      blocksPerYear: BigInt(object.blocks_per_year)
-    };
+    const message = createBaseParams();
+    if (object.mint_denom !== undefined && object.mint_denom !== null) {
+      message.mintDenom = object.mint_denom;
+    }
+    if (object.start_time !== undefined && object.start_time !== null) {
+      message.startTime = fromTimestamp(Timestamp.fromAmino(object.start_time));
+    }
+    if (object.initial_annual_provisions !== undefined && object.initial_annual_provisions !== null) {
+      message.initialAnnualProvisions = object.initial_annual_provisions;
+    }
+    if (object.reduction_factor !== undefined && object.reduction_factor !== null) {
+      message.reductionFactor = object.reduction_factor;
+    }
+    if (object.blocks_per_year !== undefined && object.blocks_per_year !== null) {
+      message.blocksPerYear = BigInt(object.blocks_per_year);
+    }
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
     obj.mint_denom = message.mintDenom;
-    obj.start_time = message.startTime;
+    obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
     obj.initial_annual_provisions = message.initialAnnualProvisions;
     obj.reduction_factor = message.reductionFactor;
     obj.blocks_per_year = message.blocksPerYear ? message.blocksPerYear.toString() : undefined;
