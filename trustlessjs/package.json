@@ -1,6 +1,6 @@
 {
   "name": "trustlessjs",
-  "version": "0.7.4-alpha.3",
+  "version": "0.7.4-alpha.4",
   "description": "package to interact with TrustlessHub",
   "author": "danieljdd <info@trstlabs.xyz>",
   "homepage": "https://github.com/trstlabs/trustlessjs#readme",

@@ -27,7 +27,7 @@ telescope({
     experimentalGlobalProtoNamespace: true,
     interfaces: {
       enabled: true,
-      useUnionTypes: false, //true,
+      useUnionTypes: true, //true,
       useGlobalDecoderRegistry: true,
       // useByDefault: true,
       // useByDefaultRpc: false,
