@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryAutoTxRequest, QueryAutoTxResponse, QueryAutoTxsRequest, QueryAutoTxsResponse, QueryAutoTxsForOwnerRequest, QueryAutoTxsForOwnerResponse, QueryParamsRequest, QueryParamsResponse, QueryAutoTxIbcUsageRequest, QueryAutoTxIbcUsageResponse } from "./query";
+import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryAutoTxRequest, QueryAutoTxResponse, QueryAutoTxHistoryRequest, QueryAutoTxHistoryResponse, QueryAutoTxsRequest, QueryAutoTxsResponse, QueryAutoTxsForOwnerRequest, QueryAutoTxsForOwnerResponse, QueryParamsRequest, QueryParamsResponse, QueryAutoTxIbcUsageRequest, QueryAutoTxIbcUsageResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -11,6 +11,8 @@ export interface Query {
   interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse>;
   /** AutoTx returns the auto-executing interchain account tx */
   autoTx(request: QueryAutoTxRequest): Promise<QueryAutoTxResponse>;
+  /** AutoTxHistory returns the auto tx history */
+  autoTxHistory(request: QueryAutoTxHistoryRequest): Promise<QueryAutoTxHistoryResponse>;
   /** AutoTxs returns the all auto-executing interchain account messages */
   autoTxs(request?: QueryAutoTxsRequest): Promise<QueryAutoTxsResponse>;
   /**
@@ -29,6 +31,7 @@ export class QueryClientImpl implements Query {
     this.rpc = rpc;
     this.interchainAccountFromAddress = this.interchainAccountFromAddress.bind(this);
     this.autoTx = this.autoTx.bind(this);
+    this.autoTxHistory = this.autoTxHistory.bind(this);
     this.autoTxs = this.autoTxs.bind(this);
     this.autoTxsForOwner = this.autoTxsForOwner.bind(this);
     this.params = this.params.bind(this);
@@ -43,6 +46,11 @@ export class QueryClientImpl implements Query {
     const data = QueryAutoTxRequest.encode(request).finish();
     const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "AutoTx", data);
     return promise.then(data => QueryAutoTxResponse.decode(new BinaryReader(data)));
+  }
+  autoTxHistory(request: QueryAutoTxHistoryRequest): Promise<QueryAutoTxHistoryResponse> {
+    const data = QueryAutoTxHistoryRequest.encode(request).finish();
+    const promise = this.rpc.request("trst.autoibctx.v1beta1.Query", "AutoTxHistory", data);
+    return promise.then(data => QueryAutoTxHistoryResponse.decode(new BinaryReader(data)));
   }
   autoTxs(request: QueryAutoTxsRequest = {
     pagination: undefined
@@ -78,6 +86,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     autoTx(request: QueryAutoTxRequest): Promise<QueryAutoTxResponse> {
       return queryService.autoTx(request);
+    },
+    autoTxHistory(request: QueryAutoTxHistoryRequest): Promise<QueryAutoTxHistoryResponse> {
+      return queryService.autoTxHistory(request);
     },
     autoTxs(request?: QueryAutoTxsRequest): Promise<QueryAutoTxsResponse> {
       return queryService.autoTxs(request);

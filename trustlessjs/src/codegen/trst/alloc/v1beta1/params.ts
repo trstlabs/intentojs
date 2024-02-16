@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface WeightedAddress {
   address: string;
   weight: string;
@@ -103,6 +104,15 @@ function createBaseWeightedAddress(): WeightedAddress {
 }
 export const WeightedAddress = {
   typeUrl: "/trst.alloc.v1beta1.WeightedAddress",
+  is(o: any): o is WeightedAddress {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is WeightedAddressSDKType {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is WeightedAddressAmino {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
   encode(message: WeightedAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -170,6 +180,7 @@ export const WeightedAddress = {
     };
   }
 };
+GlobalDecoderRegistry.register(WeightedAddress.typeUrl, WeightedAddress);
 function createBaseDistributionProportions(): DistributionProportions {
   return {
     staking: "",
@@ -181,6 +192,15 @@ function createBaseDistributionProportions(): DistributionProportions {
 }
 export const DistributionProportions = {
   typeUrl: "/trst.alloc.v1beta1.DistributionProportions",
+  is(o: any): o is DistributionProportions {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.trustlessContractIncentives === "string" && typeof o.relayerIncentives === "string" && typeof o.contributorRewards === "string" && typeof o.communityPool === "string");
+  },
+  isSDK(o: any): o is DistributionProportionsSDKType {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.trustless_contract_incentives === "string" && typeof o.relayer_incentives === "string" && typeof o.contributor_rewards === "string" && typeof o.community_pool === "string");
+  },
+  isAmino(o: any): o is DistributionProportionsAmino {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.trustless_contract_incentives === "string" && typeof o.relayer_incentives === "string" && typeof o.contributor_rewards === "string" && typeof o.community_pool === "string");
+  },
   encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.staking !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
@@ -281,6 +301,7 @@ export const DistributionProportions = {
     };
   }
 };
+GlobalDecoderRegistry.register(DistributionProportions.typeUrl, DistributionProportions);
 function createBaseParams(): Params {
   return {
     distributionProportions: DistributionProportions.fromPartial({}),
@@ -289,6 +310,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/trst.alloc.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.is(o.distributionProportions) && Array.isArray(o.weightedContributorRewardsReceivers) && (!o.weightedContributorRewardsReceivers.length || WeightedAddress.is(o.weightedContributorRewardsReceivers[0])));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isSDK(o.distribution_proportions) && Array.isArray(o.weighted_contributor_rewards_receivers) && (!o.weighted_contributor_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_contributor_rewards_receivers[0])));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isAmino(o.distribution_proportions) && Array.isArray(o.weighted_contributor_rewards_receivers) && (!o.weighted_contributor_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_contributor_rewards_receivers[0])));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distributionProportions !== undefined) {
       DistributionProportions.encode(message.distributionProportions, writer.uint32(10).fork()).ldelim();
@@ -358,3 +388,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

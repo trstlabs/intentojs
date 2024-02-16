@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * MsgInstantiateContract create a new smart contract instance for the given
@@ -255,6 +256,16 @@ function createBaseMsgInstantiateContract(): MsgInstantiateContract {
 }
 export const MsgInstantiateContract = {
   typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract",
+  aminoType: "wasm/MsgInstantiateContract",
+  is(o: any): o is MsgInstantiateContract {
+    return o && (o.$typeUrl === MsgInstantiateContract.typeUrl || typeof o.sender === "string" && typeof o.admin === "string" && typeof o.codeId === "bigint" && typeof o.label === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.is(o.funds[0])));
+  },
+  isSDK(o: any): o is MsgInstantiateContractSDKType {
+    return o && (o.$typeUrl === MsgInstantiateContract.typeUrl || typeof o.sender === "string" && typeof o.admin === "string" && typeof o.code_id === "bigint" && typeof o.label === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.isSDK(o.funds[0])));
+  },
+  isAmino(o: any): o is MsgInstantiateContractAmino {
+    return o && (o.$typeUrl === MsgInstantiateContract.typeUrl || typeof o.sender === "string" && typeof o.admin === "string" && typeof o.code_id === "bigint" && typeof o.label === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.isAmino(o.funds[0])));
+  },
   encode(message: MsgInstantiateContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -374,6 +385,8 @@ export const MsgInstantiateContract = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgInstantiateContract.typeUrl, MsgInstantiateContract);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgInstantiateContract.aminoType, MsgInstantiateContract.typeUrl);
 function createBaseMsgInstantiateContract2(): MsgInstantiateContract2 {
   return {
     sender: "",
@@ -388,6 +401,16 @@ function createBaseMsgInstantiateContract2(): MsgInstantiateContract2 {
 }
 export const MsgInstantiateContract2 = {
   typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2",
+  aminoType: "wasm/MsgInstantiateContract2",
+  is(o: any): o is MsgInstantiateContract2 {
+    return o && (o.$typeUrl === MsgInstantiateContract2.typeUrl || typeof o.sender === "string" && typeof o.admin === "string" && typeof o.codeId === "bigint" && typeof o.label === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.is(o.funds[0])) && (o.salt instanceof Uint8Array || typeof o.salt === "string") && typeof o.fixMsg === "boolean");
+  },
+  isSDK(o: any): o is MsgInstantiateContract2SDKType {
+    return o && (o.$typeUrl === MsgInstantiateContract2.typeUrl || typeof o.sender === "string" && typeof o.admin === "string" && typeof o.code_id === "bigint" && typeof o.label === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.isSDK(o.funds[0])) && (o.salt instanceof Uint8Array || typeof o.salt === "string") && typeof o.fix_msg === "boolean");
+  },
+  isAmino(o: any): o is MsgInstantiateContract2Amino {
+    return o && (o.$typeUrl === MsgInstantiateContract2.typeUrl || typeof o.sender === "string" && typeof o.admin === "string" && typeof o.code_id === "bigint" && typeof o.label === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.isAmino(o.funds[0])) && (o.salt instanceof Uint8Array || typeof o.salt === "string") && typeof o.fix_msg === "boolean");
+  },
   encode(message: MsgInstantiateContract2, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -529,6 +552,8 @@ export const MsgInstantiateContract2 = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgInstantiateContract2.typeUrl, MsgInstantiateContract2);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgInstantiateContract2.aminoType, MsgInstantiateContract2.typeUrl);
 function createBaseMsgInstantiateContractResponse(): MsgInstantiateContractResponse {
   return {
     address: "",
@@ -537,6 +562,16 @@ function createBaseMsgInstantiateContractResponse(): MsgInstantiateContractRespo
 }
 export const MsgInstantiateContractResponse = {
   typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContractResponse",
+  aminoType: "wasm/MsgInstantiateContractResponse",
+  is(o: any): o is MsgInstantiateContractResponse {
+    return o && (o.$typeUrl === MsgInstantiateContractResponse.typeUrl || typeof o.address === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isSDK(o: any): o is MsgInstantiateContractResponseSDKType {
+    return o && (o.$typeUrl === MsgInstantiateContractResponse.typeUrl || typeof o.address === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isAmino(o: any): o is MsgInstantiateContractResponseAmino {
+    return o && (o.$typeUrl === MsgInstantiateContractResponse.typeUrl || typeof o.address === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
   encode(message: MsgInstantiateContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -610,6 +645,8 @@ export const MsgInstantiateContractResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgInstantiateContractResponse.typeUrl, MsgInstantiateContractResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgInstantiateContractResponse.aminoType, MsgInstantiateContractResponse.typeUrl);
 function createBaseMsgInstantiateContract2Response(): MsgInstantiateContract2Response {
   return {
     address: "",
@@ -618,6 +655,16 @@ function createBaseMsgInstantiateContract2Response(): MsgInstantiateContract2Res
 }
 export const MsgInstantiateContract2Response = {
   typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2Response",
+  aminoType: "wasm/MsgInstantiateContract2Response",
+  is(o: any): o is MsgInstantiateContract2Response {
+    return o && (o.$typeUrl === MsgInstantiateContract2Response.typeUrl || typeof o.address === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isSDK(o: any): o is MsgInstantiateContract2ResponseSDKType {
+    return o && (o.$typeUrl === MsgInstantiateContract2Response.typeUrl || typeof o.address === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isAmino(o: any): o is MsgInstantiateContract2ResponseAmino {
+    return o && (o.$typeUrl === MsgInstantiateContract2Response.typeUrl || typeof o.address === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
   encode(message: MsgInstantiateContract2Response, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -691,6 +738,8 @@ export const MsgInstantiateContract2Response = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgInstantiateContract2Response.typeUrl, MsgInstantiateContract2Response);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgInstantiateContract2Response.aminoType, MsgInstantiateContract2Response.typeUrl);
 function createBaseMsgExecuteContract(): MsgExecuteContract {
   return {
     sender: "",
@@ -701,6 +750,16 @@ function createBaseMsgExecuteContract(): MsgExecuteContract {
 }
 export const MsgExecuteContract = {
   typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+  aminoType: "wasm/MsgExecuteContract",
+  is(o: any): o is MsgExecuteContract {
+    return o && (o.$typeUrl === MsgExecuteContract.typeUrl || typeof o.sender === "string" && typeof o.contract === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.is(o.funds[0])));
+  },
+  isSDK(o: any): o is MsgExecuteContractSDKType {
+    return o && (o.$typeUrl === MsgExecuteContract.typeUrl || typeof o.sender === "string" && typeof o.contract === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.isSDK(o.funds[0])));
+  },
+  isAmino(o: any): o is MsgExecuteContractAmino {
+    return o && (o.$typeUrl === MsgExecuteContract.typeUrl || typeof o.sender === "string" && typeof o.contract === "string" && (o.msg instanceof Uint8Array || typeof o.msg === "string") && Array.isArray(o.funds) && (!o.funds.length || Coin.isAmino(o.funds[0])));
+  },
   encode(message: MsgExecuteContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -798,6 +857,8 @@ export const MsgExecuteContract = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgExecuteContract.typeUrl, MsgExecuteContract);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgExecuteContract.aminoType, MsgExecuteContract.typeUrl);
 function createBaseMsgExecuteContractResponse(): MsgExecuteContractResponse {
   return {
     data: new Uint8Array()
@@ -805,6 +866,16 @@ function createBaseMsgExecuteContractResponse(): MsgExecuteContractResponse {
 }
 export const MsgExecuteContractResponse = {
   typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContractResponse",
+  aminoType: "wasm/MsgExecuteContractResponse",
+  is(o: any): o is MsgExecuteContractResponse {
+    return o && (o.$typeUrl === MsgExecuteContractResponse.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
+  isSDK(o: any): o is MsgExecuteContractResponseSDKType {
+    return o && (o.$typeUrl === MsgExecuteContractResponse.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
+  isAmino(o: any): o is MsgExecuteContractResponseAmino {
+    return o && (o.$typeUrl === MsgExecuteContractResponse.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
   encode(message: MsgExecuteContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -867,3 +938,5 @@ export const MsgExecuteContractResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgExecuteContractResponse.typeUrl, MsgExecuteContractResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgExecuteContractResponse.aminoType, MsgExecuteContractResponse.typeUrl);

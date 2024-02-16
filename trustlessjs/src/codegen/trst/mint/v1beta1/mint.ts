@@ -1,6 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
 /** Minter represents the minting state. */
 export interface Minter {
@@ -73,6 +74,15 @@ function createBaseMinter(): Minter {
 }
 export const Minter = {
   typeUrl: "/trst.mint.v1beta1.Minter",
+  is(o: any): o is Minter {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.annualProvisions === "string");
+  },
+  isSDK(o: any): o is MinterSDKType {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.annual_provisions === "string");
+  },
+  isAmino(o: any): o is MinterAmino {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.annual_provisions === "string");
+  },
   encode(message: Minter, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.annualProvisions !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.annualProvisions, 18).atomics);
@@ -129,6 +139,7 @@ export const Minter = {
     };
   }
 };
+GlobalDecoderRegistry.register(Minter.typeUrl, Minter);
 function createBaseParams(): Params {
   return {
     mintDenom: "",
@@ -140,6 +151,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/trst.mint.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mintDenom === "string" && Timestamp.is(o.startTime) && typeof o.initialAnnualProvisions === "string" && typeof o.reductionFactor === "string" && typeof o.blocksPerYear === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && Timestamp.isSDK(o.start_time) && typeof o.initial_annual_provisions === "string" && typeof o.reduction_factor === "string" && typeof o.blocks_per_year === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && Timestamp.isAmino(o.start_time) && typeof o.initial_annual_provisions === "string" && typeof o.reduction_factor === "string" && typeof o.blocks_per_year === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.mintDenom !== "") {
       writer.uint32(10).string(message.mintDenom);
@@ -240,3 +260,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

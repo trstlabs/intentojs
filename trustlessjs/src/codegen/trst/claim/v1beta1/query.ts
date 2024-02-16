@@ -1,7 +1,9 @@
-import { Action, ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType, actionFromJSON, actionToJSON } from "./claim";
+import { Action, ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType, actionFromJSON } from "./claim";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryModuleAccountBalanceRequest {}
 export interface QueryModuleAccountBalanceRequestProtoMsg {
@@ -184,6 +186,15 @@ function createBaseQueryModuleAccountBalanceRequest(): QueryModuleAccountBalance
 }
 export const QueryModuleAccountBalanceRequest = {
   typeUrl: "/trst.claim.v1beta1.QueryModuleAccountBalanceRequest",
+  is(o: any): o is QueryModuleAccountBalanceRequest {
+    return o && o.$typeUrl === QueryModuleAccountBalanceRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryModuleAccountBalanceRequestSDKType {
+    return o && o.$typeUrl === QueryModuleAccountBalanceRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryModuleAccountBalanceRequestAmino {
+    return o && o.$typeUrl === QueryModuleAccountBalanceRequest.typeUrl;
+  },
   encode(_: QueryModuleAccountBalanceRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -229,6 +240,7 @@ export const QueryModuleAccountBalanceRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryModuleAccountBalanceRequest.typeUrl, QueryModuleAccountBalanceRequest);
 function createBaseQueryModuleAccountBalanceResponse(): QueryModuleAccountBalanceResponse {
   return {
     moduleAccountBalance: []
@@ -236,6 +248,15 @@ function createBaseQueryModuleAccountBalanceResponse(): QueryModuleAccountBalanc
 }
 export const QueryModuleAccountBalanceResponse = {
   typeUrl: "/trst.claim.v1beta1.QueryModuleAccountBalanceResponse",
+  is(o: any): o is QueryModuleAccountBalanceResponse {
+    return o && (o.$typeUrl === QueryModuleAccountBalanceResponse.typeUrl || Array.isArray(o.moduleAccountBalance) && (!o.moduleAccountBalance.length || Coin.is(o.moduleAccountBalance[0])));
+  },
+  isSDK(o: any): o is QueryModuleAccountBalanceResponseSDKType {
+    return o && (o.$typeUrl === QueryModuleAccountBalanceResponse.typeUrl || Array.isArray(o.moduleAccountBalance) && (!o.moduleAccountBalance.length || Coin.isSDK(o.moduleAccountBalance[0])));
+  },
+  isAmino(o: any): o is QueryModuleAccountBalanceResponseAmino {
+    return o && (o.$typeUrl === QueryModuleAccountBalanceResponse.typeUrl || Array.isArray(o.moduleAccountBalance) && (!o.moduleAccountBalance.length || Coin.isAmino(o.moduleAccountBalance[0])));
+  },
   encode(message: QueryModuleAccountBalanceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.moduleAccountBalance) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -294,11 +315,21 @@ export const QueryModuleAccountBalanceResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryModuleAccountBalanceResponse.typeUrl, QueryModuleAccountBalanceResponse);
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
   typeUrl: "/trst.claim.v1beta1.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -344,6 +375,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -351,6 +383,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/trst.claim.v1beta1.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -407,6 +448,7 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryClaimRecordRequest(): QueryClaimRecordRequest {
   return {
     address: ""
@@ -414,6 +456,15 @@ function createBaseQueryClaimRecordRequest(): QueryClaimRecordRequest {
 }
 export const QueryClaimRecordRequest = {
   typeUrl: "/trst.claim.v1beta1.QueryClaimRecordRequest",
+  is(o: any): o is QueryClaimRecordRequest {
+    return o && (o.$typeUrl === QueryClaimRecordRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryClaimRecordRequestSDKType {
+    return o && (o.$typeUrl === QueryClaimRecordRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryClaimRecordRequestAmino {
+    return o && (o.$typeUrl === QueryClaimRecordRequest.typeUrl || typeof o.address === "string");
+  },
   encode(message: QueryClaimRecordRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -470,6 +521,7 @@ export const QueryClaimRecordRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryClaimRecordRequest.typeUrl, QueryClaimRecordRequest);
 function createBaseQueryClaimRecordResponse(): QueryClaimRecordResponse {
   return {
     claimRecord: ClaimRecord.fromPartial({})
@@ -477,6 +529,15 @@ function createBaseQueryClaimRecordResponse(): QueryClaimRecordResponse {
 }
 export const QueryClaimRecordResponse = {
   typeUrl: "/trst.claim.v1beta1.QueryClaimRecordResponse",
+  is(o: any): o is QueryClaimRecordResponse {
+    return o && (o.$typeUrl === QueryClaimRecordResponse.typeUrl || ClaimRecord.is(o.claimRecord));
+  },
+  isSDK(o: any): o is QueryClaimRecordResponseSDKType {
+    return o && (o.$typeUrl === QueryClaimRecordResponse.typeUrl || ClaimRecord.isSDK(o.claim_record));
+  },
+  isAmino(o: any): o is QueryClaimRecordResponseAmino {
+    return o && (o.$typeUrl === QueryClaimRecordResponse.typeUrl || ClaimRecord.isAmino(o.claim_record));
+  },
   encode(message: QueryClaimRecordResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.claimRecord !== undefined) {
       ClaimRecord.encode(message.claimRecord, writer.uint32(10).fork()).ldelim();
@@ -533,6 +594,7 @@ export const QueryClaimRecordResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryClaimRecordResponse.typeUrl, QueryClaimRecordResponse);
 function createBaseQueryClaimableForActionRequest(): QueryClaimableForActionRequest {
   return {
     address: "",
@@ -541,6 +603,15 @@ function createBaseQueryClaimableForActionRequest(): QueryClaimableForActionRequ
 }
 export const QueryClaimableForActionRequest = {
   typeUrl: "/trst.claim.v1beta1.QueryClaimableForActionRequest",
+  is(o: any): o is QueryClaimableForActionRequest {
+    return o && (o.$typeUrl === QueryClaimableForActionRequest.typeUrl || typeof o.address === "string" && isSet(o.action));
+  },
+  isSDK(o: any): o is QueryClaimableForActionRequestSDKType {
+    return o && (o.$typeUrl === QueryClaimableForActionRequest.typeUrl || typeof o.address === "string" && isSet(o.action));
+  },
+  isAmino(o: any): o is QueryClaimableForActionRequestAmino {
+    return o && (o.$typeUrl === QueryClaimableForActionRequest.typeUrl || typeof o.address === "string" && isSet(o.action));
+  },
   encode(message: QueryClaimableForActionRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -589,7 +660,7 @@ export const QueryClaimableForActionRequest = {
   toAmino(message: QueryClaimableForActionRequest): QueryClaimableForActionRequestAmino {
     const obj: any = {};
     obj.address = message.address;
-    obj.action = actionToJSON(message.action);
+    obj.action = message.action;
     return obj;
   },
   fromAminoMsg(object: QueryClaimableForActionRequestAminoMsg): QueryClaimableForActionRequest {
@@ -608,6 +679,7 @@ export const QueryClaimableForActionRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryClaimableForActionRequest.typeUrl, QueryClaimableForActionRequest);
 function createBaseQueryClaimableForActionResponse(): QueryClaimableForActionResponse {
   return {
     coins: []
@@ -615,6 +687,15 @@ function createBaseQueryClaimableForActionResponse(): QueryClaimableForActionRes
 }
 export const QueryClaimableForActionResponse = {
   typeUrl: "/trst.claim.v1beta1.QueryClaimableForActionResponse",
+  is(o: any): o is QueryClaimableForActionResponse {
+    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])));
+  },
+  isSDK(o: any): o is QueryClaimableForActionResponseSDKType {
+    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])));
+  },
+  isAmino(o: any): o is QueryClaimableForActionResponseAmino {
+    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])));
+  },
   encode(message: QueryClaimableForActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -673,6 +754,7 @@ export const QueryClaimableForActionResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryClaimableForActionResponse.typeUrl, QueryClaimableForActionResponse);
 function createBaseQueryTotalClaimableRequest(): QueryTotalClaimableRequest {
   return {
     address: ""
@@ -680,6 +762,15 @@ function createBaseQueryTotalClaimableRequest(): QueryTotalClaimableRequest {
 }
 export const QueryTotalClaimableRequest = {
   typeUrl: "/trst.claim.v1beta1.QueryTotalClaimableRequest",
+  is(o: any): o is QueryTotalClaimableRequest {
+    return o && (o.$typeUrl === QueryTotalClaimableRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryTotalClaimableRequestSDKType {
+    return o && (o.$typeUrl === QueryTotalClaimableRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryTotalClaimableRequestAmino {
+    return o && (o.$typeUrl === QueryTotalClaimableRequest.typeUrl || typeof o.address === "string");
+  },
   encode(message: QueryTotalClaimableRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -736,6 +827,7 @@ export const QueryTotalClaimableRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTotalClaimableRequest.typeUrl, QueryTotalClaimableRequest);
 function createBaseQueryTotalClaimableResponse(): QueryTotalClaimableResponse {
   return {
     coins: []
@@ -743,6 +835,15 @@ function createBaseQueryTotalClaimableResponse(): QueryTotalClaimableResponse {
 }
 export const QueryTotalClaimableResponse = {
   typeUrl: "/trst.claim.v1beta1.QueryTotalClaimableResponse",
+  is(o: any): o is QueryTotalClaimableResponse {
+    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])));
+  },
+  isSDK(o: any): o is QueryTotalClaimableResponseSDKType {
+    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])));
+  },
+  isAmino(o: any): o is QueryTotalClaimableResponseAmino {
+    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])));
+  },
   encode(message: QueryTotalClaimableResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -801,3 +902,4 @@ export const QueryTotalClaimableResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTotalClaimableResponse.typeUrl, QueryTotalClaimableResponse);

@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * FungibleTokenPacketData defines a struct for the packet payload
  * See FungibleTokenPacketData spec:
@@ -58,6 +59,16 @@ function createBaseFungibleTokenPacketData(): FungibleTokenPacketData {
 }
 export const FungibleTokenPacketData = {
   typeUrl: "/ibc.applications.transfer.v2.FungibleTokenPacketData",
+  aminoType: "cosmos-sdk/FungibleTokenPacketData",
+  is(o: any): o is FungibleTokenPacketData {
+    return o && (o.$typeUrl === FungibleTokenPacketData.typeUrl || typeof o.denom === "string" && typeof o.amount === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+  },
+  isSDK(o: any): o is FungibleTokenPacketDataSDKType {
+    return o && (o.$typeUrl === FungibleTokenPacketData.typeUrl || typeof o.denom === "string" && typeof o.amount === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+  },
+  isAmino(o: any): o is FungibleTokenPacketDataAmino {
+    return o && (o.$typeUrl === FungibleTokenPacketData.typeUrl || typeof o.denom === "string" && typeof o.amount === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+  },
   encode(message: FungibleTokenPacketData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -153,3 +164,5 @@ export const FungibleTokenPacketData = {
     };
   }
 };
+GlobalDecoderRegistry.register(FungibleTokenPacketData.typeUrl, FungibleTokenPacketData);
+GlobalDecoderRegistry.registerAminoProtoMapping(FungibleTokenPacketData.aminoType, FungibleTokenPacketData.typeUrl);

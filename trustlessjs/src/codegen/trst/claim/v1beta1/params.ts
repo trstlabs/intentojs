@@ -2,6 +2,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Params defines the claim module's parameters. */
 export interface Params {
   airdropStartTime: Date;
@@ -47,6 +48,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/trst.claim.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Timestamp.is(o.airdropStartTime) && Duration.is(o.durationUntilDecay) && Duration.is(o.durationOfDecay) && typeof o.claimDenom === "string" && Array.isArray(o.durationVestingPeriods) && (!o.durationVestingPeriods.length || Duration.is(o.durationVestingPeriods[0])));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Timestamp.isSDK(o.airdrop_start_time) && Duration.isSDK(o.duration_until_decay) && Duration.isSDK(o.duration_of_decay) && typeof o.claim_denom === "string" && Array.isArray(o.duration_vesting_periods) && (!o.duration_vesting_periods.length || Duration.isSDK(o.duration_vesting_periods[0])));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Timestamp.isAmino(o.airdrop_start_time) && Duration.isAmino(o.duration_until_decay) && Duration.isAmino(o.duration_of_decay) && typeof o.claim_denom === "string" && Array.isArray(o.duration_vesting_periods) && (!o.duration_vesting_periods.length || Duration.isAmino(o.duration_vesting_periods[0])));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.airdropStartTime !== undefined) {
       Timestamp.encode(toTimestamp(message.airdropStartTime), writer.uint32(10).fork()).ldelim();
@@ -149,3 +159,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType, AutoTxInfo, AutoTxInfoAmino, AutoTxInfoSDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** GenesisState - genesis state of x/auto-ibc-tx */
 export interface GenesisState {
@@ -63,6 +64,15 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/trst.autoibctx.v1beta1.GenesisState",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.interchainAccountAddresses) && (!o.interchainAccountAddresses.length || typeof o.interchainAccountAddresses[0] === "string") && Array.isArray(o.autoTxInfos) && (!o.autoTxInfos.length || AutoTxInfo.is(o.autoTxInfos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.is(o.sequences[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.interchain_account_addresses) && (!o.interchain_account_addresses.length || typeof o.interchain_account_addresses[0] === "string") && Array.isArray(o.auto_tx_infos) && (!o.auto_tx_infos.length || AutoTxInfo.isSDK(o.auto_tx_infos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isSDK(o.sequences[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.interchain_account_addresses) && (!o.interchain_account_addresses.length || typeof o.interchain_account_addresses[0] === "string") && Array.isArray(o.auto_tx_infos) && (!o.auto_tx_infos.length || AutoTxInfo.isAmino(o.auto_tx_infos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isAmino(o.sequences[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -158,6 +168,7 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
 function createBaseSequence(): Sequence {
   return {
     idKey: new Uint8Array(),
@@ -166,6 +177,15 @@ function createBaseSequence(): Sequence {
 }
 export const Sequence = {
   typeUrl: "/trst.autoibctx.v1beta1.Sequence",
+  is(o: any): o is Sequence {
+    return o && (o.$typeUrl === Sequence.typeUrl || (o.idKey instanceof Uint8Array || typeof o.idKey === "string") && typeof o.value === "bigint");
+  },
+  isSDK(o: any): o is SequenceSDKType {
+    return o && (o.$typeUrl === Sequence.typeUrl || (o.id_key instanceof Uint8Array || typeof o.id_key === "string") && typeof o.value === "bigint");
+  },
+  isAmino(o: any): o is SequenceAmino {
+    return o && (o.$typeUrl === Sequence.typeUrl || (o.id_key instanceof Uint8Array || typeof o.id_key === "string") && typeof o.value === "bigint");
+  },
   encode(message: Sequence, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.idKey.length !== 0) {
       writer.uint32(10).bytes(message.idKey);
@@ -233,3 +253,4 @@ export const Sequence = {
     };
   }
 };
+GlobalDecoderRegistry.register(Sequence.typeUrl, Sequence);

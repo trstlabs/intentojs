@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface AutoTxIbcUsage {
   address: string;
   txs: AutoIbcTxAck[];
@@ -48,6 +49,15 @@ function createBaseAutoTxIbcUsage(): AutoTxIbcUsage {
 }
 export const AutoTxIbcUsage = {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxIbcUsage",
+  is(o: any): o is AutoTxIbcUsage {
+    return o && (o.$typeUrl === AutoTxIbcUsage.typeUrl || typeof o.address === "string" && Array.isArray(o.txs) && (!o.txs.length || AutoIbcTxAck.is(o.txs[0])));
+  },
+  isSDK(o: any): o is AutoTxIbcUsageSDKType {
+    return o && (o.$typeUrl === AutoTxIbcUsage.typeUrl || typeof o.address === "string" && Array.isArray(o.txs) && (!o.txs.length || AutoIbcTxAck.isSDK(o.txs[0])));
+  },
+  isAmino(o: any): o is AutoTxIbcUsageAmino {
+    return o && (o.$typeUrl === AutoTxIbcUsage.typeUrl || typeof o.address === "string" && Array.isArray(o.txs) && (!o.txs.length || AutoIbcTxAck.isAmino(o.txs[0])));
+  },
   encode(message: AutoTxIbcUsage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -117,6 +127,7 @@ export const AutoTxIbcUsage = {
     };
   }
 };
+GlobalDecoderRegistry.register(AutoTxIbcUsage.typeUrl, AutoTxIbcUsage);
 function createBaseAutoIbcTxAck(): AutoIbcTxAck {
   return {
     coin: Coin.fromPartial({}),
@@ -125,6 +136,15 @@ function createBaseAutoIbcTxAck(): AutoIbcTxAck {
 }
 export const AutoIbcTxAck = {
   typeUrl: "/trst.autoibctx.v1beta1.AutoIbcTxAck",
+  is(o: any): o is AutoIbcTxAck {
+    return o && (o.$typeUrl === AutoIbcTxAck.typeUrl || Coin.is(o.coin) && typeof o.connectionId === "string");
+  },
+  isSDK(o: any): o is AutoIbcTxAckSDKType {
+    return o && (o.$typeUrl === AutoIbcTxAck.typeUrl || Coin.isSDK(o.coin) && typeof o.connection_id === "string");
+  },
+  isAmino(o: any): o is AutoIbcTxAckAmino {
+    return o && (o.$typeUrl === AutoIbcTxAck.typeUrl || Coin.isAmino(o.coin) && typeof o.connection_id === "string");
+  },
   encode(message: AutoIbcTxAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.coin !== undefined) {
       Coin.encode(message.coin, writer.uint32(10).fork()).ldelim();
@@ -192,3 +212,4 @@ export const AutoIbcTxAck = {
     };
   }
 };
+GlobalDecoderRegistry.register(AutoIbcTxAck.typeUrl, AutoIbcTxAck);

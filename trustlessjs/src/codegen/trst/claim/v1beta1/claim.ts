@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export enum Action {
   ActionAutoTxAuthz = 0,
   ActionAutoTxWasm = 1,
@@ -165,6 +166,15 @@ function createBaseClaimRecord(): ClaimRecord {
 }
 export const ClaimRecord = {
   typeUrl: "/trst.claim.v1beta1.ClaimRecord",
+  is(o: any): o is ClaimRecord {
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initialClaimableAmount) && (!o.initialClaimableAmount.length || Coin.is(o.initialClaimableAmount[0])) && Array.isArray(o.status) && (!o.status.length || Status.is(o.status[0])));
+  },
+  isSDK(o: any): o is ClaimRecordSDKType {
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initial_claimable_amount) && (!o.initial_claimable_amount.length || Coin.isSDK(o.initial_claimable_amount[0])) && Array.isArray(o.status) && (!o.status.length || Status.isSDK(o.status[0])));
+  },
+  isAmino(o: any): o is ClaimRecordAmino {
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initial_claimable_amount) && (!o.initial_claimable_amount.length || Coin.isAmino(o.initial_claimable_amount[0])) && Array.isArray(o.status) && (!o.status.length || Status.isAmino(o.status[0])));
+  },
   encode(message: ClaimRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -247,6 +257,7 @@ export const ClaimRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(ClaimRecord.typeUrl, ClaimRecord);
 function createBaseStatus(): Status {
   return {
     actionCompleted: false,
@@ -256,6 +267,15 @@ function createBaseStatus(): Status {
 }
 export const Status = {
   typeUrl: "/trst.claim.v1beta1.Status",
+  is(o: any): o is Status {
+    return o && (o.$typeUrl === Status.typeUrl || typeof o.actionCompleted === "boolean" && Array.isArray(o.vestingPeriodCompleted) && (!o.vestingPeriodCompleted.length || typeof o.vestingPeriodCompleted[0] === "boolean") && Array.isArray(o.vestingPeriodClaimed) && (!o.vestingPeriodClaimed.length || typeof o.vestingPeriodClaimed[0] === "boolean"));
+  },
+  isSDK(o: any): o is StatusSDKType {
+    return o && (o.$typeUrl === Status.typeUrl || typeof o.action_completed === "boolean" && Array.isArray(o.vesting_period_completed) && (!o.vesting_period_completed.length || typeof o.vesting_period_completed[0] === "boolean") && Array.isArray(o.vesting_period_claimed) && (!o.vesting_period_claimed.length || typeof o.vesting_period_claimed[0] === "boolean"));
+  },
+  isAmino(o: any): o is StatusAmino {
+    return o && (o.$typeUrl === Status.typeUrl || typeof o.action_completed === "boolean" && Array.isArray(o.vesting_period_completed) && (!o.vesting_period_completed.length || typeof o.vesting_period_completed[0] === "boolean") && Array.isArray(o.vesting_period_claimed) && (!o.vesting_period_claimed.length || typeof o.vesting_period_claimed[0] === "boolean"));
+  },
   encode(message: Status, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionCompleted === true) {
       writer.uint32(8).bool(message.actionCompleted);
@@ -356,6 +376,7 @@ export const Status = {
     };
   }
 };
+GlobalDecoderRegistry.register(Status.typeUrl, Status);
 function createBaseMsgClaimClaimable(): MsgClaimClaimable {
   return {
     sender: ""
@@ -363,6 +384,15 @@ function createBaseMsgClaimClaimable(): MsgClaimClaimable {
 }
 export const MsgClaimClaimable = {
   typeUrl: "/trst.claim.v1beta1.MsgClaimClaimable",
+  is(o: any): o is MsgClaimClaimable {
+    return o && (o.$typeUrl === MsgClaimClaimable.typeUrl || typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgClaimClaimableSDKType {
+    return o && (o.$typeUrl === MsgClaimClaimable.typeUrl || typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgClaimClaimableAmino {
+    return o && (o.$typeUrl === MsgClaimClaimable.typeUrl || typeof o.sender === "string");
+  },
   encode(message: MsgClaimClaimable, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -419,6 +449,7 @@ export const MsgClaimClaimable = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgClaimClaimable.typeUrl, MsgClaimClaimable);
 function createBaseMsgClaimClaimableResponse(): MsgClaimClaimableResponse {
   return {
     claimedAmount: []
@@ -426,6 +457,15 @@ function createBaseMsgClaimClaimableResponse(): MsgClaimClaimableResponse {
 }
 export const MsgClaimClaimableResponse = {
   typeUrl: "/trst.claim.v1beta1.MsgClaimClaimableResponse",
+  is(o: any): o is MsgClaimClaimableResponse {
+    return o && (o.$typeUrl === MsgClaimClaimableResponse.typeUrl || Array.isArray(o.claimedAmount) && (!o.claimedAmount.length || Coin.is(o.claimedAmount[0])));
+  },
+  isSDK(o: any): o is MsgClaimClaimableResponseSDKType {
+    return o && (o.$typeUrl === MsgClaimClaimableResponse.typeUrl || Array.isArray(o.claimed_amount) && (!o.claimed_amount.length || Coin.isSDK(o.claimed_amount[0])));
+  },
+  isAmino(o: any): o is MsgClaimClaimableResponseAmino {
+    return o && (o.$typeUrl === MsgClaimClaimableResponse.typeUrl || Array.isArray(o.claimed_amount) && (!o.claimed_amount.length || Coin.isAmino(o.claimed_amount[0])));
+  },
   encode(message: MsgClaimClaimableResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -484,3 +524,4 @@ export const MsgClaimClaimableResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgClaimClaimableResponse.typeUrl, MsgClaimClaimableResponse);

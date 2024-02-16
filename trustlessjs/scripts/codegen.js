@@ -27,7 +27,11 @@ telescope({
     experimentalGlobalProtoNamespace: true,
     interfaces: {
       enabled: true,
-      useUnionTypes: false,
+      useUnionTypes: false, //true,
+      useGlobalDecoderRegistry: true,
+      // useByDefault: true,
+      // useByDefaultRpc: false,
+      // useInterfaces: true,
     },
     prototypes: {
       excluded: {
@@ -74,6 +78,8 @@ telescope({
         fromProto: true,
         toProto: true,
       },
+      // addTypeUrlToDecoders: true,
+      // addTypeUrlToObjects: true,
       parser: {
         keepCase: false,
       },
@@ -88,7 +94,7 @@ telescope({
         },
       },
     },
-    
+
     aminoEncoding: {
       enabled: true,
       exceptions: AMINO_MAP,

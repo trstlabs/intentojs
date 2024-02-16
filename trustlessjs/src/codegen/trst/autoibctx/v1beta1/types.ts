@@ -4,6 +4,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** AutoTxInfo stores the info for the auto executing interchain accounts transaction */
 export interface AutoTxInfo {
   txId: bigint;
@@ -15,10 +16,8 @@ export interface AutoTxInfo {
   startTime: Date;
   execTime: Date;
   endTime: Date;
-  autoTxHistory: AutoTxHistoryEntry[];
-  portId: string;
-  connectionId: string;
   updateHistory: Date[];
+  icaConfig?: ICAConfig;
   configuration?: ExecutionConfiguration;
 }
 export interface AutoTxInfoProtoMsg {
@@ -39,10 +38,8 @@ export interface AutoTxInfoAmino {
   start_time?: string;
   exec_time?: string;
   end_time?: string;
-  auto_tx_history?: AutoTxHistoryEntryAmino[];
-  port_id?: string;
-  connection_id?: string;
   update_history?: string[];
+  ica_config?: ICAConfigAmino;
   configuration?: ExecutionConfigurationAmino;
 }
 export interface AutoTxInfoAminoMsg {
@@ -60,11 +57,32 @@ export interface AutoTxInfoSDKType {
   start_time: Date;
   exec_time: Date;
   end_time: Date;
-  auto_tx_history: AutoTxHistoryEntrySDKType[];
+  update_history: Date[];
+  ica_config?: ICAConfigSDKType;
+  configuration?: ExecutionConfigurationSDKType;
+}
+export interface ICAConfig {
+  portId: string;
+  connectionId: string;
+  hostConnectionId: string;
+}
+export interface ICAConfigProtoMsg {
+  typeUrl: "/trst.autoibctx.v1beta1.ICAConfig";
+  value: Uint8Array;
+}
+export interface ICAConfigAmino {
+  port_id?: string;
+  connection_id?: string;
+  host_connection_id?: string;
+}
+export interface ICAConfigAminoMsg {
+  type: "/trst.autoibctx.v1beta1.ICAConfig";
+  value: ICAConfigAmino;
+}
+export interface ICAConfigSDKType {
   port_id: string;
   connection_id: string;
-  update_history: Date[];
-  configuration?: ExecutionConfigurationSDKType;
+  host_connection_id: string;
 }
 /** ExecutionConfiguration provides the execution-related configuration of the AutoTx */
 export interface ExecutionConfiguration {
@@ -78,6 +96,8 @@ export interface ExecutionConfiguration {
   stopOnFailure: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallbackToOwnerBalance: boolean;
+  /** If true, allows the AutoTx to continue execution after an ibc channel times out (recommended) */
+  reregisterIcaAfterTimeout: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
@@ -95,6 +115,8 @@ export interface ExecutionConfigurationAmino {
   stop_on_failure?: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallback_to_owner_balance?: boolean;
+  /** If true, allows the AutoTx to continue execution after an ibc channel times out (recommended) */
+  reregister_ica_after_timeout?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/trst.autoibctx.v1beta1.ExecutionConfiguration";
@@ -107,6 +129,7 @@ export interface ExecutionConfigurationSDKType {
   stop_on_success: boolean;
   stop_on_failure: boolean;
   fallback_to_owner_balance: boolean;
+  reregister_ica_after_timeout: boolean;
 }
 /** ExecutionConditions provides execution conditions for the AutoTx */
 export interface ExecutionConditions {
@@ -144,6 +167,26 @@ export interface ExecutionConditionsSDKType {
   stop_on_failure_of: bigint[];
   skip_on_failure_of: bigint[];
   skip_on_success_of: bigint[];
+}
+/** AutoTxHistory execution history */
+export interface AutoTxHistory {
+  history: AutoTxHistoryEntry[];
+}
+export interface AutoTxHistoryProtoMsg {
+  typeUrl: "/trst.autoibctx.v1beta1.AutoTxHistory";
+  value: Uint8Array;
+}
+/** AutoTxHistory execution history */
+export interface AutoTxHistoryAmino {
+  history?: AutoTxHistoryEntryAmino[];
+}
+export interface AutoTxHistoryAminoMsg {
+  type: "/trst.autoibctx.v1beta1.AutoTxHistory";
+  value: AutoTxHistoryAmino;
+}
+/** AutoTxHistory execution history */
+export interface AutoTxHistorySDKType {
+  history: AutoTxHistoryEntrySDKType[];
 }
 /** AutoTxHistoryEntry provides a the history of AutoTx interchain tx call */
 export interface AutoTxHistoryEntry {
@@ -251,15 +294,22 @@ function createBaseAutoTxInfo(): AutoTxInfo {
     startTime: new Date(),
     execTime: new Date(),
     endTime: new Date(),
-    autoTxHistory: [],
-    portId: "",
-    connectionId: "",
     updateHistory: [],
+    icaConfig: undefined,
     configuration: undefined
   };
 }
 export const AutoTxInfo = {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxInfo",
+  is(o: any): o is AutoTxInfo {
+    return o && (o.$typeUrl === AutoTxInfo.typeUrl || typeof o.txId === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.feeAddress === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && Duration.is(o.interval) && Timestamp.is(o.startTime) && Timestamp.is(o.execTime) && Timestamp.is(o.endTime) && Array.isArray(o.updateHistory) && (!o.updateHistory.length || Timestamp.is(o.updateHistory[0])));
+  },
+  isSDK(o: any): o is AutoTxInfoSDKType {
+    return o && (o.$typeUrl === AutoTxInfo.typeUrl || typeof o.tx_id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && Duration.isSDK(o.interval) && Timestamp.isSDK(o.start_time) && Timestamp.isSDK(o.exec_time) && Timestamp.isSDK(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isSDK(o.update_history[0])));
+  },
+  isAmino(o: any): o is AutoTxInfoAmino {
+    return o && (o.$typeUrl === AutoTxInfo.typeUrl || typeof o.tx_id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && Duration.isAmino(o.interval) && Timestamp.isAmino(o.start_time) && Timestamp.isAmino(o.exec_time) && Timestamp.isAmino(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isAmino(o.update_history[0])));
+  },
   encode(message: AutoTxInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.txId !== BigInt(0)) {
       writer.uint32(8).uint64(message.txId);
@@ -274,7 +324,7 @@ export const AutoTxInfo = {
       writer.uint32(34).string(message.feeAddress);
     }
     for (const v of message.msgs) {
-      Any.encode((v! as Any), writer.uint32(42).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(42).fork()).ldelim();
     }
     if (message.interval !== undefined) {
       Duration.encode(message.interval, writer.uint32(50).fork()).ldelim();
@@ -288,20 +338,14 @@ export const AutoTxInfo = {
     if (message.endTime !== undefined) {
       Timestamp.encode(toTimestamp(message.endTime), writer.uint32(74).fork()).ldelim();
     }
-    for (const v of message.autoTxHistory) {
-      AutoTxHistoryEntry.encode(v!, writer.uint32(82).fork()).ldelim();
-    }
-    if (message.portId !== "") {
-      writer.uint32(90).string(message.portId);
-    }
-    if (message.connectionId !== "") {
-      writer.uint32(98).string(message.connectionId);
-    }
     for (const v of message.updateHistory) {
-      Timestamp.encode(v!, writer.uint32(106).fork()).ldelim();
+      Timestamp.encode(v!, writer.uint32(82).fork()).ldelim();
+    }
+    if (message.icaConfig !== undefined) {
+      ICAConfig.encode(message.icaConfig, writer.uint32(90).fork()).ldelim();
     }
     if (message.configuration !== undefined) {
-      ExecutionConfiguration.encode(message.configuration, writer.uint32(114).fork()).ldelim();
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(98).fork()).ldelim();
     }
     return writer;
   },
@@ -325,7 +369,7 @@ export const AutoTxInfo = {
           message.feeAddress = reader.string();
           break;
         case 5:
-          message.msgs.push((Any(reader) as Any));
+          message.msgs.push(GlobalDecoderRegistry.unwrapAny(reader));
           break;
         case 6:
           message.interval = Duration.decode(reader, reader.uint32());
@@ -340,18 +384,12 @@ export const AutoTxInfo = {
           message.endTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 10:
-          message.autoTxHistory.push(AutoTxHistoryEntry.decode(reader, reader.uint32()));
-          break;
-        case 11:
-          message.portId = reader.string();
-          break;
-        case 12:
-          message.connectionId = reader.string();
-          break;
-        case 13:
           message.updateHistory.push(Timestamp.decode(reader, reader.uint32()));
           break;
-        case 14:
+        case 11:
+          message.icaConfig = ICAConfig.decode(reader, reader.uint32());
+          break;
+        case 12:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
         default:
@@ -367,15 +405,13 @@ export const AutoTxInfo = {
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
     message.feeAddress = object.feeAddress ?? "";
-    message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
+    message.msgs = object.msgs?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
     message.interval = object.interval !== undefined && object.interval !== null ? Duration.fromPartial(object.interval) : undefined;
     message.startTime = object.startTime ?? undefined;
     message.execTime = object.execTime ?? undefined;
     message.endTime = object.endTime ?? undefined;
-    message.autoTxHistory = object.autoTxHistory?.map(e => AutoTxHistoryEntry.fromPartial(e)) || [];
-    message.portId = object.portId ?? "";
-    message.connectionId = object.connectionId ?? "";
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
+    message.icaConfig = object.icaConfig !== undefined && object.icaConfig !== null ? ICAConfig.fromPartial(object.icaConfig) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     return message;
   },
@@ -393,7 +429,7 @@ export const AutoTxInfo = {
     if (object.fee_address !== undefined && object.fee_address !== null) {
       message.feeAddress = object.fee_address;
     }
-    message.msgs = object.msgs?.map(e => Sdk_Msg_FromAmino(e)) || [];
+    message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromAminoMsg(e)) || [];
     if (object.interval !== undefined && object.interval !== null) {
       message.interval = Duration.fromAmino(object.interval);
     }
@@ -406,14 +442,10 @@ export const AutoTxInfo = {
     if (object.end_time !== undefined && object.end_time !== null) {
       message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
     }
-    message.autoTxHistory = object.auto_tx_history?.map(e => AutoTxHistoryEntry.fromAmino(e)) || [];
-    if (object.port_id !== undefined && object.port_id !== null) {
-      message.portId = object.port_id;
-    }
-    if (object.connection_id !== undefined && object.connection_id !== null) {
-      message.connectionId = object.connection_id;
-    }
     message.updateHistory = object.update_history?.map(e => Timestamp.fromAmino(e)) || [];
+    if (object.ica_config !== undefined && object.ica_config !== null) {
+      message.icaConfig = ICAConfig.fromAmino(object.ica_config);
+    }
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
     }
@@ -426,7 +458,7 @@ export const AutoTxInfo = {
     obj.label = message.label;
     obj.fee_address = message.feeAddress;
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Sdk_Msg_ToAmino((e as Any)) : undefined);
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toAminoMsg(e) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -434,18 +466,12 @@ export const AutoTxInfo = {
     obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
     obj.exec_time = message.execTime ? Timestamp.toAmino(toTimestamp(message.execTime)) : undefined;
     obj.end_time = message.endTime ? Timestamp.toAmino(toTimestamp(message.endTime)) : undefined;
-    if (message.autoTxHistory) {
-      obj.auto_tx_history = message.autoTxHistory.map(e => e ? AutoTxHistoryEntry.toAmino(e) : undefined);
-    } else {
-      obj.auto_tx_history = [];
-    }
-    obj.port_id = message.portId;
-    obj.connection_id = message.connectionId;
     if (message.updateHistory) {
       obj.update_history = message.updateHistory.map(e => e ? Timestamp.toAmino(e) : undefined);
     } else {
       obj.update_history = [];
     }
+    obj.ica_config = message.icaConfig ? ICAConfig.toAmino(message.icaConfig) : undefined;
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     return obj;
   },
@@ -465,17 +491,125 @@ export const AutoTxInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(AutoTxInfo.typeUrl, AutoTxInfo);
+function createBaseICAConfig(): ICAConfig {
+  return {
+    portId: "",
+    connectionId: "",
+    hostConnectionId: ""
+  };
+}
+export const ICAConfig = {
+  typeUrl: "/trst.autoibctx.v1beta1.ICAConfig",
+  is(o: any): o is ICAConfig {
+    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.portId === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
+  },
+  isSDK(o: any): o is ICAConfigSDKType {
+    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.port_id === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+  },
+  isAmino(o: any): o is ICAConfigAmino {
+    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.port_id === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+  },
+  encode(message: ICAConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.portId !== "") {
+      writer.uint32(10).string(message.portId);
+    }
+    if (message.connectionId !== "") {
+      writer.uint32(18).string(message.connectionId);
+    }
+    if (message.hostConnectionId !== "") {
+      writer.uint32(26).string(message.hostConnectionId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ICAConfig {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseICAConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.portId = reader.string();
+          break;
+        case 2:
+          message.connectionId = reader.string();
+          break;
+        case 3:
+          message.hostConnectionId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ICAConfig>): ICAConfig {
+    const message = createBaseICAConfig();
+    message.portId = object.portId ?? "";
+    message.connectionId = object.connectionId ?? "";
+    message.hostConnectionId = object.hostConnectionId ?? "";
+    return message;
+  },
+  fromAmino(object: ICAConfigAmino): ICAConfig {
+    const message = createBaseICAConfig();
+    if (object.port_id !== undefined && object.port_id !== null) {
+      message.portId = object.port_id;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
+      message.hostConnectionId = object.host_connection_id;
+    }
+    return message;
+  },
+  toAmino(message: ICAConfig): ICAConfigAmino {
+    const obj: any = {};
+    obj.port_id = message.portId;
+    obj.connection_id = message.connectionId;
+    obj.host_connection_id = message.hostConnectionId;
+    return obj;
+  },
+  fromAminoMsg(object: ICAConfigAminoMsg): ICAConfig {
+    return ICAConfig.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ICAConfigProtoMsg): ICAConfig {
+    return ICAConfig.decode(message.value);
+  },
+  toProto(message: ICAConfig): Uint8Array {
+    return ICAConfig.encode(message).finish();
+  },
+  toProtoMsg(message: ICAConfig): ICAConfigProtoMsg {
+    return {
+      typeUrl: "/trst.autoibctx.v1beta1.ICAConfig",
+      value: ICAConfig.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(ICAConfig.typeUrl, ICAConfig);
 function createBaseExecutionConfiguration(): ExecutionConfiguration {
   return {
     saveMsgResponses: false,
     updatingDisabled: false,
     stopOnSuccess: false,
     stopOnFailure: false,
-    fallbackToOwnerBalance: false
+    fallbackToOwnerBalance: false,
+    reregisterIcaAfterTimeout: false
   };
 }
 export const ExecutionConfiguration = {
   typeUrl: "/trst.autoibctx.v1beta1.ExecutionConfiguration",
+  is(o: any): o is ExecutionConfiguration {
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveMsgResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.fallbackToOwnerBalance === "boolean" && typeof o.reregisterIcaAfterTimeout === "boolean");
+  },
+  isSDK(o: any): o is ExecutionConfigurationSDKType {
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_msg_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
+  },
+  isAmino(o: any): o is ExecutionConfigurationAmino {
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_msg_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
+  },
   encode(message: ExecutionConfiguration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.saveMsgResponses === true) {
       writer.uint32(8).bool(message.saveMsgResponses);
@@ -491,6 +625,9 @@ export const ExecutionConfiguration = {
     }
     if (message.fallbackToOwnerBalance === true) {
       writer.uint32(40).bool(message.fallbackToOwnerBalance);
+    }
+    if (message.reregisterIcaAfterTimeout === true) {
+      writer.uint32(48).bool(message.reregisterIcaAfterTimeout);
     }
     return writer;
   },
@@ -516,6 +653,9 @@ export const ExecutionConfiguration = {
         case 5:
           message.fallbackToOwnerBalance = reader.bool();
           break;
+        case 6:
+          message.reregisterIcaAfterTimeout = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -530,6 +670,7 @@ export const ExecutionConfiguration = {
     message.stopOnSuccess = object.stopOnSuccess ?? false;
     message.stopOnFailure = object.stopOnFailure ?? false;
     message.fallbackToOwnerBalance = object.fallbackToOwnerBalance ?? false;
+    message.reregisterIcaAfterTimeout = object.reregisterIcaAfterTimeout ?? false;
     return message;
   },
   fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
@@ -549,6 +690,9 @@ export const ExecutionConfiguration = {
     if (object.fallback_to_owner_balance !== undefined && object.fallback_to_owner_balance !== null) {
       message.fallbackToOwnerBalance = object.fallback_to_owner_balance;
     }
+    if (object.reregister_ica_after_timeout !== undefined && object.reregister_ica_after_timeout !== null) {
+      message.reregisterIcaAfterTimeout = object.reregister_ica_after_timeout;
+    }
     return message;
   },
   toAmino(message: ExecutionConfiguration): ExecutionConfigurationAmino {
@@ -558,6 +702,7 @@ export const ExecutionConfiguration = {
     obj.stop_on_success = message.stopOnSuccess;
     obj.stop_on_failure = message.stopOnFailure;
     obj.fallback_to_owner_balance = message.fallbackToOwnerBalance;
+    obj.reregister_ica_after_timeout = message.reregisterIcaAfterTimeout;
     return obj;
   },
   fromAminoMsg(object: ExecutionConfigurationAminoMsg): ExecutionConfiguration {
@@ -576,6 +721,7 @@ export const ExecutionConfiguration = {
     };
   }
 };
+GlobalDecoderRegistry.register(ExecutionConfiguration.typeUrl, ExecutionConfiguration);
 function createBaseExecutionConditions(): ExecutionConditions {
   return {
     stopOnSuccessOf: [],
@@ -586,6 +732,15 @@ function createBaseExecutionConditions(): ExecutionConditions {
 }
 export const ExecutionConditions = {
   typeUrl: "/trst.autoibctx.v1beta1.ExecutionConditions",
+  is(o: any): o is ExecutionConditions {
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint"));
+  },
+  isSDK(o: any): o is ExecutionConditionsSDKType {
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
+  },
+  isAmino(o: any): o is ExecutionConditionsAmino {
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
+  },
   encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(42).fork();
     for (const v of message.stopOnSuccessOf) {
@@ -719,6 +874,82 @@ export const ExecutionConditions = {
     };
   }
 };
+GlobalDecoderRegistry.register(ExecutionConditions.typeUrl, ExecutionConditions);
+function createBaseAutoTxHistory(): AutoTxHistory {
+  return {
+    history: []
+  };
+}
+export const AutoTxHistory = {
+  typeUrl: "/trst.autoibctx.v1beta1.AutoTxHistory",
+  is(o: any): o is AutoTxHistory {
+    return o && (o.$typeUrl === AutoTxHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || AutoTxHistoryEntry.is(o.history[0])));
+  },
+  isSDK(o: any): o is AutoTxHistorySDKType {
+    return o && (o.$typeUrl === AutoTxHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || AutoTxHistoryEntry.isSDK(o.history[0])));
+  },
+  isAmino(o: any): o is AutoTxHistoryAmino {
+    return o && (o.$typeUrl === AutoTxHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || AutoTxHistoryEntry.isAmino(o.history[0])));
+  },
+  encode(message: AutoTxHistory, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.history) {
+      AutoTxHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): AutoTxHistory {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAutoTxHistory();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.history.push(AutoTxHistoryEntry.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<AutoTxHistory>): AutoTxHistory {
+    const message = createBaseAutoTxHistory();
+    message.history = object.history?.map(e => AutoTxHistoryEntry.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: AutoTxHistoryAmino): AutoTxHistory {
+    const message = createBaseAutoTxHistory();
+    message.history = object.history?.map(e => AutoTxHistoryEntry.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: AutoTxHistory): AutoTxHistoryAmino {
+    const obj: any = {};
+    if (message.history) {
+      obj.history = message.history.map(e => e ? AutoTxHistoryEntry.toAmino(e) : undefined);
+    } else {
+      obj.history = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: AutoTxHistoryAminoMsg): AutoTxHistory {
+    return AutoTxHistory.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AutoTxHistoryProtoMsg): AutoTxHistory {
+    return AutoTxHistory.decode(message.value);
+  },
+  toProto(message: AutoTxHistory): Uint8Array {
+    return AutoTxHistory.encode(message).finish();
+  },
+  toProtoMsg(message: AutoTxHistory): AutoTxHistoryProtoMsg {
+    return {
+      typeUrl: "/trst.autoibctx.v1beta1.AutoTxHistory",
+      value: AutoTxHistory.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(AutoTxHistory.typeUrl, AutoTxHistory);
 function createBaseAutoTxHistoryEntry(): AutoTxHistoryEntry {
   return {
     scheduledExecTime: new Date(),
@@ -732,6 +963,15 @@ function createBaseAutoTxHistoryEntry(): AutoTxHistoryEntry {
 }
 export const AutoTxHistoryEntry = {
   typeUrl: "/trst.autoibctx.v1beta1.AutoTxHistoryEntry",
+  is(o: any): o is AutoTxHistoryEntry {
+    return o && (o.$typeUrl === AutoTxHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])));
+  },
+  isSDK(o: any): o is AutoTxHistoryEntrySDKType {
+    return o && (o.$typeUrl === AutoTxHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])));
+  },
+  isAmino(o: any): o is AutoTxHistoryEntryAmino {
+    return o && (o.$typeUrl === AutoTxHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])));
+  },
   encode(message: AutoTxHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
       Timestamp.encode(toTimestamp(message.scheduledExecTime), writer.uint32(10).fork()).ldelim();
@@ -858,6 +1098,7 @@ export const AutoTxHistoryEntry = {
     };
   }
 };
+GlobalDecoderRegistry.register(AutoTxHistoryEntry.typeUrl, AutoTxHistoryEntry);
 function createBaseParams(): Params {
   return {
     AutoTxFundsCommission: BigInt(0),
@@ -872,6 +1113,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/trst.autoibctx.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.AutoTxFundsCommission === "bigint" && typeof o.AutoTxFlexFeeMul === "bigint" && typeof o.AutoTxConstantFee === "bigint" && typeof o.RecurringAutoTxConstantFee === "bigint" && Duration.is(o.MaxAutoTxDuration) && Duration.is(o.MinAutoTxDuration) && Duration.is(o.MinAutoTxInterval) && Array.isArray(o.relayerRewards) && (!o.relayerRewards.length || typeof o.relayerRewards[0] === "bigint"));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.AutoTxFundsCommission === "bigint" && typeof o.AutoTxFlexFeeMul === "bigint" && typeof o.AutoTxConstantFee === "bigint" && typeof o.RecurringAutoTxConstantFee === "bigint" && Duration.isSDK(o.MaxAutoTxDuration) && Duration.isSDK(o.MinAutoTxDuration) && Duration.isSDK(o.MinAutoTxInterval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.AutoTxFundsCommission === "bigint" && typeof o.AutoTxFlexFeeMul === "bigint" && typeof o.AutoTxConstantFee === "bigint" && typeof o.RecurringAutoTxConstantFee === "bigint" && Duration.isAmino(o.MaxAutoTxDuration) && Duration.isAmino(o.MinAutoTxDuration) && Duration.isAmino(o.MinAutoTxInterval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.AutoTxFundsCommission !== BigInt(0)) {
       writer.uint32(8).int64(message.AutoTxFundsCommission);
@@ -1016,17 +1266,4 @@ export const Params = {
     };
   }
 };
-export const Sdk_Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    default:
-      return data;
-  }
-};
-export const Sdk_Msg_FromAmino = (content: AnyAmino) => {
-  return Any.fromAmino(content);
-};
-export const Sdk_Msg_ToAmino = (content: Any) => {
-  return Any.toAmino(content);
-};
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

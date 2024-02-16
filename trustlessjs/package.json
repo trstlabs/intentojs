@@ -1,6 +1,6 @@
 {
   "name": "trustlessjs",
-  "version": "0.7.2-alpha.8",
+  "version": "0.7.4-alpha.3",
   "description": "package to interact with TrustlessHub",
   "author": "danieljdd <info@trstlabs.xyz>",
   "homepage": "https://github.com/trstlabs/trustlessjs#readme",
@@ -17,18 +17,12 @@
   ],
   "scripts": {
     "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
-    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false || true",
-    "clean:mjs": "rimraf mjs",
     "clean:dist": "rimraf dist",
-    "clean": "npm run clean:mjs && npm run clean:dist",
-    "build:rename": "publish-scripts --cmd rename --srcDir mjs --outDir dist --findExt js --replaceExt mjs --no-rmDir",
-    "build": "npm run clean && npm run build:cjs && npm run build:mjs && npm run build:rename",
+    "clean": "npm run clean:dist",
+    "build": "npm run clean && npm run build:cjs",
     "codegen": "node scripts/codegen.js",
     "prepare": "npm run build",
-    "lint": "eslint src --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
+    "lint": "eslint ."
   },
   "publishConfig": {
     "access": "public"
@@ -42,7 +36,7 @@
     "url": "https://github.com/trstlabs/trustlessjs/issues"
   },
   "devDependencies": {
-    "@cosmology/telescope": "^0.102.0",
+    "@cosmology/telescope": "1.4.12",
     "@types/jest": "^29.5.0",
     "eslint": "8.45.0",
     "eslint-config-prettier": "^8.8.0",
@@ -56,9 +50,9 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@cosmjs/amino": "0.31.0",
-    "@cosmjs/proto-signing": "0.31.0",
-    "@cosmjs/stargate": "0.31.0",
-    "@cosmjs/tendermint-rpc": "0.31.0"
+    "@cosmjs/amino": "^0.32.0",
+    "@cosmjs/proto-signing": "^0.32.0",
+    "@cosmjs/stargate": "^0.32.0",
+    "@cosmjs/tendermint-rpc": "^0.32.0"
   }
 }

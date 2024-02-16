@@ -1,7 +1,8 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
-import { AutoTxInfo, AutoTxInfoAmino, AutoTxInfoSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
+import { AutoTxInfo, AutoTxInfoAmino, AutoTxInfoSDKType, AutoTxHistoryEntry, AutoTxHistoryEntryAmino, AutoTxHistoryEntrySDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
 import { AutoTxIbcUsage, AutoTxIbcUsageAmino, AutoTxIbcUsageSDKType } from "./usage";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * QueryInterchainAccountFromAddressRequest is the request type for the
  * Query/InterchainAccountAddress RPC
@@ -105,6 +106,58 @@ export interface QueryAutoTxResponseAminoMsg {
 export interface QueryAutoTxResponseSDKType {
   auto_tx_info: AutoTxInfoSDKType;
 }
+/** QueryAutoTxHistoryRequest is the request type for the Query/QueryAutoTxHistoryRequest RPC */
+export interface QueryAutoTxHistoryRequest {
+  /** id of the auto-tx */
+  id: string;
+  /** Pagination defines an optional pagination for the request. */
+  pagination?: PageRequest;
+}
+export interface QueryAutoTxHistoryRequestProtoMsg {
+  typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryRequest";
+  value: Uint8Array;
+}
+/** QueryAutoTxHistoryRequest is the request type for the Query/QueryAutoTxHistoryRequest RPC */
+export interface QueryAutoTxHistoryRequestAmino {
+  /** id of the auto-tx */
+  id?: string;
+  /** Pagination defines an optional pagination for the request. */
+  pagination?: PageRequestAmino;
+}
+export interface QueryAutoTxHistoryRequestAminoMsg {
+  type: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryRequest";
+  value: QueryAutoTxHistoryRequestAmino;
+}
+/** QueryAutoTxHistoryRequest is the request type for the Query/QueryAutoTxHistoryRequest RPC */
+export interface QueryAutoTxHistoryRequestSDKType {
+  id: string;
+  pagination?: PageRequestSDKType;
+}
+/** QueryAutoTxHistoryResponse the response type for the Query/QueryAutoTxHistoryResponse RPC */
+export interface QueryAutoTxHistoryResponse {
+  history: AutoTxHistoryEntry[];
+  /** Pagination defines the pagination in the response. */
+  pagination?: PageResponse;
+}
+export interface QueryAutoTxHistoryResponseProtoMsg {
+  typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryResponse";
+  value: Uint8Array;
+}
+/** QueryAutoTxHistoryResponse the response type for the Query/QueryAutoTxHistoryResponse RPC */
+export interface QueryAutoTxHistoryResponseAmino {
+  history?: AutoTxHistoryEntryAmino[];
+  /** Pagination defines the pagination in the response. */
+  pagination?: PageResponseAmino;
+}
+export interface QueryAutoTxHistoryResponseAminoMsg {
+  type: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryResponse";
+  value: QueryAutoTxHistoryResponseAmino;
+}
+/** QueryAutoTxHistoryResponse the response type for the Query/QueryAutoTxHistoryResponse RPC */
+export interface QueryAutoTxHistoryResponseSDKType {
+  history: AutoTxHistoryEntrySDKType[];
+  pagination?: PageResponseSDKType;
+}
 /** QueryAutoTxsRequest is the request type for the Query/AutoTxsRequest RPC */
 export interface QueryAutoTxsRequest {
   /** Pagination defines an optional pagination for the request. */
@@ -127,7 +180,7 @@ export interface QueryAutoTxsRequestAminoMsg {
 export interface QueryAutoTxsRequestSDKType {
   pagination?: PageRequestSDKType;
 }
-/** QueryAutoTxsResponse the response type for the Query/AutoTxsRequest RPC */
+/** QueryAutoTxsResponse the response type for the Query/AutoTxsRequest RPCπ */
 export interface QueryAutoTxsResponse {
   autoTxInfos: AutoTxInfo[];
   /** Pagination defines the pagination in the response. */
@@ -137,7 +190,7 @@ export interface QueryAutoTxsResponseProtoMsg {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxsResponse";
   value: Uint8Array;
 }
-/** QueryAutoTxsResponse the response type for the Query/AutoTxsRequest RPC */
+/** QueryAutoTxsResponse the response type for the Query/AutoTxsRequest RPCπ */
 export interface QueryAutoTxsResponseAmino {
   auto_tx_infos?: AutoTxInfoAmino[];
   /** Pagination defines the pagination in the response. */
@@ -147,7 +200,7 @@ export interface QueryAutoTxsResponseAminoMsg {
   type: "/trst.autoibctx.v1beta1.QueryAutoTxsResponse";
   value: QueryAutoTxsResponseAmino;
 }
-/** QueryAutoTxsResponse the response type for the Query/AutoTxsRequest RPC */
+/** QueryAutoTxsResponse the response type for the Query/AutoTxsRequest RPCπ */
 export interface QueryAutoTxsResponseSDKType {
   auto_tx_infos: AutoTxInfoSDKType[];
   pagination?: PageResponseSDKType;
@@ -329,6 +382,15 @@ function createBaseQueryInterchainAccountFromAddressRequest(): QueryInterchainAc
 }
 export const QueryInterchainAccountFromAddressRequest = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryInterchainAccountFromAddressRequest",
+  is(o: any): o is QueryInterchainAccountFromAddressRequest {
+    return o && (o.$typeUrl === QueryInterchainAccountFromAddressRequest.typeUrl || typeof o.owner === "string" && typeof o.connectionId === "string");
+  },
+  isSDK(o: any): o is QueryInterchainAccountFromAddressRequestSDKType {
+    return o && (o.$typeUrl === QueryInterchainAccountFromAddressRequest.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string");
+  },
+  isAmino(o: any): o is QueryInterchainAccountFromAddressRequestAmino {
+    return o && (o.$typeUrl === QueryInterchainAccountFromAddressRequest.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string");
+  },
   encode(message: QueryInterchainAccountFromAddressRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -396,6 +458,7 @@ export const QueryInterchainAccountFromAddressRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryInterchainAccountFromAddressRequest.typeUrl, QueryInterchainAccountFromAddressRequest);
 function createBaseQueryInterchainAccountFromAddressResponse(): QueryInterchainAccountFromAddressResponse {
   return {
     interchainAccountAddress: ""
@@ -403,6 +466,15 @@ function createBaseQueryInterchainAccountFromAddressResponse(): QueryInterchainA
 }
 export const QueryInterchainAccountFromAddressResponse = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryInterchainAccountFromAddressResponse",
+  is(o: any): o is QueryInterchainAccountFromAddressResponse {
+    return o && (o.$typeUrl === QueryInterchainAccountFromAddressResponse.typeUrl || typeof o.interchainAccountAddress === "string");
+  },
+  isSDK(o: any): o is QueryInterchainAccountFromAddressResponseSDKType {
+    return o && (o.$typeUrl === QueryInterchainAccountFromAddressResponse.typeUrl || typeof o.interchain_account_address === "string");
+  },
+  isAmino(o: any): o is QueryInterchainAccountFromAddressResponseAmino {
+    return o && (o.$typeUrl === QueryInterchainAccountFromAddressResponse.typeUrl || typeof o.interchain_account_address === "string");
+  },
   encode(message: QueryInterchainAccountFromAddressResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.interchainAccountAddress !== "") {
       writer.uint32(10).string(message.interchainAccountAddress);
@@ -459,6 +531,7 @@ export const QueryInterchainAccountFromAddressResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryInterchainAccountFromAddressResponse.typeUrl, QueryInterchainAccountFromAddressResponse);
 function createBaseQueryAutoTxRequest(): QueryAutoTxRequest {
   return {
     id: ""
@@ -466,6 +539,15 @@ function createBaseQueryAutoTxRequest(): QueryAutoTxRequest {
 }
 export const QueryAutoTxRequest = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxRequest",
+  is(o: any): o is QueryAutoTxRequest {
+    return o && (o.$typeUrl === QueryAutoTxRequest.typeUrl || typeof o.id === "string");
+  },
+  isSDK(o: any): o is QueryAutoTxRequestSDKType {
+    return o && (o.$typeUrl === QueryAutoTxRequest.typeUrl || typeof o.id === "string");
+  },
+  isAmino(o: any): o is QueryAutoTxRequestAmino {
+    return o && (o.$typeUrl === QueryAutoTxRequest.typeUrl || typeof o.id === "string");
+  },
   encode(message: QueryAutoTxRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
@@ -522,6 +604,7 @@ export const QueryAutoTxRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxRequest.typeUrl, QueryAutoTxRequest);
 function createBaseQueryAutoTxResponse(): QueryAutoTxResponse {
   return {
     autoTxInfo: AutoTxInfo.fromPartial({})
@@ -529,6 +612,15 @@ function createBaseQueryAutoTxResponse(): QueryAutoTxResponse {
 }
 export const QueryAutoTxResponse = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxResponse",
+  is(o: any): o is QueryAutoTxResponse {
+    return o && (o.$typeUrl === QueryAutoTxResponse.typeUrl || AutoTxInfo.is(o.autoTxInfo));
+  },
+  isSDK(o: any): o is QueryAutoTxResponseSDKType {
+    return o && (o.$typeUrl === QueryAutoTxResponse.typeUrl || AutoTxInfo.isSDK(o.auto_tx_info));
+  },
+  isAmino(o: any): o is QueryAutoTxResponseAmino {
+    return o && (o.$typeUrl === QueryAutoTxResponse.typeUrl || AutoTxInfo.isAmino(o.auto_tx_info));
+  },
   encode(message: QueryAutoTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.autoTxInfo !== undefined) {
       AutoTxInfo.encode(message.autoTxInfo, writer.uint32(10).fork()).ldelim();
@@ -585,6 +677,179 @@ export const QueryAutoTxResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxResponse.typeUrl, QueryAutoTxResponse);
+function createBaseQueryAutoTxHistoryRequest(): QueryAutoTxHistoryRequest {
+  return {
+    id: "",
+    pagination: undefined
+  };
+}
+export const QueryAutoTxHistoryRequest = {
+  typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryRequest",
+  is(o: any): o is QueryAutoTxHistoryRequest {
+    return o && (o.$typeUrl === QueryAutoTxHistoryRequest.typeUrl || typeof o.id === "string");
+  },
+  isSDK(o: any): o is QueryAutoTxHistoryRequestSDKType {
+    return o && (o.$typeUrl === QueryAutoTxHistoryRequest.typeUrl || typeof o.id === "string");
+  },
+  isAmino(o: any): o is QueryAutoTxHistoryRequestAmino {
+    return o && (o.$typeUrl === QueryAutoTxHistoryRequest.typeUrl || typeof o.id === "string");
+  },
+  encode(message: QueryAutoTxHistoryRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryAutoTxHistoryRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAutoTxHistoryRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryAutoTxHistoryRequest>): QueryAutoTxHistoryRequest {
+    const message = createBaseQueryAutoTxHistoryRequest();
+    message.id = object.id ?? "";
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryAutoTxHistoryRequestAmino): QueryAutoTxHistoryRequest {
+    const message = createBaseQueryAutoTxHistoryRequest();
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryAutoTxHistoryRequest): QueryAutoTxHistoryRequestAmino {
+    const obj: any = {};
+    obj.id = message.id;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryAutoTxHistoryRequestAminoMsg): QueryAutoTxHistoryRequest {
+    return QueryAutoTxHistoryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryAutoTxHistoryRequestProtoMsg): QueryAutoTxHistoryRequest {
+    return QueryAutoTxHistoryRequest.decode(message.value);
+  },
+  toProto(message: QueryAutoTxHistoryRequest): Uint8Array {
+    return QueryAutoTxHistoryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryAutoTxHistoryRequest): QueryAutoTxHistoryRequestProtoMsg {
+    return {
+      typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryRequest",
+      value: QueryAutoTxHistoryRequest.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryAutoTxHistoryRequest.typeUrl, QueryAutoTxHistoryRequest);
+function createBaseQueryAutoTxHistoryResponse(): QueryAutoTxHistoryResponse {
+  return {
+    history: [],
+    pagination: undefined
+  };
+}
+export const QueryAutoTxHistoryResponse = {
+  typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryResponse",
+  is(o: any): o is QueryAutoTxHistoryResponse {
+    return o && (o.$typeUrl === QueryAutoTxHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || AutoTxHistoryEntry.is(o.history[0])));
+  },
+  isSDK(o: any): o is QueryAutoTxHistoryResponseSDKType {
+    return o && (o.$typeUrl === QueryAutoTxHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || AutoTxHistoryEntry.isSDK(o.history[0])));
+  },
+  isAmino(o: any): o is QueryAutoTxHistoryResponseAmino {
+    return o && (o.$typeUrl === QueryAutoTxHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || AutoTxHistoryEntry.isAmino(o.history[0])));
+  },
+  encode(message: QueryAutoTxHistoryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.history) {
+      AutoTxHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryAutoTxHistoryResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAutoTxHistoryResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.history.push(AutoTxHistoryEntry.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryAutoTxHistoryResponse>): QueryAutoTxHistoryResponse {
+    const message = createBaseQueryAutoTxHistoryResponse();
+    message.history = object.history?.map(e => AutoTxHistoryEntry.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryAutoTxHistoryResponseAmino): QueryAutoTxHistoryResponse {
+    const message = createBaseQueryAutoTxHistoryResponse();
+    message.history = object.history?.map(e => AutoTxHistoryEntry.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryAutoTxHistoryResponse): QueryAutoTxHistoryResponseAmino {
+    const obj: any = {};
+    if (message.history) {
+      obj.history = message.history.map(e => e ? AutoTxHistoryEntry.toAmino(e) : undefined);
+    } else {
+      obj.history = [];
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryAutoTxHistoryResponseAminoMsg): QueryAutoTxHistoryResponse {
+    return QueryAutoTxHistoryResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryAutoTxHistoryResponseProtoMsg): QueryAutoTxHistoryResponse {
+    return QueryAutoTxHistoryResponse.decode(message.value);
+  },
+  toProto(message: QueryAutoTxHistoryResponse): Uint8Array {
+    return QueryAutoTxHistoryResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryAutoTxHistoryResponse): QueryAutoTxHistoryResponseProtoMsg {
+    return {
+      typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxHistoryResponse",
+      value: QueryAutoTxHistoryResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryAutoTxHistoryResponse.typeUrl, QueryAutoTxHistoryResponse);
 function createBaseQueryAutoTxsRequest(): QueryAutoTxsRequest {
   return {
     pagination: undefined
@@ -592,6 +857,15 @@ function createBaseQueryAutoTxsRequest(): QueryAutoTxsRequest {
 }
 export const QueryAutoTxsRequest = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxsRequest",
+  is(o: any): o is QueryAutoTxsRequest {
+    return o && o.$typeUrl === QueryAutoTxsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryAutoTxsRequestSDKType {
+    return o && o.$typeUrl === QueryAutoTxsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryAutoTxsRequestAmino {
+    return o && o.$typeUrl === QueryAutoTxsRequest.typeUrl;
+  },
   encode(message: QueryAutoTxsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -648,6 +922,7 @@ export const QueryAutoTxsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxsRequest.typeUrl, QueryAutoTxsRequest);
 function createBaseQueryAutoTxsResponse(): QueryAutoTxsResponse {
   return {
     autoTxInfos: [],
@@ -656,6 +931,15 @@ function createBaseQueryAutoTxsResponse(): QueryAutoTxsResponse {
 }
 export const QueryAutoTxsResponse = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxsResponse",
+  is(o: any): o is QueryAutoTxsResponse {
+    return o && (o.$typeUrl === QueryAutoTxsResponse.typeUrl || Array.isArray(o.autoTxInfos) && (!o.autoTxInfos.length || AutoTxInfo.is(o.autoTxInfos[0])));
+  },
+  isSDK(o: any): o is QueryAutoTxsResponseSDKType {
+    return o && (o.$typeUrl === QueryAutoTxsResponse.typeUrl || Array.isArray(o.auto_tx_infos) && (!o.auto_tx_infos.length || AutoTxInfo.isSDK(o.auto_tx_infos[0])));
+  },
+  isAmino(o: any): o is QueryAutoTxsResponseAmino {
+    return o && (o.$typeUrl === QueryAutoTxsResponse.typeUrl || Array.isArray(o.auto_tx_infos) && (!o.auto_tx_infos.length || AutoTxInfo.isAmino(o.auto_tx_infos[0])));
+  },
   encode(message: QueryAutoTxsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.autoTxInfos) {
       AutoTxInfo.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -725,6 +1009,7 @@ export const QueryAutoTxsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxsResponse.typeUrl, QueryAutoTxsResponse);
 function createBaseQueryAutoTxsForOwnerRequest(): QueryAutoTxsForOwnerRequest {
   return {
     owner: "",
@@ -733,6 +1018,15 @@ function createBaseQueryAutoTxsForOwnerRequest(): QueryAutoTxsForOwnerRequest {
 }
 export const QueryAutoTxsForOwnerRequest = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxsForOwnerRequest",
+  is(o: any): o is QueryAutoTxsForOwnerRequest {
+    return o && (o.$typeUrl === QueryAutoTxsForOwnerRequest.typeUrl || typeof o.owner === "string");
+  },
+  isSDK(o: any): o is QueryAutoTxsForOwnerRequestSDKType {
+    return o && (o.$typeUrl === QueryAutoTxsForOwnerRequest.typeUrl || typeof o.owner === "string");
+  },
+  isAmino(o: any): o is QueryAutoTxsForOwnerRequestAmino {
+    return o && (o.$typeUrl === QueryAutoTxsForOwnerRequest.typeUrl || typeof o.owner === "string");
+  },
   encode(message: QueryAutoTxsForOwnerRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -800,6 +1094,7 @@ export const QueryAutoTxsForOwnerRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxsForOwnerRequest.typeUrl, QueryAutoTxsForOwnerRequest);
 function createBaseQueryAutoTxsForOwnerResponse(): QueryAutoTxsForOwnerResponse {
   return {
     autoTxInfos: [],
@@ -808,6 +1103,15 @@ function createBaseQueryAutoTxsForOwnerResponse(): QueryAutoTxsForOwnerResponse 
 }
 export const QueryAutoTxsForOwnerResponse = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxsForOwnerResponse",
+  is(o: any): o is QueryAutoTxsForOwnerResponse {
+    return o && (o.$typeUrl === QueryAutoTxsForOwnerResponse.typeUrl || Array.isArray(o.autoTxInfos) && (!o.autoTxInfos.length || AutoTxInfo.is(o.autoTxInfos[0])));
+  },
+  isSDK(o: any): o is QueryAutoTxsForOwnerResponseSDKType {
+    return o && (o.$typeUrl === QueryAutoTxsForOwnerResponse.typeUrl || Array.isArray(o.auto_tx_infos) && (!o.auto_tx_infos.length || AutoTxInfo.isSDK(o.auto_tx_infos[0])));
+  },
+  isAmino(o: any): o is QueryAutoTxsForOwnerResponseAmino {
+    return o && (o.$typeUrl === QueryAutoTxsForOwnerResponse.typeUrl || Array.isArray(o.auto_tx_infos) && (!o.auto_tx_infos.length || AutoTxInfo.isAmino(o.auto_tx_infos[0])));
+  },
   encode(message: QueryAutoTxsForOwnerResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.autoTxInfos) {
       AutoTxInfo.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -877,11 +1181,21 @@ export const QueryAutoTxsForOwnerResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxsForOwnerResponse.typeUrl, QueryAutoTxsForOwnerResponse);
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -927,6 +1241,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -934,6 +1249,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -990,6 +1314,7 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryAutoTxIbcUsageRequest(): QueryAutoTxIbcUsageRequest {
   return {
     pagination: undefined
@@ -997,6 +1322,15 @@ function createBaseQueryAutoTxIbcUsageRequest(): QueryAutoTxIbcUsageRequest {
 }
 export const QueryAutoTxIbcUsageRequest = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxIbcUsageRequest",
+  is(o: any): o is QueryAutoTxIbcUsageRequest {
+    return o && o.$typeUrl === QueryAutoTxIbcUsageRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryAutoTxIbcUsageRequestSDKType {
+    return o && o.$typeUrl === QueryAutoTxIbcUsageRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryAutoTxIbcUsageRequestAmino {
+    return o && o.$typeUrl === QueryAutoTxIbcUsageRequest.typeUrl;
+  },
   encode(message: QueryAutoTxIbcUsageRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1053,6 +1387,7 @@ export const QueryAutoTxIbcUsageRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxIbcUsageRequest.typeUrl, QueryAutoTxIbcUsageRequest);
 function createBaseQueryAutoTxIbcUsageResponse(): QueryAutoTxIbcUsageResponse {
   return {
     autoTxIbcUsage: [],
@@ -1061,6 +1396,15 @@ function createBaseQueryAutoTxIbcUsageResponse(): QueryAutoTxIbcUsageResponse {
 }
 export const QueryAutoTxIbcUsageResponse = {
   typeUrl: "/trst.autoibctx.v1beta1.QueryAutoTxIbcUsageResponse",
+  is(o: any): o is QueryAutoTxIbcUsageResponse {
+    return o && (o.$typeUrl === QueryAutoTxIbcUsageResponse.typeUrl || Array.isArray(o.autoTxIbcUsage) && (!o.autoTxIbcUsage.length || AutoTxIbcUsage.is(o.autoTxIbcUsage[0])));
+  },
+  isSDK(o: any): o is QueryAutoTxIbcUsageResponseSDKType {
+    return o && (o.$typeUrl === QueryAutoTxIbcUsageResponse.typeUrl || Array.isArray(o.auto_tx_ibc_usage) && (!o.auto_tx_ibc_usage.length || AutoTxIbcUsage.isSDK(o.auto_tx_ibc_usage[0])));
+  },
+  isAmino(o: any): o is QueryAutoTxIbcUsageResponseAmino {
+    return o && (o.$typeUrl === QueryAutoTxIbcUsageResponse.typeUrl || Array.isArray(o.auto_tx_ibc_usage) && (!o.auto_tx_ibc_usage.length || AutoTxIbcUsage.isAmino(o.auto_tx_ibc_usage[0])));
+  },
   encode(message: QueryAutoTxIbcUsageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.autoTxIbcUsage) {
       AutoTxIbcUsage.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1130,3 +1474,4 @@ export const QueryAutoTxIbcUsageResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAutoTxIbcUsageResponse.typeUrl, QueryAutoTxIbcUsageResponse);
