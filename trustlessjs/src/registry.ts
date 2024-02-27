@@ -11,16 +11,16 @@ export const customMsgRegistry: ReadonlyArray<[string, GeneratedType]> = [
   ["/cosmwasm.wasm.v1.MsgInstantiateContract", MsgInstantiateContract],
   ["/cosmwasm.wasm.v1.MsgInstantiateContract2", MsgInstantiateContract2],
   ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract],
-  ["osmosis.gamm.v1beta1.MsgJoinPool", osmo.MsgJoinPool],
-  ["osmosis.gamm.v1beta1.MsgExitPool", osmo.MsgExitPool],
+  ["/osmosis.gamm.v1beta1.MsgJoinPool", osmo.MsgJoinPool],
+  ["/osmosis.gamm.v1beta1.MsgExitPool", osmo.MsgExitPool],
   [
-    "osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn",
+    "/osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn",
     osmo.MsgExitSwapShareAmountIn,
   ],
   [
-    "osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn",
+    "/osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn",
     osmo.MsgJoinSwapExternAmountIn,
   ],
-  ["osmosis.gamm.v1beta1.MsgSwapExactAmountIn", osmo.MsgSwapExactAmountIn],
-  ["osmosis.gamm.v1beta1.MsgSwapExactAmountOut", osmo.MsgSwapExactAmountOut],
+  ["/osmosis.gamm.v1beta1.MsgSwapExactAmountIn", osmo.MsgSwapExactAmountIn],
+  ["/osmosis.gamm.v1beta1.MsgSwapExactAmountOut", osmo.MsgSwapExactAmountOut],
 ];
