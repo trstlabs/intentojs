@@ -4,7 +4,7 @@ import { sync as rimraf } from "rimraf";
 
 const protoDirs = [
   join(__dirname, "../proto"),
-  join(__dirname, "../Trustless-Hub/build"),
+  join(__dirname, "../intento/build"),
   
 ];
 const outPath = join(__dirname, "../src/codegen");

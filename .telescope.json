@@ -1,6 +1,6 @@
 {
   "protoDirs": [
-    "./proto ./Trustless-Hub/proto"
+    "./proto ./intento/proto"
   ],
   "outPath": "./src/codegen",
   "options": {
