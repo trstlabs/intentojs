@@ -135,9 +135,9 @@ Afterwards, update package.json version.
 
 ```bash
 # Example: <version> = v0.4.1
+git push origin main
 git tag <version>
 git push origin <version>
-git push origin main
 npm publish
 ```
 
