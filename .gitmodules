@@ -1,6 +1,6 @@
-[submodule "Trustless-Hub"]
-path = Trustless-Hub
-url = https://github.com/trstlabs/Trustless-Hub
-[submodule "trustlessjs/Trustless-Hub"]
-	path = trustlessjs/Trustless-Hub
-	url = https://github.com/trstlabs/Trustless-Hub
+[submodule "intento"]
+	path = intento
+	url = https://github.com/trstlabs/intento
+[submodule "intentojs/intento"]
+	path = intentojs/intento
+	url = https://github.com/trstlabs/intento
