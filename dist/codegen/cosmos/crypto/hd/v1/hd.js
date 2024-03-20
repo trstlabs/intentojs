@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BIP44Params = void 0;
 const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 function createBaseBIP44Params() {
     return {
         purpose: 0,
@@ -12,6 +13,17 @@ function createBaseBIP44Params() {
     };
 }
 exports.BIP44Params = {
+    typeUrl: "/cosmos.crypto.hd.v1.BIP44Params",
+    aminoType: "cosmos-sdk/BIP44Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coinType === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.addressIndex === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.purpose !== 0) {
             writer.uint32(8).uint32(message.purpose);
@@ -67,6 +79,57 @@ exports.BIP44Params = {
         message.change = object.change ?? false;
         message.addressIndex = object.addressIndex ?? 0;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseBIP44Params();
+        if (object.purpose !== undefined && object.purpose !== null) {
+            message.purpose = object.purpose;
+        }
+        if (object.coin_type !== undefined && object.coin_type !== null) {
+            message.coinType = object.coin_type;
+        }
+        if (object.account !== undefined && object.account !== null) {
+            message.account = object.account;
+        }
+        if (object.change !== undefined && object.change !== null) {
+            message.change = object.change;
+        }
+        if (object.address_index !== undefined && object.address_index !== null) {
+            message.addressIndex = object.address_index;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.purpose = message.purpose === 0 ? undefined : message.purpose;
+        obj.coin_type = message.coinType === 0 ? undefined : message.coinType;
+        obj.account = message.account === 0 ? undefined : message.account;
+        obj.change = message.change === false ? undefined : message.change;
+        obj.address_index = message.addressIndex === 0 ? undefined : message.addressIndex;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.BIP44Params.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/BIP44Params",
+            value: exports.BIP44Params.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.BIP44Params.decode(message.value);
+    },
+    toProto(message) {
+        return exports.BIP44Params.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.crypto.hd.v1.BIP44Params",
+            value: exports.BIP44Params.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BIP44Params.typeUrl, exports.BIP44Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BIP44Params.aminoType, exports.BIP44Params.typeUrl);
 //# sourceMappingURL=hd.js.map

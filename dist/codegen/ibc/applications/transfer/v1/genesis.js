@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const transfer_1 = require("./transfer");
 const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 function createBaseGenesisState() {
     return {
         portId: "",
@@ -11,6 +12,17 @@ function createBaseGenesisState() {
     };
 }
 exports.GenesisState = {
+    typeUrl: "/ibc.applications.transfer.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.portId === "string" && Array.isArray(o.denomTraces) && (!o.denomTraces.length || transfer_1.DenomTrace.is(o.denomTraces[0])) && transfer_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || transfer_1.DenomTrace.isSDK(o.denom_traces[0])) && transfer_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || transfer_1.DenomTrace.isAmino(o.denom_traces[0])) && transfer_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.portId !== "") {
             writer.uint32(10).string(message.portId);
@@ -52,6 +64,52 @@ exports.GenesisState = {
         message.denomTraces = object.denomTraces?.map(e => transfer_1.DenomTrace.fromPartial(e)) || [];
         message.params = object.params !== undefined && object.params !== null ? transfer_1.Params.fromPartial(object.params) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGenesisState();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.portId = object.port_id;
+        }
+        message.denomTraces = object.denom_traces?.map(e => transfer_1.DenomTrace.fromAmino(e)) || [];
+        if (object.params !== undefined && object.params !== null) {
+            message.params = transfer_1.Params.fromAmino(object.params);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.port_id = message.portId === "" ? undefined : message.portId;
+        if (message.denomTraces) {
+            obj.denom_traces = message.denomTraces.map(e => e ? transfer_1.DenomTrace.toAmino(e) : undefined);
+        }
+        else {
+            obj.denom_traces = message.denomTraces;
+        }
+        obj.params = message.params ? transfer_1.Params.toAmino(message.params) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GenesisState.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GenesisState",
+            value: exports.GenesisState.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GenesisState.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GenesisState.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.applications.transfer.v1.GenesisState",
+            value: exports.GenesisState.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

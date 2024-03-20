@@ -1,6 +1,6 @@
-import { Height, HeightSDKType } from "../../../core/client/v1/client";
+import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * ClientState defines a loopback (localhost) client. It requires (read-only)
  * access to keys outside the client prefix.
@@ -10,6 +10,24 @@ export interface ClientState {
   chainId: string;
   /** self latest block height */
   height: Height;
+}
+export interface ClientStateProtoMsg {
+  typeUrl: "/ibc.lightclients.localhost.v1.ClientState";
+  value: Uint8Array;
+}
+/**
+ * ClientState defines a loopback (localhost) client. It requires (read-only)
+ * access to keys outside the client prefix.
+ */
+export interface ClientStateAmino {
+  /** self chain ID */
+  chain_id?: string;
+  /** self latest block height */
+  height?: HeightAmino;
+}
+export interface ClientStateAminoMsg {
+  type: "cosmos-sdk/ClientState";
+  value: ClientStateAmino;
 }
 /**
  * ClientState defines a loopback (localhost) client. It requires (read-only)
@@ -26,6 +44,17 @@ function createBaseClientState(): ClientState {
   };
 }
 export const ClientState = {
+  typeUrl: "/ibc.lightclients.localhost.v1.ClientState",
+  aminoType: "cosmos-sdk/ClientState",
+  is(o: any): o is ClientState {
+    return o && (o.$typeUrl === ClientState.typeUrl || typeof o.chainId === "string" && Height.is(o.height));
+  },
+  isSDK(o: any): o is ClientStateSDKType {
+    return o && (o.$typeUrl === ClientState.typeUrl || typeof o.chain_id === "string" && Height.isSDK(o.height));
+  },
+  isAmino(o: any): o is ClientStateAmino {
+    return o && (o.$typeUrl === ClientState.typeUrl || typeof o.chain_id === "string" && Height.isAmino(o.height));
+  },
   encode(message: ClientState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.chainId !== "") {
       writer.uint32(10).string(message.chainId);
@@ -55,10 +84,49 @@ export const ClientState = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<ClientState>): ClientState {
+  fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();
     message.chainId = object.chainId ?? "";
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
     return message;
+  },
+  fromAmino(object: ClientStateAmino): ClientState {
+    const message = createBaseClientState();
+    if (object.chain_id !== undefined && object.chain_id !== null) {
+      message.chainId = object.chain_id;
+    }
+    if (object.height !== undefined && object.height !== null) {
+      message.height = Height.fromAmino(object.height);
+    }
+    return message;
+  },
+  toAmino(message: ClientState): ClientStateAmino {
+    const obj: any = {};
+    obj.chain_id = message.chainId === "" ? undefined : message.chainId;
+    obj.height = message.height ? Height.toAmino(message.height) : {};
+    return obj;
+  },
+  fromAminoMsg(object: ClientStateAminoMsg): ClientState {
+    return ClientState.fromAmino(object.value);
+  },
+  toAminoMsg(message: ClientState): ClientStateAminoMsg {
+    return {
+      type: "cosmos-sdk/ClientState",
+      value: ClientState.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: ClientStateProtoMsg): ClientState {
+    return ClientState.decode(message.value);
+  },
+  toProto(message: ClientState): Uint8Array {
+    return ClientState.encode(message).finish();
+  },
+  toProtoMsg(message: ClientState): ClientStateProtoMsg {
+    return {
+      typeUrl: "/ibc.lightclients.localhost.v1.ClientState",
+      value: ClientState.encode(message).finish()
+    };
   }
 };
+GlobalDecoderRegistry.register(ClientState.typeUrl, ClientState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ClientState.aminoType, ClientState.typeUrl);

@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Timestamp = void 0;
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 function createBaseTimestamp() {
     return {
         seconds: BigInt(0),
@@ -9,6 +11,16 @@ function createBaseTimestamp() {
     };
 }
 exports.Timestamp = {
+    typeUrl: "/google.protobuf.Timestamp",
+    is(o) {
+        return o && (o.$typeUrl === exports.Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.seconds !== BigInt(0)) {
             writer.uint32(8).int64(message.seconds);
@@ -43,6 +55,28 @@ exports.Timestamp = {
         message.seconds = object.seconds !== undefined && object.seconds !== null ? BigInt(object.seconds.toString()) : BigInt(0);
         message.nanos = object.nanos ?? 0;
         return message;
+    },
+    fromAmino(object) {
+        return (0, helpers_1.fromJsonTimestamp)(object);
+    },
+    toAmino(message) {
+        return (0, helpers_1.fromTimestamp)(message).toISOString().replace(/\.\d+Z$/, "Z");
+    },
+    fromAminoMsg(object) {
+        return exports.Timestamp.fromAmino(object.value);
+    },
+    fromProtoMsg(message) {
+        return exports.Timestamp.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Timestamp.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/google.protobuf.Timestamp",
+            value: exports.Timestamp.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Timestamp.typeUrl, exports.Timestamp);
 //# sourceMappingURL=timestamp.js.map

@@ -4,15 +4,26 @@ exports.Block = void 0;
 const types_1 = require("./types");
 const evidence_1 = require("./evidence");
 const binary_1 = require("../../binary");
+const registry_1 = require("../../registry");
 function createBaseBlock() {
     return {
         header: types_1.Header.fromPartial({}),
         data: types_1.Data.fromPartial({}),
         evidence: evidence_1.EvidenceList.fromPartial({}),
-        lastCommit: types_1.Commit.fromPartial({})
+        lastCommit: undefined
     };
 }
 exports.Block = {
+    typeUrl: "/tendermint.types.Block",
+    is(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || types_1.Header.is(o.header) && types_1.Data.is(o.data) && evidence_1.EvidenceList.is(o.evidence));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || types_1.Header.isSDK(o.header) && types_1.Data.isSDK(o.data) && evidence_1.EvidenceList.isSDK(o.evidence));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || types_1.Header.isAmino(o.header) && types_1.Data.isAmino(o.data) && evidence_1.EvidenceList.isAmino(o.evidence));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.header !== undefined) {
             types_1.Header.encode(message.header, writer.uint32(10).fork()).ldelim();
@@ -61,6 +72,46 @@ exports.Block = {
         message.evidence = object.evidence !== undefined && object.evidence !== null ? evidence_1.EvidenceList.fromPartial(object.evidence) : undefined;
         message.lastCommit = object.lastCommit !== undefined && object.lastCommit !== null ? types_1.Commit.fromPartial(object.lastCommit) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseBlock();
+        if (object.header !== undefined && object.header !== null) {
+            message.header = types_1.Header.fromAmino(object.header);
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = types_1.Data.fromAmino(object.data);
+        }
+        if (object.evidence !== undefined && object.evidence !== null) {
+            message.evidence = evidence_1.EvidenceList.fromAmino(object.evidence);
+        }
+        if (object.last_commit !== undefined && object.last_commit !== null) {
+            message.lastCommit = types_1.Commit.fromAmino(object.last_commit);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.header = message.header ? types_1.Header.toAmino(message.header) : undefined;
+        obj.data = message.data ? types_1.Data.toAmino(message.data) : undefined;
+        obj.evidence = message.evidence ? evidence_1.EvidenceList.toAmino(message.evidence) : undefined;
+        obj.last_commit = message.lastCommit ? types_1.Commit.toAmino(message.lastCommit) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Block.fromAmino(object.value);
+    },
+    fromProtoMsg(message) {
+        return exports.Block.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Block.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/tendermint.types.Block",
+            value: exports.Block.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Block.typeUrl, exports.Block);
 //# sourceMappingURL=block.js.map

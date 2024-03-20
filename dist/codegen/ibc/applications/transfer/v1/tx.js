@@ -4,6 +4,7 @@ exports.MsgTransferResponse = exports.MsgTransfer = void 0;
 const coin_1 = require("../../../../cosmos/base/v1beta1/coin");
 const client_1 = require("../../../core/client/v1/client");
 const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 function createBaseMsgTransfer() {
     return {
         sourcePort: "",
@@ -16,6 +17,17 @@ function createBaseMsgTransfer() {
     };
 }
 exports.MsgTransfer = {
+    typeUrl: "/ibc.applications.transfer.v1.MsgTransfer",
+    aminoType: "cosmos-sdk/MsgTransfer",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgTransfer.typeUrl || typeof o.sourcePort === "string" && typeof o.sourceChannel === "string" && coin_1.Coin.is(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && client_1.Height.is(o.timeoutHeight) && typeof o.timeoutTimestamp === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgTransfer.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && coin_1.Coin.isSDK(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && client_1.Height.isSDK(o.timeout_height) && typeof o.timeout_timestamp === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgTransfer.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && coin_1.Coin.isAmino(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && client_1.Height.isAmino(o.timeout_height) && typeof o.timeout_timestamp === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sourcePort !== "") {
             writer.uint32(10).string(message.sourcePort);
@@ -85,12 +97,82 @@ exports.MsgTransfer = {
         message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? client_1.Height.fromPartial(object.timeoutHeight) : undefined;
         message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0);
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgTransfer();
+        if (object.source_port !== undefined && object.source_port !== null) {
+            message.sourcePort = object.source_port;
+        }
+        if (object.source_channel !== undefined && object.source_channel !== null) {
+            message.sourceChannel = object.source_channel;
+        }
+        if (object.token !== undefined && object.token !== null) {
+            message.token = coin_1.Coin.fromAmino(object.token);
+        }
+        if (object.sender !== undefined && object.sender !== null) {
+            message.sender = object.sender;
+        }
+        if (object.receiver !== undefined && object.receiver !== null) {
+            message.receiver = object.receiver;
+        }
+        if (object.timeout_height !== undefined && object.timeout_height !== null) {
+            message.timeoutHeight = client_1.Height.fromAmino(object.timeout_height);
+        }
+        if (object.timeout_timestamp !== undefined && object.timeout_timestamp !== null) {
+            message.timeoutTimestamp = BigInt(object.timeout_timestamp);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.source_port = message.sourcePort === "" ? undefined : message.sourcePort;
+        obj.source_channel = message.sourceChannel === "" ? undefined : message.sourceChannel;
+        obj.token = message.token ? coin_1.Coin.toAmino(message.token) : undefined;
+        obj.sender = message.sender === "" ? undefined : message.sender;
+        obj.receiver = message.receiver === "" ? undefined : message.receiver;
+        obj.timeout_height = message.timeoutHeight ? client_1.Height.toAmino(message.timeoutHeight) : {};
+        obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgTransfer.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgTransfer",
+            value: exports.MsgTransfer.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgTransfer.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgTransfer.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.applications.transfer.v1.MsgTransfer",
+            value: exports.MsgTransfer.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgTransfer.typeUrl, exports.MsgTransfer);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgTransfer.aminoType, exports.MsgTransfer.typeUrl);
 function createBaseMsgTransferResponse() {
     return {};
 }
 exports.MsgTransferResponse = {
+    typeUrl: "/ibc.applications.transfer.v1.MsgTransferResponse",
+    aminoType: "cosmos-sdk/MsgTransferResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgTransferResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgTransferResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgTransferResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -111,6 +193,37 @@ exports.MsgTransferResponse = {
     fromPartial(_) {
         const message = createBaseMsgTransferResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgTransferResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgTransferResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgTransferResponse",
+            value: exports.MsgTransferResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgTransferResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgTransferResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.applications.transfer.v1.MsgTransferResponse",
+            value: exports.MsgTransferResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgTransferResponse.typeUrl, exports.MsgTransferResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgTransferResponse.aminoType, exports.MsgTransferResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

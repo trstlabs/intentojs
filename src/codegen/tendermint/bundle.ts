@@ -1,44 +1,38 @@
-import * as _76 from "./abci/types";
-import * as _77 from "./crypto/keys";
-import * as _78 from "./crypto/proof";
-import * as _79 from "./libs/bits/types";
-import * as _80 from "./p2p/types";
-import * as _81 from "./types/block";
-import * as _82 from "./types/evidence";
-import * as _83 from "./types/params";
-import * as _84 from "./types/types";
-import * as _85 from "./types/validator";
-import * as _86 from "./version/types";
-import * as _144 from "./abci/types.rpc.ABCIApplication";
-import * as _159 from "./lcd";
+import * as _75 from "./abci/types";
+import * as _76 from "./crypto/keys";
+import * as _77 from "./crypto/proof";
+import * as _78 from "./libs/bits/types";
+import * as _79 from "./p2p/types";
+import * as _80 from "./types/block";
+import * as _81 from "./types/evidence";
+import * as _82 from "./types/params";
+import * as _83 from "./types/types";
+import * as _84 from "./types/validator";
+import * as _85 from "./version/types";
 export namespace tendermint {
   export const abci = {
-    ..._76,
-    ..._144
+    ..._75
   };
   export const crypto = {
-    ..._77,
-    ..._78
+    ..._76,
+    ..._77
   };
   export namespace libs {
     export const bits = {
-      ..._79
+      ..._78
     };
   }
   export const p2p = {
-    ..._80
+    ..._79
   };
   export const types = {
+    ..._80,
     ..._81,
     ..._82,
     ..._83,
-    ..._84,
-    ..._85
+    ..._84
   };
   export const version = {
-    ..._86
-  };
-  export const ClientFactory = {
-    ..._159
+    ..._85
   };
 }

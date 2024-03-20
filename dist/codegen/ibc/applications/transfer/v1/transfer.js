@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Params = exports.DenomTrace = void 0;
 const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 function createBaseDenomTrace() {
     return {
         path: "",
@@ -9,6 +10,17 @@ function createBaseDenomTrace() {
     };
 }
 exports.DenomTrace = {
+    typeUrl: "/ibc.applications.transfer.v1.DenomTrace",
+    aminoType: "cosmos-sdk/DenomTrace",
+    is(o) {
+        return o && (o.$typeUrl === exports.DenomTrace.typeUrl || typeof o.path === "string" && typeof o.baseDenom === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.path !== "") {
             writer.uint32(10).string(message.path);
@@ -43,8 +55,47 @@ exports.DenomTrace = {
         message.path = object.path ?? "";
         message.baseDenom = object.baseDenom ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseDenomTrace();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = object.path;
+        }
+        if (object.base_denom !== undefined && object.base_denom !== null) {
+            message.baseDenom = object.base_denom;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.path = message.path === "" ? undefined : message.path;
+        obj.base_denom = message.baseDenom === "" ? undefined : message.baseDenom;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.DenomTrace.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/DenomTrace",
+            value: exports.DenomTrace.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.DenomTrace.decode(message.value);
+    },
+    toProto(message) {
+        return exports.DenomTrace.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.applications.transfer.v1.DenomTrace",
+            value: exports.DenomTrace.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.DenomTrace.typeUrl, exports.DenomTrace);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.DenomTrace.aminoType, exports.DenomTrace.typeUrl);
 function createBaseParams() {
     return {
         sendEnabled: false,
@@ -52,6 +103,17 @@ function createBaseParams() {
     };
 }
 exports.Params = {
+    typeUrl: "/ibc.applications.transfer.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.sendEnabled === "boolean" && typeof o.receiveEnabled === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sendEnabled === true) {
             writer.uint32(8).bool(message.sendEnabled);
@@ -86,6 +148,45 @@ exports.Params = {
         message.sendEnabled = object.sendEnabled ?? false;
         message.receiveEnabled = object.receiveEnabled ?? false;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseParams();
+        if (object.send_enabled !== undefined && object.send_enabled !== null) {
+            message.sendEnabled = object.send_enabled;
+        }
+        if (object.receive_enabled !== undefined && object.receive_enabled !== null) {
+            message.receiveEnabled = object.receive_enabled;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.send_enabled = message.sendEnabled === false ? undefined : message.sendEnabled;
+        obj.receive_enabled = message.receiveEnabled === false ? undefined : message.receiveEnabled;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Params.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/Params",
+            value: exports.Params.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.Params.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Params.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.applications.transfer.v1.Params",
+            value: exports.Params.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=transfer.js.map

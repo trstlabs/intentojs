@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSON = exports.scalarTypeFromJSON = exports.ScalarTypeSDKType = exports.ScalarType = void 0;
+exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSON = exports.scalarTypeFromJSON = exports.ScalarTypeAmino = exports.ScalarTypeSDKType = exports.ScalarType = void 0;
 const binary_1 = require("../binary");
+const registry_1 = require("../registry");
 var ScalarType;
 (function (ScalarType) {
     ScalarType[ScalarType["SCALAR_TYPE_UNSPECIFIED"] = 0] = "SCALAR_TYPE_UNSPECIFIED";
@@ -10,6 +11,7 @@ var ScalarType;
     ScalarType[ScalarType["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(ScalarType || (exports.ScalarType = ScalarType = {}));
 exports.ScalarTypeSDKType = ScalarType;
+exports.ScalarTypeAmino = ScalarType;
 function scalarTypeFromJSON(object) {
     switch (object) {
         case 0:
@@ -49,6 +51,16 @@ function createBaseInterfaceDescriptor() {
     };
 }
 exports.InterfaceDescriptor = {
+    typeUrl: "/cosmos_proto.InterfaceDescriptor",
+    is(o) {
+        return o && (o.$typeUrl === exports.InterfaceDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.InterfaceDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.InterfaceDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -83,8 +95,40 @@ exports.InterfaceDescriptor = {
         message.name = object.name ?? "";
         message.description = object.description ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseInterfaceDescriptor();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.name = message.name === "" ? undefined : message.name;
+        obj.description = message.description === "" ? undefined : message.description;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.InterfaceDescriptor.fromAmino(object.value);
+    },
+    fromProtoMsg(message) {
+        return exports.InterfaceDescriptor.decode(message.value);
+    },
+    toProto(message) {
+        return exports.InterfaceDescriptor.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos_proto.InterfaceDescriptor",
+            value: exports.InterfaceDescriptor.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.InterfaceDescriptor.typeUrl, exports.InterfaceDescriptor);
 function createBaseScalarDescriptor() {
     return {
         name: "",
@@ -93,6 +137,16 @@ function createBaseScalarDescriptor() {
     };
 }
 exports.ScalarDescriptor = {
+    typeUrl: "/cosmos_proto.ScalarDescriptor",
+    is(o) {
+        return o && (o.$typeUrl === exports.ScalarDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string" && Array.isArray(o.fieldType));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ScalarDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string" && Array.isArray(o.field_type));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ScalarDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string" && Array.isArray(o.field_type));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -144,6 +198,45 @@ exports.ScalarDescriptor = {
         message.description = object.description ?? "";
         message.fieldType = object.fieldType?.map(e => e) || [];
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseScalarDescriptor();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        message.fieldType = object.field_type?.map(e => e) || [];
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.name = message.name === "" ? undefined : message.name;
+        obj.description = message.description === "" ? undefined : message.description;
+        if (message.fieldType) {
+            obj.field_type = message.fieldType.map(e => e);
+        }
+        else {
+            obj.field_type = message.fieldType;
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.ScalarDescriptor.fromAmino(object.value);
+    },
+    fromProtoMsg(message) {
+        return exports.ScalarDescriptor.decode(message.value);
+    },
+    toProto(message) {
+        return exports.ScalarDescriptor.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos_proto.ScalarDescriptor",
+            value: exports.ScalarDescriptor.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ScalarDescriptor.typeUrl, exports.ScalarDescriptor);
 //# sourceMappingURL=cosmos.js.map

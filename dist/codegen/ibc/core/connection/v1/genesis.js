@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const connection_1 = require("./connection");
 const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 function createBaseGenesisState() {
     return {
         connections: [],
@@ -12,6 +13,17 @@ function createBaseGenesisState() {
     };
 }
 exports.GenesisState = {
+    typeUrl: "/ibc.core.connection.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.connections) && (!o.connections.length || connection_1.IdentifiedConnection.is(o.connections[0])) && Array.isArray(o.clientConnectionPaths) && (!o.clientConnectionPaths.length || connection_1.ConnectionPaths.is(o.clientConnectionPaths[0])) && typeof o.nextConnectionSequence === "bigint" && connection_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.connections) && (!o.connections.length || connection_1.IdentifiedConnection.isSDK(o.connections[0])) && Array.isArray(o.client_connection_paths) && (!o.client_connection_paths.length || connection_1.ConnectionPaths.isSDK(o.client_connection_paths[0])) && typeof o.next_connection_sequence === "bigint" && connection_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.connections) && (!o.connections.length || connection_1.IdentifiedConnection.isAmino(o.connections[0])) && Array.isArray(o.client_connection_paths) && (!o.client_connection_paths.length || connection_1.ConnectionPaths.isAmino(o.client_connection_paths[0])) && typeof o.next_connection_sequence === "bigint" && connection_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.connections) {
             connection_1.IdentifiedConnection.encode(v, writer.uint32(10).fork()).ldelim();
@@ -60,6 +72,59 @@ exports.GenesisState = {
         message.nextConnectionSequence = object.nextConnectionSequence !== undefined && object.nextConnectionSequence !== null ? BigInt(object.nextConnectionSequence.toString()) : BigInt(0);
         message.params = object.params !== undefined && object.params !== null ? connection_1.Params.fromPartial(object.params) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGenesisState();
+        message.connections = object.connections?.map(e => connection_1.IdentifiedConnection.fromAmino(e)) || [];
+        message.clientConnectionPaths = object.client_connection_paths?.map(e => connection_1.ConnectionPaths.fromAmino(e)) || [];
+        if (object.next_connection_sequence !== undefined && object.next_connection_sequence !== null) {
+            message.nextConnectionSequence = BigInt(object.next_connection_sequence);
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = connection_1.Params.fromAmino(object.params);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.connections) {
+            obj.connections = message.connections.map(e => e ? connection_1.IdentifiedConnection.toAmino(e) : undefined);
+        }
+        else {
+            obj.connections = message.connections;
+        }
+        if (message.clientConnectionPaths) {
+            obj.client_connection_paths = message.clientConnectionPaths.map(e => e ? connection_1.ConnectionPaths.toAmino(e) : undefined);
+        }
+        else {
+            obj.client_connection_paths = message.clientConnectionPaths;
+        }
+        obj.next_connection_sequence = message.nextConnectionSequence !== BigInt(0) ? message.nextConnectionSequence.toString() : undefined;
+        obj.params = message.params ? connection_1.Params.toAmino(message.params) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GenesisState.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GenesisState",
+            value: exports.GenesisState.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GenesisState.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GenesisState.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.GenesisState",
+            value: exports.GenesisState.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

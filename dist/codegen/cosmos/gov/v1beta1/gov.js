@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.TextProposal = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionSDKType = exports.VoteOption = void 0;
+exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.TextProposal = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = void 0;
 const coin_1 = require("../../base/v1beta1/coin");
 const any_1 = require("../../../google/protobuf/any");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const duration_1 = require("../../../google/protobuf/duration");
+const helpers_1 = require("../../../helpers");
 const binary_1 = require("../../../binary");
+const math_1 = require("@cosmjs/math");
+const registry_1 = require("../../../registry");
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 var VoteOption;
 (function (VoteOption) {
@@ -22,6 +25,7 @@ var VoteOption;
     VoteOption[VoteOption["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(VoteOption || (exports.VoteOption = VoteOption = {}));
 exports.VoteOptionSDKType = VoteOption;
+exports.VoteOptionAmino = VoteOption;
 function voteOptionFromJSON(object) {
     switch (object) {
         case 0:
@@ -97,6 +101,7 @@ var ProposalStatus;
     ProposalStatus[ProposalStatus["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(ProposalStatus || (exports.ProposalStatus = ProposalStatus = {}));
 exports.ProposalStatusSDKType = ProposalStatus;
+exports.ProposalStatusAmino = ProposalStatus;
 function proposalStatusFromJSON(object) {
     switch (object) {
         case 0:
@@ -151,12 +156,23 @@ function createBaseWeightedVoteOption() {
     };
 }
 exports.WeightedVoteOption = {
+    typeUrl: "/cosmos.gov.v1beta1.WeightedVoteOption",
+    aminoType: "cosmos-sdk/WeightedVoteOption",
+    is(o) {
+        return o && (o.$typeUrl === exports.WeightedVoteOption.typeUrl || (0, helpers_1.isSet)(o.option) && typeof o.weight === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.WeightedVoteOption.typeUrl || (0, helpers_1.isSet)(o.option) && typeof o.weight === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.WeightedVoteOption.typeUrl || (0, helpers_1.isSet)(o.option) && typeof o.weight === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.option !== 0) {
             writer.uint32(8).int32(message.option);
         }
         if (message.weight !== "") {
-            writer.uint32(18).string(message.weight);
+            writer.uint32(18).string(math_1.Decimal.fromUserInput(message.weight, 18).atomics);
         }
         return writer;
     },
@@ -171,7 +187,7 @@ exports.WeightedVoteOption = {
                     message.option = reader.int32();
                     break;
                 case 2:
-                    message.weight = reader.string();
+                    message.weight = math_1.Decimal.fromAtomics(reader.string(), 18).toString();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -185,15 +201,66 @@ exports.WeightedVoteOption = {
         message.option = object.option ?? 0;
         message.weight = object.weight ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseWeightedVoteOption();
+        if (object.option !== undefined && object.option !== null) {
+            message.option = object.option;
+        }
+        if (object.weight !== undefined && object.weight !== null) {
+            message.weight = object.weight;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.option = message.option === 0 ? undefined : message.option;
+        obj.weight = message.weight === "" ? undefined : message.weight;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.WeightedVoteOption.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/WeightedVoteOption",
+            value: exports.WeightedVoteOption.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.WeightedVoteOption.decode(message.value);
+    },
+    toProto(message) {
+        return exports.WeightedVoteOption.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.WeightedVoteOption",
+            value: exports.WeightedVoteOption.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.WeightedVoteOption.typeUrl, exports.WeightedVoteOption);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.WeightedVoteOption.aminoType, exports.WeightedVoteOption.typeUrl);
 function createBaseTextProposal() {
     return {
+        $typeUrl: "/cosmos.gov.v1beta1.TextProposal",
         title: "",
         description: ""
     };
 }
 exports.TextProposal = {
+    typeUrl: "/cosmos.gov.v1beta1.TextProposal",
+    aminoType: "cosmos-sdk/TextProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.TextProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TextProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TextProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -228,8 +295,47 @@ exports.TextProposal = {
         message.title = object.title ?? "";
         message.description = object.description ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseTextProposal();
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.title = message.title === "" ? undefined : message.title;
+        obj.description = message.description === "" ? undefined : message.description;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.TextProposal.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/TextProposal",
+            value: exports.TextProposal.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.TextProposal.decode(message.value);
+    },
+    toProto(message) {
+        return exports.TextProposal.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.TextProposal",
+            value: exports.TextProposal.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TextProposal.typeUrl, exports.TextProposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TextProposal.aminoType, exports.TextProposal.typeUrl);
 function createBaseDeposit() {
     return {
         proposalId: BigInt(0),
@@ -238,6 +344,17 @@ function createBaseDeposit() {
     };
 }
 exports.Deposit = {
+    typeUrl: "/cosmos.gov.v1beta1.Deposit",
+    aminoType: "cosmos-sdk/Deposit",
+    is(o) {
+        return o && (o.$typeUrl === exports.Deposit.typeUrl || typeof o.proposalId === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposalId !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposalId);
@@ -279,28 +396,85 @@ exports.Deposit = {
         message.depositor = object.depositor ?? "";
         message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseDeposit();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposalId = BigInt(object.proposal_id);
+        }
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+        obj.depositor = message.depositor === "" ? undefined : message.depositor;
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.amount = message.amount;
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Deposit.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/Deposit",
+            value: exports.Deposit.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.Deposit.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Deposit.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.Deposit",
+            value: exports.Deposit.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Deposit.typeUrl, exports.Deposit);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Deposit.aminoType, exports.Deposit.typeUrl);
 function createBaseProposal() {
     return {
         proposalId: BigInt(0),
-        content: any_1.Any.fromPartial({}),
+        content: undefined,
         status: 0,
         finalTallyResult: exports.TallyResult.fromPartial({}),
-        submitTime: timestamp_1.Timestamp.fromPartial({}),
-        depositEndTime: timestamp_1.Timestamp.fromPartial({}),
+        submitTime: new Date(),
+        depositEndTime: new Date(),
         totalDeposit: [],
-        votingStartTime: timestamp_1.Timestamp.fromPartial({}),
-        votingEndTime: timestamp_1.Timestamp.fromPartial({})
+        votingStartTime: new Date(),
+        votingEndTime: new Date()
     };
 }
 exports.Proposal = {
+    typeUrl: "/cosmos.gov.v1beta1.Proposal",
+    aminoType: "cosmos-sdk/Proposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.Proposal.typeUrl || typeof o.proposalId === "bigint" && (0, helpers_1.isSet)(o.status) && exports.TallyResult.is(o.finalTallyResult) && timestamp_1.Timestamp.is(o.submitTime) && timestamp_1.Timestamp.is(o.depositEndTime) && Array.isArray(o.totalDeposit) && (!o.totalDeposit.length || coin_1.Coin.is(o.totalDeposit[0])) && timestamp_1.Timestamp.is(o.votingStartTime) && timestamp_1.Timestamp.is(o.votingEndTime));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Proposal.typeUrl || typeof o.proposal_id === "bigint" && (0, helpers_1.isSet)(o.status) && exports.TallyResult.isSDK(o.final_tally_result) && timestamp_1.Timestamp.isSDK(o.submit_time) && timestamp_1.Timestamp.isSDK(o.deposit_end_time) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || coin_1.Coin.isSDK(o.total_deposit[0])) && timestamp_1.Timestamp.isSDK(o.voting_start_time) && timestamp_1.Timestamp.isSDK(o.voting_end_time));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Proposal.typeUrl || typeof o.proposal_id === "bigint" && (0, helpers_1.isSet)(o.status) && exports.TallyResult.isAmino(o.final_tally_result) && timestamp_1.Timestamp.isAmino(o.submit_time) && timestamp_1.Timestamp.isAmino(o.deposit_end_time) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || coin_1.Coin.isAmino(o.total_deposit[0])) && timestamp_1.Timestamp.isAmino(o.voting_start_time) && timestamp_1.Timestamp.isAmino(o.voting_end_time));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposalId !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposalId);
         }
         if (message.content !== undefined) {
-            any_1.Any.encode(message.content, writer.uint32(18).fork()).ldelim();
+            any_1.Any.encode(registry_1.GlobalDecoderRegistry.wrapAny(message.content), writer.uint32(18).fork()).ldelim();
         }
         if (message.status !== 0) {
             writer.uint32(24).int32(message.status);
@@ -309,19 +483,19 @@ exports.Proposal = {
             exports.TallyResult.encode(message.finalTallyResult, writer.uint32(34).fork()).ldelim();
         }
         if (message.submitTime !== undefined) {
-            timestamp_1.Timestamp.encode(message.submitTime, writer.uint32(42).fork()).ldelim();
+            timestamp_1.Timestamp.encode((0, helpers_1.toTimestamp)(message.submitTime), writer.uint32(42).fork()).ldelim();
         }
         if (message.depositEndTime !== undefined) {
-            timestamp_1.Timestamp.encode(message.depositEndTime, writer.uint32(50).fork()).ldelim();
+            timestamp_1.Timestamp.encode((0, helpers_1.toTimestamp)(message.depositEndTime), writer.uint32(50).fork()).ldelim();
         }
         for (const v of message.totalDeposit) {
             coin_1.Coin.encode(v, writer.uint32(58).fork()).ldelim();
         }
         if (message.votingStartTime !== undefined) {
-            timestamp_1.Timestamp.encode(message.votingStartTime, writer.uint32(66).fork()).ldelim();
+            timestamp_1.Timestamp.encode((0, helpers_1.toTimestamp)(message.votingStartTime), writer.uint32(66).fork()).ldelim();
         }
         if (message.votingEndTime !== undefined) {
-            timestamp_1.Timestamp.encode(message.votingEndTime, writer.uint32(74).fork()).ldelim();
+            timestamp_1.Timestamp.encode((0, helpers_1.toTimestamp)(message.votingEndTime), writer.uint32(74).fork()).ldelim();
         }
         return writer;
     },
@@ -336,7 +510,7 @@ exports.Proposal = {
                     message.proposalId = reader.uint64();
                     break;
                 case 2:
-                    message.content = any_1.Any.decode(reader, reader.uint32());
+                    message.content = registry_1.GlobalDecoderRegistry.unwrapAny(reader);
                     break;
                 case 3:
                     message.status = reader.int32();
@@ -345,19 +519,19 @@ exports.Proposal = {
                     message.finalTallyResult = exports.TallyResult.decode(reader, reader.uint32());
                     break;
                 case 5:
-                    message.submitTime = timestamp_1.Timestamp.decode(reader, reader.uint32());
+                    message.submitTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.decode(reader, reader.uint32()));
                     break;
                 case 6:
-                    message.depositEndTime = timestamp_1.Timestamp.decode(reader, reader.uint32());
+                    message.depositEndTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.decode(reader, reader.uint32()));
                     break;
                 case 7:
                     message.totalDeposit.push(coin_1.Coin.decode(reader, reader.uint32()));
                     break;
                 case 8:
-                    message.votingStartTime = timestamp_1.Timestamp.decode(reader, reader.uint32());
+                    message.votingStartTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.decode(reader, reader.uint32()));
                     break;
                 case 9:
-                    message.votingEndTime = timestamp_1.Timestamp.decode(reader, reader.uint32());
+                    message.votingEndTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.decode(reader, reader.uint32()));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -369,17 +543,87 @@ exports.Proposal = {
     fromPartial(object) {
         const message = createBaseProposal();
         message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
-        message.content = object.content !== undefined && object.content !== null ? any_1.Any.fromPartial(object.content) : undefined;
+        message.content = object.content !== undefined && object.content !== null ? registry_1.GlobalDecoderRegistry.fromPartial(object.content) : undefined;
         message.status = object.status ?? 0;
         message.finalTallyResult = object.finalTallyResult !== undefined && object.finalTallyResult !== null ? exports.TallyResult.fromPartial(object.finalTallyResult) : undefined;
-        message.submitTime = object.submitTime !== undefined && object.submitTime !== null ? timestamp_1.Timestamp.fromPartial(object.submitTime) : undefined;
-        message.depositEndTime = object.depositEndTime !== undefined && object.depositEndTime !== null ? timestamp_1.Timestamp.fromPartial(object.depositEndTime) : undefined;
+        message.submitTime = object.submitTime ?? undefined;
+        message.depositEndTime = object.depositEndTime ?? undefined;
         message.totalDeposit = object.totalDeposit?.map(e => coin_1.Coin.fromPartial(e)) || [];
-        message.votingStartTime = object.votingStartTime !== undefined && object.votingStartTime !== null ? timestamp_1.Timestamp.fromPartial(object.votingStartTime) : undefined;
-        message.votingEndTime = object.votingEndTime !== undefined && object.votingEndTime !== null ? timestamp_1.Timestamp.fromPartial(object.votingEndTime) : undefined;
+        message.votingStartTime = object.votingStartTime ?? undefined;
+        message.votingEndTime = object.votingEndTime ?? undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseProposal();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposalId = BigInt(object.proposal_id);
+        }
+        if (object.content !== undefined && object.content !== null) {
+            message.content = registry_1.GlobalDecoderRegistry.fromAminoMsg(object.content);
+        }
+        if (object.status !== undefined && object.status !== null) {
+            message.status = object.status;
+        }
+        if (object.final_tally_result !== undefined && object.final_tally_result !== null) {
+            message.finalTallyResult = exports.TallyResult.fromAmino(object.final_tally_result);
+        }
+        if (object.submit_time !== undefined && object.submit_time !== null) {
+            message.submitTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.submit_time));
+        }
+        if (object.deposit_end_time !== undefined && object.deposit_end_time !== null) {
+            message.depositEndTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.deposit_end_time));
+        }
+        message.totalDeposit = object.total_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.voting_start_time !== undefined && object.voting_start_time !== null) {
+            message.votingStartTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.voting_start_time));
+        }
+        if (object.voting_end_time !== undefined && object.voting_end_time !== null) {
+            message.votingEndTime = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.voting_end_time));
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+        obj.content = message.content ? registry_1.GlobalDecoderRegistry.toAminoMsg(message.content) : undefined;
+        obj.status = message.status === 0 ? undefined : message.status;
+        obj.final_tally_result = message.finalTallyResult ? exports.TallyResult.toAmino(message.finalTallyResult) : undefined;
+        obj.submit_time = message.submitTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.submitTime)) : undefined;
+        obj.deposit_end_time = message.depositEndTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.depositEndTime)) : undefined;
+        if (message.totalDeposit) {
+            obj.total_deposit = message.totalDeposit.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.total_deposit = message.totalDeposit;
+        }
+        obj.voting_start_time = message.votingStartTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.votingStartTime)) : undefined;
+        obj.voting_end_time = message.votingEndTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.votingEndTime)) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Proposal.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/Proposal",
+            value: exports.Proposal.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.Proposal.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Proposal.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.Proposal",
+            value: exports.Proposal.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Proposal.typeUrl, exports.Proposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Proposal.aminoType, exports.Proposal.typeUrl);
 function createBaseTallyResult() {
     return {
         yes: "",
@@ -389,6 +633,17 @@ function createBaseTallyResult() {
     };
 }
 exports.TallyResult = {
+    typeUrl: "/cosmos.gov.v1beta1.TallyResult",
+    aminoType: "cosmos-sdk/TallyResult",
+    is(o) {
+        return o && (o.$typeUrl === exports.TallyResult.typeUrl || typeof o.yes === "string" && typeof o.abstain === "string" && typeof o.no === "string" && typeof o.noWithVeto === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TallyResult.typeUrl || typeof o.yes === "string" && typeof o.abstain === "string" && typeof o.no === "string" && typeof o.no_with_veto === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TallyResult.typeUrl || typeof o.yes === "string" && typeof o.abstain === "string" && typeof o.no === "string" && typeof o.no_with_veto === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.yes !== "") {
             writer.uint32(10).string(message.yes);
@@ -437,8 +692,55 @@ exports.TallyResult = {
         message.no = object.no ?? "";
         message.noWithVeto = object.noWithVeto ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseTallyResult();
+        if (object.yes !== undefined && object.yes !== null) {
+            message.yes = object.yes;
+        }
+        if (object.abstain !== undefined && object.abstain !== null) {
+            message.abstain = object.abstain;
+        }
+        if (object.no !== undefined && object.no !== null) {
+            message.no = object.no;
+        }
+        if (object.no_with_veto !== undefined && object.no_with_veto !== null) {
+            message.noWithVeto = object.no_with_veto;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.yes = message.yes === "" ? undefined : message.yes;
+        obj.abstain = message.abstain === "" ? undefined : message.abstain;
+        obj.no = message.no === "" ? undefined : message.no;
+        obj.no_with_veto = message.noWithVeto === "" ? undefined : message.noWithVeto;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.TallyResult.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/TallyResult",
+            value: exports.TallyResult.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.TallyResult.decode(message.value);
+    },
+    toProto(message) {
+        return exports.TallyResult.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.TallyResult",
+            value: exports.TallyResult.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TallyResult.typeUrl, exports.TallyResult);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TallyResult.aminoType, exports.TallyResult.typeUrl);
 function createBaseVote() {
     return {
         proposalId: BigInt(0),
@@ -448,6 +750,17 @@ function createBaseVote() {
     };
 }
 exports.Vote = {
+    typeUrl: "/cosmos.gov.v1beta1.Vote",
+    aminoType: "cosmos-sdk/Vote",
+    is(o) {
+        return o && (o.$typeUrl === exports.Vote.typeUrl || typeof o.proposalId === "bigint" && typeof o.voter === "string" && (0, helpers_1.isSet)(o.option) && Array.isArray(o.options) && (!o.options.length || exports.WeightedVoteOption.is(o.options[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && (0, helpers_1.isSet)(o.option) && Array.isArray(o.options) && (!o.options.length || exports.WeightedVoteOption.isSDK(o.options[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && (0, helpers_1.isSet)(o.option) && Array.isArray(o.options) && (!o.options.length || exports.WeightedVoteOption.isAmino(o.options[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposalId !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposalId);
@@ -496,8 +809,58 @@ exports.Vote = {
         message.option = object.option ?? 0;
         message.options = object.options?.map(e => exports.WeightedVoteOption.fromPartial(e)) || [];
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseVote();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposalId = BigInt(object.proposal_id);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        if (object.option !== undefined && object.option !== null) {
+            message.option = object.option;
+        }
+        message.options = object.options?.map(e => exports.WeightedVoteOption.fromAmino(e)) || [];
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+        obj.voter = message.voter === "" ? undefined : message.voter;
+        obj.option = message.option === 0 ? undefined : message.option;
+        if (message.options) {
+            obj.options = message.options.map(e => e ? exports.WeightedVoteOption.toAmino(e) : undefined);
+        }
+        else {
+            obj.options = message.options;
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Vote.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/Vote",
+            value: exports.Vote.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.Vote.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Vote.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.Vote",
+            value: exports.Vote.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Vote.typeUrl, exports.Vote);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Vote.aminoType, exports.Vote.typeUrl);
 function createBaseDepositParams() {
     return {
         minDeposit: [],
@@ -505,6 +868,17 @@ function createBaseDepositParams() {
     };
 }
 exports.DepositParams = {
+    typeUrl: "/cosmos.gov.v1beta1.DepositParams",
+    aminoType: "cosmos-sdk/DepositParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.DepositParams.typeUrl || Array.isArray(o.minDeposit) && (!o.minDeposit.length || coin_1.Coin.is(o.minDeposit[0])) && duration_1.Duration.is(o.maxDepositPeriod));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.isSDK(o.min_deposit[0])) && duration_1.Duration.isSDK(o.max_deposit_period));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.isAmino(o.min_deposit[0])) && duration_1.Duration.isAmino(o.max_deposit_period));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.minDeposit) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -539,14 +913,67 @@ exports.DepositParams = {
         message.minDeposit = object.minDeposit?.map(e => coin_1.Coin.fromPartial(e)) || [];
         message.maxDepositPeriod = object.maxDepositPeriod !== undefined && object.maxDepositPeriod !== null ? duration_1.Duration.fromPartial(object.maxDepositPeriod) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseDepositParams();
+        message.minDeposit = object.min_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.max_deposit_period !== undefined && object.max_deposit_period !== null) {
+            message.maxDepositPeriod = duration_1.Duration.fromAmino(object.max_deposit_period);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.minDeposit) {
+            obj.min_deposit = message.minDeposit.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.min_deposit = message.minDeposit;
+        }
+        obj.max_deposit_period = message.maxDepositPeriod ? duration_1.Duration.toAmino(message.maxDepositPeriod) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.DepositParams.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/DepositParams",
+            value: exports.DepositParams.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.DepositParams.decode(message.value);
+    },
+    toProto(message) {
+        return exports.DepositParams.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.DepositParams",
+            value: exports.DepositParams.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.DepositParams.typeUrl, exports.DepositParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.DepositParams.aminoType, exports.DepositParams.typeUrl);
 function createBaseVotingParams() {
     return {
         votingPeriod: duration_1.Duration.fromPartial({})
     };
 }
 exports.VotingParams = {
+    typeUrl: "/cosmos.gov.v1beta1.VotingParams",
+    aminoType: "cosmos-sdk/VotingParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.VotingParams.typeUrl || duration_1.Duration.is(o.votingPeriod));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.VotingParams.typeUrl || duration_1.Duration.isSDK(o.voting_period));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.VotingParams.typeUrl || duration_1.Duration.isAmino(o.voting_period));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.votingPeriod !== undefined) {
             duration_1.Duration.encode(message.votingPeriod, writer.uint32(10).fork()).ldelim();
@@ -574,8 +1001,43 @@ exports.VotingParams = {
         const message = createBaseVotingParams();
         message.votingPeriod = object.votingPeriod !== undefined && object.votingPeriod !== null ? duration_1.Duration.fromPartial(object.votingPeriod) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseVotingParams();
+        if (object.voting_period !== undefined && object.voting_period !== null) {
+            message.votingPeriod = duration_1.Duration.fromAmino(object.voting_period);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.voting_period = message.votingPeriod ? duration_1.Duration.toAmino(message.votingPeriod) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.VotingParams.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/VotingParams",
+            value: exports.VotingParams.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.VotingParams.decode(message.value);
+    },
+    toProto(message) {
+        return exports.VotingParams.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.VotingParams",
+            value: exports.VotingParams.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.VotingParams.typeUrl, exports.VotingParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.VotingParams.aminoType, exports.VotingParams.typeUrl);
 function createBaseTallyParams() {
     return {
         quorum: new Uint8Array(),
@@ -584,6 +1046,17 @@ function createBaseTallyParams() {
     };
 }
 exports.TallyParams = {
+    typeUrl: "/cosmos.gov.v1beta1.TallyParams",
+    aminoType: "cosmos-sdk/TallyParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.TallyParams.typeUrl || (o.quorum instanceof Uint8Array || typeof o.quorum === "string") && (o.threshold instanceof Uint8Array || typeof o.threshold === "string") && (o.vetoThreshold instanceof Uint8Array || typeof o.vetoThreshold === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TallyParams.typeUrl || (o.quorum instanceof Uint8Array || typeof o.quorum === "string") && (o.threshold instanceof Uint8Array || typeof o.threshold === "string") && (o.veto_threshold instanceof Uint8Array || typeof o.veto_threshold === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TallyParams.typeUrl || (o.quorum instanceof Uint8Array || typeof o.quorum === "string") && (o.threshold instanceof Uint8Array || typeof o.threshold === "string") && (o.veto_threshold instanceof Uint8Array || typeof o.veto_threshold === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.quorum.length !== 0) {
             writer.uint32(10).bytes(message.quorum);
@@ -625,6 +1098,49 @@ exports.TallyParams = {
         message.threshold = object.threshold ?? new Uint8Array();
         message.vetoThreshold = object.vetoThreshold ?? new Uint8Array();
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseTallyParams();
+        if (object.quorum !== undefined && object.quorum !== null) {
+            message.quorum = (0, helpers_1.bytesFromBase64)(object.quorum);
+        }
+        if (object.threshold !== undefined && object.threshold !== null) {
+            message.threshold = (0, helpers_1.bytesFromBase64)(object.threshold);
+        }
+        if (object.veto_threshold !== undefined && object.veto_threshold !== null) {
+            message.vetoThreshold = (0, helpers_1.bytesFromBase64)(object.veto_threshold);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.quorum = message.quorum ? (0, helpers_1.base64FromBytes)(message.quorum) : undefined;
+        obj.threshold = message.threshold ? (0, helpers_1.base64FromBytes)(message.threshold) : undefined;
+        obj.veto_threshold = message.vetoThreshold ? (0, helpers_1.base64FromBytes)(message.vetoThreshold) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.TallyParams.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/TallyParams",
+            value: exports.TallyParams.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.TallyParams.decode(message.value);
+    },
+    toProto(message) {
+        return exports.TallyParams.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.TallyParams",
+            value: exports.TallyParams.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TallyParams.typeUrl, exports.TallyParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TallyParams.aminoType, exports.TallyParams.typeUrl);
 //# sourceMappingURL=gov.js.map

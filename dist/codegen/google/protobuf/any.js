@@ -4,11 +4,22 @@ exports.Any = void 0;
 const binary_1 = require("../../binary");
 function createBaseAny() {
     return {
+        $typeUrl: "/google.protobuf.Any",
         typeUrl: "",
         value: new Uint8Array()
     };
 }
 exports.Any = {
+    typeUrl: "/google.protobuf.Any",
+    is(o) {
+        return o && (o.$typeUrl === exports.Any.typeUrl || typeof o.typeUrl === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Any.typeUrl || typeof o.type_url === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Any.typeUrl || typeof o.type === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.typeUrl !== "") {
             writer.uint32(10).string(message.typeUrl);
@@ -43,6 +54,33 @@ exports.Any = {
         message.typeUrl = object.typeUrl ?? "";
         message.value = object.value ?? new Uint8Array();
         return message;
+    },
+    fromAmino(object) {
+        return {
+            typeUrl: object.type,
+            value: object.value
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.type = message.typeUrl;
+        obj.value = message.value;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Any.fromAmino(object.value);
+    },
+    fromProtoMsg(message) {
+        return exports.Any.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Any.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/google.protobuf.Any",
+            value: exports.Any.encode(message).finish()
+        };
     }
 };
 //# sourceMappingURL=any.js.map

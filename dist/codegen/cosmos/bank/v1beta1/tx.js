@@ -4,6 +4,7 @@ exports.MsgMultiSendResponse = exports.MsgMultiSend = exports.MsgSendResponse = 
 const coin_1 = require("../../base/v1beta1/coin");
 const bank_1 = require("./bank");
 const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 function createBaseMsgSend() {
     return {
         fromAddress: "",
@@ -12,6 +13,17 @@ function createBaseMsgSend() {
     };
 }
 exports.MsgSend = {
+    typeUrl: "/cosmos.bank.v1beta1.MsgSend",
+    aminoType: "cosmos-sdk/MsgSend",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgSend.typeUrl || typeof o.fromAddress === "string" && typeof o.toAddress === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgSend.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgSend.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.fromAddress !== "") {
             writer.uint32(10).string(message.fromAddress);
@@ -53,12 +65,69 @@ exports.MsgSend = {
         message.toAddress = object.toAddress ?? "";
         message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgSend();
+        if (object.from_address !== undefined && object.from_address !== null) {
+            message.fromAddress = object.from_address;
+        }
+        if (object.to_address !== undefined && object.to_address !== null) {
+            message.toAddress = object.to_address;
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.from_address = message.fromAddress === "" ? undefined : message.fromAddress;
+        obj.to_address = message.toAddress === "" ? undefined : message.toAddress;
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.amount = message.amount;
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgSend.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgSend",
+            value: exports.MsgSend.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgSend.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgSend.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.MsgSend",
+            value: exports.MsgSend.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSend.typeUrl, exports.MsgSend);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSend.aminoType, exports.MsgSend.typeUrl);
 function createBaseMsgSendResponse() {
     return {};
 }
 exports.MsgSendResponse = {
+    typeUrl: "/cosmos.bank.v1beta1.MsgSendResponse",
+    aminoType: "cosmos-sdk/MsgSendResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgSendResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgSendResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgSendResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -79,8 +148,39 @@ exports.MsgSendResponse = {
     fromPartial(_) {
         const message = createBaseMsgSendResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgSendResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgSendResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgSendResponse",
+            value: exports.MsgSendResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgSendResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgSendResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.MsgSendResponse",
+            value: exports.MsgSendResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSendResponse.typeUrl, exports.MsgSendResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSendResponse.aminoType, exports.MsgSendResponse.typeUrl);
 function createBaseMsgMultiSend() {
     return {
         inputs: [],
@@ -88,6 +188,17 @@ function createBaseMsgMultiSend() {
     };
 }
 exports.MsgMultiSend = {
+    typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
+    aminoType: "cosmos-sdk/MsgMultiSend",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgMultiSend.typeUrl || Array.isArray(o.inputs) && (!o.inputs.length || bank_1.Input.is(o.inputs[0])) && Array.isArray(o.outputs) && (!o.outputs.length || bank_1.Output.is(o.outputs[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgMultiSend.typeUrl || Array.isArray(o.inputs) && (!o.inputs.length || bank_1.Input.isSDK(o.inputs[0])) && Array.isArray(o.outputs) && (!o.outputs.length || bank_1.Output.isSDK(o.outputs[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgMultiSend.typeUrl || Array.isArray(o.inputs) && (!o.inputs.length || bank_1.Input.isAmino(o.inputs[0])) && Array.isArray(o.outputs) && (!o.outputs.length || bank_1.Output.isAmino(o.outputs[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.inputs) {
             bank_1.Input.encode(v, writer.uint32(10).fork()).ldelim();
@@ -122,12 +233,68 @@ exports.MsgMultiSend = {
         message.inputs = object.inputs?.map(e => bank_1.Input.fromPartial(e)) || [];
         message.outputs = object.outputs?.map(e => bank_1.Output.fromPartial(e)) || [];
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgMultiSend();
+        message.inputs = object.inputs?.map(e => bank_1.Input.fromAmino(e)) || [];
+        message.outputs = object.outputs?.map(e => bank_1.Output.fromAmino(e)) || [];
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.inputs) {
+            obj.inputs = message.inputs.map(e => e ? bank_1.Input.toAmino(e) : undefined);
+        }
+        else {
+            obj.inputs = message.inputs;
+        }
+        if (message.outputs) {
+            obj.outputs = message.outputs.map(e => e ? bank_1.Output.toAmino(e) : undefined);
+        }
+        else {
+            obj.outputs = message.outputs;
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgMultiSend.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgMultiSend",
+            value: exports.MsgMultiSend.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgMultiSend.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgMultiSend.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
+            value: exports.MsgMultiSend.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgMultiSend.typeUrl, exports.MsgMultiSend);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgMultiSend.aminoType, exports.MsgMultiSend.typeUrl);
 function createBaseMsgMultiSendResponse() {
     return {};
 }
 exports.MsgMultiSendResponse = {
+    typeUrl: "/cosmos.bank.v1beta1.MsgMultiSendResponse",
+    aminoType: "cosmos-sdk/MsgMultiSendResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgMultiSendResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgMultiSendResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgMultiSendResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -148,6 +315,37 @@ exports.MsgMultiSendResponse = {
     fromPartial(_) {
         const message = createBaseMsgMultiSendResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgMultiSendResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgMultiSendResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgMultiSendResponse",
+            value: exports.MsgMultiSendResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgMultiSendResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgMultiSendResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.MsgMultiSendResponse",
+            value: exports.MsgMultiSendResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgMultiSendResponse.typeUrl, exports.MsgMultiSendResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgMultiSendResponse.aminoType, exports.MsgMultiSendResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

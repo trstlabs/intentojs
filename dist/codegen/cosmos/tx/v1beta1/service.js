@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetBlockWithTxsResponse = exports.GetBlockWithTxsRequest = exports.GetTxResponse = exports.GetTxRequest = exports.SimulateResponse = exports.SimulateRequest = exports.BroadcastTxResponse = exports.BroadcastTxRequest = exports.GetTxsEventResponse = exports.GetTxsEventRequest = exports.broadcastModeToJSON = exports.broadcastModeFromJSON = exports.BroadcastModeSDKType = exports.BroadcastMode = exports.orderByToJSON = exports.orderByFromJSON = exports.OrderBySDKType = exports.OrderBy = void 0;
+exports.GetBlockWithTxsResponse = exports.GetBlockWithTxsRequest = exports.GetTxResponse = exports.GetTxRequest = exports.SimulateResponse = exports.SimulateRequest = exports.BroadcastTxResponse = exports.BroadcastTxRequest = exports.GetTxsEventResponse = exports.GetTxsEventRequest = exports.broadcastModeToJSON = exports.broadcastModeFromJSON = exports.BroadcastModeAmino = exports.BroadcastModeSDKType = exports.BroadcastMode = exports.orderByToJSON = exports.orderByFromJSON = exports.OrderByAmino = exports.OrderBySDKType = exports.OrderBy = void 0;
 const tx_1 = require("./tx");
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const abci_1 = require("../../base/abci/v1beta1/abci");
 const types_1 = require("../../../tendermint/types/types");
 const block_1 = require("../../../tendermint/types/block");
+const helpers_1 = require("../../../helpers");
 const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 /** OrderBy defines the sorting order */
 var OrderBy;
 (function (OrderBy) {
@@ -19,6 +21,7 @@ var OrderBy;
     OrderBy[OrderBy["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(OrderBy || (exports.OrderBy = OrderBy = {}));
 exports.OrderBySDKType = OrderBy;
+exports.OrderByAmino = OrderBy;
 function orderByFromJSON(object) {
     switch (object) {
         case 0:
@@ -74,6 +77,7 @@ var BroadcastMode;
     BroadcastMode[BroadcastMode["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(BroadcastMode || (exports.BroadcastMode = BroadcastMode = {}));
 exports.BroadcastModeSDKType = BroadcastMode;
+exports.BroadcastModeAmino = BroadcastMode;
 function broadcastModeFromJSON(object) {
     switch (object) {
         case 0:
@@ -114,11 +118,22 @@ exports.broadcastModeToJSON = broadcastModeToJSON;
 function createBaseGetTxsEventRequest() {
     return {
         events: [],
-        pagination: pagination_1.PageRequest.fromPartial({}),
+        pagination: undefined,
         orderBy: 0
     };
 }
 exports.GetTxsEventRequest = {
+    typeUrl: "/cosmos.tx.v1beta1.GetTxsEventRequest",
+    aminoType: "cosmos-sdk/GetTxsEventRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetTxsEventRequest.typeUrl || Array.isArray(o.events) && (!o.events.length || typeof o.events[0] === "string") && (0, helpers_1.isSet)(o.orderBy));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetTxsEventRequest.typeUrl || Array.isArray(o.events) && (!o.events.length || typeof o.events[0] === "string") && (0, helpers_1.isSet)(o.order_by));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetTxsEventRequest.typeUrl || Array.isArray(o.events) && (!o.events.length || typeof o.events[0] === "string") && (0, helpers_1.isSet)(o.order_by));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.events) {
             writer.uint32(10).string(v);
@@ -160,16 +175,73 @@ exports.GetTxsEventRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         message.orderBy = object.orderBy ?? 0;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGetTxsEventRequest();
+        message.events = object.events?.map(e => e) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        if (object.order_by !== undefined && object.order_by !== null) {
+            message.orderBy = object.order_by;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.events) {
+            obj.events = message.events.map(e => e);
+        }
+        else {
+            obj.events = message.events;
+        }
+        obj.pagination = message.pagination ? pagination_1.PageRequest.toAmino(message.pagination) : undefined;
+        obj.order_by = message.orderBy === 0 ? undefined : message.orderBy;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GetTxsEventRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GetTxsEventRequest",
+            value: exports.GetTxsEventRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GetTxsEventRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GetTxsEventRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.GetTxsEventRequest",
+            value: exports.GetTxsEventRequest.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetTxsEventRequest.typeUrl, exports.GetTxsEventRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetTxsEventRequest.aminoType, exports.GetTxsEventRequest.typeUrl);
 function createBaseGetTxsEventResponse() {
     return {
         txs: [],
         txResponses: [],
-        pagination: pagination_1.PageResponse.fromPartial({})
+        pagination: undefined
     };
 }
 exports.GetTxsEventResponse = {
+    typeUrl: "/cosmos.tx.v1beta1.GetTxsEventResponse",
+    aminoType: "cosmos-sdk/GetTxsEventResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetTxsEventResponse.typeUrl || Array.isArray(o.txs) && (!o.txs.length || tx_1.Tx.is(o.txs[0])) && Array.isArray(o.txResponses) && (!o.txResponses.length || abci_1.TxResponse.is(o.txResponses[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetTxsEventResponse.typeUrl || Array.isArray(o.txs) && (!o.txs.length || tx_1.Tx.isSDK(o.txs[0])) && Array.isArray(o.tx_responses) && (!o.tx_responses.length || abci_1.TxResponse.isSDK(o.tx_responses[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetTxsEventResponse.typeUrl || Array.isArray(o.txs) && (!o.txs.length || tx_1.Tx.isAmino(o.txs[0])) && Array.isArray(o.tx_responses) && (!o.tx_responses.length || abci_1.TxResponse.isAmino(o.tx_responses[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.txs) {
             tx_1.Tx.encode(v, writer.uint32(10).fork()).ldelim();
@@ -211,8 +283,57 @@ exports.GetTxsEventResponse = {
         message.txResponses = object.txResponses?.map(e => abci_1.TxResponse.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGetTxsEventResponse();
+        message.txs = object.txs?.map(e => tx_1.Tx.fromAmino(e)) || [];
+        message.txResponses = object.tx_responses?.map(e => abci_1.TxResponse.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.txs) {
+            obj.txs = message.txs.map(e => e ? tx_1.Tx.toAmino(e) : undefined);
+        }
+        else {
+            obj.txs = message.txs;
+        }
+        if (message.txResponses) {
+            obj.tx_responses = message.txResponses.map(e => e ? abci_1.TxResponse.toAmino(e) : undefined);
+        }
+        else {
+            obj.tx_responses = message.txResponses;
+        }
+        obj.pagination = message.pagination ? pagination_1.PageResponse.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GetTxsEventResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GetTxsEventResponse",
+            value: exports.GetTxsEventResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GetTxsEventResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GetTxsEventResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.GetTxsEventResponse",
+            value: exports.GetTxsEventResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetTxsEventResponse.typeUrl, exports.GetTxsEventResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetTxsEventResponse.aminoType, exports.GetTxsEventResponse.typeUrl);
 function createBaseBroadcastTxRequest() {
     return {
         txBytes: new Uint8Array(),
@@ -220,6 +341,17 @@ function createBaseBroadcastTxRequest() {
     };
 }
 exports.BroadcastTxRequest = {
+    typeUrl: "/cosmos.tx.v1beta1.BroadcastTxRequest",
+    aminoType: "cosmos-sdk/BroadcastTxRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.BroadcastTxRequest.typeUrl || (o.txBytes instanceof Uint8Array || typeof o.txBytes === "string") && (0, helpers_1.isSet)(o.mode));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.BroadcastTxRequest.typeUrl || (o.tx_bytes instanceof Uint8Array || typeof o.tx_bytes === "string") && (0, helpers_1.isSet)(o.mode));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.BroadcastTxRequest.typeUrl || (o.tx_bytes instanceof Uint8Array || typeof o.tx_bytes === "string") && (0, helpers_1.isSet)(o.mode));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.txBytes.length !== 0) {
             writer.uint32(10).bytes(message.txBytes);
@@ -254,14 +386,64 @@ exports.BroadcastTxRequest = {
         message.txBytes = object.txBytes ?? new Uint8Array();
         message.mode = object.mode ?? 0;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseBroadcastTxRequest();
+        if (object.tx_bytes !== undefined && object.tx_bytes !== null) {
+            message.txBytes = (0, helpers_1.bytesFromBase64)(object.tx_bytes);
+        }
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = object.mode;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.tx_bytes = message.txBytes ? (0, helpers_1.base64FromBytes)(message.txBytes) : undefined;
+        obj.mode = message.mode === 0 ? undefined : message.mode;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.BroadcastTxRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/BroadcastTxRequest",
+            value: exports.BroadcastTxRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.BroadcastTxRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.BroadcastTxRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.BroadcastTxRequest",
+            value: exports.BroadcastTxRequest.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BroadcastTxRequest.typeUrl, exports.BroadcastTxRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BroadcastTxRequest.aminoType, exports.BroadcastTxRequest.typeUrl);
 function createBaseBroadcastTxResponse() {
     return {
-        txResponse: abci_1.TxResponse.fromPartial({})
+        txResponse: undefined
     };
 }
 exports.BroadcastTxResponse = {
+    typeUrl: "/cosmos.tx.v1beta1.BroadcastTxResponse",
+    aminoType: "cosmos-sdk/BroadcastTxResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.BroadcastTxResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.BroadcastTxResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.BroadcastTxResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.txResponse !== undefined) {
             abci_1.TxResponse.encode(message.txResponse, writer.uint32(10).fork()).ldelim();
@@ -289,15 +471,61 @@ exports.BroadcastTxResponse = {
         const message = createBaseBroadcastTxResponse();
         message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? abci_1.TxResponse.fromPartial(object.txResponse) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseBroadcastTxResponse();
+        if (object.tx_response !== undefined && object.tx_response !== null) {
+            message.txResponse = abci_1.TxResponse.fromAmino(object.tx_response);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.tx_response = message.txResponse ? abci_1.TxResponse.toAmino(message.txResponse) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.BroadcastTxResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/BroadcastTxResponse",
+            value: exports.BroadcastTxResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.BroadcastTxResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.BroadcastTxResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.BroadcastTxResponse",
+            value: exports.BroadcastTxResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BroadcastTxResponse.typeUrl, exports.BroadcastTxResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BroadcastTxResponse.aminoType, exports.BroadcastTxResponse.typeUrl);
 function createBaseSimulateRequest() {
     return {
-        tx: tx_1.Tx.fromPartial({}),
+        tx: undefined,
         txBytes: new Uint8Array()
     };
 }
 exports.SimulateRequest = {
+    typeUrl: "/cosmos.tx.v1beta1.SimulateRequest",
+    aminoType: "cosmos-sdk/SimulateRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.SimulateRequest.typeUrl || o.txBytes instanceof Uint8Array || typeof o.txBytes === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SimulateRequest.typeUrl || o.tx_bytes instanceof Uint8Array || typeof o.tx_bytes === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SimulateRequest.typeUrl || o.tx_bytes instanceof Uint8Array || typeof o.tx_bytes === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.tx !== undefined) {
             tx_1.Tx.encode(message.tx, writer.uint32(10).fork()).ldelim();
@@ -332,15 +560,65 @@ exports.SimulateRequest = {
         message.tx = object.tx !== undefined && object.tx !== null ? tx_1.Tx.fromPartial(object.tx) : undefined;
         message.txBytes = object.txBytes ?? new Uint8Array();
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseSimulateRequest();
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = tx_1.Tx.fromAmino(object.tx);
+        }
+        if (object.tx_bytes !== undefined && object.tx_bytes !== null) {
+            message.txBytes = (0, helpers_1.bytesFromBase64)(object.tx_bytes);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.tx = message.tx ? tx_1.Tx.toAmino(message.tx) : undefined;
+        obj.tx_bytes = message.txBytes ? (0, helpers_1.base64FromBytes)(message.txBytes) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.SimulateRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/SimulateRequest",
+            value: exports.SimulateRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.SimulateRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.SimulateRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.SimulateRequest",
+            value: exports.SimulateRequest.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SimulateRequest.typeUrl, exports.SimulateRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SimulateRequest.aminoType, exports.SimulateRequest.typeUrl);
 function createBaseSimulateResponse() {
     return {
-        gasInfo: abci_1.GasInfo.fromPartial({}),
-        result: abci_1.Result.fromPartial({})
+        gasInfo: undefined,
+        result: undefined
     };
 }
 exports.SimulateResponse = {
+    typeUrl: "/cosmos.tx.v1beta1.SimulateResponse",
+    aminoType: "cosmos-sdk/SimulateResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.SimulateResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.SimulateResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.SimulateResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.gasInfo !== undefined) {
             abci_1.GasInfo.encode(message.gasInfo, writer.uint32(10).fork()).ldelim();
@@ -375,14 +653,64 @@ exports.SimulateResponse = {
         message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? abci_1.GasInfo.fromPartial(object.gasInfo) : undefined;
         message.result = object.result !== undefined && object.result !== null ? abci_1.Result.fromPartial(object.result) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseSimulateResponse();
+        if (object.gas_info !== undefined && object.gas_info !== null) {
+            message.gasInfo = abci_1.GasInfo.fromAmino(object.gas_info);
+        }
+        if (object.result !== undefined && object.result !== null) {
+            message.result = abci_1.Result.fromAmino(object.result);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.gas_info = message.gasInfo ? abci_1.GasInfo.toAmino(message.gasInfo) : undefined;
+        obj.result = message.result ? abci_1.Result.toAmino(message.result) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.SimulateResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/SimulateResponse",
+            value: exports.SimulateResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.SimulateResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.SimulateResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.SimulateResponse",
+            value: exports.SimulateResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SimulateResponse.typeUrl, exports.SimulateResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SimulateResponse.aminoType, exports.SimulateResponse.typeUrl);
 function createBaseGetTxRequest() {
     return {
         hash: ""
     };
 }
 exports.GetTxRequest = {
+    typeUrl: "/cosmos.tx.v1beta1.GetTxRequest",
+    aminoType: "cosmos-sdk/GetTxRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetTxRequest.typeUrl || typeof o.hash === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetTxRequest.typeUrl || typeof o.hash === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetTxRequest.typeUrl || typeof o.hash === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.hash !== "") {
             writer.uint32(10).string(message.hash);
@@ -410,15 +738,61 @@ exports.GetTxRequest = {
         const message = createBaseGetTxRequest();
         message.hash = object.hash ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGetTxRequest();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = object.hash;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.hash = message.hash === "" ? undefined : message.hash;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GetTxRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GetTxRequest",
+            value: exports.GetTxRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GetTxRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GetTxRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.GetTxRequest",
+            value: exports.GetTxRequest.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetTxRequest.typeUrl, exports.GetTxRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetTxRequest.aminoType, exports.GetTxRequest.typeUrl);
 function createBaseGetTxResponse() {
     return {
-        tx: tx_1.Tx.fromPartial({}),
-        txResponse: abci_1.TxResponse.fromPartial({})
+        tx: undefined,
+        txResponse: undefined
     };
 }
 exports.GetTxResponse = {
+    typeUrl: "/cosmos.tx.v1beta1.GetTxResponse",
+    aminoType: "cosmos-sdk/GetTxResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.GetTxResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetTxResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetTxResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.tx !== undefined) {
             tx_1.Tx.encode(message.tx, writer.uint32(10).fork()).ldelim();
@@ -453,15 +827,65 @@ exports.GetTxResponse = {
         message.tx = object.tx !== undefined && object.tx !== null ? tx_1.Tx.fromPartial(object.tx) : undefined;
         message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? abci_1.TxResponse.fromPartial(object.txResponse) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGetTxResponse();
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = tx_1.Tx.fromAmino(object.tx);
+        }
+        if (object.tx_response !== undefined && object.tx_response !== null) {
+            message.txResponse = abci_1.TxResponse.fromAmino(object.tx_response);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.tx = message.tx ? tx_1.Tx.toAmino(message.tx) : undefined;
+        obj.tx_response = message.txResponse ? abci_1.TxResponse.toAmino(message.txResponse) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GetTxResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GetTxResponse",
+            value: exports.GetTxResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GetTxResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GetTxResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.GetTxResponse",
+            value: exports.GetTxResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetTxResponse.typeUrl, exports.GetTxResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetTxResponse.aminoType, exports.GetTxResponse.typeUrl);
 function createBaseGetBlockWithTxsRequest() {
     return {
         height: BigInt(0),
-        pagination: pagination_1.PageRequest.fromPartial({})
+        pagination: undefined
     };
 }
 exports.GetBlockWithTxsRequest = {
+    typeUrl: "/cosmos.tx.v1beta1.GetBlockWithTxsRequest",
+    aminoType: "cosmos-sdk/GetBlockWithTxsRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetBlockWithTxsRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetBlockWithTxsRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetBlockWithTxsRequest.typeUrl || typeof o.height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -496,17 +920,67 @@ exports.GetBlockWithTxsRequest = {
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGetBlockWithTxsRequest();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.pagination = message.pagination ? pagination_1.PageRequest.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GetBlockWithTxsRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GetBlockWithTxsRequest",
+            value: exports.GetBlockWithTxsRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GetBlockWithTxsRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GetBlockWithTxsRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.GetBlockWithTxsRequest",
+            value: exports.GetBlockWithTxsRequest.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetBlockWithTxsRequest.typeUrl, exports.GetBlockWithTxsRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetBlockWithTxsRequest.aminoType, exports.GetBlockWithTxsRequest.typeUrl);
 function createBaseGetBlockWithTxsResponse() {
     return {
         txs: [],
-        blockId: types_1.BlockID.fromPartial({}),
-        block: block_1.Block.fromPartial({}),
-        pagination: pagination_1.PageResponse.fromPartial({})
+        blockId: undefined,
+        block: undefined,
+        pagination: undefined
     };
 }
 exports.GetBlockWithTxsResponse = {
+    typeUrl: "/cosmos.tx.v1beta1.GetBlockWithTxsResponse",
+    aminoType: "cosmos-sdk/GetBlockWithTxsResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetBlockWithTxsResponse.typeUrl || Array.isArray(o.txs) && (!o.txs.length || tx_1.Tx.is(o.txs[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetBlockWithTxsResponse.typeUrl || Array.isArray(o.txs) && (!o.txs.length || tx_1.Tx.isSDK(o.txs[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetBlockWithTxsResponse.typeUrl || Array.isArray(o.txs) && (!o.txs.length || tx_1.Tx.isAmino(o.txs[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.txs) {
             tx_1.Tx.encode(v, writer.uint32(10).fork()).ldelim();
@@ -555,6 +1029,56 @@ exports.GetBlockWithTxsResponse = {
         message.block = object.block !== undefined && object.block !== null ? block_1.Block.fromPartial(object.block) : undefined;
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGetBlockWithTxsResponse();
+        message.txs = object.txs?.map(e => tx_1.Tx.fromAmino(e)) || [];
+        if (object.block_id !== undefined && object.block_id !== null) {
+            message.blockId = types_1.BlockID.fromAmino(object.block_id);
+        }
+        if (object.block !== undefined && object.block !== null) {
+            message.block = block_1.Block.fromAmino(object.block);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.txs) {
+            obj.txs = message.txs.map(e => e ? tx_1.Tx.toAmino(e) : undefined);
+        }
+        else {
+            obj.txs = message.txs;
+        }
+        obj.block_id = message.blockId ? types_1.BlockID.toAmino(message.blockId) : undefined;
+        obj.block = message.block ? block_1.Block.toAmino(message.block) : undefined;
+        obj.pagination = message.pagination ? pagination_1.PageResponse.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GetBlockWithTxsResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GetBlockWithTxsResponse",
+            value: exports.GetBlockWithTxsResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GetBlockWithTxsResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GetBlockWithTxsResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.tx.v1beta1.GetBlockWithTxsResponse",
+            value: exports.GetBlockWithTxsResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetBlockWithTxsResponse.typeUrl, exports.GetBlockWithTxsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetBlockWithTxsResponse.aminoType, exports.GetBlockWithTxsResponse.typeUrl);
 //# sourceMappingURL=service.js.map

@@ -1,1413 +1,552 @@
-import * as _49 from "./protobuf/any";
-import * as _50 from "./protobuf/descriptor";
-import * as _51 from "./protobuf/duration";
-import * as _52 from "./protobuf/empty";
-import * as _53 from "./protobuf/timestamp";
+import * as _47 from "./api/http";
+import * as _48 from "./protobuf/any";
+import * as _49 from "./protobuf/descriptor";
+import * as _50 from "./protobuf/duration";
+import * as _51 from "./protobuf/empty";
+import * as _52 from "./protobuf/timestamp";
 export declare namespace google {
+    const api: {
+        Http: {
+            typeUrl: string;
+            is(o: any): o is _47.Http;
+            isSDK(o: any): o is _47.HttpSDKType;
+            isAmino(o: any): o is _47.HttpAmino;
+            encode(message: _47.Http, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.Http;
+            fromPartial(object: Partial<_47.Http>): _47.Http;
+            fromAmino(object: _47.HttpAmino): _47.Http;
+            toAmino(message: _47.Http): _47.HttpAmino;
+            fromAminoMsg(object: _47.HttpAminoMsg): _47.Http;
+            fromProtoMsg(message: _47.HttpProtoMsg): _47.Http;
+            toProto(message: _47.Http): Uint8Array;
+            toProtoMsg(message: _47.Http): _47.HttpProtoMsg;
+        };
+        HttpRule: {
+            typeUrl: string;
+            is(o: any): o is _47.HttpRule;
+            isSDK(o: any): o is _47.HttpRuleSDKType;
+            isAmino(o: any): o is _47.HttpRuleAmino;
+            encode(message: _47.HttpRule, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.HttpRule;
+            fromPartial(object: Partial<_47.HttpRule>): _47.HttpRule;
+            fromAmino(object: _47.HttpRuleAmino): _47.HttpRule;
+            toAmino(message: _47.HttpRule): _47.HttpRuleAmino;
+            fromAminoMsg(object: _47.HttpRuleAminoMsg): _47.HttpRule;
+            fromProtoMsg(message: _47.HttpRuleProtoMsg): _47.HttpRule;
+            toProto(message: _47.HttpRule): Uint8Array;
+            toProtoMsg(message: _47.HttpRule): _47.HttpRuleProtoMsg;
+        };
+        CustomHttpPattern: {
+            typeUrl: string;
+            is(o: any): o is _47.CustomHttpPattern;
+            isSDK(o: any): o is _47.CustomHttpPatternSDKType;
+            isAmino(o: any): o is _47.CustomHttpPatternAmino;
+            encode(message: _47.CustomHttpPattern, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.CustomHttpPattern;
+            fromPartial(object: Partial<_47.CustomHttpPattern>): _47.CustomHttpPattern;
+            fromAmino(object: _47.CustomHttpPatternAmino): _47.CustomHttpPattern;
+            toAmino(message: _47.CustomHttpPattern): _47.CustomHttpPatternAmino;
+            fromAminoMsg(object: _47.CustomHttpPatternAminoMsg): _47.CustomHttpPattern;
+            fromProtoMsg(message: _47.CustomHttpPatternProtoMsg): _47.CustomHttpPattern;
+            toProto(message: _47.CustomHttpPattern): Uint8Array;
+            toProtoMsg(message: _47.CustomHttpPattern): _47.CustomHttpPatternProtoMsg;
+        };
+    };
     const protobuf: {
         Timestamp: {
-            encode(message: _53.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.Timestamp;
-            fromPartial(object: {
-                seconds?: bigint;
-                nanos?: number;
-            }): _53.Timestamp;
+            typeUrl: string;
+            is(o: any): o is _52.Timestamp;
+            isSDK(o: any): o is _52.TimestampSDKType;
+            isAmino(o: any): o is string;
+            encode(message: _52.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.Timestamp;
+            fromPartial(object: Partial<_52.Timestamp>): _52.Timestamp;
+            fromAmino(object: string): _52.Timestamp;
+            toAmino(message: _52.Timestamp): string;
+            fromAminoMsg(object: _52.TimestampAminoMsg): _52.Timestamp;
+            fromProtoMsg(message: _52.TimestampProtoMsg): _52.Timestamp;
+            toProto(message: _52.Timestamp): Uint8Array;
+            toProtoMsg(message: _52.Timestamp): _52.TimestampProtoMsg;
         };
         Empty: {
-            encode(_: _52.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.Empty;
-            fromPartial(_: {}): _52.Empty;
+            typeUrl: string;
+            is(o: any): o is _51.Empty;
+            isSDK(o: any): o is _51.EmptySDKType;
+            isAmino(o: any): o is _51.EmptyAmino;
+            encode(_: _51.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.Empty;
+            fromPartial(_: Partial<_51.Empty>): _51.Empty;
+            fromAmino(_: _51.EmptyAmino): _51.Empty;
+            toAmino(_: _51.Empty): _51.EmptyAmino;
+            fromAminoMsg(object: _51.EmptyAminoMsg): _51.Empty;
+            fromProtoMsg(message: _51.EmptyProtoMsg): _51.Empty;
+            toProto(message: _51.Empty): Uint8Array;
+            toProtoMsg(message: _51.Empty): _51.EmptyProtoMsg;
         };
         Duration: {
-            encode(message: _51.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.Duration;
-            fromPartial(object: {
-                seconds?: bigint;
-                nanos?: number;
-            }): _51.Duration;
+            typeUrl: string;
+            is(o: any): o is _50.Duration;
+            isSDK(o: any): o is _50.DurationSDKType;
+            isAmino(o: any): o is string;
+            encode(message: _50.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.Duration;
+            fromPartial(object: Partial<_50.Duration>): _50.Duration;
+            fromAmino(object: string): _50.Duration;
+            toAmino(message: _50.Duration): string;
+            fromAminoMsg(object: _50.DurationAminoMsg): _50.Duration;
+            fromProtoMsg(message: _50.DurationProtoMsg): _50.Duration;
+            toProto(message: _50.Duration): Uint8Array;
+            toProtoMsg(message: _50.Duration): _50.DurationProtoMsg;
         };
-        fieldDescriptorProto_TypeFromJSON(object: any): _50.FieldDescriptorProto_Type;
-        fieldDescriptorProto_TypeToJSON(object: _50.FieldDescriptorProto_Type): string;
-        fieldDescriptorProto_LabelFromJSON(object: any): _50.FieldDescriptorProto_Label;
-        fieldDescriptorProto_LabelToJSON(object: _50.FieldDescriptorProto_Label): string;
-        fileOptions_OptimizeModeFromJSON(object: any): _50.FileOptions_OptimizeMode;
-        fileOptions_OptimizeModeToJSON(object: _50.FileOptions_OptimizeMode): string;
-        fieldOptions_CTypeFromJSON(object: any): _50.FieldOptions_CType;
-        fieldOptions_CTypeToJSON(object: _50.FieldOptions_CType): string;
-        fieldOptions_JSTypeFromJSON(object: any): _50.FieldOptions_JSType;
-        fieldOptions_JSTypeToJSON(object: _50.FieldOptions_JSType): string;
-        methodOptions_IdempotencyLevelFromJSON(object: any): _50.MethodOptions_IdempotencyLevel;
-        methodOptions_IdempotencyLevelToJSON(object: _50.MethodOptions_IdempotencyLevel): string;
-        FieldDescriptorProto_Type: typeof _50.FieldDescriptorProto_Type;
-        FieldDescriptorProto_TypeSDKType: typeof _50.FieldDescriptorProto_Type;
-        FieldDescriptorProto_Label: typeof _50.FieldDescriptorProto_Label;
-        FieldDescriptorProto_LabelSDKType: typeof _50.FieldDescriptorProto_Label;
-        FileOptions_OptimizeMode: typeof _50.FileOptions_OptimizeMode;
-        FileOptions_OptimizeModeSDKType: typeof _50.FileOptions_OptimizeMode;
-        FieldOptions_CType: typeof _50.FieldOptions_CType;
-        FieldOptions_CTypeSDKType: typeof _50.FieldOptions_CType;
-        FieldOptions_JSType: typeof _50.FieldOptions_JSType;
-        FieldOptions_JSTypeSDKType: typeof _50.FieldOptions_JSType;
-        MethodOptions_IdempotencyLevel: typeof _50.MethodOptions_IdempotencyLevel;
-        MethodOptions_IdempotencyLevelSDKType: typeof _50.MethodOptions_IdempotencyLevel;
+        fieldDescriptorProto_TypeFromJSON(object: any): _49.FieldDescriptorProto_Type;
+        fieldDescriptorProto_TypeToJSON(object: _49.FieldDescriptorProto_Type): string;
+        fieldDescriptorProto_LabelFromJSON(object: any): _49.FieldDescriptorProto_Label;
+        fieldDescriptorProto_LabelToJSON(object: _49.FieldDescriptorProto_Label): string;
+        fileOptions_OptimizeModeFromJSON(object: any): _49.FileOptions_OptimizeMode;
+        fileOptions_OptimizeModeToJSON(object: _49.FileOptions_OptimizeMode): string;
+        fieldOptions_CTypeFromJSON(object: any): _49.FieldOptions_CType;
+        fieldOptions_CTypeToJSON(object: _49.FieldOptions_CType): string;
+        fieldOptions_JSTypeFromJSON(object: any): _49.FieldOptions_JSType;
+        fieldOptions_JSTypeToJSON(object: _49.FieldOptions_JSType): string;
+        methodOptions_IdempotencyLevelFromJSON(object: any): _49.MethodOptions_IdempotencyLevel;
+        methodOptions_IdempotencyLevelToJSON(object: _49.MethodOptions_IdempotencyLevel): string;
+        FieldDescriptorProto_Type: typeof _49.FieldDescriptorProto_Type;
+        FieldDescriptorProto_TypeSDKType: typeof _49.FieldDescriptorProto_Type;
+        FieldDescriptorProto_TypeAmino: typeof _49.FieldDescriptorProto_Type;
+        FieldDescriptorProto_Label: typeof _49.FieldDescriptorProto_Label;
+        FieldDescriptorProto_LabelSDKType: typeof _49.FieldDescriptorProto_Label;
+        FieldDescriptorProto_LabelAmino: typeof _49.FieldDescriptorProto_Label;
+        FileOptions_OptimizeMode: typeof _49.FileOptions_OptimizeMode;
+        FileOptions_OptimizeModeSDKType: typeof _49.FileOptions_OptimizeMode;
+        FileOptions_OptimizeModeAmino: typeof _49.FileOptions_OptimizeMode;
+        FieldOptions_CType: typeof _49.FieldOptions_CType;
+        FieldOptions_CTypeSDKType: typeof _49.FieldOptions_CType;
+        FieldOptions_CTypeAmino: typeof _49.FieldOptions_CType;
+        FieldOptions_JSType: typeof _49.FieldOptions_JSType;
+        FieldOptions_JSTypeSDKType: typeof _49.FieldOptions_JSType;
+        FieldOptions_JSTypeAmino: typeof _49.FieldOptions_JSType;
+        MethodOptions_IdempotencyLevel: typeof _49.MethodOptions_IdempotencyLevel;
+        MethodOptions_IdempotencyLevelSDKType: typeof _49.MethodOptions_IdempotencyLevel;
+        MethodOptions_IdempotencyLevelAmino: typeof _49.MethodOptions_IdempotencyLevel;
         FileDescriptorSet: {
-            encode(message: _50.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.FileDescriptorSet;
-            fromPartial(object: {
-                file?: {
-                    name?: string;
-                    package?: string;
-                    dependency?: string[];
-                    publicDependency?: number[];
-                    weakDependency?: number[];
-                    messageType?: {
-                        name?: string;
-                        field?: {
-                            name?: string;
-                            number?: number;
-                            label?: _50.FieldDescriptorProto_Label;
-                            type?: _50.FieldDescriptorProto_Type;
-                            typeName?: string;
-                            extendee?: string;
-                            defaultValue?: string;
-                            oneofIndex?: number;
-                            jsonName?: string;
-                            options?: {
-                                ctype?: _50.FieldOptions_CType;
-                                packed?: boolean;
-                                jstype?: _50.FieldOptions_JSType;
-                                lazy?: boolean;
-                                deprecated?: boolean;
-                                weak?: boolean;
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                        }[];
-                        extension?: {
-                            name?: string;
-                            number?: number;
-                            label?: _50.FieldDescriptorProto_Label;
-                            type?: _50.FieldDescriptorProto_Type;
-                            typeName?: string;
-                            extendee?: string;
-                            defaultValue?: string;
-                            oneofIndex?: number;
-                            jsonName?: string;
-                            options?: {
-                                ctype?: _50.FieldOptions_CType;
-                                packed?: boolean;
-                                jstype?: _50.FieldOptions_JSType;
-                                lazy?: boolean;
-                                deprecated?: boolean;
-                                weak?: boolean;
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                        }[];
-                        nestedType?: any[];
-                        enumType?: {
-                            name?: string;
-                            value?: {
-                                name?: string;
-                                number?: number;
-                                options?: {
-                                    deprecated?: boolean;
-                                    uninterpretedOption?: {
-                                        name?: {
-                                            namePart?: string;
-                                            isExtension?: boolean;
-                                        }[];
-                                        identifierValue?: string;
-                                        positiveIntValue?: bigint;
-                                        negativeIntValue?: bigint;
-                                        doubleValue?: number;
-                                        stringValue?: Uint8Array;
-                                        aggregateValue?: string;
-                                    }[];
-                                };
-                            }[];
-                            options?: {
-                                allowAlias?: boolean;
-                                deprecated?: boolean;
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                            reservedRange?: {
-                                start?: number;
-                                end?: number;
-                            }[];
-                            reservedName?: string[];
-                        }[];
-                        extensionRange?: {
-                            start?: number;
-                            end?: number;
-                            options?: {
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                        }[];
-                        oneofDecl?: {
-                            name?: string;
-                            options?: {
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                        }[];
-                        options?: {
-                            messageSetWireFormat?: boolean;
-                            noStandardDescriptorAccessor?: boolean;
-                            deprecated?: boolean;
-                            mapEntry?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                        reservedRange?: {
-                            start?: number;
-                            end?: number;
-                        }[];
-                        reservedName?: string[];
-                    }[];
-                    enumType?: {
-                        name?: string;
-                        value?: {
-                            name?: string;
-                            number?: number;
-                            options?: {
-                                deprecated?: boolean;
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                        }[];
-                        options?: {
-                            allowAlias?: boolean;
-                            deprecated?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                        reservedRange?: {
-                            start?: number;
-                            end?: number;
-                        }[];
-                        reservedName?: string[];
-                    }[];
-                    service?: {
-                        name?: string;
-                        method?: {
-                            name?: string;
-                            inputType?: string;
-                            outputType?: string;
-                            options?: {
-                                deprecated?: boolean;
-                                idempotencyLevel?: _50.MethodOptions_IdempotencyLevel;
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                            clientStreaming?: boolean;
-                            serverStreaming?: boolean;
-                        }[];
-                        options?: {
-                            deprecated?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    extension?: {
-                        name?: string;
-                        number?: number;
-                        label?: _50.FieldDescriptorProto_Label;
-                        type?: _50.FieldDescriptorProto_Type;
-                        typeName?: string;
-                        extendee?: string;
-                        defaultValue?: string;
-                        oneofIndex?: number;
-                        jsonName?: string;
-                        options?: {
-                            ctype?: _50.FieldOptions_CType;
-                            packed?: boolean;
-                            jstype?: _50.FieldOptions_JSType;
-                            lazy?: boolean;
-                            deprecated?: boolean;
-                            weak?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    options?: {
-                        javaPackage?: string;
-                        javaOuterClassname?: string;
-                        javaMultipleFiles?: boolean;
-                        javaGenerateEqualsAndHash?: boolean;
-                        javaStringCheckUtf8?: boolean;
-                        optimizeFor?: _50.FileOptions_OptimizeMode;
-                        goPackage?: string;
-                        ccGenericServices?: boolean;
-                        javaGenericServices?: boolean;
-                        pyGenericServices?: boolean;
-                        phpGenericServices?: boolean;
-                        deprecated?: boolean;
-                        ccEnableArenas?: boolean;
-                        objcClassPrefix?: string;
-                        csharpNamespace?: string;
-                        swiftPrefix?: string;
-                        phpClassPrefix?: string;
-                        phpNamespace?: string;
-                        phpMetadataNamespace?: string;
-                        rubyPackage?: string;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                    sourceCodeInfo?: {
-                        location?: {
-                            path?: number[];
-                            span?: number[];
-                            leadingComments?: string;
-                            trailingComments?: string;
-                            leadingDetachedComments?: string[];
-                        }[];
-                    };
-                    syntax?: string;
-                }[];
-            }): _50.FileDescriptorSet;
+            typeUrl: string;
+            is(o: any): o is _49.FileDescriptorSet;
+            isSDK(o: any): o is _49.FileDescriptorSetSDKType;
+            isAmino(o: any): o is _49.FileDescriptorSetAmino;
+            encode(message: _49.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FileDescriptorSet;
+            fromPartial(object: Partial<_49.FileDescriptorSet>): _49.FileDescriptorSet;
+            fromAmino(object: _49.FileDescriptorSetAmino): _49.FileDescriptorSet;
+            toAmino(message: _49.FileDescriptorSet): _49.FileDescriptorSetAmino;
+            fromAminoMsg(object: _49.FileDescriptorSetAminoMsg): _49.FileDescriptorSet;
+            fromProtoMsg(message: _49.FileDescriptorSetProtoMsg): _49.FileDescriptorSet;
+            toProto(message: _49.FileDescriptorSet): Uint8Array;
+            toProtoMsg(message: _49.FileDescriptorSet): _49.FileDescriptorSetProtoMsg;
         };
         FileDescriptorProto: {
-            encode(message: _50.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.FileDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                package?: string;
-                dependency?: string[];
-                publicDependency?: number[];
-                weakDependency?: number[];
-                messageType?: {
-                    name?: string;
-                    field?: {
-                        name?: string;
-                        number?: number;
-                        label?: _50.FieldDescriptorProto_Label;
-                        type?: _50.FieldDescriptorProto_Type;
-                        typeName?: string;
-                        extendee?: string;
-                        defaultValue?: string;
-                        oneofIndex?: number;
-                        jsonName?: string;
-                        options?: {
-                            ctype?: _50.FieldOptions_CType;
-                            packed?: boolean;
-                            jstype?: _50.FieldOptions_JSType;
-                            lazy?: boolean;
-                            deprecated?: boolean;
-                            weak?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    extension?: {
-                        name?: string;
-                        number?: number;
-                        label?: _50.FieldDescriptorProto_Label;
-                        type?: _50.FieldDescriptorProto_Type;
-                        typeName?: string;
-                        extendee?: string;
-                        defaultValue?: string;
-                        oneofIndex?: number;
-                        jsonName?: string;
-                        options?: {
-                            ctype?: _50.FieldOptions_CType;
-                            packed?: boolean;
-                            jstype?: _50.FieldOptions_JSType;
-                            lazy?: boolean;
-                            deprecated?: boolean;
-                            weak?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    nestedType?: any[];
-                    enumType?: {
-                        name?: string;
-                        value?: {
-                            name?: string;
-                            number?: number;
-                            options?: {
-                                deprecated?: boolean;
-                                uninterpretedOption?: {
-                                    name?: {
-                                        namePart?: string;
-                                        isExtension?: boolean;
-                                    }[];
-                                    identifierValue?: string;
-                                    positiveIntValue?: bigint;
-                                    negativeIntValue?: bigint;
-                                    doubleValue?: number;
-                                    stringValue?: Uint8Array;
-                                    aggregateValue?: string;
-                                }[];
-                            };
-                        }[];
-                        options?: {
-                            allowAlias?: boolean;
-                            deprecated?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                        reservedRange?: {
-                            start?: number;
-                            end?: number;
-                        }[];
-                        reservedName?: string[];
-                    }[];
-                    extensionRange?: {
-                        start?: number;
-                        end?: number;
-                        options?: {
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    oneofDecl?: {
-                        name?: string;
-                        options?: {
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    options?: {
-                        messageSetWireFormat?: boolean;
-                        noStandardDescriptorAccessor?: boolean;
-                        deprecated?: boolean;
-                        mapEntry?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                    reservedRange?: {
-                        start?: number;
-                        end?: number;
-                    }[];
-                    reservedName?: string[];
-                }[];
-                enumType?: {
-                    name?: string;
-                    value?: {
-                        name?: string;
-                        number?: number;
-                        options?: {
-                            deprecated?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    options?: {
-                        allowAlias?: boolean;
-                        deprecated?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                    reservedRange?: {
-                        start?: number;
-                        end?: number;
-                    }[];
-                    reservedName?: string[];
-                }[];
-                service?: {
-                    name?: string;
-                    method?: {
-                        name?: string;
-                        inputType?: string;
-                        outputType?: string;
-                        options?: {
-                            deprecated?: boolean;
-                            idempotencyLevel?: _50.MethodOptions_IdempotencyLevel;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                        clientStreaming?: boolean;
-                        serverStreaming?: boolean;
-                    }[];
-                    options?: {
-                        deprecated?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                extension?: {
-                    name?: string;
-                    number?: number;
-                    label?: _50.FieldDescriptorProto_Label;
-                    type?: _50.FieldDescriptorProto_Type;
-                    typeName?: string;
-                    extendee?: string;
-                    defaultValue?: string;
-                    oneofIndex?: number;
-                    jsonName?: string;
-                    options?: {
-                        ctype?: _50.FieldOptions_CType;
-                        packed?: boolean;
-                        jstype?: _50.FieldOptions_JSType;
-                        lazy?: boolean;
-                        deprecated?: boolean;
-                        weak?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                options?: {
-                    javaPackage?: string;
-                    javaOuterClassname?: string;
-                    javaMultipleFiles?: boolean;
-                    javaGenerateEqualsAndHash?: boolean;
-                    javaStringCheckUtf8?: boolean;
-                    optimizeFor?: _50.FileOptions_OptimizeMode;
-                    goPackage?: string;
-                    ccGenericServices?: boolean;
-                    javaGenericServices?: boolean;
-                    pyGenericServices?: boolean;
-                    phpGenericServices?: boolean;
-                    deprecated?: boolean;
-                    ccEnableArenas?: boolean;
-                    objcClassPrefix?: string;
-                    csharpNamespace?: string;
-                    swiftPrefix?: string;
-                    phpClassPrefix?: string;
-                    phpNamespace?: string;
-                    phpMetadataNamespace?: string;
-                    rubyPackage?: string;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-                sourceCodeInfo?: {
-                    location?: {
-                        path?: number[];
-                        span?: number[];
-                        leadingComments?: string;
-                        trailingComments?: string;
-                        leadingDetachedComments?: string[];
-                    }[];
-                };
-                syntax?: string;
-            }): _50.FileDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.FileDescriptorProto;
+            isSDK(o: any): o is _49.FileDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.FileDescriptorProtoAmino;
+            encode(message: _49.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FileDescriptorProto;
+            fromPartial(object: Partial<_49.FileDescriptorProto>): _49.FileDescriptorProto;
+            fromAmino(object: _49.FileDescriptorProtoAmino): _49.FileDescriptorProto;
+            toAmino(message: _49.FileDescriptorProto): _49.FileDescriptorProtoAmino;
+            fromAminoMsg(object: _49.FileDescriptorProtoAminoMsg): _49.FileDescriptorProto;
+            fromProtoMsg(message: _49.FileDescriptorProtoProtoMsg): _49.FileDescriptorProto;
+            toProto(message: _49.FileDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.FileDescriptorProto): _49.FileDescriptorProtoProtoMsg;
         };
         DescriptorProto: {
-            encode(message: _50.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.DescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                field?: {
-                    name?: string;
-                    number?: number;
-                    label?: _50.FieldDescriptorProto_Label;
-                    type?: _50.FieldDescriptorProto_Type;
-                    typeName?: string;
-                    extendee?: string;
-                    defaultValue?: string;
-                    oneofIndex?: number;
-                    jsonName?: string;
-                    options?: {
-                        ctype?: _50.FieldOptions_CType;
-                        packed?: boolean;
-                        jstype?: _50.FieldOptions_JSType;
-                        lazy?: boolean;
-                        deprecated?: boolean;
-                        weak?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                extension?: {
-                    name?: string;
-                    number?: number;
-                    label?: _50.FieldDescriptorProto_Label;
-                    type?: _50.FieldDescriptorProto_Type;
-                    typeName?: string;
-                    extendee?: string;
-                    defaultValue?: string;
-                    oneofIndex?: number;
-                    jsonName?: string;
-                    options?: {
-                        ctype?: _50.FieldOptions_CType;
-                        packed?: boolean;
-                        jstype?: _50.FieldOptions_JSType;
-                        lazy?: boolean;
-                        deprecated?: boolean;
-                        weak?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                nestedType?: any[];
-                enumType?: {
-                    name?: string;
-                    value?: {
-                        name?: string;
-                        number?: number;
-                        options?: {
-                            deprecated?: boolean;
-                            uninterpretedOption?: {
-                                name?: {
-                                    namePart?: string;
-                                    isExtension?: boolean;
-                                }[];
-                                identifierValue?: string;
-                                positiveIntValue?: bigint;
-                                negativeIntValue?: bigint;
-                                doubleValue?: number;
-                                stringValue?: Uint8Array;
-                                aggregateValue?: string;
-                            }[];
-                        };
-                    }[];
-                    options?: {
-                        allowAlias?: boolean;
-                        deprecated?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                    reservedRange?: {
-                        start?: number;
-                        end?: number;
-                    }[];
-                    reservedName?: string[];
-                }[];
-                extensionRange?: {
-                    start?: number;
-                    end?: number;
-                    options?: {
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                oneofDecl?: {
-                    name?: string;
-                    options?: {
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                options?: {
-                    messageSetWireFormat?: boolean;
-                    noStandardDescriptorAccessor?: boolean;
-                    deprecated?: boolean;
-                    mapEntry?: boolean;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-                reservedRange?: {
-                    start?: number;
-                    end?: number;
-                }[];
-                reservedName?: string[];
-            }): _50.DescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.DescriptorProto;
+            isSDK(o: any): o is _49.DescriptorProtoSDKType;
+            isAmino(o: any): o is _49.DescriptorProtoAmino;
+            encode(message: _49.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.DescriptorProto;
+            fromPartial(object: Partial<_49.DescriptorProto>): _49.DescriptorProto;
+            fromAmino(object: _49.DescriptorProtoAmino): _49.DescriptorProto;
+            toAmino(message: _49.DescriptorProto): _49.DescriptorProtoAmino;
+            fromAminoMsg(object: _49.DescriptorProtoAminoMsg): _49.DescriptorProto;
+            fromProtoMsg(message: _49.DescriptorProtoProtoMsg): _49.DescriptorProto;
+            toProto(message: _49.DescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.DescriptorProto): _49.DescriptorProtoProtoMsg;
         };
         DescriptorProto_ExtensionRange: {
-            encode(message: _50.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.DescriptorProto_ExtensionRange;
-            fromPartial(object: {
-                start?: number;
-                end?: number;
-                options?: {
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-            }): _50.DescriptorProto_ExtensionRange;
+            typeUrl: string;
+            is(o: any): o is _49.DescriptorProto_ExtensionRange;
+            isSDK(o: any): o is _49.DescriptorProto_ExtensionRangeSDKType;
+            isAmino(o: any): o is _49.DescriptorProto_ExtensionRangeAmino;
+            encode(message: _49.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.DescriptorProto_ExtensionRange;
+            fromPartial(object: Partial<_49.DescriptorProto_ExtensionRange>): _49.DescriptorProto_ExtensionRange;
+            fromAmino(object: _49.DescriptorProto_ExtensionRangeAmino): _49.DescriptorProto_ExtensionRange;
+            toAmino(message: _49.DescriptorProto_ExtensionRange): _49.DescriptorProto_ExtensionRangeAmino;
+            fromAminoMsg(object: _49.DescriptorProto_ExtensionRangeAminoMsg): _49.DescriptorProto_ExtensionRange;
+            fromProtoMsg(message: _49.DescriptorProto_ExtensionRangeProtoMsg): _49.DescriptorProto_ExtensionRange;
+            toProto(message: _49.DescriptorProto_ExtensionRange): Uint8Array;
+            toProtoMsg(message: _49.DescriptorProto_ExtensionRange): _49.DescriptorProto_ExtensionRangeProtoMsg;
         };
         DescriptorProto_ReservedRange: {
-            encode(message: _50.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.DescriptorProto_ReservedRange;
-            fromPartial(object: {
-                start?: number;
-                end?: number;
-            }): _50.DescriptorProto_ReservedRange;
+            typeUrl: string;
+            is(o: any): o is _49.DescriptorProto_ReservedRange;
+            isSDK(o: any): o is _49.DescriptorProto_ReservedRangeSDKType;
+            isAmino(o: any): o is _49.DescriptorProto_ReservedRangeAmino;
+            encode(message: _49.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.DescriptorProto_ReservedRange;
+            fromPartial(object: Partial<_49.DescriptorProto_ReservedRange>): _49.DescriptorProto_ReservedRange;
+            fromAmino(object: _49.DescriptorProto_ReservedRangeAmino): _49.DescriptorProto_ReservedRange;
+            toAmino(message: _49.DescriptorProto_ReservedRange): _49.DescriptorProto_ReservedRangeAmino;
+            fromAminoMsg(object: _49.DescriptorProto_ReservedRangeAminoMsg): _49.DescriptorProto_ReservedRange;
+            fromProtoMsg(message: _49.DescriptorProto_ReservedRangeProtoMsg): _49.DescriptorProto_ReservedRange;
+            toProto(message: _49.DescriptorProto_ReservedRange): Uint8Array;
+            toProtoMsg(message: _49.DescriptorProto_ReservedRange): _49.DescriptorProto_ReservedRangeProtoMsg;
         };
         ExtensionRangeOptions: {
-            encode(message: _50.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.ExtensionRangeOptions;
-            fromPartial(object: {
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.ExtensionRangeOptions;
+            typeUrl: string;
+            is(o: any): o is _49.ExtensionRangeOptions;
+            isSDK(o: any): o is _49.ExtensionRangeOptionsSDKType;
+            isAmino(o: any): o is _49.ExtensionRangeOptionsAmino;
+            encode(message: _49.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.ExtensionRangeOptions;
+            fromPartial(object: Partial<_49.ExtensionRangeOptions>): _49.ExtensionRangeOptions;
+            fromAmino(object: _49.ExtensionRangeOptionsAmino): _49.ExtensionRangeOptions;
+            toAmino(message: _49.ExtensionRangeOptions): _49.ExtensionRangeOptionsAmino;
+            fromAminoMsg(object: _49.ExtensionRangeOptionsAminoMsg): _49.ExtensionRangeOptions;
+            fromProtoMsg(message: _49.ExtensionRangeOptionsProtoMsg): _49.ExtensionRangeOptions;
+            toProto(message: _49.ExtensionRangeOptions): Uint8Array;
+            toProtoMsg(message: _49.ExtensionRangeOptions): _49.ExtensionRangeOptionsProtoMsg;
         };
         FieldDescriptorProto: {
-            encode(message: _50.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.FieldDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                number?: number;
-                label?: _50.FieldDescriptorProto_Label;
-                type?: _50.FieldDescriptorProto_Type;
-                typeName?: string;
-                extendee?: string;
-                defaultValue?: string;
-                oneofIndex?: number;
-                jsonName?: string;
-                options?: {
-                    ctype?: _50.FieldOptions_CType;
-                    packed?: boolean;
-                    jstype?: _50.FieldOptions_JSType;
-                    lazy?: boolean;
-                    deprecated?: boolean;
-                    weak?: boolean;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-            }): _50.FieldDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.FieldDescriptorProto;
+            isSDK(o: any): o is _49.FieldDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.FieldDescriptorProtoAmino;
+            encode(message: _49.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FieldDescriptorProto;
+            fromPartial(object: Partial<_49.FieldDescriptorProto>): _49.FieldDescriptorProto;
+            fromAmino(object: _49.FieldDescriptorProtoAmino): _49.FieldDescriptorProto;
+            toAmino(message: _49.FieldDescriptorProto): _49.FieldDescriptorProtoAmino;
+            fromAminoMsg(object: _49.FieldDescriptorProtoAminoMsg): _49.FieldDescriptorProto;
+            fromProtoMsg(message: _49.FieldDescriptorProtoProtoMsg): _49.FieldDescriptorProto;
+            toProto(message: _49.FieldDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.FieldDescriptorProto): _49.FieldDescriptorProtoProtoMsg;
         };
         OneofDescriptorProto: {
-            encode(message: _50.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.OneofDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                options?: {
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-            }): _50.OneofDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.OneofDescriptorProto;
+            isSDK(o: any): o is _49.OneofDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.OneofDescriptorProtoAmino;
+            encode(message: _49.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.OneofDescriptorProto;
+            fromPartial(object: Partial<_49.OneofDescriptorProto>): _49.OneofDescriptorProto;
+            fromAmino(object: _49.OneofDescriptorProtoAmino): _49.OneofDescriptorProto;
+            toAmino(message: _49.OneofDescriptorProto): _49.OneofDescriptorProtoAmino;
+            fromAminoMsg(object: _49.OneofDescriptorProtoAminoMsg): _49.OneofDescriptorProto;
+            fromProtoMsg(message: _49.OneofDescriptorProtoProtoMsg): _49.OneofDescriptorProto;
+            toProto(message: _49.OneofDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.OneofDescriptorProto): _49.OneofDescriptorProtoProtoMsg;
         };
         EnumDescriptorProto: {
-            encode(message: _50.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.EnumDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                value?: {
-                    name?: string;
-                    number?: number;
-                    options?: {
-                        deprecated?: boolean;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                }[];
-                options?: {
-                    allowAlias?: boolean;
-                    deprecated?: boolean;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-                reservedRange?: {
-                    start?: number;
-                    end?: number;
-                }[];
-                reservedName?: string[];
-            }): _50.EnumDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.EnumDescriptorProto;
+            isSDK(o: any): o is _49.EnumDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.EnumDescriptorProtoAmino;
+            encode(message: _49.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumDescriptorProto;
+            fromPartial(object: Partial<_49.EnumDescriptorProto>): _49.EnumDescriptorProto;
+            fromAmino(object: _49.EnumDescriptorProtoAmino): _49.EnumDescriptorProto;
+            toAmino(message: _49.EnumDescriptorProto): _49.EnumDescriptorProtoAmino;
+            fromAminoMsg(object: _49.EnumDescriptorProtoAminoMsg): _49.EnumDescriptorProto;
+            fromProtoMsg(message: _49.EnumDescriptorProtoProtoMsg): _49.EnumDescriptorProto;
+            toProto(message: _49.EnumDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.EnumDescriptorProto): _49.EnumDescriptorProtoProtoMsg;
         };
         EnumDescriptorProto_EnumReservedRange: {
-            encode(message: _50.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.EnumDescriptorProto_EnumReservedRange;
-            fromPartial(object: {
-                start?: number;
-                end?: number;
-            }): _50.EnumDescriptorProto_EnumReservedRange;
+            typeUrl: string;
+            is(o: any): o is _49.EnumDescriptorProto_EnumReservedRange;
+            isSDK(o: any): o is _49.EnumDescriptorProto_EnumReservedRangeSDKType;
+            isAmino(o: any): o is _49.EnumDescriptorProto_EnumReservedRangeAmino;
+            encode(message: _49.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumDescriptorProto_EnumReservedRange;
+            fromPartial(object: Partial<_49.EnumDescriptorProto_EnumReservedRange>): _49.EnumDescriptorProto_EnumReservedRange;
+            fromAmino(object: _49.EnumDescriptorProto_EnumReservedRangeAmino): _49.EnumDescriptorProto_EnumReservedRange;
+            toAmino(message: _49.EnumDescriptorProto_EnumReservedRange): _49.EnumDescriptorProto_EnumReservedRangeAmino;
+            fromAminoMsg(object: _49.EnumDescriptorProto_EnumReservedRangeAminoMsg): _49.EnumDescriptorProto_EnumReservedRange;
+            fromProtoMsg(message: _49.EnumDescriptorProto_EnumReservedRangeProtoMsg): _49.EnumDescriptorProto_EnumReservedRange;
+            toProto(message: _49.EnumDescriptorProto_EnumReservedRange): Uint8Array;
+            toProtoMsg(message: _49.EnumDescriptorProto_EnumReservedRange): _49.EnumDescriptorProto_EnumReservedRangeProtoMsg;
         };
         EnumValueDescriptorProto: {
-            encode(message: _50.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.EnumValueDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                number?: number;
-                options?: {
-                    deprecated?: boolean;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-            }): _50.EnumValueDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.EnumValueDescriptorProto;
+            isSDK(o: any): o is _49.EnumValueDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.EnumValueDescriptorProtoAmino;
+            encode(message: _49.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumValueDescriptorProto;
+            fromPartial(object: Partial<_49.EnumValueDescriptorProto>): _49.EnumValueDescriptorProto;
+            fromAmino(object: _49.EnumValueDescriptorProtoAmino): _49.EnumValueDescriptorProto;
+            toAmino(message: _49.EnumValueDescriptorProto): _49.EnumValueDescriptorProtoAmino;
+            fromAminoMsg(object: _49.EnumValueDescriptorProtoAminoMsg): _49.EnumValueDescriptorProto;
+            fromProtoMsg(message: _49.EnumValueDescriptorProtoProtoMsg): _49.EnumValueDescriptorProto;
+            toProto(message: _49.EnumValueDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.EnumValueDescriptorProto): _49.EnumValueDescriptorProtoProtoMsg;
         };
         ServiceDescriptorProto: {
-            encode(message: _50.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.ServiceDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                method?: {
-                    name?: string;
-                    inputType?: string;
-                    outputType?: string;
-                    options?: {
-                        deprecated?: boolean;
-                        idempotencyLevel?: _50.MethodOptions_IdempotencyLevel;
-                        uninterpretedOption?: {
-                            name?: {
-                                namePart?: string;
-                                isExtension?: boolean;
-                            }[];
-                            identifierValue?: string;
-                            positiveIntValue?: bigint;
-                            negativeIntValue?: bigint;
-                            doubleValue?: number;
-                            stringValue?: Uint8Array;
-                            aggregateValue?: string;
-                        }[];
-                    };
-                    clientStreaming?: boolean;
-                    serverStreaming?: boolean;
-                }[];
-                options?: {
-                    deprecated?: boolean;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-            }): _50.ServiceDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.ServiceDescriptorProto;
+            isSDK(o: any): o is _49.ServiceDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.ServiceDescriptorProtoAmino;
+            encode(message: _49.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.ServiceDescriptorProto;
+            fromPartial(object: Partial<_49.ServiceDescriptorProto>): _49.ServiceDescriptorProto;
+            fromAmino(object: _49.ServiceDescriptorProtoAmino): _49.ServiceDescriptorProto;
+            toAmino(message: _49.ServiceDescriptorProto): _49.ServiceDescriptorProtoAmino;
+            fromAminoMsg(object: _49.ServiceDescriptorProtoAminoMsg): _49.ServiceDescriptorProto;
+            fromProtoMsg(message: _49.ServiceDescriptorProtoProtoMsg): _49.ServiceDescriptorProto;
+            toProto(message: _49.ServiceDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.ServiceDescriptorProto): _49.ServiceDescriptorProtoProtoMsg;
         };
         MethodDescriptorProto: {
-            encode(message: _50.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.MethodDescriptorProto;
-            fromPartial(object: {
-                name?: string;
-                inputType?: string;
-                outputType?: string;
-                options?: {
-                    deprecated?: boolean;
-                    idempotencyLevel?: _50.MethodOptions_IdempotencyLevel;
-                    uninterpretedOption?: {
-                        name?: {
-                            namePart?: string;
-                            isExtension?: boolean;
-                        }[];
-                        identifierValue?: string;
-                        positiveIntValue?: bigint;
-                        negativeIntValue?: bigint;
-                        doubleValue?: number;
-                        stringValue?: Uint8Array;
-                        aggregateValue?: string;
-                    }[];
-                };
-                clientStreaming?: boolean;
-                serverStreaming?: boolean;
-            }): _50.MethodDescriptorProto;
+            typeUrl: string;
+            is(o: any): o is _49.MethodDescriptorProto;
+            isSDK(o: any): o is _49.MethodDescriptorProtoSDKType;
+            isAmino(o: any): o is _49.MethodDescriptorProtoAmino;
+            encode(message: _49.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.MethodDescriptorProto;
+            fromPartial(object: Partial<_49.MethodDescriptorProto>): _49.MethodDescriptorProto;
+            fromAmino(object: _49.MethodDescriptorProtoAmino): _49.MethodDescriptorProto;
+            toAmino(message: _49.MethodDescriptorProto): _49.MethodDescriptorProtoAmino;
+            fromAminoMsg(object: _49.MethodDescriptorProtoAminoMsg): _49.MethodDescriptorProto;
+            fromProtoMsg(message: _49.MethodDescriptorProtoProtoMsg): _49.MethodDescriptorProto;
+            toProto(message: _49.MethodDescriptorProto): Uint8Array;
+            toProtoMsg(message: _49.MethodDescriptorProto): _49.MethodDescriptorProtoProtoMsg;
         };
         FileOptions: {
-            encode(message: _50.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.FileOptions;
-            fromPartial(object: {
-                javaPackage?: string;
-                javaOuterClassname?: string;
-                javaMultipleFiles?: boolean;
-                javaGenerateEqualsAndHash?: boolean;
-                javaStringCheckUtf8?: boolean;
-                optimizeFor?: _50.FileOptions_OptimizeMode;
-                goPackage?: string;
-                ccGenericServices?: boolean;
-                javaGenericServices?: boolean;
-                pyGenericServices?: boolean;
-                phpGenericServices?: boolean;
-                deprecated?: boolean;
-                ccEnableArenas?: boolean;
-                objcClassPrefix?: string;
-                csharpNamespace?: string;
-                swiftPrefix?: string;
-                phpClassPrefix?: string;
-                phpNamespace?: string;
-                phpMetadataNamespace?: string;
-                rubyPackage?: string;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.FileOptions;
+            typeUrl: string;
+            is(o: any): o is _49.FileOptions;
+            isSDK(o: any): o is _49.FileOptionsSDKType;
+            isAmino(o: any): o is _49.FileOptionsAmino;
+            encode(message: _49.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FileOptions;
+            fromPartial(object: Partial<_49.FileOptions>): _49.FileOptions;
+            fromAmino(object: _49.FileOptionsAmino): _49.FileOptions;
+            toAmino(message: _49.FileOptions): _49.FileOptionsAmino;
+            fromAminoMsg(object: _49.FileOptionsAminoMsg): _49.FileOptions;
+            fromProtoMsg(message: _49.FileOptionsProtoMsg): _49.FileOptions;
+            toProto(message: _49.FileOptions): Uint8Array;
+            toProtoMsg(message: _49.FileOptions): _49.FileOptionsProtoMsg;
         };
         MessageOptions: {
-            encode(message: _50.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.MessageOptions;
-            fromPartial(object: {
-                messageSetWireFormat?: boolean;
-                noStandardDescriptorAccessor?: boolean;
-                deprecated?: boolean;
-                mapEntry?: boolean;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.MessageOptions;
+            typeUrl: string;
+            is(o: any): o is _49.MessageOptions;
+            isSDK(o: any): o is _49.MessageOptionsSDKType;
+            isAmino(o: any): o is _49.MessageOptionsAmino;
+            encode(message: _49.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.MessageOptions;
+            fromPartial(object: Partial<_49.MessageOptions>): _49.MessageOptions;
+            fromAmino(object: _49.MessageOptionsAmino): _49.MessageOptions;
+            toAmino(message: _49.MessageOptions): _49.MessageOptionsAmino;
+            fromAminoMsg(object: _49.MessageOptionsAminoMsg): _49.MessageOptions;
+            fromProtoMsg(message: _49.MessageOptionsProtoMsg): _49.MessageOptions;
+            toProto(message: _49.MessageOptions): Uint8Array;
+            toProtoMsg(message: _49.MessageOptions): _49.MessageOptionsProtoMsg;
         };
         FieldOptions: {
-            encode(message: _50.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.FieldOptions;
-            fromPartial(object: {
-                ctype?: _50.FieldOptions_CType;
-                packed?: boolean;
-                jstype?: _50.FieldOptions_JSType;
-                lazy?: boolean;
-                deprecated?: boolean;
-                weak?: boolean;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.FieldOptions;
+            typeUrl: string;
+            is(o: any): o is _49.FieldOptions;
+            isSDK(o: any): o is _49.FieldOptionsSDKType;
+            isAmino(o: any): o is _49.FieldOptionsAmino;
+            encode(message: _49.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FieldOptions;
+            fromPartial(object: Partial<_49.FieldOptions>): _49.FieldOptions;
+            fromAmino(object: _49.FieldOptionsAmino): _49.FieldOptions;
+            toAmino(message: _49.FieldOptions): _49.FieldOptionsAmino;
+            fromAminoMsg(object: _49.FieldOptionsAminoMsg): _49.FieldOptions;
+            fromProtoMsg(message: _49.FieldOptionsProtoMsg): _49.FieldOptions;
+            toProto(message: _49.FieldOptions): Uint8Array;
+            toProtoMsg(message: _49.FieldOptions): _49.FieldOptionsProtoMsg;
         };
         OneofOptions: {
-            encode(message: _50.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.OneofOptions;
-            fromPartial(object: {
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.OneofOptions;
+            typeUrl: string;
+            is(o: any): o is _49.OneofOptions;
+            isSDK(o: any): o is _49.OneofOptionsSDKType;
+            isAmino(o: any): o is _49.OneofOptionsAmino;
+            encode(message: _49.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.OneofOptions;
+            fromPartial(object: Partial<_49.OneofOptions>): _49.OneofOptions;
+            fromAmino(object: _49.OneofOptionsAmino): _49.OneofOptions;
+            toAmino(message: _49.OneofOptions): _49.OneofOptionsAmino;
+            fromAminoMsg(object: _49.OneofOptionsAminoMsg): _49.OneofOptions;
+            fromProtoMsg(message: _49.OneofOptionsProtoMsg): _49.OneofOptions;
+            toProto(message: _49.OneofOptions): Uint8Array;
+            toProtoMsg(message: _49.OneofOptions): _49.OneofOptionsProtoMsg;
         };
         EnumOptions: {
-            encode(message: _50.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.EnumOptions;
-            fromPartial(object: {
-                allowAlias?: boolean;
-                deprecated?: boolean;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.EnumOptions;
+            typeUrl: string;
+            is(o: any): o is _49.EnumOptions;
+            isSDK(o: any): o is _49.EnumOptionsSDKType;
+            isAmino(o: any): o is _49.EnumOptionsAmino;
+            encode(message: _49.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumOptions;
+            fromPartial(object: Partial<_49.EnumOptions>): _49.EnumOptions;
+            fromAmino(object: _49.EnumOptionsAmino): _49.EnumOptions;
+            toAmino(message: _49.EnumOptions): _49.EnumOptionsAmino;
+            fromAminoMsg(object: _49.EnumOptionsAminoMsg): _49.EnumOptions;
+            fromProtoMsg(message: _49.EnumOptionsProtoMsg): _49.EnumOptions;
+            toProto(message: _49.EnumOptions): Uint8Array;
+            toProtoMsg(message: _49.EnumOptions): _49.EnumOptionsProtoMsg;
         };
         EnumValueOptions: {
-            encode(message: _50.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.EnumValueOptions;
-            fromPartial(object: {
-                deprecated?: boolean;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.EnumValueOptions;
+            typeUrl: string;
+            is(o: any): o is _49.EnumValueOptions;
+            isSDK(o: any): o is _49.EnumValueOptionsSDKType;
+            isAmino(o: any): o is _49.EnumValueOptionsAmino;
+            encode(message: _49.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumValueOptions;
+            fromPartial(object: Partial<_49.EnumValueOptions>): _49.EnumValueOptions;
+            fromAmino(object: _49.EnumValueOptionsAmino): _49.EnumValueOptions;
+            toAmino(message: _49.EnumValueOptions): _49.EnumValueOptionsAmino;
+            fromAminoMsg(object: _49.EnumValueOptionsAminoMsg): _49.EnumValueOptions;
+            fromProtoMsg(message: _49.EnumValueOptionsProtoMsg): _49.EnumValueOptions;
+            toProto(message: _49.EnumValueOptions): Uint8Array;
+            toProtoMsg(message: _49.EnumValueOptions): _49.EnumValueOptionsProtoMsg;
         };
         ServiceOptions: {
-            encode(message: _50.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.ServiceOptions;
-            fromPartial(object: {
-                deprecated?: boolean;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.ServiceOptions;
+            typeUrl: string;
+            is(o: any): o is _49.ServiceOptions;
+            isSDK(o: any): o is _49.ServiceOptionsSDKType;
+            isAmino(o: any): o is _49.ServiceOptionsAmino;
+            encode(message: _49.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.ServiceOptions;
+            fromPartial(object: Partial<_49.ServiceOptions>): _49.ServiceOptions;
+            fromAmino(object: _49.ServiceOptionsAmino): _49.ServiceOptions;
+            toAmino(message: _49.ServiceOptions): _49.ServiceOptionsAmino;
+            fromAminoMsg(object: _49.ServiceOptionsAminoMsg): _49.ServiceOptions;
+            fromProtoMsg(message: _49.ServiceOptionsProtoMsg): _49.ServiceOptions;
+            toProto(message: _49.ServiceOptions): Uint8Array;
+            toProtoMsg(message: _49.ServiceOptions): _49.ServiceOptionsProtoMsg;
         };
         MethodOptions: {
-            encode(message: _50.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.MethodOptions;
-            fromPartial(object: {
-                deprecated?: boolean;
-                idempotencyLevel?: _50.MethodOptions_IdempotencyLevel;
-                uninterpretedOption?: {
-                    name?: {
-                        namePart?: string;
-                        isExtension?: boolean;
-                    }[];
-                    identifierValue?: string;
-                    positiveIntValue?: bigint;
-                    negativeIntValue?: bigint;
-                    doubleValue?: number;
-                    stringValue?: Uint8Array;
-                    aggregateValue?: string;
-                }[];
-            }): _50.MethodOptions;
+            typeUrl: string;
+            is(o: any): o is _49.MethodOptions;
+            isSDK(o: any): o is _49.MethodOptionsSDKType;
+            isAmino(o: any): o is _49.MethodOptionsAmino;
+            encode(message: _49.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.MethodOptions;
+            fromPartial(object: Partial<_49.MethodOptions>): _49.MethodOptions;
+            fromAmino(object: _49.MethodOptionsAmino): _49.MethodOptions;
+            toAmino(message: _49.MethodOptions): _49.MethodOptionsAmino;
+            fromAminoMsg(object: _49.MethodOptionsAminoMsg): _49.MethodOptions;
+            fromProtoMsg(message: _49.MethodOptionsProtoMsg): _49.MethodOptions;
+            toProto(message: _49.MethodOptions): Uint8Array;
+            toProtoMsg(message: _49.MethodOptions): _49.MethodOptionsProtoMsg;
         };
         UninterpretedOption: {
-            encode(message: _50.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.UninterpretedOption;
-            fromPartial(object: {
-                name?: {
-                    namePart?: string;
-                    isExtension?: boolean;
-                }[];
-                identifierValue?: string;
-                positiveIntValue?: bigint;
-                negativeIntValue?: bigint;
-                doubleValue?: number;
-                stringValue?: Uint8Array;
-                aggregateValue?: string;
-            }): _50.UninterpretedOption;
+            typeUrl: string;
+            is(o: any): o is _49.UninterpretedOption;
+            isSDK(o: any): o is _49.UninterpretedOptionSDKType;
+            isAmino(o: any): o is _49.UninterpretedOptionAmino;
+            encode(message: _49.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.UninterpretedOption;
+            fromPartial(object: Partial<_49.UninterpretedOption>): _49.UninterpretedOption;
+            fromAmino(object: _49.UninterpretedOptionAmino): _49.UninterpretedOption;
+            toAmino(message: _49.UninterpretedOption): _49.UninterpretedOptionAmino;
+            fromAminoMsg(object: _49.UninterpretedOptionAminoMsg): _49.UninterpretedOption;
+            fromProtoMsg(message: _49.UninterpretedOptionProtoMsg): _49.UninterpretedOption;
+            toProto(message: _49.UninterpretedOption): Uint8Array;
+            toProtoMsg(message: _49.UninterpretedOption): _49.UninterpretedOptionProtoMsg;
         };
         UninterpretedOption_NamePart: {
-            encode(message: _50.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.UninterpretedOption_NamePart;
-            fromPartial(object: {
-                namePart?: string;
-                isExtension?: boolean;
-            }): _50.UninterpretedOption_NamePart;
+            typeUrl: string;
+            is(o: any): o is _49.UninterpretedOption_NamePart;
+            isSDK(o: any): o is _49.UninterpretedOption_NamePartSDKType;
+            isAmino(o: any): o is _49.UninterpretedOption_NamePartAmino;
+            encode(message: _49.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.UninterpretedOption_NamePart;
+            fromPartial(object: Partial<_49.UninterpretedOption_NamePart>): _49.UninterpretedOption_NamePart;
+            fromAmino(object: _49.UninterpretedOption_NamePartAmino): _49.UninterpretedOption_NamePart;
+            toAmino(message: _49.UninterpretedOption_NamePart): _49.UninterpretedOption_NamePartAmino;
+            fromAminoMsg(object: _49.UninterpretedOption_NamePartAminoMsg): _49.UninterpretedOption_NamePart;
+            fromProtoMsg(message: _49.UninterpretedOption_NamePartProtoMsg): _49.UninterpretedOption_NamePart;
+            toProto(message: _49.UninterpretedOption_NamePart): Uint8Array;
+            toProtoMsg(message: _49.UninterpretedOption_NamePart): _49.UninterpretedOption_NamePartProtoMsg;
         };
         SourceCodeInfo: {
-            encode(message: _50.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.SourceCodeInfo;
-            fromPartial(object: {
-                location?: {
-                    path?: number[];
-                    span?: number[];
-                    leadingComments?: string;
-                    trailingComments?: string;
-                    leadingDetachedComments?: string[];
-                }[];
-            }): _50.SourceCodeInfo;
+            typeUrl: string;
+            is(o: any): o is _49.SourceCodeInfo;
+            isSDK(o: any): o is _49.SourceCodeInfoSDKType;
+            isAmino(o: any): o is _49.SourceCodeInfoAmino;
+            encode(message: _49.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.SourceCodeInfo;
+            fromPartial(object: Partial<_49.SourceCodeInfo>): _49.SourceCodeInfo;
+            fromAmino(object: _49.SourceCodeInfoAmino): _49.SourceCodeInfo;
+            toAmino(message: _49.SourceCodeInfo): _49.SourceCodeInfoAmino;
+            fromAminoMsg(object: _49.SourceCodeInfoAminoMsg): _49.SourceCodeInfo;
+            fromProtoMsg(message: _49.SourceCodeInfoProtoMsg): _49.SourceCodeInfo;
+            toProto(message: _49.SourceCodeInfo): Uint8Array;
+            toProtoMsg(message: _49.SourceCodeInfo): _49.SourceCodeInfoProtoMsg;
         };
         SourceCodeInfo_Location: {
-            encode(message: _50.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.SourceCodeInfo_Location;
-            fromPartial(object: {
-                path?: number[];
-                span?: number[];
-                leadingComments?: string;
-                trailingComments?: string;
-                leadingDetachedComments?: string[];
-            }): _50.SourceCodeInfo_Location;
+            typeUrl: string;
+            is(o: any): o is _49.SourceCodeInfo_Location;
+            isSDK(o: any): o is _49.SourceCodeInfo_LocationSDKType;
+            isAmino(o: any): o is _49.SourceCodeInfo_LocationAmino;
+            encode(message: _49.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.SourceCodeInfo_Location;
+            fromPartial(object: Partial<_49.SourceCodeInfo_Location>): _49.SourceCodeInfo_Location;
+            fromAmino(object: _49.SourceCodeInfo_LocationAmino): _49.SourceCodeInfo_Location;
+            toAmino(message: _49.SourceCodeInfo_Location): _49.SourceCodeInfo_LocationAmino;
+            fromAminoMsg(object: _49.SourceCodeInfo_LocationAminoMsg): _49.SourceCodeInfo_Location;
+            fromProtoMsg(message: _49.SourceCodeInfo_LocationProtoMsg): _49.SourceCodeInfo_Location;
+            toProto(message: _49.SourceCodeInfo_Location): Uint8Array;
+            toProtoMsg(message: _49.SourceCodeInfo_Location): _49.SourceCodeInfo_LocationProtoMsg;
         };
         GeneratedCodeInfo: {
-            encode(message: _50.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.GeneratedCodeInfo;
-            fromPartial(object: {
-                annotation?: {
-                    path?: number[];
-                    sourceFile?: string;
-                    begin?: number;
-                    end?: number;
-                }[];
-            }): _50.GeneratedCodeInfo;
+            typeUrl: string;
+            is(o: any): o is _49.GeneratedCodeInfo;
+            isSDK(o: any): o is _49.GeneratedCodeInfoSDKType;
+            isAmino(o: any): o is _49.GeneratedCodeInfoAmino;
+            encode(message: _49.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.GeneratedCodeInfo;
+            fromPartial(object: Partial<_49.GeneratedCodeInfo>): _49.GeneratedCodeInfo;
+            fromAmino(object: _49.GeneratedCodeInfoAmino): _49.GeneratedCodeInfo;
+            toAmino(message: _49.GeneratedCodeInfo): _49.GeneratedCodeInfoAmino;
+            fromAminoMsg(object: _49.GeneratedCodeInfoAminoMsg): _49.GeneratedCodeInfo;
+            fromProtoMsg(message: _49.GeneratedCodeInfoProtoMsg): _49.GeneratedCodeInfo;
+            toProto(message: _49.GeneratedCodeInfo): Uint8Array;
+            toProtoMsg(message: _49.GeneratedCodeInfo): _49.GeneratedCodeInfoProtoMsg;
         };
         GeneratedCodeInfo_Annotation: {
-            encode(message: _50.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.GeneratedCodeInfo_Annotation;
-            fromPartial(object: {
-                path?: number[];
-                sourceFile?: string;
-                begin?: number;
-                end?: number;
-            }): _50.GeneratedCodeInfo_Annotation;
+            typeUrl: string;
+            is(o: any): o is _49.GeneratedCodeInfo_Annotation;
+            isSDK(o: any): o is _49.GeneratedCodeInfo_AnnotationSDKType;
+            isAmino(o: any): o is _49.GeneratedCodeInfo_AnnotationAmino;
+            encode(message: _49.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.GeneratedCodeInfo_Annotation;
+            fromPartial(object: Partial<_49.GeneratedCodeInfo_Annotation>): _49.GeneratedCodeInfo_Annotation;
+            fromAmino(object: _49.GeneratedCodeInfo_AnnotationAmino): _49.GeneratedCodeInfo_Annotation;
+            toAmino(message: _49.GeneratedCodeInfo_Annotation): _49.GeneratedCodeInfo_AnnotationAmino;
+            fromAminoMsg(object: _49.GeneratedCodeInfo_AnnotationAminoMsg): _49.GeneratedCodeInfo_Annotation;
+            fromProtoMsg(message: _49.GeneratedCodeInfo_AnnotationProtoMsg): _49.GeneratedCodeInfo_Annotation;
+            toProto(message: _49.GeneratedCodeInfo_Annotation): Uint8Array;
+            toProtoMsg(message: _49.GeneratedCodeInfo_Annotation): _49.GeneratedCodeInfo_AnnotationProtoMsg;
         };
         Any: {
-            encode(message: _49.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.Any;
-            fromPartial(object: {
-                typeUrl?: string;
-                value?: Uint8Array;
-            }): _49.Any;
+            typeUrl: string;
+            is(o: any): o is _48.Any;
+            isSDK(o: any): o is _48.AnySDKType;
+            isAmino(o: any): o is _48.AnyAmino;
+            encode(message: _48.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _48.Any;
+            fromPartial(object: Partial<_48.Any>): _48.Any;
+            fromAmino(object: _48.AnyAmino): _48.Any;
+            toAmino(message: _48.Any): _48.AnyAmino;
+            fromAminoMsg(object: _48.AnyAminoMsg): _48.Any;
+            fromProtoMsg(message: _48.AnyProtoMsg): _48.Any;
+            toProto(message: _48.Any): Uint8Array;
+            toProtoMsg(message: _48.Any): _48.AnyProtoMsg;
         };
     };
 }

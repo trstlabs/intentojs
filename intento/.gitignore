@@ -1,0 +1,17 @@
+go.sum
+*.log
+
+*.env.local
+*.env.dev
+/docker-compose.yml
+__docs
+docsold
+state/*
+scripts/state
+scripts/logs
+dockernet/state
+dockernet/logs
+dockernet/upgrades/binaries
+dockernet/upgrades/cosmovisor
+dockernet/temp.sh
+msg_*.json

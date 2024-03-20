@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const gov_1 = require("./gov");
 const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 function createBaseGenesisState() {
     return {
         startingProposalId: BigInt(0),
@@ -15,6 +16,17 @@ function createBaseGenesisState() {
     };
 }
 exports.GenesisState = {
+    typeUrl: "/cosmos.gov.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.startingProposalId === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || gov_1.Deposit.is(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || gov_1.Vote.is(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || gov_1.Proposal.is(o.proposals[0])) && gov_1.DepositParams.is(o.depositParams) && gov_1.VotingParams.is(o.votingParams) && gov_1.TallyParams.is(o.tallyParams));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || gov_1.Deposit.isSDK(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || gov_1.Vote.isSDK(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || gov_1.Proposal.isSDK(o.proposals[0])) && gov_1.DepositParams.isSDK(o.deposit_params) && gov_1.VotingParams.isSDK(o.voting_params) && gov_1.TallyParams.isSDK(o.tally_params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || gov_1.Deposit.isAmino(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || gov_1.Vote.isAmino(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || gov_1.Proposal.isAmino(o.proposals[0])) && gov_1.DepositParams.isAmino(o.deposit_params) && gov_1.VotingParams.isAmino(o.voting_params) && gov_1.TallyParams.isAmino(o.tally_params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.startingProposalId !== BigInt(0)) {
             writer.uint32(8).uint64(message.startingProposalId);
@@ -84,6 +96,74 @@ exports.GenesisState = {
         message.votingParams = object.votingParams !== undefined && object.votingParams !== null ? gov_1.VotingParams.fromPartial(object.votingParams) : undefined;
         message.tallyParams = object.tallyParams !== undefined && object.tallyParams !== null ? gov_1.TallyParams.fromPartial(object.tallyParams) : undefined;
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseGenesisState();
+        if (object.starting_proposal_id !== undefined && object.starting_proposal_id !== null) {
+            message.startingProposalId = BigInt(object.starting_proposal_id);
+        }
+        message.deposits = object.deposits?.map(e => gov_1.Deposit.fromAmino(e)) || [];
+        message.votes = object.votes?.map(e => gov_1.Vote.fromAmino(e)) || [];
+        message.proposals = object.proposals?.map(e => gov_1.Proposal.fromAmino(e)) || [];
+        if (object.deposit_params !== undefined && object.deposit_params !== null) {
+            message.depositParams = gov_1.DepositParams.fromAmino(object.deposit_params);
+        }
+        if (object.voting_params !== undefined && object.voting_params !== null) {
+            message.votingParams = gov_1.VotingParams.fromAmino(object.voting_params);
+        }
+        if (object.tally_params !== undefined && object.tally_params !== null) {
+            message.tallyParams = gov_1.TallyParams.fromAmino(object.tally_params);
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.starting_proposal_id = message.startingProposalId !== BigInt(0) ? message.startingProposalId.toString() : undefined;
+        if (message.deposits) {
+            obj.deposits = message.deposits.map(e => e ? gov_1.Deposit.toAmino(e) : undefined);
+        }
+        else {
+            obj.deposits = message.deposits;
+        }
+        if (message.votes) {
+            obj.votes = message.votes.map(e => e ? gov_1.Vote.toAmino(e) : undefined);
+        }
+        else {
+            obj.votes = message.votes;
+        }
+        if (message.proposals) {
+            obj.proposals = message.proposals.map(e => e ? gov_1.Proposal.toAmino(e) : undefined);
+        }
+        else {
+            obj.proposals = message.proposals;
+        }
+        obj.deposit_params = message.depositParams ? gov_1.DepositParams.toAmino(message.depositParams) : undefined;
+        obj.voting_params = message.votingParams ? gov_1.VotingParams.toAmino(message.votingParams) : undefined;
+        obj.tally_params = message.tallyParams ? gov_1.TallyParams.toAmino(message.tallyParams) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GenesisState.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/GenesisState",
+            value: exports.GenesisState.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GenesisState.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GenesisState.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1beta1.GenesisState",
+            value: exports.GenesisState.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

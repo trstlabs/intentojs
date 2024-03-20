@@ -1,1 +1,0 @@
-{"version":3,"file":"bundle.js","sourceRoot":"","sources":["../../../src/codegen/cosmwasm/bundle.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,wDAA0C;AAC1C,IAAiB,QAAQ,CAMxB;AAND,WAAiB,QAAQ;IACvB,IAAiB,IAAI,CAIpB;IAJD,WAAiB,IAAI;QACN,OAAE,GAAG;YAChB,GAAG,GAAG;SACP,CAAC;IACJ,CAAC,EAJgB,IAAI,GAAJ,aAAI,KAAJ,aAAI,QAIpB;AACH,CAAC,EANgB,QAAQ,wBAAR,QAAQ,QAMxB"}

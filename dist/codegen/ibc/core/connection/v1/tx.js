@@ -5,16 +5,29 @@ const connection_1 = require("./connection");
 const any_1 = require("../../../../google/protobuf/any");
 const client_1 = require("../../client/v1/client");
 const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseMsgConnectionOpenInit() {
     return {
         clientId: "",
         counterparty: connection_1.Counterparty.fromPartial({}),
-        version: connection_1.Version.fromPartial({}),
+        version: undefined,
         delayPeriod: BigInt(0),
         signer: ""
     };
 }
 exports.MsgConnectionOpenInit = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInit",
+    aminoType: "cosmos-sdk/MsgConnectionOpenInit",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenInit.typeUrl || typeof o.clientId === "string" && connection_1.Counterparty.is(o.counterparty) && typeof o.delayPeriod === "bigint" && typeof o.signer === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenInit.typeUrl || typeof o.client_id === "string" && connection_1.Counterparty.isSDK(o.counterparty) && typeof o.delay_period === "bigint" && typeof o.signer === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenInit.typeUrl || typeof o.client_id === "string" && connection_1.Counterparty.isAmino(o.counterparty) && typeof o.delay_period === "bigint" && typeof o.signer === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.clientId !== "") {
             writer.uint32(10).string(message.clientId);
@@ -70,12 +83,74 @@ exports.MsgConnectionOpenInit = {
         message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? BigInt(object.delayPeriod.toString()) : BigInt(0);
         message.signer = object.signer ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgConnectionOpenInit();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.clientId = object.client_id;
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = connection_1.Counterparty.fromAmino(object.counterparty);
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = connection_1.Version.fromAmino(object.version);
+        }
+        if (object.delay_period !== undefined && object.delay_period !== null) {
+            message.delayPeriod = BigInt(object.delay_period);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.client_id = message.clientId === "" ? undefined : message.clientId;
+        obj.counterparty = message.counterparty ? connection_1.Counterparty.toAmino(message.counterparty) : undefined;
+        obj.version = message.version ? connection_1.Version.toAmino(message.version) : undefined;
+        obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+        obj.signer = message.signer === "" ? undefined : message.signer;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenInit.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenInit",
+            value: exports.MsgConnectionOpenInit.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenInit.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenInit.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInit",
+            value: exports.MsgConnectionOpenInit.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenInit.typeUrl, exports.MsgConnectionOpenInit);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenInit.aminoType, exports.MsgConnectionOpenInit.typeUrl);
 function createBaseMsgConnectionOpenInitResponse() {
     return {};
 }
 exports.MsgConnectionOpenInitResponse = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInitResponse",
+    aminoType: "cosmos-sdk/MsgConnectionOpenInitResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenInitResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenInitResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenInitResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -96,13 +171,44 @@ exports.MsgConnectionOpenInitResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenInitResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgConnectionOpenInitResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenInitResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenInitResponse",
+            value: exports.MsgConnectionOpenInitResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenInitResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenInitResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInitResponse",
+            value: exports.MsgConnectionOpenInitResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenInitResponse.typeUrl, exports.MsgConnectionOpenInitResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenInitResponse.aminoType, exports.MsgConnectionOpenInitResponse.typeUrl);
 function createBaseMsgConnectionOpenTry() {
     return {
         clientId: "",
         previousConnectionId: "",
-        clientState: any_1.Any.fromPartial({}),
+        clientState: undefined,
         counterparty: connection_1.Counterparty.fromPartial({}),
         delayPeriod: BigInt(0),
         counterpartyVersions: [],
@@ -115,6 +221,17 @@ function createBaseMsgConnectionOpenTry() {
     };
 }
 exports.MsgConnectionOpenTry = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry",
+    aminoType: "cosmos-sdk/MsgConnectionOpenTry",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenTry.typeUrl || typeof o.clientId === "string" && typeof o.previousConnectionId === "string" && connection_1.Counterparty.is(o.counterparty) && typeof o.delayPeriod === "bigint" && Array.isArray(o.counterpartyVersions) && (!o.counterpartyVersions.length || connection_1.Version.is(o.counterpartyVersions[0])) && client_1.Height.is(o.proofHeight) && (o.proofInit instanceof Uint8Array || typeof o.proofInit === "string") && (o.proofClient instanceof Uint8Array || typeof o.proofClient === "string") && (o.proofConsensus instanceof Uint8Array || typeof o.proofConsensus === "string") && client_1.Height.is(o.consensusHeight) && typeof o.signer === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenTry.typeUrl || typeof o.client_id === "string" && typeof o.previous_connection_id === "string" && connection_1.Counterparty.isSDK(o.counterparty) && typeof o.delay_period === "bigint" && Array.isArray(o.counterparty_versions) && (!o.counterparty_versions.length || connection_1.Version.isSDK(o.counterparty_versions[0])) && client_1.Height.isSDK(o.proof_height) && (o.proof_init instanceof Uint8Array || typeof o.proof_init === "string") && (o.proof_client instanceof Uint8Array || typeof o.proof_client === "string") && (o.proof_consensus instanceof Uint8Array || typeof o.proof_consensus === "string") && client_1.Height.isSDK(o.consensus_height) && typeof o.signer === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenTry.typeUrl || typeof o.client_id === "string" && typeof o.previous_connection_id === "string" && connection_1.Counterparty.isAmino(o.counterparty) && typeof o.delay_period === "bigint" && Array.isArray(o.counterparty_versions) && (!o.counterparty_versions.length || connection_1.Version.isAmino(o.counterparty_versions[0])) && client_1.Height.isAmino(o.proof_height) && (o.proof_init instanceof Uint8Array || typeof o.proof_init === "string") && (o.proof_client instanceof Uint8Array || typeof o.proof_client === "string") && (o.proof_consensus instanceof Uint8Array || typeof o.proof_consensus === "string") && client_1.Height.isAmino(o.consensus_height) && typeof o.signer === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.clientId !== "") {
             writer.uint32(10).string(message.clientId);
@@ -219,12 +336,105 @@ exports.MsgConnectionOpenTry = {
         message.consensusHeight = object.consensusHeight !== undefined && object.consensusHeight !== null ? client_1.Height.fromPartial(object.consensusHeight) : undefined;
         message.signer = object.signer ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgConnectionOpenTry();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.clientId = object.client_id;
+        }
+        if (object.previous_connection_id !== undefined && object.previous_connection_id !== null) {
+            message.previousConnectionId = object.previous_connection_id;
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.clientState = any_1.Any.fromAmino(object.client_state);
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = connection_1.Counterparty.fromAmino(object.counterparty);
+        }
+        if (object.delay_period !== undefined && object.delay_period !== null) {
+            message.delayPeriod = BigInt(object.delay_period);
+        }
+        message.counterpartyVersions = object.counterparty_versions?.map(e => connection_1.Version.fromAmino(e)) || [];
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proofHeight = client_1.Height.fromAmino(object.proof_height);
+        }
+        if (object.proof_init !== undefined && object.proof_init !== null) {
+            message.proofInit = (0, helpers_1.bytesFromBase64)(object.proof_init);
+        }
+        if (object.proof_client !== undefined && object.proof_client !== null) {
+            message.proofClient = (0, helpers_1.bytesFromBase64)(object.proof_client);
+        }
+        if (object.proof_consensus !== undefined && object.proof_consensus !== null) {
+            message.proofConsensus = (0, helpers_1.bytesFromBase64)(object.proof_consensus);
+        }
+        if (object.consensus_height !== undefined && object.consensus_height !== null) {
+            message.consensusHeight = client_1.Height.fromAmino(object.consensus_height);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.client_id = message.clientId === "" ? undefined : message.clientId;
+        obj.previous_connection_id = message.previousConnectionId === "" ? undefined : message.previousConnectionId;
+        obj.client_state = message.clientState ? any_1.Any.toAmino(message.clientState) : undefined;
+        obj.counterparty = message.counterparty ? connection_1.Counterparty.toAmino(message.counterparty) : undefined;
+        obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+        if (message.counterpartyVersions) {
+            obj.counterparty_versions = message.counterpartyVersions.map(e => e ? connection_1.Version.toAmino(e) : undefined);
+        }
+        else {
+            obj.counterparty_versions = message.counterpartyVersions;
+        }
+        obj.proof_height = message.proofHeight ? client_1.Height.toAmino(message.proofHeight) : {};
+        obj.proof_init = message.proofInit ? (0, helpers_1.base64FromBytes)(message.proofInit) : undefined;
+        obj.proof_client = message.proofClient ? (0, helpers_1.base64FromBytes)(message.proofClient) : undefined;
+        obj.proof_consensus = message.proofConsensus ? (0, helpers_1.base64FromBytes)(message.proofConsensus) : undefined;
+        obj.consensus_height = message.consensusHeight ? client_1.Height.toAmino(message.consensusHeight) : {};
+        obj.signer = message.signer === "" ? undefined : message.signer;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenTry.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenTry",
+            value: exports.MsgConnectionOpenTry.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenTry.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenTry.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry",
+            value: exports.MsgConnectionOpenTry.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenTry.typeUrl, exports.MsgConnectionOpenTry);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenTry.aminoType, exports.MsgConnectionOpenTry.typeUrl);
 function createBaseMsgConnectionOpenTryResponse() {
     return {};
 }
 exports.MsgConnectionOpenTryResponse = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTryResponse",
+    aminoType: "cosmos-sdk/MsgConnectionOpenTryResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenTryResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenTryResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenTryResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -245,14 +455,45 @@ exports.MsgConnectionOpenTryResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenTryResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgConnectionOpenTryResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenTryResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenTryResponse",
+            value: exports.MsgConnectionOpenTryResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenTryResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenTryResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTryResponse",
+            value: exports.MsgConnectionOpenTryResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenTryResponse.typeUrl, exports.MsgConnectionOpenTryResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenTryResponse.aminoType, exports.MsgConnectionOpenTryResponse.typeUrl);
 function createBaseMsgConnectionOpenAck() {
     return {
         connectionId: "",
         counterpartyConnectionId: "",
-        version: connection_1.Version.fromPartial({}),
-        clientState: any_1.Any.fromPartial({}),
+        version: undefined,
+        clientState: undefined,
         proofHeight: client_1.Height.fromPartial({}),
         proofTry: new Uint8Array(),
         proofClient: new Uint8Array(),
@@ -262,6 +503,17 @@ function createBaseMsgConnectionOpenAck() {
     };
 }
 exports.MsgConnectionOpenAck = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck",
+    aminoType: "cosmos-sdk/MsgConnectionOpenAck",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenAck.typeUrl || typeof o.connectionId === "string" && typeof o.counterpartyConnectionId === "string" && client_1.Height.is(o.proofHeight) && (o.proofTry instanceof Uint8Array || typeof o.proofTry === "string") && (o.proofClient instanceof Uint8Array || typeof o.proofClient === "string") && (o.proofConsensus instanceof Uint8Array || typeof o.proofConsensus === "string") && client_1.Height.is(o.consensusHeight) && typeof o.signer === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenAck.typeUrl || typeof o.connection_id === "string" && typeof o.counterparty_connection_id === "string" && client_1.Height.isSDK(o.proof_height) && (o.proof_try instanceof Uint8Array || typeof o.proof_try === "string") && (o.proof_client instanceof Uint8Array || typeof o.proof_client === "string") && (o.proof_consensus instanceof Uint8Array || typeof o.proof_consensus === "string") && client_1.Height.isSDK(o.consensus_height) && typeof o.signer === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenAck.typeUrl || typeof o.connection_id === "string" && typeof o.counterparty_connection_id === "string" && client_1.Height.isAmino(o.proof_height) && (o.proof_try instanceof Uint8Array || typeof o.proof_try === "string") && (o.proof_client instanceof Uint8Array || typeof o.proof_client === "string") && (o.proof_consensus instanceof Uint8Array || typeof o.proof_consensus === "string") && client_1.Height.isAmino(o.consensus_height) && typeof o.signer === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.connectionId !== "") {
             writer.uint32(10).string(message.connectionId);
@@ -352,12 +604,94 @@ exports.MsgConnectionOpenAck = {
         message.consensusHeight = object.consensusHeight !== undefined && object.consensusHeight !== null ? client_1.Height.fromPartial(object.consensusHeight) : undefined;
         message.signer = object.signer ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgConnectionOpenAck();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connectionId = object.connection_id;
+        }
+        if (object.counterparty_connection_id !== undefined && object.counterparty_connection_id !== null) {
+            message.counterpartyConnectionId = object.counterparty_connection_id;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = connection_1.Version.fromAmino(object.version);
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.clientState = any_1.Any.fromAmino(object.client_state);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proofHeight = client_1.Height.fromAmino(object.proof_height);
+        }
+        if (object.proof_try !== undefined && object.proof_try !== null) {
+            message.proofTry = (0, helpers_1.bytesFromBase64)(object.proof_try);
+        }
+        if (object.proof_client !== undefined && object.proof_client !== null) {
+            message.proofClient = (0, helpers_1.bytesFromBase64)(object.proof_client);
+        }
+        if (object.proof_consensus !== undefined && object.proof_consensus !== null) {
+            message.proofConsensus = (0, helpers_1.bytesFromBase64)(object.proof_consensus);
+        }
+        if (object.consensus_height !== undefined && object.consensus_height !== null) {
+            message.consensusHeight = client_1.Height.fromAmino(object.consensus_height);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+        obj.counterparty_connection_id = message.counterpartyConnectionId === "" ? undefined : message.counterpartyConnectionId;
+        obj.version = message.version ? connection_1.Version.toAmino(message.version) : undefined;
+        obj.client_state = message.clientState ? any_1.Any.toAmino(message.clientState) : undefined;
+        obj.proof_height = message.proofHeight ? client_1.Height.toAmino(message.proofHeight) : {};
+        obj.proof_try = message.proofTry ? (0, helpers_1.base64FromBytes)(message.proofTry) : undefined;
+        obj.proof_client = message.proofClient ? (0, helpers_1.base64FromBytes)(message.proofClient) : undefined;
+        obj.proof_consensus = message.proofConsensus ? (0, helpers_1.base64FromBytes)(message.proofConsensus) : undefined;
+        obj.consensus_height = message.consensusHeight ? client_1.Height.toAmino(message.consensusHeight) : {};
+        obj.signer = message.signer === "" ? undefined : message.signer;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenAck.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenAck",
+            value: exports.MsgConnectionOpenAck.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenAck.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenAck.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck",
+            value: exports.MsgConnectionOpenAck.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenAck.typeUrl, exports.MsgConnectionOpenAck);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenAck.aminoType, exports.MsgConnectionOpenAck.typeUrl);
 function createBaseMsgConnectionOpenAckResponse() {
     return {};
 }
 exports.MsgConnectionOpenAckResponse = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAckResponse",
+    aminoType: "cosmos-sdk/MsgConnectionOpenAckResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenAckResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenAckResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenAckResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -378,8 +712,39 @@ exports.MsgConnectionOpenAckResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenAckResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgConnectionOpenAckResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenAckResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenAckResponse",
+            value: exports.MsgConnectionOpenAckResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenAckResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenAckResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAckResponse",
+            value: exports.MsgConnectionOpenAckResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenAckResponse.typeUrl, exports.MsgConnectionOpenAckResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenAckResponse.aminoType, exports.MsgConnectionOpenAckResponse.typeUrl);
 function createBaseMsgConnectionOpenConfirm() {
     return {
         connectionId: "",
@@ -389,6 +754,17 @@ function createBaseMsgConnectionOpenConfirm() {
     };
 }
 exports.MsgConnectionOpenConfirm = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirm",
+    aminoType: "cosmos-sdk/MsgConnectionOpenConfirm",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenConfirm.typeUrl || typeof o.connectionId === "string" && (o.proofAck instanceof Uint8Array || typeof o.proofAck === "string") && client_1.Height.is(o.proofHeight) && typeof o.signer === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenConfirm.typeUrl || typeof o.connection_id === "string" && (o.proof_ack instanceof Uint8Array || typeof o.proof_ack === "string") && client_1.Height.isSDK(o.proof_height) && typeof o.signer === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgConnectionOpenConfirm.typeUrl || typeof o.connection_id === "string" && (o.proof_ack instanceof Uint8Array || typeof o.proof_ack === "string") && client_1.Height.isAmino(o.proof_height) && typeof o.signer === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.connectionId !== "") {
             writer.uint32(10).string(message.connectionId);
@@ -437,12 +813,70 @@ exports.MsgConnectionOpenConfirm = {
         message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? client_1.Height.fromPartial(object.proofHeight) : undefined;
         message.signer = object.signer ?? "";
         return message;
+    },
+    fromAmino(object) {
+        const message = createBaseMsgConnectionOpenConfirm();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connectionId = object.connection_id;
+        }
+        if (object.proof_ack !== undefined && object.proof_ack !== null) {
+            message.proofAck = (0, helpers_1.bytesFromBase64)(object.proof_ack);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proofHeight = client_1.Height.fromAmino(object.proof_height);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+        obj.proof_ack = message.proofAck ? (0, helpers_1.base64FromBytes)(message.proofAck) : undefined;
+        obj.proof_height = message.proofHeight ? client_1.Height.toAmino(message.proofHeight) : {};
+        obj.signer = message.signer === "" ? undefined : message.signer;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenConfirm.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenConfirm",
+            value: exports.MsgConnectionOpenConfirm.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenConfirm.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenConfirm.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirm",
+            value: exports.MsgConnectionOpenConfirm.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenConfirm.typeUrl, exports.MsgConnectionOpenConfirm);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenConfirm.aminoType, exports.MsgConnectionOpenConfirm.typeUrl);
 function createBaseMsgConnectionOpenConfirmResponse() {
     return {};
 }
 exports.MsgConnectionOpenConfirmResponse = {
+    typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirmResponse",
+    aminoType: "cosmos-sdk/MsgConnectionOpenConfirmResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenConfirmResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenConfirmResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgConnectionOpenConfirmResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -463,6 +897,37 @@ exports.MsgConnectionOpenConfirmResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenConfirmResponse();
         return message;
+    },
+    fromAmino(_) {
+        const message = createBaseMsgConnectionOpenConfirmResponse();
+        return message;
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgConnectionOpenConfirmResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgConnectionOpenConfirmResponse",
+            value: exports.MsgConnectionOpenConfirmResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgConnectionOpenConfirmResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgConnectionOpenConfirmResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirmResponse",
+            value: exports.MsgConnectionOpenConfirmResponse.encode(message).finish()
+        };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgConnectionOpenConfirmResponse.typeUrl, exports.MsgConnectionOpenConfirmResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgConnectionOpenConfirmResponse.aminoType, exports.MsgConnectionOpenConfirmResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

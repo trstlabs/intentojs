@@ -8,7 +8,7 @@ pids
 *.pid
 *.seed
 
-# dist
+# out
 dist
 mjs
 main
@@ -48,6 +48,3 @@ yarn.lock
 
 # others
 .DS_Store
-
-# test file
-tests/bin/

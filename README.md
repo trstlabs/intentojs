@@ -18,12 +18,12 @@ npm install intentojs
 
 ### Initializing the Stargate Client
 
-We recommend manually making the `SigningStargateClient` instance yourself by using `getIntentoSigningClientOptions`:
+We recommend manually making the `SigningStargateClient` instance yourself by using `getTrstSigningClientOptions`:
 
 ```ts
-import { getIntentoSigningClientOptions, intentoAccountParser } from "@intentojs";
+import { getTrstSigningClientOptions, trstAccountParser } from "@intentojs";
 
-const { registry, aminoTypes } = getIntentoSigningClientOptions();
+const { registry, aminoTypes } = getTrstSigningClientOptions();
 
 const client = await SigningStargateClient.connectWithSigner(
   rpc,
@@ -31,53 +31,53 @@ const client = await SigningStargateClient.connectWithSigner(
   {
     registry,
     aminoTypes,
-    accountParser: intentoAccountParser,
+    accountParser: trstAccountParser,
   }
 );
 ```
 
 ## Usage
 
-We strongly recommend that you check the generated files in `src/codegen/intento` and use it as source of truth for which functions you could use.
+We strongly recommend that you check the generated files in `src/codegen/trst` and use it as source of truth for which functions you could use.
 
 The rest of our documentation will cover only the tip of the iceberg &mdash; examples you can take ideas from.
 
 ### RPC Client
 
 ```ts
-import { intento } from "intentojs";
+import { trst } from "intentojs";
 
-const client = await intento.ClientFactory.createRPCQueryClient({
+const client = await trst.ClientFactory.createRPCQueryClient({
   rpcEndpoint: RPC_ENDPOINT,
 });
 
 const balance = await client.cosmos.bank.v1beta1.allBalances({
-  address: "into1addresshere",
+  address: "trst1addresshere",
 });
 ```
 
-### Composing & Broadcasting Intento Messages
+### Composing & Broadcasting Trst Messages
 
 ```ts
-import { intento } from "intentojs";
+import { trst } from "intentojs";
 
 const msgClaimFreeAmount =
-  intento.claim.MessageComposer.withTypeUrl.claimFreeAmount({
-    user: "into1addresshere",
+  trst.claim.MessageComposer.withTypeUrl.claimFreeAmount({
+    user: "trst1addresshere",
   });
 
 const fee = {
   amount: [
     {
       amount: "0",
-      denom: "uinto",
+      denom: "utrst",
     },
   ],
   gas: 250_000,
 };
 
-const tx = await intentoAccount.client.signAndBroadcast(
-  "into1addresshere",
+const tx = await trstAccount.client.signAndBroadcast(
+  "trst1addresshere",
   [msgClaimFreeAmount],
   fee,
   ""
@@ -106,6 +106,7 @@ When first cloning the repo:
 ```bash
 git submodule update --init
 telescope install
+telescope transpile
 ```
 
 ### Codegen
@@ -134,18 +135,18 @@ Afterwards, update package.json version.
 
 ```bash
 # Example: <version> = v0.4.1
+git push origin main
 git tag <version>
 git push origin <version>
-git push origin main
 npm publish
 ```
 
 ## Credits
 
-🛠 Built by Cosmology — if you like our tools, please consider delegating to [our validator ⚛️](https://cosmology.tech/validator)
+🛠 Built by Cosmology — if you like our tools, please consider delegating to [their validator ⚛️](https://cosmology.tech/validator)
 
 Code built with the help of these related projects:
 
 - [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) for generated CosmWasm contract Typescript classes
-- [@osmonauts/telescope](https://github.com/osmosis-labs/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
+- [@cosmology/telescope](https://github.com/cosmology/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
 - [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️
