@@ -19,6 +19,7 @@ export interface ActionInfo {
   updateHistory: Date[];
   icaConfig?: ICAConfig;
   configuration?: ExecutionConfiguration;
+  hostedConfig?: HostedConfig;
 }
 export interface ActionInfoProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ActionInfo";
@@ -41,6 +42,7 @@ export interface ActionInfoAmino {
   update_history?: string[];
   ica_config?: ICAConfigAmino;
   configuration?: ExecutionConfigurationAmino;
+  hosted_config?: HostedConfigAmino;
 }
 export interface ActionInfoAminoMsg {
   type: "/intento.intent.v1beta1.ActionInfo";
@@ -60,6 +62,7 @@ export interface ActionInfoSDKType {
   update_history: Date[];
   ica_config?: ICAConfigSDKType;
   configuration?: ExecutionConfigurationSDKType;
+  hosted_config?: HostedConfigSDKType;
 }
 export interface ICAConfig {
   portId: string;
@@ -84,11 +87,31 @@ export interface ICAConfigSDKType {
   connection_id: string;
   host_connection_id: string;
 }
-/** ExecutionConfiguration provides the execution-related configuration of the Action */
+export interface HostedConfig {
+  hostedAddress: string;
+  feeCoinLimit: Coin;
+}
+export interface HostedConfigProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.HostedConfig";
+  value: Uint8Array;
+}
+export interface HostedConfigAmino {
+  hosted_address?: string;
+  fee_coin_limit?: CoinAmino;
+}
+export interface HostedConfigAminoMsg {
+  type: "/intento.intent.v1beta1.HostedConfig";
+  value: HostedConfigAmino;
+}
+export interface HostedConfigSDKType {
+  hosted_address: string;
+  fee_coin_limit: CoinSDKType;
+}
+/** ExecutionConfiguration provides the execution-related configuration of the action */
 export interface ExecutionConfiguration {
-  /** if true, the Action outputs are saved and can be used in condition-based logic */
+  /** if true, the action outputs are saved and can be used in condition-based logic */
   saveMsgResponses: boolean;
-  /** if true, the Action is not updatable */
+  /** if true, the action is not updatable */
   updatingDisabled: boolean;
   /** If true, will execute until we get a successful Action, if false/unset will always execute */
   stopOnSuccess: boolean;
@@ -96,18 +119,18 @@ export interface ExecutionConfiguration {
   stopOnFailure: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallbackToOwnerBalance: boolean;
-  /** If true, allows the Action to continue execution after an ibc channel times out (recommended) */
+  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
   reregisterIcaAfterTimeout: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConfiguration";
   value: Uint8Array;
 }
-/** ExecutionConfiguration provides the execution-related configuration of the Action */
+/** ExecutionConfiguration provides the execution-related configuration of the action */
 export interface ExecutionConfigurationAmino {
-  /** if true, the Action outputs are saved and can be used in condition-based logic */
+  /** if true, the action outputs are saved and can be used in condition-based logic */
   save_msg_responses?: boolean;
-  /** if true, the Action is not updatable */
+  /** if true, the action is not updatable */
   updating_disabled?: boolean;
   /** If true, will execute until we get a successful Action, if false/unset will always execute */
   stop_on_success?: boolean;
@@ -115,14 +138,14 @@ export interface ExecutionConfigurationAmino {
   stop_on_failure?: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallback_to_owner_balance?: boolean;
-  /** If true, allows the Action to continue execution after an ibc channel times out (recommended) */
+  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
   reregister_ica_after_timeout?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConfiguration";
   value: ExecutionConfigurationAmino;
 }
-/** ExecutionConfiguration provides the execution-related configuration of the Action */
+/** ExecutionConfiguration provides the execution-related configuration of the action */
 export interface ExecutionConfigurationSDKType {
   save_msg_responses: boolean;
   updating_disabled: boolean;
@@ -131,7 +154,7 @@ export interface ExecutionConfigurationSDKType {
   fallback_to_owner_balance: boolean;
   reregister_ica_after_timeout: boolean;
 }
-/** ExecutionConditions provides execution conditions for the Action */
+/** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditions {
   /** optional array of dependent Actions that when executing succesfully, stops further execution */
   stopOnSuccessOf: bigint[];
@@ -146,7 +169,7 @@ export interface ExecutionConditionsProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
   value: Uint8Array;
 }
-/** ExecutionConditions provides execution conditions for the Action */
+/** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditionsAmino {
   /** optional array of dependent Actions that when executing succesfully, stops further execution */
   stop_on_success_of?: string[];
@@ -161,7 +184,7 @@ export interface ExecutionConditionsAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConditions";
   value: ExecutionConditionsAmino;
 }
-/** ExecutionConditions provides execution conditions for the Action */
+/** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditionsSDKType {
   stop_on_success_of: bigint[];
   stop_on_failure_of: bigint[];
@@ -247,7 +270,8 @@ function createBaseActionInfo(): ActionInfo {
     endTime: new Date(),
     updateHistory: [],
     icaConfig: undefined,
-    configuration: undefined
+    configuration: undefined,
+    hostedConfig: undefined
   };
 }
 export const ActionInfo = {
@@ -298,6 +322,9 @@ export const ActionInfo = {
     if (message.configuration !== undefined) {
       ExecutionConfiguration.encode(message.configuration, writer.uint32(98).fork()).ldelim();
     }
+    if (message.hostedConfig !== undefined) {
+      HostedConfig.encode(message.hostedConfig, writer.uint32(114).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ActionInfo {
@@ -343,6 +370,9 @@ export const ActionInfo = {
         case 12:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
+        case 14:
+          message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -364,6 +394,7 @@ export const ActionInfo = {
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
     message.icaConfig = object.icaConfig !== undefined && object.icaConfig !== null ? ICAConfig.fromPartial(object.icaConfig) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
+    message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
     return message;
   },
   fromAmino(object: ActionInfoAmino): ActionInfo {
@@ -400,6 +431,9 @@ export const ActionInfo = {
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
     }
+    if (object.hosted_config !== undefined && object.hosted_config !== null) {
+      message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
+    }
     return message;
   },
   toAmino(message: ActionInfo): ActionInfoAmino {
@@ -424,6 +458,7 @@ export const ActionInfo = {
     }
     obj.ica_config = message.icaConfig ? ICAConfig.toAmino(message.icaConfig) : undefined;
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
+    obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
     return obj;
   },
   fromAminoMsg(object: ActionInfoAminoMsg): ActionInfo {
@@ -540,6 +575,91 @@ export const ICAConfig = {
   }
 };
 GlobalDecoderRegistry.register(ICAConfig.typeUrl, ICAConfig);
+function createBaseHostedConfig(): HostedConfig {
+  return {
+    hostedAddress: "",
+    feeCoinLimit: Coin.fromPartial({})
+  };
+}
+export const HostedConfig = {
+  typeUrl: "/intento.intent.v1beta1.HostedConfig",
+  is(o: any): o is HostedConfig {
+    return o && (o.$typeUrl === HostedConfig.typeUrl || typeof o.hostedAddress === "string" && Coin.is(o.feeCoinLimit));
+  },
+  isSDK(o: any): o is HostedConfigSDKType {
+    return o && (o.$typeUrl === HostedConfig.typeUrl || typeof o.hosted_address === "string" && Coin.isSDK(o.fee_coin_limit));
+  },
+  isAmino(o: any): o is HostedConfigAmino {
+    return o && (o.$typeUrl === HostedConfig.typeUrl || typeof o.hosted_address === "string" && Coin.isAmino(o.fee_coin_limit));
+  },
+  encode(message: HostedConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.hostedAddress !== "") {
+      writer.uint32(10).string(message.hostedAddress);
+    }
+    if (message.feeCoinLimit !== undefined) {
+      Coin.encode(message.feeCoinLimit, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): HostedConfig {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseHostedConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.hostedAddress = reader.string();
+          break;
+        case 3:
+          message.feeCoinLimit = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<HostedConfig>): HostedConfig {
+    const message = createBaseHostedConfig();
+    message.hostedAddress = object.hostedAddress ?? "";
+    message.feeCoinLimit = object.feeCoinLimit !== undefined && object.feeCoinLimit !== null ? Coin.fromPartial(object.feeCoinLimit) : undefined;
+    return message;
+  },
+  fromAmino(object: HostedConfigAmino): HostedConfig {
+    const message = createBaseHostedConfig();
+    if (object.hosted_address !== undefined && object.hosted_address !== null) {
+      message.hostedAddress = object.hosted_address;
+    }
+    if (object.fee_coin_limit !== undefined && object.fee_coin_limit !== null) {
+      message.feeCoinLimit = Coin.fromAmino(object.fee_coin_limit);
+    }
+    return message;
+  },
+  toAmino(message: HostedConfig): HostedConfigAmino {
+    const obj: any = {};
+    obj.hosted_address = message.hostedAddress === "" ? undefined : message.hostedAddress;
+    obj.fee_coin_limit = message.feeCoinLimit ? Coin.toAmino(message.feeCoinLimit) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: HostedConfigAminoMsg): HostedConfig {
+    return HostedConfig.fromAmino(object.value);
+  },
+  fromProtoMsg(message: HostedConfigProtoMsg): HostedConfig {
+    return HostedConfig.decode(message.value);
+  },
+  toProto(message: HostedConfig): Uint8Array {
+    return HostedConfig.encode(message).finish();
+  },
+  toProtoMsg(message: HostedConfig): HostedConfigProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.HostedConfig",
+      value: HostedConfig.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(HostedConfig.typeUrl, HostedConfig);
 function createBaseExecutionConfiguration(): ExecutionConfiguration {
   return {
     saveMsgResponses: false,

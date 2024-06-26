@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryActionRequest, QueryActionResponse, QueryActionHistoryRequest, QueryActionHistoryResponse, QueryActionsRequest, QueryActionsResponse, QueryActionsForOwnerRequest, QueryActionsForOwnerResponse, QueryParamsRequest, QueryParamsResponse, QueryActionIbcUsageRequest, QueryActionIbcUsageResponse } from "./query";
+import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryActionRequest, QueryActionResponse, QueryActionHistoryRequest, QueryActionHistoryResponse, QueryActionsRequest, QueryActionsResponse, QueryActionsForOwnerRequest, QueryActionsForOwnerResponse, QueryHostedAccountRequest, QueryHostedAccountResponse, QueryHostedAccountsRequest, QueryHostedAccountsResponse, QueryParamsRequest, QueryParamsResponse, QueryActionIbcUsageRequest, QueryActionIbcUsageResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -20,6 +20,8 @@ export interface Query {
    * given owner
    */
   actionsForOwner(request: QueryActionsForOwnerRequest): Promise<QueryActionsForOwnerResponse>;
+  hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse>;
+  hostedAccounts(request?: QueryHostedAccountsRequest): Promise<QueryHostedAccountsResponse>;
   /** Params returns the total set of Intent parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
   /** ActionIbcTxUsage returns statistics on usage of IBC transactions */
@@ -34,6 +36,8 @@ export class QueryClientImpl implements Query {
     this.actionHistory = this.actionHistory.bind(this);
     this.actions = this.actions.bind(this);
     this.actionsForOwner = this.actionsForOwner.bind(this);
+    this.hostedAccount = this.hostedAccount.bind(this);
+    this.hostedAccounts = this.hostedAccounts.bind(this);
     this.params = this.params.bind(this);
     this.actionIbcTxUsage = this.actionIbcTxUsage.bind(this);
   }
@@ -63,6 +67,18 @@ export class QueryClientImpl implements Query {
     const data = QueryActionsForOwnerRequest.encode(request).finish();
     const promise = this.rpc.request("intento.intent.v1beta1.Query", "ActionsForOwner", data);
     return promise.then(data => QueryActionsForOwnerResponse.decode(new BinaryReader(data)));
+  }
+  hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse> {
+    const data = QueryHostedAccountRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "HostedAccount", data);
+    return promise.then(data => QueryHostedAccountResponse.decode(new BinaryReader(data)));
+  }
+  hostedAccounts(request: QueryHostedAccountsRequest = {
+    pagination: undefined
+  }): Promise<QueryHostedAccountsResponse> {
+    const data = QueryHostedAccountsRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "HostedAccounts", data);
+    return promise.then(data => QueryHostedAccountsResponse.decode(new BinaryReader(data)));
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
@@ -95,6 +111,12 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     actionsForOwner(request: QueryActionsForOwnerRequest): Promise<QueryActionsForOwnerResponse> {
       return queryService.actionsForOwner(request);
+    },
+    hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse> {
+      return queryService.hostedAccount(request);
+    },
+    hostedAccounts(request?: QueryHostedAccountsRequest): Promise<QueryHostedAccountsResponse> {
+      return queryService.hostedAccounts(request);
     },
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);

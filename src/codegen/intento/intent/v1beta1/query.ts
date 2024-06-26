@@ -1,6 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { ActionInfo, ActionInfoAmino, ActionInfoSDKType, ActionHistoryEntry, ActionHistoryEntryAmino, ActionHistoryEntrySDKType } from "./action";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { HostedAccount, HostedAccountAmino, HostedAccountSDKType } from "./hostedaccount";
 import { ActionIbcUsage, ActionIbcUsageAmino, ActionIbcUsageSDKType } from "./usage";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { GlobalDecoderRegistry } from "../../../registry";
@@ -309,6 +310,97 @@ export interface QueryParamsResponseAminoMsg {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
   params: ParamsSDKType;
+}
+/** QueryHostedAccount is the request type for the Query/Params RPC method. */
+export interface QueryHostedAccountRequest {
+  address: string;
+}
+export interface QueryHostedAccountRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountRequest";
+  value: Uint8Array;
+}
+/** QueryHostedAccount is the request type for the Query/Params RPC method. */
+export interface QueryHostedAccountRequestAmino {
+  address?: string;
+}
+export interface QueryHostedAccountRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryHostedAccountRequest";
+  value: QueryHostedAccountRequestAmino;
+}
+/** QueryHostedAccount is the request type for the Query/Params RPC method. */
+export interface QueryHostedAccountRequestSDKType {
+  address: string;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountResponse {
+  /** HostedAccount */
+  hostedAccount: HostedAccount;
+}
+export interface QueryHostedAccountResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountResponse";
+  value: Uint8Array;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountResponseAmino {
+  /** HostedAccount */
+  hosted_account?: HostedAccountAmino;
+}
+export interface QueryHostedAccountResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryHostedAccountResponse";
+  value: QueryHostedAccountResponseAmino;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountResponseSDKType {
+  hosted_account: HostedAccountSDKType;
+}
+/** QueryHostedAccount is the request type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsRequest {
+  /** Pagination defines an optional pagination for the request. */
+  pagination?: PageRequest;
+}
+export interface QueryHostedAccountsRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsRequest";
+  value: Uint8Array;
+}
+/** QueryHostedAccount is the request type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsRequestAmino {
+  /** Pagination defines an optional pagination for the request. */
+  pagination?: PageRequestAmino;
+}
+export interface QueryHostedAccountsRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryHostedAccountsRequest";
+  value: QueryHostedAccountsRequestAmino;
+}
+/** QueryHostedAccount is the request type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsResponse {
+  /** HostedAccounts */
+  hostedAccounts: HostedAccount[];
+  /** Pagination defines the pagination in the response. */
+  pagination?: PageResponse;
+}
+export interface QueryHostedAccountsResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsResponse";
+  value: Uint8Array;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsResponseAmino {
+  /** HostedAccounts */
+  hosted_accounts?: HostedAccountAmino[];
+  /** Pagination defines the pagination in the response. */
+  pagination?: PageResponseAmino;
+}
+export interface QueryHostedAccountsResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryHostedAccountsResponse";
+  value: QueryHostedAccountsResponseAmino;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsResponseSDKType {
+  hosted_accounts: HostedAccountSDKType[];
+  pagination?: PageResponseSDKType;
 }
 /**
  * QueryAutoIbcUsageRequest is the request type for the
@@ -1316,6 +1408,312 @@ export const QueryParamsResponse = {
   }
 };
 GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+function createBaseQueryHostedAccountRequest(): QueryHostedAccountRequest {
+  return {
+    address: ""
+  };
+}
+export const QueryHostedAccountRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountRequest",
+  is(o: any): o is QueryHostedAccountRequest {
+    return o && (o.$typeUrl === QueryHostedAccountRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryHostedAccountRequestSDKType {
+    return o && (o.$typeUrl === QueryHostedAccountRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryHostedAccountRequestAmino {
+    return o && (o.$typeUrl === QueryHostedAccountRequest.typeUrl || typeof o.address === "string");
+  },
+  encode(message: QueryHostedAccountRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHostedAccountRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHostedAccountRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryHostedAccountRequest>): QueryHostedAccountRequest {
+    const message = createBaseQueryHostedAccountRequest();
+    message.address = object.address ?? "";
+    return message;
+  },
+  fromAmino(object: QueryHostedAccountRequestAmino): QueryHostedAccountRequest {
+    const message = createBaseQueryHostedAccountRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    return message;
+  },
+  toAmino(message: QueryHostedAccountRequest): QueryHostedAccountRequestAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHostedAccountRequestAminoMsg): QueryHostedAccountRequest {
+    return QueryHostedAccountRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHostedAccountRequestProtoMsg): QueryHostedAccountRequest {
+    return QueryHostedAccountRequest.decode(message.value);
+  },
+  toProto(message: QueryHostedAccountRequest): Uint8Array {
+    return QueryHostedAccountRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHostedAccountRequest): QueryHostedAccountRequestProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.QueryHostedAccountRequest",
+      value: QueryHostedAccountRequest.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryHostedAccountRequest.typeUrl, QueryHostedAccountRequest);
+function createBaseQueryHostedAccountResponse(): QueryHostedAccountResponse {
+  return {
+    hostedAccount: HostedAccount.fromPartial({})
+  };
+}
+export const QueryHostedAccountResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountResponse",
+  is(o: any): o is QueryHostedAccountResponse {
+    return o && (o.$typeUrl === QueryHostedAccountResponse.typeUrl || HostedAccount.is(o.hostedAccount));
+  },
+  isSDK(o: any): o is QueryHostedAccountResponseSDKType {
+    return o && (o.$typeUrl === QueryHostedAccountResponse.typeUrl || HostedAccount.isSDK(o.hosted_account));
+  },
+  isAmino(o: any): o is QueryHostedAccountResponseAmino {
+    return o && (o.$typeUrl === QueryHostedAccountResponse.typeUrl || HostedAccount.isAmino(o.hosted_account));
+  },
+  encode(message: QueryHostedAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.hostedAccount !== undefined) {
+      HostedAccount.encode(message.hostedAccount, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHostedAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHostedAccountResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.hostedAccount = HostedAccount.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryHostedAccountResponse>): QueryHostedAccountResponse {
+    const message = createBaseQueryHostedAccountResponse();
+    message.hostedAccount = object.hostedAccount !== undefined && object.hostedAccount !== null ? HostedAccount.fromPartial(object.hostedAccount) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHostedAccountResponseAmino): QueryHostedAccountResponse {
+    const message = createBaseQueryHostedAccountResponse();
+    if (object.hosted_account !== undefined && object.hosted_account !== null) {
+      message.hostedAccount = HostedAccount.fromAmino(object.hosted_account);
+    }
+    return message;
+  },
+  toAmino(message: QueryHostedAccountResponse): QueryHostedAccountResponseAmino {
+    const obj: any = {};
+    obj.hosted_account = message.hostedAccount ? HostedAccount.toAmino(message.hostedAccount) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHostedAccountResponseAminoMsg): QueryHostedAccountResponse {
+    return QueryHostedAccountResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHostedAccountResponseProtoMsg): QueryHostedAccountResponse {
+    return QueryHostedAccountResponse.decode(message.value);
+  },
+  toProto(message: QueryHostedAccountResponse): Uint8Array {
+    return QueryHostedAccountResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHostedAccountResponse): QueryHostedAccountResponseProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.QueryHostedAccountResponse",
+      value: QueryHostedAccountResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryHostedAccountResponse.typeUrl, QueryHostedAccountResponse);
+function createBaseQueryHostedAccountsRequest(): QueryHostedAccountsRequest {
+  return {
+    pagination: undefined
+  };
+}
+export const QueryHostedAccountsRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsRequest",
+  is(o: any): o is QueryHostedAccountsRequest {
+    return o && o.$typeUrl === QueryHostedAccountsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryHostedAccountsRequestSDKType {
+    return o && o.$typeUrl === QueryHostedAccountsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryHostedAccountsRequestAmino {
+    return o && o.$typeUrl === QueryHostedAccountsRequest.typeUrl;
+  },
+  encode(message: QueryHostedAccountsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHostedAccountsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHostedAccountsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryHostedAccountsRequest>): QueryHostedAccountsRequest {
+    const message = createBaseQueryHostedAccountsRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHostedAccountsRequestAmino): QueryHostedAccountsRequest {
+    const message = createBaseQueryHostedAccountsRequest();
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryHostedAccountsRequest): QueryHostedAccountsRequestAmino {
+    const obj: any = {};
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHostedAccountsRequestAminoMsg): QueryHostedAccountsRequest {
+    return QueryHostedAccountsRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHostedAccountsRequestProtoMsg): QueryHostedAccountsRequest {
+    return QueryHostedAccountsRequest.decode(message.value);
+  },
+  toProto(message: QueryHostedAccountsRequest): Uint8Array {
+    return QueryHostedAccountsRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHostedAccountsRequest): QueryHostedAccountsRequestProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsRequest",
+      value: QueryHostedAccountsRequest.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryHostedAccountsRequest.typeUrl, QueryHostedAccountsRequest);
+function createBaseQueryHostedAccountsResponse(): QueryHostedAccountsResponse {
+  return {
+    hostedAccounts: [],
+    pagination: undefined
+  };
+}
+export const QueryHostedAccountsResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsResponse",
+  is(o: any): o is QueryHostedAccountsResponse {
+    return o && (o.$typeUrl === QueryHostedAccountsResponse.typeUrl || Array.isArray(o.hostedAccounts) && (!o.hostedAccounts.length || HostedAccount.is(o.hostedAccounts[0])));
+  },
+  isSDK(o: any): o is QueryHostedAccountsResponseSDKType {
+    return o && (o.$typeUrl === QueryHostedAccountsResponse.typeUrl || Array.isArray(o.hosted_accounts) && (!o.hosted_accounts.length || HostedAccount.isSDK(o.hosted_accounts[0])));
+  },
+  isAmino(o: any): o is QueryHostedAccountsResponseAmino {
+    return o && (o.$typeUrl === QueryHostedAccountsResponse.typeUrl || Array.isArray(o.hosted_accounts) && (!o.hosted_accounts.length || HostedAccount.isAmino(o.hosted_accounts[0])));
+  },
+  encode(message: QueryHostedAccountsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.hostedAccounts) {
+      HostedAccount.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHostedAccountsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHostedAccountsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.hostedAccounts.push(HostedAccount.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryHostedAccountsResponse>): QueryHostedAccountsResponse {
+    const message = createBaseQueryHostedAccountsResponse();
+    message.hostedAccounts = object.hostedAccounts?.map(e => HostedAccount.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHostedAccountsResponseAmino): QueryHostedAccountsResponse {
+    const message = createBaseQueryHostedAccountsResponse();
+    message.hostedAccounts = object.hosted_accounts?.map(e => HostedAccount.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryHostedAccountsResponse): QueryHostedAccountsResponseAmino {
+    const obj: any = {};
+    if (message.hostedAccounts) {
+      obj.hosted_accounts = message.hostedAccounts.map(e => e ? HostedAccount.toAmino(e) : undefined);
+    } else {
+      obj.hosted_accounts = message.hostedAccounts;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHostedAccountsResponseAminoMsg): QueryHostedAccountsResponse {
+    return QueryHostedAccountsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHostedAccountsResponseProtoMsg): QueryHostedAccountsResponse {
+    return QueryHostedAccountsResponse.decode(message.value);
+  },
+  toProto(message: QueryHostedAccountsResponse): Uint8Array {
+    return QueryHostedAccountsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHostedAccountsResponse): QueryHostedAccountsResponseProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsResponse",
+      value: QueryHostedAccountsResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryHostedAccountsResponse.typeUrl, QueryHostedAccountsResponse);
 function createBaseQueryActionIbcUsageRequest(): QueryActionIbcUsageRequest {
   return {
     pagination: undefined
