@@ -3,9 +3,100 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
-/** ActionInfo stores the info for the auto executing interchain accounts transaction */
+/** Comparison operators that can be used for various types. */
+export enum ComparisonOperator {
+  /** EQUAL - Equality check (for all types) */
+  EQUAL = 0,
+  /** CONTAINS - Contains check (for strings, arrays, etc.) */
+  CONTAINS = 1,
+  /** NOT_CONTAINS - Not contains check (for strings, arrays, etc.) */
+  NOT_CONTAINS = 2,
+  /** SMALLER_THAN - Less than check (for numeric types) */
+  SMALLER_THAN = 3,
+  /** LARGER_THAN - Greater than check (for numeric types) */
+  LARGER_THAN = 4,
+  /** GREATER_EQUAL - Greater than or equal to check (for numeric types) */
+  GREATER_EQUAL = 5,
+  /** LESS_EQUAL - Less than or equal to check (for numeric types) */
+  LESS_EQUAL = 6,
+  /** STARTS_WITH - Starts with check (for strings) */
+  STARTS_WITH = 7,
+  /** ENDS_WITH - Ends with check (for strings) */
+  ENDS_WITH = 8,
+  /** NOT_EQUAL - Not equal check (for all types) */
+  NOT_EQUAL = 9,
+  UNRECOGNIZED = -1,
+}
+export const ComparisonOperatorSDKType = ComparisonOperator;
+export const ComparisonOperatorAmino = ComparisonOperator;
+export function comparisonOperatorFromJSON(object: any): ComparisonOperator {
+  switch (object) {
+    case 0:
+    case "EQUAL":
+      return ComparisonOperator.EQUAL;
+    case 1:
+    case "CONTAINS":
+      return ComparisonOperator.CONTAINS;
+    case 2:
+    case "NOT_CONTAINS":
+      return ComparisonOperator.NOT_CONTAINS;
+    case 3:
+    case "SMALLER_THAN":
+      return ComparisonOperator.SMALLER_THAN;
+    case 4:
+    case "LARGER_THAN":
+      return ComparisonOperator.LARGER_THAN;
+    case 5:
+    case "GREATER_EQUAL":
+      return ComparisonOperator.GREATER_EQUAL;
+    case 6:
+    case "LESS_EQUAL":
+      return ComparisonOperator.LESS_EQUAL;
+    case 7:
+    case "STARTS_WITH":
+      return ComparisonOperator.STARTS_WITH;
+    case 8:
+    case "ENDS_WITH":
+      return ComparisonOperator.ENDS_WITH;
+    case 9:
+    case "NOT_EQUAL":
+      return ComparisonOperator.NOT_EQUAL;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return ComparisonOperator.UNRECOGNIZED;
+  }
+}
+export function comparisonOperatorToJSON(object: ComparisonOperator): string {
+  switch (object) {
+    case ComparisonOperator.EQUAL:
+      return "EQUAL";
+    case ComparisonOperator.CONTAINS:
+      return "CONTAINS";
+    case ComparisonOperator.NOT_CONTAINS:
+      return "NOT_CONTAINS";
+    case ComparisonOperator.SMALLER_THAN:
+      return "SMALLER_THAN";
+    case ComparisonOperator.LARGER_THAN:
+      return "LARGER_THAN";
+    case ComparisonOperator.GREATER_EQUAL:
+      return "GREATER_EQUAL";
+    case ComparisonOperator.LESS_EQUAL:
+      return "LESS_EQUAL";
+    case ComparisonOperator.STARTS_WITH:
+      return "STARTS_WITH";
+    case ComparisonOperator.ENDS_WITH:
+      return "ENDS_WITH";
+    case ComparisonOperator.NOT_EQUAL:
+      return "NOT_EQUAL";
+    case ComparisonOperator.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+/** ActionInfo stores the info for the action */
 export interface ActionInfo {
   id: bigint;
   owner: string;
@@ -20,6 +111,7 @@ export interface ActionInfo {
   icaConfig?: ICAConfig;
   configuration?: ExecutionConfiguration;
   hostedConfig?: HostedConfig;
+  conditions?: ExecutionConditions;
 }
 export interface ActionInfoProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ActionInfo";
@@ -28,7 +120,7 @@ export interface ActionInfoProtoMsg {
 export type ActionInfoEncoded = Omit<ActionInfo, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** ActionInfo stores the info for the auto executing interchain accounts transaction */
+/** ActionInfo stores the info for the action */
 export interface ActionInfoAmino {
   id?: string;
   owner?: string;
@@ -43,12 +135,13 @@ export interface ActionInfoAmino {
   ica_config?: ICAConfigAmino;
   configuration?: ExecutionConfigurationAmino;
   hosted_config?: HostedConfigAmino;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface ActionInfoAminoMsg {
   type: "/intento.intent.v1beta1.ActionInfo";
   value: ActionInfoAmino;
 }
-/** ActionInfo stores the info for the auto executing interchain accounts transaction */
+/** ActionInfo stores the info for the action */
 export interface ActionInfoSDKType {
   id: bigint;
   owner: string;
@@ -63,6 +156,7 @@ export interface ActionInfoSDKType {
   ica_config?: ICAConfigSDKType;
   configuration?: ExecutionConfigurationSDKType;
   hosted_config?: HostedConfigSDKType;
+  conditions?: ExecutionConditionsSDKType;
 }
 export interface ICAConfig {
   portId: string;
@@ -109,7 +203,7 @@ export interface HostedConfigSDKType {
 }
 /** ExecutionConfiguration provides the execution-related configuration of the action */
 export interface ExecutionConfiguration {
-  /** if true, the action outputs are saved and can be used in condition-based logic */
+  /** if true, the action response outputs are saved and can be used in logic */
   saveMsgResponses: boolean;
   /** if true, the action is not updatable */
   updatingDisabled: boolean;
@@ -128,7 +222,7 @@ export interface ExecutionConfigurationProtoMsg {
 }
 /** ExecutionConfiguration provides the execution-related configuration of the action */
 export interface ExecutionConfigurationAmino {
-  /** if true, the action outputs are saved and can be used in condition-based logic */
+  /** if true, the action response outputs are saved and can be used in logic */
   save_msg_responses?: boolean;
   /** if true, the action is not updatable */
   updating_disabled?: boolean;
@@ -154,43 +248,6 @@ export interface ExecutionConfigurationSDKType {
   fallback_to_owner_balance: boolean;
   reregister_ica_after_timeout: boolean;
 }
-/** ExecutionConditions provides execution conditions for the action */
-export interface ExecutionConditions {
-  /** optional array of dependent Actions that when executing succesfully, stops further execution */
-  stopOnSuccessOf: bigint[];
-  /** optional array of dependent Actions that when not executing succesfully, stops further execution */
-  stopOnFailureOf: bigint[];
-  /** optional array of dependent Actions that should be executed succesfully in their latest call before upcomming execution is allowed */
-  skipOnFailureOf: bigint[];
-  /** optional array of dependent actions that should fail their latest call before upcomming execution is allowed */
-  skipOnSuccessOf: bigint[];
-}
-export interface ExecutionConditionsProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
-  value: Uint8Array;
-}
-/** ExecutionConditions provides execution conditions for the action */
-export interface ExecutionConditionsAmino {
-  /** optional array of dependent Actions that when executing succesfully, stops further execution */
-  stop_on_success_of?: string[];
-  /** optional array of dependent Actions that when not executing succesfully, stops further execution */
-  stop_on_failure_of?: string[];
-  /** optional array of dependent Actions that should be executed succesfully in their latest call before upcomming execution is allowed */
-  skip_on_failure_of?: string[];
-  /** optional array of dependent actions that should fail their latest call before upcomming execution is allowed */
-  skip_on_success_of?: string[];
-}
-export interface ExecutionConditionsAminoMsg {
-  type: "/intento.intent.v1beta1.ExecutionConditions";
-  value: ExecutionConditionsAmino;
-}
-/** ExecutionConditions provides execution conditions for the action */
-export interface ExecutionConditionsSDKType {
-  stop_on_success_of: bigint[];
-  stop_on_failure_of: bigint[];
-  skip_on_failure_of: bigint[];
-  skip_on_success_of: bigint[];
-}
 /** ActionHistory execution history */
 export interface ActionHistory {
   history: ActionHistoryEntry[];
@@ -211,7 +268,7 @@ export interface ActionHistoryAminoMsg {
 export interface ActionHistorySDKType {
   history: ActionHistoryEntrySDKType[];
 }
-/** ActionHistoryEntry provides a the history of Action interchain tx call */
+/** ActionHistoryEntry provides a the history of action interchain tx call */
 export interface ActionHistoryEntry {
   scheduledExecTime: Date;
   actualExecTime: Date;
@@ -222,14 +279,14 @@ export interface ActionHistoryEntry {
   timedOut: boolean;
   /** errors from execution, if executed and no error the execution was succesfull */
   errors: string[];
-  /** will be empty when save_msg_responses is false */
+  /** will be empty when save_responses is false */
   msgResponses: Any[];
 }
 export interface ActionHistoryEntryProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry";
   value: Uint8Array;
 }
-/** ActionHistoryEntry provides a the history of Action interchain tx call */
+/** ActionHistoryEntry provides a the history of action interchain tx call */
 export interface ActionHistoryEntryAmino {
   scheduled_exec_time?: string;
   actual_exec_time?: string;
@@ -240,14 +297,14 @@ export interface ActionHistoryEntryAmino {
   timed_out?: boolean;
   /** errors from execution, if executed and no error the execution was succesfull */
   errors?: string[];
-  /** will be empty when save_msg_responses is false */
+  /** will be empty when save_responses is false */
   msg_responses?: AnyAmino[];
 }
 export interface ActionHistoryEntryAminoMsg {
   type: "/intento.intent.v1beta1.ActionHistoryEntry";
   value: ActionHistoryEntryAmino;
 }
-/** ActionHistoryEntry provides a the history of Action interchain tx call */
+/** ActionHistoryEntry provides a the history of action interchain tx call */
 export interface ActionHistoryEntrySDKType {
   scheduled_exec_time: Date;
   actual_exec_time: Date;
@@ -256,6 +313,137 @@ export interface ActionHistoryEntrySDKType {
   timed_out: boolean;
   errors: string[];
   msg_responses: AnySDKType[];
+}
+/** ExecutionConditions provides execution conditions for the action */
+export interface ExecutionConditions {
+  /** Replace value with value from message or response from another action’s latest output */
+  useResponseValue?: UseResponseValue;
+  /** Comparison with response response value */
+  responseComparison?: ResponseComparision;
+  /** optional array of dependent intents that when executing succesfully, stops execution */
+  stopOnSuccessOf: bigint[];
+  /** optional array of dependent intents that when not executing succesfully, stops execution */
+  stopOnFailureOf: bigint[];
+  /** optional array of dependent intents that should be executed succesfully after their latest call before execution is allowed */
+  skipOnFailureOf: bigint[];
+  /** optional array of dependent intents that should fail after their latest call before execution is allowed */
+  skipOnSuccessOf: bigint[];
+}
+export interface ExecutionConditionsProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
+  value: Uint8Array;
+}
+/** ExecutionConditions provides execution conditions for the action */
+export interface ExecutionConditionsAmino {
+  /** Replace value with value from message or response from another action’s latest output */
+  use_response_value?: UseResponseValueAmino;
+  /** Comparison with response response value */
+  response_comparison?: ResponseComparisionAmino;
+  /** optional array of dependent intents that when executing succesfully, stops execution */
+  stop_on_success_of?: string[];
+  /** optional array of dependent intents that when not executing succesfully, stops execution */
+  stop_on_failure_of?: string[];
+  /** optional array of dependent intents that should be executed succesfully after their latest call before execution is allowed */
+  skip_on_failure_of?: string[];
+  /** optional array of dependent intents that should fail after their latest call before execution is allowed */
+  skip_on_success_of?: string[];
+}
+export interface ExecutionConditionsAminoMsg {
+  type: "/intento.intent.v1beta1.ExecutionConditions";
+  value: ExecutionConditionsAmino;
+}
+/** ExecutionConditions provides execution conditions for the action */
+export interface ExecutionConditionsSDKType {
+  use_response_value?: UseResponseValueSDKType;
+  response_comparison?: ResponseComparisionSDKType;
+  stop_on_success_of: bigint[];
+  stop_on_failure_of: bigint[];
+  skip_on_failure_of: bigint[];
+  skip_on_success_of: bigint[];
+}
+/** Replace value with value from message or response from another action’s latest output before execution */
+export interface UseResponseValue {
+  /** action to get the latest response value from, optional */
+  actionId: bigint;
+  /** index of the responses */
+  responseIndex: number;
+  /** for example "amount" */
+  responseKey: string;
+  /** index of the msg to replace */
+  msgsIndex: number;
+  /** key of the message to replace (e.g. fromAddress) */
+  msgKey: string;
+  valueType: string;
+}
+export interface UseResponseValueProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.UseResponseValue";
+  value: Uint8Array;
+}
+/** Replace value with value from message or response from another action’s latest output before execution */
+export interface UseResponseValueAmino {
+  /** action to get the latest response value from, optional */
+  action_id?: string;
+  /** index of the responses */
+  response_index?: number;
+  /** for example "amount" */
+  response_key?: string;
+  /** index of the msg to replace */
+  msgs_index?: number;
+  /** key of the message to replace (e.g. fromAddress) */
+  msg_key?: string;
+  value_type?: string;
+}
+export interface UseResponseValueAminoMsg {
+  type: "/intento.intent.v1beta1.UseResponseValue";
+  value: UseResponseValueAmino;
+}
+/** Replace value with value from message or response from another action’s latest output before execution */
+export interface UseResponseValueSDKType {
+  action_id: bigint;
+  response_index: number;
+  response_key: string;
+  msgs_index: number;
+  msg_key: string;
+  value_type: string;
+}
+/** ResponseComparision is checked on the response in JSON before execution of action and outputs true or false */
+export interface ResponseComparision {
+  /** action to get the latest response value from, optional */
+  actionId: bigint;
+  /** index of the response */
+  responseIndex: number;
+  responseKey: string;
+  valueType: string;
+  comparisonOperator: ComparisonOperator;
+  comparisonOperand: string;
+}
+export interface ResponseComparisionProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.ResponseComparision";
+  value: Uint8Array;
+}
+/** ResponseComparision is checked on the response in JSON before execution of action and outputs true or false */
+export interface ResponseComparisionAmino {
+  /** action to get the latest response value from, optional */
+  action_id?: string;
+  /** index of the response */
+  response_index?: number;
+  response_key?: string;
+  value_type?: string;
+  comparison_operator?: ComparisonOperator;
+  comparison_operand?: string;
+}
+export interface ResponseComparisionAminoMsg {
+  type: "/intento.intent.v1beta1.ResponseComparision";
+  value: ResponseComparisionAmino;
+}
+/** ResponseComparision is checked on the response in JSON before execution of action and outputs true or false */
+export interface ResponseComparisionSDKType {
+  action_id: bigint;
+  response_index: number;
+  response_key: string;
+  value_type: string;
+  comparison_operator: ComparisonOperator;
+  comparison_operand: string;
 }
 function createBaseActionInfo(): ActionInfo {
   return {
@@ -271,7 +459,8 @@ function createBaseActionInfo(): ActionInfo {
     updateHistory: [],
     icaConfig: undefined,
     configuration: undefined,
-    hostedConfig: undefined
+    hostedConfig: undefined,
+    conditions: undefined
   };
 }
 export const ActionInfo = {
@@ -325,6 +514,9 @@ export const ActionInfo = {
     if (message.hostedConfig !== undefined) {
       HostedConfig.encode(message.hostedConfig, writer.uint32(114).fork()).ldelim();
     }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(122).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ActionInfo {
@@ -373,6 +565,9 @@ export const ActionInfo = {
         case 14:
           message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
           break;
+        case 15:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -395,6 +590,7 @@ export const ActionInfo = {
     message.icaConfig = object.icaConfig !== undefined && object.icaConfig !== null ? ICAConfig.fromPartial(object.icaConfig) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: ActionInfoAmino): ActionInfo {
@@ -434,6 +630,9 @@ export const ActionInfo = {
     if (object.hosted_config !== undefined && object.hosted_config !== null) {
       message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
     }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: ActionInfo): ActionInfoAmino {
@@ -459,6 +658,7 @@ export const ActionInfo = {
     obj.ica_config = message.icaConfig ? ICAConfig.toAmino(message.icaConfig) : undefined;
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: ActionInfoAminoMsg): ActionInfo {
@@ -793,159 +993,6 @@ export const ExecutionConfiguration = {
   }
 };
 GlobalDecoderRegistry.register(ExecutionConfiguration.typeUrl, ExecutionConfiguration);
-function createBaseExecutionConditions(): ExecutionConditions {
-  return {
-    stopOnSuccessOf: [],
-    stopOnFailureOf: [],
-    skipOnFailureOf: [],
-    skipOnSuccessOf: []
-  };
-}
-export const ExecutionConditions = {
-  typeUrl: "/intento.intent.v1beta1.ExecutionConditions",
-  is(o: any): o is ExecutionConditions {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint"));
-  },
-  isSDK(o: any): o is ExecutionConditionsSDKType {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
-  },
-  isAmino(o: any): o is ExecutionConditionsAmino {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
-  },
-  encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    writer.uint32(42).fork();
-    for (const v of message.stopOnSuccessOf) {
-      writer.int64(v);
-    }
-    writer.ldelim();
-    writer.uint32(50).fork();
-    for (const v of message.stopOnFailureOf) {
-      writer.int64(v);
-    }
-    writer.ldelim();
-    writer.uint32(58).fork();
-    for (const v of message.skipOnFailureOf) {
-      writer.int64(v);
-    }
-    writer.ldelim();
-    writer.uint32(66).fork();
-    for (const v of message.skipOnSuccessOf) {
-      writer.int64(v);
-    }
-    writer.ldelim();
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): ExecutionConditions {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseExecutionConditions();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 5:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.stopOnSuccessOf.push(reader.int64());
-            }
-          } else {
-            message.stopOnSuccessOf.push(reader.int64());
-          }
-          break;
-        case 6:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.stopOnFailureOf.push(reader.int64());
-            }
-          } else {
-            message.stopOnFailureOf.push(reader.int64());
-          }
-          break;
-        case 7:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.skipOnFailureOf.push(reader.int64());
-            }
-          } else {
-            message.skipOnFailureOf.push(reader.int64());
-          }
-          break;
-        case 8:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.skipOnSuccessOf.push(reader.int64());
-            }
-          } else {
-            message.skipOnSuccessOf.push(reader.int64());
-          }
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
-    const message = createBaseExecutionConditions();
-    message.stopOnSuccessOf = object.stopOnSuccessOf?.map(e => BigInt(e.toString())) || [];
-    message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
-    message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
-    message.skipOnSuccessOf = object.skipOnSuccessOf?.map(e => BigInt(e.toString())) || [];
-    return message;
-  },
-  fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
-    const message = createBaseExecutionConditions();
-    message.stopOnSuccessOf = object.stop_on_success_of?.map(e => BigInt(e)) || [];
-    message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
-    message.skipOnFailureOf = object.skip_on_failure_of?.map(e => BigInt(e)) || [];
-    message.skipOnSuccessOf = object.skip_on_success_of?.map(e => BigInt(e)) || [];
-    return message;
-  },
-  toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
-    const obj: any = {};
-    if (message.stopOnSuccessOf) {
-      obj.stop_on_success_of = message.stopOnSuccessOf.map(e => e.toString());
-    } else {
-      obj.stop_on_success_of = message.stopOnSuccessOf;
-    }
-    if (message.stopOnFailureOf) {
-      obj.stop_on_failure_of = message.stopOnFailureOf.map(e => e.toString());
-    } else {
-      obj.stop_on_failure_of = message.stopOnFailureOf;
-    }
-    if (message.skipOnFailureOf) {
-      obj.skip_on_failure_of = message.skipOnFailureOf.map(e => e.toString());
-    } else {
-      obj.skip_on_failure_of = message.skipOnFailureOf;
-    }
-    if (message.skipOnSuccessOf) {
-      obj.skip_on_success_of = message.skipOnSuccessOf.map(e => e.toString());
-    } else {
-      obj.skip_on_success_of = message.skipOnSuccessOf;
-    }
-    return obj;
-  },
-  fromAminoMsg(object: ExecutionConditionsAminoMsg): ExecutionConditions {
-    return ExecutionConditions.fromAmino(object.value);
-  },
-  fromProtoMsg(message: ExecutionConditionsProtoMsg): ExecutionConditions {
-    return ExecutionConditions.decode(message.value);
-  },
-  toProto(message: ExecutionConditions): Uint8Array {
-    return ExecutionConditions.encode(message).finish();
-  },
-  toProtoMsg(message: ExecutionConditions): ExecutionConditionsProtoMsg {
-    return {
-      typeUrl: "/intento.intent.v1beta1.ExecutionConditions",
-      value: ExecutionConditions.encode(message).finish()
-    };
-  }
-};
-GlobalDecoderRegistry.register(ExecutionConditions.typeUrl, ExecutionConditions);
 function createBaseActionHistory(): ActionHistory {
   return {
     history: []
@@ -1170,3 +1217,446 @@ export const ActionHistoryEntry = {
   }
 };
 GlobalDecoderRegistry.register(ActionHistoryEntry.typeUrl, ActionHistoryEntry);
+function createBaseExecutionConditions(): ExecutionConditions {
+  return {
+    useResponseValue: undefined,
+    responseComparison: undefined,
+    stopOnSuccessOf: [],
+    stopOnFailureOf: [],
+    skipOnFailureOf: [],
+    skipOnSuccessOf: []
+  };
+}
+export const ExecutionConditions = {
+  typeUrl: "/intento.intent.v1beta1.ExecutionConditions",
+  is(o: any): o is ExecutionConditions {
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint"));
+  },
+  isSDK(o: any): o is ExecutionConditionsSDKType {
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
+  },
+  isAmino(o: any): o is ExecutionConditionsAmino {
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
+  },
+  encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.useResponseValue !== undefined) {
+      UseResponseValue.encode(message.useResponseValue, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.responseComparison !== undefined) {
+      ResponseComparision.encode(message.responseComparison, writer.uint32(10).fork()).ldelim();
+    }
+    writer.uint32(42).fork();
+    for (const v of message.stopOnSuccessOf) {
+      writer.uint64(v);
+    }
+    writer.ldelim();
+    writer.uint32(50).fork();
+    for (const v of message.stopOnFailureOf) {
+      writer.uint64(v);
+    }
+    writer.ldelim();
+    writer.uint32(58).fork();
+    for (const v of message.skipOnFailureOf) {
+      writer.uint64(v);
+    }
+    writer.ldelim();
+    writer.uint32(66).fork();
+    for (const v of message.skipOnSuccessOf) {
+      writer.uint64(v);
+    }
+    writer.ldelim();
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ExecutionConditions {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseExecutionConditions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 2:
+          message.useResponseValue = UseResponseValue.decode(reader, reader.uint32());
+          break;
+        case 1:
+          message.responseComparison = ResponseComparision.decode(reader, reader.uint32());
+          break;
+        case 5:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.stopOnSuccessOf.push(reader.uint64());
+            }
+          } else {
+            message.stopOnSuccessOf.push(reader.uint64());
+          }
+          break;
+        case 6:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.stopOnFailureOf.push(reader.uint64());
+            }
+          } else {
+            message.stopOnFailureOf.push(reader.uint64());
+          }
+          break;
+        case 7:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.skipOnFailureOf.push(reader.uint64());
+            }
+          } else {
+            message.skipOnFailureOf.push(reader.uint64());
+          }
+          break;
+        case 8:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.skipOnSuccessOf.push(reader.uint64());
+            }
+          } else {
+            message.skipOnSuccessOf.push(reader.uint64());
+          }
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
+    const message = createBaseExecutionConditions();
+    message.useResponseValue = object.useResponseValue !== undefined && object.useResponseValue !== null ? UseResponseValue.fromPartial(object.useResponseValue) : undefined;
+    message.responseComparison = object.responseComparison !== undefined && object.responseComparison !== null ? ResponseComparision.fromPartial(object.responseComparison) : undefined;
+    message.stopOnSuccessOf = object.stopOnSuccessOf?.map(e => BigInt(e.toString())) || [];
+    message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
+    message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
+    message.skipOnSuccessOf = object.skipOnSuccessOf?.map(e => BigInt(e.toString())) || [];
+    return message;
+  },
+  fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
+    const message = createBaseExecutionConditions();
+    if (object.use_response_value !== undefined && object.use_response_value !== null) {
+      message.useResponseValue = UseResponseValue.fromAmino(object.use_response_value);
+    }
+    if (object.response_comparison !== undefined && object.response_comparison !== null) {
+      message.responseComparison = ResponseComparision.fromAmino(object.response_comparison);
+    }
+    message.stopOnSuccessOf = object.stop_on_success_of?.map(e => BigInt(e)) || [];
+    message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
+    message.skipOnFailureOf = object.skip_on_failure_of?.map(e => BigInt(e)) || [];
+    message.skipOnSuccessOf = object.skip_on_success_of?.map(e => BigInt(e)) || [];
+    return message;
+  },
+  toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
+    const obj: any = {};
+    obj.use_response_value = message.useResponseValue ? UseResponseValue.toAmino(message.useResponseValue) : undefined;
+    obj.response_comparison = message.responseComparison ? ResponseComparision.toAmino(message.responseComparison) : undefined;
+    if (message.stopOnSuccessOf) {
+      obj.stop_on_success_of = message.stopOnSuccessOf.map(e => e.toString());
+    } else {
+      obj.stop_on_success_of = message.stopOnSuccessOf;
+    }
+    if (message.stopOnFailureOf) {
+      obj.stop_on_failure_of = message.stopOnFailureOf.map(e => e.toString());
+    } else {
+      obj.stop_on_failure_of = message.stopOnFailureOf;
+    }
+    if (message.skipOnFailureOf) {
+      obj.skip_on_failure_of = message.skipOnFailureOf.map(e => e.toString());
+    } else {
+      obj.skip_on_failure_of = message.skipOnFailureOf;
+    }
+    if (message.skipOnSuccessOf) {
+      obj.skip_on_success_of = message.skipOnSuccessOf.map(e => e.toString());
+    } else {
+      obj.skip_on_success_of = message.skipOnSuccessOf;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: ExecutionConditionsAminoMsg): ExecutionConditions {
+    return ExecutionConditions.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ExecutionConditionsProtoMsg): ExecutionConditions {
+    return ExecutionConditions.decode(message.value);
+  },
+  toProto(message: ExecutionConditions): Uint8Array {
+    return ExecutionConditions.encode(message).finish();
+  },
+  toProtoMsg(message: ExecutionConditions): ExecutionConditionsProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.ExecutionConditions",
+      value: ExecutionConditions.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(ExecutionConditions.typeUrl, ExecutionConditions);
+function createBaseUseResponseValue(): UseResponseValue {
+  return {
+    actionId: BigInt(0),
+    responseIndex: 0,
+    responseKey: "",
+    msgsIndex: 0,
+    msgKey: "",
+    valueType: ""
+  };
+}
+export const UseResponseValue = {
+  typeUrl: "/intento.intent.v1beta1.UseResponseValue",
+  is(o: any): o is UseResponseValue {
+    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string");
+  },
+  isSDK(o: any): o is UseResponseValueSDKType {
+    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+  },
+  isAmino(o: any): o is UseResponseValueAmino {
+    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+  },
+  encode(message: UseResponseValue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.actionId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.actionId);
+    }
+    if (message.responseIndex !== 0) {
+      writer.uint32(24).uint32(message.responseIndex);
+    }
+    if (message.responseKey !== "") {
+      writer.uint32(18).string(message.responseKey);
+    }
+    if (message.msgsIndex !== 0) {
+      writer.uint32(32).uint32(message.msgsIndex);
+    }
+    if (message.msgKey !== "") {
+      writer.uint32(42).string(message.msgKey);
+    }
+    if (message.valueType !== "") {
+      writer.uint32(50).string(message.valueType);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): UseResponseValue {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUseResponseValue();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.actionId = reader.uint64();
+          break;
+        case 3:
+          message.responseIndex = reader.uint32();
+          break;
+        case 2:
+          message.responseKey = reader.string();
+          break;
+        case 4:
+          message.msgsIndex = reader.uint32();
+          break;
+        case 5:
+          message.msgKey = reader.string();
+          break;
+        case 6:
+          message.valueType = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<UseResponseValue>): UseResponseValue {
+    const message = createBaseUseResponseValue();
+    message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
+    message.responseIndex = object.responseIndex ?? 0;
+    message.responseKey = object.responseKey ?? "";
+    message.msgsIndex = object.msgsIndex ?? 0;
+    message.msgKey = object.msgKey ?? "";
+    message.valueType = object.valueType ?? "";
+    return message;
+  },
+  fromAmino(object: UseResponseValueAmino): UseResponseValue {
+    const message = createBaseUseResponseValue();
+    if (object.action_id !== undefined && object.action_id !== null) {
+      message.actionId = BigInt(object.action_id);
+    }
+    if (object.response_index !== undefined && object.response_index !== null) {
+      message.responseIndex = object.response_index;
+    }
+    if (object.response_key !== undefined && object.response_key !== null) {
+      message.responseKey = object.response_key;
+    }
+    if (object.msgs_index !== undefined && object.msgs_index !== null) {
+      message.msgsIndex = object.msgs_index;
+    }
+    if (object.msg_key !== undefined && object.msg_key !== null) {
+      message.msgKey = object.msg_key;
+    }
+    if (object.value_type !== undefined && object.value_type !== null) {
+      message.valueType = object.value_type;
+    }
+    return message;
+  },
+  toAmino(message: UseResponseValue): UseResponseValueAmino {
+    const obj: any = {};
+    obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
+    obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
+    obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
+    obj.msgs_index = message.msgsIndex === 0 ? undefined : message.msgsIndex;
+    obj.msg_key = message.msgKey === "" ? undefined : message.msgKey;
+    obj.value_type = message.valueType === "" ? undefined : message.valueType;
+    return obj;
+  },
+  fromAminoMsg(object: UseResponseValueAminoMsg): UseResponseValue {
+    return UseResponseValue.fromAmino(object.value);
+  },
+  fromProtoMsg(message: UseResponseValueProtoMsg): UseResponseValue {
+    return UseResponseValue.decode(message.value);
+  },
+  toProto(message: UseResponseValue): Uint8Array {
+    return UseResponseValue.encode(message).finish();
+  },
+  toProtoMsg(message: UseResponseValue): UseResponseValueProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.UseResponseValue",
+      value: UseResponseValue.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(UseResponseValue.typeUrl, UseResponseValue);
+function createBaseResponseComparision(): ResponseComparision {
+  return {
+    actionId: BigInt(0),
+    responseIndex: 0,
+    responseKey: "",
+    valueType: "",
+    comparisonOperator: 0,
+    comparisonOperand: ""
+  };
+}
+export const ResponseComparision = {
+  typeUrl: "/intento.intent.v1beta1.ResponseComparision",
+  is(o: any): o is ResponseComparision {
+    return o && (o.$typeUrl === ResponseComparision.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.comparisonOperator) && typeof o.comparisonOperand === "string");
+  },
+  isSDK(o: any): o is ResponseComparisionSDKType {
+    return o && (o.$typeUrl === ResponseComparision.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
+  },
+  isAmino(o: any): o is ResponseComparisionAmino {
+    return o && (o.$typeUrl === ResponseComparision.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
+  },
+  encode(message: ResponseComparision, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.actionId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.actionId);
+    }
+    if (message.responseIndex !== 0) {
+      writer.uint32(16).uint32(message.responseIndex);
+    }
+    if (message.responseKey !== "") {
+      writer.uint32(26).string(message.responseKey);
+    }
+    if (message.valueType !== "") {
+      writer.uint32(34).string(message.valueType);
+    }
+    if (message.comparisonOperator !== 0) {
+      writer.uint32(40).int32(message.comparisonOperator);
+    }
+    if (message.comparisonOperand !== "") {
+      writer.uint32(50).string(message.comparisonOperand);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ResponseComparision {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseResponseComparision();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.actionId = reader.uint64();
+          break;
+        case 2:
+          message.responseIndex = reader.uint32();
+          break;
+        case 3:
+          message.responseKey = reader.string();
+          break;
+        case 4:
+          message.valueType = reader.string();
+          break;
+        case 5:
+          message.comparisonOperator = (reader.int32() as any);
+          break;
+        case 6:
+          message.comparisonOperand = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ResponseComparision>): ResponseComparision {
+    const message = createBaseResponseComparision();
+    message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
+    message.responseIndex = object.responseIndex ?? 0;
+    message.responseKey = object.responseKey ?? "";
+    message.valueType = object.valueType ?? "";
+    message.comparisonOperator = object.comparisonOperator ?? 0;
+    message.comparisonOperand = object.comparisonOperand ?? "";
+    return message;
+  },
+  fromAmino(object: ResponseComparisionAmino): ResponseComparision {
+    const message = createBaseResponseComparision();
+    if (object.action_id !== undefined && object.action_id !== null) {
+      message.actionId = BigInt(object.action_id);
+    }
+    if (object.response_index !== undefined && object.response_index !== null) {
+      message.responseIndex = object.response_index;
+    }
+    if (object.response_key !== undefined && object.response_key !== null) {
+      message.responseKey = object.response_key;
+    }
+    if (object.value_type !== undefined && object.value_type !== null) {
+      message.valueType = object.value_type;
+    }
+    if (object.comparison_operator !== undefined && object.comparison_operator !== null) {
+      message.comparisonOperator = object.comparison_operator;
+    }
+    if (object.comparison_operand !== undefined && object.comparison_operand !== null) {
+      message.comparisonOperand = object.comparison_operand;
+    }
+    return message;
+  },
+  toAmino(message: ResponseComparision): ResponseComparisionAmino {
+    const obj: any = {};
+    obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
+    obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
+    obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
+    obj.value_type = message.valueType === "" ? undefined : message.valueType;
+    obj.comparison_operator = message.comparisonOperator === 0 ? undefined : message.comparisonOperator;
+    obj.comparison_operand = message.comparisonOperand === "" ? undefined : message.comparisonOperand;
+    return obj;
+  },
+  fromAminoMsg(object: ResponseComparisionAminoMsg): ResponseComparision {
+    return ResponseComparision.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ResponseComparisionProtoMsg): ResponseComparision {
+    return ResponseComparision.decode(message.value);
+  },
+  toProto(message: ResponseComparision): Uint8Array {
+    return ResponseComparision.encode(message).finish();
+  },
+  toProtoMsg(message: ResponseComparision): ResponseComparisionProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.ResponseComparision",
+      value: ResponseComparision.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(ResponseComparision.typeUrl, ResponseComparision);

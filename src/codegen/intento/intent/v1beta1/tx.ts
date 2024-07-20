@@ -1,6 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType } from "./action";
+import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./action";
 import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hostedaccount";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { GlobalDecoderRegistry } from "../../../registry";
@@ -104,6 +104,7 @@ export interface MsgSubmitAction {
   hostConnectionId: string;
   /** optional use of a hosted account */
   hostedConfig?: HostedConfig;
+  conditions?: ExecutionConditions;
 }
 export interface MsgSubmitActionProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgSubmitAction";
@@ -132,6 +133,7 @@ export interface MsgSubmitActionAmino {
   host_connection_id?: string;
   /** optional use of a hosted account */
   hosted_config?: HostedConfigAmino;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface MsgSubmitActionAminoMsg {
   type: "/intento.intent.v1beta1.MsgSubmitAction";
@@ -150,6 +152,7 @@ export interface MsgSubmitActionSDKType {
   connection_id: string;
   host_connection_id: string;
   hosted_config?: HostedConfigSDKType;
+  conditions?: ExecutionConditionsSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitActionResponse {}
@@ -183,6 +186,7 @@ export interface MsgRegisterAccountAndSubmitAction {
   configuration?: ExecutionConfiguration;
   version: string;
   hostConnectionId: string;
+  conditions?: ExecutionConditions;
 }
 export interface MsgRegisterAccountAndSubmitActionProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction";
@@ -209,6 +213,7 @@ export interface MsgRegisterAccountAndSubmitActionAmino {
   configuration?: ExecutionConfigurationAmino;
   version?: string;
   host_connection_id?: string;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface MsgRegisterAccountAndSubmitActionAminoMsg {
   type: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction";
@@ -227,6 +232,7 @@ export interface MsgRegisterAccountAndSubmitActionSDKType {
   configuration?: ExecutionConfigurationSDKType;
   version: string;
   host_connection_id: string;
+  conditions?: ExecutionConditionsSDKType;
 }
 /** MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response type */
 export interface MsgRegisterAccountAndSubmitActionResponse {}
@@ -729,7 +735,8 @@ function createBaseMsgSubmitAction(): MsgSubmitAction {
     configuration: undefined,
     connectionId: "",
     hostConnectionId: "",
-    hostedConfig: undefined
+    hostedConfig: undefined,
+    conditions: undefined
   };
 }
 export const MsgSubmitAction = {
@@ -777,6 +784,9 @@ export const MsgSubmitAction = {
     if (message.hostedConfig !== undefined) {
       HostedConfig.encode(message.hostedConfig, writer.uint32(98).fork()).ldelim();
     }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(114).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitAction {
@@ -819,6 +829,9 @@ export const MsgSubmitAction = {
         case 12:
           message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
           break;
+        case 14:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -839,6 +852,7 @@ export const MsgSubmitAction = {
     message.connectionId = object.connectionId ?? "";
     message.hostConnectionId = object.hostConnectionId ?? "";
     message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: MsgSubmitActionAmino): MsgSubmitAction {
@@ -872,6 +886,9 @@ export const MsgSubmitAction = {
     if (object.hosted_config !== undefined && object.hosted_config !== null) {
       message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
     }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: MsgSubmitAction): MsgSubmitActionAmino {
@@ -895,6 +912,7 @@ export const MsgSubmitAction = {
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
     obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
     obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitActionAminoMsg): MsgSubmitAction {
@@ -986,7 +1004,8 @@ function createBaseMsgRegisterAccountAndSubmitAction(): MsgRegisterAccountAndSub
     feeFunds: [],
     configuration: undefined,
     version: "",
-    hostConnectionId: ""
+    hostConnectionId: "",
+    conditions: undefined
   };
 }
 export const MsgRegisterAccountAndSubmitAction = {
@@ -1034,6 +1053,9 @@ export const MsgRegisterAccountAndSubmitAction = {
     if (message.hostConnectionId !== "") {
       writer.uint32(90).string(message.hostConnectionId);
     }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(98).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAction {
@@ -1076,6 +1098,9 @@ export const MsgRegisterAccountAndSubmitAction = {
         case 11:
           message.hostConnectionId = reader.string();
           break;
+        case 12:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1096,6 +1121,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.version = object.version ?? "";
     message.hostConnectionId = object.hostConnectionId ?? "";
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: MsgRegisterAccountAndSubmitActionAmino): MsgRegisterAccountAndSubmitAction {
@@ -1129,6 +1155,9 @@ export const MsgRegisterAccountAndSubmitAction = {
     if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
       message.hostConnectionId = object.host_connection_id;
     }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: MsgRegisterAccountAndSubmitAction): MsgRegisterAccountAndSubmitActionAmino {
@@ -1152,6 +1181,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.version = message.version === "" ? undefined : message.version;
     obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgRegisterAccountAndSubmitActionAminoMsg): MsgRegisterAccountAndSubmitAction {
