@@ -265,6 +265,7 @@ export interface MsgUpdateAction {
   feeFunds: Coin[];
   configuration?: ExecutionConfiguration;
   hostedConfig?: HostedConfig;
+  conditions?: ExecutionConditions;
 }
 export interface MsgUpdateActionProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgUpdateAction";
@@ -290,6 +291,7 @@ export interface MsgUpdateActionAmino {
   fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
   hosted_config?: HostedConfigAmino;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface MsgUpdateActionAminoMsg {
   type: "/intento.intent.v1beta1.MsgUpdateAction";
@@ -308,6 +310,7 @@ export interface MsgUpdateActionSDKType {
   fee_funds: CoinSDKType[];
   configuration?: ExecutionConfigurationSDKType;
   hosted_config?: HostedConfigSDKType;
+  conditions?: ExecutionConditionsSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
 export interface MsgUpdateActionResponse {}
@@ -1273,7 +1276,8 @@ function createBaseMsgUpdateAction(): MsgUpdateAction {
     interval: "",
     feeFunds: [],
     configuration: undefined,
-    hostedConfig: undefined
+    hostedConfig: undefined,
+    conditions: undefined
   };
 }
 export const MsgUpdateAction = {
@@ -1321,6 +1325,9 @@ export const MsgUpdateAction = {
     if (message.hostedConfig !== undefined) {
       HostedConfig.encode(message.hostedConfig, writer.uint32(90).fork()).ldelim();
     }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(98).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAction {
@@ -1363,6 +1370,9 @@ export const MsgUpdateAction = {
         case 11:
           message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
           break;
+        case 12:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1383,6 +1393,7 @@ export const MsgUpdateAction = {
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateActionAmino): MsgUpdateAction {
@@ -1416,6 +1427,9 @@ export const MsgUpdateAction = {
     if (object.hosted_config !== undefined && object.hosted_config !== null) {
       message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
     }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: MsgUpdateAction): MsgUpdateActionAmino {
@@ -1439,6 +1453,7 @@ export const MsgUpdateAction = {
     }
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateActionAminoMsg): MsgUpdateAction {

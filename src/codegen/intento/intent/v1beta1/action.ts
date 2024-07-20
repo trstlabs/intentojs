@@ -319,7 +319,7 @@ export interface ExecutionConditions {
   /** Replace value with value from message or response from another action’s latest output */
   useResponseValue?: UseResponseValue;
   /** Comparison with response response value */
-  responseComparison?: ResponseComparision;
+  responseComparison?: ResponseComparison;
   /** optional array of dependent intents that when executing succesfully, stops execution */
   stopOnSuccessOf: bigint[];
   /** optional array of dependent intents that when not executing succesfully, stops execution */
@@ -338,7 +338,7 @@ export interface ExecutionConditionsAmino {
   /** Replace value with value from message or response from another action’s latest output */
   use_response_value?: UseResponseValueAmino;
   /** Comparison with response response value */
-  response_comparison?: ResponseComparisionAmino;
+  response_comparison?: ResponseComparisonAmino;
   /** optional array of dependent intents that when executing succesfully, stops execution */
   stop_on_success_of?: string[];
   /** optional array of dependent intents that when not executing succesfully, stops execution */
@@ -355,7 +355,7 @@ export interface ExecutionConditionsAminoMsg {
 /** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditionsSDKType {
   use_response_value?: UseResponseValueSDKType;
-  response_comparison?: ResponseComparisionSDKType;
+  response_comparison?: ResponseComparisonSDKType;
   stop_on_success_of: bigint[];
   stop_on_failure_of: bigint[];
   skip_on_failure_of: bigint[];
@@ -367,12 +367,13 @@ export interface UseResponseValue {
   actionId: bigint;
   /** index of the responses */
   responseIndex: number;
-  /** for example "amount" */
+  /** for example "Amount" */
   responseKey: string;
   /** index of the msg to replace */
   msgsIndex: number;
-  /** key of the message to replace (e.g. fromAddress) */
+  /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msgKey: string;
+  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   valueType: string;
 }
 export interface UseResponseValueProtoMsg {
@@ -385,12 +386,13 @@ export interface UseResponseValueAmino {
   action_id?: string;
   /** index of the responses */
   response_index?: number;
-  /** for example "amount" */
+  /** for example "Amount" */
   response_key?: string;
   /** index of the msg to replace */
   msgs_index?: number;
-  /** key of the message to replace (e.g. fromAddress) */
+  /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msg_key?: string;
+  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   value_type?: string;
 }
 export interface UseResponseValueAminoMsg {
@@ -406,38 +408,42 @@ export interface UseResponseValueSDKType {
   msg_key: string;
   value_type: string;
 }
-/** ResponseComparision is checked on the response in JSON before execution of action and outputs true or false */
-export interface ResponseComparision {
+/** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
+export interface ResponseComparison {
   /** action to get the latest response value from, optional */
   actionId: bigint;
   /** index of the response */
   responseIndex: number;
+  /** e.g. Amount[0].Amount, FromAddress */
   responseKey: string;
+  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   valueType: string;
   comparisonOperator: ComparisonOperator;
   comparisonOperand: string;
 }
-export interface ResponseComparisionProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.ResponseComparision";
+export interface ResponseComparisonProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.ResponseComparison";
   value: Uint8Array;
 }
-/** ResponseComparision is checked on the response in JSON before execution of action and outputs true or false */
-export interface ResponseComparisionAmino {
+/** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
+export interface ResponseComparisonAmino {
   /** action to get the latest response value from, optional */
   action_id?: string;
   /** index of the response */
   response_index?: number;
+  /** e.g. Amount[0].Amount, FromAddress */
   response_key?: string;
+  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   value_type?: string;
   comparison_operator?: ComparisonOperator;
   comparison_operand?: string;
 }
-export interface ResponseComparisionAminoMsg {
-  type: "/intento.intent.v1beta1.ResponseComparision";
-  value: ResponseComparisionAmino;
+export interface ResponseComparisonAminoMsg {
+  type: "/intento.intent.v1beta1.ResponseComparison";
+  value: ResponseComparisonAmino;
 }
-/** ResponseComparision is checked on the response in JSON before execution of action and outputs true or false */
-export interface ResponseComparisionSDKType {
+/** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
+export interface ResponseComparisonSDKType {
   action_id: bigint;
   response_index: number;
   response_key: string;
@@ -1243,7 +1249,7 @@ export const ExecutionConditions = {
       UseResponseValue.encode(message.useResponseValue, writer.uint32(18).fork()).ldelim();
     }
     if (message.responseComparison !== undefined) {
-      ResponseComparision.encode(message.responseComparison, writer.uint32(10).fork()).ldelim();
+      ResponseComparison.encode(message.responseComparison, writer.uint32(10).fork()).ldelim();
     }
     writer.uint32(42).fork();
     for (const v of message.stopOnSuccessOf) {
@@ -1278,7 +1284,7 @@ export const ExecutionConditions = {
           message.useResponseValue = UseResponseValue.decode(reader, reader.uint32());
           break;
         case 1:
-          message.responseComparison = ResponseComparision.decode(reader, reader.uint32());
+          message.responseComparison = ResponseComparison.decode(reader, reader.uint32());
           break;
         case 5:
           if ((tag & 7) === 2) {
@@ -1330,7 +1336,7 @@ export const ExecutionConditions = {
   fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
     const message = createBaseExecutionConditions();
     message.useResponseValue = object.useResponseValue !== undefined && object.useResponseValue !== null ? UseResponseValue.fromPartial(object.useResponseValue) : undefined;
-    message.responseComparison = object.responseComparison !== undefined && object.responseComparison !== null ? ResponseComparision.fromPartial(object.responseComparison) : undefined;
+    message.responseComparison = object.responseComparison !== undefined && object.responseComparison !== null ? ResponseComparison.fromPartial(object.responseComparison) : undefined;
     message.stopOnSuccessOf = object.stopOnSuccessOf?.map(e => BigInt(e.toString())) || [];
     message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
@@ -1343,7 +1349,7 @@ export const ExecutionConditions = {
       message.useResponseValue = UseResponseValue.fromAmino(object.use_response_value);
     }
     if (object.response_comparison !== undefined && object.response_comparison !== null) {
-      message.responseComparison = ResponseComparision.fromAmino(object.response_comparison);
+      message.responseComparison = ResponseComparison.fromAmino(object.response_comparison);
     }
     message.stopOnSuccessOf = object.stop_on_success_of?.map(e => BigInt(e)) || [];
     message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
@@ -1354,7 +1360,7 @@ export const ExecutionConditions = {
   toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
     const obj: any = {};
     obj.use_response_value = message.useResponseValue ? UseResponseValue.toAmino(message.useResponseValue) : undefined;
-    obj.response_comparison = message.responseComparison ? ResponseComparision.toAmino(message.responseComparison) : undefined;
+    obj.response_comparison = message.responseComparison ? ResponseComparison.toAmino(message.responseComparison) : undefined;
     if (message.stopOnSuccessOf) {
       obj.stop_on_success_of = message.stopOnSuccessOf.map(e => e.toString());
     } else {
@@ -1527,7 +1533,7 @@ export const UseResponseValue = {
   }
 };
 GlobalDecoderRegistry.register(UseResponseValue.typeUrl, UseResponseValue);
-function createBaseResponseComparision(): ResponseComparision {
+function createBaseResponseComparison(): ResponseComparison {
   return {
     actionId: BigInt(0),
     responseIndex: 0,
@@ -1537,18 +1543,18 @@ function createBaseResponseComparision(): ResponseComparision {
     comparisonOperand: ""
   };
 }
-export const ResponseComparision = {
-  typeUrl: "/intento.intent.v1beta1.ResponseComparision",
-  is(o: any): o is ResponseComparision {
-    return o && (o.$typeUrl === ResponseComparision.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.comparisonOperator) && typeof o.comparisonOperand === "string");
+export const ResponseComparison = {
+  typeUrl: "/intento.intent.v1beta1.ResponseComparison",
+  is(o: any): o is ResponseComparison {
+    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.comparisonOperator) && typeof o.comparisonOperand === "string");
   },
-  isSDK(o: any): o is ResponseComparisionSDKType {
-    return o && (o.$typeUrl === ResponseComparision.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
+  isSDK(o: any): o is ResponseComparisonSDKType {
+    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
   },
-  isAmino(o: any): o is ResponseComparisionAmino {
-    return o && (o.$typeUrl === ResponseComparision.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
+  isAmino(o: any): o is ResponseComparisonAmino {
+    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
   },
-  encode(message: ResponseComparision, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: ResponseComparison, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.actionId);
     }
@@ -1569,10 +1575,10 @@ export const ResponseComparision = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ResponseComparision {
+  decode(input: BinaryReader | Uint8Array, length?: number): ResponseComparison {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseResponseComparision();
+    const message = createBaseResponseComparison();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1601,8 +1607,8 @@ export const ResponseComparision = {
     }
     return message;
   },
-  fromPartial(object: Partial<ResponseComparision>): ResponseComparision {
-    const message = createBaseResponseComparision();
+  fromPartial(object: Partial<ResponseComparison>): ResponseComparison {
+    const message = createBaseResponseComparison();
     message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
     message.responseIndex = object.responseIndex ?? 0;
     message.responseKey = object.responseKey ?? "";
@@ -1611,8 +1617,8 @@ export const ResponseComparision = {
     message.comparisonOperand = object.comparisonOperand ?? "";
     return message;
   },
-  fromAmino(object: ResponseComparisionAmino): ResponseComparision {
-    const message = createBaseResponseComparision();
+  fromAmino(object: ResponseComparisonAmino): ResponseComparison {
+    const message = createBaseResponseComparison();
     if (object.action_id !== undefined && object.action_id !== null) {
       message.actionId = BigInt(object.action_id);
     }
@@ -1633,7 +1639,7 @@ export const ResponseComparision = {
     }
     return message;
   },
-  toAmino(message: ResponseComparision): ResponseComparisionAmino {
+  toAmino(message: ResponseComparison): ResponseComparisonAmino {
     const obj: any = {};
     obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
@@ -1643,20 +1649,20 @@ export const ResponseComparision = {
     obj.comparison_operand = message.comparisonOperand === "" ? undefined : message.comparisonOperand;
     return obj;
   },
-  fromAminoMsg(object: ResponseComparisionAminoMsg): ResponseComparision {
-    return ResponseComparision.fromAmino(object.value);
+  fromAminoMsg(object: ResponseComparisonAminoMsg): ResponseComparison {
+    return ResponseComparison.fromAmino(object.value);
   },
-  fromProtoMsg(message: ResponseComparisionProtoMsg): ResponseComparision {
-    return ResponseComparision.decode(message.value);
+  fromProtoMsg(message: ResponseComparisonProtoMsg): ResponseComparison {
+    return ResponseComparison.decode(message.value);
   },
-  toProto(message: ResponseComparision): Uint8Array {
-    return ResponseComparision.encode(message).finish();
+  toProto(message: ResponseComparison): Uint8Array {
+    return ResponseComparison.encode(message).finish();
   },
-  toProtoMsg(message: ResponseComparision): ResponseComparisionProtoMsg {
+  toProtoMsg(message: ResponseComparison): ResponseComparisonProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.ResponseComparision",
-      value: ResponseComparision.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.ResponseComparison",
+      value: ResponseComparison.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(ResponseComparision.typeUrl, ResponseComparision);
+GlobalDecoderRegistry.register(ResponseComparison.typeUrl, ResponseComparison);
