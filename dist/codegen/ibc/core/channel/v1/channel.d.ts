@@ -370,6 +370,8 @@ export declare const Channel: {
     isAmino(o: any): o is ChannelAmino;
     encode(message: Channel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Channel;
+    fromJSON(object: any): Channel;
+    toJSON(message: Channel): unknown;
     fromPartial(object: Partial<Channel>): Channel;
     fromAmino(object: ChannelAmino): Channel;
     toAmino(message: Channel): ChannelAmino;
@@ -387,6 +389,8 @@ export declare const IdentifiedChannel: {
     isAmino(o: any): o is IdentifiedChannelAmino;
     encode(message: IdentifiedChannel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedChannel;
+    fromJSON(object: any): IdentifiedChannel;
+    toJSON(message: IdentifiedChannel): unknown;
     fromPartial(object: Partial<IdentifiedChannel>): IdentifiedChannel;
     fromAmino(object: IdentifiedChannelAmino): IdentifiedChannel;
     toAmino(message: IdentifiedChannel): IdentifiedChannelAmino;
@@ -404,6 +408,8 @@ export declare const Counterparty: {
     isAmino(o: any): o is CounterpartyAmino;
     encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
+    fromJSON(object: any): Counterparty;
+    toJSON(message: Counterparty): unknown;
     fromPartial(object: Partial<Counterparty>): Counterparty;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
@@ -421,6 +427,8 @@ export declare const Packet: {
     isAmino(o: any): o is PacketAmino;
     encode(message: Packet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Packet;
+    fromJSON(object: any): Packet;
+    toJSON(message: Packet): unknown;
     fromPartial(object: Partial<Packet>): Packet;
     fromAmino(object: PacketAmino): Packet;
     toAmino(message: Packet): PacketAmino;
@@ -438,6 +446,8 @@ export declare const PacketState: {
     isAmino(o: any): o is PacketStateAmino;
     encode(message: PacketState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketState;
+    fromJSON(object: any): PacketState;
+    toJSON(message: PacketState): unknown;
     fromPartial(object: Partial<PacketState>): PacketState;
     fromAmino(object: PacketStateAmino): PacketState;
     toAmino(message: PacketState): PacketStateAmino;
@@ -455,6 +465,8 @@ export declare const Acknowledgement: {
     isAmino(o: any): o is AcknowledgementAmino;
     encode(message: Acknowledgement, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Acknowledgement;
+    fromJSON(object: any): Acknowledgement;
+    toJSON(message: Acknowledgement): unknown;
     fromPartial(object: Partial<Acknowledgement>): Acknowledgement;
     fromAmino(object: AcknowledgementAmino): Acknowledgement;
     toAmino(message: Acknowledgement): AcknowledgementAmino;

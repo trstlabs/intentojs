@@ -123,6 +123,8 @@ export declare const Coin: {
     isAmino(o: any): o is CoinAmino;
     encode(message: Coin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Coin;
+    fromJSON(object: any): Coin;
+    toJSON(message: Coin): unknown;
     fromPartial(object: Partial<Coin>): Coin;
     fromAmino(object: CoinAmino): Coin;
     toAmino(message: Coin): CoinAmino;
@@ -140,6 +142,8 @@ export declare const DecCoin: {
     isAmino(o: any): o is DecCoinAmino;
     encode(message: DecCoin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecCoin;
+    fromJSON(object: any): DecCoin;
+    toJSON(message: DecCoin): unknown;
     fromPartial(object: Partial<DecCoin>): DecCoin;
     fromAmino(object: DecCoinAmino): DecCoin;
     toAmino(message: DecCoin): DecCoinAmino;
@@ -157,6 +161,8 @@ export declare const IntProto: {
     isAmino(o: any): o is IntProtoAmino;
     encode(message: IntProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IntProto;
+    fromJSON(object: any): IntProto;
+    toJSON(message: IntProto): unknown;
     fromPartial(object: Partial<IntProto>): IntProto;
     fromAmino(object: IntProtoAmino): IntProto;
     toAmino(message: IntProto): IntProtoAmino;
@@ -174,6 +180,8 @@ export declare const DecProto: {
     isAmino(o: any): o is DecProtoAmino;
     encode(message: DecProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecProto;
+    fromJSON(object: any): DecProto;
+    toJSON(message: DecProto): unknown;
     fromPartial(object: Partial<DecProto>): DecProto;
     fromAmino(object: DecProtoAmino): DecProto;
     toAmino(message: DecProto): DecProtoAmino;

@@ -77,6 +77,8 @@ export declare const MultiSignature: {
     isAmino(o: any): o is MultiSignatureAmino;
     encode(message: MultiSignature, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MultiSignature;
+    fromJSON(object: any): MultiSignature;
+    toJSON(message: MultiSignature): unknown;
     fromPartial(object: Partial<MultiSignature>): MultiSignature;
     fromAmino(object: MultiSignatureAmino): MultiSignature;
     toAmino(message: MultiSignature): MultiSignatureAmino;
@@ -94,6 +96,8 @@ export declare const CompactBitArray: {
     isAmino(o: any): o is CompactBitArrayAmino;
     encode(message: CompactBitArray, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompactBitArray;
+    fromJSON(object: any): CompactBitArray;
+    toJSON(message: CompactBitArray): unknown;
     fromPartial(object: Partial<CompactBitArray>): CompactBitArray;
     fromAmino(object: CompactBitArrayAmino): CompactBitArray;
     toAmino(message: CompactBitArray): CompactBitArrayAmino;

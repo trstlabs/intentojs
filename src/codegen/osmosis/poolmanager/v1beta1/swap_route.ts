@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface SwapAmountInRoute {
   poolId: bigint;
@@ -86,6 +87,18 @@ export const SwapAmountInRoute = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SwapAmountInRoute {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      tokenOutDenom: isSet(object.tokenOutDenom) ? String(object.tokenOutDenom) : ""
+    };
+  },
+  toJSON(message: SwapAmountInRoute): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.tokenOutDenom !== undefined && (obj.tokenOutDenom = message.tokenOutDenom);
+    return obj;
   },
   fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute {
     const message = createBaseSwapAmountInRoute();
@@ -179,6 +192,18 @@ export const SwapAmountOutRoute = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SwapAmountOutRoute {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      tokenInDenom: isSet(object.tokenInDenom) ? String(object.tokenInDenom) : ""
+    };
+  },
+  toJSON(message: SwapAmountOutRoute): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.tokenInDenom !== undefined && (obj.tokenInDenom = message.tokenInDenom);
+    return obj;
   },
   fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute {
     const message = createBaseSwapAmountOutRoute();

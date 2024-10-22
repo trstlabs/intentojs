@@ -45,6 +45,16 @@ exports.MerkleRoot = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            hash: (0, helpers_1.isSet)(object.hash) ? (0, helpers_1.bytesFromBase64)(object.hash) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.hash !== undefined && (obj.hash = (0, helpers_1.base64FromBytes)(message.hash !== undefined ? message.hash : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMerkleRoot();
         message.hash = object.hash ?? new Uint8Array();
@@ -126,6 +136,16 @@ exports.MerklePrefix = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            keyPrefix: (0, helpers_1.isSet)(object.keyPrefix) ? (0, helpers_1.bytesFromBase64)(object.keyPrefix) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.keyPrefix !== undefined && (obj.keyPrefix = (0, helpers_1.base64FromBytes)(message.keyPrefix !== undefined ? message.keyPrefix : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMerklePrefix();
         message.keyPrefix = object.keyPrefix ?? new Uint8Array();
@@ -206,6 +226,21 @@ exports.MerklePath = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            keyPath: Array.isArray(object?.keyPath) ? object.keyPath.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.keyPath) {
+            obj.keyPath = message.keyPath.map(e => e);
+        }
+        else {
+            obj.keyPath = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMerklePath();
@@ -290,6 +325,21 @@ exports.MerkleProof = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            proofs: Array.isArray(object?.proofs) ? object.proofs.map((e) => proofs_1.CommitmentProof.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.proofs) {
+            obj.proofs = message.proofs.map(e => e ? proofs_1.CommitmentProof.toJSON(e) : undefined);
+        }
+        else {
+            obj.proofs = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMerkleProof();

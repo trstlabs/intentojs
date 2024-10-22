@@ -1,6 +1,6 @@
 {
   "name": "intentojs",
-  "version": "0.8.0-alpha.2",
+  "version": "0.8.0-alpha.7",
   "description": "package to interact with Intento",
   "author": "danieljdd <info@trstlabs.xyz>",
   "homepage": "https://github.com/trstlabs/intentojs#readme",
@@ -36,7 +36,7 @@
     "url": "https://github.com/trstlabs/intentojs/issues"
   },
   "devDependencies": {
-    "@cosmology/telescope": "1.4.12",
+    "@cosmology/telescope": "^1.4.12",
     "@types/jest": "^29.5.0",
     "eslint": "8.45.0",
     "eslint-config-prettier": "^8.8.0",

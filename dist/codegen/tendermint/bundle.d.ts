@@ -38,6 +38,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestAmino;
             encode(message: _75.Request, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Request;
+            fromJSON(object: any): _75.Request;
+            toJSON(message: _75.Request): unknown;
             fromPartial(object: Partial<_75.Request>): _75.Request;
             fromAmino(object: _75.RequestAmino): _75.Request;
             toAmino(message: _75.Request): _75.RequestAmino;
@@ -53,6 +55,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestEchoAmino;
             encode(message: _75.RequestEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestEcho;
+            fromJSON(object: any): _75.RequestEcho;
+            toJSON(message: _75.RequestEcho): unknown;
             fromPartial(object: Partial<_75.RequestEcho>): _75.RequestEcho;
             fromAmino(object: _75.RequestEchoAmino): _75.RequestEcho;
             toAmino(message: _75.RequestEcho): _75.RequestEchoAmino;
@@ -68,6 +72,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestFlushAmino;
             encode(_: _75.RequestFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestFlush;
+            fromJSON(_: any): _75.RequestFlush;
+            toJSON(_: _75.RequestFlush): unknown;
             fromPartial(_: Partial<_75.RequestFlush>): _75.RequestFlush;
             fromAmino(_: _75.RequestFlushAmino): _75.RequestFlush;
             toAmino(_: _75.RequestFlush): _75.RequestFlushAmino;
@@ -83,6 +89,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestInfoAmino;
             encode(message: _75.RequestInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestInfo;
+            fromJSON(object: any): _75.RequestInfo;
+            toJSON(message: _75.RequestInfo): unknown;
             fromPartial(object: Partial<_75.RequestInfo>): _75.RequestInfo;
             fromAmino(object: _75.RequestInfoAmino): _75.RequestInfo;
             toAmino(message: _75.RequestInfo): _75.RequestInfoAmino;
@@ -98,6 +106,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestSetOptionAmino;
             encode(message: _75.RequestSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestSetOption;
+            fromJSON(object: any): _75.RequestSetOption;
+            toJSON(message: _75.RequestSetOption): unknown;
             fromPartial(object: Partial<_75.RequestSetOption>): _75.RequestSetOption;
             fromAmino(object: _75.RequestSetOptionAmino): _75.RequestSetOption;
             toAmino(message: _75.RequestSetOption): _75.RequestSetOptionAmino;
@@ -113,6 +123,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestInitChainAmino;
             encode(message: _75.RequestInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestInitChain;
+            fromJSON(object: any): _75.RequestInitChain;
+            toJSON(message: _75.RequestInitChain): unknown;
             fromPartial(object: Partial<_75.RequestInitChain>): _75.RequestInitChain;
             fromAmino(object: _75.RequestInitChainAmino): _75.RequestInitChain;
             toAmino(message: _75.RequestInitChain): _75.RequestInitChainAmino;
@@ -128,6 +140,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestQueryAmino;
             encode(message: _75.RequestQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestQuery;
+            fromJSON(object: any): _75.RequestQuery;
+            toJSON(message: _75.RequestQuery): unknown;
             fromPartial(object: Partial<_75.RequestQuery>): _75.RequestQuery;
             fromAmino(object: _75.RequestQueryAmino): _75.RequestQuery;
             toAmino(message: _75.RequestQuery): _75.RequestQueryAmino;
@@ -143,6 +157,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestBeginBlockAmino;
             encode(message: _75.RequestBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestBeginBlock;
+            fromJSON(object: any): _75.RequestBeginBlock;
+            toJSON(message: _75.RequestBeginBlock): unknown;
             fromPartial(object: Partial<_75.RequestBeginBlock>): _75.RequestBeginBlock;
             fromAmino(object: _75.RequestBeginBlockAmino): _75.RequestBeginBlock;
             toAmino(message: _75.RequestBeginBlock): _75.RequestBeginBlockAmino;
@@ -158,6 +174,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestCheckTxAmino;
             encode(message: _75.RequestCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestCheckTx;
+            fromJSON(object: any): _75.RequestCheckTx;
+            toJSON(message: _75.RequestCheckTx): unknown;
             fromPartial(object: Partial<_75.RequestCheckTx>): _75.RequestCheckTx;
             fromAmino(object: _75.RequestCheckTxAmino): _75.RequestCheckTx;
             toAmino(message: _75.RequestCheckTx): _75.RequestCheckTxAmino;
@@ -173,6 +191,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestDeliverTxAmino;
             encode(message: _75.RequestDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestDeliverTx;
+            fromJSON(object: any): _75.RequestDeliverTx;
+            toJSON(message: _75.RequestDeliverTx): unknown;
             fromPartial(object: Partial<_75.RequestDeliverTx>): _75.RequestDeliverTx;
             fromAmino(object: _75.RequestDeliverTxAmino): _75.RequestDeliverTx;
             toAmino(message: _75.RequestDeliverTx): _75.RequestDeliverTxAmino;
@@ -188,6 +208,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestEndBlockAmino;
             encode(message: _75.RequestEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestEndBlock;
+            fromJSON(object: any): _75.RequestEndBlock;
+            toJSON(message: _75.RequestEndBlock): unknown;
             fromPartial(object: Partial<_75.RequestEndBlock>): _75.RequestEndBlock;
             fromAmino(object: _75.RequestEndBlockAmino): _75.RequestEndBlock;
             toAmino(message: _75.RequestEndBlock): _75.RequestEndBlockAmino;
@@ -203,6 +225,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestCommitAmino;
             encode(_: _75.RequestCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestCommit;
+            fromJSON(_: any): _75.RequestCommit;
+            toJSON(_: _75.RequestCommit): unknown;
             fromPartial(_: Partial<_75.RequestCommit>): _75.RequestCommit;
             fromAmino(_: _75.RequestCommitAmino): _75.RequestCommit;
             toAmino(_: _75.RequestCommit): _75.RequestCommitAmino;
@@ -218,6 +242,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestListSnapshotsAmino;
             encode(_: _75.RequestListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestListSnapshots;
+            fromJSON(_: any): _75.RequestListSnapshots;
+            toJSON(_: _75.RequestListSnapshots): unknown;
             fromPartial(_: Partial<_75.RequestListSnapshots>): _75.RequestListSnapshots;
             fromAmino(_: _75.RequestListSnapshotsAmino): _75.RequestListSnapshots;
             toAmino(_: _75.RequestListSnapshots): _75.RequestListSnapshotsAmino;
@@ -233,6 +259,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestOfferSnapshotAmino;
             encode(message: _75.RequestOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestOfferSnapshot;
+            fromJSON(object: any): _75.RequestOfferSnapshot;
+            toJSON(message: _75.RequestOfferSnapshot): unknown;
             fromPartial(object: Partial<_75.RequestOfferSnapshot>): _75.RequestOfferSnapshot;
             fromAmino(object: _75.RequestOfferSnapshotAmino): _75.RequestOfferSnapshot;
             toAmino(message: _75.RequestOfferSnapshot): _75.RequestOfferSnapshotAmino;
@@ -248,6 +276,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestLoadSnapshotChunkAmino;
             encode(message: _75.RequestLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestLoadSnapshotChunk;
+            fromJSON(object: any): _75.RequestLoadSnapshotChunk;
+            toJSON(message: _75.RequestLoadSnapshotChunk): unknown;
             fromPartial(object: Partial<_75.RequestLoadSnapshotChunk>): _75.RequestLoadSnapshotChunk;
             fromAmino(object: _75.RequestLoadSnapshotChunkAmino): _75.RequestLoadSnapshotChunk;
             toAmino(message: _75.RequestLoadSnapshotChunk): _75.RequestLoadSnapshotChunkAmino;
@@ -263,6 +293,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.RequestApplySnapshotChunkAmino;
             encode(message: _75.RequestApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RequestApplySnapshotChunk;
+            fromJSON(object: any): _75.RequestApplySnapshotChunk;
+            toJSON(message: _75.RequestApplySnapshotChunk): unknown;
             fromPartial(object: Partial<_75.RequestApplySnapshotChunk>): _75.RequestApplySnapshotChunk;
             fromAmino(object: _75.RequestApplySnapshotChunkAmino): _75.RequestApplySnapshotChunk;
             toAmino(message: _75.RequestApplySnapshotChunk): _75.RequestApplySnapshotChunkAmino;
@@ -278,6 +310,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseAmino;
             encode(message: _75.Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Response;
+            fromJSON(object: any): _75.Response;
+            toJSON(message: _75.Response): unknown;
             fromPartial(object: Partial<_75.Response>): _75.Response;
             fromAmino(object: _75.ResponseAmino): _75.Response;
             toAmino(message: _75.Response): _75.ResponseAmino;
@@ -293,6 +327,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseExceptionAmino;
             encode(message: _75.ResponseException, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseException;
+            fromJSON(object: any): _75.ResponseException;
+            toJSON(message: _75.ResponseException): unknown;
             fromPartial(object: Partial<_75.ResponseException>): _75.ResponseException;
             fromAmino(object: _75.ResponseExceptionAmino): _75.ResponseException;
             toAmino(message: _75.ResponseException): _75.ResponseExceptionAmino;
@@ -308,6 +344,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseEchoAmino;
             encode(message: _75.ResponseEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseEcho;
+            fromJSON(object: any): _75.ResponseEcho;
+            toJSON(message: _75.ResponseEcho): unknown;
             fromPartial(object: Partial<_75.ResponseEcho>): _75.ResponseEcho;
             fromAmino(object: _75.ResponseEchoAmino): _75.ResponseEcho;
             toAmino(message: _75.ResponseEcho): _75.ResponseEchoAmino;
@@ -323,6 +361,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseFlushAmino;
             encode(_: _75.ResponseFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseFlush;
+            fromJSON(_: any): _75.ResponseFlush;
+            toJSON(_: _75.ResponseFlush): unknown;
             fromPartial(_: Partial<_75.ResponseFlush>): _75.ResponseFlush;
             fromAmino(_: _75.ResponseFlushAmino): _75.ResponseFlush;
             toAmino(_: _75.ResponseFlush): _75.ResponseFlushAmino;
@@ -338,6 +378,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseInfoAmino;
             encode(message: _75.ResponseInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseInfo;
+            fromJSON(object: any): _75.ResponseInfo;
+            toJSON(message: _75.ResponseInfo): unknown;
             fromPartial(object: Partial<_75.ResponseInfo>): _75.ResponseInfo;
             fromAmino(object: _75.ResponseInfoAmino): _75.ResponseInfo;
             toAmino(message: _75.ResponseInfo): _75.ResponseInfoAmino;
@@ -353,6 +395,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseSetOptionAmino;
             encode(message: _75.ResponseSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseSetOption;
+            fromJSON(object: any): _75.ResponseSetOption;
+            toJSON(message: _75.ResponseSetOption): unknown;
             fromPartial(object: Partial<_75.ResponseSetOption>): _75.ResponseSetOption;
             fromAmino(object: _75.ResponseSetOptionAmino): _75.ResponseSetOption;
             toAmino(message: _75.ResponseSetOption): _75.ResponseSetOptionAmino;
@@ -368,6 +412,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseInitChainAmino;
             encode(message: _75.ResponseInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseInitChain;
+            fromJSON(object: any): _75.ResponseInitChain;
+            toJSON(message: _75.ResponseInitChain): unknown;
             fromPartial(object: Partial<_75.ResponseInitChain>): _75.ResponseInitChain;
             fromAmino(object: _75.ResponseInitChainAmino): _75.ResponseInitChain;
             toAmino(message: _75.ResponseInitChain): _75.ResponseInitChainAmino;
@@ -383,6 +429,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseQueryAmino;
             encode(message: _75.ResponseQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseQuery;
+            fromJSON(object: any): _75.ResponseQuery;
+            toJSON(message: _75.ResponseQuery): unknown;
             fromPartial(object: Partial<_75.ResponseQuery>): _75.ResponseQuery;
             fromAmino(object: _75.ResponseQueryAmino): _75.ResponseQuery;
             toAmino(message: _75.ResponseQuery): _75.ResponseQueryAmino;
@@ -398,6 +446,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseBeginBlockAmino;
             encode(message: _75.ResponseBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseBeginBlock;
+            fromJSON(object: any): _75.ResponseBeginBlock;
+            toJSON(message: _75.ResponseBeginBlock): unknown;
             fromPartial(object: Partial<_75.ResponseBeginBlock>): _75.ResponseBeginBlock;
             fromAmino(object: _75.ResponseBeginBlockAmino): _75.ResponseBeginBlock;
             toAmino(message: _75.ResponseBeginBlock): _75.ResponseBeginBlockAmino;
@@ -413,6 +463,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseCheckTxAmino;
             encode(message: _75.ResponseCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseCheckTx;
+            fromJSON(object: any): _75.ResponseCheckTx;
+            toJSON(message: _75.ResponseCheckTx): unknown;
             fromPartial(object: Partial<_75.ResponseCheckTx>): _75.ResponseCheckTx;
             fromAmino(object: _75.ResponseCheckTxAmino): _75.ResponseCheckTx;
             toAmino(message: _75.ResponseCheckTx): _75.ResponseCheckTxAmino;
@@ -428,6 +480,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseDeliverTxAmino;
             encode(message: _75.ResponseDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseDeliverTx;
+            fromJSON(object: any): _75.ResponseDeliverTx;
+            toJSON(message: _75.ResponseDeliverTx): unknown;
             fromPartial(object: Partial<_75.ResponseDeliverTx>): _75.ResponseDeliverTx;
             fromAmino(object: _75.ResponseDeliverTxAmino): _75.ResponseDeliverTx;
             toAmino(message: _75.ResponseDeliverTx): _75.ResponseDeliverTxAmino;
@@ -443,6 +497,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseEndBlockAmino;
             encode(message: _75.ResponseEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseEndBlock;
+            fromJSON(object: any): _75.ResponseEndBlock;
+            toJSON(message: _75.ResponseEndBlock): unknown;
             fromPartial(object: Partial<_75.ResponseEndBlock>): _75.ResponseEndBlock;
             fromAmino(object: _75.ResponseEndBlockAmino): _75.ResponseEndBlock;
             toAmino(message: _75.ResponseEndBlock): _75.ResponseEndBlockAmino;
@@ -458,6 +514,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseCommitAmino;
             encode(message: _75.ResponseCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseCommit;
+            fromJSON(object: any): _75.ResponseCommit;
+            toJSON(message: _75.ResponseCommit): unknown;
             fromPartial(object: Partial<_75.ResponseCommit>): _75.ResponseCommit;
             fromAmino(object: _75.ResponseCommitAmino): _75.ResponseCommit;
             toAmino(message: _75.ResponseCommit): _75.ResponseCommitAmino;
@@ -473,6 +531,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseListSnapshotsAmino;
             encode(message: _75.ResponseListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseListSnapshots;
+            fromJSON(object: any): _75.ResponseListSnapshots;
+            toJSON(message: _75.ResponseListSnapshots): unknown;
             fromPartial(object: Partial<_75.ResponseListSnapshots>): _75.ResponseListSnapshots;
             fromAmino(object: _75.ResponseListSnapshotsAmino): _75.ResponseListSnapshots;
             toAmino(message: _75.ResponseListSnapshots): _75.ResponseListSnapshotsAmino;
@@ -488,6 +548,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseOfferSnapshotAmino;
             encode(message: _75.ResponseOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseOfferSnapshot;
+            fromJSON(object: any): _75.ResponseOfferSnapshot;
+            toJSON(message: _75.ResponseOfferSnapshot): unknown;
             fromPartial(object: Partial<_75.ResponseOfferSnapshot>): _75.ResponseOfferSnapshot;
             fromAmino(object: _75.ResponseOfferSnapshotAmino): _75.ResponseOfferSnapshot;
             toAmino(message: _75.ResponseOfferSnapshot): _75.ResponseOfferSnapshotAmino;
@@ -503,6 +565,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseLoadSnapshotChunkAmino;
             encode(message: _75.ResponseLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseLoadSnapshotChunk;
+            fromJSON(object: any): _75.ResponseLoadSnapshotChunk;
+            toJSON(message: _75.ResponseLoadSnapshotChunk): unknown;
             fromPartial(object: Partial<_75.ResponseLoadSnapshotChunk>): _75.ResponseLoadSnapshotChunk;
             fromAmino(object: _75.ResponseLoadSnapshotChunkAmino): _75.ResponseLoadSnapshotChunk;
             toAmino(message: _75.ResponseLoadSnapshotChunk): _75.ResponseLoadSnapshotChunkAmino;
@@ -518,6 +582,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ResponseApplySnapshotChunkAmino;
             encode(message: _75.ResponseApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ResponseApplySnapshotChunk;
+            fromJSON(object: any): _75.ResponseApplySnapshotChunk;
+            toJSON(message: _75.ResponseApplySnapshotChunk): unknown;
             fromPartial(object: Partial<_75.ResponseApplySnapshotChunk>): _75.ResponseApplySnapshotChunk;
             fromAmino(object: _75.ResponseApplySnapshotChunkAmino): _75.ResponseApplySnapshotChunk;
             toAmino(message: _75.ResponseApplySnapshotChunk): _75.ResponseApplySnapshotChunkAmino;
@@ -533,6 +599,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ConsensusParamsAmino;
             encode(message: _75.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ConsensusParams;
+            fromJSON(object: any): _75.ConsensusParams;
+            toJSON(message: _75.ConsensusParams): unknown;
             fromPartial(object: Partial<_75.ConsensusParams>): _75.ConsensusParams;
             fromAmino(object: _75.ConsensusParamsAmino): _75.ConsensusParams;
             toAmino(message: _75.ConsensusParams): _75.ConsensusParamsAmino;
@@ -548,6 +616,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.BlockParamsAmino;
             encode(message: _75.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.BlockParams;
+            fromJSON(object: any): _75.BlockParams;
+            toJSON(message: _75.BlockParams): unknown;
             fromPartial(object: Partial<_75.BlockParams>): _75.BlockParams;
             fromAmino(object: _75.BlockParamsAmino): _75.BlockParams;
             toAmino(message: _75.BlockParams): _75.BlockParamsAmino;
@@ -563,6 +633,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.LastCommitInfoAmino;
             encode(message: _75.LastCommitInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.LastCommitInfo;
+            fromJSON(object: any): _75.LastCommitInfo;
+            toJSON(message: _75.LastCommitInfo): unknown;
             fromPartial(object: Partial<_75.LastCommitInfo>): _75.LastCommitInfo;
             fromAmino(object: _75.LastCommitInfoAmino): _75.LastCommitInfo;
             toAmino(message: _75.LastCommitInfo): _75.LastCommitInfoAmino;
@@ -578,6 +650,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.EventAmino;
             encode(message: _75.Event, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Event;
+            fromJSON(object: any): _75.Event;
+            toJSON(message: _75.Event): unknown;
             fromPartial(object: Partial<_75.Event>): _75.Event;
             fromAmino(object: _75.EventAmino): _75.Event;
             toAmino(message: _75.Event): _75.EventAmino;
@@ -593,6 +667,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.EventAttributeAmino;
             encode(message: _75.EventAttribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.EventAttribute;
+            fromJSON(object: any): _75.EventAttribute;
+            toJSON(message: _75.EventAttribute): unknown;
             fromPartial(object: Partial<_75.EventAttribute>): _75.EventAttribute;
             fromAmino(object: _75.EventAttributeAmino): _75.EventAttribute;
             toAmino(message: _75.EventAttribute): _75.EventAttributeAmino;
@@ -608,6 +684,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.TxResultAmino;
             encode(message: _75.TxResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.TxResult;
+            fromJSON(object: any): _75.TxResult;
+            toJSON(message: _75.TxResult): unknown;
             fromPartial(object: Partial<_75.TxResult>): _75.TxResult;
             fromAmino(object: _75.TxResultAmino): _75.TxResult;
             toAmino(message: _75.TxResult): _75.TxResultAmino;
@@ -623,6 +701,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ValidatorAmino;
             encode(message: _75.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Validator;
+            fromJSON(object: any): _75.Validator;
+            toJSON(message: _75.Validator): unknown;
             fromPartial(object: Partial<_75.Validator>): _75.Validator;
             fromAmino(object: _75.ValidatorAmino): _75.Validator;
             toAmino(message: _75.Validator): _75.ValidatorAmino;
@@ -638,6 +718,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.ValidatorUpdateAmino;
             encode(message: _75.ValidatorUpdate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ValidatorUpdate;
+            fromJSON(object: any): _75.ValidatorUpdate;
+            toJSON(message: _75.ValidatorUpdate): unknown;
             fromPartial(object: Partial<_75.ValidatorUpdate>): _75.ValidatorUpdate;
             fromAmino(object: _75.ValidatorUpdateAmino): _75.ValidatorUpdate;
             toAmino(message: _75.ValidatorUpdate): _75.ValidatorUpdateAmino;
@@ -653,6 +735,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.VoteInfoAmino;
             encode(message: _75.VoteInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.VoteInfo;
+            fromJSON(object: any): _75.VoteInfo;
+            toJSON(message: _75.VoteInfo): unknown;
             fromPartial(object: Partial<_75.VoteInfo>): _75.VoteInfo;
             fromAmino(object: _75.VoteInfoAmino): _75.VoteInfo;
             toAmino(message: _75.VoteInfo): _75.VoteInfoAmino;
@@ -668,6 +752,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.EvidenceAmino;
             encode(message: _75.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Evidence;
+            fromJSON(object: any): _75.Evidence;
+            toJSON(message: _75.Evidence): unknown;
             fromPartial(object: Partial<_75.Evidence>): _75.Evidence;
             fromAmino(object: _75.EvidenceAmino): _75.Evidence;
             toAmino(message: _75.Evidence): _75.EvidenceAmino;
@@ -683,6 +769,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _75.SnapshotAmino;
             encode(message: _75.Snapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Snapshot;
+            fromJSON(object: any): _75.Snapshot;
+            toJSON(message: _75.Snapshot): unknown;
             fromPartial(object: Partial<_75.Snapshot>): _75.Snapshot;
             fromAmino(object: _75.SnapshotAmino): _75.Snapshot;
             toAmino(message: _75.Snapshot): _75.SnapshotAmino;
@@ -700,6 +788,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _77.ProofAmino;
             encode(message: _77.Proof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.Proof;
+            fromJSON(object: any): _77.Proof;
+            toJSON(message: _77.Proof): unknown;
             fromPartial(object: Partial<_77.Proof>): _77.Proof;
             fromAmino(object: _77.ProofAmino): _77.Proof;
             toAmino(message: _77.Proof): _77.ProofAmino;
@@ -715,6 +805,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _77.ValueOpAmino;
             encode(message: _77.ValueOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.ValueOp;
+            fromJSON(object: any): _77.ValueOp;
+            toJSON(message: _77.ValueOp): unknown;
             fromPartial(object: Partial<_77.ValueOp>): _77.ValueOp;
             fromAmino(object: _77.ValueOpAmino): _77.ValueOp;
             toAmino(message: _77.ValueOp): _77.ValueOpAmino;
@@ -730,6 +822,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _77.DominoOpAmino;
             encode(message: _77.DominoOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.DominoOp;
+            fromJSON(object: any): _77.DominoOp;
+            toJSON(message: _77.DominoOp): unknown;
             fromPartial(object: Partial<_77.DominoOp>): _77.DominoOp;
             fromAmino(object: _77.DominoOpAmino): _77.DominoOp;
             toAmino(message: _77.DominoOp): _77.DominoOpAmino;
@@ -745,6 +839,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _77.ProofOpAmino;
             encode(message: _77.ProofOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.ProofOp;
+            fromJSON(object: any): _77.ProofOp;
+            toJSON(message: _77.ProofOp): unknown;
             fromPartial(object: Partial<_77.ProofOp>): _77.ProofOp;
             fromAmino(object: _77.ProofOpAmino): _77.ProofOp;
             toAmino(message: _77.ProofOp): _77.ProofOpAmino;
@@ -760,6 +856,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _77.ProofOpsAmino;
             encode(message: _77.ProofOps, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.ProofOps;
+            fromJSON(object: any): _77.ProofOps;
+            toJSON(message: _77.ProofOps): unknown;
             fromPartial(object: Partial<_77.ProofOps>): _77.ProofOps;
             fromAmino(object: _77.ProofOpsAmino): _77.ProofOps;
             toAmino(message: _77.ProofOps): _77.ProofOpsAmino;
@@ -775,6 +873,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _76.PublicKeyAmino;
             encode(message: _76.PublicKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.PublicKey;
+            fromJSON(object: any): _76.PublicKey;
+            toJSON(message: _76.PublicKey): unknown;
             fromPartial(object: Partial<_76.PublicKey>): _76.PublicKey;
             fromAmino(object: _76.PublicKeyAmino): _76.PublicKey;
             toAmino(message: _76.PublicKey): _76.PublicKeyAmino;
@@ -793,6 +893,8 @@ export declare namespace tendermint {
                 isAmino(o: any): o is _78.BitArrayAmino;
                 encode(message: _78.BitArray, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.BitArray;
+                fromJSON(object: any): _78.BitArray;
+                toJSON(message: _78.BitArray): unknown;
                 fromPartial(object: Partial<_78.BitArray>): _78.BitArray;
                 fromAmino(object: _78.BitArrayAmino): _78.BitArray;
                 toAmino(message: _78.BitArray): _78.BitArrayAmino;
@@ -811,6 +913,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _79.ProtocolVersionAmino;
             encode(message: _79.ProtocolVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ProtocolVersion;
+            fromJSON(object: any): _79.ProtocolVersion;
+            toJSON(message: _79.ProtocolVersion): unknown;
             fromPartial(object: Partial<_79.ProtocolVersion>): _79.ProtocolVersion;
             fromAmino(object: _79.ProtocolVersionAmino): _79.ProtocolVersion;
             toAmino(message: _79.ProtocolVersion): _79.ProtocolVersionAmino;
@@ -826,6 +930,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _79.NodeInfoAmino;
             encode(message: _79.NodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.NodeInfo;
+            fromJSON(object: any): _79.NodeInfo;
+            toJSON(message: _79.NodeInfo): unknown;
             fromPartial(object: Partial<_79.NodeInfo>): _79.NodeInfo;
             fromAmino(object: _79.NodeInfoAmino): _79.NodeInfo;
             toAmino(message: _79.NodeInfo): _79.NodeInfoAmino;
@@ -841,6 +947,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _79.NodeInfoOtherAmino;
             encode(message: _79.NodeInfoOther, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.NodeInfoOther;
+            fromJSON(object: any): _79.NodeInfoOther;
+            toJSON(message: _79.NodeInfoOther): unknown;
             fromPartial(object: Partial<_79.NodeInfoOther>): _79.NodeInfoOther;
             fromAmino(object: _79.NodeInfoOtherAmino): _79.NodeInfoOther;
             toAmino(message: _79.NodeInfoOther): _79.NodeInfoOtherAmino;
@@ -856,6 +964,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _79.PeerInfoAmino;
             encode(message: _79.PeerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.PeerInfo;
+            fromJSON(object: any): _79.PeerInfo;
+            toJSON(message: _79.PeerInfo): unknown;
             fromPartial(object: Partial<_79.PeerInfo>): _79.PeerInfo;
             fromAmino(object: _79.PeerInfoAmino): _79.PeerInfo;
             toAmino(message: _79.PeerInfo): _79.PeerInfoAmino;
@@ -871,6 +981,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _79.PeerAddressInfoAmino;
             encode(message: _79.PeerAddressInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.PeerAddressInfo;
+            fromJSON(object: any): _79.PeerAddressInfo;
+            toJSON(message: _79.PeerAddressInfo): unknown;
             fromPartial(object: Partial<_79.PeerAddressInfo>): _79.PeerAddressInfo;
             fromAmino(object: _79.PeerAddressInfoAmino): _79.PeerAddressInfo;
             toAmino(message: _79.PeerAddressInfo): _79.PeerAddressInfoAmino;
@@ -888,6 +1000,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _84.ValidatorSetAmino;
             encode(message: _84.ValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.ValidatorSet;
+            fromJSON(object: any): _84.ValidatorSet;
+            toJSON(message: _84.ValidatorSet): unknown;
             fromPartial(object: Partial<_84.ValidatorSet>): _84.ValidatorSet;
             fromAmino(object: _84.ValidatorSetAmino): _84.ValidatorSet;
             toAmino(message: _84.ValidatorSet): _84.ValidatorSetAmino;
@@ -903,6 +1017,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _84.ValidatorAmino;
             encode(message: _84.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Validator;
+            fromJSON(object: any): _84.Validator;
+            toJSON(message: _84.Validator): unknown;
             fromPartial(object: Partial<_84.Validator>): _84.Validator;
             fromAmino(object: _84.ValidatorAmino): _84.Validator;
             toAmino(message: _84.Validator): _84.ValidatorAmino;
@@ -918,6 +1034,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _84.SimpleValidatorAmino;
             encode(message: _84.SimpleValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.SimpleValidator;
+            fromJSON(object: any): _84.SimpleValidator;
+            toJSON(message: _84.SimpleValidator): unknown;
             fromPartial(object: Partial<_84.SimpleValidator>): _84.SimpleValidator;
             fromAmino(object: _84.SimpleValidatorAmino): _84.SimpleValidator;
             toAmino(message: _84.SimpleValidator): _84.SimpleValidatorAmino;
@@ -943,6 +1061,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.PartSetHeaderAmino;
             encode(message: _83.PartSetHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.PartSetHeader;
+            fromJSON(object: any): _83.PartSetHeader;
+            toJSON(message: _83.PartSetHeader): unknown;
             fromPartial(object: Partial<_83.PartSetHeader>): _83.PartSetHeader;
             fromAmino(object: _83.PartSetHeaderAmino): _83.PartSetHeader;
             toAmino(message: _83.PartSetHeader): _83.PartSetHeaderAmino;
@@ -958,6 +1078,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.PartAmino;
             encode(message: _83.Part, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Part;
+            fromJSON(object: any): _83.Part;
+            toJSON(message: _83.Part): unknown;
             fromPartial(object: Partial<_83.Part>): _83.Part;
             fromAmino(object: _83.PartAmino): _83.Part;
             toAmino(message: _83.Part): _83.PartAmino;
@@ -973,6 +1095,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.BlockIDAmino;
             encode(message: _83.BlockID, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.BlockID;
+            fromJSON(object: any): _83.BlockID;
+            toJSON(message: _83.BlockID): unknown;
             fromPartial(object: Partial<_83.BlockID>): _83.BlockID;
             fromAmino(object: _83.BlockIDAmino): _83.BlockID;
             toAmino(message: _83.BlockID): _83.BlockIDAmino;
@@ -988,6 +1112,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.HeaderAmino;
             encode(message: _83.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Header;
+            fromJSON(object: any): _83.Header;
+            toJSON(message: _83.Header): unknown;
             fromPartial(object: Partial<_83.Header>): _83.Header;
             fromAmino(object: _83.HeaderAmino): _83.Header;
             toAmino(message: _83.Header): _83.HeaderAmino;
@@ -1003,6 +1129,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.DataAmino;
             encode(message: _83.Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Data;
+            fromJSON(object: any): _83.Data;
+            toJSON(message: _83.Data): unknown;
             fromPartial(object: Partial<_83.Data>): _83.Data;
             fromAmino(object: _83.DataAmino): _83.Data;
             toAmino(message: _83.Data): _83.DataAmino;
@@ -1018,6 +1146,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.VoteAmino;
             encode(message: _83.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Vote;
+            fromJSON(object: any): _83.Vote;
+            toJSON(message: _83.Vote): unknown;
             fromPartial(object: Partial<_83.Vote>): _83.Vote;
             fromAmino(object: _83.VoteAmino): _83.Vote;
             toAmino(message: _83.Vote): _83.VoteAmino;
@@ -1033,6 +1163,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.CommitAmino;
             encode(message: _83.Commit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Commit;
+            fromJSON(object: any): _83.Commit;
+            toJSON(message: _83.Commit): unknown;
             fromPartial(object: Partial<_83.Commit>): _83.Commit;
             fromAmino(object: _83.CommitAmino): _83.Commit;
             toAmino(message: _83.Commit): _83.CommitAmino;
@@ -1048,6 +1180,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.CommitSigAmino;
             encode(message: _83.CommitSig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.CommitSig;
+            fromJSON(object: any): _83.CommitSig;
+            toJSON(message: _83.CommitSig): unknown;
             fromPartial(object: Partial<_83.CommitSig>): _83.CommitSig;
             fromAmino(object: _83.CommitSigAmino): _83.CommitSig;
             toAmino(message: _83.CommitSig): _83.CommitSigAmino;
@@ -1063,6 +1197,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.ProposalAmino;
             encode(message: _83.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Proposal;
+            fromJSON(object: any): _83.Proposal;
+            toJSON(message: _83.Proposal): unknown;
             fromPartial(object: Partial<_83.Proposal>): _83.Proposal;
             fromAmino(object: _83.ProposalAmino): _83.Proposal;
             toAmino(message: _83.Proposal): _83.ProposalAmino;
@@ -1078,6 +1214,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.SignedHeaderAmino;
             encode(message: _83.SignedHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.SignedHeader;
+            fromJSON(object: any): _83.SignedHeader;
+            toJSON(message: _83.SignedHeader): unknown;
             fromPartial(object: Partial<_83.SignedHeader>): _83.SignedHeader;
             fromAmino(object: _83.SignedHeaderAmino): _83.SignedHeader;
             toAmino(message: _83.SignedHeader): _83.SignedHeaderAmino;
@@ -1093,6 +1231,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.LightBlockAmino;
             encode(message: _83.LightBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.LightBlock;
+            fromJSON(object: any): _83.LightBlock;
+            toJSON(message: _83.LightBlock): unknown;
             fromPartial(object: Partial<_83.LightBlock>): _83.LightBlock;
             fromAmino(object: _83.LightBlockAmino): _83.LightBlock;
             toAmino(message: _83.LightBlock): _83.LightBlockAmino;
@@ -1108,6 +1248,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.BlockMetaAmino;
             encode(message: _83.BlockMeta, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.BlockMeta;
+            fromJSON(object: any): _83.BlockMeta;
+            toJSON(message: _83.BlockMeta): unknown;
             fromPartial(object: Partial<_83.BlockMeta>): _83.BlockMeta;
             fromAmino(object: _83.BlockMetaAmino): _83.BlockMeta;
             toAmino(message: _83.BlockMeta): _83.BlockMetaAmino;
@@ -1123,6 +1265,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _83.TxProofAmino;
             encode(message: _83.TxProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.TxProof;
+            fromJSON(object: any): _83.TxProof;
+            toJSON(message: _83.TxProof): unknown;
             fromPartial(object: Partial<_83.TxProof>): _83.TxProof;
             fromAmino(object: _83.TxProofAmino): _83.TxProof;
             toAmino(message: _83.TxProof): _83.TxProofAmino;
@@ -1138,6 +1282,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _82.ConsensusParamsAmino;
             encode(message: _82.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ConsensusParams;
+            fromJSON(object: any): _82.ConsensusParams;
+            toJSON(message: _82.ConsensusParams): unknown;
             fromPartial(object: Partial<_82.ConsensusParams>): _82.ConsensusParams;
             fromAmino(object: _82.ConsensusParamsAmino): _82.ConsensusParams;
             toAmino(message: _82.ConsensusParams): _82.ConsensusParamsAmino;
@@ -1153,6 +1299,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _82.BlockParamsAmino;
             encode(message: _82.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.BlockParams;
+            fromJSON(object: any): _82.BlockParams;
+            toJSON(message: _82.BlockParams): unknown;
             fromPartial(object: Partial<_82.BlockParams>): _82.BlockParams;
             fromAmino(object: _82.BlockParamsAmino): _82.BlockParams;
             toAmino(message: _82.BlockParams): _82.BlockParamsAmino;
@@ -1168,6 +1316,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _82.EvidenceParamsAmino;
             encode(message: _82.EvidenceParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.EvidenceParams;
+            fromJSON(object: any): _82.EvidenceParams;
+            toJSON(message: _82.EvidenceParams): unknown;
             fromPartial(object: Partial<_82.EvidenceParams>): _82.EvidenceParams;
             fromAmino(object: _82.EvidenceParamsAmino): _82.EvidenceParams;
             toAmino(message: _82.EvidenceParams): _82.EvidenceParamsAmino;
@@ -1183,6 +1333,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _82.ValidatorParamsAmino;
             encode(message: _82.ValidatorParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ValidatorParams;
+            fromJSON(object: any): _82.ValidatorParams;
+            toJSON(message: _82.ValidatorParams): unknown;
             fromPartial(object: Partial<_82.ValidatorParams>): _82.ValidatorParams;
             fromAmino(object: _82.ValidatorParamsAmino): _82.ValidatorParams;
             toAmino(message: _82.ValidatorParams): _82.ValidatorParamsAmino;
@@ -1198,6 +1350,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _82.VersionParamsAmino;
             encode(message: _82.VersionParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.VersionParams;
+            fromJSON(object: any): _82.VersionParams;
+            toJSON(message: _82.VersionParams): unknown;
             fromPartial(object: Partial<_82.VersionParams>): _82.VersionParams;
             fromAmino(object: _82.VersionParamsAmino): _82.VersionParams;
             toAmino(message: _82.VersionParams): _82.VersionParamsAmino;
@@ -1213,6 +1367,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _82.HashedParamsAmino;
             encode(message: _82.HashedParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.HashedParams;
+            fromJSON(object: any): _82.HashedParams;
+            toJSON(message: _82.HashedParams): unknown;
             fromPartial(object: Partial<_82.HashedParams>): _82.HashedParams;
             fromAmino(object: _82.HashedParamsAmino): _82.HashedParams;
             toAmino(message: _82.HashedParams): _82.HashedParamsAmino;
@@ -1228,6 +1384,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _81.EvidenceAmino;
             encode(message: _81.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Evidence;
+            fromJSON(object: any): _81.Evidence;
+            toJSON(message: _81.Evidence): unknown;
             fromPartial(object: Partial<_81.Evidence>): _81.Evidence;
             fromAmino(object: _81.EvidenceAmino): _81.Evidence;
             toAmino(message: _81.Evidence): _81.EvidenceAmino;
@@ -1243,6 +1401,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _81.DuplicateVoteEvidenceAmino;
             encode(message: _81.DuplicateVoteEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.DuplicateVoteEvidence;
+            fromJSON(object: any): _81.DuplicateVoteEvidence;
+            toJSON(message: _81.DuplicateVoteEvidence): unknown;
             fromPartial(object: Partial<_81.DuplicateVoteEvidence>): _81.DuplicateVoteEvidence;
             fromAmino(object: _81.DuplicateVoteEvidenceAmino): _81.DuplicateVoteEvidence;
             toAmino(message: _81.DuplicateVoteEvidence): _81.DuplicateVoteEvidenceAmino;
@@ -1258,6 +1418,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _81.LightClientAttackEvidenceAmino;
             encode(message: _81.LightClientAttackEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.LightClientAttackEvidence;
+            fromJSON(object: any): _81.LightClientAttackEvidence;
+            toJSON(message: _81.LightClientAttackEvidence): unknown;
             fromPartial(object: Partial<_81.LightClientAttackEvidence>): _81.LightClientAttackEvidence;
             fromAmino(object: _81.LightClientAttackEvidenceAmino): _81.LightClientAttackEvidence;
             toAmino(message: _81.LightClientAttackEvidence): _81.LightClientAttackEvidenceAmino;
@@ -1273,6 +1435,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _81.EvidenceListAmino;
             encode(message: _81.EvidenceList, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.EvidenceList;
+            fromJSON(object: any): _81.EvidenceList;
+            toJSON(message: _81.EvidenceList): unknown;
             fromPartial(object: Partial<_81.EvidenceList>): _81.EvidenceList;
             fromAmino(object: _81.EvidenceListAmino): _81.EvidenceList;
             toAmino(message: _81.EvidenceList): _81.EvidenceListAmino;
@@ -1288,6 +1452,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _80.BlockAmino;
             encode(message: _80.Block, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.Block;
+            fromJSON(object: any): _80.Block;
+            toJSON(message: _80.Block): unknown;
             fromPartial(object: Partial<_80.Block>): _80.Block;
             fromAmino(object: _80.BlockAmino): _80.Block;
             toAmino(message: _80.Block): _80.BlockAmino;
@@ -1305,6 +1471,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _85.AppAmino;
             encode(message: _85.App, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.App;
+            fromJSON(object: any): _85.App;
+            toJSON(message: _85.App): unknown;
             fromPartial(object: Partial<_85.App>): _85.App;
             fromAmino(object: _85.AppAmino): _85.App;
             toAmino(message: _85.App): _85.AppAmino;
@@ -1320,6 +1488,8 @@ export declare namespace tendermint {
             isAmino(o: any): o is _85.ConsensusAmino;
             encode(message: _85.Consensus, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _85.Consensus;
+            fromJSON(object: any): _85.Consensus;
+            toJSON(message: _85.Consensus): unknown;
             fromPartial(object: Partial<_85.Consensus>): _85.Consensus;
             fromAmino(object: _85.ConsensusAmino): _85.Consensus;
             toAmino(message: _85.Consensus): _85.ConsensusAmino;

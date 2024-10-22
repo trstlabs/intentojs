@@ -12,28 +12,34 @@ import * as _97 from "./intent/v1beta1/params";
 import * as _98 from "./intent/v1beta1/query";
 import * as _99 from "./intent/v1beta1/tx";
 import * as _100 from "./intent/v1beta1/usage";
-import * as _101 from "./mint/v1beta1/genesis";
-import * as _102 from "./mint/v1beta1/mint";
-import * as _103 from "./mint/v1beta1/query";
-import * as _148 from "./claim/v1beta1/claim.amino";
-import * as _149 from "./intent/v1beta1/tx.amino";
-import * as _150 from "./claim/v1beta1/claim.registry";
-import * as _151 from "./intent/v1beta1/tx.registry";
-import * as _152 from "./alloc/v1beta1/query.rpc.Query";
-import * as _153 from "./claim/v1beta1/query.rpc.Query";
-import * as _154 from "./intent/v1beta1/query.rpc.Query";
-import * as _155 from "./mint/v1beta1/query.rpc.Query";
-import * as _156 from "./claim/v1beta1/claim.rpc.msg";
-import * as _157 from "./intent/v1beta1/tx.rpc.msg";
-import * as _162 from "./rpc.query";
-import * as _163 from "./rpc.tx";
+import * as _101 from "./interchainquery/v1/genesis";
+import * as _102 from "./interchainquery/v1/messages";
+import * as _103 from "./interchainquery/v1/query";
+import * as _104 from "./mint/v1beta1/genesis";
+import * as _105 from "./mint/v1beta1/mint";
+import * as _106 from "./mint/v1beta1/query";
+import * as _151 from "./claim/v1beta1/claim.amino";
+import * as _152 from "./intent/v1beta1/tx.amino";
+import * as _153 from "./interchainquery/v1/messages.amino";
+import * as _154 from "./claim/v1beta1/claim.registry";
+import * as _155 from "./intent/v1beta1/tx.registry";
+import * as _156 from "./interchainquery/v1/messages.registry";
+import * as _157 from "./alloc/v1beta1/query.rpc.Query";
+import * as _158 from "./claim/v1beta1/query.rpc.Query";
+import * as _159 from "./intent/v1beta1/query.rpc.Query";
+import * as _160 from "./mint/v1beta1/query.rpc.Query";
+import * as _161 from "./claim/v1beta1/claim.rpc.msg";
+import * as _162 from "./intent/v1beta1/tx.rpc.msg";
+import * as _163 from "./interchainquery/v1/messages.rpc.msg";
+import * as _168 from "./rpc.query";
+import * as _169 from "./rpc.tx";
 export namespace intento {
   export namespace alloc {
     export const v1beta1 = {
       ..._87,
       ..._88,
       ..._89,
-      ..._152
+      ..._157
     };
   }
   export namespace claim {
@@ -42,10 +48,10 @@ export namespace intento {
       ..._91,
       ..._92,
       ..._93,
-      ..._148,
-      ..._150,
-      ..._153,
-      ..._156
+      ..._151,
+      ..._154,
+      ..._158,
+      ..._161
     };
   }
   export namespace intent {
@@ -57,22 +63,32 @@ export namespace intento {
       ..._98,
       ..._99,
       ..._100,
-      ..._149,
-      ..._151,
-      ..._154,
-      ..._157
+      ..._152,
+      ..._155,
+      ..._159,
+      ..._162
+    };
+  }
+  export namespace interchainquery {
+    export const v1 = {
+      ..._101,
+      ..._102,
+      ..._103,
+      ..._153,
+      ..._156,
+      ..._163
     };
   }
   export namespace mint {
     export const v1beta1 = {
-      ..._101,
-      ..._102,
-      ..._103,
-      ..._155
+      ..._104,
+      ..._105,
+      ..._106,
+      ..._160
     };
   }
   export const ClientFactory = {
-    ..._162,
-    ..._163
+    ..._168,
+    ..._169
   };
 }

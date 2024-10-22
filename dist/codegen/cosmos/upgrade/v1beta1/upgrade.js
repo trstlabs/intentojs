@@ -74,6 +74,24 @@ exports.Plan = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            time: (0, helpers_1.isSet)(object.time) ? (0, helpers_1.fromJsonTimestamp)(object.time) : undefined,
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            info: (0, helpers_1.isSet)(object.info) ? String(object.info) : "",
+            upgradedClientState: (0, helpers_1.isSet)(object.upgradedClientState) ? any_1.Any.fromJSON(object.upgradedClientState) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.time !== undefined && (obj.time = message.time.toISOString());
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.info !== undefined && (obj.info = message.info);
+        message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? any_1.Any.toJSON(message.upgradedClientState) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePlan();
         message.name = object.name ?? "";
@@ -190,6 +208,20 @@ exports.SoftwareUpgradeProposal = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            plan: (0, helpers_1.isSet)(object.plan) ? exports.Plan.fromJSON(object.plan) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.title !== undefined && (obj.title = message.title);
+        message.description !== undefined && (obj.description = message.description);
+        message.plan !== undefined && (obj.plan = message.plan ? exports.Plan.toJSON(message.plan) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSoftwareUpgradeProposal();
         message.title = object.title ?? "";
@@ -289,6 +321,18 @@ exports.CancelSoftwareUpgradeProposal = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.title !== undefined && (obj.title = message.title);
+        message.description !== undefined && (obj.description = message.description);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseCancelSoftwareUpgradeProposal();
         message.title = object.title ?? "";
@@ -381,6 +425,18 @@ exports.ModuleVersion = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            version: (0, helpers_1.isSet)(object.version) ? BigInt(object.version.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.version !== undefined && (obj.version = (message.version || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseModuleVersion();

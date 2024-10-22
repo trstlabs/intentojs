@@ -216,6 +216,8 @@ export declare const Duration: {
     isAmino(o: any): o is string;
     encode(message: Duration, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Duration;
+    fromJSON(object: any): Duration;
+    toJSON(message: Duration): unknown;
     fromPartial(object: Partial<Duration>): Duration;
     fromAmino(object: DurationAmino): Duration;
     toAmino(message: Duration): DurationAmino;

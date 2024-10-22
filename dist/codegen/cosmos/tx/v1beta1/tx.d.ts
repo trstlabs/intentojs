@@ -764,6 +764,8 @@ export declare const Tx: {
     isAmino(o: any): o is TxAmino;
     encode(message: Tx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Tx;
+    fromJSON(object: any): Tx;
+    toJSON(message: Tx): unknown;
     fromPartial(object: Partial<Tx>): Tx;
     fromAmino(object: TxAmino): Tx;
     toAmino(message: Tx): TxAmino;
@@ -781,6 +783,8 @@ export declare const TxRaw: {
     isAmino(o: any): o is TxRawAmino;
     encode(message: TxRaw, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxRaw;
+    fromJSON(object: any): TxRaw;
+    toJSON(message: TxRaw): unknown;
     fromPartial(object: Partial<TxRaw>): TxRaw;
     fromAmino(object: TxRawAmino): TxRaw;
     toAmino(message: TxRaw): TxRawAmino;
@@ -798,6 +802,8 @@ export declare const SignDoc: {
     isAmino(o: any): o is SignDocAmino;
     encode(message: SignDoc, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignDoc;
+    fromJSON(object: any): SignDoc;
+    toJSON(message: SignDoc): unknown;
     fromPartial(object: Partial<SignDoc>): SignDoc;
     fromAmino(object: SignDocAmino): SignDoc;
     toAmino(message: SignDoc): SignDocAmino;
@@ -815,6 +821,8 @@ export declare const SignDocDirectAux: {
     isAmino(o: any): o is SignDocDirectAuxAmino;
     encode(message: SignDocDirectAux, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignDocDirectAux;
+    fromJSON(object: any): SignDocDirectAux;
+    toJSON(message: SignDocDirectAux): unknown;
     fromPartial(object: Partial<SignDocDirectAux>): SignDocDirectAux;
     fromAmino(object: SignDocDirectAuxAmino): SignDocDirectAux;
     toAmino(message: SignDocDirectAux): SignDocDirectAuxAmino;
@@ -832,6 +840,8 @@ export declare const TxBody: {
     isAmino(o: any): o is TxBodyAmino;
     encode(message: TxBody, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxBody;
+    fromJSON(object: any): TxBody;
+    toJSON(message: TxBody): unknown;
     fromPartial(object: Partial<TxBody>): TxBody;
     fromAmino(object: TxBodyAmino): TxBody;
     toAmino(message: TxBody): TxBodyAmino;
@@ -849,6 +859,8 @@ export declare const AuthInfo: {
     isAmino(o: any): o is AuthInfoAmino;
     encode(message: AuthInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuthInfo;
+    fromJSON(object: any): AuthInfo;
+    toJSON(message: AuthInfo): unknown;
     fromPartial(object: Partial<AuthInfo>): AuthInfo;
     fromAmino(object: AuthInfoAmino): AuthInfo;
     toAmino(message: AuthInfo): AuthInfoAmino;
@@ -866,6 +878,8 @@ export declare const SignerInfo: {
     isAmino(o: any): o is SignerInfoAmino;
     encode(message: SignerInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignerInfo;
+    fromJSON(object: any): SignerInfo;
+    toJSON(message: SignerInfo): unknown;
     fromPartial(object: Partial<SignerInfo>): SignerInfo;
     fromAmino(object: SignerInfoAmino): SignerInfo;
     toAmino(message: SignerInfo): SignerInfoAmino;
@@ -883,6 +897,8 @@ export declare const ModeInfo: {
     isAmino(o: any): o is ModeInfoAmino;
     encode(message: ModeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo;
+    fromJSON(object: any): ModeInfo;
+    toJSON(message: ModeInfo): unknown;
     fromPartial(object: Partial<ModeInfo>): ModeInfo;
     fromAmino(object: ModeInfoAmino): ModeInfo;
     toAmino(message: ModeInfo): ModeInfoAmino;
@@ -900,6 +916,8 @@ export declare const ModeInfo_Single: {
     isAmino(o: any): o is ModeInfo_SingleAmino;
     encode(message: ModeInfo_Single, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Single;
+    fromJSON(object: any): ModeInfo_Single;
+    toJSON(message: ModeInfo_Single): unknown;
     fromPartial(object: Partial<ModeInfo_Single>): ModeInfo_Single;
     fromAmino(object: ModeInfo_SingleAmino): ModeInfo_Single;
     toAmino(message: ModeInfo_Single): ModeInfo_SingleAmino;
@@ -917,6 +935,8 @@ export declare const ModeInfo_Multi: {
     isAmino(o: any): o is ModeInfo_MultiAmino;
     encode(message: ModeInfo_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Multi;
+    fromJSON(object: any): ModeInfo_Multi;
+    toJSON(message: ModeInfo_Multi): unknown;
     fromPartial(object: Partial<ModeInfo_Multi>): ModeInfo_Multi;
     fromAmino(object: ModeInfo_MultiAmino): ModeInfo_Multi;
     toAmino(message: ModeInfo_Multi): ModeInfo_MultiAmino;
@@ -934,6 +954,8 @@ export declare const Fee: {
     isAmino(o: any): o is FeeAmino;
     encode(message: Fee, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Fee;
+    fromJSON(object: any): Fee;
+    toJSON(message: Fee): unknown;
     fromPartial(object: Partial<Fee>): Fee;
     fromAmino(object: FeeAmino): Fee;
     toAmino(message: Fee): FeeAmino;
@@ -951,6 +973,8 @@ export declare const Tip: {
     isAmino(o: any): o is TipAmino;
     encode(message: Tip, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Tip;
+    fromJSON(object: any): Tip;
+    toJSON(message: Tip): unknown;
     fromPartial(object: Partial<Tip>): Tip;
     fromAmino(object: TipAmino): Tip;
     toAmino(message: Tip): TipAmino;
@@ -968,6 +992,8 @@ export declare const AuxSignerData: {
     isAmino(o: any): o is AuxSignerDataAmino;
     encode(message: AuxSignerData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuxSignerData;
+    fromJSON(object: any): AuxSignerData;
+    toJSON(message: AuxSignerData): unknown;
     fromPartial(object: Partial<AuxSignerData>): AuxSignerData;
     fromAmino(object: AuxSignerDataAmino): AuxSignerData;
     toAmino(message: AuxSignerData): AuxSignerDataAmino;

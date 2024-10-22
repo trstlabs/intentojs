@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MsgCancelUpgradeResponse = exports.MsgCancelUpgrade = exports.MsgSoftwareUpgradeResponse = exports.MsgSoftwareUpgrade = void 0;
 const upgrade_1 = require("./upgrade");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseMsgSoftwareUpgrade() {
     return {
@@ -50,6 +51,18 @@ exports.MsgSoftwareUpgrade = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            authority: (0, helpers_1.isSet)(object.authority) ? String(object.authority) : "",
+            plan: (0, helpers_1.isSet)(object.plan) ? upgrade_1.Plan.fromJSON(object.plan) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.authority !== undefined && (obj.authority = message.authority);
+        message.plan !== undefined && (obj.plan = message.plan ? upgrade_1.Plan.toJSON(message.plan) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgSoftwareUpgrade();
@@ -129,6 +142,13 @@ exports.MsgSoftwareUpgradeResponse = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseMsgSoftwareUpgradeResponse();
         return message;
@@ -205,6 +225,16 @@ exports.MsgCancelUpgrade = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            authority: (0, helpers_1.isSet)(object.authority) ? String(object.authority) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.authority !== undefined && (obj.authority = message.authority);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgCancelUpgrade();
         message.authority = object.authority ?? "";
@@ -277,6 +307,13 @@ exports.MsgCancelUpgradeResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgCancelUpgradeResponse();

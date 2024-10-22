@@ -27,11 +27,11 @@ telescope({
     experimentalGlobalProtoNamespace: true,
     interfaces: {
       enabled: true,
-      useUnionTypes: true, //true,
+      useUnionTypes: true,
       useGlobalDecoderRegistry: true,
-      // useByDefault: true,
+      // useByDefault: false,
       // useByDefaultRpc: false,
-      // useInterfaces: true,
+      // useUseInterfacesParams: false,
     },
     prototypes: {
       excluded: {
@@ -68,16 +68,15 @@ telescope({
         ],
       },
       methods: {
-        fromJSON: false,
-        toJSON: false,
+        fromJSON: true,
+        toJSON: true,
         encode: true,
         decode: true,
         fromPartial: true,
         toAmino: true,
         fromAmino: true,
-        fromProto: true,
-        toProto: true,
       },
+
       // addTypeUrlToDecoders: true,
       // addTypeUrlToObjects: true,
       parser: {
@@ -97,8 +96,6 @@ telescope({
 
     aminoEncoding: {
       enabled: true,
-      exceptions: AMINO_MAP,
-      useRecursiveV2encoding: true,
     },
     lcdClients: {
       enabled: false,

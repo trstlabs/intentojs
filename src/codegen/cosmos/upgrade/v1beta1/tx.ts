@@ -1,5 +1,6 @@
 import { Plan, PlanAmino, PlanSDKType } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
@@ -173,6 +174,18 @@ export const MsgSoftwareUpgrade = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSoftwareUpgrade {
+    return {
+      authority: isSet(object.authority) ? String(object.authority) : "",
+      plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined
+    };
+  },
+  toJSON(message: MsgSoftwareUpgrade): unknown {
+    const obj: any = {};
+    message.authority !== undefined && (obj.authority = message.authority);
+    message.plan !== undefined && (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade {
     const message = createBaseMsgSoftwareUpgrade();
     message.authority = object.authority ?? "";
@@ -251,6 +264,13 @@ export const MsgSoftwareUpgradeResponse = {
     }
     return message;
   },
+  fromJSON(_: any): MsgSoftwareUpgradeResponse {
+    return {};
+  },
+  toJSON(_: MsgSoftwareUpgradeResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse {
     const message = createBaseMsgSoftwareUpgradeResponse();
     return message;
@@ -327,6 +347,16 @@ export const MsgCancelUpgrade = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCancelUpgrade {
+    return {
+      authority: isSet(object.authority) ? String(object.authority) : ""
+    };
+  },
+  toJSON(message: MsgCancelUpgrade): unknown {
+    const obj: any = {};
+    message.authority !== undefined && (obj.authority = message.authority);
+    return obj;
+  },
   fromPartial(object: Partial<MsgCancelUpgrade>): MsgCancelUpgrade {
     const message = createBaseMsgCancelUpgrade();
     message.authority = object.authority ?? "";
@@ -399,6 +429,13 @@ export const MsgCancelUpgradeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCancelUpgradeResponse {
+    return {};
+  },
+  toJSON(_: MsgCancelUpgradeResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse {
     const message = createBaseMsgCancelUpgradeResponse();

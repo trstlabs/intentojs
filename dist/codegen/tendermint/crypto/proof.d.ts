@@ -137,6 +137,8 @@ export declare const Proof: {
     isAmino(o: any): o is ProofAmino;
     encode(message: Proof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proof;
+    fromJSON(object: any): Proof;
+    toJSON(message: Proof): unknown;
     fromPartial(object: Partial<Proof>): Proof;
     fromAmino(object: ProofAmino): Proof;
     toAmino(message: Proof): ProofAmino;
@@ -152,6 +154,8 @@ export declare const ValueOp: {
     isAmino(o: any): o is ValueOpAmino;
     encode(message: ValueOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValueOp;
+    fromJSON(object: any): ValueOp;
+    toJSON(message: ValueOp): unknown;
     fromPartial(object: Partial<ValueOp>): ValueOp;
     fromAmino(object: ValueOpAmino): ValueOp;
     toAmino(message: ValueOp): ValueOpAmino;
@@ -167,6 +171,8 @@ export declare const DominoOp: {
     isAmino(o: any): o is DominoOpAmino;
     encode(message: DominoOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DominoOp;
+    fromJSON(object: any): DominoOp;
+    toJSON(message: DominoOp): unknown;
     fromPartial(object: Partial<DominoOp>): DominoOp;
     fromAmino(object: DominoOpAmino): DominoOp;
     toAmino(message: DominoOp): DominoOpAmino;
@@ -182,6 +188,8 @@ export declare const ProofOp: {
     isAmino(o: any): o is ProofOpAmino;
     encode(message: ProofOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOp;
+    fromJSON(object: any): ProofOp;
+    toJSON(message: ProofOp): unknown;
     fromPartial(object: Partial<ProofOp>): ProofOp;
     fromAmino(object: ProofOpAmino): ProofOp;
     toAmino(message: ProofOp): ProofOpAmino;
@@ -197,6 +205,8 @@ export declare const ProofOps: {
     isAmino(o: any): o is ProofOpsAmino;
     encode(message: ProofOps, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOps;
+    fromJSON(object: any): ProofOps;
+    toJSON(message: ProofOps): unknown;
     fromPartial(object: Partial<ProofOps>): ProofOps;
     fromAmino(object: ProofOpsAmino): ProofOps;
     toAmino(message: ProofOps): ProofOpsAmino;

@@ -1,6 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType, Validator, ValidatorAmino, ValidatorSDKType, Delegation, DelegationAmino, DelegationSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, Redelegation, RedelegationAmino, RedelegationSDKType } from "./staking";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
@@ -185,6 +185,50 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      lastTotalPower: isSet(object.lastTotalPower) ? bytesFromBase64(object.lastTotalPower) : new Uint8Array(),
+      lastValidatorPowers: Array.isArray(object?.lastValidatorPowers) ? object.lastValidatorPowers.map((e: any) => LastValidatorPower.fromJSON(e)) : [],
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
+      delegations: Array.isArray(object?.delegations) ? object.delegations.map((e: any) => Delegation.fromJSON(e)) : [],
+      unbondingDelegations: Array.isArray(object?.unbondingDelegations) ? object.unbondingDelegations.map((e: any) => UnbondingDelegation.fromJSON(e)) : [],
+      redelegations: Array.isArray(object?.redelegations) ? object.redelegations.map((e: any) => Redelegation.fromJSON(e)) : [],
+      exported: isSet(object.exported) ? Boolean(object.exported) : false
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    message.lastTotalPower !== undefined && (obj.lastTotalPower = base64FromBytes(message.lastTotalPower !== undefined ? message.lastTotalPower : new Uint8Array()));
+    if (message.lastValidatorPowers) {
+      obj.lastValidatorPowers = message.lastValidatorPowers.map(e => e ? LastValidatorPower.toJSON(e) : undefined);
+    } else {
+      obj.lastValidatorPowers = [];
+    }
+    if (message.validators) {
+      obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
+    } else {
+      obj.validators = [];
+    }
+    if (message.delegations) {
+      obj.delegations = message.delegations.map(e => e ? Delegation.toJSON(e) : undefined);
+    } else {
+      obj.delegations = [];
+    }
+    if (message.unbondingDelegations) {
+      obj.unbondingDelegations = message.unbondingDelegations.map(e => e ? UnbondingDelegation.toJSON(e) : undefined);
+    } else {
+      obj.unbondingDelegations = [];
+    }
+    if (message.redelegations) {
+      obj.redelegations = message.redelegations.map(e => e ? Redelegation.toJSON(e) : undefined);
+    } else {
+      obj.redelegations = [];
+    }
+    message.exported !== undefined && (obj.exported = message.exported);
+    return obj;
+  },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -317,6 +361,18 @@ export const LastValidatorPower = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): LastValidatorPower {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      power: isSet(object.power) ? BigInt(object.power.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: LastValidatorPower): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.power !== undefined && (obj.power = (message.power || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower {
     const message = createBaseLastValidatorPower();

@@ -45,6 +45,8 @@ export declare const SendAuthorization: {
     isAmino(o: any): o is SendAuthorizationAmino;
     encode(message: SendAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SendAuthorization;
+    fromJSON(object: any): SendAuthorization;
+    toJSON(message: SendAuthorization): unknown;
     fromPartial(object: Partial<SendAuthorization>): SendAuthorization;
     fromAmino(object: SendAuthorizationAmino): SendAuthorization;
     toAmino(message: SendAuthorization): SendAuthorizationAmino;

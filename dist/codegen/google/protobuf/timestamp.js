@@ -50,6 +50,18 @@ exports.Timestamp = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            seconds: (0, helpers_1.isSet)(object.seconds) ? BigInt(object.seconds.toString()) : BigInt(0),
+            nanos: (0, helpers_1.isSet)(object.nanos) ? Number(object.nanos) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.seconds !== undefined && (obj.seconds = (message.seconds || BigInt(0)).toString());
+        message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseTimestamp();
         message.seconds = object.seconds !== undefined && object.seconds !== null ? BigInt(object.seconds.toString()) : BigInt(0);

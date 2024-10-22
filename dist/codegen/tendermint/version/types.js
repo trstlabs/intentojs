@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Consensus = exports.App = void 0;
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
 function createBaseApp() {
     return {
@@ -48,6 +49,18 @@ exports.App = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            protocol: (0, helpers_1.isSet)(object.protocol) ? BigInt(object.protocol.toString()) : BigInt(0),
+            software: (0, helpers_1.isSet)(object.software) ? String(object.software) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.protocol !== undefined && (obj.protocol = (message.protocol || BigInt(0)).toString());
+        message.software !== undefined && (obj.software = message.software);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseApp();
@@ -133,6 +146,18 @@ exports.Consensus = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            block: (0, helpers_1.isSet)(object.block) ? BigInt(object.block.toString()) : BigInt(0),
+            app: (0, helpers_1.isSet)(object.app) ? BigInt(object.app.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
+        message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseConsensus();

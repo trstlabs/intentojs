@@ -4,6 +4,7 @@ exports.QueryGranteeGrantsResponse = exports.QueryGranteeGrantsRequest = exports
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const authz_1 = require("./authz");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseQueryGrantsRequest() {
     return {
@@ -65,6 +66,22 @@ exports.QueryGrantsRequest = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            msgTypeUrl: (0, helpers_1.isSet)(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryGrantsRequest();
@@ -169,6 +186,23 @@ exports.QueryGrantsResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            grants: Array.isArray(object?.grants) ? object.grants.map((e) => authz_1.Grant.fromJSON(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.grants) {
+            obj.grants = message.grants.map(e => e ? authz_1.Grant.toJSON(e) : undefined);
+        }
+        else {
+            obj.grants = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryGrantsResponse();
         message.grants = object.grants?.map(e => authz_1.Grant.fromPartial(e)) || [];
@@ -265,6 +299,18 @@ exports.QueryGranterGrantsRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryGranterGrantsRequest();
         message.granter = object.granter ?? "";
@@ -357,6 +403,23 @@ exports.QueryGranterGrantsResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            grants: Array.isArray(object?.grants) ? object.grants.map((e) => authz_1.GrantAuthorization.fromJSON(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.grants) {
+            obj.grants = message.grants.map(e => e ? authz_1.GrantAuthorization.toJSON(e) : undefined);
+        }
+        else {
+            obj.grants = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryGranterGrantsResponse();
@@ -454,6 +517,18 @@ exports.QueryGranteeGrantsRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryGranteeGrantsRequest();
         message.grantee = object.grantee ?? "";
@@ -546,6 +621,23 @@ exports.QueryGranteeGrantsResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            grants: Array.isArray(object?.grants) ? object.grants.map((e) => authz_1.GrantAuthorization.fromJSON(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.grants) {
+            obj.grants = message.grants.map(e => e ? authz_1.GrantAuthorization.toJSON(e) : undefined);
+        }
+        else {
+            obj.grants = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryGranteeGrantsResponse();

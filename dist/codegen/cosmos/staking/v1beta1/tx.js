@@ -6,10 +6,10 @@ const any_1 = require("../../../google/protobuf/any");
 const coin_1 = require("../../base/v1beta1/coin");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const proto_signing_1 = require("@cosmjs/proto-signing");
 const registry_1 = require("../../../registry");
 const math_1 = require("@cosmjs/math");
-const helpers_1 = require("../../../helpers");
 function createBaseMsgCreateValidator() {
     return {
         description: staking_1.Description.fromPartial({}),
@@ -91,6 +91,28 @@ exports.MsgCreateValidator = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            description: (0, helpers_1.isSet)(object.description) ? staking_1.Description.fromJSON(object.description) : undefined,
+            commission: (0, helpers_1.isSet)(object.commission) ? staking_1.CommissionRates.fromJSON(object.commission) : undefined,
+            minSelfDelegation: (0, helpers_1.isSet)(object.minSelfDelegation) ? String(object.minSelfDelegation) : "",
+            delegatorAddress: (0, helpers_1.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+            pubkey: (0, helpers_1.isSet)(object.pubkey) ? registry_1.GlobalDecoderRegistry.fromJSON(object.pubkey) : undefined,
+            value: (0, helpers_1.isSet)(object.value) ? coin_1.Coin.fromJSON(object.value) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.description !== undefined && (obj.description = message.description ? staking_1.Description.toJSON(message.description) : undefined);
+        message.commission !== undefined && (obj.commission = message.commission ? staking_1.CommissionRates.toJSON(message.commission) : undefined);
+        message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
+        message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        message.pubkey !== undefined && (obj.pubkey = message.pubkey ? registry_1.GlobalDecoderRegistry.toJSON(message.pubkey) : undefined);
+        message.value !== undefined && (obj.value = message.value ? coin_1.Coin.toJSON(message.value) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgCreateValidator();
@@ -195,6 +217,13 @@ exports.MsgCreateValidatorResponse = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseMsgCreateValidatorResponse();
         return message;
@@ -292,6 +321,22 @@ exports.MsgEditValidator = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            description: (0, helpers_1.isSet)(object.description) ? staking_1.Description.fromJSON(object.description) : undefined,
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+            commissionRate: (0, helpers_1.isSet)(object.commissionRate) ? String(object.commissionRate) : "",
+            minSelfDelegation: (0, helpers_1.isSet)(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.description !== undefined && (obj.description = message.description ? staking_1.Description.toJSON(message.description) : undefined);
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        message.commissionRate !== undefined && (obj.commissionRate = message.commissionRate);
+        message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgEditValidator();
         message.description = object.description !== undefined && object.description !== null ? staking_1.Description.fromPartial(object.description) : undefined;
@@ -379,6 +424,13 @@ exports.MsgEditValidatorResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgEditValidatorResponse();
@@ -470,6 +522,20 @@ exports.MsgDelegate = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            delegatorAddress: (0, helpers_1.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? coin_1.Coin.fromJSON(object.amount) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        message.amount !== undefined && (obj.amount = message.amount ? coin_1.Coin.toJSON(message.amount) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgDelegate();
         message.delegatorAddress = object.delegatorAddress ?? "";
@@ -552,6 +618,13 @@ exports.MsgDelegateResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgDelegateResponse();
@@ -650,6 +723,22 @@ exports.MsgBeginRedelegate = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            delegatorAddress: (0, helpers_1.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+            validatorSrcAddress: (0, helpers_1.isSet)(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
+            validatorDstAddress: (0, helpers_1.isSet)(object.validatorDstAddress) ? String(object.validatorDstAddress) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? coin_1.Coin.fromJSON(object.amount) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+        message.validatorSrcAddress !== undefined && (obj.validatorSrcAddress = message.validatorSrcAddress);
+        message.validatorDstAddress !== undefined && (obj.validatorDstAddress = message.validatorDstAddress);
+        message.amount !== undefined && (obj.amount = message.amount ? coin_1.Coin.toJSON(message.amount) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgBeginRedelegate();
         message.delegatorAddress = object.delegatorAddress ?? "";
@@ -746,6 +835,16 @@ exports.MsgBeginRedelegateResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            completionTime: (0, helpers_1.isSet)(object.completionTime) ? (0, helpers_1.fromJsonTimestamp)(object.completionTime) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgBeginRedelegateResponse();
         message.completionTime = object.completionTime ?? undefined;
@@ -841,6 +940,20 @@ exports.MsgUndelegate = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            delegatorAddress: (0, helpers_1.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? coin_1.Coin.fromJSON(object.amount) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        message.amount !== undefined && (obj.amount = message.amount ? coin_1.Coin.toJSON(message.amount) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgUndelegate();
         message.delegatorAddress = object.delegatorAddress ?? "";
@@ -931,6 +1044,16 @@ exports.MsgUndelegateResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            completionTime: (0, helpers_1.isSet)(object.completionTime) ? (0, helpers_1.fromJsonTimestamp)(object.completionTime) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgUndelegateResponse();

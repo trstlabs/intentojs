@@ -322,6 +322,8 @@ export declare const ConnectionEnd: {
     isAmino(o: any): o is ConnectionEndAmino;
     encode(message: ConnectionEnd, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionEnd;
+    fromJSON(object: any): ConnectionEnd;
+    toJSON(message: ConnectionEnd): unknown;
     fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd;
     fromAmino(object: ConnectionEndAmino): ConnectionEnd;
     toAmino(message: ConnectionEnd): ConnectionEndAmino;
@@ -339,6 +341,8 @@ export declare const IdentifiedConnection: {
     isAmino(o: any): o is IdentifiedConnectionAmino;
     encode(message: IdentifiedConnection, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedConnection;
+    fromJSON(object: any): IdentifiedConnection;
+    toJSON(message: IdentifiedConnection): unknown;
     fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection;
     fromAmino(object: IdentifiedConnectionAmino): IdentifiedConnection;
     toAmino(message: IdentifiedConnection): IdentifiedConnectionAmino;
@@ -356,6 +360,8 @@ export declare const Counterparty: {
     isAmino(o: any): o is CounterpartyAmino;
     encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
+    fromJSON(object: any): Counterparty;
+    toJSON(message: Counterparty): unknown;
     fromPartial(object: Partial<Counterparty>): Counterparty;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
@@ -373,6 +379,8 @@ export declare const ClientPaths: {
     isAmino(o: any): o is ClientPathsAmino;
     encode(message: ClientPaths, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientPaths;
+    fromJSON(object: any): ClientPaths;
+    toJSON(message: ClientPaths): unknown;
     fromPartial(object: Partial<ClientPaths>): ClientPaths;
     fromAmino(object: ClientPathsAmino): ClientPaths;
     toAmino(message: ClientPaths): ClientPathsAmino;
@@ -390,6 +398,8 @@ export declare const ConnectionPaths: {
     isAmino(o: any): o is ConnectionPathsAmino;
     encode(message: ConnectionPaths, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionPaths;
+    fromJSON(object: any): ConnectionPaths;
+    toJSON(message: ConnectionPaths): unknown;
     fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths;
     fromAmino(object: ConnectionPathsAmino): ConnectionPaths;
     toAmino(message: ConnectionPaths): ConnectionPathsAmino;
@@ -407,6 +417,8 @@ export declare const Version: {
     isAmino(o: any): o is VersionAmino;
     encode(message: Version, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Version;
+    fromJSON(object: any): Version;
+    toJSON(message: Version): unknown;
     fromPartial(object: Partial<Version>): Version;
     fromAmino(object: VersionAmino): Version;
     toAmino(message: Version): VersionAmino;
@@ -424,6 +436,8 @@ export declare const Params: {
     isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

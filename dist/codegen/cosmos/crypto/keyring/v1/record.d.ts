@@ -142,6 +142,8 @@ export declare const Record: {
     isAmino(o: any): o is RecordAmino;
     encode(message: Record, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record;
+    fromJSON(object: any): Record;
+    toJSON(message: Record): unknown;
     fromPartial(object: Partial<Record>): Record;
     fromAmino(object: RecordAmino): Record;
     toAmino(message: Record): RecordAmino;
@@ -159,6 +161,8 @@ export declare const Record_Local: {
     isAmino(o: any): o is Record_LocalAmino;
     encode(message: Record_Local, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Local;
+    fromJSON(object: any): Record_Local;
+    toJSON(message: Record_Local): unknown;
     fromPartial(object: Partial<Record_Local>): Record_Local;
     fromAmino(object: Record_LocalAmino): Record_Local;
     toAmino(message: Record_Local): Record_LocalAmino;
@@ -176,6 +180,8 @@ export declare const Record_Ledger: {
     isAmino(o: any): o is Record_LedgerAmino;
     encode(message: Record_Ledger, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Ledger;
+    fromJSON(object: any): Record_Ledger;
+    toJSON(message: Record_Ledger): unknown;
     fromPartial(object: Partial<Record_Ledger>): Record_Ledger;
     fromAmino(object: Record_LedgerAmino): Record_Ledger;
     toAmino(message: Record_Ledger): Record_LedgerAmino;
@@ -193,6 +199,8 @@ export declare const Record_Multi: {
     isAmino(o: any): o is Record_MultiAmino;
     encode(_: Record_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Multi;
+    fromJSON(_: any): Record_Multi;
+    toJSON(_: Record_Multi): unknown;
     fromPartial(_: Partial<Record_Multi>): Record_Multi;
     fromAmino(_: Record_MultiAmino): Record_Multi;
     toAmino(_: Record_Multi): Record_MultiAmino;
@@ -210,6 +218,8 @@ export declare const Record_Offline: {
     isAmino(o: any): o is Record_OfflineAmino;
     encode(_: Record_Offline, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Offline;
+    fromJSON(_: any): Record_Offline;
+    toJSON(_: Record_Offline): unknown;
     fromPartial(_: Partial<Record_Offline>): Record_Offline;
     fromAmino(_: Record_OfflineAmino): Record_Offline;
     toAmino(_: Record_Offline): Record_OfflineAmino;

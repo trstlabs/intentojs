@@ -20,20 +20,20 @@ import * as _71 from "./lightclients/localhost/v1/localhost";
 import * as _72 from "./lightclients/solomachine/v1/solomachine";
 import * as _73 from "./lightclients/solomachine/v2/solomachine";
 import * as _74 from "./lightclients/tendermint/v1/tendermint";
-import * as _140 from "./applications/transfer/v1/query.rpc.Query";
-import * as _141 from "./core/channel/v1/query.rpc.Query";
-import * as _142 from "./core/client/v1/query.rpc.Query";
-import * as _143 from "./core/connection/v1/query.rpc.Query";
-import * as _144 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _145 from "./core/channel/v1/tx.rpc.msg";
-import * as _146 from "./core/client/v1/tx.rpc.msg";
-import * as _147 from "./core/connection/v1/tx.rpc.msg";
+import * as _143 from "./applications/transfer/v1/query.rpc.Query";
+import * as _144 from "./core/channel/v1/query.rpc.Query";
+import * as _145 from "./core/client/v1/query.rpc.Query";
+import * as _146 from "./core/connection/v1/query.rpc.Query";
+import * as _147 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _148 from "./core/channel/v1/tx.rpc.msg";
+import * as _149 from "./core/client/v1/tx.rpc.msg";
+import * as _150 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _144.MsgClientImpl;
-                QueryClientImpl: typeof _140.QueryClientImpl;
+                MsgClientImpl: typeof _147.MsgClientImpl;
+                QueryClientImpl: typeof _143.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     denomTrace(request: _54.QueryDenomTraceRequest): Promise<_54.QueryDenomTraceResponse>;
                     denomTraces(request?: _54.QueryDenomTracesRequest): Promise<_54.QueryDenomTracesResponse>;
@@ -50,6 +50,18 @@ export declare namespace ibc {
                     };
                     withTypeUrl: {
                         transfer(value: _56.MsgTransfer): {
+                            typeUrl: string;
+                            value: _56.MsgTransfer;
+                        };
+                    };
+                    toJSON: {
+                        transfer(value: _56.MsgTransfer): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                    };
+                    fromJSON: {
+                        transfer(value: any): {
                             typeUrl: string;
                             value: _56.MsgTransfer;
                         };
@@ -76,6 +88,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _56.MsgTransferAmino;
                     encode(message: _56.MsgTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgTransfer;
+                    fromJSON(object: any): _56.MsgTransfer;
+                    toJSON(message: _56.MsgTransfer): unknown;
                     fromPartial(object: Partial<_56.MsgTransfer>): _56.MsgTransfer;
                     fromAmino(object: _56.MsgTransferAmino): _56.MsgTransfer;
                     toAmino(message: _56.MsgTransfer): _56.MsgTransferAmino;
@@ -93,6 +107,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _56.MsgTransferResponseAmino;
                     encode(_: _56.MsgTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgTransferResponse;
+                    fromJSON(_: any): _56.MsgTransferResponse;
+                    toJSON(_: _56.MsgTransferResponse): unknown;
                     fromPartial(_: Partial<_56.MsgTransferResponse>): _56.MsgTransferResponse;
                     fromAmino(_: _56.MsgTransferResponseAmino): _56.MsgTransferResponse;
                     toAmino(_: _56.MsgTransferResponse): _56.MsgTransferResponseAmino;
@@ -110,6 +126,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _55.DenomTraceAmino;
                     encode(message: _55.DenomTrace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.DenomTrace;
+                    fromJSON(object: any): _55.DenomTrace;
+                    toJSON(message: _55.DenomTrace): unknown;
                     fromPartial(object: Partial<_55.DenomTrace>): _55.DenomTrace;
                     fromAmino(object: _55.DenomTraceAmino): _55.DenomTrace;
                     toAmino(message: _55.DenomTrace): _55.DenomTraceAmino;
@@ -127,6 +145,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _55.ParamsAmino;
                     encode(message: _55.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.Params;
+                    fromJSON(object: any): _55.Params;
+                    toJSON(message: _55.Params): unknown;
                     fromPartial(object: Partial<_55.Params>): _55.Params;
                     fromAmino(object: _55.ParamsAmino): _55.Params;
                     toAmino(message: _55.Params): _55.ParamsAmino;
@@ -144,6 +164,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _54.QueryDenomTraceRequestAmino;
                     encode(message: _54.QueryDenomTraceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.QueryDenomTraceRequest;
+                    fromJSON(object: any): _54.QueryDenomTraceRequest;
+                    toJSON(message: _54.QueryDenomTraceRequest): unknown;
                     fromPartial(object: Partial<_54.QueryDenomTraceRequest>): _54.QueryDenomTraceRequest;
                     fromAmino(object: _54.QueryDenomTraceRequestAmino): _54.QueryDenomTraceRequest;
                     toAmino(message: _54.QueryDenomTraceRequest): _54.QueryDenomTraceRequestAmino;
@@ -161,6 +183,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _54.QueryDenomTraceResponseAmino;
                     encode(message: _54.QueryDenomTraceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.QueryDenomTraceResponse;
+                    fromJSON(object: any): _54.QueryDenomTraceResponse;
+                    toJSON(message: _54.QueryDenomTraceResponse): unknown;
                     fromPartial(object: Partial<_54.QueryDenomTraceResponse>): _54.QueryDenomTraceResponse;
                     fromAmino(object: _54.QueryDenomTraceResponseAmino): _54.QueryDenomTraceResponse;
                     toAmino(message: _54.QueryDenomTraceResponse): _54.QueryDenomTraceResponseAmino;
@@ -178,6 +202,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _54.QueryDenomTracesRequestAmino;
                     encode(message: _54.QueryDenomTracesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.QueryDenomTracesRequest;
+                    fromJSON(object: any): _54.QueryDenomTracesRequest;
+                    toJSON(message: _54.QueryDenomTracesRequest): unknown;
                     fromPartial(object: Partial<_54.QueryDenomTracesRequest>): _54.QueryDenomTracesRequest;
                     fromAmino(object: _54.QueryDenomTracesRequestAmino): _54.QueryDenomTracesRequest;
                     toAmino(message: _54.QueryDenomTracesRequest): _54.QueryDenomTracesRequestAmino;
@@ -195,6 +221,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _54.QueryDenomTracesResponseAmino;
                     encode(message: _54.QueryDenomTracesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.QueryDenomTracesResponse;
+                    fromJSON(object: any): _54.QueryDenomTracesResponse;
+                    toJSON(message: _54.QueryDenomTracesResponse): unknown;
                     fromPartial(object: Partial<_54.QueryDenomTracesResponse>): _54.QueryDenomTracesResponse;
                     fromAmino(object: _54.QueryDenomTracesResponseAmino): _54.QueryDenomTracesResponse;
                     toAmino(message: _54.QueryDenomTracesResponse): _54.QueryDenomTracesResponseAmino;
@@ -212,6 +240,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _54.QueryParamsRequestAmino;
                     encode(_: _54.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.QueryParamsRequest;
+                    fromJSON(_: any): _54.QueryParamsRequest;
+                    toJSON(_: _54.QueryParamsRequest): unknown;
                     fromPartial(_: Partial<_54.QueryParamsRequest>): _54.QueryParamsRequest;
                     fromAmino(_: _54.QueryParamsRequestAmino): _54.QueryParamsRequest;
                     toAmino(_: _54.QueryParamsRequest): _54.QueryParamsRequestAmino;
@@ -229,6 +259,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _54.QueryParamsResponseAmino;
                     encode(message: _54.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.QueryParamsResponse;
+                    fromJSON(object: any): _54.QueryParamsResponse;
+                    toJSON(message: _54.QueryParamsResponse): unknown;
                     fromPartial(object: Partial<_54.QueryParamsResponse>): _54.QueryParamsResponse;
                     fromAmino(object: _54.QueryParamsResponseAmino): _54.QueryParamsResponse;
                     toAmino(message: _54.QueryParamsResponse): _54.QueryParamsResponseAmino;
@@ -246,6 +278,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _53.GenesisStateAmino;
                     encode(message: _53.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.GenesisState;
+                    fromJSON(object: any): _53.GenesisState;
+                    toJSON(message: _53.GenesisState): unknown;
                     fromPartial(object: Partial<_53.GenesisState>): _53.GenesisState;
                     fromAmino(object: _53.GenesisStateAmino): _53.GenesisState;
                     toAmino(message: _53.GenesisState): _53.GenesisStateAmino;
@@ -265,6 +299,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _57.FungibleTokenPacketDataAmino;
                     encode(message: _57.FungibleTokenPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.FungibleTokenPacketData;
+                    fromJSON(object: any): _57.FungibleTokenPacketData;
+                    toJSON(message: _57.FungibleTokenPacketData): unknown;
                     fromPartial(object: Partial<_57.FungibleTokenPacketData>): _57.FungibleTokenPacketData;
                     fromAmino(object: _57.FungibleTokenPacketDataAmino): _57.FungibleTokenPacketData;
                     toAmino(message: _57.FungibleTokenPacketData): _57.FungibleTokenPacketDataAmino;
@@ -280,8 +316,8 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _145.MsgClientImpl;
-                QueryClientImpl: typeof _141.QueryClientImpl;
+                MsgClientImpl: typeof _148.MsgClientImpl;
+                QueryClientImpl: typeof _144.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     channel(request: _60.QueryChannelRequest): Promise<_60.QueryChannelResponse>;
                     channels(request?: _60.QueryChannelsRequest): Promise<_60.QueryChannelsResponse>;
@@ -380,6 +416,90 @@ export declare namespace ibc {
                             value: _61.MsgTimeoutOnClose;
                         };
                         acknowledgement(value: _61.MsgAcknowledgement): {
+                            typeUrl: string;
+                            value: _61.MsgAcknowledgement;
+                        };
+                    };
+                    toJSON: {
+                        channelOpenInit(value: _61.MsgChannelOpenInit): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        channelOpenTry(value: _61.MsgChannelOpenTry): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        channelOpenAck(value: _61.MsgChannelOpenAck): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        channelOpenConfirm(value: _61.MsgChannelOpenConfirm): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        channelCloseInit(value: _61.MsgChannelCloseInit): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        channelCloseConfirm(value: _61.MsgChannelCloseConfirm): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        recvPacket(value: _61.MsgRecvPacket): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        timeout(value: _61.MsgTimeout): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        timeoutOnClose(value: _61.MsgTimeoutOnClose): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        acknowledgement(value: _61.MsgAcknowledgement): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                    };
+                    fromJSON: {
+                        channelOpenInit(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgChannelOpenInit;
+                        };
+                        channelOpenTry(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgChannelOpenTry;
+                        };
+                        channelOpenAck(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgChannelOpenAck;
+                        };
+                        channelOpenConfirm(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgChannelOpenConfirm;
+                        };
+                        channelCloseInit(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgChannelCloseInit;
+                        };
+                        channelCloseConfirm(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgChannelCloseConfirm;
+                        };
+                        recvPacket(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgRecvPacket;
+                        };
+                        timeout(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgTimeout;
+                        };
+                        timeoutOnClose(value: any): {
+                            typeUrl: string;
+                            value: _61.MsgTimeoutOnClose;
+                        };
+                        acknowledgement(value: any): {
                             typeUrl: string;
                             value: _61.MsgAcknowledgement;
                         };
@@ -487,6 +607,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenInitAmino;
                     encode(message: _61.MsgChannelOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenInit;
+                    fromJSON(object: any): _61.MsgChannelOpenInit;
+                    toJSON(message: _61.MsgChannelOpenInit): unknown;
                     fromPartial(object: Partial<_61.MsgChannelOpenInit>): _61.MsgChannelOpenInit;
                     fromAmino(object: _61.MsgChannelOpenInitAmino): _61.MsgChannelOpenInit;
                     toAmino(message: _61.MsgChannelOpenInit): _61.MsgChannelOpenInitAmino;
@@ -504,6 +626,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenInitResponseAmino;
                     encode(_: _61.MsgChannelOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenInitResponse;
+                    fromJSON(_: any): _61.MsgChannelOpenInitResponse;
+                    toJSON(_: _61.MsgChannelOpenInitResponse): unknown;
                     fromPartial(_: Partial<_61.MsgChannelOpenInitResponse>): _61.MsgChannelOpenInitResponse;
                     fromAmino(_: _61.MsgChannelOpenInitResponseAmino): _61.MsgChannelOpenInitResponse;
                     toAmino(_: _61.MsgChannelOpenInitResponse): _61.MsgChannelOpenInitResponseAmino;
@@ -521,6 +645,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenTryAmino;
                     encode(message: _61.MsgChannelOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenTry;
+                    fromJSON(object: any): _61.MsgChannelOpenTry;
+                    toJSON(message: _61.MsgChannelOpenTry): unknown;
                     fromPartial(object: Partial<_61.MsgChannelOpenTry>): _61.MsgChannelOpenTry;
                     fromAmino(object: _61.MsgChannelOpenTryAmino): _61.MsgChannelOpenTry;
                     toAmino(message: _61.MsgChannelOpenTry): _61.MsgChannelOpenTryAmino;
@@ -538,6 +664,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenTryResponseAmino;
                     encode(_: _61.MsgChannelOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenTryResponse;
+                    fromJSON(_: any): _61.MsgChannelOpenTryResponse;
+                    toJSON(_: _61.MsgChannelOpenTryResponse): unknown;
                     fromPartial(_: Partial<_61.MsgChannelOpenTryResponse>): _61.MsgChannelOpenTryResponse;
                     fromAmino(_: _61.MsgChannelOpenTryResponseAmino): _61.MsgChannelOpenTryResponse;
                     toAmino(_: _61.MsgChannelOpenTryResponse): _61.MsgChannelOpenTryResponseAmino;
@@ -555,6 +683,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenAckAmino;
                     encode(message: _61.MsgChannelOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenAck;
+                    fromJSON(object: any): _61.MsgChannelOpenAck;
+                    toJSON(message: _61.MsgChannelOpenAck): unknown;
                     fromPartial(object: Partial<_61.MsgChannelOpenAck>): _61.MsgChannelOpenAck;
                     fromAmino(object: _61.MsgChannelOpenAckAmino): _61.MsgChannelOpenAck;
                     toAmino(message: _61.MsgChannelOpenAck): _61.MsgChannelOpenAckAmino;
@@ -572,6 +702,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenAckResponseAmino;
                     encode(_: _61.MsgChannelOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenAckResponse;
+                    fromJSON(_: any): _61.MsgChannelOpenAckResponse;
+                    toJSON(_: _61.MsgChannelOpenAckResponse): unknown;
                     fromPartial(_: Partial<_61.MsgChannelOpenAckResponse>): _61.MsgChannelOpenAckResponse;
                     fromAmino(_: _61.MsgChannelOpenAckResponseAmino): _61.MsgChannelOpenAckResponse;
                     toAmino(_: _61.MsgChannelOpenAckResponse): _61.MsgChannelOpenAckResponseAmino;
@@ -589,6 +721,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenConfirmAmino;
                     encode(message: _61.MsgChannelOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenConfirm;
+                    fromJSON(object: any): _61.MsgChannelOpenConfirm;
+                    toJSON(message: _61.MsgChannelOpenConfirm): unknown;
                     fromPartial(object: Partial<_61.MsgChannelOpenConfirm>): _61.MsgChannelOpenConfirm;
                     fromAmino(object: _61.MsgChannelOpenConfirmAmino): _61.MsgChannelOpenConfirm;
                     toAmino(message: _61.MsgChannelOpenConfirm): _61.MsgChannelOpenConfirmAmino;
@@ -606,6 +740,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelOpenConfirmResponseAmino;
                     encode(_: _61.MsgChannelOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelOpenConfirmResponse;
+                    fromJSON(_: any): _61.MsgChannelOpenConfirmResponse;
+                    toJSON(_: _61.MsgChannelOpenConfirmResponse): unknown;
                     fromPartial(_: Partial<_61.MsgChannelOpenConfirmResponse>): _61.MsgChannelOpenConfirmResponse;
                     fromAmino(_: _61.MsgChannelOpenConfirmResponseAmino): _61.MsgChannelOpenConfirmResponse;
                     toAmino(_: _61.MsgChannelOpenConfirmResponse): _61.MsgChannelOpenConfirmResponseAmino;
@@ -623,6 +759,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelCloseInitAmino;
                     encode(message: _61.MsgChannelCloseInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelCloseInit;
+                    fromJSON(object: any): _61.MsgChannelCloseInit;
+                    toJSON(message: _61.MsgChannelCloseInit): unknown;
                     fromPartial(object: Partial<_61.MsgChannelCloseInit>): _61.MsgChannelCloseInit;
                     fromAmino(object: _61.MsgChannelCloseInitAmino): _61.MsgChannelCloseInit;
                     toAmino(message: _61.MsgChannelCloseInit): _61.MsgChannelCloseInitAmino;
@@ -640,6 +778,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelCloseInitResponseAmino;
                     encode(_: _61.MsgChannelCloseInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelCloseInitResponse;
+                    fromJSON(_: any): _61.MsgChannelCloseInitResponse;
+                    toJSON(_: _61.MsgChannelCloseInitResponse): unknown;
                     fromPartial(_: Partial<_61.MsgChannelCloseInitResponse>): _61.MsgChannelCloseInitResponse;
                     fromAmino(_: _61.MsgChannelCloseInitResponseAmino): _61.MsgChannelCloseInitResponse;
                     toAmino(_: _61.MsgChannelCloseInitResponse): _61.MsgChannelCloseInitResponseAmino;
@@ -657,6 +797,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelCloseConfirmAmino;
                     encode(message: _61.MsgChannelCloseConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelCloseConfirm;
+                    fromJSON(object: any): _61.MsgChannelCloseConfirm;
+                    toJSON(message: _61.MsgChannelCloseConfirm): unknown;
                     fromPartial(object: Partial<_61.MsgChannelCloseConfirm>): _61.MsgChannelCloseConfirm;
                     fromAmino(object: _61.MsgChannelCloseConfirmAmino): _61.MsgChannelCloseConfirm;
                     toAmino(message: _61.MsgChannelCloseConfirm): _61.MsgChannelCloseConfirmAmino;
@@ -674,6 +816,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgChannelCloseConfirmResponseAmino;
                     encode(_: _61.MsgChannelCloseConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgChannelCloseConfirmResponse;
+                    fromJSON(_: any): _61.MsgChannelCloseConfirmResponse;
+                    toJSON(_: _61.MsgChannelCloseConfirmResponse): unknown;
                     fromPartial(_: Partial<_61.MsgChannelCloseConfirmResponse>): _61.MsgChannelCloseConfirmResponse;
                     fromAmino(_: _61.MsgChannelCloseConfirmResponseAmino): _61.MsgChannelCloseConfirmResponse;
                     toAmino(_: _61.MsgChannelCloseConfirmResponse): _61.MsgChannelCloseConfirmResponseAmino;
@@ -691,6 +835,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgRecvPacketAmino;
                     encode(message: _61.MsgRecvPacket, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgRecvPacket;
+                    fromJSON(object: any): _61.MsgRecvPacket;
+                    toJSON(message: _61.MsgRecvPacket): unknown;
                     fromPartial(object: Partial<_61.MsgRecvPacket>): _61.MsgRecvPacket;
                     fromAmino(object: _61.MsgRecvPacketAmino): _61.MsgRecvPacket;
                     toAmino(message: _61.MsgRecvPacket): _61.MsgRecvPacketAmino;
@@ -708,6 +854,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgRecvPacketResponseAmino;
                     encode(_: _61.MsgRecvPacketResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgRecvPacketResponse;
+                    fromJSON(_: any): _61.MsgRecvPacketResponse;
+                    toJSON(_: _61.MsgRecvPacketResponse): unknown;
                     fromPartial(_: Partial<_61.MsgRecvPacketResponse>): _61.MsgRecvPacketResponse;
                     fromAmino(_: _61.MsgRecvPacketResponseAmino): _61.MsgRecvPacketResponse;
                     toAmino(_: _61.MsgRecvPacketResponse): _61.MsgRecvPacketResponseAmino;
@@ -725,6 +873,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgTimeoutAmino;
                     encode(message: _61.MsgTimeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgTimeout;
+                    fromJSON(object: any): _61.MsgTimeout;
+                    toJSON(message: _61.MsgTimeout): unknown;
                     fromPartial(object: Partial<_61.MsgTimeout>): _61.MsgTimeout;
                     fromAmino(object: _61.MsgTimeoutAmino): _61.MsgTimeout;
                     toAmino(message: _61.MsgTimeout): _61.MsgTimeoutAmino;
@@ -742,6 +892,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgTimeoutResponseAmino;
                     encode(_: _61.MsgTimeoutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgTimeoutResponse;
+                    fromJSON(_: any): _61.MsgTimeoutResponse;
+                    toJSON(_: _61.MsgTimeoutResponse): unknown;
                     fromPartial(_: Partial<_61.MsgTimeoutResponse>): _61.MsgTimeoutResponse;
                     fromAmino(_: _61.MsgTimeoutResponseAmino): _61.MsgTimeoutResponse;
                     toAmino(_: _61.MsgTimeoutResponse): _61.MsgTimeoutResponseAmino;
@@ -759,6 +911,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgTimeoutOnCloseAmino;
                     encode(message: _61.MsgTimeoutOnClose, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgTimeoutOnClose;
+                    fromJSON(object: any): _61.MsgTimeoutOnClose;
+                    toJSON(message: _61.MsgTimeoutOnClose): unknown;
                     fromPartial(object: Partial<_61.MsgTimeoutOnClose>): _61.MsgTimeoutOnClose;
                     fromAmino(object: _61.MsgTimeoutOnCloseAmino): _61.MsgTimeoutOnClose;
                     toAmino(message: _61.MsgTimeoutOnClose): _61.MsgTimeoutOnCloseAmino;
@@ -776,6 +930,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgTimeoutOnCloseResponseAmino;
                     encode(_: _61.MsgTimeoutOnCloseResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgTimeoutOnCloseResponse;
+                    fromJSON(_: any): _61.MsgTimeoutOnCloseResponse;
+                    toJSON(_: _61.MsgTimeoutOnCloseResponse): unknown;
                     fromPartial(_: Partial<_61.MsgTimeoutOnCloseResponse>): _61.MsgTimeoutOnCloseResponse;
                     fromAmino(_: _61.MsgTimeoutOnCloseResponseAmino): _61.MsgTimeoutOnCloseResponse;
                     toAmino(_: _61.MsgTimeoutOnCloseResponse): _61.MsgTimeoutOnCloseResponseAmino;
@@ -793,6 +949,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgAcknowledgementAmino;
                     encode(message: _61.MsgAcknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgAcknowledgement;
+                    fromJSON(object: any): _61.MsgAcknowledgement;
+                    toJSON(message: _61.MsgAcknowledgement): unknown;
                     fromPartial(object: Partial<_61.MsgAcknowledgement>): _61.MsgAcknowledgement;
                     fromAmino(object: _61.MsgAcknowledgementAmino): _61.MsgAcknowledgement;
                     toAmino(message: _61.MsgAcknowledgement): _61.MsgAcknowledgementAmino;
@@ -810,6 +968,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _61.MsgAcknowledgementResponseAmino;
                     encode(_: _61.MsgAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.MsgAcknowledgementResponse;
+                    fromJSON(_: any): _61.MsgAcknowledgementResponse;
+                    toJSON(_: _61.MsgAcknowledgementResponse): unknown;
                     fromPartial(_: Partial<_61.MsgAcknowledgementResponse>): _61.MsgAcknowledgementResponse;
                     fromAmino(_: _61.MsgAcknowledgementResponseAmino): _61.MsgAcknowledgementResponse;
                     toAmino(_: _61.MsgAcknowledgementResponse): _61.MsgAcknowledgementResponseAmino;
@@ -827,6 +987,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelRequestAmino;
                     encode(message: _60.QueryChannelRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelRequest;
+                    fromJSON(object: any): _60.QueryChannelRequest;
+                    toJSON(message: _60.QueryChannelRequest): unknown;
                     fromPartial(object: Partial<_60.QueryChannelRequest>): _60.QueryChannelRequest;
                     fromAmino(object: _60.QueryChannelRequestAmino): _60.QueryChannelRequest;
                     toAmino(message: _60.QueryChannelRequest): _60.QueryChannelRequestAmino;
@@ -844,6 +1006,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelResponseAmino;
                     encode(message: _60.QueryChannelResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelResponse;
+                    fromJSON(object: any): _60.QueryChannelResponse;
+                    toJSON(message: _60.QueryChannelResponse): unknown;
                     fromPartial(object: Partial<_60.QueryChannelResponse>): _60.QueryChannelResponse;
                     fromAmino(object: _60.QueryChannelResponseAmino): _60.QueryChannelResponse;
                     toAmino(message: _60.QueryChannelResponse): _60.QueryChannelResponseAmino;
@@ -861,6 +1025,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelsRequestAmino;
                     encode(message: _60.QueryChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelsRequest;
+                    fromJSON(object: any): _60.QueryChannelsRequest;
+                    toJSON(message: _60.QueryChannelsRequest): unknown;
                     fromPartial(object: Partial<_60.QueryChannelsRequest>): _60.QueryChannelsRequest;
                     fromAmino(object: _60.QueryChannelsRequestAmino): _60.QueryChannelsRequest;
                     toAmino(message: _60.QueryChannelsRequest): _60.QueryChannelsRequestAmino;
@@ -878,6 +1044,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelsResponseAmino;
                     encode(message: _60.QueryChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelsResponse;
+                    fromJSON(object: any): _60.QueryChannelsResponse;
+                    toJSON(message: _60.QueryChannelsResponse): unknown;
                     fromPartial(object: Partial<_60.QueryChannelsResponse>): _60.QueryChannelsResponse;
                     fromAmino(object: _60.QueryChannelsResponseAmino): _60.QueryChannelsResponse;
                     toAmino(message: _60.QueryChannelsResponse): _60.QueryChannelsResponseAmino;
@@ -895,6 +1063,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryConnectionChannelsRequestAmino;
                     encode(message: _60.QueryConnectionChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryConnectionChannelsRequest;
+                    fromJSON(object: any): _60.QueryConnectionChannelsRequest;
+                    toJSON(message: _60.QueryConnectionChannelsRequest): unknown;
                     fromPartial(object: Partial<_60.QueryConnectionChannelsRequest>): _60.QueryConnectionChannelsRequest;
                     fromAmino(object: _60.QueryConnectionChannelsRequestAmino): _60.QueryConnectionChannelsRequest;
                     toAmino(message: _60.QueryConnectionChannelsRequest): _60.QueryConnectionChannelsRequestAmino;
@@ -912,6 +1082,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryConnectionChannelsResponseAmino;
                     encode(message: _60.QueryConnectionChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryConnectionChannelsResponse;
+                    fromJSON(object: any): _60.QueryConnectionChannelsResponse;
+                    toJSON(message: _60.QueryConnectionChannelsResponse): unknown;
                     fromPartial(object: Partial<_60.QueryConnectionChannelsResponse>): _60.QueryConnectionChannelsResponse;
                     fromAmino(object: _60.QueryConnectionChannelsResponseAmino): _60.QueryConnectionChannelsResponse;
                     toAmino(message: _60.QueryConnectionChannelsResponse): _60.QueryConnectionChannelsResponseAmino;
@@ -929,6 +1101,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelClientStateRequestAmino;
                     encode(message: _60.QueryChannelClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelClientStateRequest;
+                    fromJSON(object: any): _60.QueryChannelClientStateRequest;
+                    toJSON(message: _60.QueryChannelClientStateRequest): unknown;
                     fromPartial(object: Partial<_60.QueryChannelClientStateRequest>): _60.QueryChannelClientStateRequest;
                     fromAmino(object: _60.QueryChannelClientStateRequestAmino): _60.QueryChannelClientStateRequest;
                     toAmino(message: _60.QueryChannelClientStateRequest): _60.QueryChannelClientStateRequestAmino;
@@ -946,6 +1120,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelClientStateResponseAmino;
                     encode(message: _60.QueryChannelClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelClientStateResponse;
+                    fromJSON(object: any): _60.QueryChannelClientStateResponse;
+                    toJSON(message: _60.QueryChannelClientStateResponse): unknown;
                     fromPartial(object: Partial<_60.QueryChannelClientStateResponse>): _60.QueryChannelClientStateResponse;
                     fromAmino(object: _60.QueryChannelClientStateResponseAmino): _60.QueryChannelClientStateResponse;
                     toAmino(message: _60.QueryChannelClientStateResponse): _60.QueryChannelClientStateResponseAmino;
@@ -963,6 +1139,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelConsensusStateRequestAmino;
                     encode(message: _60.QueryChannelConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelConsensusStateRequest;
+                    fromJSON(object: any): _60.QueryChannelConsensusStateRequest;
+                    toJSON(message: _60.QueryChannelConsensusStateRequest): unknown;
                     fromPartial(object: Partial<_60.QueryChannelConsensusStateRequest>): _60.QueryChannelConsensusStateRequest;
                     fromAmino(object: _60.QueryChannelConsensusStateRequestAmino): _60.QueryChannelConsensusStateRequest;
                     toAmino(message: _60.QueryChannelConsensusStateRequest): _60.QueryChannelConsensusStateRequestAmino;
@@ -980,6 +1158,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryChannelConsensusStateResponseAmino;
                     encode(message: _60.QueryChannelConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryChannelConsensusStateResponse;
+                    fromJSON(object: any): _60.QueryChannelConsensusStateResponse;
+                    toJSON(message: _60.QueryChannelConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_60.QueryChannelConsensusStateResponse>): _60.QueryChannelConsensusStateResponse;
                     fromAmino(object: _60.QueryChannelConsensusStateResponseAmino): _60.QueryChannelConsensusStateResponse;
                     toAmino(message: _60.QueryChannelConsensusStateResponse): _60.QueryChannelConsensusStateResponseAmino;
@@ -997,6 +1177,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketCommitmentRequestAmino;
                     encode(message: _60.QueryPacketCommitmentRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketCommitmentRequest;
+                    fromJSON(object: any): _60.QueryPacketCommitmentRequest;
+                    toJSON(message: _60.QueryPacketCommitmentRequest): unknown;
                     fromPartial(object: Partial<_60.QueryPacketCommitmentRequest>): _60.QueryPacketCommitmentRequest;
                     fromAmino(object: _60.QueryPacketCommitmentRequestAmino): _60.QueryPacketCommitmentRequest;
                     toAmino(message: _60.QueryPacketCommitmentRequest): _60.QueryPacketCommitmentRequestAmino;
@@ -1014,6 +1196,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketCommitmentResponseAmino;
                     encode(message: _60.QueryPacketCommitmentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketCommitmentResponse;
+                    fromJSON(object: any): _60.QueryPacketCommitmentResponse;
+                    toJSON(message: _60.QueryPacketCommitmentResponse): unknown;
                     fromPartial(object: Partial<_60.QueryPacketCommitmentResponse>): _60.QueryPacketCommitmentResponse;
                     fromAmino(object: _60.QueryPacketCommitmentResponseAmino): _60.QueryPacketCommitmentResponse;
                     toAmino(message: _60.QueryPacketCommitmentResponse): _60.QueryPacketCommitmentResponseAmino;
@@ -1031,6 +1215,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketCommitmentsRequestAmino;
                     encode(message: _60.QueryPacketCommitmentsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketCommitmentsRequest;
+                    fromJSON(object: any): _60.QueryPacketCommitmentsRequest;
+                    toJSON(message: _60.QueryPacketCommitmentsRequest): unknown;
                     fromPartial(object: Partial<_60.QueryPacketCommitmentsRequest>): _60.QueryPacketCommitmentsRequest;
                     fromAmino(object: _60.QueryPacketCommitmentsRequestAmino): _60.QueryPacketCommitmentsRequest;
                     toAmino(message: _60.QueryPacketCommitmentsRequest): _60.QueryPacketCommitmentsRequestAmino;
@@ -1048,6 +1234,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketCommitmentsResponseAmino;
                     encode(message: _60.QueryPacketCommitmentsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketCommitmentsResponse;
+                    fromJSON(object: any): _60.QueryPacketCommitmentsResponse;
+                    toJSON(message: _60.QueryPacketCommitmentsResponse): unknown;
                     fromPartial(object: Partial<_60.QueryPacketCommitmentsResponse>): _60.QueryPacketCommitmentsResponse;
                     fromAmino(object: _60.QueryPacketCommitmentsResponseAmino): _60.QueryPacketCommitmentsResponse;
                     toAmino(message: _60.QueryPacketCommitmentsResponse): _60.QueryPacketCommitmentsResponseAmino;
@@ -1065,6 +1253,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketReceiptRequestAmino;
                     encode(message: _60.QueryPacketReceiptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketReceiptRequest;
+                    fromJSON(object: any): _60.QueryPacketReceiptRequest;
+                    toJSON(message: _60.QueryPacketReceiptRequest): unknown;
                     fromPartial(object: Partial<_60.QueryPacketReceiptRequest>): _60.QueryPacketReceiptRequest;
                     fromAmino(object: _60.QueryPacketReceiptRequestAmino): _60.QueryPacketReceiptRequest;
                     toAmino(message: _60.QueryPacketReceiptRequest): _60.QueryPacketReceiptRequestAmino;
@@ -1082,6 +1272,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketReceiptResponseAmino;
                     encode(message: _60.QueryPacketReceiptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketReceiptResponse;
+                    fromJSON(object: any): _60.QueryPacketReceiptResponse;
+                    toJSON(message: _60.QueryPacketReceiptResponse): unknown;
                     fromPartial(object: Partial<_60.QueryPacketReceiptResponse>): _60.QueryPacketReceiptResponse;
                     fromAmino(object: _60.QueryPacketReceiptResponseAmino): _60.QueryPacketReceiptResponse;
                     toAmino(message: _60.QueryPacketReceiptResponse): _60.QueryPacketReceiptResponseAmino;
@@ -1099,6 +1291,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketAcknowledgementRequestAmino;
                     encode(message: _60.QueryPacketAcknowledgementRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketAcknowledgementRequest;
+                    fromJSON(object: any): _60.QueryPacketAcknowledgementRequest;
+                    toJSON(message: _60.QueryPacketAcknowledgementRequest): unknown;
                     fromPartial(object: Partial<_60.QueryPacketAcknowledgementRequest>): _60.QueryPacketAcknowledgementRequest;
                     fromAmino(object: _60.QueryPacketAcknowledgementRequestAmino): _60.QueryPacketAcknowledgementRequest;
                     toAmino(message: _60.QueryPacketAcknowledgementRequest): _60.QueryPacketAcknowledgementRequestAmino;
@@ -1116,6 +1310,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketAcknowledgementResponseAmino;
                     encode(message: _60.QueryPacketAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketAcknowledgementResponse;
+                    fromJSON(object: any): _60.QueryPacketAcknowledgementResponse;
+                    toJSON(message: _60.QueryPacketAcknowledgementResponse): unknown;
                     fromPartial(object: Partial<_60.QueryPacketAcknowledgementResponse>): _60.QueryPacketAcknowledgementResponse;
                     fromAmino(object: _60.QueryPacketAcknowledgementResponseAmino): _60.QueryPacketAcknowledgementResponse;
                     toAmino(message: _60.QueryPacketAcknowledgementResponse): _60.QueryPacketAcknowledgementResponseAmino;
@@ -1133,6 +1329,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketAcknowledgementsRequestAmino;
                     encode(message: _60.QueryPacketAcknowledgementsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketAcknowledgementsRequest;
+                    fromJSON(object: any): _60.QueryPacketAcknowledgementsRequest;
+                    toJSON(message: _60.QueryPacketAcknowledgementsRequest): unknown;
                     fromPartial(object: Partial<_60.QueryPacketAcknowledgementsRequest>): _60.QueryPacketAcknowledgementsRequest;
                     fromAmino(object: _60.QueryPacketAcknowledgementsRequestAmino): _60.QueryPacketAcknowledgementsRequest;
                     toAmino(message: _60.QueryPacketAcknowledgementsRequest): _60.QueryPacketAcknowledgementsRequestAmino;
@@ -1150,6 +1348,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryPacketAcknowledgementsResponseAmino;
                     encode(message: _60.QueryPacketAcknowledgementsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryPacketAcknowledgementsResponse;
+                    fromJSON(object: any): _60.QueryPacketAcknowledgementsResponse;
+                    toJSON(message: _60.QueryPacketAcknowledgementsResponse): unknown;
                     fromPartial(object: Partial<_60.QueryPacketAcknowledgementsResponse>): _60.QueryPacketAcknowledgementsResponse;
                     fromAmino(object: _60.QueryPacketAcknowledgementsResponseAmino): _60.QueryPacketAcknowledgementsResponse;
                     toAmino(message: _60.QueryPacketAcknowledgementsResponse): _60.QueryPacketAcknowledgementsResponseAmino;
@@ -1167,6 +1367,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryUnreceivedPacketsRequestAmino;
                     encode(message: _60.QueryUnreceivedPacketsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryUnreceivedPacketsRequest;
+                    fromJSON(object: any): _60.QueryUnreceivedPacketsRequest;
+                    toJSON(message: _60.QueryUnreceivedPacketsRequest): unknown;
                     fromPartial(object: Partial<_60.QueryUnreceivedPacketsRequest>): _60.QueryUnreceivedPacketsRequest;
                     fromAmino(object: _60.QueryUnreceivedPacketsRequestAmino): _60.QueryUnreceivedPacketsRequest;
                     toAmino(message: _60.QueryUnreceivedPacketsRequest): _60.QueryUnreceivedPacketsRequestAmino;
@@ -1184,6 +1386,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryUnreceivedPacketsResponseAmino;
                     encode(message: _60.QueryUnreceivedPacketsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryUnreceivedPacketsResponse;
+                    fromJSON(object: any): _60.QueryUnreceivedPacketsResponse;
+                    toJSON(message: _60.QueryUnreceivedPacketsResponse): unknown;
                     fromPartial(object: Partial<_60.QueryUnreceivedPacketsResponse>): _60.QueryUnreceivedPacketsResponse;
                     fromAmino(object: _60.QueryUnreceivedPacketsResponseAmino): _60.QueryUnreceivedPacketsResponse;
                     toAmino(message: _60.QueryUnreceivedPacketsResponse): _60.QueryUnreceivedPacketsResponseAmino;
@@ -1201,6 +1405,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryUnreceivedAcksRequestAmino;
                     encode(message: _60.QueryUnreceivedAcksRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryUnreceivedAcksRequest;
+                    fromJSON(object: any): _60.QueryUnreceivedAcksRequest;
+                    toJSON(message: _60.QueryUnreceivedAcksRequest): unknown;
                     fromPartial(object: Partial<_60.QueryUnreceivedAcksRequest>): _60.QueryUnreceivedAcksRequest;
                     fromAmino(object: _60.QueryUnreceivedAcksRequestAmino): _60.QueryUnreceivedAcksRequest;
                     toAmino(message: _60.QueryUnreceivedAcksRequest): _60.QueryUnreceivedAcksRequestAmino;
@@ -1218,6 +1424,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryUnreceivedAcksResponseAmino;
                     encode(message: _60.QueryUnreceivedAcksResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryUnreceivedAcksResponse;
+                    fromJSON(object: any): _60.QueryUnreceivedAcksResponse;
+                    toJSON(message: _60.QueryUnreceivedAcksResponse): unknown;
                     fromPartial(object: Partial<_60.QueryUnreceivedAcksResponse>): _60.QueryUnreceivedAcksResponse;
                     fromAmino(object: _60.QueryUnreceivedAcksResponseAmino): _60.QueryUnreceivedAcksResponse;
                     toAmino(message: _60.QueryUnreceivedAcksResponse): _60.QueryUnreceivedAcksResponseAmino;
@@ -1235,6 +1443,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryNextSequenceReceiveRequestAmino;
                     encode(message: _60.QueryNextSequenceReceiveRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryNextSequenceReceiveRequest;
+                    fromJSON(object: any): _60.QueryNextSequenceReceiveRequest;
+                    toJSON(message: _60.QueryNextSequenceReceiveRequest): unknown;
                     fromPartial(object: Partial<_60.QueryNextSequenceReceiveRequest>): _60.QueryNextSequenceReceiveRequest;
                     fromAmino(object: _60.QueryNextSequenceReceiveRequestAmino): _60.QueryNextSequenceReceiveRequest;
                     toAmino(message: _60.QueryNextSequenceReceiveRequest): _60.QueryNextSequenceReceiveRequestAmino;
@@ -1252,6 +1462,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _60.QueryNextSequenceReceiveResponseAmino;
                     encode(message: _60.QueryNextSequenceReceiveResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.QueryNextSequenceReceiveResponse;
+                    fromJSON(object: any): _60.QueryNextSequenceReceiveResponse;
+                    toJSON(message: _60.QueryNextSequenceReceiveResponse): unknown;
                     fromPartial(object: Partial<_60.QueryNextSequenceReceiveResponse>): _60.QueryNextSequenceReceiveResponse;
                     fromAmino(object: _60.QueryNextSequenceReceiveResponseAmino): _60.QueryNextSequenceReceiveResponse;
                     toAmino(message: _60.QueryNextSequenceReceiveResponse): _60.QueryNextSequenceReceiveResponseAmino;
@@ -1269,6 +1481,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _59.GenesisStateAmino;
                     encode(message: _59.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.GenesisState;
+                    fromJSON(object: any): _59.GenesisState;
+                    toJSON(message: _59.GenesisState): unknown;
                     fromPartial(object: Partial<_59.GenesisState>): _59.GenesisState;
                     fromAmino(object: _59.GenesisStateAmino): _59.GenesisState;
                     toAmino(message: _59.GenesisState): _59.GenesisStateAmino;
@@ -1286,6 +1500,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _59.PacketSequenceAmino;
                     encode(message: _59.PacketSequence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.PacketSequence;
+                    fromJSON(object: any): _59.PacketSequence;
+                    toJSON(message: _59.PacketSequence): unknown;
                     fromPartial(object: Partial<_59.PacketSequence>): _59.PacketSequence;
                     fromAmino(object: _59.PacketSequenceAmino): _59.PacketSequence;
                     toAmino(message: _59.PacketSequence): _59.PacketSequenceAmino;
@@ -1313,6 +1529,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _58.ChannelAmino;
                     encode(message: _58.Channel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.Channel;
+                    fromJSON(object: any): _58.Channel;
+                    toJSON(message: _58.Channel): unknown;
                     fromPartial(object: Partial<_58.Channel>): _58.Channel;
                     fromAmino(object: _58.ChannelAmino): _58.Channel;
                     toAmino(message: _58.Channel): _58.ChannelAmino;
@@ -1330,6 +1548,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _58.IdentifiedChannelAmino;
                     encode(message: _58.IdentifiedChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.IdentifiedChannel;
+                    fromJSON(object: any): _58.IdentifiedChannel;
+                    toJSON(message: _58.IdentifiedChannel): unknown;
                     fromPartial(object: Partial<_58.IdentifiedChannel>): _58.IdentifiedChannel;
                     fromAmino(object: _58.IdentifiedChannelAmino): _58.IdentifiedChannel;
                     toAmino(message: _58.IdentifiedChannel): _58.IdentifiedChannelAmino;
@@ -1347,6 +1567,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _58.CounterpartyAmino;
                     encode(message: _58.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.Counterparty;
+                    fromJSON(object: any): _58.Counterparty;
+                    toJSON(message: _58.Counterparty): unknown;
                     fromPartial(object: Partial<_58.Counterparty>): _58.Counterparty;
                     fromAmino(object: _58.CounterpartyAmino): _58.Counterparty;
                     toAmino(message: _58.Counterparty): _58.CounterpartyAmino;
@@ -1364,6 +1586,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _58.PacketAmino;
                     encode(message: _58.Packet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.Packet;
+                    fromJSON(object: any): _58.Packet;
+                    toJSON(message: _58.Packet): unknown;
                     fromPartial(object: Partial<_58.Packet>): _58.Packet;
                     fromAmino(object: _58.PacketAmino): _58.Packet;
                     toAmino(message: _58.Packet): _58.PacketAmino;
@@ -1381,6 +1605,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _58.PacketStateAmino;
                     encode(message: _58.PacketState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.PacketState;
+                    fromJSON(object: any): _58.PacketState;
+                    toJSON(message: _58.PacketState): unknown;
                     fromPartial(object: Partial<_58.PacketState>): _58.PacketState;
                     fromAmino(object: _58.PacketStateAmino): _58.PacketState;
                     toAmino(message: _58.PacketState): _58.PacketStateAmino;
@@ -1398,6 +1624,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _58.AcknowledgementAmino;
                     encode(message: _58.Acknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.Acknowledgement;
+                    fromJSON(object: any): _58.Acknowledgement;
+                    toJSON(message: _58.Acknowledgement): unknown;
                     fromPartial(object: Partial<_58.Acknowledgement>): _58.Acknowledgement;
                     fromAmino(object: _58.AcknowledgementAmino): _58.Acknowledgement;
                     toAmino(message: _58.Acknowledgement): _58.AcknowledgementAmino;
@@ -1411,8 +1639,8 @@ export declare namespace ibc {
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _146.MsgClientImpl;
-                QueryClientImpl: typeof _142.QueryClientImpl;
+                MsgClientImpl: typeof _149.MsgClientImpl;
+                QueryClientImpl: typeof _145.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     clientState(request: _64.QueryClientStateRequest): Promise<_64.QueryClientStateResponse>;
                     clientStates(request?: _64.QueryClientStatesRequest): Promise<_64.QueryClientStatesResponse>;
@@ -1458,6 +1686,42 @@ export declare namespace ibc {
                             value: _65.MsgUpgradeClient;
                         };
                         submitMisbehaviour(value: _65.MsgSubmitMisbehaviour): {
+                            typeUrl: string;
+                            value: _65.MsgSubmitMisbehaviour;
+                        };
+                    };
+                    toJSON: {
+                        createClient(value: _65.MsgCreateClient): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        updateClient(value: _65.MsgUpdateClient): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        upgradeClient(value: _65.MsgUpgradeClient): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        submitMisbehaviour(value: _65.MsgSubmitMisbehaviour): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                    };
+                    fromJSON: {
+                        createClient(value: any): {
+                            typeUrl: string;
+                            value: _65.MsgCreateClient;
+                        };
+                        updateClient(value: any): {
+                            typeUrl: string;
+                            value: _65.MsgUpdateClient;
+                        };
+                        upgradeClient(value: any): {
+                            typeUrl: string;
+                            value: _65.MsgUpgradeClient;
+                        };
+                        submitMisbehaviour(value: any): {
                             typeUrl: string;
                             value: _65.MsgSubmitMisbehaviour;
                         };
@@ -1511,6 +1775,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgCreateClientAmino;
                     encode(message: _65.MsgCreateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgCreateClient;
+                    fromJSON(object: any): _65.MsgCreateClient;
+                    toJSON(message: _65.MsgCreateClient): unknown;
                     fromPartial(object: Partial<_65.MsgCreateClient>): _65.MsgCreateClient;
                     fromAmino(object: _65.MsgCreateClientAmino): _65.MsgCreateClient;
                     toAmino(message: _65.MsgCreateClient): _65.MsgCreateClientAmino;
@@ -1528,6 +1794,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgCreateClientResponseAmino;
                     encode(_: _65.MsgCreateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgCreateClientResponse;
+                    fromJSON(_: any): _65.MsgCreateClientResponse;
+                    toJSON(_: _65.MsgCreateClientResponse): unknown;
                     fromPartial(_: Partial<_65.MsgCreateClientResponse>): _65.MsgCreateClientResponse;
                     fromAmino(_: _65.MsgCreateClientResponseAmino): _65.MsgCreateClientResponse;
                     toAmino(_: _65.MsgCreateClientResponse): _65.MsgCreateClientResponseAmino;
@@ -1545,6 +1813,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgUpdateClientAmino;
                     encode(message: _65.MsgUpdateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgUpdateClient;
+                    fromJSON(object: any): _65.MsgUpdateClient;
+                    toJSON(message: _65.MsgUpdateClient): unknown;
                     fromPartial(object: Partial<_65.MsgUpdateClient>): _65.MsgUpdateClient;
                     fromAmino(object: _65.MsgUpdateClientAmino): _65.MsgUpdateClient;
                     toAmino(message: _65.MsgUpdateClient): _65.MsgUpdateClientAmino;
@@ -1562,6 +1832,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgUpdateClientResponseAmino;
                     encode(_: _65.MsgUpdateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgUpdateClientResponse;
+                    fromJSON(_: any): _65.MsgUpdateClientResponse;
+                    toJSON(_: _65.MsgUpdateClientResponse): unknown;
                     fromPartial(_: Partial<_65.MsgUpdateClientResponse>): _65.MsgUpdateClientResponse;
                     fromAmino(_: _65.MsgUpdateClientResponseAmino): _65.MsgUpdateClientResponse;
                     toAmino(_: _65.MsgUpdateClientResponse): _65.MsgUpdateClientResponseAmino;
@@ -1579,6 +1851,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgUpgradeClientAmino;
                     encode(message: _65.MsgUpgradeClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgUpgradeClient;
+                    fromJSON(object: any): _65.MsgUpgradeClient;
+                    toJSON(message: _65.MsgUpgradeClient): unknown;
                     fromPartial(object: Partial<_65.MsgUpgradeClient>): _65.MsgUpgradeClient;
                     fromAmino(object: _65.MsgUpgradeClientAmino): _65.MsgUpgradeClient;
                     toAmino(message: _65.MsgUpgradeClient): _65.MsgUpgradeClientAmino;
@@ -1596,6 +1870,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgUpgradeClientResponseAmino;
                     encode(_: _65.MsgUpgradeClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgUpgradeClientResponse;
+                    fromJSON(_: any): _65.MsgUpgradeClientResponse;
+                    toJSON(_: _65.MsgUpgradeClientResponse): unknown;
                     fromPartial(_: Partial<_65.MsgUpgradeClientResponse>): _65.MsgUpgradeClientResponse;
                     fromAmino(_: _65.MsgUpgradeClientResponseAmino): _65.MsgUpgradeClientResponse;
                     toAmino(_: _65.MsgUpgradeClientResponse): _65.MsgUpgradeClientResponseAmino;
@@ -1613,6 +1889,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgSubmitMisbehaviourAmino;
                     encode(message: _65.MsgSubmitMisbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgSubmitMisbehaviour;
+                    fromJSON(object: any): _65.MsgSubmitMisbehaviour;
+                    toJSON(message: _65.MsgSubmitMisbehaviour): unknown;
                     fromPartial(object: Partial<_65.MsgSubmitMisbehaviour>): _65.MsgSubmitMisbehaviour;
                     fromAmino(object: _65.MsgSubmitMisbehaviourAmino): _65.MsgSubmitMisbehaviour;
                     toAmino(message: _65.MsgSubmitMisbehaviour): _65.MsgSubmitMisbehaviourAmino;
@@ -1630,6 +1908,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _65.MsgSubmitMisbehaviourResponseAmino;
                     encode(_: _65.MsgSubmitMisbehaviourResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgSubmitMisbehaviourResponse;
+                    fromJSON(_: any): _65.MsgSubmitMisbehaviourResponse;
+                    toJSON(_: _65.MsgSubmitMisbehaviourResponse): unknown;
                     fromPartial(_: Partial<_65.MsgSubmitMisbehaviourResponse>): _65.MsgSubmitMisbehaviourResponse;
                     fromAmino(_: _65.MsgSubmitMisbehaviourResponseAmino): _65.MsgSubmitMisbehaviourResponse;
                     toAmino(_: _65.MsgSubmitMisbehaviourResponse): _65.MsgSubmitMisbehaviourResponseAmino;
@@ -1647,6 +1927,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientStateRequestAmino;
                     encode(message: _64.QueryClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientStateRequest;
+                    fromJSON(object: any): _64.QueryClientStateRequest;
+                    toJSON(message: _64.QueryClientStateRequest): unknown;
                     fromPartial(object: Partial<_64.QueryClientStateRequest>): _64.QueryClientStateRequest;
                     fromAmino(object: _64.QueryClientStateRequestAmino): _64.QueryClientStateRequest;
                     toAmino(message: _64.QueryClientStateRequest): _64.QueryClientStateRequestAmino;
@@ -1664,6 +1946,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientStateResponseAmino;
                     encode(message: _64.QueryClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientStateResponse;
+                    fromJSON(object: any): _64.QueryClientStateResponse;
+                    toJSON(message: _64.QueryClientStateResponse): unknown;
                     fromPartial(object: Partial<_64.QueryClientStateResponse>): _64.QueryClientStateResponse;
                     fromAmino(object: _64.QueryClientStateResponseAmino): _64.QueryClientStateResponse;
                     toAmino(message: _64.QueryClientStateResponse): _64.QueryClientStateResponseAmino;
@@ -1681,6 +1965,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientStatesRequestAmino;
                     encode(message: _64.QueryClientStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientStatesRequest;
+                    fromJSON(object: any): _64.QueryClientStatesRequest;
+                    toJSON(message: _64.QueryClientStatesRequest): unknown;
                     fromPartial(object: Partial<_64.QueryClientStatesRequest>): _64.QueryClientStatesRequest;
                     fromAmino(object: _64.QueryClientStatesRequestAmino): _64.QueryClientStatesRequest;
                     toAmino(message: _64.QueryClientStatesRequest): _64.QueryClientStatesRequestAmino;
@@ -1698,6 +1984,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientStatesResponseAmino;
                     encode(message: _64.QueryClientStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientStatesResponse;
+                    fromJSON(object: any): _64.QueryClientStatesResponse;
+                    toJSON(message: _64.QueryClientStatesResponse): unknown;
                     fromPartial(object: Partial<_64.QueryClientStatesResponse>): _64.QueryClientStatesResponse;
                     fromAmino(object: _64.QueryClientStatesResponseAmino): _64.QueryClientStatesResponse;
                     toAmino(message: _64.QueryClientStatesResponse): _64.QueryClientStatesResponseAmino;
@@ -1715,6 +2003,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryConsensusStateRequestAmino;
                     encode(message: _64.QueryConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryConsensusStateRequest;
+                    fromJSON(object: any): _64.QueryConsensusStateRequest;
+                    toJSON(message: _64.QueryConsensusStateRequest): unknown;
                     fromPartial(object: Partial<_64.QueryConsensusStateRequest>): _64.QueryConsensusStateRequest;
                     fromAmino(object: _64.QueryConsensusStateRequestAmino): _64.QueryConsensusStateRequest;
                     toAmino(message: _64.QueryConsensusStateRequest): _64.QueryConsensusStateRequestAmino;
@@ -1732,6 +2022,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryConsensusStateResponseAmino;
                     encode(message: _64.QueryConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryConsensusStateResponse;
+                    fromJSON(object: any): _64.QueryConsensusStateResponse;
+                    toJSON(message: _64.QueryConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_64.QueryConsensusStateResponse>): _64.QueryConsensusStateResponse;
                     fromAmino(object: _64.QueryConsensusStateResponseAmino): _64.QueryConsensusStateResponse;
                     toAmino(message: _64.QueryConsensusStateResponse): _64.QueryConsensusStateResponseAmino;
@@ -1749,6 +2041,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryConsensusStatesRequestAmino;
                     encode(message: _64.QueryConsensusStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryConsensusStatesRequest;
+                    fromJSON(object: any): _64.QueryConsensusStatesRequest;
+                    toJSON(message: _64.QueryConsensusStatesRequest): unknown;
                     fromPartial(object: Partial<_64.QueryConsensusStatesRequest>): _64.QueryConsensusStatesRequest;
                     fromAmino(object: _64.QueryConsensusStatesRequestAmino): _64.QueryConsensusStatesRequest;
                     toAmino(message: _64.QueryConsensusStatesRequest): _64.QueryConsensusStatesRequestAmino;
@@ -1766,6 +2060,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryConsensusStatesResponseAmino;
                     encode(message: _64.QueryConsensusStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryConsensusStatesResponse;
+                    fromJSON(object: any): _64.QueryConsensusStatesResponse;
+                    toJSON(message: _64.QueryConsensusStatesResponse): unknown;
                     fromPartial(object: Partial<_64.QueryConsensusStatesResponse>): _64.QueryConsensusStatesResponse;
                     fromAmino(object: _64.QueryConsensusStatesResponseAmino): _64.QueryConsensusStatesResponse;
                     toAmino(message: _64.QueryConsensusStatesResponse): _64.QueryConsensusStatesResponseAmino;
@@ -1783,6 +2079,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientStatusRequestAmino;
                     encode(message: _64.QueryClientStatusRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientStatusRequest;
+                    fromJSON(object: any): _64.QueryClientStatusRequest;
+                    toJSON(message: _64.QueryClientStatusRequest): unknown;
                     fromPartial(object: Partial<_64.QueryClientStatusRequest>): _64.QueryClientStatusRequest;
                     fromAmino(object: _64.QueryClientStatusRequestAmino): _64.QueryClientStatusRequest;
                     toAmino(message: _64.QueryClientStatusRequest): _64.QueryClientStatusRequestAmino;
@@ -1800,6 +2098,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientStatusResponseAmino;
                     encode(message: _64.QueryClientStatusResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientStatusResponse;
+                    fromJSON(object: any): _64.QueryClientStatusResponse;
+                    toJSON(message: _64.QueryClientStatusResponse): unknown;
                     fromPartial(object: Partial<_64.QueryClientStatusResponse>): _64.QueryClientStatusResponse;
                     fromAmino(object: _64.QueryClientStatusResponseAmino): _64.QueryClientStatusResponse;
                     toAmino(message: _64.QueryClientStatusResponse): _64.QueryClientStatusResponseAmino;
@@ -1817,6 +2117,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientParamsRequestAmino;
                     encode(_: _64.QueryClientParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientParamsRequest;
+                    fromJSON(_: any): _64.QueryClientParamsRequest;
+                    toJSON(_: _64.QueryClientParamsRequest): unknown;
                     fromPartial(_: Partial<_64.QueryClientParamsRequest>): _64.QueryClientParamsRequest;
                     fromAmino(_: _64.QueryClientParamsRequestAmino): _64.QueryClientParamsRequest;
                     toAmino(_: _64.QueryClientParamsRequest): _64.QueryClientParamsRequestAmino;
@@ -1834,6 +2136,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryClientParamsResponseAmino;
                     encode(message: _64.QueryClientParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryClientParamsResponse;
+                    fromJSON(object: any): _64.QueryClientParamsResponse;
+                    toJSON(message: _64.QueryClientParamsResponse): unknown;
                     fromPartial(object: Partial<_64.QueryClientParamsResponse>): _64.QueryClientParamsResponse;
                     fromAmino(object: _64.QueryClientParamsResponseAmino): _64.QueryClientParamsResponse;
                     toAmino(message: _64.QueryClientParamsResponse): _64.QueryClientParamsResponseAmino;
@@ -1851,6 +2155,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryUpgradedClientStateRequestAmino;
                     encode(_: _64.QueryUpgradedClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryUpgradedClientStateRequest;
+                    fromJSON(_: any): _64.QueryUpgradedClientStateRequest;
+                    toJSON(_: _64.QueryUpgradedClientStateRequest): unknown;
                     fromPartial(_: Partial<_64.QueryUpgradedClientStateRequest>): _64.QueryUpgradedClientStateRequest;
                     fromAmino(_: _64.QueryUpgradedClientStateRequestAmino): _64.QueryUpgradedClientStateRequest;
                     toAmino(_: _64.QueryUpgradedClientStateRequest): _64.QueryUpgradedClientStateRequestAmino;
@@ -1868,6 +2174,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryUpgradedClientStateResponseAmino;
                     encode(message: _64.QueryUpgradedClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryUpgradedClientStateResponse;
+                    fromJSON(object: any): _64.QueryUpgradedClientStateResponse;
+                    toJSON(message: _64.QueryUpgradedClientStateResponse): unknown;
                     fromPartial(object: Partial<_64.QueryUpgradedClientStateResponse>): _64.QueryUpgradedClientStateResponse;
                     fromAmino(object: _64.QueryUpgradedClientStateResponseAmino): _64.QueryUpgradedClientStateResponse;
                     toAmino(message: _64.QueryUpgradedClientStateResponse): _64.QueryUpgradedClientStateResponseAmino;
@@ -1885,6 +2193,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryUpgradedConsensusStateRequestAmino;
                     encode(_: _64.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryUpgradedConsensusStateRequest;
+                    fromJSON(_: any): _64.QueryUpgradedConsensusStateRequest;
+                    toJSON(_: _64.QueryUpgradedConsensusStateRequest): unknown;
                     fromPartial(_: Partial<_64.QueryUpgradedConsensusStateRequest>): _64.QueryUpgradedConsensusStateRequest;
                     fromAmino(_: _64.QueryUpgradedConsensusStateRequestAmino): _64.QueryUpgradedConsensusStateRequest;
                     toAmino(_: _64.QueryUpgradedConsensusStateRequest): _64.QueryUpgradedConsensusStateRequestAmino;
@@ -1902,6 +2212,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _64.QueryUpgradedConsensusStateResponseAmino;
                     encode(message: _64.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryUpgradedConsensusStateResponse;
+                    fromJSON(object: any): _64.QueryUpgradedConsensusStateResponse;
+                    toJSON(message: _64.QueryUpgradedConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_64.QueryUpgradedConsensusStateResponse>): _64.QueryUpgradedConsensusStateResponse;
                     fromAmino(object: _64.QueryUpgradedConsensusStateResponseAmino): _64.QueryUpgradedConsensusStateResponse;
                     toAmino(message: _64.QueryUpgradedConsensusStateResponse): _64.QueryUpgradedConsensusStateResponseAmino;
@@ -1919,6 +2231,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _63.GenesisStateAmino;
                     encode(message: _63.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.GenesisState;
+                    fromJSON(object: any): _63.GenesisState;
+                    toJSON(message: _63.GenesisState): unknown;
                     fromPartial(object: Partial<_63.GenesisState>): _63.GenesisState;
                     fromAmino(object: _63.GenesisStateAmino): _63.GenesisState;
                     toAmino(message: _63.GenesisState): _63.GenesisStateAmino;
@@ -1936,6 +2250,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _63.GenesisMetadataAmino;
                     encode(message: _63.GenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.GenesisMetadata;
+                    fromJSON(object: any): _63.GenesisMetadata;
+                    toJSON(message: _63.GenesisMetadata): unknown;
                     fromPartial(object: Partial<_63.GenesisMetadata>): _63.GenesisMetadata;
                     fromAmino(object: _63.GenesisMetadataAmino): _63.GenesisMetadata;
                     toAmino(message: _63.GenesisMetadata): _63.GenesisMetadataAmino;
@@ -1953,6 +2269,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _63.IdentifiedGenesisMetadataAmino;
                     encode(message: _63.IdentifiedGenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.IdentifiedGenesisMetadata;
+                    fromJSON(object: any): _63.IdentifiedGenesisMetadata;
+                    toJSON(message: _63.IdentifiedGenesisMetadata): unknown;
                     fromPartial(object: Partial<_63.IdentifiedGenesisMetadata>): _63.IdentifiedGenesisMetadata;
                     fromAmino(object: _63.IdentifiedGenesisMetadataAmino): _63.IdentifiedGenesisMetadata;
                     toAmino(message: _63.IdentifiedGenesisMetadata): _63.IdentifiedGenesisMetadataAmino;
@@ -1970,6 +2288,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.IdentifiedClientStateAmino;
                     encode(message: _62.IdentifiedClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.IdentifiedClientState;
+                    fromJSON(object: any): _62.IdentifiedClientState;
+                    toJSON(message: _62.IdentifiedClientState): unknown;
                     fromPartial(object: Partial<_62.IdentifiedClientState>): _62.IdentifiedClientState;
                     fromAmino(object: _62.IdentifiedClientStateAmino): _62.IdentifiedClientState;
                     toAmino(message: _62.IdentifiedClientState): _62.IdentifiedClientStateAmino;
@@ -1987,6 +2307,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.ConsensusStateWithHeightAmino;
                     encode(message: _62.ConsensusStateWithHeight, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.ConsensusStateWithHeight;
+                    fromJSON(object: any): _62.ConsensusStateWithHeight;
+                    toJSON(message: _62.ConsensusStateWithHeight): unknown;
                     fromPartial(object: Partial<_62.ConsensusStateWithHeight>): _62.ConsensusStateWithHeight;
                     fromAmino(object: _62.ConsensusStateWithHeightAmino): _62.ConsensusStateWithHeight;
                     toAmino(message: _62.ConsensusStateWithHeight): _62.ConsensusStateWithHeightAmino;
@@ -2004,6 +2326,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.ClientConsensusStatesAmino;
                     encode(message: _62.ClientConsensusStates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.ClientConsensusStates;
+                    fromJSON(object: any): _62.ClientConsensusStates;
+                    toJSON(message: _62.ClientConsensusStates): unknown;
                     fromPartial(object: Partial<_62.ClientConsensusStates>): _62.ClientConsensusStates;
                     fromAmino(object: _62.ClientConsensusStatesAmino): _62.ClientConsensusStates;
                     toAmino(message: _62.ClientConsensusStates): _62.ClientConsensusStatesAmino;
@@ -2021,6 +2345,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.ClientUpdateProposalAmino;
                     encode(message: _62.ClientUpdateProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.ClientUpdateProposal;
+                    fromJSON(object: any): _62.ClientUpdateProposal;
+                    toJSON(message: _62.ClientUpdateProposal): unknown;
                     fromPartial(object: Partial<_62.ClientUpdateProposal>): _62.ClientUpdateProposal;
                     fromAmino(object: _62.ClientUpdateProposalAmino): _62.ClientUpdateProposal;
                     toAmino(message: _62.ClientUpdateProposal): _62.ClientUpdateProposalAmino;
@@ -2038,6 +2364,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.UpgradeProposalAmino;
                     encode(message: _62.UpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.UpgradeProposal;
+                    fromJSON(object: any): _62.UpgradeProposal;
+                    toJSON(message: _62.UpgradeProposal): unknown;
                     fromPartial(object: Partial<_62.UpgradeProposal>): _62.UpgradeProposal;
                     fromAmino(object: _62.UpgradeProposalAmino): _62.UpgradeProposal;
                     toAmino(message: _62.UpgradeProposal): _62.UpgradeProposalAmino;
@@ -2055,6 +2383,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.HeightAmino;
                     encode(message: _62.Height, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.Height;
+                    fromJSON(object: any): _62.Height;
+                    toJSON(message: _62.Height): unknown;
                     fromPartial(object: Partial<_62.Height>): _62.Height;
                     fromAmino(object: _62.HeightAmino): _62.Height;
                     toAmino(message: _62.Height): _62.HeightAmino;
@@ -2072,6 +2402,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _62.ParamsAmino;
                     encode(message: _62.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.Params;
+                    fromJSON(object: any): _62.Params;
+                    toJSON(message: _62.Params): unknown;
                     fromPartial(object: Partial<_62.Params>): _62.Params;
                     fromAmino(object: _62.ParamsAmino): _62.Params;
                     toAmino(message: _62.Params): _62.ParamsAmino;
@@ -2093,6 +2425,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _66.MerkleRootAmino;
                     encode(message: _66.MerkleRoot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MerkleRoot;
+                    fromJSON(object: any): _66.MerkleRoot;
+                    toJSON(message: _66.MerkleRoot): unknown;
                     fromPartial(object: Partial<_66.MerkleRoot>): _66.MerkleRoot;
                     fromAmino(object: _66.MerkleRootAmino): _66.MerkleRoot;
                     toAmino(message: _66.MerkleRoot): _66.MerkleRootAmino;
@@ -2110,6 +2444,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _66.MerklePrefixAmino;
                     encode(message: _66.MerklePrefix, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MerklePrefix;
+                    fromJSON(object: any): _66.MerklePrefix;
+                    toJSON(message: _66.MerklePrefix): unknown;
                     fromPartial(object: Partial<_66.MerklePrefix>): _66.MerklePrefix;
                     fromAmino(object: _66.MerklePrefixAmino): _66.MerklePrefix;
                     toAmino(message: _66.MerklePrefix): _66.MerklePrefixAmino;
@@ -2127,6 +2463,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _66.MerklePathAmino;
                     encode(message: _66.MerklePath, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MerklePath;
+                    fromJSON(object: any): _66.MerklePath;
+                    toJSON(message: _66.MerklePath): unknown;
                     fromPartial(object: Partial<_66.MerklePath>): _66.MerklePath;
                     fromAmino(object: _66.MerklePathAmino): _66.MerklePath;
                     toAmino(message: _66.MerklePath): _66.MerklePathAmino;
@@ -2144,6 +2482,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _66.MerkleProofAmino;
                     encode(message: _66.MerkleProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.MerkleProof;
+                    fromJSON(object: any): _66.MerkleProof;
+                    toJSON(message: _66.MerkleProof): unknown;
                     fromPartial(object: Partial<_66.MerkleProof>): _66.MerkleProof;
                     fromAmino(object: _66.MerkleProofAmino): _66.MerkleProof;
                     toAmino(message: _66.MerkleProof): _66.MerkleProofAmino;
@@ -2157,8 +2497,8 @@ export declare namespace ibc {
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _147.MsgClientImpl;
-                QueryClientImpl: typeof _143.QueryClientImpl;
+                MsgClientImpl: typeof _150.MsgClientImpl;
+                QueryClientImpl: typeof _146.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     connection(request: _69.QueryConnectionRequest): Promise<_69.QueryConnectionResponse>;
                     connections(request?: _69.QueryConnectionsRequest): Promise<_69.QueryConnectionsResponse>;
@@ -2201,6 +2541,42 @@ export declare namespace ibc {
                             value: _70.MsgConnectionOpenAck;
                         };
                         connectionOpenConfirm(value: _70.MsgConnectionOpenConfirm): {
+                            typeUrl: string;
+                            value: _70.MsgConnectionOpenConfirm;
+                        };
+                    };
+                    toJSON: {
+                        connectionOpenInit(value: _70.MsgConnectionOpenInit): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        connectionOpenTry(value: _70.MsgConnectionOpenTry): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        connectionOpenAck(value: _70.MsgConnectionOpenAck): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                        connectionOpenConfirm(value: _70.MsgConnectionOpenConfirm): {
+                            typeUrl: string;
+                            value: unknown;
+                        };
+                    };
+                    fromJSON: {
+                        connectionOpenInit(value: any): {
+                            typeUrl: string;
+                            value: _70.MsgConnectionOpenInit;
+                        };
+                        connectionOpenTry(value: any): {
+                            typeUrl: string;
+                            value: _70.MsgConnectionOpenTry;
+                        };
+                        connectionOpenAck(value: any): {
+                            typeUrl: string;
+                            value: _70.MsgConnectionOpenAck;
+                        };
+                        connectionOpenConfirm(value: any): {
                             typeUrl: string;
                             value: _70.MsgConnectionOpenConfirm;
                         };
@@ -2254,6 +2630,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenInitAmino;
                     encode(message: _70.MsgConnectionOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenInit;
+                    fromJSON(object: any): _70.MsgConnectionOpenInit;
+                    toJSON(message: _70.MsgConnectionOpenInit): unknown;
                     fromPartial(object: Partial<_70.MsgConnectionOpenInit>): _70.MsgConnectionOpenInit;
                     fromAmino(object: _70.MsgConnectionOpenInitAmino): _70.MsgConnectionOpenInit;
                     toAmino(message: _70.MsgConnectionOpenInit): _70.MsgConnectionOpenInitAmino;
@@ -2271,6 +2649,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenInitResponseAmino;
                     encode(_: _70.MsgConnectionOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenInitResponse;
+                    fromJSON(_: any): _70.MsgConnectionOpenInitResponse;
+                    toJSON(_: _70.MsgConnectionOpenInitResponse): unknown;
                     fromPartial(_: Partial<_70.MsgConnectionOpenInitResponse>): _70.MsgConnectionOpenInitResponse;
                     fromAmino(_: _70.MsgConnectionOpenInitResponseAmino): _70.MsgConnectionOpenInitResponse;
                     toAmino(_: _70.MsgConnectionOpenInitResponse): _70.MsgConnectionOpenInitResponseAmino;
@@ -2288,6 +2668,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenTryAmino;
                     encode(message: _70.MsgConnectionOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenTry;
+                    fromJSON(object: any): _70.MsgConnectionOpenTry;
+                    toJSON(message: _70.MsgConnectionOpenTry): unknown;
                     fromPartial(object: Partial<_70.MsgConnectionOpenTry>): _70.MsgConnectionOpenTry;
                     fromAmino(object: _70.MsgConnectionOpenTryAmino): _70.MsgConnectionOpenTry;
                     toAmino(message: _70.MsgConnectionOpenTry): _70.MsgConnectionOpenTryAmino;
@@ -2305,6 +2687,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenTryResponseAmino;
                     encode(_: _70.MsgConnectionOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenTryResponse;
+                    fromJSON(_: any): _70.MsgConnectionOpenTryResponse;
+                    toJSON(_: _70.MsgConnectionOpenTryResponse): unknown;
                     fromPartial(_: Partial<_70.MsgConnectionOpenTryResponse>): _70.MsgConnectionOpenTryResponse;
                     fromAmino(_: _70.MsgConnectionOpenTryResponseAmino): _70.MsgConnectionOpenTryResponse;
                     toAmino(_: _70.MsgConnectionOpenTryResponse): _70.MsgConnectionOpenTryResponseAmino;
@@ -2322,6 +2706,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenAckAmino;
                     encode(message: _70.MsgConnectionOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenAck;
+                    fromJSON(object: any): _70.MsgConnectionOpenAck;
+                    toJSON(message: _70.MsgConnectionOpenAck): unknown;
                     fromPartial(object: Partial<_70.MsgConnectionOpenAck>): _70.MsgConnectionOpenAck;
                     fromAmino(object: _70.MsgConnectionOpenAckAmino): _70.MsgConnectionOpenAck;
                     toAmino(message: _70.MsgConnectionOpenAck): _70.MsgConnectionOpenAckAmino;
@@ -2339,6 +2725,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenAckResponseAmino;
                     encode(_: _70.MsgConnectionOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenAckResponse;
+                    fromJSON(_: any): _70.MsgConnectionOpenAckResponse;
+                    toJSON(_: _70.MsgConnectionOpenAckResponse): unknown;
                     fromPartial(_: Partial<_70.MsgConnectionOpenAckResponse>): _70.MsgConnectionOpenAckResponse;
                     fromAmino(_: _70.MsgConnectionOpenAckResponseAmino): _70.MsgConnectionOpenAckResponse;
                     toAmino(_: _70.MsgConnectionOpenAckResponse): _70.MsgConnectionOpenAckResponseAmino;
@@ -2356,6 +2744,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenConfirmAmino;
                     encode(message: _70.MsgConnectionOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenConfirm;
+                    fromJSON(object: any): _70.MsgConnectionOpenConfirm;
+                    toJSON(message: _70.MsgConnectionOpenConfirm): unknown;
                     fromPartial(object: Partial<_70.MsgConnectionOpenConfirm>): _70.MsgConnectionOpenConfirm;
                     fromAmino(object: _70.MsgConnectionOpenConfirmAmino): _70.MsgConnectionOpenConfirm;
                     toAmino(message: _70.MsgConnectionOpenConfirm): _70.MsgConnectionOpenConfirmAmino;
@@ -2373,6 +2763,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _70.MsgConnectionOpenConfirmResponseAmino;
                     encode(_: _70.MsgConnectionOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgConnectionOpenConfirmResponse;
+                    fromJSON(_: any): _70.MsgConnectionOpenConfirmResponse;
+                    toJSON(_: _70.MsgConnectionOpenConfirmResponse): unknown;
                     fromPartial(_: Partial<_70.MsgConnectionOpenConfirmResponse>): _70.MsgConnectionOpenConfirmResponse;
                     fromAmino(_: _70.MsgConnectionOpenConfirmResponseAmino): _70.MsgConnectionOpenConfirmResponse;
                     toAmino(_: _70.MsgConnectionOpenConfirmResponse): _70.MsgConnectionOpenConfirmResponseAmino;
@@ -2390,6 +2782,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionRequestAmino;
                     encode(message: _69.QueryConnectionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionRequest;
+                    fromJSON(object: any): _69.QueryConnectionRequest;
+                    toJSON(message: _69.QueryConnectionRequest): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionRequest>): _69.QueryConnectionRequest;
                     fromAmino(object: _69.QueryConnectionRequestAmino): _69.QueryConnectionRequest;
                     toAmino(message: _69.QueryConnectionRequest): _69.QueryConnectionRequestAmino;
@@ -2407,6 +2801,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionResponseAmino;
                     encode(message: _69.QueryConnectionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionResponse;
+                    fromJSON(object: any): _69.QueryConnectionResponse;
+                    toJSON(message: _69.QueryConnectionResponse): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionResponse>): _69.QueryConnectionResponse;
                     fromAmino(object: _69.QueryConnectionResponseAmino): _69.QueryConnectionResponse;
                     toAmino(message: _69.QueryConnectionResponse): _69.QueryConnectionResponseAmino;
@@ -2424,6 +2820,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionsRequestAmino;
                     encode(message: _69.QueryConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionsRequest;
+                    fromJSON(object: any): _69.QueryConnectionsRequest;
+                    toJSON(message: _69.QueryConnectionsRequest): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionsRequest>): _69.QueryConnectionsRequest;
                     fromAmino(object: _69.QueryConnectionsRequestAmino): _69.QueryConnectionsRequest;
                     toAmino(message: _69.QueryConnectionsRequest): _69.QueryConnectionsRequestAmino;
@@ -2441,6 +2839,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionsResponseAmino;
                     encode(message: _69.QueryConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionsResponse;
+                    fromJSON(object: any): _69.QueryConnectionsResponse;
+                    toJSON(message: _69.QueryConnectionsResponse): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionsResponse>): _69.QueryConnectionsResponse;
                     fromAmino(object: _69.QueryConnectionsResponseAmino): _69.QueryConnectionsResponse;
                     toAmino(message: _69.QueryConnectionsResponse): _69.QueryConnectionsResponseAmino;
@@ -2458,6 +2858,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryClientConnectionsRequestAmino;
                     encode(message: _69.QueryClientConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryClientConnectionsRequest;
+                    fromJSON(object: any): _69.QueryClientConnectionsRequest;
+                    toJSON(message: _69.QueryClientConnectionsRequest): unknown;
                     fromPartial(object: Partial<_69.QueryClientConnectionsRequest>): _69.QueryClientConnectionsRequest;
                     fromAmino(object: _69.QueryClientConnectionsRequestAmino): _69.QueryClientConnectionsRequest;
                     toAmino(message: _69.QueryClientConnectionsRequest): _69.QueryClientConnectionsRequestAmino;
@@ -2475,6 +2877,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryClientConnectionsResponseAmino;
                     encode(message: _69.QueryClientConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryClientConnectionsResponse;
+                    fromJSON(object: any): _69.QueryClientConnectionsResponse;
+                    toJSON(message: _69.QueryClientConnectionsResponse): unknown;
                     fromPartial(object: Partial<_69.QueryClientConnectionsResponse>): _69.QueryClientConnectionsResponse;
                     fromAmino(object: _69.QueryClientConnectionsResponseAmino): _69.QueryClientConnectionsResponse;
                     toAmino(message: _69.QueryClientConnectionsResponse): _69.QueryClientConnectionsResponseAmino;
@@ -2492,6 +2896,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionClientStateRequestAmino;
                     encode(message: _69.QueryConnectionClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionClientStateRequest;
+                    fromJSON(object: any): _69.QueryConnectionClientStateRequest;
+                    toJSON(message: _69.QueryConnectionClientStateRequest): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionClientStateRequest>): _69.QueryConnectionClientStateRequest;
                     fromAmino(object: _69.QueryConnectionClientStateRequestAmino): _69.QueryConnectionClientStateRequest;
                     toAmino(message: _69.QueryConnectionClientStateRequest): _69.QueryConnectionClientStateRequestAmino;
@@ -2509,6 +2915,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionClientStateResponseAmino;
                     encode(message: _69.QueryConnectionClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionClientStateResponse;
+                    fromJSON(object: any): _69.QueryConnectionClientStateResponse;
+                    toJSON(message: _69.QueryConnectionClientStateResponse): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionClientStateResponse>): _69.QueryConnectionClientStateResponse;
                     fromAmino(object: _69.QueryConnectionClientStateResponseAmino): _69.QueryConnectionClientStateResponse;
                     toAmino(message: _69.QueryConnectionClientStateResponse): _69.QueryConnectionClientStateResponseAmino;
@@ -2526,6 +2934,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionConsensusStateRequestAmino;
                     encode(message: _69.QueryConnectionConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionConsensusStateRequest;
+                    fromJSON(object: any): _69.QueryConnectionConsensusStateRequest;
+                    toJSON(message: _69.QueryConnectionConsensusStateRequest): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionConsensusStateRequest>): _69.QueryConnectionConsensusStateRequest;
                     fromAmino(object: _69.QueryConnectionConsensusStateRequestAmino): _69.QueryConnectionConsensusStateRequest;
                     toAmino(message: _69.QueryConnectionConsensusStateRequest): _69.QueryConnectionConsensusStateRequestAmino;
@@ -2543,6 +2953,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _69.QueryConnectionConsensusStateResponseAmino;
                     encode(message: _69.QueryConnectionConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionConsensusStateResponse;
+                    fromJSON(object: any): _69.QueryConnectionConsensusStateResponse;
+                    toJSON(message: _69.QueryConnectionConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_69.QueryConnectionConsensusStateResponse>): _69.QueryConnectionConsensusStateResponse;
                     fromAmino(object: _69.QueryConnectionConsensusStateResponseAmino): _69.QueryConnectionConsensusStateResponse;
                     toAmino(message: _69.QueryConnectionConsensusStateResponse): _69.QueryConnectionConsensusStateResponseAmino;
@@ -2560,6 +2972,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _68.GenesisStateAmino;
                     encode(message: _68.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.GenesisState;
+                    fromJSON(object: any): _68.GenesisState;
+                    toJSON(message: _68.GenesisState): unknown;
                     fromPartial(object: Partial<_68.GenesisState>): _68.GenesisState;
                     fromAmino(object: _68.GenesisStateAmino): _68.GenesisState;
                     toAmino(message: _68.GenesisState): _68.GenesisStateAmino;
@@ -2582,6 +2996,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.ConnectionEndAmino;
                     encode(message: _67.ConnectionEnd, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.ConnectionEnd;
+                    fromJSON(object: any): _67.ConnectionEnd;
+                    toJSON(message: _67.ConnectionEnd): unknown;
                     fromPartial(object: Partial<_67.ConnectionEnd>): _67.ConnectionEnd;
                     fromAmino(object: _67.ConnectionEndAmino): _67.ConnectionEnd;
                     toAmino(message: _67.ConnectionEnd): _67.ConnectionEndAmino;
@@ -2599,6 +3015,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.IdentifiedConnectionAmino;
                     encode(message: _67.IdentifiedConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.IdentifiedConnection;
+                    fromJSON(object: any): _67.IdentifiedConnection;
+                    toJSON(message: _67.IdentifiedConnection): unknown;
                     fromPartial(object: Partial<_67.IdentifiedConnection>): _67.IdentifiedConnection;
                     fromAmino(object: _67.IdentifiedConnectionAmino): _67.IdentifiedConnection;
                     toAmino(message: _67.IdentifiedConnection): _67.IdentifiedConnectionAmino;
@@ -2616,6 +3034,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.CounterpartyAmino;
                     encode(message: _67.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Counterparty;
+                    fromJSON(object: any): _67.Counterparty;
+                    toJSON(message: _67.Counterparty): unknown;
                     fromPartial(object: Partial<_67.Counterparty>): _67.Counterparty;
                     fromAmino(object: _67.CounterpartyAmino): _67.Counterparty;
                     toAmino(message: _67.Counterparty): _67.CounterpartyAmino;
@@ -2633,6 +3053,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.ClientPathsAmino;
                     encode(message: _67.ClientPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.ClientPaths;
+                    fromJSON(object: any): _67.ClientPaths;
+                    toJSON(message: _67.ClientPaths): unknown;
                     fromPartial(object: Partial<_67.ClientPaths>): _67.ClientPaths;
                     fromAmino(object: _67.ClientPathsAmino): _67.ClientPaths;
                     toAmino(message: _67.ClientPaths): _67.ClientPathsAmino;
@@ -2650,6 +3072,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.ConnectionPathsAmino;
                     encode(message: _67.ConnectionPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.ConnectionPaths;
+                    fromJSON(object: any): _67.ConnectionPaths;
+                    toJSON(message: _67.ConnectionPaths): unknown;
                     fromPartial(object: Partial<_67.ConnectionPaths>): _67.ConnectionPaths;
                     fromAmino(object: _67.ConnectionPathsAmino): _67.ConnectionPaths;
                     toAmino(message: _67.ConnectionPaths): _67.ConnectionPathsAmino;
@@ -2667,6 +3091,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.VersionAmino;
                     encode(message: _67.Version, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Version;
+                    fromJSON(object: any): _67.Version;
+                    toJSON(message: _67.Version): unknown;
                     fromPartial(object: Partial<_67.Version>): _67.Version;
                     fromAmino(object: _67.VersionAmino): _67.Version;
                     toAmino(message: _67.Version): _67.VersionAmino;
@@ -2684,6 +3110,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _67.ParamsAmino;
                     encode(message: _67.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Params;
+                    fromJSON(object: any): _67.Params;
+                    toJSON(message: _67.Params): unknown;
                     fromPartial(object: Partial<_67.Params>): _67.Params;
                     fromAmino(object: _67.ParamsAmino): _67.Params;
                     toAmino(message: _67.Params): _67.ParamsAmino;
@@ -2707,6 +3135,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _71.ClientStateAmino;
                     encode(message: _71.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ClientState;
+                    fromJSON(object: any): _71.ClientState;
+                    toJSON(message: _71.ClientState): unknown;
                     fromPartial(object: Partial<_71.ClientState>): _71.ClientState;
                     fromAmino(object: _71.ClientStateAmino): _71.ClientState;
                     toAmino(message: _71.ClientState): _71.ClientStateAmino;
@@ -2733,6 +3163,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.ClientStateAmino;
                     encode(message: _72.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ClientState;
+                    fromJSON(object: any): _72.ClientState;
+                    toJSON(message: _72.ClientState): unknown;
                     fromPartial(object: Partial<_72.ClientState>): _72.ClientState;
                     fromAmino(object: _72.ClientStateAmino): _72.ClientState;
                     toAmino(message: _72.ClientState): _72.ClientStateAmino;
@@ -2750,6 +3182,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.ConsensusStateAmino;
                     encode(message: _72.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ConsensusState;
+                    fromJSON(object: any): _72.ConsensusState;
+                    toJSON(message: _72.ConsensusState): unknown;
                     fromPartial(object: Partial<_72.ConsensusState>): _72.ConsensusState;
                     fromAmino(object: _72.ConsensusStateAmino): _72.ConsensusState;
                     toAmino(message: _72.ConsensusState): _72.ConsensusStateAmino;
@@ -2767,6 +3201,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.HeaderAmino;
                     encode(message: _72.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.Header;
+                    fromJSON(object: any): _72.Header;
+                    toJSON(message: _72.Header): unknown;
                     fromPartial(object: Partial<_72.Header>): _72.Header;
                     fromAmino(object: _72.HeaderAmino): _72.Header;
                     toAmino(message: _72.Header): _72.HeaderAmino;
@@ -2784,6 +3220,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.MisbehaviourAmino;
                     encode(message: _72.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.Misbehaviour;
+                    fromJSON(object: any): _72.Misbehaviour;
+                    toJSON(message: _72.Misbehaviour): unknown;
                     fromPartial(object: Partial<_72.Misbehaviour>): _72.Misbehaviour;
                     fromAmino(object: _72.MisbehaviourAmino): _72.Misbehaviour;
                     toAmino(message: _72.Misbehaviour): _72.MisbehaviourAmino;
@@ -2801,6 +3239,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.SignatureAndDataAmino;
                     encode(message: _72.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.SignatureAndData;
+                    fromJSON(object: any): _72.SignatureAndData;
+                    toJSON(message: _72.SignatureAndData): unknown;
                     fromPartial(object: Partial<_72.SignatureAndData>): _72.SignatureAndData;
                     fromAmino(object: _72.SignatureAndDataAmino): _72.SignatureAndData;
                     toAmino(message: _72.SignatureAndData): _72.SignatureAndDataAmino;
@@ -2818,6 +3258,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.TimestampedSignatureDataAmino;
                     encode(message: _72.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.TimestampedSignatureData;
+                    fromJSON(object: any): _72.TimestampedSignatureData;
+                    toJSON(message: _72.TimestampedSignatureData): unknown;
                     fromPartial(object: Partial<_72.TimestampedSignatureData>): _72.TimestampedSignatureData;
                     fromAmino(object: _72.TimestampedSignatureDataAmino): _72.TimestampedSignatureData;
                     toAmino(message: _72.TimestampedSignatureData): _72.TimestampedSignatureDataAmino;
@@ -2835,6 +3277,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.SignBytesAmino;
                     encode(message: _72.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.SignBytes;
+                    fromJSON(object: any): _72.SignBytes;
+                    toJSON(message: _72.SignBytes): unknown;
                     fromPartial(object: Partial<_72.SignBytes>): _72.SignBytes;
                     fromAmino(object: _72.SignBytesAmino): _72.SignBytes;
                     toAmino(message: _72.SignBytes): _72.SignBytesAmino;
@@ -2852,6 +3296,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.HeaderDataAmino;
                     encode(message: _72.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.HeaderData;
+                    fromJSON(object: any): _72.HeaderData;
+                    toJSON(message: _72.HeaderData): unknown;
                     fromPartial(object: Partial<_72.HeaderData>): _72.HeaderData;
                     fromAmino(object: _72.HeaderDataAmino): _72.HeaderData;
                     toAmino(message: _72.HeaderData): _72.HeaderDataAmino;
@@ -2869,6 +3315,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.ClientStateDataAmino;
                     encode(message: _72.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ClientStateData;
+                    fromJSON(object: any): _72.ClientStateData;
+                    toJSON(message: _72.ClientStateData): unknown;
                     fromPartial(object: Partial<_72.ClientStateData>): _72.ClientStateData;
                     fromAmino(object: _72.ClientStateDataAmino): _72.ClientStateData;
                     toAmino(message: _72.ClientStateData): _72.ClientStateDataAmino;
@@ -2886,6 +3334,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.ConsensusStateDataAmino;
                     encode(message: _72.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ConsensusStateData;
+                    fromJSON(object: any): _72.ConsensusStateData;
+                    toJSON(message: _72.ConsensusStateData): unknown;
                     fromPartial(object: Partial<_72.ConsensusStateData>): _72.ConsensusStateData;
                     fromAmino(object: _72.ConsensusStateDataAmino): _72.ConsensusStateData;
                     toAmino(message: _72.ConsensusStateData): _72.ConsensusStateDataAmino;
@@ -2903,6 +3353,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.ConnectionStateDataAmino;
                     encode(message: _72.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ConnectionStateData;
+                    fromJSON(object: any): _72.ConnectionStateData;
+                    toJSON(message: _72.ConnectionStateData): unknown;
                     fromPartial(object: Partial<_72.ConnectionStateData>): _72.ConnectionStateData;
                     fromAmino(object: _72.ConnectionStateDataAmino): _72.ConnectionStateData;
                     toAmino(message: _72.ConnectionStateData): _72.ConnectionStateDataAmino;
@@ -2920,6 +3372,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.ChannelStateDataAmino;
                     encode(message: _72.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.ChannelStateData;
+                    fromJSON(object: any): _72.ChannelStateData;
+                    toJSON(message: _72.ChannelStateData): unknown;
                     fromPartial(object: Partial<_72.ChannelStateData>): _72.ChannelStateData;
                     fromAmino(object: _72.ChannelStateDataAmino): _72.ChannelStateData;
                     toAmino(message: _72.ChannelStateData): _72.ChannelStateDataAmino;
@@ -2937,6 +3391,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.PacketCommitmentDataAmino;
                     encode(message: _72.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.PacketCommitmentData;
+                    fromJSON(object: any): _72.PacketCommitmentData;
+                    toJSON(message: _72.PacketCommitmentData): unknown;
                     fromPartial(object: Partial<_72.PacketCommitmentData>): _72.PacketCommitmentData;
                     fromAmino(object: _72.PacketCommitmentDataAmino): _72.PacketCommitmentData;
                     toAmino(message: _72.PacketCommitmentData): _72.PacketCommitmentDataAmino;
@@ -2954,6 +3410,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.PacketAcknowledgementDataAmino;
                     encode(message: _72.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.PacketAcknowledgementData;
+                    fromJSON(object: any): _72.PacketAcknowledgementData;
+                    toJSON(message: _72.PacketAcknowledgementData): unknown;
                     fromPartial(object: Partial<_72.PacketAcknowledgementData>): _72.PacketAcknowledgementData;
                     fromAmino(object: _72.PacketAcknowledgementDataAmino): _72.PacketAcknowledgementData;
                     toAmino(message: _72.PacketAcknowledgementData): _72.PacketAcknowledgementDataAmino;
@@ -2971,6 +3429,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.PacketReceiptAbsenceDataAmino;
                     encode(message: _72.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.PacketReceiptAbsenceData;
+                    fromJSON(object: any): _72.PacketReceiptAbsenceData;
+                    toJSON(message: _72.PacketReceiptAbsenceData): unknown;
                     fromPartial(object: Partial<_72.PacketReceiptAbsenceData>): _72.PacketReceiptAbsenceData;
                     fromAmino(object: _72.PacketReceiptAbsenceDataAmino): _72.PacketReceiptAbsenceData;
                     toAmino(message: _72.PacketReceiptAbsenceData): _72.PacketReceiptAbsenceDataAmino;
@@ -2988,6 +3448,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _72.NextSequenceRecvDataAmino;
                     encode(message: _72.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.NextSequenceRecvData;
+                    fromJSON(object: any): _72.NextSequenceRecvData;
+                    toJSON(message: _72.NextSequenceRecvData): unknown;
                     fromPartial(object: Partial<_72.NextSequenceRecvData>): _72.NextSequenceRecvData;
                     fromAmino(object: _72.NextSequenceRecvDataAmino): _72.NextSequenceRecvData;
                     toAmino(message: _72.NextSequenceRecvData): _72.NextSequenceRecvDataAmino;
@@ -3012,6 +3474,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.ClientStateAmino;
                     encode(message: _73.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ClientState;
+                    fromJSON(object: any): _73.ClientState;
+                    toJSON(message: _73.ClientState): unknown;
                     fromPartial(object: Partial<_73.ClientState>): _73.ClientState;
                     fromAmino(object: _73.ClientStateAmino): _73.ClientState;
                     toAmino(message: _73.ClientState): _73.ClientStateAmino;
@@ -3029,6 +3493,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.ConsensusStateAmino;
                     encode(message: _73.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConsensusState;
+                    fromJSON(object: any): _73.ConsensusState;
+                    toJSON(message: _73.ConsensusState): unknown;
                     fromPartial(object: Partial<_73.ConsensusState>): _73.ConsensusState;
                     fromAmino(object: _73.ConsensusStateAmino): _73.ConsensusState;
                     toAmino(message: _73.ConsensusState): _73.ConsensusStateAmino;
@@ -3046,6 +3512,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.HeaderAmino;
                     encode(message: _73.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Header;
+                    fromJSON(object: any): _73.Header;
+                    toJSON(message: _73.Header): unknown;
                     fromPartial(object: Partial<_73.Header>): _73.Header;
                     fromAmino(object: _73.HeaderAmino): _73.Header;
                     toAmino(message: _73.Header): _73.HeaderAmino;
@@ -3063,6 +3531,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.MisbehaviourAmino;
                     encode(message: _73.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.Misbehaviour;
+                    fromJSON(object: any): _73.Misbehaviour;
+                    toJSON(message: _73.Misbehaviour): unknown;
                     fromPartial(object: Partial<_73.Misbehaviour>): _73.Misbehaviour;
                     fromAmino(object: _73.MisbehaviourAmino): _73.Misbehaviour;
                     toAmino(message: _73.Misbehaviour): _73.MisbehaviourAmino;
@@ -3080,6 +3550,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.SignatureAndDataAmino;
                     encode(message: _73.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.SignatureAndData;
+                    fromJSON(object: any): _73.SignatureAndData;
+                    toJSON(message: _73.SignatureAndData): unknown;
                     fromPartial(object: Partial<_73.SignatureAndData>): _73.SignatureAndData;
                     fromAmino(object: _73.SignatureAndDataAmino): _73.SignatureAndData;
                     toAmino(message: _73.SignatureAndData): _73.SignatureAndDataAmino;
@@ -3097,6 +3569,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.TimestampedSignatureDataAmino;
                     encode(message: _73.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.TimestampedSignatureData;
+                    fromJSON(object: any): _73.TimestampedSignatureData;
+                    toJSON(message: _73.TimestampedSignatureData): unknown;
                     fromPartial(object: Partial<_73.TimestampedSignatureData>): _73.TimestampedSignatureData;
                     fromAmino(object: _73.TimestampedSignatureDataAmino): _73.TimestampedSignatureData;
                     toAmino(message: _73.TimestampedSignatureData): _73.TimestampedSignatureDataAmino;
@@ -3114,6 +3588,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.SignBytesAmino;
                     encode(message: _73.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.SignBytes;
+                    fromJSON(object: any): _73.SignBytes;
+                    toJSON(message: _73.SignBytes): unknown;
                     fromPartial(object: Partial<_73.SignBytes>): _73.SignBytes;
                     fromAmino(object: _73.SignBytesAmino): _73.SignBytes;
                     toAmino(message: _73.SignBytes): _73.SignBytesAmino;
@@ -3131,6 +3607,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.HeaderDataAmino;
                     encode(message: _73.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.HeaderData;
+                    fromJSON(object: any): _73.HeaderData;
+                    toJSON(message: _73.HeaderData): unknown;
                     fromPartial(object: Partial<_73.HeaderData>): _73.HeaderData;
                     fromAmino(object: _73.HeaderDataAmino): _73.HeaderData;
                     toAmino(message: _73.HeaderData): _73.HeaderDataAmino;
@@ -3148,6 +3626,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.ClientStateDataAmino;
                     encode(message: _73.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ClientStateData;
+                    fromJSON(object: any): _73.ClientStateData;
+                    toJSON(message: _73.ClientStateData): unknown;
                     fromPartial(object: Partial<_73.ClientStateData>): _73.ClientStateData;
                     fromAmino(object: _73.ClientStateDataAmino): _73.ClientStateData;
                     toAmino(message: _73.ClientStateData): _73.ClientStateDataAmino;
@@ -3165,6 +3645,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.ConsensusStateDataAmino;
                     encode(message: _73.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConsensusStateData;
+                    fromJSON(object: any): _73.ConsensusStateData;
+                    toJSON(message: _73.ConsensusStateData): unknown;
                     fromPartial(object: Partial<_73.ConsensusStateData>): _73.ConsensusStateData;
                     fromAmino(object: _73.ConsensusStateDataAmino): _73.ConsensusStateData;
                     toAmino(message: _73.ConsensusStateData): _73.ConsensusStateDataAmino;
@@ -3182,6 +3664,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.ConnectionStateDataAmino;
                     encode(message: _73.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ConnectionStateData;
+                    fromJSON(object: any): _73.ConnectionStateData;
+                    toJSON(message: _73.ConnectionStateData): unknown;
                     fromPartial(object: Partial<_73.ConnectionStateData>): _73.ConnectionStateData;
                     fromAmino(object: _73.ConnectionStateDataAmino): _73.ConnectionStateData;
                     toAmino(message: _73.ConnectionStateData): _73.ConnectionStateDataAmino;
@@ -3199,6 +3683,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.ChannelStateDataAmino;
                     encode(message: _73.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.ChannelStateData;
+                    fromJSON(object: any): _73.ChannelStateData;
+                    toJSON(message: _73.ChannelStateData): unknown;
                     fromPartial(object: Partial<_73.ChannelStateData>): _73.ChannelStateData;
                     fromAmino(object: _73.ChannelStateDataAmino): _73.ChannelStateData;
                     toAmino(message: _73.ChannelStateData): _73.ChannelStateDataAmino;
@@ -3216,6 +3702,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.PacketCommitmentDataAmino;
                     encode(message: _73.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.PacketCommitmentData;
+                    fromJSON(object: any): _73.PacketCommitmentData;
+                    toJSON(message: _73.PacketCommitmentData): unknown;
                     fromPartial(object: Partial<_73.PacketCommitmentData>): _73.PacketCommitmentData;
                     fromAmino(object: _73.PacketCommitmentDataAmino): _73.PacketCommitmentData;
                     toAmino(message: _73.PacketCommitmentData): _73.PacketCommitmentDataAmino;
@@ -3233,6 +3721,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.PacketAcknowledgementDataAmino;
                     encode(message: _73.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.PacketAcknowledgementData;
+                    fromJSON(object: any): _73.PacketAcknowledgementData;
+                    toJSON(message: _73.PacketAcknowledgementData): unknown;
                     fromPartial(object: Partial<_73.PacketAcknowledgementData>): _73.PacketAcknowledgementData;
                     fromAmino(object: _73.PacketAcknowledgementDataAmino): _73.PacketAcknowledgementData;
                     toAmino(message: _73.PacketAcknowledgementData): _73.PacketAcknowledgementDataAmino;
@@ -3250,6 +3740,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.PacketReceiptAbsenceDataAmino;
                     encode(message: _73.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.PacketReceiptAbsenceData;
+                    fromJSON(object: any): _73.PacketReceiptAbsenceData;
+                    toJSON(message: _73.PacketReceiptAbsenceData): unknown;
                     fromPartial(object: Partial<_73.PacketReceiptAbsenceData>): _73.PacketReceiptAbsenceData;
                     fromAmino(object: _73.PacketReceiptAbsenceDataAmino): _73.PacketReceiptAbsenceData;
                     toAmino(message: _73.PacketReceiptAbsenceData): _73.PacketReceiptAbsenceDataAmino;
@@ -3267,6 +3759,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _73.NextSequenceRecvDataAmino;
                     encode(message: _73.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.NextSequenceRecvData;
+                    fromJSON(object: any): _73.NextSequenceRecvData;
+                    toJSON(message: _73.NextSequenceRecvData): unknown;
                     fromPartial(object: Partial<_73.NextSequenceRecvData>): _73.NextSequenceRecvData;
                     fromAmino(object: _73.NextSequenceRecvDataAmino): _73.NextSequenceRecvData;
                     toAmino(message: _73.NextSequenceRecvData): _73.NextSequenceRecvDataAmino;
@@ -3288,6 +3782,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _74.ClientStateAmino;
                     encode(message: _74.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ClientState;
+                    fromJSON(object: any): _74.ClientState;
+                    toJSON(message: _74.ClientState): unknown;
                     fromPartial(object: Partial<_74.ClientState>): _74.ClientState;
                     fromAmino(object: _74.ClientStateAmino): _74.ClientState;
                     toAmino(message: _74.ClientState): _74.ClientStateAmino;
@@ -3305,6 +3801,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _74.ConsensusStateAmino;
                     encode(message: _74.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConsensusState;
+                    fromJSON(object: any): _74.ConsensusState;
+                    toJSON(message: _74.ConsensusState): unknown;
                     fromPartial(object: Partial<_74.ConsensusState>): _74.ConsensusState;
                     fromAmino(object: _74.ConsensusStateAmino): _74.ConsensusState;
                     toAmino(message: _74.ConsensusState): _74.ConsensusStateAmino;
@@ -3322,6 +3820,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _74.MisbehaviourAmino;
                     encode(message: _74.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Misbehaviour;
+                    fromJSON(object: any): _74.Misbehaviour;
+                    toJSON(message: _74.Misbehaviour): unknown;
                     fromPartial(object: Partial<_74.Misbehaviour>): _74.Misbehaviour;
                     fromAmino(object: _74.MisbehaviourAmino): _74.Misbehaviour;
                     toAmino(message: _74.Misbehaviour): _74.MisbehaviourAmino;
@@ -3339,6 +3839,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _74.HeaderAmino;
                     encode(message: _74.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Header;
+                    fromJSON(object: any): _74.Header;
+                    toJSON(message: _74.Header): unknown;
                     fromPartial(object: Partial<_74.Header>): _74.Header;
                     fromAmino(object: _74.HeaderAmino): _74.Header;
                     toAmino(message: _74.Header): _74.HeaderAmino;
@@ -3356,6 +3858,8 @@ export declare namespace ibc {
                     isAmino(o: any): o is _74.FractionAmino;
                     encode(message: _74.Fraction, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Fraction;
+                    fromJSON(object: any): _74.Fraction;
+                    toJSON(message: _74.Fraction): unknown;
                     fromPartial(object: Partial<_74.Fraction>): _74.Fraction;
                     fromAmino(object: _74.FractionAmino): _74.Fraction;
                     toAmino(message: _74.Fraction): _74.FractionAmino;
@@ -3395,18 +3899,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _144.MsgClientImpl;
+                        v1: _147.MsgClientImpl;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _145.MsgClientImpl;
+                        v1: _148.MsgClientImpl;
                     };
                     client: {
-                        v1: _146.MsgClientImpl;
+                        v1: _149.MsgClientImpl;
                     };
                     connection: {
-                        v1: _147.MsgClientImpl;
+                        v1: _150.MsgClientImpl;
                     };
                 };
             };

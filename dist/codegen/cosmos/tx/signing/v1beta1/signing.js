@@ -134,6 +134,21 @@ exports.SignatureDescriptors = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => exports.SignatureDescriptor.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.signatures) {
+            obj.signatures = message.signatures.map(e => e ? exports.SignatureDescriptor.toJSON(e) : undefined);
+        }
+        else {
+            obj.signatures = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSignatureDescriptors();
         message.signatures = object.signatures?.map(e => exports.SignatureDescriptor.fromPartial(e)) || [];
@@ -231,6 +246,20 @@ exports.SignatureDescriptor = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            publicKey: (0, helpers_1.isSet)(object.publicKey) ? any_1.Any.fromJSON(object.publicKey) : undefined,
+            data: (0, helpers_1.isSet)(object.data) ? exports.SignatureDescriptor_Data.fromJSON(object.data) : undefined,
+            sequence: (0, helpers_1.isSet)(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.publicKey !== undefined && (obj.publicKey = message.publicKey ? any_1.Any.toJSON(message.publicKey) : undefined);
+        message.data !== undefined && (obj.data = message.data ? exports.SignatureDescriptor_Data.toJSON(message.data) : undefined);
+        message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSignatureDescriptor();
@@ -330,6 +359,18 @@ exports.SignatureDescriptor_Data = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            single: (0, helpers_1.isSet)(object.single) ? exports.SignatureDescriptor_Data_Single.fromJSON(object.single) : undefined,
+            multi: (0, helpers_1.isSet)(object.multi) ? exports.SignatureDescriptor_Data_Multi.fromJSON(object.multi) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.single !== undefined && (obj.single = message.single ? exports.SignatureDescriptor_Data_Single.toJSON(message.single) : undefined);
+        message.multi !== undefined && (obj.multi = message.multi ? exports.SignatureDescriptor_Data_Multi.toJSON(message.multi) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSignatureDescriptor_Data();
         message.single = object.single !== undefined && object.single !== null ? exports.SignatureDescriptor_Data_Single.fromPartial(object.single) : undefined;
@@ -423,6 +464,18 @@ exports.SignatureDescriptor_Data_Single = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            mode: (0, helpers_1.isSet)(object.mode) ? signModeFromJSON(object.mode) : -1,
+            signature: (0, helpers_1.isSet)(object.signature) ? (0, helpers_1.bytesFromBase64)(object.signature) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
+        message.signature !== undefined && (obj.signature = (0, helpers_1.base64FromBytes)(message.signature !== undefined ? message.signature : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSignatureDescriptor_Data_Single();
         message.mode = object.mode ?? 0;
@@ -515,6 +568,23 @@ exports.SignatureDescriptor_Data_Multi = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            bitarray: (0, helpers_1.isSet)(object.bitarray) ? multisig_1.CompactBitArray.fromJSON(object.bitarray) : undefined,
+            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => exports.SignatureDescriptor_Data.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.bitarray !== undefined && (obj.bitarray = message.bitarray ? multisig_1.CompactBitArray.toJSON(message.bitarray) : undefined);
+        if (message.signatures) {
+            obj.signatures = message.signatures.map(e => e ? exports.SignatureDescriptor_Data.toJSON(e) : undefined);
+        }
+        else {
+            obj.signatures = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSignatureDescriptor_Data_Multi();

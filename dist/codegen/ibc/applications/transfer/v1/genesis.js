@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const transfer_1 = require("./transfer");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseGenesisState() {
     return {
@@ -57,6 +58,25 @@ exports.GenesisState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            portId: (0, helpers_1.isSet)(object.portId) ? String(object.portId) : "",
+            denomTraces: Array.isArray(object?.denomTraces) ? object.denomTraces.map((e) => transfer_1.DenomTrace.fromJSON(e)) : [],
+            params: (0, helpers_1.isSet)(object.params) ? transfer_1.Params.fromJSON(object.params) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.portId !== undefined && (obj.portId = message.portId);
+        if (message.denomTraces) {
+            obj.denomTraces = message.denomTraces.map(e => e ? transfer_1.DenomTrace.toJSON(e) : undefined);
+        }
+        else {
+            obj.denomTraces = [];
+        }
+        message.params !== undefined && (obj.params = message.params ? transfer_1.Params.toJSON(message.params) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();

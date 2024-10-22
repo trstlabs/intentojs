@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const connection_1 = require("./connection");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseGenesisState() {
     return {
@@ -64,6 +65,32 @@ exports.GenesisState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            connections: Array.isArray(object?.connections) ? object.connections.map((e) => connection_1.IdentifiedConnection.fromJSON(e)) : [],
+            clientConnectionPaths: Array.isArray(object?.clientConnectionPaths) ? object.clientConnectionPaths.map((e) => connection_1.ConnectionPaths.fromJSON(e)) : [],
+            nextConnectionSequence: (0, helpers_1.isSet)(object.nextConnectionSequence) ? BigInt(object.nextConnectionSequence.toString()) : BigInt(0),
+            params: (0, helpers_1.isSet)(object.params) ? connection_1.Params.fromJSON(object.params) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.connections) {
+            obj.connections = message.connections.map(e => e ? connection_1.IdentifiedConnection.toJSON(e) : undefined);
+        }
+        else {
+            obj.connections = [];
+        }
+        if (message.clientConnectionPaths) {
+            obj.clientConnectionPaths = message.clientConnectionPaths.map(e => e ? connection_1.ConnectionPaths.toJSON(e) : undefined);
+        }
+        else {
+            obj.clientConnectionPaths = [];
+        }
+        message.nextConnectionSequence !== undefined && (obj.nextConnectionSequence = (message.nextConnectionSequence || BigInt(0)).toString());
+        message.params !== undefined && (obj.params = message.params ? connection_1.Params.toJSON(message.params) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();

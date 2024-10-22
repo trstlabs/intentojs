@@ -2,6 +2,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType } from "./claim";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the claim module's genesis state. */
 export interface GenesisState {
@@ -87,6 +88,24 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      moduleAccountBalance: isSet(object.moduleAccountBalance) ? Coin.fromJSON(object.moduleAccountBalance) : undefined,
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      claimRecords: Array.isArray(object?.claimRecords) ? object.claimRecords.map((e: any) => ClaimRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    message.moduleAccountBalance !== undefined && (obj.moduleAccountBalance = message.moduleAccountBalance ? Coin.toJSON(message.moduleAccountBalance) : undefined);
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    if (message.claimRecords) {
+      obj.claimRecords = message.claimRecords.map(e => e ? ClaimRecord.toJSON(e) : undefined);
+    } else {
+      obj.claimRecords = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

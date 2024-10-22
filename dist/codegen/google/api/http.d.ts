@@ -1031,6 +1031,8 @@ export declare const Http: {
     isAmino(o: any): o is HttpAmino;
     encode(message: Http, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Http;
+    fromJSON(object: any): Http;
+    toJSON(message: Http): unknown;
     fromPartial(object: Partial<Http>): Http;
     fromAmino(object: HttpAmino): Http;
     toAmino(message: Http): HttpAmino;
@@ -1046,6 +1048,8 @@ export declare const HttpRule: {
     isAmino(o: any): o is HttpRuleAmino;
     encode(message: HttpRule, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HttpRule;
+    fromJSON(object: any): HttpRule;
+    toJSON(message: HttpRule): unknown;
     fromPartial(object: Partial<HttpRule>): HttpRule;
     fromAmino(object: HttpRuleAmino): HttpRule;
     toAmino(message: HttpRule): HttpRuleAmino;
@@ -1061,6 +1065,8 @@ export declare const CustomHttpPattern: {
     isAmino(o: any): o is CustomHttpPatternAmino;
     encode(message: CustomHttpPattern, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CustomHttpPattern;
+    fromJSON(object: any): CustomHttpPattern;
+    toJSON(message: CustomHttpPattern): unknown;
     fromPartial(object: Partial<CustomHttpPattern>): CustomHttpPattern;
     fromAmino(object: CustomHttpPatternAmino): CustomHttpPattern;
     toAmino(message: CustomHttpPattern): CustomHttpPatternAmino;

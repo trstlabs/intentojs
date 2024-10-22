@@ -207,6 +207,8 @@ export declare const MsgSetWithdrawAddress: {
     isAmino(o: any): o is MsgSetWithdrawAddressAmino;
     encode(message: MsgSetWithdrawAddress, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetWithdrawAddress;
+    fromJSON(object: any): MsgSetWithdrawAddress;
+    toJSON(message: MsgSetWithdrawAddress): unknown;
     fromPartial(object: Partial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress;
     fromAmino(object: MsgSetWithdrawAddressAmino): MsgSetWithdrawAddress;
     toAmino(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressAmino;
@@ -224,6 +226,8 @@ export declare const MsgSetWithdrawAddressResponse: {
     isAmino(o: any): o is MsgSetWithdrawAddressResponseAmino;
     encode(_: MsgSetWithdrawAddressResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse;
+    fromJSON(_: any): MsgSetWithdrawAddressResponse;
+    toJSON(_: MsgSetWithdrawAddressResponse): unknown;
     fromPartial(_: Partial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse;
     fromAmino(_: MsgSetWithdrawAddressResponseAmino): MsgSetWithdrawAddressResponse;
     toAmino(_: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseAmino;
@@ -241,6 +245,8 @@ export declare const MsgWithdrawDelegatorReward: {
     isAmino(o: any): o is MsgWithdrawDelegatorRewardAmino;
     encode(message: MsgWithdrawDelegatorReward, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegatorReward;
+    fromJSON(object: any): MsgWithdrawDelegatorReward;
+    toJSON(message: MsgWithdrawDelegatorReward): unknown;
     fromPartial(object: Partial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward;
     fromAmino(object: MsgWithdrawDelegatorRewardAmino): MsgWithdrawDelegatorReward;
     toAmino(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardAmino;
@@ -258,6 +264,8 @@ export declare const MsgWithdrawDelegatorRewardResponse: {
     isAmino(o: any): o is MsgWithdrawDelegatorRewardResponseAmino;
     encode(message: MsgWithdrawDelegatorRewardResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse;
+    fromJSON(object: any): MsgWithdrawDelegatorRewardResponse;
+    toJSON(message: MsgWithdrawDelegatorRewardResponse): unknown;
     fromPartial(object: Partial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
     fromAmino(object: MsgWithdrawDelegatorRewardResponseAmino): MsgWithdrawDelegatorRewardResponse;
     toAmino(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAmino;
@@ -275,6 +283,8 @@ export declare const MsgWithdrawValidatorCommission: {
     isAmino(o: any): o is MsgWithdrawValidatorCommissionAmino;
     encode(message: MsgWithdrawValidatorCommission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawValidatorCommission;
+    fromJSON(object: any): MsgWithdrawValidatorCommission;
+    toJSON(message: MsgWithdrawValidatorCommission): unknown;
     fromPartial(object: Partial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission;
     fromAmino(object: MsgWithdrawValidatorCommissionAmino): MsgWithdrawValidatorCommission;
     toAmino(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionAmino;
@@ -292,6 +302,8 @@ export declare const MsgWithdrawValidatorCommissionResponse: {
     isAmino(o: any): o is MsgWithdrawValidatorCommissionResponseAmino;
     encode(message: MsgWithdrawValidatorCommissionResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse;
+    fromJSON(object: any): MsgWithdrawValidatorCommissionResponse;
+    toJSON(message: MsgWithdrawValidatorCommissionResponse): unknown;
     fromPartial(object: Partial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
     fromAmino(object: MsgWithdrawValidatorCommissionResponseAmino): MsgWithdrawValidatorCommissionResponse;
     toAmino(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAmino;
@@ -309,6 +321,8 @@ export declare const MsgFundCommunityPool: {
     isAmino(o: any): o is MsgFundCommunityPoolAmino;
     encode(message: MsgFundCommunityPool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgFundCommunityPool;
+    fromJSON(object: any): MsgFundCommunityPool;
+    toJSON(message: MsgFundCommunityPool): unknown;
     fromPartial(object: Partial<MsgFundCommunityPool>): MsgFundCommunityPool;
     fromAmino(object: MsgFundCommunityPoolAmino): MsgFundCommunityPool;
     toAmino(message: MsgFundCommunityPool): MsgFundCommunityPoolAmino;
@@ -326,6 +340,8 @@ export declare const MsgFundCommunityPoolResponse: {
     isAmino(o: any): o is MsgFundCommunityPoolResponseAmino;
     encode(_: MsgFundCommunityPoolResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgFundCommunityPoolResponse;
+    fromJSON(_: any): MsgFundCommunityPoolResponse;
+    toJSON(_: MsgFundCommunityPoolResponse): unknown;
     fromPartial(_: Partial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse;
     fromAmino(_: MsgFundCommunityPoolResponseAmino): MsgFundCommunityPoolResponse;
     toAmino(_: MsgFundCommunityPoolResponse): MsgFundCommunityPoolResponseAmino;

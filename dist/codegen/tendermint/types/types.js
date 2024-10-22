@@ -152,6 +152,18 @@ exports.PartSetHeader = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            total: (0, helpers_1.isSet)(object.total) ? Number(object.total) : 0,
+            hash: (0, helpers_1.isSet)(object.hash) ? (0, helpers_1.bytesFromBase64)(object.hash) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.total !== undefined && (obj.total = Math.round(message.total));
+        message.hash !== undefined && (obj.hash = (0, helpers_1.base64FromBytes)(message.hash !== undefined ? message.hash : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePartSetHeader();
         message.total = object.total ?? 0;
@@ -244,6 +256,20 @@ exports.Part = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            index: (0, helpers_1.isSet)(object.index) ? Number(object.index) : 0,
+            bytes: (0, helpers_1.isSet)(object.bytes) ? (0, helpers_1.bytesFromBase64)(object.bytes) : new Uint8Array(),
+            proof: (0, helpers_1.isSet)(object.proof) ? proof_1.Proof.fromJSON(object.proof) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.index !== undefined && (obj.index = Math.round(message.index));
+        message.bytes !== undefined && (obj.bytes = (0, helpers_1.base64FromBytes)(message.bytes !== undefined ? message.bytes : new Uint8Array()));
+        message.proof !== undefined && (obj.proof = message.proof ? proof_1.Proof.toJSON(message.proof) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePart();
         message.index = object.index ?? 0;
@@ -333,6 +359,18 @@ exports.BlockID = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            hash: (0, helpers_1.isSet)(object.hash) ? (0, helpers_1.bytesFromBase64)(object.hash) : new Uint8Array(),
+            partSetHeader: (0, helpers_1.isSet)(object.partSetHeader) ? exports.PartSetHeader.fromJSON(object.partSetHeader) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.hash !== undefined && (obj.hash = (0, helpers_1.base64FromBytes)(message.hash !== undefined ? message.hash : new Uint8Array()));
+        message.partSetHeader !== undefined && (obj.partSetHeader = message.partSetHeader ? exports.PartSetHeader.toJSON(message.partSetHeader) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBlockID();
@@ -503,6 +541,42 @@ exports.Header = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            version: (0, helpers_1.isSet)(object.version) ? types_1.Consensus.fromJSON(object.version) : undefined,
+            chainId: (0, helpers_1.isSet)(object.chainId) ? String(object.chainId) : "",
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            time: (0, helpers_1.isSet)(object.time) ? (0, helpers_1.fromJsonTimestamp)(object.time) : undefined,
+            lastBlockId: (0, helpers_1.isSet)(object.lastBlockId) ? exports.BlockID.fromJSON(object.lastBlockId) : undefined,
+            lastCommitHash: (0, helpers_1.isSet)(object.lastCommitHash) ? (0, helpers_1.bytesFromBase64)(object.lastCommitHash) : new Uint8Array(),
+            dataHash: (0, helpers_1.isSet)(object.dataHash) ? (0, helpers_1.bytesFromBase64)(object.dataHash) : new Uint8Array(),
+            validatorsHash: (0, helpers_1.isSet)(object.validatorsHash) ? (0, helpers_1.bytesFromBase64)(object.validatorsHash) : new Uint8Array(),
+            nextValidatorsHash: (0, helpers_1.isSet)(object.nextValidatorsHash) ? (0, helpers_1.bytesFromBase64)(object.nextValidatorsHash) : new Uint8Array(),
+            consensusHash: (0, helpers_1.isSet)(object.consensusHash) ? (0, helpers_1.bytesFromBase64)(object.consensusHash) : new Uint8Array(),
+            appHash: (0, helpers_1.isSet)(object.appHash) ? (0, helpers_1.bytesFromBase64)(object.appHash) : new Uint8Array(),
+            lastResultsHash: (0, helpers_1.isSet)(object.lastResultsHash) ? (0, helpers_1.bytesFromBase64)(object.lastResultsHash) : new Uint8Array(),
+            evidenceHash: (0, helpers_1.isSet)(object.evidenceHash) ? (0, helpers_1.bytesFromBase64)(object.evidenceHash) : new Uint8Array(),
+            proposerAddress: (0, helpers_1.isSet)(object.proposerAddress) ? (0, helpers_1.bytesFromBase64)(object.proposerAddress) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.version !== undefined && (obj.version = message.version ? types_1.Consensus.toJSON(message.version) : undefined);
+        message.chainId !== undefined && (obj.chainId = message.chainId);
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.time !== undefined && (obj.time = message.time.toISOString());
+        message.lastBlockId !== undefined && (obj.lastBlockId = message.lastBlockId ? exports.BlockID.toJSON(message.lastBlockId) : undefined);
+        message.lastCommitHash !== undefined && (obj.lastCommitHash = (0, helpers_1.base64FromBytes)(message.lastCommitHash !== undefined ? message.lastCommitHash : new Uint8Array()));
+        message.dataHash !== undefined && (obj.dataHash = (0, helpers_1.base64FromBytes)(message.dataHash !== undefined ? message.dataHash : new Uint8Array()));
+        message.validatorsHash !== undefined && (obj.validatorsHash = (0, helpers_1.base64FromBytes)(message.validatorsHash !== undefined ? message.validatorsHash : new Uint8Array()));
+        message.nextValidatorsHash !== undefined && (obj.nextValidatorsHash = (0, helpers_1.base64FromBytes)(message.nextValidatorsHash !== undefined ? message.nextValidatorsHash : new Uint8Array()));
+        message.consensusHash !== undefined && (obj.consensusHash = (0, helpers_1.base64FromBytes)(message.consensusHash !== undefined ? message.consensusHash : new Uint8Array()));
+        message.appHash !== undefined && (obj.appHash = (0, helpers_1.base64FromBytes)(message.appHash !== undefined ? message.appHash : new Uint8Array()));
+        message.lastResultsHash !== undefined && (obj.lastResultsHash = (0, helpers_1.base64FromBytes)(message.lastResultsHash !== undefined ? message.lastResultsHash : new Uint8Array()));
+        message.evidenceHash !== undefined && (obj.evidenceHash = (0, helpers_1.base64FromBytes)(message.evidenceHash !== undefined ? message.evidenceHash : new Uint8Array()));
+        message.proposerAddress !== undefined && (obj.proposerAddress = (0, helpers_1.base64FromBytes)(message.proposerAddress !== undefined ? message.proposerAddress : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseHeader();
         message.version = object.version !== undefined && object.version !== null ? types_1.Consensus.fromPartial(object.version) : undefined;
@@ -641,6 +715,21 @@ exports.Data = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            txs: Array.isArray(object?.txs) ? object.txs.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.txs) {
+            obj.txs = message.txs.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
+        }
+        else {
+            obj.txs = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseData();
         message.txs = object.txs?.map(e => e) || [];
@@ -765,6 +854,30 @@ exports.Vote = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            type: (0, helpers_1.isSet)(object.type) ? signedMsgTypeFromJSON(object.type) : -1,
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            round: (0, helpers_1.isSet)(object.round) ? Number(object.round) : 0,
+            blockId: (0, helpers_1.isSet)(object.blockId) ? exports.BlockID.fromJSON(object.blockId) : undefined,
+            timestamp: (0, helpers_1.isSet)(object.timestamp) ? (0, helpers_1.fromJsonTimestamp)(object.timestamp) : undefined,
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? (0, helpers_1.bytesFromBase64)(object.validatorAddress) : new Uint8Array(),
+            validatorIndex: (0, helpers_1.isSet)(object.validatorIndex) ? Number(object.validatorIndex) : 0,
+            signature: (0, helpers_1.isSet)(object.signature) ? (0, helpers_1.bytesFromBase64)(object.signature) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.type !== undefined && (obj.type = signedMsgTypeToJSON(message.type));
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.round !== undefined && (obj.round = Math.round(message.round));
+        message.blockId !== undefined && (obj.blockId = message.blockId ? exports.BlockID.toJSON(message.blockId) : undefined);
+        message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
+        message.validatorAddress !== undefined && (obj.validatorAddress = (0, helpers_1.base64FromBytes)(message.validatorAddress !== undefined ? message.validatorAddress : new Uint8Array()));
+        message.validatorIndex !== undefined && (obj.validatorIndex = Math.round(message.validatorIndex));
+        message.signature !== undefined && (obj.signature = (0, helpers_1.base64FromBytes)(message.signature !== undefined ? message.signature : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseVote();
@@ -895,6 +1008,27 @@ exports.Commit = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            round: (0, helpers_1.isSet)(object.round) ? Number(object.round) : 0,
+            blockId: (0, helpers_1.isSet)(object.blockId) ? exports.BlockID.fromJSON(object.blockId) : undefined,
+            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => exports.CommitSig.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.round !== undefined && (obj.round = Math.round(message.round));
+        message.blockId !== undefined && (obj.blockId = message.blockId ? exports.BlockID.toJSON(message.blockId) : undefined);
+        if (message.signatures) {
+            obj.signatures = message.signatures.map(e => e ? exports.CommitSig.toJSON(e) : undefined);
+        }
+        else {
+            obj.signatures = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseCommit();
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
@@ -1006,6 +1140,22 @@ exports.CommitSig = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            blockIdFlag: (0, helpers_1.isSet)(object.blockIdFlag) ? blockIDFlagFromJSON(object.blockIdFlag) : -1,
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? (0, helpers_1.bytesFromBase64)(object.validatorAddress) : new Uint8Array(),
+            timestamp: (0, helpers_1.isSet)(object.timestamp) ? (0, helpers_1.fromJsonTimestamp)(object.timestamp) : undefined,
+            signature: (0, helpers_1.isSet)(object.signature) ? (0, helpers_1.bytesFromBase64)(object.signature) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.blockIdFlag !== undefined && (obj.blockIdFlag = blockIDFlagToJSON(message.blockIdFlag));
+        message.validatorAddress !== undefined && (obj.validatorAddress = (0, helpers_1.base64FromBytes)(message.validatorAddress !== undefined ? message.validatorAddress : new Uint8Array()));
+        message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
+        message.signature !== undefined && (obj.signature = (0, helpers_1.base64FromBytes)(message.signature !== undefined ? message.signature : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCommitSig();
@@ -1137,6 +1287,28 @@ exports.Proposal = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            type: (0, helpers_1.isSet)(object.type) ? signedMsgTypeFromJSON(object.type) : -1,
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            round: (0, helpers_1.isSet)(object.round) ? Number(object.round) : 0,
+            polRound: (0, helpers_1.isSet)(object.polRound) ? Number(object.polRound) : 0,
+            blockId: (0, helpers_1.isSet)(object.blockId) ? exports.BlockID.fromJSON(object.blockId) : undefined,
+            timestamp: (0, helpers_1.isSet)(object.timestamp) ? (0, helpers_1.fromJsonTimestamp)(object.timestamp) : undefined,
+            signature: (0, helpers_1.isSet)(object.signature) ? (0, helpers_1.bytesFromBase64)(object.signature) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.type !== undefined && (obj.type = signedMsgTypeToJSON(message.type));
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.round !== undefined && (obj.round = Math.round(message.round));
+        message.polRound !== undefined && (obj.polRound = Math.round(message.polRound));
+        message.blockId !== undefined && (obj.blockId = message.blockId ? exports.BlockID.toJSON(message.blockId) : undefined);
+        message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
+        message.signature !== undefined && (obj.signature = (0, helpers_1.base64FromBytes)(message.signature !== undefined ? message.signature : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseProposal();
         message.type = object.type ?? 0;
@@ -1247,6 +1419,18 @@ exports.SignedHeader = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            header: (0, helpers_1.isSet)(object.header) ? exports.Header.fromJSON(object.header) : undefined,
+            commit: (0, helpers_1.isSet)(object.commit) ? exports.Commit.fromJSON(object.commit) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.header !== undefined && (obj.header = message.header ? exports.Header.toJSON(message.header) : undefined);
+        message.commit !== undefined && (obj.commit = message.commit ? exports.Commit.toJSON(message.commit) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSignedHeader();
         message.header = object.header !== undefined && object.header !== null ? exports.Header.fromPartial(object.header) : undefined;
@@ -1331,6 +1515,18 @@ exports.LightBlock = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            signedHeader: (0, helpers_1.isSet)(object.signedHeader) ? exports.SignedHeader.fromJSON(object.signedHeader) : undefined,
+            validatorSet: (0, helpers_1.isSet)(object.validatorSet) ? validator_1.ValidatorSet.fromJSON(object.validatorSet) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.signedHeader !== undefined && (obj.signedHeader = message.signedHeader ? exports.SignedHeader.toJSON(message.signedHeader) : undefined);
+        message.validatorSet !== undefined && (obj.validatorSet = message.validatorSet ? validator_1.ValidatorSet.toJSON(message.validatorSet) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseLightBlock();
@@ -1430,6 +1626,22 @@ exports.BlockMeta = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            blockId: (0, helpers_1.isSet)(object.blockId) ? exports.BlockID.fromJSON(object.blockId) : undefined,
+            blockSize: (0, helpers_1.isSet)(object.blockSize) ? BigInt(object.blockSize.toString()) : BigInt(0),
+            header: (0, helpers_1.isSet)(object.header) ? exports.Header.fromJSON(object.header) : undefined,
+            numTxs: (0, helpers_1.isSet)(object.numTxs) ? BigInt(object.numTxs.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.blockId !== undefined && (obj.blockId = message.blockId ? exports.BlockID.toJSON(message.blockId) : undefined);
+        message.blockSize !== undefined && (obj.blockSize = (message.blockSize || BigInt(0)).toString());
+        message.header !== undefined && (obj.header = message.header ? exports.Header.toJSON(message.header) : undefined);
+        message.numTxs !== undefined && (obj.numTxs = (message.numTxs || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBlockMeta();
@@ -1532,6 +1744,20 @@ exports.TxProof = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            rootHash: (0, helpers_1.isSet)(object.rootHash) ? (0, helpers_1.bytesFromBase64)(object.rootHash) : new Uint8Array(),
+            data: (0, helpers_1.isSet)(object.data) ? (0, helpers_1.bytesFromBase64)(object.data) : new Uint8Array(),
+            proof: (0, helpers_1.isSet)(object.proof) ? proof_1.Proof.fromJSON(object.proof) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.rootHash !== undefined && (obj.rootHash = (0, helpers_1.base64FromBytes)(message.rootHash !== undefined ? message.rootHash : new Uint8Array()));
+        message.data !== undefined && (obj.data = (0, helpers_1.base64FromBytes)(message.data !== undefined ? message.data : new Uint8Array()));
+        message.proof !== undefined && (obj.proof = message.proof ? proof_1.Proof.toJSON(message.proof) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseTxProof();

@@ -37,6 +37,13 @@ exports.QueryCurrentPlanRequest = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseQueryCurrentPlanRequest();
         return message;
@@ -112,6 +119,16 @@ exports.QueryCurrentPlanResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            plan: (0, helpers_1.isSet)(object.plan) ? upgrade_1.Plan.fromJSON(object.plan) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.plan !== undefined && (obj.plan = message.plan ? upgrade_1.Plan.toJSON(message.plan) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryCurrentPlanResponse();
@@ -194,6 +211,16 @@ exports.QueryAppliedPlanRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryAppliedPlanRequest();
         message.name = object.name ?? "";
@@ -274,6 +301,16 @@ exports.QueryAppliedPlanResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryAppliedPlanResponse();
@@ -356,6 +393,16 @@ exports.QueryUpgradedConsensusStateRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            lastHeight: (0, helpers_1.isSet)(object.lastHeight) ? BigInt(object.lastHeight.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.lastHeight !== undefined && (obj.lastHeight = (message.lastHeight || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryUpgradedConsensusStateRequest();
         message.lastHeight = object.lastHeight !== undefined && object.lastHeight !== null ? BigInt(object.lastHeight.toString()) : BigInt(0);
@@ -436,6 +483,16 @@ exports.QueryUpgradedConsensusStateResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            upgradedConsensusState: (0, helpers_1.isSet)(object.upgradedConsensusState) ? (0, helpers_1.bytesFromBase64)(object.upgradedConsensusState) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.upgradedConsensusState !== undefined && (obj.upgradedConsensusState = (0, helpers_1.base64FromBytes)(message.upgradedConsensusState !== undefined ? message.upgradedConsensusState : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryUpgradedConsensusStateResponse();
@@ -518,6 +575,16 @@ exports.QueryModuleVersionsRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            moduleName: (0, helpers_1.isSet)(object.moduleName) ? String(object.moduleName) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.moduleName !== undefined && (obj.moduleName = message.moduleName);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryModuleVersionsRequest();
         message.moduleName = object.moduleName ?? "";
@@ -599,6 +666,21 @@ exports.QueryModuleVersionsResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            moduleVersions: Array.isArray(object?.moduleVersions) ? object.moduleVersions.map((e) => upgrade_1.ModuleVersion.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.moduleVersions) {
+            obj.moduleVersions = message.moduleVersions.map(e => e ? upgrade_1.ModuleVersion.toJSON(e) : undefined);
+        }
+        else {
+            obj.moduleVersions = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryModuleVersionsResponse();
         message.moduleVersions = object.moduleVersions?.map(e => upgrade_1.ModuleVersion.fromPartial(e)) || [];
@@ -675,6 +757,13 @@ exports.QueryAuthorityRequest = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseQueryAuthorityRequest();
         return message;
@@ -750,6 +839,16 @@ exports.QueryAuthorityResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? String(object.address) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = message.address);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryAuthorityResponse();

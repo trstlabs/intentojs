@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Duration = void 0;
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
 function createBaseDuration() {
     return {
@@ -48,6 +49,18 @@ exports.Duration = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            seconds: (0, helpers_1.isSet)(object.seconds) ? BigInt(object.seconds.toString()) : BigInt(0),
+            nanos: (0, helpers_1.isSet)(object.nanos) ? Number(object.nanos) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.seconds !== undefined && (obj.seconds = (message.seconds || BigInt(0)).toString());
+        message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseDuration();

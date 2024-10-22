@@ -111,6 +111,8 @@ export declare const StakeAuthorization: {
     isAmino(o: any): o is StakeAuthorizationAmino;
     encode(message: StakeAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization;
+    fromJSON(object: any): StakeAuthorization;
+    toJSON(message: StakeAuthorization): unknown;
     fromPartial(object: Partial<StakeAuthorization>): StakeAuthorization;
     fromAmino(object: StakeAuthorizationAmino): StakeAuthorization;
     toAmino(message: StakeAuthorization): StakeAuthorizationAmino;
@@ -128,6 +130,8 @@ export declare const StakeAuthorization_Validators: {
     isAmino(o: any): o is StakeAuthorization_ValidatorsAmino;
     encode(message: StakeAuthorization_Validators, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization_Validators;
+    fromJSON(object: any): StakeAuthorization_Validators;
+    toJSON(message: StakeAuthorization_Validators): unknown;
     fromPartial(object: Partial<StakeAuthorization_Validators>): StakeAuthorization_Validators;
     fromAmino(object: StakeAuthorization_ValidatorsAmino): StakeAuthorization_Validators;
     toAmino(message: StakeAuthorization_Validators): StakeAuthorization_ValidatorsAmino;

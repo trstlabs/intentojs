@@ -46,24 +46,24 @@ const _71 = __importStar(require("./lightclients/localhost/v1/localhost"));
 const _72 = __importStar(require("./lightclients/solomachine/v1/solomachine"));
 const _73 = __importStar(require("./lightclients/solomachine/v2/solomachine"));
 const _74 = __importStar(require("./lightclients/tendermint/v1/tendermint"));
-const _132 = __importStar(require("./applications/transfer/v1/tx.amino"));
-const _133 = __importStar(require("./core/channel/v1/tx.amino"));
-const _134 = __importStar(require("./core/client/v1/tx.amino"));
-const _135 = __importStar(require("./core/connection/v1/tx.amino"));
-const _136 = __importStar(require("./applications/transfer/v1/tx.registry"));
-const _137 = __importStar(require("./core/channel/v1/tx.registry"));
-const _138 = __importStar(require("./core/client/v1/tx.registry"));
-const _139 = __importStar(require("./core/connection/v1/tx.registry"));
-const _140 = __importStar(require("./applications/transfer/v1/query.rpc.Query"));
-const _141 = __importStar(require("./core/channel/v1/query.rpc.Query"));
-const _142 = __importStar(require("./core/client/v1/query.rpc.Query"));
-const _143 = __importStar(require("./core/connection/v1/query.rpc.Query"));
-const _144 = __importStar(require("./applications/transfer/v1/tx.rpc.msg"));
-const _145 = __importStar(require("./core/channel/v1/tx.rpc.msg"));
-const _146 = __importStar(require("./core/client/v1/tx.rpc.msg"));
-const _147 = __importStar(require("./core/connection/v1/tx.rpc.msg"));
-const _160 = __importStar(require("./rpc.query"));
-const _161 = __importStar(require("./rpc.tx"));
+const _135 = __importStar(require("./applications/transfer/v1/tx.amino"));
+const _136 = __importStar(require("./core/channel/v1/tx.amino"));
+const _137 = __importStar(require("./core/client/v1/tx.amino"));
+const _138 = __importStar(require("./core/connection/v1/tx.amino"));
+const _139 = __importStar(require("./applications/transfer/v1/tx.registry"));
+const _140 = __importStar(require("./core/channel/v1/tx.registry"));
+const _141 = __importStar(require("./core/client/v1/tx.registry"));
+const _142 = __importStar(require("./core/connection/v1/tx.registry"));
+const _143 = __importStar(require("./applications/transfer/v1/query.rpc.Query"));
+const _144 = __importStar(require("./core/channel/v1/query.rpc.Query"));
+const _145 = __importStar(require("./core/client/v1/query.rpc.Query"));
+const _146 = __importStar(require("./core/connection/v1/query.rpc.Query"));
+const _147 = __importStar(require("./applications/transfer/v1/tx.rpc.msg"));
+const _148 = __importStar(require("./core/channel/v1/tx.rpc.msg"));
+const _149 = __importStar(require("./core/client/v1/tx.rpc.msg"));
+const _150 = __importStar(require("./core/connection/v1/tx.rpc.msg"));
+const _166 = __importStar(require("./rpc.query"));
+const _167 = __importStar(require("./rpc.tx"));
 var ibc;
 (function (ibc) {
     let applications;
@@ -75,10 +75,10 @@ var ibc;
                 ..._54,
                 ..._55,
                 ..._56,
-                ..._132,
-                ..._136,
-                ..._140,
-                ..._144
+                ..._135,
+                ..._139,
+                ..._143,
+                ..._147
             };
             transfer.v2 = {
                 ..._57
@@ -94,10 +94,10 @@ var ibc;
                 ..._59,
                 ..._60,
                 ..._61,
-                ..._133,
-                ..._137,
-                ..._141,
-                ..._145
+                ..._136,
+                ..._140,
+                ..._144,
+                ..._148
             };
         })(channel = core.channel || (core.channel = {}));
         let client;
@@ -107,10 +107,10 @@ var ibc;
                 ..._63,
                 ..._64,
                 ..._65,
-                ..._134,
-                ..._138,
-                ..._142,
-                ..._146
+                ..._137,
+                ..._141,
+                ..._145,
+                ..._149
             };
         })(client = core.client || (core.client = {}));
         let commitment;
@@ -126,10 +126,10 @@ var ibc;
                 ..._68,
                 ..._69,
                 ..._70,
-                ..._135,
-                ..._139,
-                ..._143,
-                ..._147
+                ..._138,
+                ..._142,
+                ..._146,
+                ..._150
             };
         })(connection = core.connection || (core.connection = {}));
     })(core = ibc.core || (ibc.core = {}));
@@ -158,8 +158,8 @@ var ibc;
         })(tendermint = lightclients.tendermint || (lightclients.tendermint = {}));
     })(lightclients = ibc.lightclients || (ibc.lightclients = {}));
     ibc.ClientFactory = {
-        ..._160,
-        ..._161
+        ..._166,
+        ..._167
     };
 })(ibc || (exports.ibc = ibc = {}));
 //# sourceMappingURL=bundle.js.map

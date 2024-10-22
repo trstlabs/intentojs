@@ -408,6 +408,8 @@ export declare const WeightedVoteOption: {
     isAmino(o: any): o is WeightedVoteOptionAmino;
     encode(message: WeightedVoteOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): WeightedVoteOption;
+    fromJSON(object: any): WeightedVoteOption;
+    toJSON(message: WeightedVoteOption): unknown;
     fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption;
     fromAmino(object: WeightedVoteOptionAmino): WeightedVoteOption;
     toAmino(message: WeightedVoteOption): WeightedVoteOptionAmino;
@@ -425,6 +427,8 @@ export declare const TextProposal: {
     isAmino(o: any): o is TextProposalAmino;
     encode(message: TextProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TextProposal;
+    fromJSON(object: any): TextProposal;
+    toJSON(message: TextProposal): unknown;
     fromPartial(object: Partial<TextProposal>): TextProposal;
     fromAmino(object: TextProposalAmino): TextProposal;
     toAmino(message: TextProposal): TextProposalAmino;
@@ -442,6 +446,8 @@ export declare const Deposit: {
     isAmino(o: any): o is DepositAmino;
     encode(message: Deposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Deposit;
+    fromJSON(object: any): Deposit;
+    toJSON(message: Deposit): unknown;
     fromPartial(object: Partial<Deposit>): Deposit;
     fromAmino(object: DepositAmino): Deposit;
     toAmino(message: Deposit): DepositAmino;
@@ -459,6 +465,8 @@ export declare const Proposal: {
     isAmino(o: any): o is ProposalAmino;
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
+    fromJSON(object: any): Proposal;
+    toJSON(message: Proposal): unknown;
     fromPartial(object: Partial<Proposal>): Proposal;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
@@ -476,6 +484,8 @@ export declare const TallyResult: {
     isAmino(o: any): o is TallyResultAmino;
     encode(message: TallyResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyResult;
+    fromJSON(object: any): TallyResult;
+    toJSON(message: TallyResult): unknown;
     fromPartial(object: Partial<TallyResult>): TallyResult;
     fromAmino(object: TallyResultAmino): TallyResult;
     toAmino(message: TallyResult): TallyResultAmino;
@@ -493,6 +503,8 @@ export declare const Vote: {
     isAmino(o: any): o is VoteAmino;
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
+    fromJSON(object: any): Vote;
+    toJSON(message: Vote): unknown;
     fromPartial(object: Partial<Vote>): Vote;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
@@ -510,6 +522,8 @@ export declare const DepositParams: {
     isAmino(o: any): o is DepositParamsAmino;
     encode(message: DepositParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DepositParams;
+    fromJSON(object: any): DepositParams;
+    toJSON(message: DepositParams): unknown;
     fromPartial(object: Partial<DepositParams>): DepositParams;
     fromAmino(object: DepositParamsAmino): DepositParams;
     toAmino(message: DepositParams): DepositParamsAmino;
@@ -527,6 +541,8 @@ export declare const VotingParams: {
     isAmino(o: any): o is VotingParamsAmino;
     encode(message: VotingParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VotingParams;
+    fromJSON(object: any): VotingParams;
+    toJSON(message: VotingParams): unknown;
     fromPartial(object: Partial<VotingParams>): VotingParams;
     fromAmino(object: VotingParamsAmino): VotingParams;
     toAmino(message: VotingParams): VotingParamsAmino;
@@ -544,6 +560,8 @@ export declare const TallyParams: {
     isAmino(o: any): o is TallyParamsAmino;
     encode(message: TallyParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyParams;
+    fromJSON(object: any): TallyParams;
+    toJSON(message: TallyParams): unknown;
     fromPartial(object: Partial<TallyParams>): TallyParams;
     fromAmino(object: TallyParamsAmino): TallyParams;
     toAmino(message: TallyParams): TallyParamsAmino;

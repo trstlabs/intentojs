@@ -4,6 +4,7 @@ exports.MsgTransferResponse = exports.MsgTransfer = void 0;
 const coin_1 = require("../../../../cosmos/base/v1beta1/coin");
 const client_1 = require("../../../core/client/v1/client");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseMsgTransfer() {
     return {
@@ -86,6 +87,28 @@ exports.MsgTransfer = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            sourcePort: (0, helpers_1.isSet)(object.sourcePort) ? String(object.sourcePort) : "",
+            sourceChannel: (0, helpers_1.isSet)(object.sourceChannel) ? String(object.sourceChannel) : "",
+            token: (0, helpers_1.isSet)(object.token) ? coin_1.Coin.fromJSON(object.token) : undefined,
+            sender: (0, helpers_1.isSet)(object.sender) ? String(object.sender) : "",
+            receiver: (0, helpers_1.isSet)(object.receiver) ? String(object.receiver) : "",
+            timeoutHeight: (0, helpers_1.isSet)(object.timeoutHeight) ? client_1.Height.fromJSON(object.timeoutHeight) : undefined,
+            timeoutTimestamp: (0, helpers_1.isSet)(object.timeoutTimestamp) ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.sourcePort !== undefined && (obj.sourcePort = message.sourcePort);
+        message.sourceChannel !== undefined && (obj.sourceChannel = message.sourceChannel);
+        message.token !== undefined && (obj.token = message.token ? coin_1.Coin.toJSON(message.token) : undefined);
+        message.sender !== undefined && (obj.sender = message.sender);
+        message.receiver !== undefined && (obj.receiver = message.receiver);
+        message.timeoutHeight !== undefined && (obj.timeoutHeight = message.timeoutHeight ? client_1.Height.toJSON(message.timeoutHeight) : undefined);
+        message.timeoutTimestamp !== undefined && (obj.timeoutTimestamp = (message.timeoutTimestamp || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgTransfer();
@@ -189,6 +212,13 @@ exports.MsgTransferResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgTransferResponse();

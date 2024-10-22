@@ -102,6 +102,8 @@ export declare const MsgTransfer: {
     isAmino(o: any): o is MsgTransferAmino;
     encode(message: MsgTransfer, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTransfer;
+    fromJSON(object: any): MsgTransfer;
+    toJSON(message: MsgTransfer): unknown;
     fromPartial(object: Partial<MsgTransfer>): MsgTransfer;
     fromAmino(object: MsgTransferAmino): MsgTransfer;
     toAmino(message: MsgTransfer): MsgTransferAmino;
@@ -119,6 +121,8 @@ export declare const MsgTransferResponse: {
     isAmino(o: any): o is MsgTransferResponseAmino;
     encode(_: MsgTransferResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTransferResponse;
+    fromJSON(_: any): MsgTransferResponse;
+    toJSON(_: MsgTransferResponse): unknown;
     fromPartial(_: Partial<MsgTransferResponse>): MsgTransferResponse;
     fromAmino(_: MsgTransferResponseAmino): MsgTransferResponse;
     toAmino(_: MsgTransferResponse): MsgTransferResponseAmino;

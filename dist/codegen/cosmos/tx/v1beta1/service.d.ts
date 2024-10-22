@@ -430,6 +430,8 @@ export declare const GetTxsEventRequest: {
     isAmino(o: any): o is GetTxsEventRequestAmino;
     encode(message: GetTxsEventRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventRequest;
+    fromJSON(object: any): GetTxsEventRequest;
+    toJSON(message: GetTxsEventRequest): unknown;
     fromPartial(object: Partial<GetTxsEventRequest>): GetTxsEventRequest;
     fromAmino(object: GetTxsEventRequestAmino): GetTxsEventRequest;
     toAmino(message: GetTxsEventRequest): GetTxsEventRequestAmino;
@@ -447,6 +449,8 @@ export declare const GetTxsEventResponse: {
     isAmino(o: any): o is GetTxsEventResponseAmino;
     encode(message: GetTxsEventResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventResponse;
+    fromJSON(object: any): GetTxsEventResponse;
+    toJSON(message: GetTxsEventResponse): unknown;
     fromPartial(object: Partial<GetTxsEventResponse>): GetTxsEventResponse;
     fromAmino(object: GetTxsEventResponseAmino): GetTxsEventResponse;
     toAmino(message: GetTxsEventResponse): GetTxsEventResponseAmino;
@@ -464,6 +468,8 @@ export declare const BroadcastTxRequest: {
     isAmino(o: any): o is BroadcastTxRequestAmino;
     encode(message: BroadcastTxRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxRequest;
+    fromJSON(object: any): BroadcastTxRequest;
+    toJSON(message: BroadcastTxRequest): unknown;
     fromPartial(object: Partial<BroadcastTxRequest>): BroadcastTxRequest;
     fromAmino(object: BroadcastTxRequestAmino): BroadcastTxRequest;
     toAmino(message: BroadcastTxRequest): BroadcastTxRequestAmino;
@@ -481,6 +487,8 @@ export declare const BroadcastTxResponse: {
     isAmino(o: any): o is BroadcastTxResponseAmino;
     encode(message: BroadcastTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxResponse;
+    fromJSON(object: any): BroadcastTxResponse;
+    toJSON(message: BroadcastTxResponse): unknown;
     fromPartial(object: Partial<BroadcastTxResponse>): BroadcastTxResponse;
     fromAmino(object: BroadcastTxResponseAmino): BroadcastTxResponse;
     toAmino(message: BroadcastTxResponse): BroadcastTxResponseAmino;
@@ -498,6 +506,8 @@ export declare const SimulateRequest: {
     isAmino(o: any): o is SimulateRequestAmino;
     encode(message: SimulateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulateRequest;
+    fromJSON(object: any): SimulateRequest;
+    toJSON(message: SimulateRequest): unknown;
     fromPartial(object: Partial<SimulateRequest>): SimulateRequest;
     fromAmino(object: SimulateRequestAmino): SimulateRequest;
     toAmino(message: SimulateRequest): SimulateRequestAmino;
@@ -515,6 +525,8 @@ export declare const SimulateResponse: {
     isAmino(o: any): o is SimulateResponseAmino;
     encode(message: SimulateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulateResponse;
+    fromJSON(object: any): SimulateResponse;
+    toJSON(message: SimulateResponse): unknown;
     fromPartial(object: Partial<SimulateResponse>): SimulateResponse;
     fromAmino(object: SimulateResponseAmino): SimulateResponse;
     toAmino(message: SimulateResponse): SimulateResponseAmino;
@@ -532,6 +544,8 @@ export declare const GetTxRequest: {
     isAmino(o: any): o is GetTxRequestAmino;
     encode(message: GetTxRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxRequest;
+    fromJSON(object: any): GetTxRequest;
+    toJSON(message: GetTxRequest): unknown;
     fromPartial(object: Partial<GetTxRequest>): GetTxRequest;
     fromAmino(object: GetTxRequestAmino): GetTxRequest;
     toAmino(message: GetTxRequest): GetTxRequestAmino;
@@ -549,6 +563,8 @@ export declare const GetTxResponse: {
     isAmino(o: any): o is GetTxResponseAmino;
     encode(message: GetTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxResponse;
+    fromJSON(object: any): GetTxResponse;
+    toJSON(message: GetTxResponse): unknown;
     fromPartial(object: Partial<GetTxResponse>): GetTxResponse;
     fromAmino(object: GetTxResponseAmino): GetTxResponse;
     toAmino(message: GetTxResponse): GetTxResponseAmino;
@@ -566,6 +582,8 @@ export declare const GetBlockWithTxsRequest: {
     isAmino(o: any): o is GetBlockWithTxsRequestAmino;
     encode(message: GetBlockWithTxsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockWithTxsRequest;
+    fromJSON(object: any): GetBlockWithTxsRequest;
+    toJSON(message: GetBlockWithTxsRequest): unknown;
     fromPartial(object: Partial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest;
     fromAmino(object: GetBlockWithTxsRequestAmino): GetBlockWithTxsRequest;
     toAmino(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestAmino;
@@ -583,6 +601,8 @@ export declare const GetBlockWithTxsResponse: {
     isAmino(o: any): o is GetBlockWithTxsResponseAmino;
     encode(message: GetBlockWithTxsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockWithTxsResponse;
+    fromJSON(object: any): GetBlockWithTxsResponse;
+    toJSON(message: GetBlockWithTxsResponse): unknown;
     fromPartial(object: Partial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
     fromAmino(object: GetBlockWithTxsResponseAmino): GetBlockWithTxsResponse;
     toAmino(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseAmino;

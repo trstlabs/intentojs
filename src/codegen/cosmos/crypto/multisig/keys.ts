@@ -1,5 +1,6 @@
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * LegacyAminoPubKey specifies a public key type
@@ -82,6 +83,22 @@ export const LegacyAminoPubKey = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): LegacyAminoPubKey {
+    return {
+      threshold: isSet(object.threshold) ? Number(object.threshold) : 0,
+      publicKeys: Array.isArray(object?.publicKeys) ? object.publicKeys.map((e: any) => Any.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: LegacyAminoPubKey): unknown {
+    const obj: any = {};
+    message.threshold !== undefined && (obj.threshold = Math.round(message.threshold));
+    if (message.publicKeys) {
+      obj.publicKeys = message.publicKeys.map(e => e ? Any.toJSON(e) : undefined);
+    } else {
+      obj.publicKeys = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<LegacyAminoPubKey>): LegacyAminoPubKey {
     const message = createBaseLegacyAminoPubKey();

@@ -71,6 +71,8 @@ export declare const EventGrant: {
     isAmino(o: any): o is EventGrantAmino;
     encode(message: EventGrant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventGrant;
+    fromJSON(object: any): EventGrant;
+    toJSON(message: EventGrant): unknown;
     fromPartial(object: Partial<EventGrant>): EventGrant;
     fromAmino(object: EventGrantAmino): EventGrant;
     toAmino(message: EventGrant): EventGrantAmino;
@@ -88,6 +90,8 @@ export declare const EventRevoke: {
     isAmino(o: any): o is EventRevokeAmino;
     encode(message: EventRevoke, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventRevoke;
+    fromJSON(object: any): EventRevoke;
+    toJSON(message: EventRevoke): unknown;
     fromPartial(object: Partial<EventRevoke>): EventRevoke;
     fromAmino(object: EventRevokeAmino): EventRevoke;
     toAmino(message: EventRevoke): EventRevokeAmino;

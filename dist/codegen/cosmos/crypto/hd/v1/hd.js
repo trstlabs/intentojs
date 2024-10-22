@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BIP44Params = void 0;
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseBIP44Params() {
     return {
@@ -70,6 +71,24 @@ exports.BIP44Params = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            purpose: (0, helpers_1.isSet)(object.purpose) ? Number(object.purpose) : 0,
+            coinType: (0, helpers_1.isSet)(object.coinType) ? Number(object.coinType) : 0,
+            account: (0, helpers_1.isSet)(object.account) ? Number(object.account) : 0,
+            change: (0, helpers_1.isSet)(object.change) ? Boolean(object.change) : false,
+            addressIndex: (0, helpers_1.isSet)(object.addressIndex) ? Number(object.addressIndex) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.purpose !== undefined && (obj.purpose = Math.round(message.purpose));
+        message.coinType !== undefined && (obj.coinType = Math.round(message.coinType));
+        message.account !== undefined && (obj.account = Math.round(message.account));
+        message.change !== undefined && (obj.change = message.change);
+        message.addressIndex !== undefined && (obj.addressIndex = Math.round(message.addressIndex));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBIP44Params();

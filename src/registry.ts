@@ -7,7 +7,9 @@ import {
 } from "./codegen/cosmwasm/wasm/v1/cosmwasm";
 import * as osmo from "./codegen/osmosis/gamm/v1beta1/gamm";
 
-export const customMsgRegistry: ReadonlyArray<[string, GeneratedType]> = [
+export const customMsgRegistry: ReadonlyArray<
+  [string, TelescopeGeneratedCodec]
+> = [
   ["/cosmwasm.wasm.v1.MsgInstantiateContract", MsgInstantiateContract],
   ["/cosmwasm.wasm.v1.MsgInstantiateContract2", MsgInstantiateContract2],
   ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract],

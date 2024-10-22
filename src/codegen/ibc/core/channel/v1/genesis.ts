@@ -1,5 +1,6 @@
 import { IdentifiedChannel, IdentifiedChannelAmino, IdentifiedChannelSDKType, PacketState, PacketStateAmino, PacketStateSDKType } from "./channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /** GenesisState defines the ibc channel submodule's genesis state. */
 export interface GenesisState {
@@ -168,6 +169,58 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object: any): GenesisState {
+    return {
+      channels: Array.isArray(object?.channels) ? object.channels.map((e: any) => IdentifiedChannel.fromJSON(e)) : [],
+      acknowledgements: Array.isArray(object?.acknowledgements) ? object.acknowledgements.map((e: any) => PacketState.fromJSON(e)) : [],
+      commitments: Array.isArray(object?.commitments) ? object.commitments.map((e: any) => PacketState.fromJSON(e)) : [],
+      receipts: Array.isArray(object?.receipts) ? object.receipts.map((e: any) => PacketState.fromJSON(e)) : [],
+      sendSequences: Array.isArray(object?.sendSequences) ? object.sendSequences.map((e: any) => PacketSequence.fromJSON(e)) : [],
+      recvSequences: Array.isArray(object?.recvSequences) ? object.recvSequences.map((e: any) => PacketSequence.fromJSON(e)) : [],
+      ackSequences: Array.isArray(object?.ackSequences) ? object.ackSequences.map((e: any) => PacketSequence.fromJSON(e)) : [],
+      nextChannelSequence: isSet(object.nextChannelSequence) ? BigInt(object.nextChannelSequence.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    if (message.channels) {
+      obj.channels = message.channels.map(e => e ? IdentifiedChannel.toJSON(e) : undefined);
+    } else {
+      obj.channels = [];
+    }
+    if (message.acknowledgements) {
+      obj.acknowledgements = message.acknowledgements.map(e => e ? PacketState.toJSON(e) : undefined);
+    } else {
+      obj.acknowledgements = [];
+    }
+    if (message.commitments) {
+      obj.commitments = message.commitments.map(e => e ? PacketState.toJSON(e) : undefined);
+    } else {
+      obj.commitments = [];
+    }
+    if (message.receipts) {
+      obj.receipts = message.receipts.map(e => e ? PacketState.toJSON(e) : undefined);
+    } else {
+      obj.receipts = [];
+    }
+    if (message.sendSequences) {
+      obj.sendSequences = message.sendSequences.map(e => e ? PacketSequence.toJSON(e) : undefined);
+    } else {
+      obj.sendSequences = [];
+    }
+    if (message.recvSequences) {
+      obj.recvSequences = message.recvSequences.map(e => e ? PacketSequence.toJSON(e) : undefined);
+    } else {
+      obj.recvSequences = [];
+    }
+    if (message.ackSequences) {
+      obj.ackSequences = message.ackSequences.map(e => e ? PacketSequence.toJSON(e) : undefined);
+    } else {
+      obj.ackSequences = [];
+    }
+    message.nextChannelSequence !== undefined && (obj.nextChannelSequence = (message.nextChannelSequence || BigInt(0)).toString());
+    return obj;
+  },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.channels = object.channels?.map(e => IdentifiedChannel.fromPartial(e)) || [];
@@ -311,6 +364,20 @@ export const PacketSequence = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PacketSequence {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      sequence: isSet(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: PacketSequence): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<PacketSequence>): PacketSequence {
     const message = createBasePacketSequence();

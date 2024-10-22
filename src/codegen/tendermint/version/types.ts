@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
  * App includes the protocol and software version for the application.
@@ -116,6 +117,18 @@ export const App = {
     }
     return message;
   },
+  fromJSON(object: any): App {
+    return {
+      protocol: isSet(object.protocol) ? BigInt(object.protocol.toString()) : BigInt(0),
+      software: isSet(object.software) ? String(object.software) : ""
+    };
+  },
+  toJSON(message: App): unknown {
+    const obj: any = {};
+    message.protocol !== undefined && (obj.protocol = (message.protocol || BigInt(0)).toString());
+    message.software !== undefined && (obj.software = message.software);
+    return obj;
+  },
   fromPartial(object: Partial<App>): App {
     const message = createBaseApp();
     message.protocol = object.protocol !== undefined && object.protocol !== null ? BigInt(object.protocol.toString()) : BigInt(0);
@@ -200,6 +213,18 @@ export const Consensus = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Consensus {
+    return {
+      block: isSet(object.block) ? BigInt(object.block.toString()) : BigInt(0),
+      app: isSet(object.app) ? BigInt(object.app.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Consensus): unknown {
+    const obj: any = {};
+    message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
+    message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Consensus>): Consensus {
     const message = createBaseConsensus();

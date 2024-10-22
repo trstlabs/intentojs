@@ -102,6 +102,8 @@ export declare const GenesisState: {
     isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
+    toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -119,6 +121,8 @@ export declare const LastValidatorPower: {
     isAmino(o: any): o is LastValidatorPowerAmino;
     encode(message: LastValidatorPower, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LastValidatorPower;
+    fromJSON(object: any): LastValidatorPower;
+    toJSON(message: LastValidatorPower): unknown;
     fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower;
     fromAmino(object: LastValidatorPowerAmino): LastValidatorPower;
     toAmino(message: LastValidatorPower): LastValidatorPowerAmino;

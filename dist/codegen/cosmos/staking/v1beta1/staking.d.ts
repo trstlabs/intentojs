@@ -799,6 +799,8 @@ export declare const HistoricalInfo: {
     isAmino(o: any): o is HistoricalInfoAmino;
     encode(message: HistoricalInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HistoricalInfo;
+    fromJSON(object: any): HistoricalInfo;
+    toJSON(message: HistoricalInfo): unknown;
     fromPartial(object: Partial<HistoricalInfo>): HistoricalInfo;
     fromAmino(object: HistoricalInfoAmino): HistoricalInfo;
     toAmino(message: HistoricalInfo): HistoricalInfoAmino;
@@ -816,6 +818,8 @@ export declare const CommissionRates: {
     isAmino(o: any): o is CommissionRatesAmino;
     encode(message: CommissionRates, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommissionRates;
+    fromJSON(object: any): CommissionRates;
+    toJSON(message: CommissionRates): unknown;
     fromPartial(object: Partial<CommissionRates>): CommissionRates;
     fromAmino(object: CommissionRatesAmino): CommissionRates;
     toAmino(message: CommissionRates): CommissionRatesAmino;
@@ -833,6 +837,8 @@ export declare const Commission: {
     isAmino(o: any): o is CommissionAmino;
     encode(message: Commission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Commission;
+    fromJSON(object: any): Commission;
+    toJSON(message: Commission): unknown;
     fromPartial(object: Partial<Commission>): Commission;
     fromAmino(object: CommissionAmino): Commission;
     toAmino(message: Commission): CommissionAmino;
@@ -850,6 +856,8 @@ export declare const Description: {
     isAmino(o: any): o is DescriptionAmino;
     encode(message: Description, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Description;
+    fromJSON(object: any): Description;
+    toJSON(message: Description): unknown;
     fromPartial(object: Partial<Description>): Description;
     fromAmino(object: DescriptionAmino): Description;
     toAmino(message: Description): DescriptionAmino;
@@ -867,6 +875,8 @@ export declare const Validator: {
     isAmino(o: any): o is ValidatorAmino;
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
+    fromJSON(object: any): Validator;
+    toJSON(message: Validator): unknown;
     fromPartial(object: Partial<Validator>): Validator;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
@@ -884,6 +894,8 @@ export declare const ValAddresses: {
     isAmino(o: any): o is ValAddressesAmino;
     encode(message: ValAddresses, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValAddresses;
+    fromJSON(object: any): ValAddresses;
+    toJSON(message: ValAddresses): unknown;
     fromPartial(object: Partial<ValAddresses>): ValAddresses;
     fromAmino(object: ValAddressesAmino): ValAddresses;
     toAmino(message: ValAddresses): ValAddressesAmino;
@@ -901,6 +913,8 @@ export declare const DVPair: {
     isAmino(o: any): o is DVPairAmino;
     encode(message: DVPair, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVPair;
+    fromJSON(object: any): DVPair;
+    toJSON(message: DVPair): unknown;
     fromPartial(object: Partial<DVPair>): DVPair;
     fromAmino(object: DVPairAmino): DVPair;
     toAmino(message: DVPair): DVPairAmino;
@@ -918,6 +932,8 @@ export declare const DVPairs: {
     isAmino(o: any): o is DVPairsAmino;
     encode(message: DVPairs, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVPairs;
+    fromJSON(object: any): DVPairs;
+    toJSON(message: DVPairs): unknown;
     fromPartial(object: Partial<DVPairs>): DVPairs;
     fromAmino(object: DVPairsAmino): DVPairs;
     toAmino(message: DVPairs): DVPairsAmino;
@@ -935,6 +951,8 @@ export declare const DVVTriplet: {
     isAmino(o: any): o is DVVTripletAmino;
     encode(message: DVVTriplet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVVTriplet;
+    fromJSON(object: any): DVVTriplet;
+    toJSON(message: DVVTriplet): unknown;
     fromPartial(object: Partial<DVVTriplet>): DVVTriplet;
     fromAmino(object: DVVTripletAmino): DVVTriplet;
     toAmino(message: DVVTriplet): DVVTripletAmino;
@@ -952,6 +970,8 @@ export declare const DVVTriplets: {
     isAmino(o: any): o is DVVTripletsAmino;
     encode(message: DVVTriplets, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVVTriplets;
+    fromJSON(object: any): DVVTriplets;
+    toJSON(message: DVVTriplets): unknown;
     fromPartial(object: Partial<DVVTriplets>): DVVTriplets;
     fromAmino(object: DVVTripletsAmino): DVVTriplets;
     toAmino(message: DVVTriplets): DVVTripletsAmino;
@@ -969,6 +989,8 @@ export declare const Delegation: {
     isAmino(o: any): o is DelegationAmino;
     encode(message: Delegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Delegation;
+    fromJSON(object: any): Delegation;
+    toJSON(message: Delegation): unknown;
     fromPartial(object: Partial<Delegation>): Delegation;
     fromAmino(object: DelegationAmino): Delegation;
     toAmino(message: Delegation): DelegationAmino;
@@ -986,6 +1008,8 @@ export declare const UnbondingDelegation: {
     isAmino(o: any): o is UnbondingDelegationAmino;
     encode(message: UnbondingDelegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UnbondingDelegation;
+    fromJSON(object: any): UnbondingDelegation;
+    toJSON(message: UnbondingDelegation): unknown;
     fromPartial(object: Partial<UnbondingDelegation>): UnbondingDelegation;
     fromAmino(object: UnbondingDelegationAmino): UnbondingDelegation;
     toAmino(message: UnbondingDelegation): UnbondingDelegationAmino;
@@ -1003,6 +1027,8 @@ export declare const UnbondingDelegationEntry: {
     isAmino(o: any): o is UnbondingDelegationEntryAmino;
     encode(message: UnbondingDelegationEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UnbondingDelegationEntry;
+    fromJSON(object: any): UnbondingDelegationEntry;
+    toJSON(message: UnbondingDelegationEntry): unknown;
     fromPartial(object: Partial<UnbondingDelegationEntry>): UnbondingDelegationEntry;
     fromAmino(object: UnbondingDelegationEntryAmino): UnbondingDelegationEntry;
     toAmino(message: UnbondingDelegationEntry): UnbondingDelegationEntryAmino;
@@ -1020,6 +1046,8 @@ export declare const RedelegationEntry: {
     isAmino(o: any): o is RedelegationEntryAmino;
     encode(message: RedelegationEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RedelegationEntry;
+    fromJSON(object: any): RedelegationEntry;
+    toJSON(message: RedelegationEntry): unknown;
     fromPartial(object: Partial<RedelegationEntry>): RedelegationEntry;
     fromAmino(object: RedelegationEntryAmino): RedelegationEntry;
     toAmino(message: RedelegationEntry): RedelegationEntryAmino;
@@ -1037,6 +1065,8 @@ export declare const Redelegation: {
     isAmino(o: any): o is RedelegationAmino;
     encode(message: Redelegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Redelegation;
+    fromJSON(object: any): Redelegation;
+    toJSON(message: Redelegation): unknown;
     fromPartial(object: Partial<Redelegation>): Redelegation;
     fromAmino(object: RedelegationAmino): Redelegation;
     toAmino(message: Redelegation): RedelegationAmino;
@@ -1054,6 +1084,8 @@ export declare const Params: {
     isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -1071,6 +1103,8 @@ export declare const DelegationResponse: {
     isAmino(o: any): o is DelegationResponseAmino;
     encode(message: DelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegationResponse;
+    fromJSON(object: any): DelegationResponse;
+    toJSON(message: DelegationResponse): unknown;
     fromPartial(object: Partial<DelegationResponse>): DelegationResponse;
     fromAmino(object: DelegationResponseAmino): DelegationResponse;
     toAmino(message: DelegationResponse): DelegationResponseAmino;
@@ -1088,6 +1122,8 @@ export declare const RedelegationEntryResponse: {
     isAmino(o: any): o is RedelegationEntryResponseAmino;
     encode(message: RedelegationEntryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RedelegationEntryResponse;
+    fromJSON(object: any): RedelegationEntryResponse;
+    toJSON(message: RedelegationEntryResponse): unknown;
     fromPartial(object: Partial<RedelegationEntryResponse>): RedelegationEntryResponse;
     fromAmino(object: RedelegationEntryResponseAmino): RedelegationEntryResponse;
     toAmino(message: RedelegationEntryResponse): RedelegationEntryResponseAmino;
@@ -1105,6 +1141,8 @@ export declare const RedelegationResponse: {
     isAmino(o: any): o is RedelegationResponseAmino;
     encode(message: RedelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RedelegationResponse;
+    fromJSON(object: any): RedelegationResponse;
+    toJSON(message: RedelegationResponse): unknown;
     fromPartial(object: Partial<RedelegationResponse>): RedelegationResponse;
     fromAmino(object: RedelegationResponseAmino): RedelegationResponse;
     toAmino(message: RedelegationResponse): RedelegationResponseAmino;
@@ -1122,6 +1160,8 @@ export declare const Pool: {
     isAmino(o: any): o is PoolAmino;
     encode(message: Pool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Pool;
+    fromJSON(object: any): Pool;
+    toJSON(message: Pool): unknown;
     fromPartial(object: Partial<Pool>): Pool;
     fromAmino(object: PoolAmino): Pool;
     toAmino(message: Pool): PoolAmino;

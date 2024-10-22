@@ -448,6 +448,8 @@ export declare const PartSetHeader: {
     isAmino(o: any): o is PartSetHeaderAmino;
     encode(message: PartSetHeader, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PartSetHeader;
+    fromJSON(object: any): PartSetHeader;
+    toJSON(message: PartSetHeader): unknown;
     fromPartial(object: Partial<PartSetHeader>): PartSetHeader;
     fromAmino(object: PartSetHeaderAmino): PartSetHeader;
     toAmino(message: PartSetHeader): PartSetHeaderAmino;
@@ -463,6 +465,8 @@ export declare const Part: {
     isAmino(o: any): o is PartAmino;
     encode(message: Part, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Part;
+    fromJSON(object: any): Part;
+    toJSON(message: Part): unknown;
     fromPartial(object: Partial<Part>): Part;
     fromAmino(object: PartAmino): Part;
     toAmino(message: Part): PartAmino;
@@ -478,6 +482,8 @@ export declare const BlockID: {
     isAmino(o: any): o is BlockIDAmino;
     encode(message: BlockID, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockID;
+    fromJSON(object: any): BlockID;
+    toJSON(message: BlockID): unknown;
     fromPartial(object: Partial<BlockID>): BlockID;
     fromAmino(object: BlockIDAmino): BlockID;
     toAmino(message: BlockID): BlockIDAmino;
@@ -493,6 +499,8 @@ export declare const Header: {
     isAmino(o: any): o is HeaderAmino;
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
+    fromJSON(object: any): Header;
+    toJSON(message: Header): unknown;
     fromPartial(object: Partial<Header>): Header;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
@@ -508,6 +516,8 @@ export declare const Data: {
     isAmino(o: any): o is DataAmino;
     encode(message: Data, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Data;
+    fromJSON(object: any): Data;
+    toJSON(message: Data): unknown;
     fromPartial(object: Partial<Data>): Data;
     fromAmino(object: DataAmino): Data;
     toAmino(message: Data): DataAmino;
@@ -523,6 +533,8 @@ export declare const Vote: {
     isAmino(o: any): o is VoteAmino;
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
+    fromJSON(object: any): Vote;
+    toJSON(message: Vote): unknown;
     fromPartial(object: Partial<Vote>): Vote;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
@@ -538,6 +550,8 @@ export declare const Commit: {
     isAmino(o: any): o is CommitAmino;
     encode(message: Commit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Commit;
+    fromJSON(object: any): Commit;
+    toJSON(message: Commit): unknown;
     fromPartial(object: Partial<Commit>): Commit;
     fromAmino(object: CommitAmino): Commit;
     toAmino(message: Commit): CommitAmino;
@@ -553,6 +567,8 @@ export declare const CommitSig: {
     isAmino(o: any): o is CommitSigAmino;
     encode(message: CommitSig, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitSig;
+    fromJSON(object: any): CommitSig;
+    toJSON(message: CommitSig): unknown;
     fromPartial(object: Partial<CommitSig>): CommitSig;
     fromAmino(object: CommitSigAmino): CommitSig;
     toAmino(message: CommitSig): CommitSigAmino;
@@ -568,6 +584,8 @@ export declare const Proposal: {
     isAmino(o: any): o is ProposalAmino;
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
+    fromJSON(object: any): Proposal;
+    toJSON(message: Proposal): unknown;
     fromPartial(object: Partial<Proposal>): Proposal;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
@@ -583,6 +601,8 @@ export declare const SignedHeader: {
     isAmino(o: any): o is SignedHeaderAmino;
     encode(message: SignedHeader, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignedHeader;
+    fromJSON(object: any): SignedHeader;
+    toJSON(message: SignedHeader): unknown;
     fromPartial(object: Partial<SignedHeader>): SignedHeader;
     fromAmino(object: SignedHeaderAmino): SignedHeader;
     toAmino(message: SignedHeader): SignedHeaderAmino;
@@ -598,6 +618,8 @@ export declare const LightBlock: {
     isAmino(o: any): o is LightBlockAmino;
     encode(message: LightBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LightBlock;
+    fromJSON(object: any): LightBlock;
+    toJSON(message: LightBlock): unknown;
     fromPartial(object: Partial<LightBlock>): LightBlock;
     fromAmino(object: LightBlockAmino): LightBlock;
     toAmino(message: LightBlock): LightBlockAmino;
@@ -613,6 +635,8 @@ export declare const BlockMeta: {
     isAmino(o: any): o is BlockMetaAmino;
     encode(message: BlockMeta, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockMeta;
+    fromJSON(object: any): BlockMeta;
+    toJSON(message: BlockMeta): unknown;
     fromPartial(object: Partial<BlockMeta>): BlockMeta;
     fromAmino(object: BlockMetaAmino): BlockMeta;
     toAmino(message: BlockMeta): BlockMetaAmino;
@@ -628,6 +652,8 @@ export declare const TxProof: {
     isAmino(o: any): o is TxProofAmino;
     encode(message: TxProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxProof;
+    fromJSON(object: any): TxProof;
+    toJSON(message: TxProof): unknown;
     fromPartial(object: Partial<TxProof>): TxProof;
     fromAmino(object: TxProofAmino): TxProof;
     toAmino(message: TxProof): TxProofAmino;

@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** Params defines the params for activeness of Actions on governance proposals. */
 export interface Params {
@@ -147,6 +148,38 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      ActionFundsCommission: isSet(object.ActionFundsCommission) ? BigInt(object.ActionFundsCommission.toString()) : BigInt(0),
+      ActionFlexFeeMul: isSet(object.ActionFlexFeeMul) ? BigInt(object.ActionFlexFeeMul.toString()) : BigInt(0),
+      ActionConstantFee: isSet(object.ActionConstantFee) ? BigInt(object.ActionConstantFee.toString()) : BigInt(0),
+      gasFeeCoins: Array.isArray(object?.gasFeeCoins) ? object.gasFeeCoins.map((e: any) => Coin.fromJSON(e)) : [],
+      MaxActionDuration: isSet(object.MaxActionDuration) ? Duration.fromJSON(object.MaxActionDuration) : undefined,
+      MinActionDuration: isSet(object.MinActionDuration) ? Duration.fromJSON(object.MinActionDuration) : undefined,
+      MinActionInterval: isSet(object.MinActionInterval) ? Duration.fromJSON(object.MinActionInterval) : undefined,
+      relayerRewards: Array.isArray(object?.relayerRewards) ? object.relayerRewards.map((e: any) => BigInt(e.toString())) : []
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.ActionFundsCommission !== undefined && (obj.ActionFundsCommission = (message.ActionFundsCommission || BigInt(0)).toString());
+    message.ActionFlexFeeMul !== undefined && (obj.ActionFlexFeeMul = (message.ActionFlexFeeMul || BigInt(0)).toString());
+    message.ActionConstantFee !== undefined && (obj.ActionConstantFee = (message.ActionConstantFee || BigInt(0)).toString());
+    if (message.gasFeeCoins) {
+      obj.gasFeeCoins = message.gasFeeCoins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.gasFeeCoins = [];
+    }
+    message.MaxActionDuration !== undefined && (obj.MaxActionDuration = message.MaxActionDuration ? Duration.toJSON(message.MaxActionDuration) : undefined);
+    message.MinActionDuration !== undefined && (obj.MinActionDuration = message.MinActionDuration ? Duration.toJSON(message.MinActionDuration) : undefined);
+    message.MinActionInterval !== undefined && (obj.MinActionInterval = message.MinActionInterval ? Duration.toJSON(message.MinActionInterval) : undefined);
+    if (message.relayerRewards) {
+      obj.relayerRewards = message.relayerRewards.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.relayerRewards = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

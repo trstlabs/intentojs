@@ -173,6 +173,8 @@ export declare const QueryGrantsRequest: {
     isAmino(o: any): o is QueryGrantsRequestAmino;
     encode(message: QueryGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGrantsRequest;
+    fromJSON(object: any): QueryGrantsRequest;
+    toJSON(message: QueryGrantsRequest): unknown;
     fromPartial(object: Partial<QueryGrantsRequest>): QueryGrantsRequest;
     fromAmino(object: QueryGrantsRequestAmino): QueryGrantsRequest;
     toAmino(message: QueryGrantsRequest): QueryGrantsRequestAmino;
@@ -190,6 +192,8 @@ export declare const QueryGrantsResponse: {
     isAmino(o: any): o is QueryGrantsResponseAmino;
     encode(message: QueryGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGrantsResponse;
+    fromJSON(object: any): QueryGrantsResponse;
+    toJSON(message: QueryGrantsResponse): unknown;
     fromPartial(object: Partial<QueryGrantsResponse>): QueryGrantsResponse;
     fromAmino(object: QueryGrantsResponseAmino): QueryGrantsResponse;
     toAmino(message: QueryGrantsResponse): QueryGrantsResponseAmino;
@@ -207,6 +211,8 @@ export declare const QueryGranterGrantsRequest: {
     isAmino(o: any): o is QueryGranterGrantsRequestAmino;
     encode(message: QueryGranterGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranterGrantsRequest;
+    fromJSON(object: any): QueryGranterGrantsRequest;
+    toJSON(message: QueryGranterGrantsRequest): unknown;
     fromPartial(object: Partial<QueryGranterGrantsRequest>): QueryGranterGrantsRequest;
     fromAmino(object: QueryGranterGrantsRequestAmino): QueryGranterGrantsRequest;
     toAmino(message: QueryGranterGrantsRequest): QueryGranterGrantsRequestAmino;
@@ -224,6 +230,8 @@ export declare const QueryGranterGrantsResponse: {
     isAmino(o: any): o is QueryGranterGrantsResponseAmino;
     encode(message: QueryGranterGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranterGrantsResponse;
+    fromJSON(object: any): QueryGranterGrantsResponse;
+    toJSON(message: QueryGranterGrantsResponse): unknown;
     fromPartial(object: Partial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
     fromAmino(object: QueryGranterGrantsResponseAmino): QueryGranterGrantsResponse;
     toAmino(message: QueryGranterGrantsResponse): QueryGranterGrantsResponseAmino;
@@ -241,6 +249,8 @@ export declare const QueryGranteeGrantsRequest: {
     isAmino(o: any): o is QueryGranteeGrantsRequestAmino;
     encode(message: QueryGranteeGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranteeGrantsRequest;
+    fromJSON(object: any): QueryGranteeGrantsRequest;
+    toJSON(message: QueryGranteeGrantsRequest): unknown;
     fromPartial(object: Partial<QueryGranteeGrantsRequest>): QueryGranteeGrantsRequest;
     fromAmino(object: QueryGranteeGrantsRequestAmino): QueryGranteeGrantsRequest;
     toAmino(message: QueryGranteeGrantsRequest): QueryGranteeGrantsRequestAmino;
@@ -258,6 +268,8 @@ export declare const QueryGranteeGrantsResponse: {
     isAmino(o: any): o is QueryGranteeGrantsResponseAmino;
     encode(message: QueryGranteeGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranteeGrantsResponse;
+    fromJSON(object: any): QueryGranteeGrantsResponse;
+    toJSON(message: QueryGranteeGrantsResponse): unknown;
     fromPartial(object: Partial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;
     fromAmino(object: QueryGranteeGrantsResponseAmino): QueryGranteeGrantsResponse;
     toAmino(message: QueryGranteeGrantsResponse): QueryGranteeGrantsResponseAmino;

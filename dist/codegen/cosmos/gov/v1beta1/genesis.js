@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const gov_1 = require("./gov");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseGenesisState() {
     return {
@@ -85,6 +86,43 @@ exports.GenesisState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            startingProposalId: (0, helpers_1.isSet)(object.startingProposalId) ? BigInt(object.startingProposalId.toString()) : BigInt(0),
+            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => gov_1.Deposit.fromJSON(e)) : [],
+            votes: Array.isArray(object?.votes) ? object.votes.map((e) => gov_1.Vote.fromJSON(e)) : [],
+            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => gov_1.Proposal.fromJSON(e)) : [],
+            depositParams: (0, helpers_1.isSet)(object.depositParams) ? gov_1.DepositParams.fromJSON(object.depositParams) : undefined,
+            votingParams: (0, helpers_1.isSet)(object.votingParams) ? gov_1.VotingParams.fromJSON(object.votingParams) : undefined,
+            tallyParams: (0, helpers_1.isSet)(object.tallyParams) ? gov_1.TallyParams.fromJSON(object.tallyParams) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.startingProposalId !== undefined && (obj.startingProposalId = (message.startingProposalId || BigInt(0)).toString());
+        if (message.deposits) {
+            obj.deposits = message.deposits.map(e => e ? gov_1.Deposit.toJSON(e) : undefined);
+        }
+        else {
+            obj.deposits = [];
+        }
+        if (message.votes) {
+            obj.votes = message.votes.map(e => e ? gov_1.Vote.toJSON(e) : undefined);
+        }
+        else {
+            obj.votes = [];
+        }
+        if (message.proposals) {
+            obj.proposals = message.proposals.map(e => e ? gov_1.Proposal.toJSON(e) : undefined);
+        }
+        else {
+            obj.proposals = [];
+        }
+        message.depositParams !== undefined && (obj.depositParams = message.depositParams ? gov_1.DepositParams.toJSON(message.depositParams) : undefined);
+        message.votingParams !== undefined && (obj.votingParams = message.votingParams ? gov_1.VotingParams.toJSON(message.votingParams) : undefined);
+        message.tallyParams !== undefined && (obj.tallyParams = message.tallyParams ? gov_1.TallyParams.toJSON(message.tallyParams) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();

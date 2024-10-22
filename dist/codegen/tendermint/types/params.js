@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.HashedParams = exports.VersionParams = exports.ValidatorParams = exports.EvidenceParams = exports.BlockParams = exports.ConsensusParams = void 0;
 const duration_1 = require("../../google/protobuf/duration");
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
 function createBaseConsensusParams() {
     return {
@@ -63,6 +64,22 @@ exports.ConsensusParams = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            block: (0, helpers_1.isSet)(object.block) ? exports.BlockParams.fromJSON(object.block) : undefined,
+            evidence: (0, helpers_1.isSet)(object.evidence) ? exports.EvidenceParams.fromJSON(object.evidence) : undefined,
+            validator: (0, helpers_1.isSet)(object.validator) ? exports.ValidatorParams.fromJSON(object.validator) : undefined,
+            version: (0, helpers_1.isSet)(object.version) ? exports.VersionParams.fromJSON(object.version) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.block !== undefined && (obj.block = message.block ? exports.BlockParams.toJSON(message.block) : undefined);
+        message.evidence !== undefined && (obj.evidence = message.evidence ? exports.EvidenceParams.toJSON(message.evidence) : undefined);
+        message.validator !== undefined && (obj.validator = message.validator ? exports.ValidatorParams.toJSON(message.validator) : undefined);
+        message.version !== undefined && (obj.version = message.version ? exports.VersionParams.toJSON(message.version) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseConsensusParams();
@@ -166,6 +183,20 @@ exports.BlockParams = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            maxBytes: (0, helpers_1.isSet)(object.maxBytes) ? BigInt(object.maxBytes.toString()) : BigInt(0),
+            maxGas: (0, helpers_1.isSet)(object.maxGas) ? BigInt(object.maxGas.toString()) : BigInt(0),
+            timeIotaMs: (0, helpers_1.isSet)(object.timeIotaMs) ? BigInt(object.timeIotaMs.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.maxBytes !== undefined && (obj.maxBytes = (message.maxBytes || BigInt(0)).toString());
+        message.maxGas !== undefined && (obj.maxGas = (message.maxGas || BigInt(0)).toString());
+        message.timeIotaMs !== undefined && (obj.timeIotaMs = (message.timeIotaMs || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseBlockParams();
         message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? BigInt(object.maxBytes.toString()) : BigInt(0);
@@ -263,6 +294,20 @@ exports.EvidenceParams = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            maxAgeNumBlocks: (0, helpers_1.isSet)(object.maxAgeNumBlocks) ? BigInt(object.maxAgeNumBlocks.toString()) : BigInt(0),
+            maxAgeDuration: (0, helpers_1.isSet)(object.maxAgeDuration) ? duration_1.Duration.fromJSON(object.maxAgeDuration) : undefined,
+            maxBytes: (0, helpers_1.isSet)(object.maxBytes) ? BigInt(object.maxBytes.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.maxAgeNumBlocks !== undefined && (obj.maxAgeNumBlocks = (message.maxAgeNumBlocks || BigInt(0)).toString());
+        message.maxAgeDuration !== undefined && (obj.maxAgeDuration = message.maxAgeDuration ? duration_1.Duration.toJSON(message.maxAgeDuration) : undefined);
+        message.maxBytes !== undefined && (obj.maxBytes = (message.maxBytes || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseEvidenceParams();
         message.maxAgeNumBlocks = object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null ? BigInt(object.maxAgeNumBlocks.toString()) : BigInt(0);
@@ -346,6 +391,21 @@ exports.ValidatorParams = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            pubKeyTypes: Array.isArray(object?.pubKeyTypes) ? object.pubKeyTypes.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.pubKeyTypes) {
+            obj.pubKeyTypes = message.pubKeyTypes.map(e => e);
+        }
+        else {
+            obj.pubKeyTypes = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidatorParams();
         message.pubKeyTypes = object.pubKeyTypes?.map(e => e) || [];
@@ -421,6 +481,16 @@ exports.VersionParams = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            appVersion: (0, helpers_1.isSet)(object.appVersion) ? BigInt(object.appVersion.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.appVersion !== undefined && (obj.appVersion = (message.appVersion || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseVersionParams();
@@ -501,6 +571,18 @@ exports.HashedParams = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            blockMaxBytes: (0, helpers_1.isSet)(object.blockMaxBytes) ? BigInt(object.blockMaxBytes.toString()) : BigInt(0),
+            blockMaxGas: (0, helpers_1.isSet)(object.blockMaxGas) ? BigInt(object.blockMaxGas.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.blockMaxBytes !== undefined && (obj.blockMaxBytes = (message.blockMaxBytes || BigInt(0)).toString());
+        message.blockMaxGas !== undefined && (obj.blockMaxGas = (message.blockMaxGas || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseHashedParams();

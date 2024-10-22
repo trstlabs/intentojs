@@ -92,6 +92,8 @@ export declare const MsgSend: {
     isAmino(o: any): o is MsgSendAmino;
     encode(message: MsgSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSend;
+    fromJSON(object: any): MsgSend;
+    toJSON(message: MsgSend): unknown;
     fromPartial(object: Partial<MsgSend>): MsgSend;
     fromAmino(object: MsgSendAmino): MsgSend;
     toAmino(message: MsgSend): MsgSendAmino;
@@ -109,6 +111,8 @@ export declare const MsgSendResponse: {
     isAmino(o: any): o is MsgSendResponseAmino;
     encode(_: MsgSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSendResponse;
+    fromJSON(_: any): MsgSendResponse;
+    toJSON(_: MsgSendResponse): unknown;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
     fromAmino(_: MsgSendResponseAmino): MsgSendResponse;
     toAmino(_: MsgSendResponse): MsgSendResponseAmino;
@@ -126,6 +130,8 @@ export declare const MsgMultiSend: {
     isAmino(o: any): o is MsgMultiSendAmino;
     encode(message: MsgMultiSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSend;
+    fromJSON(object: any): MsgMultiSend;
+    toJSON(message: MsgMultiSend): unknown;
     fromPartial(object: Partial<MsgMultiSend>): MsgMultiSend;
     fromAmino(object: MsgMultiSendAmino): MsgMultiSend;
     toAmino(message: MsgMultiSend): MsgMultiSendAmino;
@@ -143,6 +149,8 @@ export declare const MsgMultiSendResponse: {
     isAmino(o: any): o is MsgMultiSendResponseAmino;
     encode(_: MsgMultiSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSendResponse;
+    fromJSON(_: any): MsgMultiSendResponse;
+    toJSON(_: MsgMultiSendResponse): unknown;
     fromPartial(_: Partial<MsgMultiSendResponse>): MsgMultiSendResponse;
     fromAmino(_: MsgMultiSendResponseAmino): MsgMultiSendResponse;
     toAmino(_: MsgMultiSendResponse): MsgMultiSendResponseAmino;

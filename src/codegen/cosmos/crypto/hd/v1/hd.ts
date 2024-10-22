@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44Params {
@@ -115,6 +116,24 @@ export const BIP44Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): BIP44Params {
+    return {
+      purpose: isSet(object.purpose) ? Number(object.purpose) : 0,
+      coinType: isSet(object.coinType) ? Number(object.coinType) : 0,
+      account: isSet(object.account) ? Number(object.account) : 0,
+      change: isSet(object.change) ? Boolean(object.change) : false,
+      addressIndex: isSet(object.addressIndex) ? Number(object.addressIndex) : 0
+    };
+  },
+  toJSON(message: BIP44Params): unknown {
+    const obj: any = {};
+    message.purpose !== undefined && (obj.purpose = Math.round(message.purpose));
+    message.coinType !== undefined && (obj.coinType = Math.round(message.coinType));
+    message.account !== undefined && (obj.account = Math.round(message.account));
+    message.change !== undefined && (obj.change = message.change);
+    message.addressIndex !== undefined && (obj.addressIndex = Math.round(message.addressIndex));
+    return obj;
   },
   fromPartial(object: Partial<BIP44Params>): BIP44Params {
     const message = createBaseBIP44Params();

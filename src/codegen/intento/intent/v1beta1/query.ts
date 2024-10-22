@@ -4,6 +4,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { HostedAccount, HostedAccountAmino, HostedAccountSDKType } from "./hostedaccount";
 import { ActionIbcUsage, ActionIbcUsageAmino, ActionIbcUsageSDKType } from "./usage";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * QueryInterchainAccountFromAddressRequest is the request type for the
@@ -68,7 +69,6 @@ export interface QueryInterchainAccountFromAddressResponseSDKType {
 }
 /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
 export interface QueryActionRequest {
-  /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
   id: string;
 }
 export interface QueryActionRequestProtoMsg {
@@ -77,7 +77,6 @@ export interface QueryActionRequestProtoMsg {
 }
 /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
 export interface QueryActionRequestAmino {
-  /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
   id?: string;
 }
 export interface QueryActionRequestAminoMsg {
@@ -353,7 +352,7 @@ export interface QueryHostedAccountResponseAminoMsg {
 export interface QueryHostedAccountResponseSDKType {
   hosted_account: HostedAccountSDKType;
 }
-/** QueryHostedAccount is the request type for the Query/HostedAccount RPC method. */
+/** QueryHostedAccounts is the request type for the Query/HostedAccount RPC method. */
 export interface QueryHostedAccountsRequest {
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
@@ -362,7 +361,7 @@ export interface QueryHostedAccountsRequestProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsRequest";
   value: Uint8Array;
 }
-/** QueryHostedAccount is the request type for the Query/HostedAccount RPC method. */
+/** QueryHostedAccounts is the request type for the Query/HostedAccount RPC method. */
 export interface QueryHostedAccountsRequestAmino {
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequestAmino;
@@ -371,11 +370,11 @@ export interface QueryHostedAccountsRequestAminoMsg {
   type: "/intento.intent.v1beta1.QueryHostedAccountsRequest";
   value: QueryHostedAccountsRequestAmino;
 }
-/** QueryHostedAccount is the request type for the Query/HostedAccount RPC method. */
+/** QueryHostedAccounts is the request type for the Query/HostedAccount RPC method. */
 export interface QueryHostedAccountsRequestSDKType {
   pagination?: PageRequestSDKType;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/** QueryHostedAccountsResponse is the response type for the Query/HostedAccount RPC method. */
 export interface QueryHostedAccountsResponse {
   /** HostedAccounts */
   hostedAccounts: HostedAccount[];
@@ -386,7 +385,7 @@ export interface QueryHostedAccountsResponseProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsResponse";
   value: Uint8Array;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/** QueryHostedAccountsResponse is the response type for the Query/HostedAccount RPC method. */
 export interface QueryHostedAccountsResponseAmino {
   /** HostedAccounts */
   hosted_accounts?: HostedAccountAmino[];
@@ -397,8 +396,60 @@ export interface QueryHostedAccountsResponseAminoMsg {
   type: "/intento.intent.v1beta1.QueryHostedAccountsResponse";
   value: QueryHostedAccountsResponseAmino;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/** QueryHostedAccountsResponse is the response type for the Query/HostedAccount RPC method. */
 export interface QueryHostedAccountsResponseSDKType {
+  hosted_accounts: HostedAccountSDKType[];
+  pagination?: PageResponseSDKType;
+}
+/** QueryHostedAccountsByAdminRequest */
+export interface QueryHostedAccountsByAdminRequest {
+  admin: string;
+  /** Pagination defines an optional pagination for the request. */
+  pagination?: PageRequest;
+}
+export interface QueryHostedAccountsByAdminRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminRequest";
+  value: Uint8Array;
+}
+/** QueryHostedAccountsByAdminRequest */
+export interface QueryHostedAccountsByAdminRequestAmino {
+  admin?: string;
+  /** Pagination defines an optional pagination for the request. */
+  pagination?: PageRequestAmino;
+}
+export interface QueryHostedAccountsByAdminRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryHostedAccountsByAdminRequest";
+  value: QueryHostedAccountsByAdminRequestAmino;
+}
+/** QueryHostedAccountsByAdminRequest */
+export interface QueryHostedAccountsByAdminRequestSDKType {
+  admin: string;
+  pagination?: PageRequestSDKType;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsByAdminResponse {
+  /** HostedAccounts */
+  hostedAccounts: HostedAccount[];
+  /** Pagination defines the pagination in the response. */
+  pagination?: PageResponse;
+}
+export interface QueryHostedAccountsByAdminResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminResponse";
+  value: Uint8Array;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsByAdminResponseAmino {
+  /** HostedAccounts */
+  hosted_accounts?: HostedAccountAmino[];
+  /** Pagination defines the pagination in the response. */
+  pagination?: PageResponseAmino;
+}
+export interface QueryHostedAccountsByAdminResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryHostedAccountsByAdminResponse";
+  value: QueryHostedAccountsByAdminResponseAmino;
+}
+/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+export interface QueryHostedAccountsByAdminResponseSDKType {
   hosted_accounts: HostedAccountSDKType[];
   pagination?: PageResponseSDKType;
 }
@@ -513,6 +564,18 @@ export const QueryInterchainAccountFromAddressRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryInterchainAccountFromAddressRequest {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
+    };
+  },
+  toJSON(message: QueryInterchainAccountFromAddressRequest): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    return obj;
+  },
   fromPartial(object: Partial<QueryInterchainAccountFromAddressRequest>): QueryInterchainAccountFromAddressRequest {
     const message = createBaseQueryInterchainAccountFromAddressRequest();
     message.owner = object.owner ?? "";
@@ -591,6 +654,16 @@ export const QueryInterchainAccountFromAddressResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryInterchainAccountFromAddressResponse {
+    return {
+      interchainAccountAddress: isSet(object.interchainAccountAddress) ? String(object.interchainAccountAddress) : ""
+    };
+  },
+  toJSON(message: QueryInterchainAccountFromAddressResponse): unknown {
+    const obj: any = {};
+    message.interchainAccountAddress !== undefined && (obj.interchainAccountAddress = message.interchainAccountAddress);
+    return obj;
+  },
   fromPartial(object: Partial<QueryInterchainAccountFromAddressResponse>): QueryInterchainAccountFromAddressResponse {
     const message = createBaseQueryInterchainAccountFromAddressResponse();
     message.interchainAccountAddress = object.interchainAccountAddress ?? "";
@@ -664,6 +737,16 @@ export const QueryActionRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryActionRequest {
+    return {
+      id: isSet(object.id) ? String(object.id) : ""
+    };
+  },
+  toJSON(message: QueryActionRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
   fromPartial(object: Partial<QueryActionRequest>): QueryActionRequest {
     const message = createBaseQueryActionRequest();
     message.id = object.id ?? "";
@@ -736,6 +819,16 @@ export const QueryActionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryActionResponse {
+    return {
+      actionInfo: isSet(object.actionInfo) ? ActionInfo.fromJSON(object.actionInfo) : undefined
+    };
+  },
+  toJSON(message: QueryActionResponse): unknown {
+    const obj: any = {};
+    message.actionInfo !== undefined && (obj.actionInfo = message.actionInfo ? ActionInfo.toJSON(message.actionInfo) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryActionResponse>): QueryActionResponse {
     const message = createBaseQueryActionResponse();
@@ -816,6 +909,18 @@ export const QueryActionHistoryRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryActionHistoryRequest {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionHistoryRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryActionHistoryRequest>): QueryActionHistoryRequest {
     const message = createBaseQueryActionHistoryRequest();
@@ -902,6 +1007,22 @@ export const QueryActionHistoryResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryActionHistoryResponse {
+    return {
+      history: Array.isArray(object?.history) ? object.history.map((e: any) => ActionHistoryEntry.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionHistoryResponse): unknown {
+    const obj: any = {};
+    if (message.history) {
+      obj.history = message.history.map(e => e ? ActionHistoryEntry.toJSON(e) : undefined);
+    } else {
+      obj.history = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryActionHistoryResponse>): QueryActionHistoryResponse {
     const message = createBaseQueryActionHistoryResponse();
     message.history = object.history?.map(e => ActionHistoryEntry.fromPartial(e)) || [];
@@ -982,6 +1103,16 @@ export const QueryActionsRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryActionsRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionsRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryActionsRequest>): QueryActionsRequest {
     const message = createBaseQueryActionsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -1061,6 +1192,22 @@ export const QueryActionsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryActionsResponse {
+    return {
+      actionInfos: Array.isArray(object?.actionInfos) ? object.actionInfos.map((e: any) => ActionInfo.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionsResponse): unknown {
+    const obj: any = {};
+    if (message.actionInfos) {
+      obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
+    } else {
+      obj.actionInfos = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryActionsResponse>): QueryActionsResponse {
     const message = createBaseQueryActionsResponse();
@@ -1149,6 +1296,18 @@ export const QueryActionsForOwnerRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryActionsForOwnerRequest {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionsForOwnerRequest): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryActionsForOwnerRequest>): QueryActionsForOwnerRequest {
     const message = createBaseQueryActionsForOwnerRequest();
     message.owner = object.owner ?? "";
@@ -1234,6 +1393,22 @@ export const QueryActionsForOwnerResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryActionsForOwnerResponse {
+    return {
+      actionInfos: Array.isArray(object?.actionInfos) ? object.actionInfos.map((e: any) => ActionInfo.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionsForOwnerResponse): unknown {
+    const obj: any = {};
+    if (message.actionInfos) {
+      obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
+    } else {
+      obj.actionInfos = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryActionsForOwnerResponse>): QueryActionsForOwnerResponse {
     const message = createBaseQueryActionsForOwnerResponse();
     message.actionInfos = object.actionInfos?.map(e => ActionInfo.fromPartial(e)) || [];
@@ -1306,6 +1481,13 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
+  toJSON(_: QueryParamsRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -1373,6 +1555,16 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: QueryParamsResponse): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
@@ -1447,6 +1639,16 @@ export const QueryHostedAccountRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryHostedAccountRequest {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
+  toJSON(message: QueryHostedAccountRequest): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
+  },
   fromPartial(object: Partial<QueryHostedAccountRequest>): QueryHostedAccountRequest {
     const message = createBaseQueryHostedAccountRequest();
     message.address = object.address ?? "";
@@ -1520,6 +1722,16 @@ export const QueryHostedAccountResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryHostedAccountResponse {
+    return {
+      hostedAccount: isSet(object.hostedAccount) ? HostedAccount.fromJSON(object.hostedAccount) : undefined
+    };
+  },
+  toJSON(message: QueryHostedAccountResponse): unknown {
+    const obj: any = {};
+    message.hostedAccount !== undefined && (obj.hostedAccount = message.hostedAccount ? HostedAccount.toJSON(message.hostedAccount) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryHostedAccountResponse>): QueryHostedAccountResponse {
     const message = createBaseQueryHostedAccountResponse();
     message.hostedAccount = object.hostedAccount !== undefined && object.hostedAccount !== null ? HostedAccount.fromPartial(object.hostedAccount) : undefined;
@@ -1592,6 +1804,16 @@ export const QueryHostedAccountsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryHostedAccountsRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryHostedAccountsRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryHostedAccountsRequest>): QueryHostedAccountsRequest {
     const message = createBaseQueryHostedAccountsRequest();
@@ -1673,6 +1895,22 @@ export const QueryHostedAccountsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryHostedAccountsResponse {
+    return {
+      hostedAccounts: Array.isArray(object?.hostedAccounts) ? object.hostedAccounts.map((e: any) => HostedAccount.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryHostedAccountsResponse): unknown {
+    const obj: any = {};
+    if (message.hostedAccounts) {
+      obj.hostedAccounts = message.hostedAccounts.map(e => e ? HostedAccount.toJSON(e) : undefined);
+    } else {
+      obj.hostedAccounts = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryHostedAccountsResponse>): QueryHostedAccountsResponse {
     const message = createBaseQueryHostedAccountsResponse();
     message.hostedAccounts = object.hostedAccounts?.map(e => HostedAccount.fromPartial(e)) || [];
@@ -1714,6 +1952,206 @@ export const QueryHostedAccountsResponse = {
   }
 };
 GlobalDecoderRegistry.register(QueryHostedAccountsResponse.typeUrl, QueryHostedAccountsResponse);
+function createBaseQueryHostedAccountsByAdminRequest(): QueryHostedAccountsByAdminRequest {
+  return {
+    admin: "",
+    pagination: undefined
+  };
+}
+export const QueryHostedAccountsByAdminRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminRequest",
+  is(o: any): o is QueryHostedAccountsByAdminRequest {
+    return o && (o.$typeUrl === QueryHostedAccountsByAdminRequest.typeUrl || typeof o.admin === "string");
+  },
+  isSDK(o: any): o is QueryHostedAccountsByAdminRequestSDKType {
+    return o && (o.$typeUrl === QueryHostedAccountsByAdminRequest.typeUrl || typeof o.admin === "string");
+  },
+  isAmino(o: any): o is QueryHostedAccountsByAdminRequestAmino {
+    return o && (o.$typeUrl === QueryHostedAccountsByAdminRequest.typeUrl || typeof o.admin === "string");
+  },
+  encode(message: QueryHostedAccountsByAdminRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.admin !== "") {
+      writer.uint32(10).string(message.admin);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHostedAccountsByAdminRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHostedAccountsByAdminRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.admin = reader.string();
+          break;
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): QueryHostedAccountsByAdminRequest {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryHostedAccountsByAdminRequest): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+  fromPartial(object: Partial<QueryHostedAccountsByAdminRequest>): QueryHostedAccountsByAdminRequest {
+    const message = createBaseQueryHostedAccountsByAdminRequest();
+    message.admin = object.admin ?? "";
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHostedAccountsByAdminRequestAmino): QueryHostedAccountsByAdminRequest {
+    const message = createBaseQueryHostedAccountsByAdminRequest();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryHostedAccountsByAdminRequest): QueryHostedAccountsByAdminRequestAmino {
+    const obj: any = {};
+    obj.admin = message.admin === "" ? undefined : message.admin;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHostedAccountsByAdminRequestAminoMsg): QueryHostedAccountsByAdminRequest {
+    return QueryHostedAccountsByAdminRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHostedAccountsByAdminRequestProtoMsg): QueryHostedAccountsByAdminRequest {
+    return QueryHostedAccountsByAdminRequest.decode(message.value);
+  },
+  toProto(message: QueryHostedAccountsByAdminRequest): Uint8Array {
+    return QueryHostedAccountsByAdminRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHostedAccountsByAdminRequest): QueryHostedAccountsByAdminRequestProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminRequest",
+      value: QueryHostedAccountsByAdminRequest.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryHostedAccountsByAdminRequest.typeUrl, QueryHostedAccountsByAdminRequest);
+function createBaseQueryHostedAccountsByAdminResponse(): QueryHostedAccountsByAdminResponse {
+  return {
+    hostedAccounts: [],
+    pagination: undefined
+  };
+}
+export const QueryHostedAccountsByAdminResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminResponse",
+  is(o: any): o is QueryHostedAccountsByAdminResponse {
+    return o && (o.$typeUrl === QueryHostedAccountsByAdminResponse.typeUrl || Array.isArray(o.hostedAccounts) && (!o.hostedAccounts.length || HostedAccount.is(o.hostedAccounts[0])));
+  },
+  isSDK(o: any): o is QueryHostedAccountsByAdminResponseSDKType {
+    return o && (o.$typeUrl === QueryHostedAccountsByAdminResponse.typeUrl || Array.isArray(o.hosted_accounts) && (!o.hosted_accounts.length || HostedAccount.isSDK(o.hosted_accounts[0])));
+  },
+  isAmino(o: any): o is QueryHostedAccountsByAdminResponseAmino {
+    return o && (o.$typeUrl === QueryHostedAccountsByAdminResponse.typeUrl || Array.isArray(o.hosted_accounts) && (!o.hosted_accounts.length || HostedAccount.isAmino(o.hosted_accounts[0])));
+  },
+  encode(message: QueryHostedAccountsByAdminResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.hostedAccounts) {
+      HostedAccount.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHostedAccountsByAdminResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHostedAccountsByAdminResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.hostedAccounts.push(HostedAccount.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): QueryHostedAccountsByAdminResponse {
+    return {
+      hostedAccounts: Array.isArray(object?.hostedAccounts) ? object.hostedAccounts.map((e: any) => HostedAccount.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryHostedAccountsByAdminResponse): unknown {
+    const obj: any = {};
+    if (message.hostedAccounts) {
+      obj.hostedAccounts = message.hostedAccounts.map(e => e ? HostedAccount.toJSON(e) : undefined);
+    } else {
+      obj.hostedAccounts = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+  fromPartial(object: Partial<QueryHostedAccountsByAdminResponse>): QueryHostedAccountsByAdminResponse {
+    const message = createBaseQueryHostedAccountsByAdminResponse();
+    message.hostedAccounts = object.hostedAccounts?.map(e => HostedAccount.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHostedAccountsByAdminResponseAmino): QueryHostedAccountsByAdminResponse {
+    const message = createBaseQueryHostedAccountsByAdminResponse();
+    message.hostedAccounts = object.hosted_accounts?.map(e => HostedAccount.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryHostedAccountsByAdminResponse): QueryHostedAccountsByAdminResponseAmino {
+    const obj: any = {};
+    if (message.hostedAccounts) {
+      obj.hosted_accounts = message.hostedAccounts.map(e => e ? HostedAccount.toAmino(e) : undefined);
+    } else {
+      obj.hosted_accounts = message.hostedAccounts;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHostedAccountsByAdminResponseAminoMsg): QueryHostedAccountsByAdminResponse {
+    return QueryHostedAccountsByAdminResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHostedAccountsByAdminResponseProtoMsg): QueryHostedAccountsByAdminResponse {
+    return QueryHostedAccountsByAdminResponse.decode(message.value);
+  },
+  toProto(message: QueryHostedAccountsByAdminResponse): Uint8Array {
+    return QueryHostedAccountsByAdminResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHostedAccountsByAdminResponse): QueryHostedAccountsByAdminResponseProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminResponse",
+      value: QueryHostedAccountsByAdminResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryHostedAccountsByAdminResponse.typeUrl, QueryHostedAccountsByAdminResponse);
 function createBaseQueryActionIbcUsageRequest(): QueryActionIbcUsageRequest {
   return {
     pagination: undefined
@@ -1752,6 +2190,16 @@ export const QueryActionIbcUsageRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryActionIbcUsageRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionIbcUsageRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryActionIbcUsageRequest>): QueryActionIbcUsageRequest {
     const message = createBaseQueryActionIbcUsageRequest();
@@ -1832,6 +2280,22 @@ export const QueryActionIbcUsageResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryActionIbcUsageResponse {
+    return {
+      actionIbcUsage: Array.isArray(object?.actionIbcUsage) ? object.actionIbcUsage.map((e: any) => ActionIbcUsage.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryActionIbcUsageResponse): unknown {
+    const obj: any = {};
+    if (message.actionIbcUsage) {
+      obj.actionIbcUsage = message.actionIbcUsage.map(e => e ? ActionIbcUsage.toJSON(e) : undefined);
+    } else {
+      obj.actionIbcUsage = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryActionIbcUsageResponse>): QueryActionIbcUsageResponse {
     const message = createBaseQueryActionIbcUsageResponse();

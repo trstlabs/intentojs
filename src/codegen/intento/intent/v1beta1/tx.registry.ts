@@ -96,6 +96,94 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    registerAccount(value: MsgRegisterAccount) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccount",
+        value: MsgRegisterAccount.toJSON(value)
+      };
+    },
+    submitTx(value: MsgSubmitTx) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitTx",
+        value: MsgSubmitTx.toJSON(value)
+      };
+    },
+    submitAction(value: MsgSubmitAction) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
+        value: MsgSubmitAction.toJSON(value)
+      };
+    },
+    registerAccountAndSubmitAction(value: MsgRegisterAccountAndSubmitAction) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
+        value: MsgRegisterAccountAndSubmitAction.toJSON(value)
+      };
+    },
+    updateAction(value: MsgUpdateAction) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
+        value: MsgUpdateAction.toJSON(value)
+      };
+    },
+    createHostedAccount(value: MsgCreateHostedAccount) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccount",
+        value: MsgCreateHostedAccount.toJSON(value)
+      };
+    },
+    updateHostedAccount(value: MsgUpdateHostedAccount) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
+        value: MsgUpdateHostedAccount.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    registerAccount(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccount",
+        value: MsgRegisterAccount.fromJSON(value)
+      };
+    },
+    submitTx(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitTx",
+        value: MsgSubmitTx.fromJSON(value)
+      };
+    },
+    submitAction(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
+        value: MsgSubmitAction.fromJSON(value)
+      };
+    },
+    registerAccountAndSubmitAction(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
+        value: MsgRegisterAccountAndSubmitAction.fromJSON(value)
+      };
+    },
+    updateAction(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
+        value: MsgUpdateAction.fromJSON(value)
+      };
+    },
+    createHostedAccount(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccount",
+        value: MsgCreateHostedAccount.fromJSON(value)
+      };
+    },
+    updateHostedAccount(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
+        value: MsgUpdateHostedAccount.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     registerAccount(value: MsgRegisterAccount) {
       return {

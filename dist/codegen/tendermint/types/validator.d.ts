@@ -76,6 +76,8 @@ export declare const ValidatorSet: {
     isAmino(o: any): o is ValidatorSetAmino;
     encode(message: ValidatorSet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSet;
+    fromJSON(object: any): ValidatorSet;
+    toJSON(message: ValidatorSet): unknown;
     fromPartial(object: Partial<ValidatorSet>): ValidatorSet;
     fromAmino(object: ValidatorSetAmino): ValidatorSet;
     toAmino(message: ValidatorSet): ValidatorSetAmino;
@@ -91,6 +93,8 @@ export declare const Validator: {
     isAmino(o: any): o is ValidatorAmino;
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
+    fromJSON(object: any): Validator;
+    toJSON(message: Validator): unknown;
     fromPartial(object: Partial<Validator>): Validator;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
@@ -106,6 +110,8 @@ export declare const SimpleValidator: {
     isAmino(o: any): o is SimpleValidatorAmino;
     encode(message: SimpleValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimpleValidator;
+    fromJSON(object: any): SimpleValidator;
+    toJSON(message: SimpleValidator): unknown;
     fromPartial(object: Partial<SimpleValidator>): SimpleValidator;
     fromAmino(object: SimpleValidatorAmino): SimpleValidator;
     toAmino(message: SimpleValidator): SimpleValidatorAmino;

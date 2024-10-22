@@ -186,6 +186,8 @@ export declare const MsgGrant: {
     isAmino(o: any): o is MsgGrantAmino;
     encode(message: MsgGrant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrant;
+    fromJSON(object: any): MsgGrant;
+    toJSON(message: MsgGrant): unknown;
     fromPartial(object: Partial<MsgGrant>): MsgGrant;
     fromAmino(object: MsgGrantAmino): MsgGrant;
     toAmino(message: MsgGrant): MsgGrantAmino;
@@ -203,6 +205,8 @@ export declare const MsgExecResponse: {
     isAmino(o: any): o is MsgExecResponseAmino;
     encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
+    fromJSON(object: any): MsgExecResponse;
+    toJSON(message: MsgExecResponse): unknown;
     fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
     fromAmino(object: MsgExecResponseAmino): MsgExecResponse;
     toAmino(message: MsgExecResponse): MsgExecResponseAmino;
@@ -220,6 +224,8 @@ export declare const MsgExec: {
     isAmino(o: any): o is MsgExecAmino;
     encode(message: MsgExec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExec;
+    fromJSON(object: any): MsgExec;
+    toJSON(message: MsgExec): unknown;
     fromPartial(object: Partial<MsgExec>): MsgExec;
     fromAmino(object: MsgExecAmino): MsgExec;
     toAmino(message: MsgExec): MsgExecAmino;
@@ -237,6 +243,8 @@ export declare const MsgGrantResponse: {
     isAmino(o: any): o is MsgGrantResponseAmino;
     encode(_: MsgGrantResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantResponse;
+    fromJSON(_: any): MsgGrantResponse;
+    toJSON(_: MsgGrantResponse): unknown;
     fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
     fromAmino(_: MsgGrantResponseAmino): MsgGrantResponse;
     toAmino(_: MsgGrantResponse): MsgGrantResponseAmino;
@@ -254,6 +262,8 @@ export declare const MsgRevoke: {
     isAmino(o: any): o is MsgRevokeAmino;
     encode(message: MsgRevoke, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevoke;
+    fromJSON(object: any): MsgRevoke;
+    toJSON(message: MsgRevoke): unknown;
     fromPartial(object: Partial<MsgRevoke>): MsgRevoke;
     fromAmino(object: MsgRevokeAmino): MsgRevoke;
     toAmino(message: MsgRevoke): MsgRevokeAmino;
@@ -271,6 +281,8 @@ export declare const MsgRevokeResponse: {
     isAmino(o: any): o is MsgRevokeResponseAmino;
     encode(_: MsgRevokeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevokeResponse;
+    fromJSON(_: any): MsgRevokeResponse;
+    toJSON(_: MsgRevokeResponse): unknown;
     fromPartial(_: Partial<MsgRevokeResponse>): MsgRevokeResponse;
     fromAmino(_: MsgRevokeResponseAmino): MsgRevokeResponse;
     toAmino(_: MsgRevokeResponse): MsgRevokeResponseAmino;

@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryActionRequest, QueryActionResponse, QueryActionHistoryRequest, QueryActionHistoryResponse, QueryActionsRequest, QueryActionsResponse, QueryActionsForOwnerRequest, QueryActionsForOwnerResponse, QueryHostedAccountRequest, QueryHostedAccountResponse, QueryHostedAccountsRequest, QueryHostedAccountsResponse, QueryParamsRequest, QueryParamsResponse, QueryActionIbcUsageRequest, QueryActionIbcUsageResponse } from "./query";
+import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryActionRequest, QueryActionResponse, QueryActionHistoryRequest, QueryActionHistoryResponse, QueryActionsRequest, QueryActionsResponse, QueryActionsForOwnerRequest, QueryActionsForOwnerResponse, QueryHostedAccountRequest, QueryHostedAccountResponse, QueryHostedAccountsRequest, QueryHostedAccountsResponse, QueryHostedAccountsByAdminRequest, QueryHostedAccountsByAdminResponse, QueryParamsRequest, QueryParamsResponse, QueryActionIbcUsageRequest, QueryActionIbcUsageResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -22,6 +22,7 @@ export interface Query {
   actionsForOwner(request: QueryActionsForOwnerRequest): Promise<QueryActionsForOwnerResponse>;
   hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse>;
   hostedAccounts(request?: QueryHostedAccountsRequest): Promise<QueryHostedAccountsResponse>;
+  hostedAccountsByAdmin(request: QueryHostedAccountsByAdminRequest): Promise<QueryHostedAccountsByAdminResponse>;
   /** Params returns the total set of Intent parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
   /** ActionIbcTxUsage returns statistics on usage of IBC transactions */
@@ -38,6 +39,7 @@ export class QueryClientImpl implements Query {
     this.actionsForOwner = this.actionsForOwner.bind(this);
     this.hostedAccount = this.hostedAccount.bind(this);
     this.hostedAccounts = this.hostedAccounts.bind(this);
+    this.hostedAccountsByAdmin = this.hostedAccountsByAdmin.bind(this);
     this.params = this.params.bind(this);
     this.actionIbcTxUsage = this.actionIbcTxUsage.bind(this);
   }
@@ -80,6 +82,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("intento.intent.v1beta1.Query", "HostedAccounts", data);
     return promise.then(data => QueryHostedAccountsResponse.decode(new BinaryReader(data)));
   }
+  hostedAccountsByAdmin(request: QueryHostedAccountsByAdminRequest): Promise<QueryHostedAccountsByAdminResponse> {
+    const data = QueryHostedAccountsByAdminRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "HostedAccountsByAdmin", data);
+    return promise.then(data => QueryHostedAccountsByAdminResponse.decode(new BinaryReader(data)));
+  }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("intento.intent.v1beta1.Query", "Params", data);
@@ -117,6 +124,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     hostedAccounts(request?: QueryHostedAccountsRequest): Promise<QueryHostedAccountsResponse> {
       return queryService.hostedAccounts(request);
+    },
+    hostedAccountsByAdmin(request: QueryHostedAccountsByAdminRequest): Promise<QueryHostedAccountsByAdminResponse> {
+      return queryService.hostedAccountsByAdmin(request);
     },
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);

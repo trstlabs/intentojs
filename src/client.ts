@@ -10,7 +10,6 @@ import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 // import * as intentoAutoibctxV1beta1TxAmino from "./codegen/intento/intent/v1beta1/tx.amino";
 // import * as intentoClaimV1beta1ClaimAmino from "./codegen/intento/claim/v1beta1/claim.amino";
 import { customMsgRegistry } from "./registry";
-import { intentoProtoRegistry, intentoAminoConverters } from "./codegen";
 
 export const getIntentoSigningClientOptions = ({
   defaultTypes = defaultRegistryTypes,
@@ -20,14 +19,8 @@ export const getIntentoSigningClientOptions = ({
   registry: Registry;
   aminoTypes: AminoTypes;
 } => {
-  const registry = new Registry([
-    ...defaultTypes,
-    ...intentoProtoRegistry,
-    ...customMsgRegistry,
-  ]);
-  const aminoTypes = new AminoTypes({
-    ...intentoAminoConverters,
-  });
+  const registry = new Registry([...defaultTypes, ...customMsgRegistry]);
+  const aminoTypes = new AminoTypes({});
   return {
     registry,
     aminoTypes,

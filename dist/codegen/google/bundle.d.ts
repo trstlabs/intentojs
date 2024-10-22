@@ -13,6 +13,8 @@ export declare namespace google {
             isAmino(o: any): o is _47.HttpAmino;
             encode(message: _47.Http, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.Http;
+            fromJSON(object: any): _47.Http;
+            toJSON(message: _47.Http): unknown;
             fromPartial(object: Partial<_47.Http>): _47.Http;
             fromAmino(object: _47.HttpAmino): _47.Http;
             toAmino(message: _47.Http): _47.HttpAmino;
@@ -28,6 +30,8 @@ export declare namespace google {
             isAmino(o: any): o is _47.HttpRuleAmino;
             encode(message: _47.HttpRule, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.HttpRule;
+            fromJSON(object: any): _47.HttpRule;
+            toJSON(message: _47.HttpRule): unknown;
             fromPartial(object: Partial<_47.HttpRule>): _47.HttpRule;
             fromAmino(object: _47.HttpRuleAmino): _47.HttpRule;
             toAmino(message: _47.HttpRule): _47.HttpRuleAmino;
@@ -43,6 +47,8 @@ export declare namespace google {
             isAmino(o: any): o is _47.CustomHttpPatternAmino;
             encode(message: _47.CustomHttpPattern, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.CustomHttpPattern;
+            fromJSON(object: any): _47.CustomHttpPattern;
+            toJSON(message: _47.CustomHttpPattern): unknown;
             fromPartial(object: Partial<_47.CustomHttpPattern>): _47.CustomHttpPattern;
             fromAmino(object: _47.CustomHttpPatternAmino): _47.CustomHttpPattern;
             toAmino(message: _47.CustomHttpPattern): _47.CustomHttpPatternAmino;
@@ -60,6 +66,8 @@ export declare namespace google {
             isAmino(o: any): o is string;
             encode(message: _52.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.Timestamp;
+            fromJSON(object: any): _52.Timestamp;
+            toJSON(message: _52.Timestamp): unknown;
             fromPartial(object: Partial<_52.Timestamp>): _52.Timestamp;
             fromAmino(object: string): _52.Timestamp;
             toAmino(message: _52.Timestamp): string;
@@ -75,6 +83,8 @@ export declare namespace google {
             isAmino(o: any): o is _51.EmptyAmino;
             encode(_: _51.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.Empty;
+            fromJSON(_: any): _51.Empty;
+            toJSON(_: _51.Empty): unknown;
             fromPartial(_: Partial<_51.Empty>): _51.Empty;
             fromAmino(_: _51.EmptyAmino): _51.Empty;
             toAmino(_: _51.Empty): _51.EmptyAmino;
@@ -90,6 +100,8 @@ export declare namespace google {
             isAmino(o: any): o is string;
             encode(message: _50.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.Duration;
+            fromJSON(object: any): _50.Duration;
+            toJSON(message: _50.Duration): unknown;
             fromPartial(object: Partial<_50.Duration>): _50.Duration;
             fromAmino(object: string): _50.Duration;
             toAmino(message: _50.Duration): string;
@@ -135,6 +147,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.FileDescriptorSetAmino;
             encode(message: _49.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FileDescriptorSet;
+            fromJSON(object: any): _49.FileDescriptorSet;
+            toJSON(message: _49.FileDescriptorSet): unknown;
             fromPartial(object: Partial<_49.FileDescriptorSet>): _49.FileDescriptorSet;
             fromAmino(object: _49.FileDescriptorSetAmino): _49.FileDescriptorSet;
             toAmino(message: _49.FileDescriptorSet): _49.FileDescriptorSetAmino;
@@ -150,6 +164,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.FileDescriptorProtoAmino;
             encode(message: _49.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FileDescriptorProto;
+            fromJSON(object: any): _49.FileDescriptorProto;
+            toJSON(message: _49.FileDescriptorProto): unknown;
             fromPartial(object: Partial<_49.FileDescriptorProto>): _49.FileDescriptorProto;
             fromAmino(object: _49.FileDescriptorProtoAmino): _49.FileDescriptorProto;
             toAmino(message: _49.FileDescriptorProto): _49.FileDescriptorProtoAmino;
@@ -165,6 +181,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.DescriptorProtoAmino;
             encode(message: _49.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.DescriptorProto;
+            fromJSON(object: any): _49.DescriptorProto;
+            toJSON(message: _49.DescriptorProto): unknown;
             fromPartial(object: Partial<_49.DescriptorProto>): _49.DescriptorProto;
             fromAmino(object: _49.DescriptorProtoAmino): _49.DescriptorProto;
             toAmino(message: _49.DescriptorProto): _49.DescriptorProtoAmino;
@@ -180,6 +198,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.DescriptorProto_ExtensionRangeAmino;
             encode(message: _49.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.DescriptorProto_ExtensionRange;
+            fromJSON(object: any): _49.DescriptorProto_ExtensionRange;
+            toJSON(message: _49.DescriptorProto_ExtensionRange): unknown;
             fromPartial(object: Partial<_49.DescriptorProto_ExtensionRange>): _49.DescriptorProto_ExtensionRange;
             fromAmino(object: _49.DescriptorProto_ExtensionRangeAmino): _49.DescriptorProto_ExtensionRange;
             toAmino(message: _49.DescriptorProto_ExtensionRange): _49.DescriptorProto_ExtensionRangeAmino;
@@ -195,6 +215,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.DescriptorProto_ReservedRangeAmino;
             encode(message: _49.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.DescriptorProto_ReservedRange;
+            fromJSON(object: any): _49.DescriptorProto_ReservedRange;
+            toJSON(message: _49.DescriptorProto_ReservedRange): unknown;
             fromPartial(object: Partial<_49.DescriptorProto_ReservedRange>): _49.DescriptorProto_ReservedRange;
             fromAmino(object: _49.DescriptorProto_ReservedRangeAmino): _49.DescriptorProto_ReservedRange;
             toAmino(message: _49.DescriptorProto_ReservedRange): _49.DescriptorProto_ReservedRangeAmino;
@@ -210,6 +232,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.ExtensionRangeOptionsAmino;
             encode(message: _49.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.ExtensionRangeOptions;
+            fromJSON(object: any): _49.ExtensionRangeOptions;
+            toJSON(message: _49.ExtensionRangeOptions): unknown;
             fromPartial(object: Partial<_49.ExtensionRangeOptions>): _49.ExtensionRangeOptions;
             fromAmino(object: _49.ExtensionRangeOptionsAmino): _49.ExtensionRangeOptions;
             toAmino(message: _49.ExtensionRangeOptions): _49.ExtensionRangeOptionsAmino;
@@ -225,6 +249,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.FieldDescriptorProtoAmino;
             encode(message: _49.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FieldDescriptorProto;
+            fromJSON(object: any): _49.FieldDescriptorProto;
+            toJSON(message: _49.FieldDescriptorProto): unknown;
             fromPartial(object: Partial<_49.FieldDescriptorProto>): _49.FieldDescriptorProto;
             fromAmino(object: _49.FieldDescriptorProtoAmino): _49.FieldDescriptorProto;
             toAmino(message: _49.FieldDescriptorProto): _49.FieldDescriptorProtoAmino;
@@ -240,6 +266,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.OneofDescriptorProtoAmino;
             encode(message: _49.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.OneofDescriptorProto;
+            fromJSON(object: any): _49.OneofDescriptorProto;
+            toJSON(message: _49.OneofDescriptorProto): unknown;
             fromPartial(object: Partial<_49.OneofDescriptorProto>): _49.OneofDescriptorProto;
             fromAmino(object: _49.OneofDescriptorProtoAmino): _49.OneofDescriptorProto;
             toAmino(message: _49.OneofDescriptorProto): _49.OneofDescriptorProtoAmino;
@@ -255,6 +283,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.EnumDescriptorProtoAmino;
             encode(message: _49.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumDescriptorProto;
+            fromJSON(object: any): _49.EnumDescriptorProto;
+            toJSON(message: _49.EnumDescriptorProto): unknown;
             fromPartial(object: Partial<_49.EnumDescriptorProto>): _49.EnumDescriptorProto;
             fromAmino(object: _49.EnumDescriptorProtoAmino): _49.EnumDescriptorProto;
             toAmino(message: _49.EnumDescriptorProto): _49.EnumDescriptorProtoAmino;
@@ -270,6 +300,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.EnumDescriptorProto_EnumReservedRangeAmino;
             encode(message: _49.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumDescriptorProto_EnumReservedRange;
+            fromJSON(object: any): _49.EnumDescriptorProto_EnumReservedRange;
+            toJSON(message: _49.EnumDescriptorProto_EnumReservedRange): unknown;
             fromPartial(object: Partial<_49.EnumDescriptorProto_EnumReservedRange>): _49.EnumDescriptorProto_EnumReservedRange;
             fromAmino(object: _49.EnumDescriptorProto_EnumReservedRangeAmino): _49.EnumDescriptorProto_EnumReservedRange;
             toAmino(message: _49.EnumDescriptorProto_EnumReservedRange): _49.EnumDescriptorProto_EnumReservedRangeAmino;
@@ -285,6 +317,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.EnumValueDescriptorProtoAmino;
             encode(message: _49.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumValueDescriptorProto;
+            fromJSON(object: any): _49.EnumValueDescriptorProto;
+            toJSON(message: _49.EnumValueDescriptorProto): unknown;
             fromPartial(object: Partial<_49.EnumValueDescriptorProto>): _49.EnumValueDescriptorProto;
             fromAmino(object: _49.EnumValueDescriptorProtoAmino): _49.EnumValueDescriptorProto;
             toAmino(message: _49.EnumValueDescriptorProto): _49.EnumValueDescriptorProtoAmino;
@@ -300,6 +334,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.ServiceDescriptorProtoAmino;
             encode(message: _49.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.ServiceDescriptorProto;
+            fromJSON(object: any): _49.ServiceDescriptorProto;
+            toJSON(message: _49.ServiceDescriptorProto): unknown;
             fromPartial(object: Partial<_49.ServiceDescriptorProto>): _49.ServiceDescriptorProto;
             fromAmino(object: _49.ServiceDescriptorProtoAmino): _49.ServiceDescriptorProto;
             toAmino(message: _49.ServiceDescriptorProto): _49.ServiceDescriptorProtoAmino;
@@ -315,6 +351,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.MethodDescriptorProtoAmino;
             encode(message: _49.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.MethodDescriptorProto;
+            fromJSON(object: any): _49.MethodDescriptorProto;
+            toJSON(message: _49.MethodDescriptorProto): unknown;
             fromPartial(object: Partial<_49.MethodDescriptorProto>): _49.MethodDescriptorProto;
             fromAmino(object: _49.MethodDescriptorProtoAmino): _49.MethodDescriptorProto;
             toAmino(message: _49.MethodDescriptorProto): _49.MethodDescriptorProtoAmino;
@@ -330,6 +368,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.FileOptionsAmino;
             encode(message: _49.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FileOptions;
+            fromJSON(object: any): _49.FileOptions;
+            toJSON(message: _49.FileOptions): unknown;
             fromPartial(object: Partial<_49.FileOptions>): _49.FileOptions;
             fromAmino(object: _49.FileOptionsAmino): _49.FileOptions;
             toAmino(message: _49.FileOptions): _49.FileOptionsAmino;
@@ -345,6 +385,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.MessageOptionsAmino;
             encode(message: _49.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.MessageOptions;
+            fromJSON(object: any): _49.MessageOptions;
+            toJSON(message: _49.MessageOptions): unknown;
             fromPartial(object: Partial<_49.MessageOptions>): _49.MessageOptions;
             fromAmino(object: _49.MessageOptionsAmino): _49.MessageOptions;
             toAmino(message: _49.MessageOptions): _49.MessageOptionsAmino;
@@ -360,6 +402,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.FieldOptionsAmino;
             encode(message: _49.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.FieldOptions;
+            fromJSON(object: any): _49.FieldOptions;
+            toJSON(message: _49.FieldOptions): unknown;
             fromPartial(object: Partial<_49.FieldOptions>): _49.FieldOptions;
             fromAmino(object: _49.FieldOptionsAmino): _49.FieldOptions;
             toAmino(message: _49.FieldOptions): _49.FieldOptionsAmino;
@@ -375,6 +419,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.OneofOptionsAmino;
             encode(message: _49.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.OneofOptions;
+            fromJSON(object: any): _49.OneofOptions;
+            toJSON(message: _49.OneofOptions): unknown;
             fromPartial(object: Partial<_49.OneofOptions>): _49.OneofOptions;
             fromAmino(object: _49.OneofOptionsAmino): _49.OneofOptions;
             toAmino(message: _49.OneofOptions): _49.OneofOptionsAmino;
@@ -390,6 +436,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.EnumOptionsAmino;
             encode(message: _49.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumOptions;
+            fromJSON(object: any): _49.EnumOptions;
+            toJSON(message: _49.EnumOptions): unknown;
             fromPartial(object: Partial<_49.EnumOptions>): _49.EnumOptions;
             fromAmino(object: _49.EnumOptionsAmino): _49.EnumOptions;
             toAmino(message: _49.EnumOptions): _49.EnumOptionsAmino;
@@ -405,6 +453,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.EnumValueOptionsAmino;
             encode(message: _49.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.EnumValueOptions;
+            fromJSON(object: any): _49.EnumValueOptions;
+            toJSON(message: _49.EnumValueOptions): unknown;
             fromPartial(object: Partial<_49.EnumValueOptions>): _49.EnumValueOptions;
             fromAmino(object: _49.EnumValueOptionsAmino): _49.EnumValueOptions;
             toAmino(message: _49.EnumValueOptions): _49.EnumValueOptionsAmino;
@@ -420,6 +470,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.ServiceOptionsAmino;
             encode(message: _49.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.ServiceOptions;
+            fromJSON(object: any): _49.ServiceOptions;
+            toJSON(message: _49.ServiceOptions): unknown;
             fromPartial(object: Partial<_49.ServiceOptions>): _49.ServiceOptions;
             fromAmino(object: _49.ServiceOptionsAmino): _49.ServiceOptions;
             toAmino(message: _49.ServiceOptions): _49.ServiceOptionsAmino;
@@ -435,6 +487,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.MethodOptionsAmino;
             encode(message: _49.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.MethodOptions;
+            fromJSON(object: any): _49.MethodOptions;
+            toJSON(message: _49.MethodOptions): unknown;
             fromPartial(object: Partial<_49.MethodOptions>): _49.MethodOptions;
             fromAmino(object: _49.MethodOptionsAmino): _49.MethodOptions;
             toAmino(message: _49.MethodOptions): _49.MethodOptionsAmino;
@@ -450,6 +504,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.UninterpretedOptionAmino;
             encode(message: _49.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.UninterpretedOption;
+            fromJSON(object: any): _49.UninterpretedOption;
+            toJSON(message: _49.UninterpretedOption): unknown;
             fromPartial(object: Partial<_49.UninterpretedOption>): _49.UninterpretedOption;
             fromAmino(object: _49.UninterpretedOptionAmino): _49.UninterpretedOption;
             toAmino(message: _49.UninterpretedOption): _49.UninterpretedOptionAmino;
@@ -465,6 +521,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.UninterpretedOption_NamePartAmino;
             encode(message: _49.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.UninterpretedOption_NamePart;
+            fromJSON(object: any): _49.UninterpretedOption_NamePart;
+            toJSON(message: _49.UninterpretedOption_NamePart): unknown;
             fromPartial(object: Partial<_49.UninterpretedOption_NamePart>): _49.UninterpretedOption_NamePart;
             fromAmino(object: _49.UninterpretedOption_NamePartAmino): _49.UninterpretedOption_NamePart;
             toAmino(message: _49.UninterpretedOption_NamePart): _49.UninterpretedOption_NamePartAmino;
@@ -480,6 +538,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.SourceCodeInfoAmino;
             encode(message: _49.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.SourceCodeInfo;
+            fromJSON(object: any): _49.SourceCodeInfo;
+            toJSON(message: _49.SourceCodeInfo): unknown;
             fromPartial(object: Partial<_49.SourceCodeInfo>): _49.SourceCodeInfo;
             fromAmino(object: _49.SourceCodeInfoAmino): _49.SourceCodeInfo;
             toAmino(message: _49.SourceCodeInfo): _49.SourceCodeInfoAmino;
@@ -495,6 +555,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.SourceCodeInfo_LocationAmino;
             encode(message: _49.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.SourceCodeInfo_Location;
+            fromJSON(object: any): _49.SourceCodeInfo_Location;
+            toJSON(message: _49.SourceCodeInfo_Location): unknown;
             fromPartial(object: Partial<_49.SourceCodeInfo_Location>): _49.SourceCodeInfo_Location;
             fromAmino(object: _49.SourceCodeInfo_LocationAmino): _49.SourceCodeInfo_Location;
             toAmino(message: _49.SourceCodeInfo_Location): _49.SourceCodeInfo_LocationAmino;
@@ -510,6 +572,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.GeneratedCodeInfoAmino;
             encode(message: _49.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.GeneratedCodeInfo;
+            fromJSON(object: any): _49.GeneratedCodeInfo;
+            toJSON(message: _49.GeneratedCodeInfo): unknown;
             fromPartial(object: Partial<_49.GeneratedCodeInfo>): _49.GeneratedCodeInfo;
             fromAmino(object: _49.GeneratedCodeInfoAmino): _49.GeneratedCodeInfo;
             toAmino(message: _49.GeneratedCodeInfo): _49.GeneratedCodeInfoAmino;
@@ -525,6 +589,8 @@ export declare namespace google {
             isAmino(o: any): o is _49.GeneratedCodeInfo_AnnotationAmino;
             encode(message: _49.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.GeneratedCodeInfo_Annotation;
+            fromJSON(object: any): _49.GeneratedCodeInfo_Annotation;
+            toJSON(message: _49.GeneratedCodeInfo_Annotation): unknown;
             fromPartial(object: Partial<_49.GeneratedCodeInfo_Annotation>): _49.GeneratedCodeInfo_Annotation;
             fromAmino(object: _49.GeneratedCodeInfo_AnnotationAmino): _49.GeneratedCodeInfo_Annotation;
             toAmino(message: _49.GeneratedCodeInfo_Annotation): _49.GeneratedCodeInfo_AnnotationAmino;
@@ -540,6 +606,8 @@ export declare namespace google {
             isAmino(o: any): o is _48.AnyAmino;
             encode(message: _48.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _48.Any;
+            fromJSON(object: any): _48.Any;
+            toJSON(message: _48.Any): unknown;
             fromPartial(object: Partial<_48.Any>): _48.Any;
             fromAmino(object: _48.AnyAmino): _48.Any;
             toAmino(message: _48.Any): _48.AnyAmino;

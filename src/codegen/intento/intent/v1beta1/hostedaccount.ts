@@ -1,6 +1,7 @@
 import { ICAConfig, ICAConfigAmino, ICAConfigSDKType } from "./action";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface HostedAccount {
   hostedAddress: string;
@@ -98,6 +99,20 @@ export const HostedAccount = {
     }
     return message;
   },
+  fromJSON(object: any): HostedAccount {
+    return {
+      hostedAddress: isSet(object.hostedAddress) ? String(object.hostedAddress) : "",
+      icaConfig: isSet(object.icaConfig) ? ICAConfig.fromJSON(object.icaConfig) : undefined,
+      hostFeeConfig: isSet(object.hostFeeConfig) ? HostFeeConfig.fromJSON(object.hostFeeConfig) : undefined
+    };
+  },
+  toJSON(message: HostedAccount): unknown {
+    const obj: any = {};
+    message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
+    message.icaConfig !== undefined && (obj.icaConfig = message.icaConfig ? ICAConfig.toJSON(message.icaConfig) : undefined);
+    message.hostFeeConfig !== undefined && (obj.hostFeeConfig = message.hostFeeConfig ? HostFeeConfig.toJSON(message.hostFeeConfig) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<HostedAccount>): HostedAccount {
     const message = createBaseHostedAccount();
     message.hostedAddress = object.hostedAddress ?? "";
@@ -187,6 +202,22 @@ export const HostFeeConfig = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): HostFeeConfig {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      feeCoinsSuported: Array.isArray(object?.feeCoinsSuported) ? object.feeCoinsSuported.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: HostFeeConfig): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    if (message.feeCoinsSuported) {
+      obj.feeCoinsSuported = message.feeCoinsSuported.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeCoinsSuported = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<HostFeeConfig>): HostFeeConfig {
     const message = createBaseHostFeeConfig();

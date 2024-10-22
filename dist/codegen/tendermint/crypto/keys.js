@@ -50,6 +50,18 @@ exports.PublicKey = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            ed25519: (0, helpers_1.isSet)(object.ed25519) ? (0, helpers_1.bytesFromBase64)(object.ed25519) : undefined,
+            secp256k1: (0, helpers_1.isSet)(object.secp256k1) ? (0, helpers_1.bytesFromBase64)(object.secp256k1) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.ed25519 !== undefined && (obj.ed25519 = message.ed25519 !== undefined ? (0, helpers_1.base64FromBytes)(message.ed25519) : undefined);
+        message.secp256k1 !== undefined && (obj.secp256k1 = message.secp256k1 !== undefined ? (0, helpers_1.base64FromBytes)(message.secp256k1) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePublicKey();
         message.ed25519 = object.ed25519 ?? undefined;

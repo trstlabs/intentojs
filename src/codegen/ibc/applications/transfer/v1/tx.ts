@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
@@ -174,6 +175,28 @@ export const MsgTransfer = {
     }
     return message;
   },
+  fromJSON(object: any): MsgTransfer {
+    return {
+      sourcePort: isSet(object.sourcePort) ? String(object.sourcePort) : "",
+      sourceChannel: isSet(object.sourceChannel) ? String(object.sourceChannel) : "",
+      token: isSet(object.token) ? Coin.fromJSON(object.token) : undefined,
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      receiver: isSet(object.receiver) ? String(object.receiver) : "",
+      timeoutHeight: isSet(object.timeoutHeight) ? Height.fromJSON(object.timeoutHeight) : undefined,
+      timeoutTimestamp: isSet(object.timeoutTimestamp) ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgTransfer): unknown {
+    const obj: any = {};
+    message.sourcePort !== undefined && (obj.sourcePort = message.sourcePort);
+    message.sourceChannel !== undefined && (obj.sourceChannel = message.sourceChannel);
+    message.token !== undefined && (obj.token = message.token ? Coin.toJSON(message.token) : undefined);
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.receiver !== undefined && (obj.receiver = message.receiver);
+    message.timeoutHeight !== undefined && (obj.timeoutHeight = message.timeoutHeight ? Height.toJSON(message.timeoutHeight) : undefined);
+    message.timeoutTimestamp !== undefined && (obj.timeoutTimestamp = (message.timeoutTimestamp || BigInt(0)).toString());
+    return obj;
+  },
   fromPartial(object: Partial<MsgTransfer>): MsgTransfer {
     const message = createBaseMsgTransfer();
     message.sourcePort = object.sourcePort ?? "";
@@ -276,6 +299,13 @@ export const MsgTransferResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgTransferResponse {
+    return {};
+  },
+  toJSON(_: MsgTransferResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgTransferResponse>): MsgTransferResponse {
     const message = createBaseMsgTransferResponse();

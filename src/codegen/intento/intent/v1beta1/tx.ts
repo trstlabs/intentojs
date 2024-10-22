@@ -3,6 +3,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./action";
 import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hostedaccount";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
 export interface MsgRegisterAccount {
@@ -465,6 +466,20 @@ export const MsgRegisterAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgRegisterAccount {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      version: isSet(object.version) ? String(object.version) : ""
+    };
+  },
+  toJSON(message: MsgRegisterAccount): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.version !== undefined && (obj.version = message.version);
+    return obj;
+  },
   fromPartial(object: Partial<MsgRegisterAccount>): MsgRegisterAccount {
     const message = createBaseMsgRegisterAccount();
     message.owner = object.owner ?? "";
@@ -539,6 +554,13 @@ export const MsgRegisterAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgRegisterAccountResponse {
+    return {};
+  },
+  toJSON(_: MsgRegisterAccountResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgRegisterAccountResponse>): MsgRegisterAccountResponse {
     const message = createBaseMsgRegisterAccountResponse();
@@ -622,6 +644,20 @@ export const MsgSubmitTx = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSubmitTx {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      msg: isSet(object.msg) ? Any.fromJSON(object.msg) : undefined
+    };
+  },
+  toJSON(message: MsgSubmitTx): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.msg !== undefined && (obj.msg = message.msg ? Any.toJSON(message.msg) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgSubmitTx>): MsgSubmitTx {
     const message = createBaseMsgSubmitTx();
     message.owner = object.owner ?? "";
@@ -696,6 +732,13 @@ export const MsgSubmitTxResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSubmitTxResponse {
+    return {};
+  },
+  toJSON(_: MsgSubmitTxResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSubmitTxResponse>): MsgSubmitTxResponse {
     const message = createBaseMsgSubmitTxResponse();
@@ -842,6 +885,46 @@ export const MsgSubmitAction = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSubmitAction {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      duration: isSet(object.duration) ? String(object.duration) : "",
+      startAt: isSet(object.startAt) ? BigInt(object.startAt.toString()) : BigInt(0),
+      interval: isSet(object.interval) ? String(object.interval) : "",
+      feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: MsgSubmitAction): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.label !== undefined && (obj.label = message.label);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.startAt !== undefined && (obj.startAt = (message.startAt || BigInt(0)).toString());
+    message.interval !== undefined && (obj.interval = message.interval);
+    if (message.feeFunds) {
+      obj.feeFunds = message.feeFunds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeFunds = [];
+    }
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgSubmitAction>): MsgSubmitAction {
     const message = createBaseMsgSubmitAction();
     message.owner = object.owner ?? "";
@@ -965,6 +1048,13 @@ export const MsgSubmitActionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSubmitActionResponse {
+    return {};
+  },
+  toJSON(_: MsgSubmitActionResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSubmitActionResponse>): MsgSubmitActionResponse {
     const message = createBaseMsgSubmitActionResponse();
@@ -1111,6 +1201,46 @@ export const MsgRegisterAccountAndSubmitAction = {
     }
     return message;
   },
+  fromJSON(object: any): MsgRegisterAccountAndSubmitAction {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      duration: isSet(object.duration) ? String(object.duration) : "",
+      startAt: isSet(object.startAt) ? BigInt(object.startAt.toString()) : BigInt(0),
+      interval: isSet(object.interval) ? String(object.interval) : "",
+      feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      version: isSet(object.version) ? String(object.version) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: MsgRegisterAccountAndSubmitAction): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.label !== undefined && (obj.label = message.label);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.startAt !== undefined && (obj.startAt = (message.startAt || BigInt(0)).toString());
+    message.interval !== undefined && (obj.interval = message.interval);
+    if (message.feeFunds) {
+      obj.feeFunds = message.feeFunds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeFunds = [];
+    }
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.version !== undefined && (obj.version = message.version);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgRegisterAccountAndSubmitAction>): MsgRegisterAccountAndSubmitAction {
     const message = createBaseMsgRegisterAccountAndSubmitAction();
     message.owner = object.owner ?? "";
@@ -1234,6 +1364,13 @@ export const MsgRegisterAccountAndSubmitActionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgRegisterAccountAndSubmitActionResponse {
+    return {};
+  },
+  toJSON(_: MsgRegisterAccountAndSubmitActionResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgRegisterAccountAndSubmitActionResponse>): MsgRegisterAccountAndSubmitActionResponse {
     const message = createBaseMsgRegisterAccountAndSubmitActionResponse();
@@ -1380,6 +1517,46 @@ export const MsgUpdateAction = {
     }
     return message;
   },
+  fromJSON(object: any): MsgUpdateAction {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      endTime: isSet(object.endTime) ? BigInt(object.endTime.toString()) : BigInt(0),
+      startAt: isSet(object.startAt) ? BigInt(object.startAt.toString()) : BigInt(0),
+      interval: isSet(object.interval) ? String(object.interval) : "",
+      feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: MsgUpdateAction): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.label !== undefined && (obj.label = message.label);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.endTime !== undefined && (obj.endTime = (message.endTime || BigInt(0)).toString());
+    message.startAt !== undefined && (obj.startAt = (message.startAt || BigInt(0)).toString());
+    message.interval !== undefined && (obj.interval = message.interval);
+    if (message.feeFunds) {
+      obj.feeFunds = message.feeFunds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeFunds = [];
+    }
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgUpdateAction>): MsgUpdateAction {
     const message = createBaseMsgUpdateAction();
     message.owner = object.owner ?? "";
@@ -1504,6 +1681,13 @@ export const MsgUpdateActionResponse = {
     }
     return message;
   },
+  fromJSON(_: any): MsgUpdateActionResponse {
+    return {};
+  },
+  toJSON(_: MsgUpdateActionResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<MsgUpdateActionResponse>): MsgUpdateActionResponse {
     const message = createBaseMsgUpdateActionResponse();
     return message;
@@ -1600,6 +1784,28 @@ export const MsgCreateHostedAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreateHostedAccount {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      feeCoinsSuported: Array.isArray(object?.feeCoinsSuported) ? object.feeCoinsSuported.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgCreateHostedAccount): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.version !== undefined && (obj.version = message.version);
+    if (message.feeCoinsSuported) {
+      obj.feeCoinsSuported = message.feeCoinsSuported.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeCoinsSuported = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<MsgCreateHostedAccount>): MsgCreateHostedAccount {
     const message = createBaseMsgCreateHostedAccount();
     message.creator = object.creator ?? "";
@@ -1694,6 +1900,16 @@ export const MsgCreateHostedAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateHostedAccountResponse {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
+  toJSON(message: MsgCreateHostedAccountResponse): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateHostedAccountResponse>): MsgCreateHostedAccountResponse {
     const message = createBaseMsgCreateHostedAccountResponse();
@@ -1796,6 +2012,24 @@ export const MsgUpdateHostedAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgUpdateHostedAccount {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      hostedAddress: isSet(object.hostedAddress) ? String(object.hostedAddress) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      hostFeeConfig: isSet(object.hostFeeConfig) ? HostFeeConfig.fromJSON(object.hostFeeConfig) : undefined
+    };
+  },
+  toJSON(message: MsgUpdateHostedAccount): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.hostFeeConfig !== undefined && (obj.hostFeeConfig = message.hostFeeConfig ? HostFeeConfig.toJSON(message.hostFeeConfig) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgUpdateHostedAccount>): MsgUpdateHostedAccount {
     const message = createBaseMsgUpdateHostedAccount();
     message.admin = object.admin ?? "";
@@ -1880,6 +2114,13 @@ export const MsgUpdateHostedAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgUpdateHostedAccountResponse {
+    return {};
+  },
+  toJSON(_: MsgUpdateHostedAccountResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgUpdateHostedAccountResponse>): MsgUpdateHostedAccountResponse {
     const message = createBaseMsgUpdateHostedAccountResponse();

@@ -4,8 +4,8 @@ exports.GrantQueueItem = exports.GrantAuthorization = exports.Grant = exports.Ge
 const any_1 = require("../../../google/protobuf/any");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const binary_1 = require("../../../binary");
-const registry_1 = require("../../../registry");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 function createBaseGenericAuthorization() {
     return {
         $typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",
@@ -46,6 +46,16 @@ exports.GenericAuthorization = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            msg: (0, helpers_1.isSet)(object.msg) ? String(object.msg) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.msg !== undefined && (obj.msg = message.msg);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenericAuthorization();
@@ -134,6 +144,18 @@ exports.Grant = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            authorization: (0, helpers_1.isSet)(object.authorization) ? registry_1.GlobalDecoderRegistry.fromJSON(object.authorization) : undefined,
+            expiration: (0, helpers_1.isSet)(object.expiration) ? (0, helpers_1.fromJsonTimestamp)(object.expiration) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.authorization !== undefined && (obj.authorization = message.authorization ? registry_1.GlobalDecoderRegistry.toJSON(message.authorization) : undefined);
+        message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGrant();
@@ -242,6 +264,22 @@ exports.GrantAuthorization = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            authorization: (0, helpers_1.isSet)(object.authorization) ? registry_1.GlobalDecoderRegistry.fromJSON(object.authorization) : undefined,
+            expiration: (0, helpers_1.isSet)(object.expiration) ? (0, helpers_1.fromJsonTimestamp)(object.expiration) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.authorization !== undefined && (obj.authorization = message.authorization ? registry_1.GlobalDecoderRegistry.toJSON(message.authorization) : undefined);
+        message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseGrantAuthorization();
         message.granter = object.granter ?? "";
@@ -337,6 +375,21 @@ exports.GrantQueueItem = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            msgTypeUrls: Array.isArray(object?.msgTypeUrls) ? object.msgTypeUrls.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.msgTypeUrls) {
+            obj.msgTypeUrls = message.msgTypeUrls.map(e => e);
+        }
+        else {
+            obj.msgTypeUrls = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGrantQueueItem();

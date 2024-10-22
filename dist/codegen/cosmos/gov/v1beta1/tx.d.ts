@@ -224,6 +224,8 @@ export declare const MsgSubmitProposal: {
     isAmino(o: any): o is MsgSubmitProposalAmino;
     encode(message: MsgSubmitProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal;
+    fromJSON(object: any): MsgSubmitProposal;
+    toJSON(message: MsgSubmitProposal): unknown;
     fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
     fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal;
     toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino;
@@ -241,6 +243,8 @@ export declare const MsgSubmitProposalResponse: {
     isAmino(o: any): o is MsgSubmitProposalResponseAmino;
     encode(message: MsgSubmitProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposalResponse;
+    fromJSON(object: any): MsgSubmitProposalResponse;
+    toJSON(message: MsgSubmitProposalResponse): unknown;
     fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
     fromAmino(object: MsgSubmitProposalResponseAmino): MsgSubmitProposalResponse;
     toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino;
@@ -258,6 +262,8 @@ export declare const MsgVote: {
     isAmino(o: any): o is MsgVoteAmino;
     encode(message: MsgVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVote;
+    fromJSON(object: any): MsgVote;
+    toJSON(message: MsgVote): unknown;
     fromPartial(object: Partial<MsgVote>): MsgVote;
     fromAmino(object: MsgVoteAmino): MsgVote;
     toAmino(message: MsgVote): MsgVoteAmino;
@@ -275,6 +281,8 @@ export declare const MsgVoteResponse: {
     isAmino(o: any): o is MsgVoteResponseAmino;
     encode(_: MsgVoteResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteResponse;
+    fromJSON(_: any): MsgVoteResponse;
+    toJSON(_: MsgVoteResponse): unknown;
     fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
     fromAmino(_: MsgVoteResponseAmino): MsgVoteResponse;
     toAmino(_: MsgVoteResponse): MsgVoteResponseAmino;
@@ -292,6 +300,8 @@ export declare const MsgVoteWeighted: {
     isAmino(o: any): o is MsgVoteWeightedAmino;
     encode(message: MsgVoteWeighted, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeighted;
+    fromJSON(object: any): MsgVoteWeighted;
+    toJSON(message: MsgVoteWeighted): unknown;
     fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted;
     fromAmino(object: MsgVoteWeightedAmino): MsgVoteWeighted;
     toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino;
@@ -309,6 +319,8 @@ export declare const MsgVoteWeightedResponse: {
     isAmino(o: any): o is MsgVoteWeightedResponseAmino;
     encode(_: MsgVoteWeightedResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeightedResponse;
+    fromJSON(_: any): MsgVoteWeightedResponse;
+    toJSON(_: MsgVoteWeightedResponse): unknown;
     fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
     fromAmino(_: MsgVoteWeightedResponseAmino): MsgVoteWeightedResponse;
     toAmino(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseAmino;
@@ -326,6 +338,8 @@ export declare const MsgDeposit: {
     isAmino(o: any): o is MsgDepositAmino;
     encode(message: MsgDeposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeposit;
+    fromJSON(object: any): MsgDeposit;
+    toJSON(message: MsgDeposit): unknown;
     fromPartial(object: Partial<MsgDeposit>): MsgDeposit;
     fromAmino(object: MsgDepositAmino): MsgDeposit;
     toAmino(message: MsgDeposit): MsgDepositAmino;
@@ -343,6 +357,8 @@ export declare const MsgDepositResponse: {
     isAmino(o: any): o is MsgDepositResponseAmino;
     encode(_: MsgDepositResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositResponse;
+    fromJSON(_: any): MsgDepositResponse;
+    toJSON(_: MsgDepositResponse): unknown;
     fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse;
     fromAmino(_: MsgDepositResponseAmino): MsgDepositResponse;
     toAmino(_: MsgDepositResponse): MsgDepositResponseAmino;

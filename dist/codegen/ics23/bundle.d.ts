@@ -17,6 +17,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.ExistenceProofAmino;
         encode(message: _1.ExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.ExistenceProof;
+        fromJSON(object: any): _1.ExistenceProof;
+        toJSON(message: _1.ExistenceProof): unknown;
         fromPartial(object: Partial<_1.ExistenceProof>): _1.ExistenceProof;
         fromAmino(object: _1.ExistenceProofAmino): _1.ExistenceProof;
         toAmino(message: _1.ExistenceProof): _1.ExistenceProofAmino;
@@ -32,6 +34,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.NonExistenceProofAmino;
         encode(message: _1.NonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.NonExistenceProof;
+        fromJSON(object: any): _1.NonExistenceProof;
+        toJSON(message: _1.NonExistenceProof): unknown;
         fromPartial(object: Partial<_1.NonExistenceProof>): _1.NonExistenceProof;
         fromAmino(object: _1.NonExistenceProofAmino): _1.NonExistenceProof;
         toAmino(message: _1.NonExistenceProof): _1.NonExistenceProofAmino;
@@ -47,6 +51,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.CommitmentProofAmino;
         encode(message: _1.CommitmentProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CommitmentProof;
+        fromJSON(object: any): _1.CommitmentProof;
+        toJSON(message: _1.CommitmentProof): unknown;
         fromPartial(object: Partial<_1.CommitmentProof>): _1.CommitmentProof;
         fromAmino(object: _1.CommitmentProofAmino): _1.CommitmentProof;
         toAmino(message: _1.CommitmentProof): _1.CommitmentProofAmino;
@@ -62,6 +68,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.LeafOpAmino;
         encode(message: _1.LeafOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.LeafOp;
+        fromJSON(object: any): _1.LeafOp;
+        toJSON(message: _1.LeafOp): unknown;
         fromPartial(object: Partial<_1.LeafOp>): _1.LeafOp;
         fromAmino(object: _1.LeafOpAmino): _1.LeafOp;
         toAmino(message: _1.LeafOp): _1.LeafOpAmino;
@@ -77,6 +85,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.InnerOpAmino;
         encode(message: _1.InnerOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.InnerOp;
+        fromJSON(object: any): _1.InnerOp;
+        toJSON(message: _1.InnerOp): unknown;
         fromPartial(object: Partial<_1.InnerOp>): _1.InnerOp;
         fromAmino(object: _1.InnerOpAmino): _1.InnerOp;
         toAmino(message: _1.InnerOp): _1.InnerOpAmino;
@@ -92,6 +102,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.ProofSpecAmino;
         encode(message: _1.ProofSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.ProofSpec;
+        fromJSON(object: any): _1.ProofSpec;
+        toJSON(message: _1.ProofSpec): unknown;
         fromPartial(object: Partial<_1.ProofSpec>): _1.ProofSpec;
         fromAmino(object: _1.ProofSpecAmino): _1.ProofSpec;
         toAmino(message: _1.ProofSpec): _1.ProofSpecAmino;
@@ -107,6 +119,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.InnerSpecAmino;
         encode(message: _1.InnerSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.InnerSpec;
+        fromJSON(object: any): _1.InnerSpec;
+        toJSON(message: _1.InnerSpec): unknown;
         fromPartial(object: Partial<_1.InnerSpec>): _1.InnerSpec;
         fromAmino(object: _1.InnerSpecAmino): _1.InnerSpec;
         toAmino(message: _1.InnerSpec): _1.InnerSpecAmino;
@@ -122,6 +136,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.BatchProofAmino;
         encode(message: _1.BatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.BatchProof;
+        fromJSON(object: any): _1.BatchProof;
+        toJSON(message: _1.BatchProof): unknown;
         fromPartial(object: Partial<_1.BatchProof>): _1.BatchProof;
         fromAmino(object: _1.BatchProofAmino): _1.BatchProof;
         toAmino(message: _1.BatchProof): _1.BatchProofAmino;
@@ -137,6 +153,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.BatchEntryAmino;
         encode(message: _1.BatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.BatchEntry;
+        fromJSON(object: any): _1.BatchEntry;
+        toJSON(message: _1.BatchEntry): unknown;
         fromPartial(object: Partial<_1.BatchEntry>): _1.BatchEntry;
         fromAmino(object: _1.BatchEntryAmino): _1.BatchEntry;
         toAmino(message: _1.BatchEntry): _1.BatchEntryAmino;
@@ -152,6 +170,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.CompressedBatchProofAmino;
         encode(message: _1.CompressedBatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedBatchProof;
+        fromJSON(object: any): _1.CompressedBatchProof;
+        toJSON(message: _1.CompressedBatchProof): unknown;
         fromPartial(object: Partial<_1.CompressedBatchProof>): _1.CompressedBatchProof;
         fromAmino(object: _1.CompressedBatchProofAmino): _1.CompressedBatchProof;
         toAmino(message: _1.CompressedBatchProof): _1.CompressedBatchProofAmino;
@@ -167,6 +187,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.CompressedBatchEntryAmino;
         encode(message: _1.CompressedBatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedBatchEntry;
+        fromJSON(object: any): _1.CompressedBatchEntry;
+        toJSON(message: _1.CompressedBatchEntry): unknown;
         fromPartial(object: Partial<_1.CompressedBatchEntry>): _1.CompressedBatchEntry;
         fromAmino(object: _1.CompressedBatchEntryAmino): _1.CompressedBatchEntry;
         toAmino(message: _1.CompressedBatchEntry): _1.CompressedBatchEntryAmino;
@@ -182,6 +204,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.CompressedExistenceProofAmino;
         encode(message: _1.CompressedExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedExistenceProof;
+        fromJSON(object: any): _1.CompressedExistenceProof;
+        toJSON(message: _1.CompressedExistenceProof): unknown;
         fromPartial(object: Partial<_1.CompressedExistenceProof>): _1.CompressedExistenceProof;
         fromAmino(object: _1.CompressedExistenceProofAmino): _1.CompressedExistenceProof;
         toAmino(message: _1.CompressedExistenceProof): _1.CompressedExistenceProofAmino;
@@ -197,6 +221,8 @@ export declare const ics23: {
         isAmino(o: any): o is _1.CompressedNonExistenceProofAmino;
         encode(message: _1.CompressedNonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedNonExistenceProof;
+        fromJSON(object: any): _1.CompressedNonExistenceProof;
+        toJSON(message: _1.CompressedNonExistenceProof): unknown;
         fromPartial(object: Partial<_1.CompressedNonExistenceProof>): _1.CompressedNonExistenceProof;
         fromAmino(object: _1.CompressedNonExistenceProofAmino): _1.CompressedNonExistenceProof;
         toAmino(message: _1.CompressedNonExistenceProof): _1.CompressedNonExistenceProofAmino;

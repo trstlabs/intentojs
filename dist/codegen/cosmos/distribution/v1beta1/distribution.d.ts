@@ -435,6 +435,8 @@ export declare const Params: {
     isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -452,6 +454,8 @@ export declare const ValidatorHistoricalRewards: {
     isAmino(o: any): o is ValidatorHistoricalRewardsAmino;
     encode(message: ValidatorHistoricalRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewards;
+    fromJSON(object: any): ValidatorHistoricalRewards;
+    toJSON(message: ValidatorHistoricalRewards): unknown;
     fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
     fromAmino(object: ValidatorHistoricalRewardsAmino): ValidatorHistoricalRewards;
     toAmino(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsAmino;
@@ -469,6 +473,8 @@ export declare const ValidatorCurrentRewards: {
     isAmino(o: any): o is ValidatorCurrentRewardsAmino;
     encode(message: ValidatorCurrentRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewards;
+    fromJSON(object: any): ValidatorCurrentRewards;
+    toJSON(message: ValidatorCurrentRewards): unknown;
     fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
     fromAmino(object: ValidatorCurrentRewardsAmino): ValidatorCurrentRewards;
     toAmino(message: ValidatorCurrentRewards): ValidatorCurrentRewardsAmino;
@@ -486,6 +492,8 @@ export declare const ValidatorAccumulatedCommission: {
     isAmino(o: any): o is ValidatorAccumulatedCommissionAmino;
     encode(message: ValidatorAccumulatedCommission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
+    fromJSON(object: any): ValidatorAccumulatedCommission;
+    toJSON(message: ValidatorAccumulatedCommission): unknown;
     fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
     fromAmino(object: ValidatorAccumulatedCommissionAmino): ValidatorAccumulatedCommission;
     toAmino(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionAmino;
@@ -503,6 +511,8 @@ export declare const ValidatorOutstandingRewards: {
     isAmino(o: any): o is ValidatorOutstandingRewardsAmino;
     encode(message: ValidatorOutstandingRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewards;
+    fromJSON(object: any): ValidatorOutstandingRewards;
+    toJSON(message: ValidatorOutstandingRewards): unknown;
     fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
     fromAmino(object: ValidatorOutstandingRewardsAmino): ValidatorOutstandingRewards;
     toAmino(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsAmino;
@@ -520,6 +530,8 @@ export declare const ValidatorSlashEvent: {
     isAmino(o: any): o is ValidatorSlashEventAmino;
     encode(message: ValidatorSlashEvent, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvent;
+    fromJSON(object: any): ValidatorSlashEvent;
+    toJSON(message: ValidatorSlashEvent): unknown;
     fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent;
     fromAmino(object: ValidatorSlashEventAmino): ValidatorSlashEvent;
     toAmino(message: ValidatorSlashEvent): ValidatorSlashEventAmino;
@@ -537,6 +549,8 @@ export declare const ValidatorSlashEvents: {
     isAmino(o: any): o is ValidatorSlashEventsAmino;
     encode(message: ValidatorSlashEvents, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvents;
+    fromJSON(object: any): ValidatorSlashEvents;
+    toJSON(message: ValidatorSlashEvents): unknown;
     fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents;
     fromAmino(object: ValidatorSlashEventsAmino): ValidatorSlashEvents;
     toAmino(message: ValidatorSlashEvents): ValidatorSlashEventsAmino;
@@ -554,6 +568,8 @@ export declare const FeePool: {
     isAmino(o: any): o is FeePoolAmino;
     encode(message: FeePool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FeePool;
+    fromJSON(object: any): FeePool;
+    toJSON(message: FeePool): unknown;
     fromPartial(object: Partial<FeePool>): FeePool;
     fromAmino(object: FeePoolAmino): FeePool;
     toAmino(message: FeePool): FeePoolAmino;
@@ -571,6 +587,8 @@ export declare const CommunityPoolSpendProposal: {
     isAmino(o: any): o is CommunityPoolSpendProposalAmino;
     encode(message: CommunityPoolSpendProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposal;
+    fromJSON(object: any): CommunityPoolSpendProposal;
+    toJSON(message: CommunityPoolSpendProposal): unknown;
     fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
     fromAmino(object: CommunityPoolSpendProposalAmino): CommunityPoolSpendProposal;
     toAmino(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalAmino;
@@ -588,6 +606,8 @@ export declare const DelegatorStartingInfo: {
     isAmino(o: any): o is DelegatorStartingInfoAmino;
     encode(message: DelegatorStartingInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfo;
+    fromJSON(object: any): DelegatorStartingInfo;
+    toJSON(message: DelegatorStartingInfo): unknown;
     fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo;
     fromAmino(object: DelegatorStartingInfoAmino): DelegatorStartingInfo;
     toAmino(message: DelegatorStartingInfo): DelegatorStartingInfoAmino;
@@ -605,6 +625,8 @@ export declare const DelegationDelegatorReward: {
     isAmino(o: any): o is DelegationDelegatorRewardAmino;
     encode(message: DelegationDelegatorReward, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegationDelegatorReward;
+    fromJSON(object: any): DelegationDelegatorReward;
+    toJSON(message: DelegationDelegatorReward): unknown;
     fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward;
     fromAmino(object: DelegationDelegatorRewardAmino): DelegationDelegatorReward;
     toAmino(message: DelegationDelegatorReward): DelegationDelegatorRewardAmino;
@@ -622,6 +644,8 @@ export declare const CommunityPoolSpendProposalWithDeposit: {
     isAmino(o: any): o is CommunityPoolSpendProposalWithDepositAmino;
     encode(message: CommunityPoolSpendProposalWithDeposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
+    fromJSON(object: any): CommunityPoolSpendProposalWithDeposit;
+    toJSON(message: CommunityPoolSpendProposalWithDeposit): unknown;
     fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;
     fromAmino(object: CommunityPoolSpendProposalWithDepositAmino): CommunityPoolSpendProposalWithDeposit;
     toAmino(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositAmino;

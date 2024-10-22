@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventRevoke = exports.EventGrant = void 0;
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseEventGrant() {
     return {
@@ -56,6 +57,20 @@ exports.EventGrant = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            msgTypeUrl: (0, helpers_1.isSet)(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseEventGrant();
@@ -161,6 +176,20 @@ exports.EventRevoke = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            msgTypeUrl: (0, helpers_1.isSet)(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseEventRevoke();

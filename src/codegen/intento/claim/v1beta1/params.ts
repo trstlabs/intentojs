@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** Params defines the claim module's parameters. */
 export interface Params {
@@ -103,6 +103,28 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      airdropStartTime: isSet(object.airdropStartTime) ? fromJsonTimestamp(object.airdropStartTime) : undefined,
+      durationUntilDecay: isSet(object.durationUntilDecay) ? Duration.fromJSON(object.durationUntilDecay) : undefined,
+      durationOfDecay: isSet(object.durationOfDecay) ? Duration.fromJSON(object.durationOfDecay) : undefined,
+      claimDenom: isSet(object.claimDenom) ? String(object.claimDenom) : "",
+      durationVestingPeriods: Array.isArray(object?.durationVestingPeriods) ? object.durationVestingPeriods.map((e: any) => Duration.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.airdropStartTime !== undefined && (obj.airdropStartTime = message.airdropStartTime.toISOString());
+    message.durationUntilDecay !== undefined && (obj.durationUntilDecay = message.durationUntilDecay ? Duration.toJSON(message.durationUntilDecay) : undefined);
+    message.durationOfDecay !== undefined && (obj.durationOfDecay = message.durationOfDecay ? Duration.toJSON(message.durationOfDecay) : undefined);
+    message.claimDenom !== undefined && (obj.claimDenom = message.claimDenom);
+    if (message.durationVestingPeriods) {
+      obj.durationVestingPeriods = message.durationVestingPeriods.map(e => e ? Duration.toJSON(e) : undefined);
+    } else {
+      obj.durationVestingPeriods = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

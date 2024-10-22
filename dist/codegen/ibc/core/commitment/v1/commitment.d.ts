@@ -139,6 +139,8 @@ export declare const MerkleRoot: {
     isAmino(o: any): o is MerkleRootAmino;
     encode(message: MerkleRoot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerkleRoot;
+    fromJSON(object: any): MerkleRoot;
+    toJSON(message: MerkleRoot): unknown;
     fromPartial(object: Partial<MerkleRoot>): MerkleRoot;
     fromAmino(object: MerkleRootAmino): MerkleRoot;
     toAmino(message: MerkleRoot): MerkleRootAmino;
@@ -156,6 +158,8 @@ export declare const MerklePrefix: {
     isAmino(o: any): o is MerklePrefixAmino;
     encode(message: MerklePrefix, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerklePrefix;
+    fromJSON(object: any): MerklePrefix;
+    toJSON(message: MerklePrefix): unknown;
     fromPartial(object: Partial<MerklePrefix>): MerklePrefix;
     fromAmino(object: MerklePrefixAmino): MerklePrefix;
     toAmino(message: MerklePrefix): MerklePrefixAmino;
@@ -173,6 +177,8 @@ export declare const MerklePath: {
     isAmino(o: any): o is MerklePathAmino;
     encode(message: MerklePath, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerklePath;
+    fromJSON(object: any): MerklePath;
+    toJSON(message: MerklePath): unknown;
     fromPartial(object: Partial<MerklePath>): MerklePath;
     fromAmino(object: MerklePathAmino): MerklePath;
     toAmino(message: MerklePath): MerklePathAmino;
@@ -190,6 +196,8 @@ export declare const MerkleProof: {
     isAmino(o: any): o is MerkleProofAmino;
     encode(message: MerkleProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerkleProof;
+    fromJSON(object: any): MerkleProof;
+    toJSON(message: MerkleProof): unknown;
     fromPartial(object: Partial<MerkleProof>): MerkleProof;
     fromAmino(object: MerkleProofAmino): MerkleProof;
     toAmino(message: MerkleProof): MerkleProofAmino;

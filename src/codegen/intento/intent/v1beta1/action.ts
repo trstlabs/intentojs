@@ -2,8 +2,9 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { TimeoutPolicy, timeoutPolicyFromJSON, timeoutPolicyToJSON } from "../../interchainquery/v1/genesis";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp, isSet } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** Comparison operators that can be used for various types. */
 export enum ComparisonOperator {
@@ -158,6 +159,7 @@ export interface ActionInfoSDKType {
   hosted_config?: HostedConfigSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
+/** config for self-hosted ICA */
 export interface ICAConfig {
   portId: string;
   connectionId: string;
@@ -167,6 +169,7 @@ export interface ICAConfigProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ICAConfig";
   value: Uint8Array;
 }
+/** config for self-hosted ICA */
 export interface ICAConfigAmino {
   port_id?: string;
   connection_id?: string;
@@ -176,11 +179,13 @@ export interface ICAConfigAminoMsg {
   type: "/intento.intent.v1beta1.ICAConfig";
   value: ICAConfigAmino;
 }
+/** config for self-hosted ICA */
 export interface ICAConfigSDKType {
   port_id: string;
   connection_id: string;
   host_connection_id: string;
 }
+/** config for hosted account */
 export interface HostedConfig {
   hostedAddress: string;
   feeCoinLimit: Coin;
@@ -189,6 +194,7 @@ export interface HostedConfigProtoMsg {
   typeUrl: "/intento.intent.v1beta1.HostedConfig";
   value: Uint8Array;
 }
+/** config for hosted account */
 export interface HostedConfigAmino {
   hosted_address?: string;
   fee_coin_limit?: CoinAmino;
@@ -197,6 +203,7 @@ export interface HostedConfigAminoMsg {
   type: "/intento.intent.v1beta1.HostedConfig";
   value: HostedConfigAmino;
 }
+/** config for hosted account */
 export interface HostedConfigSDKType {
   hosted_address: string;
   fee_coin_limit: CoinSDKType;
@@ -328,6 +335,7 @@ export interface ExecutionConditions {
   skipOnFailureOf: bigint[];
   /** optional array of dependent intents that should fail after their latest call before execution is allowed */
   skipOnSuccessOf: bigint[];
+  icqConfig?: ICQConfig;
 }
 export interface ExecutionConditionsProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
@@ -347,6 +355,7 @@ export interface ExecutionConditionsAmino {
   skip_on_failure_of?: string[];
   /** optional array of dependent intents that should fail after their latest call before execution is allowed */
   skip_on_success_of?: string[];
+  icq_config?: ICQConfigAmino;
 }
 export interface ExecutionConditionsAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConditions";
@@ -360,6 +369,7 @@ export interface ExecutionConditionsSDKType {
   stop_on_failure_of: bigint[];
   skip_on_failure_of: bigint[];
   skip_on_success_of: bigint[];
+  icq_config?: ICQConfigSDKType;
 }
 /** Replace value with value from message or response from another action’s latest output before execution */
 export interface UseResponseValue {
@@ -375,6 +385,7 @@ export interface UseResponseValue {
   msgKey: string;
   /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   valueType: string;
+  fromIcq: boolean;
 }
 export interface UseResponseValueProtoMsg {
   typeUrl: "/intento.intent.v1beta1.UseResponseValue";
@@ -394,6 +405,7 @@ export interface UseResponseValueAmino {
   msg_key?: string;
   /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   value_type?: string;
+  from_icq?: boolean;
 }
 export interface UseResponseValueAminoMsg {
   type: "/intento.intent.v1beta1.UseResponseValue";
@@ -407,6 +419,7 @@ export interface UseResponseValueSDKType {
   msgs_index: number;
   msg_key: string;
   value_type: string;
+  from_icq: boolean;
 }
 /** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
 export interface ResponseComparison {
@@ -420,6 +433,8 @@ export interface ResponseComparison {
   valueType: string;
   comparisonOperator: ComparisonOperator;
   comparisonOperand: string;
+  /** true to use query response from icq config */
+  fromIcq: boolean;
 }
 export interface ResponseComparisonProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ResponseComparison";
@@ -437,6 +452,8 @@ export interface ResponseComparisonAmino {
   value_type?: string;
   comparison_operator?: ComparisonOperator;
   comparison_operand?: string;
+  /** true to use query response from icq config */
+  from_icq?: boolean;
 }
 export interface ResponseComparisonAminoMsg {
   type: "/intento.intent.v1beta1.ResponseComparison";
@@ -450,6 +467,46 @@ export interface ResponseComparisonSDKType {
   value_type: string;
   comparison_operator: ComparisonOperator;
   comparison_operand: string;
+  from_icq: boolean;
+}
+/** config for using interchain queries */
+export interface ICQConfig {
+  connectionId: string;
+  chainId: string;
+  timeoutPolicy: TimeoutPolicy;
+  timeoutDuration: Duration;
+  /** e.g. store/bank/key store/staking/key */
+  queryType: string;
+  /** key in the store to query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this in TP. See x/interchainquery/types/keys.go */
+  queryKey: string;
+}
+export interface ICQConfigProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.ICQConfig";
+  value: Uint8Array;
+}
+/** config for using interchain queries */
+export interface ICQConfigAmino {
+  connection_id?: string;
+  chain_id?: string;
+  timeout_policy?: TimeoutPolicy;
+  timeout_duration?: DurationAmino;
+  /** e.g. store/bank/key store/staking/key */
+  query_type?: string;
+  /** key in the store to query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this in TP. See x/interchainquery/types/keys.go */
+  query_key?: string;
+}
+export interface ICQConfigAminoMsg {
+  type: "/intento.intent.v1beta1.ICQConfig";
+  value: ICQConfigAmino;
+}
+/** config for using interchain queries */
+export interface ICQConfigSDKType {
+  connection_id: string;
+  chain_id: string;
+  timeout_policy: TimeoutPolicy;
+  timeout_duration: DurationSDKType;
+  query_type: string;
+  query_key: string;
 }
 function createBaseActionInfo(): ActionInfo {
   return {
@@ -580,6 +637,50 @@ export const ActionInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ActionInfo {
+    return {
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      feeAddress: isSet(object.feeAddress) ? String(object.feeAddress) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      interval: isSet(object.interval) ? Duration.fromJSON(object.interval) : undefined,
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      execTime: isSet(object.execTime) ? fromJsonTimestamp(object.execTime) : undefined,
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
+      updateHistory: Array.isArray(object?.updateHistory) ? object.updateHistory.map((e: any) => Timestamp.fromJSON(e)) : [],
+      icaConfig: isSet(object.icaConfig) ? ICAConfig.fromJSON(object.icaConfig) : undefined,
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: ActionInfo): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.label !== undefined && (obj.label = message.label);
+    message.feeAddress !== undefined && (obj.feeAddress = message.feeAddress);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.interval !== undefined && (obj.interval = message.interval ? Duration.toJSON(message.interval) : undefined);
+    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
+    message.execTime !== undefined && (obj.execTime = message.execTime.toISOString());
+    message.endTime !== undefined && (obj.endTime = message.endTime.toISOString());
+    if (message.updateHistory) {
+      obj.updateHistory = message.updateHistory.map(e => e ? Timestamp.toJSON(e) : undefined);
+    } else {
+      obj.updateHistory = [];
+    }
+    message.icaConfig !== undefined && (obj.icaConfig = message.icaConfig ? ICAConfig.toJSON(message.icaConfig) : undefined);
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ActionInfo>): ActionInfo {
     const message = createBaseActionInfo();
@@ -737,6 +838,20 @@ export const ICAConfig = {
     }
     return message;
   },
+  fromJSON(object: any): ICAConfig {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : ""
+    };
+  },
+  toJSON(message: ICAConfig): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    return obj;
+  },
   fromPartial(object: Partial<ICAConfig>): ICAConfig {
     const message = createBaseICAConfig();
     message.portId = object.portId ?? "";
@@ -826,6 +941,18 @@ export const HostedConfig = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): HostedConfig {
+    return {
+      hostedAddress: isSet(object.hostedAddress) ? String(object.hostedAddress) : "",
+      feeCoinLimit: isSet(object.feeCoinLimit) ? Coin.fromJSON(object.feeCoinLimit) : undefined
+    };
+  },
+  toJSON(message: HostedConfig): unknown {
+    const obj: any = {};
+    message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
+    message.feeCoinLimit !== undefined && (obj.feeCoinLimit = message.feeCoinLimit ? Coin.toJSON(message.feeCoinLimit) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<HostedConfig>): HostedConfig {
     const message = createBaseHostedConfig();
@@ -940,6 +1067,26 @@ export const ExecutionConfiguration = {
     }
     return message;
   },
+  fromJSON(object: any): ExecutionConfiguration {
+    return {
+      saveMsgResponses: isSet(object.saveMsgResponses) ? Boolean(object.saveMsgResponses) : false,
+      updatingDisabled: isSet(object.updatingDisabled) ? Boolean(object.updatingDisabled) : false,
+      stopOnSuccess: isSet(object.stopOnSuccess) ? Boolean(object.stopOnSuccess) : false,
+      stopOnFailure: isSet(object.stopOnFailure) ? Boolean(object.stopOnFailure) : false,
+      fallbackToOwnerBalance: isSet(object.fallbackToOwnerBalance) ? Boolean(object.fallbackToOwnerBalance) : false,
+      reregisterIcaAfterTimeout: isSet(object.reregisterIcaAfterTimeout) ? Boolean(object.reregisterIcaAfterTimeout) : false
+    };
+  },
+  toJSON(message: ExecutionConfiguration): unknown {
+    const obj: any = {};
+    message.saveMsgResponses !== undefined && (obj.saveMsgResponses = message.saveMsgResponses);
+    message.updatingDisabled !== undefined && (obj.updatingDisabled = message.updatingDisabled);
+    message.stopOnSuccess !== undefined && (obj.stopOnSuccess = message.stopOnSuccess);
+    message.stopOnFailure !== undefined && (obj.stopOnFailure = message.stopOnFailure);
+    message.fallbackToOwnerBalance !== undefined && (obj.fallbackToOwnerBalance = message.fallbackToOwnerBalance);
+    message.reregisterIcaAfterTimeout !== undefined && (obj.reregisterIcaAfterTimeout = message.reregisterIcaAfterTimeout);
+    return obj;
+  },
   fromPartial(object: Partial<ExecutionConfiguration>): ExecutionConfiguration {
     const message = createBaseExecutionConfiguration();
     message.saveMsgResponses = object.saveMsgResponses ?? false;
@@ -1037,6 +1184,20 @@ export const ActionHistory = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ActionHistory {
+    return {
+      history: Array.isArray(object?.history) ? object.history.map((e: any) => ActionHistoryEntry.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ActionHistory): unknown {
+    const obj: any = {};
+    if (message.history) {
+      obj.history = message.history.map(e => e ? ActionHistoryEntry.toJSON(e) : undefined);
+    } else {
+      obj.history = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<ActionHistory>): ActionHistory {
     const message = createBaseActionHistory();
@@ -1155,6 +1316,36 @@ export const ActionHistoryEntry = {
     }
     return message;
   },
+  fromJSON(object: any): ActionHistoryEntry {
+    return {
+      scheduledExecTime: isSet(object.scheduledExecTime) ? fromJsonTimestamp(object.scheduledExecTime) : undefined,
+      actualExecTime: isSet(object.actualExecTime) ? fromJsonTimestamp(object.actualExecTime) : undefined,
+      execFee: isSet(object.execFee) ? Coin.fromJSON(object.execFee) : undefined,
+      executed: isSet(object.executed) ? Boolean(object.executed) : false,
+      timedOut: isSet(object.timedOut) ? Boolean(object.timedOut) : false,
+      errors: Array.isArray(object?.errors) ? object.errors.map((e: any) => String(e)) : [],
+      msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ActionHistoryEntry): unknown {
+    const obj: any = {};
+    message.scheduledExecTime !== undefined && (obj.scheduledExecTime = message.scheduledExecTime.toISOString());
+    message.actualExecTime !== undefined && (obj.actualExecTime = message.actualExecTime.toISOString());
+    message.execFee !== undefined && (obj.execFee = message.execFee ? Coin.toJSON(message.execFee) : undefined);
+    message.executed !== undefined && (obj.executed = message.executed);
+    message.timedOut !== undefined && (obj.timedOut = message.timedOut);
+    if (message.errors) {
+      obj.errors = message.errors.map(e => e);
+    } else {
+      obj.errors = [];
+    }
+    if (message.msgResponses) {
+      obj.msgResponses = message.msgResponses.map(e => e ? Any.toJSON(e) : undefined);
+    } else {
+      obj.msgResponses = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<ActionHistoryEntry>): ActionHistoryEntry {
     const message = createBaseActionHistoryEntry();
     message.scheduledExecTime = object.scheduledExecTime ?? undefined;
@@ -1230,7 +1421,8 @@ function createBaseExecutionConditions(): ExecutionConditions {
     stopOnSuccessOf: [],
     stopOnFailureOf: [],
     skipOnFailureOf: [],
-    skipOnSuccessOf: []
+    skipOnSuccessOf: [],
+    icqConfig: undefined
   };
 }
 export const ExecutionConditions = {
@@ -1271,6 +1463,9 @@ export const ExecutionConditions = {
       writer.uint64(v);
     }
     writer.ldelim();
+    if (message.icqConfig !== undefined) {
+      ICQConfig.encode(message.icqConfig, writer.uint32(74).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ExecutionConditions {
@@ -1326,12 +1521,53 @@ export const ExecutionConditions = {
             message.skipOnSuccessOf.push(reader.uint64());
           }
           break;
+        case 9:
+          message.icqConfig = ICQConfig.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
     return message;
+  },
+  fromJSON(object: any): ExecutionConditions {
+    return {
+      useResponseValue: isSet(object.useResponseValue) ? UseResponseValue.fromJSON(object.useResponseValue) : undefined,
+      responseComparison: isSet(object.responseComparison) ? ResponseComparison.fromJSON(object.responseComparison) : undefined,
+      stopOnSuccessOf: Array.isArray(object?.stopOnSuccessOf) ? object.stopOnSuccessOf.map((e: any) => BigInt(e.toString())) : [],
+      stopOnFailureOf: Array.isArray(object?.stopOnFailureOf) ? object.stopOnFailureOf.map((e: any) => BigInt(e.toString())) : [],
+      skipOnFailureOf: Array.isArray(object?.skipOnFailureOf) ? object.skipOnFailureOf.map((e: any) => BigInt(e.toString())) : [],
+      skipOnSuccessOf: Array.isArray(object?.skipOnSuccessOf) ? object.skipOnSuccessOf.map((e: any) => BigInt(e.toString())) : [],
+      icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
+    };
+  },
+  toJSON(message: ExecutionConditions): unknown {
+    const obj: any = {};
+    message.useResponseValue !== undefined && (obj.useResponseValue = message.useResponseValue ? UseResponseValue.toJSON(message.useResponseValue) : undefined);
+    message.responseComparison !== undefined && (obj.responseComparison = message.responseComparison ? ResponseComparison.toJSON(message.responseComparison) : undefined);
+    if (message.stopOnSuccessOf) {
+      obj.stopOnSuccessOf = message.stopOnSuccessOf.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.stopOnSuccessOf = [];
+    }
+    if (message.stopOnFailureOf) {
+      obj.stopOnFailureOf = message.stopOnFailureOf.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.stopOnFailureOf = [];
+    }
+    if (message.skipOnFailureOf) {
+      obj.skipOnFailureOf = message.skipOnFailureOf.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.skipOnFailureOf = [];
+    }
+    if (message.skipOnSuccessOf) {
+      obj.skipOnSuccessOf = message.skipOnSuccessOf.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.skipOnSuccessOf = [];
+    }
+    message.icqConfig !== undefined && (obj.icqConfig = message.icqConfig ? ICQConfig.toJSON(message.icqConfig) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
     const message = createBaseExecutionConditions();
@@ -1341,6 +1577,7 @@ export const ExecutionConditions = {
     message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnSuccessOf = object.skipOnSuccessOf?.map(e => BigInt(e.toString())) || [];
+    message.icqConfig = object.icqConfig !== undefined && object.icqConfig !== null ? ICQConfig.fromPartial(object.icqConfig) : undefined;
     return message;
   },
   fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
@@ -1355,6 +1592,9 @@ export const ExecutionConditions = {
     message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
     message.skipOnFailureOf = object.skip_on_failure_of?.map(e => BigInt(e)) || [];
     message.skipOnSuccessOf = object.skip_on_success_of?.map(e => BigInt(e)) || [];
+    if (object.icq_config !== undefined && object.icq_config !== null) {
+      message.icqConfig = ICQConfig.fromAmino(object.icq_config);
+    }
     return message;
   },
   toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
@@ -1381,6 +1621,7 @@ export const ExecutionConditions = {
     } else {
       obj.skip_on_success_of = message.skipOnSuccessOf;
     }
+    obj.icq_config = message.icqConfig ? ICQConfig.toAmino(message.icqConfig) : undefined;
     return obj;
   },
   fromAminoMsg(object: ExecutionConditionsAminoMsg): ExecutionConditions {
@@ -1407,19 +1648,20 @@ function createBaseUseResponseValue(): UseResponseValue {
     responseKey: "",
     msgsIndex: 0,
     msgKey: "",
-    valueType: ""
+    valueType: "",
+    fromIcq: false
   };
 }
 export const UseResponseValue = {
   typeUrl: "/intento.intent.v1beta1.UseResponseValue",
   is(o: any): o is UseResponseValue {
-    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string");
+    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string" && typeof o.fromIcq === "boolean");
   },
   isSDK(o: any): o is UseResponseValueSDKType {
-    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.from_icq === "boolean");
   },
   isAmino(o: any): o is UseResponseValueAmino {
-    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.from_icq === "boolean");
   },
   encode(message: UseResponseValue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionId !== BigInt(0)) {
@@ -1439,6 +1681,9 @@ export const UseResponseValue = {
     }
     if (message.valueType !== "") {
       writer.uint32(50).string(message.valueType);
+    }
+    if (message.fromIcq === true) {
+      writer.uint32(56).bool(message.fromIcq);
     }
     return writer;
   },
@@ -1467,12 +1712,37 @@ export const UseResponseValue = {
         case 6:
           message.valueType = reader.string();
           break;
+        case 7:
+          message.fromIcq = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
     return message;
+  },
+  fromJSON(object: any): UseResponseValue {
+    return {
+      actionId: isSet(object.actionId) ? BigInt(object.actionId.toString()) : BigInt(0),
+      responseIndex: isSet(object.responseIndex) ? Number(object.responseIndex) : 0,
+      responseKey: isSet(object.responseKey) ? String(object.responseKey) : "",
+      msgsIndex: isSet(object.msgsIndex) ? Number(object.msgsIndex) : 0,
+      msgKey: isSet(object.msgKey) ? String(object.msgKey) : "",
+      valueType: isSet(object.valueType) ? String(object.valueType) : "",
+      fromIcq: isSet(object.fromIcq) ? Boolean(object.fromIcq) : false
+    };
+  },
+  toJSON(message: UseResponseValue): unknown {
+    const obj: any = {};
+    message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
+    message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
+    message.responseKey !== undefined && (obj.responseKey = message.responseKey);
+    message.msgsIndex !== undefined && (obj.msgsIndex = Math.round(message.msgsIndex));
+    message.msgKey !== undefined && (obj.msgKey = message.msgKey);
+    message.valueType !== undefined && (obj.valueType = message.valueType);
+    message.fromIcq !== undefined && (obj.fromIcq = message.fromIcq);
+    return obj;
   },
   fromPartial(object: Partial<UseResponseValue>): UseResponseValue {
     const message = createBaseUseResponseValue();
@@ -1482,6 +1752,7 @@ export const UseResponseValue = {
     message.msgsIndex = object.msgsIndex ?? 0;
     message.msgKey = object.msgKey ?? "";
     message.valueType = object.valueType ?? "";
+    message.fromIcq = object.fromIcq ?? false;
     return message;
   },
   fromAmino(object: UseResponseValueAmino): UseResponseValue {
@@ -1504,6 +1775,9 @@ export const UseResponseValue = {
     if (object.value_type !== undefined && object.value_type !== null) {
       message.valueType = object.value_type;
     }
+    if (object.from_icq !== undefined && object.from_icq !== null) {
+      message.fromIcq = object.from_icq;
+    }
     return message;
   },
   toAmino(message: UseResponseValue): UseResponseValueAmino {
@@ -1514,6 +1788,7 @@ export const UseResponseValue = {
     obj.msgs_index = message.msgsIndex === 0 ? undefined : message.msgsIndex;
     obj.msg_key = message.msgKey === "" ? undefined : message.msgKey;
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
+    obj.from_icq = message.fromIcq === false ? undefined : message.fromIcq;
     return obj;
   },
   fromAminoMsg(object: UseResponseValueAminoMsg): UseResponseValue {
@@ -1540,19 +1815,20 @@ function createBaseResponseComparison(): ResponseComparison {
     responseKey: "",
     valueType: "",
     comparisonOperator: 0,
-    comparisonOperand: ""
+    comparisonOperand: "",
+    fromIcq: false
   };
 }
 export const ResponseComparison = {
   typeUrl: "/intento.intent.v1beta1.ResponseComparison",
   is(o: any): o is ResponseComparison {
-    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.comparisonOperator) && typeof o.comparisonOperand === "string");
+    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.comparisonOperator) && typeof o.comparisonOperand === "string" && typeof o.fromIcq === "boolean");
   },
   isSDK(o: any): o is ResponseComparisonSDKType {
-    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
+    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string" && typeof o.from_icq === "boolean");
   },
   isAmino(o: any): o is ResponseComparisonAmino {
-    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string");
+    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string" && typeof o.from_icq === "boolean");
   },
   encode(message: ResponseComparison, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionId !== BigInt(0)) {
@@ -1572,6 +1848,9 @@ export const ResponseComparison = {
     }
     if (message.comparisonOperand !== "") {
       writer.uint32(50).string(message.comparisonOperand);
+    }
+    if (message.fromIcq === true) {
+      writer.uint32(56).bool(message.fromIcq);
     }
     return writer;
   },
@@ -1600,12 +1879,37 @@ export const ResponseComparison = {
         case 6:
           message.comparisonOperand = reader.string();
           break;
+        case 7:
+          message.fromIcq = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
     return message;
+  },
+  fromJSON(object: any): ResponseComparison {
+    return {
+      actionId: isSet(object.actionId) ? BigInt(object.actionId.toString()) : BigInt(0),
+      responseIndex: isSet(object.responseIndex) ? Number(object.responseIndex) : 0,
+      responseKey: isSet(object.responseKey) ? String(object.responseKey) : "",
+      valueType: isSet(object.valueType) ? String(object.valueType) : "",
+      comparisonOperator: isSet(object.comparisonOperator) ? comparisonOperatorFromJSON(object.comparisonOperator) : -1,
+      comparisonOperand: isSet(object.comparisonOperand) ? String(object.comparisonOperand) : "",
+      fromIcq: isSet(object.fromIcq) ? Boolean(object.fromIcq) : false
+    };
+  },
+  toJSON(message: ResponseComparison): unknown {
+    const obj: any = {};
+    message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
+    message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
+    message.responseKey !== undefined && (obj.responseKey = message.responseKey);
+    message.valueType !== undefined && (obj.valueType = message.valueType);
+    message.comparisonOperator !== undefined && (obj.comparisonOperator = comparisonOperatorToJSON(message.comparisonOperator));
+    message.comparisonOperand !== undefined && (obj.comparisonOperand = message.comparisonOperand);
+    message.fromIcq !== undefined && (obj.fromIcq = message.fromIcq);
+    return obj;
   },
   fromPartial(object: Partial<ResponseComparison>): ResponseComparison {
     const message = createBaseResponseComparison();
@@ -1615,6 +1919,7 @@ export const ResponseComparison = {
     message.valueType = object.valueType ?? "";
     message.comparisonOperator = object.comparisonOperator ?? 0;
     message.comparisonOperand = object.comparisonOperand ?? "";
+    message.fromIcq = object.fromIcq ?? false;
     return message;
   },
   fromAmino(object: ResponseComparisonAmino): ResponseComparison {
@@ -1637,6 +1942,9 @@ export const ResponseComparison = {
     if (object.comparison_operand !== undefined && object.comparison_operand !== null) {
       message.comparisonOperand = object.comparison_operand;
     }
+    if (object.from_icq !== undefined && object.from_icq !== null) {
+      message.fromIcq = object.from_icq;
+    }
     return message;
   },
   toAmino(message: ResponseComparison): ResponseComparisonAmino {
@@ -1647,6 +1955,7 @@ export const ResponseComparison = {
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
     obj.comparison_operator = message.comparisonOperator === 0 ? undefined : message.comparisonOperator;
     obj.comparison_operand = message.comparisonOperand === "" ? undefined : message.comparisonOperand;
+    obj.from_icq = message.fromIcq === false ? undefined : message.fromIcq;
     return obj;
   },
   fromAminoMsg(object: ResponseComparisonAminoMsg): ResponseComparison {
@@ -1666,3 +1975,156 @@ export const ResponseComparison = {
   }
 };
 GlobalDecoderRegistry.register(ResponseComparison.typeUrl, ResponseComparison);
+function createBaseICQConfig(): ICQConfig {
+  return {
+    connectionId: "",
+    chainId: "",
+    timeoutPolicy: 0,
+    timeoutDuration: Duration.fromPartial({}),
+    queryType: "",
+    queryKey: ""
+  };
+}
+export const ICQConfig = {
+  typeUrl: "/intento.intent.v1beta1.ICQConfig",
+  is(o: any): o is ICQConfig {
+    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connectionId === "string" && typeof o.chainId === "string" && isSet(o.timeoutPolicy) && Duration.is(o.timeoutDuration) && typeof o.queryType === "string" && typeof o.queryKey === "string");
+  },
+  isSDK(o: any): o is ICQConfigSDKType {
+    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connection_id === "string" && typeof o.chain_id === "string" && isSet(o.timeout_policy) && Duration.isSDK(o.timeout_duration) && typeof o.query_type === "string" && typeof o.query_key === "string");
+  },
+  isAmino(o: any): o is ICQConfigAmino {
+    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connection_id === "string" && typeof o.chain_id === "string" && isSet(o.timeout_policy) && Duration.isAmino(o.timeout_duration) && typeof o.query_type === "string" && typeof o.query_key === "string");
+  },
+  encode(message: ICQConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.connectionId !== "") {
+      writer.uint32(10).string(message.connectionId);
+    }
+    if (message.chainId !== "") {
+      writer.uint32(18).string(message.chainId);
+    }
+    if (message.timeoutPolicy !== 0) {
+      writer.uint32(24).int32(message.timeoutPolicy);
+    }
+    if (message.timeoutDuration !== undefined) {
+      Duration.encode(message.timeoutDuration, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.queryType !== "") {
+      writer.uint32(42).string(message.queryType);
+    }
+    if (message.queryKey !== "") {
+      writer.uint32(50).string(message.queryKey);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ICQConfig {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseICQConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.connectionId = reader.string();
+          break;
+        case 2:
+          message.chainId = reader.string();
+          break;
+        case 3:
+          message.timeoutPolicy = (reader.int32() as any);
+          break;
+        case 4:
+          message.timeoutDuration = Duration.decode(reader, reader.uint32());
+          break;
+        case 5:
+          message.queryType = reader.string();
+          break;
+        case 6:
+          message.queryKey = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): ICQConfig {
+    return {
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
+      timeoutPolicy: isSet(object.timeoutPolicy) ? timeoutPolicyFromJSON(object.timeoutPolicy) : -1,
+      timeoutDuration: isSet(object.timeoutDuration) ? Duration.fromJSON(object.timeoutDuration) : undefined,
+      queryType: isSet(object.queryType) ? String(object.queryType) : "",
+      queryKey: isSet(object.queryKey) ? String(object.queryKey) : ""
+    };
+  },
+  toJSON(message: ICQConfig): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.chainId !== undefined && (obj.chainId = message.chainId);
+    message.timeoutPolicy !== undefined && (obj.timeoutPolicy = timeoutPolicyToJSON(message.timeoutPolicy));
+    message.timeoutDuration !== undefined && (obj.timeoutDuration = message.timeoutDuration ? Duration.toJSON(message.timeoutDuration) : undefined);
+    message.queryType !== undefined && (obj.queryType = message.queryType);
+    message.queryKey !== undefined && (obj.queryKey = message.queryKey);
+    return obj;
+  },
+  fromPartial(object: Partial<ICQConfig>): ICQConfig {
+    const message = createBaseICQConfig();
+    message.connectionId = object.connectionId ?? "";
+    message.chainId = object.chainId ?? "";
+    message.timeoutPolicy = object.timeoutPolicy ?? 0;
+    message.timeoutDuration = object.timeoutDuration !== undefined && object.timeoutDuration !== null ? Duration.fromPartial(object.timeoutDuration) : undefined;
+    message.queryType = object.queryType ?? "";
+    message.queryKey = object.queryKey ?? "";
+    return message;
+  },
+  fromAmino(object: ICQConfigAmino): ICQConfig {
+    const message = createBaseICQConfig();
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.chain_id !== undefined && object.chain_id !== null) {
+      message.chainId = object.chain_id;
+    }
+    if (object.timeout_policy !== undefined && object.timeout_policy !== null) {
+      message.timeoutPolicy = object.timeout_policy;
+    }
+    if (object.timeout_duration !== undefined && object.timeout_duration !== null) {
+      message.timeoutDuration = Duration.fromAmino(object.timeout_duration);
+    }
+    if (object.query_type !== undefined && object.query_type !== null) {
+      message.queryType = object.query_type;
+    }
+    if (object.query_key !== undefined && object.query_key !== null) {
+      message.queryKey = object.query_key;
+    }
+    return message;
+  },
+  toAmino(message: ICQConfig): ICQConfigAmino {
+    const obj: any = {};
+    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.chain_id = message.chainId === "" ? undefined : message.chainId;
+    obj.timeout_policy = message.timeoutPolicy === 0 ? undefined : message.timeoutPolicy;
+    obj.timeout_duration = message.timeoutDuration ? Duration.toAmino(message.timeoutDuration) : undefined;
+    obj.query_type = message.queryType === "" ? undefined : message.queryType;
+    obj.query_key = message.queryKey === "" ? undefined : message.queryKey;
+    return obj;
+  },
+  fromAminoMsg(object: ICQConfigAminoMsg): ICQConfig {
+    return ICQConfig.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ICQConfigProtoMsg): ICQConfig {
+    return ICQConfig.decode(message.value);
+  },
+  toProto(message: ICQConfig): Uint8Array {
+    return ICQConfig.encode(message).finish();
+  },
+  toProtoMsg(message: ICQConfig): ICQConfigProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.ICQConfig",
+      value: ICQConfig.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(ICQConfig.typeUrl, ICQConfig);

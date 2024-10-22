@@ -34,6 +34,13 @@ exports.Empty = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseEmpty();
         return message;

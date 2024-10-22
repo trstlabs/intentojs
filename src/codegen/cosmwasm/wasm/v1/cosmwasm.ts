@@ -1,8 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
 import { GlobalDecoderRegistry } from "../../../registry";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * MsgInstantiateContract create a new smart contract instance for the given
  * code id.
@@ -319,6 +319,30 @@ export const MsgInstantiateContract = {
     }
     return message;
   },
+  fromJSON(object: any): MsgInstantiateContract {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      codeId: isSet(object.codeId) ? BigInt(object.codeId.toString()) : BigInt(0),
+      label: isSet(object.label) ? String(object.label) : "",
+      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
+      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgInstantiateContract): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
+    message.label !== undefined && (obj.label = message.label);
+    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
+    if (message.funds) {
+      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.funds = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<MsgInstantiateContract>): MsgInstantiateContract {
     const message = createBaseMsgInstantiateContract();
     message.sender = object.sender ?? "";
@@ -476,6 +500,34 @@ export const MsgInstantiateContract2 = {
     }
     return message;
   },
+  fromJSON(object: any): MsgInstantiateContract2 {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      codeId: isSet(object.codeId) ? BigInt(object.codeId.toString()) : BigInt(0),
+      label: isSet(object.label) ? String(object.label) : "",
+      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
+      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : [],
+      salt: isSet(object.salt) ? bytesFromBase64(object.salt) : new Uint8Array(),
+      fixMsg: isSet(object.fixMsg) ? Boolean(object.fixMsg) : false
+    };
+  },
+  toJSON(message: MsgInstantiateContract2): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
+    message.label !== undefined && (obj.label = message.label);
+    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
+    if (message.funds) {
+      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.funds = [];
+    }
+    message.salt !== undefined && (obj.salt = base64FromBytes(message.salt !== undefined ? message.salt : new Uint8Array()));
+    message.fixMsg !== undefined && (obj.fixMsg = message.fixMsg);
+    return obj;
+  },
   fromPartial(object: Partial<MsgInstantiateContract2>): MsgInstantiateContract2 {
     const message = createBaseMsgInstantiateContract2();
     message.sender = object.sender ?? "";
@@ -601,6 +653,18 @@ export const MsgInstantiateContractResponse = {
     }
     return message;
   },
+  fromJSON(object: any): MsgInstantiateContractResponse {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
+  toJSON(message: MsgInstantiateContractResponse): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    return obj;
+  },
   fromPartial(object: Partial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse {
     const message = createBaseMsgInstantiateContractResponse();
     message.address = object.address ?? "";
@@ -693,6 +757,18 @@ export const MsgInstantiateContract2Response = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgInstantiateContract2Response {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
+  toJSON(message: MsgInstantiateContract2Response): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<MsgInstantiateContract2Response>): MsgInstantiateContract2Response {
     const message = createBaseMsgInstantiateContract2Response();
@@ -801,6 +877,26 @@ export const MsgExecuteContract = {
     }
     return message;
   },
+  fromJSON(object: any): MsgExecuteContract {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      contract: isSet(object.contract) ? String(object.contract) : "",
+      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
+      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgExecuteContract): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.contract !== undefined && (obj.contract = message.contract);
+    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
+    if (message.funds) {
+      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.funds = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<MsgExecuteContract>): MsgExecuteContract {
     const message = createBaseMsgExecuteContract();
     message.sender = object.sender ?? "";
@@ -898,6 +994,16 @@ export const MsgExecuteContractResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgExecuteContractResponse {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
+  toJSON(message: MsgExecuteContractResponse): unknown {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<MsgExecuteContractResponse>): MsgExecuteContractResponse {
     const message = createBaseMsgExecuteContractResponse();

@@ -478,6 +478,8 @@ export declare const TxResponse: {
     isAmino(o: any): o is TxResponseAmino;
     encode(message: TxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxResponse;
+    fromJSON(object: any): TxResponse;
+    toJSON(message: TxResponse): unknown;
     fromPartial(object: Partial<TxResponse>): TxResponse;
     fromAmino(object: TxResponseAmino): TxResponse;
     toAmino(message: TxResponse): TxResponseAmino;
@@ -495,6 +497,8 @@ export declare const ABCIMessageLog: {
     isAmino(o: any): o is ABCIMessageLogAmino;
     encode(message: ABCIMessageLog, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ABCIMessageLog;
+    fromJSON(object: any): ABCIMessageLog;
+    toJSON(message: ABCIMessageLog): unknown;
     fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog;
     fromAmino(object: ABCIMessageLogAmino): ABCIMessageLog;
     toAmino(message: ABCIMessageLog): ABCIMessageLogAmino;
@@ -512,6 +516,8 @@ export declare const StringEvent: {
     isAmino(o: any): o is StringEventAmino;
     encode(message: StringEvent, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StringEvent;
+    fromJSON(object: any): StringEvent;
+    toJSON(message: StringEvent): unknown;
     fromPartial(object: Partial<StringEvent>): StringEvent;
     fromAmino(object: StringEventAmino): StringEvent;
     toAmino(message: StringEvent): StringEventAmino;
@@ -529,6 +535,8 @@ export declare const Attribute: {
     isAmino(o: any): o is AttributeAmino;
     encode(message: Attribute, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Attribute;
+    fromJSON(object: any): Attribute;
+    toJSON(message: Attribute): unknown;
     fromPartial(object: Partial<Attribute>): Attribute;
     fromAmino(object: AttributeAmino): Attribute;
     toAmino(message: Attribute): AttributeAmino;
@@ -546,6 +554,8 @@ export declare const GasInfo: {
     isAmino(o: any): o is GasInfoAmino;
     encode(message: GasInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GasInfo;
+    fromJSON(object: any): GasInfo;
+    toJSON(message: GasInfo): unknown;
     fromPartial(object: Partial<GasInfo>): GasInfo;
     fromAmino(object: GasInfoAmino): GasInfo;
     toAmino(message: GasInfo): GasInfoAmino;
@@ -563,6 +573,8 @@ export declare const Result: {
     isAmino(o: any): o is ResultAmino;
     encode(message: Result, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Result;
+    fromJSON(object: any): Result;
+    toJSON(message: Result): unknown;
     fromPartial(object: Partial<Result>): Result;
     fromAmino(object: ResultAmino): Result;
     toAmino(message: Result): ResultAmino;
@@ -580,6 +592,8 @@ export declare const SimulationResponse: {
     isAmino(o: any): o is SimulationResponseAmino;
     encode(message: SimulationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulationResponse;
+    fromJSON(object: any): SimulationResponse;
+    toJSON(message: SimulationResponse): unknown;
     fromPartial(object: Partial<SimulationResponse>): SimulationResponse;
     fromAmino(object: SimulationResponseAmino): SimulationResponse;
     toAmino(message: SimulationResponse): SimulationResponseAmino;
@@ -597,6 +611,8 @@ export declare const MsgData: {
     isAmino(o: any): o is MsgDataAmino;
     encode(message: MsgData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgData;
+    fromJSON(object: any): MsgData;
+    toJSON(message: MsgData): unknown;
     fromPartial(object: Partial<MsgData>): MsgData;
     fromAmino(object: MsgDataAmino): MsgData;
     toAmino(message: MsgData): MsgDataAmino;
@@ -614,6 +630,8 @@ export declare const TxMsgData: {
     isAmino(o: any): o is TxMsgDataAmino;
     encode(message: TxMsgData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxMsgData;
+    fromJSON(object: any): TxMsgData;
+    toJSON(message: TxMsgData): unknown;
     fromPartial(object: Partial<TxMsgData>): TxMsgData;
     fromAmino(object: TxMsgDataAmino): TxMsgData;
     toAmino(message: TxMsgData): TxMsgDataAmino;
@@ -631,6 +649,8 @@ export declare const SearchTxsResult: {
     isAmino(o: any): o is SearchTxsResultAmino;
     encode(message: SearchTxsResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SearchTxsResult;
+    fromJSON(object: any): SearchTxsResult;
+    toJSON(message: SearchTxsResult): unknown;
     fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;
     fromAmino(object: SearchTxsResultAmino): SearchTxsResult;
     toAmino(message: SearchTxsResult): SearchTxsResultAmino;

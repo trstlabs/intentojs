@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegacyAminoPubKey = void 0;
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseLegacyAminoPubKey() {
     return {
@@ -50,6 +51,23 @@ exports.LegacyAminoPubKey = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            threshold: (0, helpers_1.isSet)(object.threshold) ? Number(object.threshold) : 0,
+            publicKeys: Array.isArray(object?.publicKeys) ? object.publicKeys.map((e) => any_1.Any.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.threshold !== undefined && (obj.threshold = Math.round(message.threshold));
+        if (message.publicKeys) {
+            obj.publicKeys = message.publicKeys.map(e => e ? any_1.Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.publicKeys = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseLegacyAminoPubKey();

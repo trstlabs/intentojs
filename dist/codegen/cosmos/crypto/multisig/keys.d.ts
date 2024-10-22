@@ -43,6 +43,8 @@ export declare const LegacyAminoPubKey: {
     isAmino(o: any): o is LegacyAminoPubKeyAmino;
     encode(message: LegacyAminoPubKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LegacyAminoPubKey;
+    fromJSON(object: any): LegacyAminoPubKey;
+    toJSON(message: LegacyAminoPubKey): unknown;
     fromPartial(object: Partial<LegacyAminoPubKey>): LegacyAminoPubKey;
     fromAmino(object: LegacyAminoPubKeyAmino): LegacyAminoPubKey;
     toAmino(message: LegacyAminoPubKey): LegacyAminoPubKeyAmino;

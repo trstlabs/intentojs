@@ -123,6 +123,22 @@ exports.StakeAuthorization = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            maxTokens: (0, helpers_1.isSet)(object.maxTokens) ? coin_1.Coin.fromJSON(object.maxTokens) : undefined,
+            allowList: (0, helpers_1.isSet)(object.allowList) ? exports.StakeAuthorization_Validators.fromJSON(object.allowList) : undefined,
+            denyList: (0, helpers_1.isSet)(object.denyList) ? exports.StakeAuthorization_Validators.fromJSON(object.denyList) : undefined,
+            authorizationType: (0, helpers_1.isSet)(object.authorizationType) ? authorizationTypeFromJSON(object.authorizationType) : -1
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.maxTokens !== undefined && (obj.maxTokens = message.maxTokens ? coin_1.Coin.toJSON(message.maxTokens) : undefined);
+        message.allowList !== undefined && (obj.allowList = message.allowList ? exports.StakeAuthorization_Validators.toJSON(message.allowList) : undefined);
+        message.denyList !== undefined && (obj.denyList = message.denyList ? exports.StakeAuthorization_Validators.toJSON(message.denyList) : undefined);
+        message.authorizationType !== undefined && (obj.authorizationType = authorizationTypeToJSON(message.authorizationType));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseStakeAuthorization();
         message.maxTokens = object.maxTokens !== undefined && object.maxTokens !== null ? coin_1.Coin.fromPartial(object.maxTokens) : undefined;
@@ -218,6 +234,21 @@ exports.StakeAuthorization_Validators = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            address: Array.isArray(object?.address) ? object.address.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.address) {
+            obj.address = message.address.map(e => e);
+        }
+        else {
+            obj.address = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseStakeAuthorization_Validators();
