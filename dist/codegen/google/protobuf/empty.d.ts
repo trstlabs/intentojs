@@ -53,6 +53,8 @@ export declare const Empty: {
     isAmino(o: any): o is EmptyAmino;
     encode(_: Empty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Empty;
+    fromJSON(_: any): Empty;
+    toJSON(_: Empty): unknown;
     fromPartial(_: Partial<Empty>): Empty;
     fromAmino(_: EmptyAmino): Empty;
     toAmino(_: Empty): EmptyAmino;

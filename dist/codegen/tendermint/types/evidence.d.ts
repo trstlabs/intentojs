@@ -109,6 +109,8 @@ export declare const Evidence: {
     isAmino(o: any): o is EvidenceAmino;
     encode(message: Evidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Evidence;
+    fromJSON(object: any): Evidence;
+    toJSON(message: Evidence): unknown;
     fromPartial(object: Partial<Evidence>): Evidence;
     fromAmino(object: EvidenceAmino): Evidence;
     toAmino(message: Evidence): EvidenceAmino;
@@ -124,6 +126,8 @@ export declare const DuplicateVoteEvidence: {
     isAmino(o: any): o is DuplicateVoteEvidenceAmino;
     encode(message: DuplicateVoteEvidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DuplicateVoteEvidence;
+    fromJSON(object: any): DuplicateVoteEvidence;
+    toJSON(message: DuplicateVoteEvidence): unknown;
     fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
     fromAmino(object: DuplicateVoteEvidenceAmino): DuplicateVoteEvidence;
     toAmino(message: DuplicateVoteEvidence): DuplicateVoteEvidenceAmino;
@@ -139,6 +143,8 @@ export declare const LightClientAttackEvidence: {
     isAmino(o: any): o is LightClientAttackEvidenceAmino;
     encode(message: LightClientAttackEvidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LightClientAttackEvidence;
+    fromJSON(object: any): LightClientAttackEvidence;
+    toJSON(message: LightClientAttackEvidence): unknown;
     fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence;
     fromAmino(object: LightClientAttackEvidenceAmino): LightClientAttackEvidence;
     toAmino(message: LightClientAttackEvidence): LightClientAttackEvidenceAmino;
@@ -154,6 +160,8 @@ export declare const EvidenceList: {
     isAmino(o: any): o is EvidenceListAmino;
     encode(message: EvidenceList, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EvidenceList;
+    fromJSON(object: any): EvidenceList;
+    toJSON(message: EvidenceList): unknown;
     fromPartial(object: Partial<EvidenceList>): EvidenceList;
     fromAmino(object: EvidenceListAmino): EvidenceList;
     toAmino(message: EvidenceList): EvidenceListAmino;

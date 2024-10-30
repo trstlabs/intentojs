@@ -331,6 +331,8 @@ export declare const Any: {
     isAmino(o: any): o is AnyAmino;
     encode(message: Any, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Any;
+    fromJSON(object: any): Any;
+    toJSON(message: Any): unknown;
     fromPartial(object: Partial<Any>): Any;
     fromAmino(object: AnyAmino): Any;
     toAmino(message: Any): AnyAmino;

@@ -169,6 +169,25 @@ exports.GetTxsEventRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            events: Array.isArray(object?.events) ? object.events.map((e) => String(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined,
+            orderBy: (0, helpers_1.isSet)(object.orderBy) ? orderByFromJSON(object.orderBy) : -1
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.events) {
+            obj.events = message.events.map(e => e);
+        }
+        else {
+            obj.events = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        message.orderBy !== undefined && (obj.orderBy = orderByToJSON(message.orderBy));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseGetTxsEventRequest();
         message.events = object.events?.map(e => e) || [];
@@ -277,6 +296,30 @@ exports.GetTxsEventResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            txs: Array.isArray(object?.txs) ? object.txs.map((e) => tx_1.Tx.fromJSON(e)) : [],
+            txResponses: Array.isArray(object?.txResponses) ? object.txResponses.map((e) => abci_1.TxResponse.fromJSON(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.txs) {
+            obj.txs = message.txs.map(e => e ? tx_1.Tx.toJSON(e) : undefined);
+        }
+        else {
+            obj.txs = [];
+        }
+        if (message.txResponses) {
+            obj.txResponses = message.txResponses.map(e => e ? abci_1.TxResponse.toJSON(e) : undefined);
+        }
+        else {
+            obj.txResponses = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseGetTxsEventResponse();
         message.txs = object.txs?.map(e => tx_1.Tx.fromPartial(e)) || [];
@@ -381,6 +424,18 @@ exports.BroadcastTxRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            txBytes: (0, helpers_1.isSet)(object.txBytes) ? (0, helpers_1.bytesFromBase64)(object.txBytes) : new Uint8Array(),
+            mode: (0, helpers_1.isSet)(object.mode) ? broadcastModeFromJSON(object.mode) : -1
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.txBytes !== undefined && (obj.txBytes = (0, helpers_1.base64FromBytes)(message.txBytes !== undefined ? message.txBytes : new Uint8Array()));
+        message.mode !== undefined && (obj.mode = broadcastModeToJSON(message.mode));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseBroadcastTxRequest();
         message.txBytes = object.txBytes ?? new Uint8Array();
@@ -466,6 +521,16 @@ exports.BroadcastTxResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            txResponse: (0, helpers_1.isSet)(object.txResponse) ? abci_1.TxResponse.fromJSON(object.txResponse) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.txResponse !== undefined && (obj.txResponse = message.txResponse ? abci_1.TxResponse.toJSON(message.txResponse) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBroadcastTxResponse();
@@ -554,6 +619,18 @@ exports.SimulateRequest = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            tx: (0, helpers_1.isSet)(object.tx) ? tx_1.Tx.fromJSON(object.tx) : undefined,
+            txBytes: (0, helpers_1.isSet)(object.txBytes) ? (0, helpers_1.bytesFromBase64)(object.txBytes) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.tx !== undefined && (obj.tx = message.tx ? tx_1.Tx.toJSON(message.tx) : undefined);
+        message.txBytes !== undefined && (obj.txBytes = (0, helpers_1.base64FromBytes)(message.txBytes !== undefined ? message.txBytes : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSimulateRequest();
@@ -648,6 +725,18 @@ exports.SimulateResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            gasInfo: (0, helpers_1.isSet)(object.gasInfo) ? abci_1.GasInfo.fromJSON(object.gasInfo) : undefined,
+            result: (0, helpers_1.isSet)(object.result) ? abci_1.Result.fromJSON(object.result) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.gasInfo !== undefined && (obj.gasInfo = message.gasInfo ? abci_1.GasInfo.toJSON(message.gasInfo) : undefined);
+        message.result !== undefined && (obj.result = message.result ? abci_1.Result.toJSON(message.result) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSimulateResponse();
         message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? abci_1.GasInfo.fromPartial(object.gasInfo) : undefined;
@@ -733,6 +822,16 @@ exports.GetTxRequest = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            hash: (0, helpers_1.isSet)(object.hash) ? String(object.hash) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.hash !== undefined && (obj.hash = message.hash);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGetTxRequest();
@@ -821,6 +920,18 @@ exports.GetTxResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            tx: (0, helpers_1.isSet)(object.tx) ? tx_1.Tx.fromJSON(object.tx) : undefined,
+            txResponse: (0, helpers_1.isSet)(object.txResponse) ? abci_1.TxResponse.fromJSON(object.txResponse) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.tx !== undefined && (obj.tx = message.tx ? tx_1.Tx.toJSON(message.tx) : undefined);
+        message.txResponse !== undefined && (obj.txResponse = message.txResponse ? abci_1.TxResponse.toJSON(message.txResponse) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGetTxResponse();
@@ -914,6 +1025,18 @@ exports.GetBlockWithTxsRequest = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGetBlockWithTxsRequest();
@@ -1021,6 +1144,27 @@ exports.GetBlockWithTxsResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            txs: Array.isArray(object?.txs) ? object.txs.map((e) => tx_1.Tx.fromJSON(e)) : [],
+            blockId: (0, helpers_1.isSet)(object.blockId) ? types_1.BlockID.fromJSON(object.blockId) : undefined,
+            block: (0, helpers_1.isSet)(object.block) ? block_1.Block.fromJSON(object.block) : undefined,
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.txs) {
+            obj.txs = message.txs.map(e => e ? tx_1.Tx.toJSON(e) : undefined);
+        }
+        else {
+            obj.txs = [];
+        }
+        message.blockId !== undefined && (obj.blockId = message.blockId ? types_1.BlockID.toJSON(message.blockId) : undefined);
+        message.block !== undefined && (obj.block = message.block ? block_1.Block.toJSON(message.block) : undefined);
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGetBlockWithTxsResponse();

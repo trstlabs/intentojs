@@ -26,6 +26,8 @@ export declare const BitArray: {
     isAmino(o: any): o is BitArrayAmino;
     encode(message: BitArray, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BitArray;
+    fromJSON(object: any): BitArray;
+    toJSON(message: BitArray): unknown;
     fromPartial(object: Partial<BitArray>): BitArray;
     fromAmino(object: BitArrayAmino): BitArray;
     toAmino(message: BitArray): BitArrayAmino;

@@ -44,6 +44,21 @@ exports.MultiSignature = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.signatures) {
+            obj.signatures = message.signatures.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
+        }
+        else {
+            obj.signatures = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMultiSignature();
         message.signatures = object.signatures?.map(e => e) || [];
@@ -134,6 +149,18 @@ exports.CompactBitArray = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            extraBitsStored: (0, helpers_1.isSet)(object.extraBitsStored) ? Number(object.extraBitsStored) : 0,
+            elems: (0, helpers_1.isSet)(object.elems) ? (0, helpers_1.bytesFromBase64)(object.elems) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.extraBitsStored !== undefined && (obj.extraBitsStored = Math.round(message.extraBitsStored));
+        message.elems !== undefined && (obj.elems = (0, helpers_1.base64FromBytes)(message.elems !== undefined ? message.elems : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCompactBitArray();

@@ -1959,6 +1959,8 @@ export declare const FileDescriptorSet: {
     isAmino(o: any): o is FileDescriptorSetAmino;
     encode(message: FileDescriptorSet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorSet;
+    fromJSON(object: any): FileDescriptorSet;
+    toJSON(message: FileDescriptorSet): unknown;
     fromPartial(object: Partial<FileDescriptorSet>): FileDescriptorSet;
     fromAmino(object: FileDescriptorSetAmino): FileDescriptorSet;
     toAmino(message: FileDescriptorSet): FileDescriptorSetAmino;
@@ -1974,6 +1976,8 @@ export declare const FileDescriptorProto: {
     isAmino(o: any): o is FileDescriptorProtoAmino;
     encode(message: FileDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorProto;
+    fromJSON(object: any): FileDescriptorProto;
+    toJSON(message: FileDescriptorProto): unknown;
     fromPartial(object: Partial<FileDescriptorProto>): FileDescriptorProto;
     fromAmino(object: FileDescriptorProtoAmino): FileDescriptorProto;
     toAmino(message: FileDescriptorProto): FileDescriptorProtoAmino;
@@ -1989,6 +1993,8 @@ export declare const DescriptorProto: {
     isAmino(o: any): o is DescriptorProtoAmino;
     encode(message: DescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto;
+    fromJSON(object: any): DescriptorProto;
+    toJSON(message: DescriptorProto): unknown;
     fromPartial(object: Partial<DescriptorProto>): DescriptorProto;
     fromAmino(object: DescriptorProtoAmino): DescriptorProto;
     toAmino(message: DescriptorProto): DescriptorProtoAmino;
@@ -2004,6 +2010,8 @@ export declare const DescriptorProto_ExtensionRange: {
     isAmino(o: any): o is DescriptorProto_ExtensionRangeAmino;
     encode(message: DescriptorProto_ExtensionRange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
+    fromJSON(object: any): DescriptorProto_ExtensionRange;
+    toJSON(message: DescriptorProto_ExtensionRange): unknown;
     fromPartial(object: Partial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
     fromAmino(object: DescriptorProto_ExtensionRangeAmino): DescriptorProto_ExtensionRange;
     toAmino(message: DescriptorProto_ExtensionRange): DescriptorProto_ExtensionRangeAmino;
@@ -2019,6 +2027,8 @@ export declare const DescriptorProto_ReservedRange: {
     isAmino(o: any): o is DescriptorProto_ReservedRangeAmino;
     encode(message: DescriptorProto_ReservedRange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
+    fromJSON(object: any): DescriptorProto_ReservedRange;
+    toJSON(message: DescriptorProto_ReservedRange): unknown;
     fromPartial(object: Partial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
     fromAmino(object: DescriptorProto_ReservedRangeAmino): DescriptorProto_ReservedRange;
     toAmino(message: DescriptorProto_ReservedRange): DescriptorProto_ReservedRangeAmino;
@@ -2034,6 +2044,8 @@ export declare const ExtensionRangeOptions: {
     isAmino(o: any): o is ExtensionRangeOptionsAmino;
     encode(message: ExtensionRangeOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExtensionRangeOptions;
+    fromJSON(object: any): ExtensionRangeOptions;
+    toJSON(message: ExtensionRangeOptions): unknown;
     fromPartial(object: Partial<ExtensionRangeOptions>): ExtensionRangeOptions;
     fromAmino(object: ExtensionRangeOptionsAmino): ExtensionRangeOptions;
     toAmino(message: ExtensionRangeOptions): ExtensionRangeOptionsAmino;
@@ -2049,6 +2061,8 @@ export declare const FieldDescriptorProto: {
     isAmino(o: any): o is FieldDescriptorProtoAmino;
     encode(message: FieldDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FieldDescriptorProto;
+    fromJSON(object: any): FieldDescriptorProto;
+    toJSON(message: FieldDescriptorProto): unknown;
     fromPartial(object: Partial<FieldDescriptorProto>): FieldDescriptorProto;
     fromAmino(object: FieldDescriptorProtoAmino): FieldDescriptorProto;
     toAmino(message: FieldDescriptorProto): FieldDescriptorProtoAmino;
@@ -2064,6 +2078,8 @@ export declare const OneofDescriptorProto: {
     isAmino(o: any): o is OneofDescriptorProtoAmino;
     encode(message: OneofDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): OneofDescriptorProto;
+    fromJSON(object: any): OneofDescriptorProto;
+    toJSON(message: OneofDescriptorProto): unknown;
     fromPartial(object: Partial<OneofDescriptorProto>): OneofDescriptorProto;
     fromAmino(object: OneofDescriptorProtoAmino): OneofDescriptorProto;
     toAmino(message: OneofDescriptorProto): OneofDescriptorProtoAmino;
@@ -2079,6 +2095,8 @@ export declare const EnumDescriptorProto: {
     isAmino(o: any): o is EnumDescriptorProtoAmino;
     encode(message: EnumDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumDescriptorProto;
+    fromJSON(object: any): EnumDescriptorProto;
+    toJSON(message: EnumDescriptorProto): unknown;
     fromPartial(object: Partial<EnumDescriptorProto>): EnumDescriptorProto;
     fromAmino(object: EnumDescriptorProtoAmino): EnumDescriptorProto;
     toAmino(message: EnumDescriptorProto): EnumDescriptorProtoAmino;
@@ -2094,6 +2112,8 @@ export declare const EnumDescriptorProto_EnumReservedRange: {
     isAmino(o: any): o is EnumDescriptorProto_EnumReservedRangeAmino;
     encode(message: EnumDescriptorProto_EnumReservedRange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
+    fromJSON(object: any): EnumDescriptorProto_EnumReservedRange;
+    toJSON(message: EnumDescriptorProto_EnumReservedRange): unknown;
     fromPartial(object: Partial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
     fromAmino(object: EnumDescriptorProto_EnumReservedRangeAmino): EnumDescriptorProto_EnumReservedRange;
     toAmino(message: EnumDescriptorProto_EnumReservedRange): EnumDescriptorProto_EnumReservedRangeAmino;
@@ -2109,6 +2129,8 @@ export declare const EnumValueDescriptorProto: {
     isAmino(o: any): o is EnumValueDescriptorProtoAmino;
     encode(message: EnumValueDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumValueDescriptorProto;
+    fromJSON(object: any): EnumValueDescriptorProto;
+    toJSON(message: EnumValueDescriptorProto): unknown;
     fromPartial(object: Partial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
     fromAmino(object: EnumValueDescriptorProtoAmino): EnumValueDescriptorProto;
     toAmino(message: EnumValueDescriptorProto): EnumValueDescriptorProtoAmino;
@@ -2124,6 +2146,8 @@ export declare const ServiceDescriptorProto: {
     isAmino(o: any): o is ServiceDescriptorProtoAmino;
     encode(message: ServiceDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ServiceDescriptorProto;
+    fromJSON(object: any): ServiceDescriptorProto;
+    toJSON(message: ServiceDescriptorProto): unknown;
     fromPartial(object: Partial<ServiceDescriptorProto>): ServiceDescriptorProto;
     fromAmino(object: ServiceDescriptorProtoAmino): ServiceDescriptorProto;
     toAmino(message: ServiceDescriptorProto): ServiceDescriptorProtoAmino;
@@ -2139,6 +2163,8 @@ export declare const MethodDescriptorProto: {
     isAmino(o: any): o is MethodDescriptorProtoAmino;
     encode(message: MethodDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MethodDescriptorProto;
+    fromJSON(object: any): MethodDescriptorProto;
+    toJSON(message: MethodDescriptorProto): unknown;
     fromPartial(object: Partial<MethodDescriptorProto>): MethodDescriptorProto;
     fromAmino(object: MethodDescriptorProtoAmino): MethodDescriptorProto;
     toAmino(message: MethodDescriptorProto): MethodDescriptorProtoAmino;
@@ -2154,6 +2180,8 @@ export declare const FileOptions: {
     isAmino(o: any): o is FileOptionsAmino;
     encode(message: FileOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileOptions;
+    fromJSON(object: any): FileOptions;
+    toJSON(message: FileOptions): unknown;
     fromPartial(object: Partial<FileOptions>): FileOptions;
     fromAmino(object: FileOptionsAmino): FileOptions;
     toAmino(message: FileOptions): FileOptionsAmino;
@@ -2169,6 +2197,8 @@ export declare const MessageOptions: {
     isAmino(o: any): o is MessageOptionsAmino;
     encode(message: MessageOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MessageOptions;
+    fromJSON(object: any): MessageOptions;
+    toJSON(message: MessageOptions): unknown;
     fromPartial(object: Partial<MessageOptions>): MessageOptions;
     fromAmino(object: MessageOptionsAmino): MessageOptions;
     toAmino(message: MessageOptions): MessageOptionsAmino;
@@ -2184,6 +2214,8 @@ export declare const FieldOptions: {
     isAmino(o: any): o is FieldOptionsAmino;
     encode(message: FieldOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FieldOptions;
+    fromJSON(object: any): FieldOptions;
+    toJSON(message: FieldOptions): unknown;
     fromPartial(object: Partial<FieldOptions>): FieldOptions;
     fromAmino(object: FieldOptionsAmino): FieldOptions;
     toAmino(message: FieldOptions): FieldOptionsAmino;
@@ -2199,6 +2231,8 @@ export declare const OneofOptions: {
     isAmino(o: any): o is OneofOptionsAmino;
     encode(message: OneofOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): OneofOptions;
+    fromJSON(object: any): OneofOptions;
+    toJSON(message: OneofOptions): unknown;
     fromPartial(object: Partial<OneofOptions>): OneofOptions;
     fromAmino(object: OneofOptionsAmino): OneofOptions;
     toAmino(message: OneofOptions): OneofOptionsAmino;
@@ -2214,6 +2248,8 @@ export declare const EnumOptions: {
     isAmino(o: any): o is EnumOptionsAmino;
     encode(message: EnumOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumOptions;
+    fromJSON(object: any): EnumOptions;
+    toJSON(message: EnumOptions): unknown;
     fromPartial(object: Partial<EnumOptions>): EnumOptions;
     fromAmino(object: EnumOptionsAmino): EnumOptions;
     toAmino(message: EnumOptions): EnumOptionsAmino;
@@ -2229,6 +2265,8 @@ export declare const EnumValueOptions: {
     isAmino(o: any): o is EnumValueOptionsAmino;
     encode(message: EnumValueOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumValueOptions;
+    fromJSON(object: any): EnumValueOptions;
+    toJSON(message: EnumValueOptions): unknown;
     fromPartial(object: Partial<EnumValueOptions>): EnumValueOptions;
     fromAmino(object: EnumValueOptionsAmino): EnumValueOptions;
     toAmino(message: EnumValueOptions): EnumValueOptionsAmino;
@@ -2244,6 +2282,8 @@ export declare const ServiceOptions: {
     isAmino(o: any): o is ServiceOptionsAmino;
     encode(message: ServiceOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ServiceOptions;
+    fromJSON(object: any): ServiceOptions;
+    toJSON(message: ServiceOptions): unknown;
     fromPartial(object: Partial<ServiceOptions>): ServiceOptions;
     fromAmino(object: ServiceOptionsAmino): ServiceOptions;
     toAmino(message: ServiceOptions): ServiceOptionsAmino;
@@ -2259,6 +2299,8 @@ export declare const MethodOptions: {
     isAmino(o: any): o is MethodOptionsAmino;
     encode(message: MethodOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MethodOptions;
+    fromJSON(object: any): MethodOptions;
+    toJSON(message: MethodOptions): unknown;
     fromPartial(object: Partial<MethodOptions>): MethodOptions;
     fromAmino(object: MethodOptionsAmino): MethodOptions;
     toAmino(message: MethodOptions): MethodOptionsAmino;
@@ -2274,6 +2316,8 @@ export declare const UninterpretedOption: {
     isAmino(o: any): o is UninterpretedOptionAmino;
     encode(message: UninterpretedOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UninterpretedOption;
+    fromJSON(object: any): UninterpretedOption;
+    toJSON(message: UninterpretedOption): unknown;
     fromPartial(object: Partial<UninterpretedOption>): UninterpretedOption;
     fromAmino(object: UninterpretedOptionAmino): UninterpretedOption;
     toAmino(message: UninterpretedOption): UninterpretedOptionAmino;
@@ -2289,6 +2333,8 @@ export declare const UninterpretedOption_NamePart: {
     isAmino(o: any): o is UninterpretedOption_NamePartAmino;
     encode(message: UninterpretedOption_NamePart, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UninterpretedOption_NamePart;
+    fromJSON(object: any): UninterpretedOption_NamePart;
+    toJSON(message: UninterpretedOption_NamePart): unknown;
     fromPartial(object: Partial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
     fromAmino(object: UninterpretedOption_NamePartAmino): UninterpretedOption_NamePart;
     toAmino(message: UninterpretedOption_NamePart): UninterpretedOption_NamePartAmino;
@@ -2304,6 +2350,8 @@ export declare const SourceCodeInfo: {
     isAmino(o: any): o is SourceCodeInfoAmino;
     encode(message: SourceCodeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SourceCodeInfo;
+    fromJSON(object: any): SourceCodeInfo;
+    toJSON(message: SourceCodeInfo): unknown;
     fromPartial(object: Partial<SourceCodeInfo>): SourceCodeInfo;
     fromAmino(object: SourceCodeInfoAmino): SourceCodeInfo;
     toAmino(message: SourceCodeInfo): SourceCodeInfoAmino;
@@ -2319,6 +2367,8 @@ export declare const SourceCodeInfo_Location: {
     isAmino(o: any): o is SourceCodeInfo_LocationAmino;
     encode(message: SourceCodeInfo_Location, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SourceCodeInfo_Location;
+    fromJSON(object: any): SourceCodeInfo_Location;
+    toJSON(message: SourceCodeInfo_Location): unknown;
     fromPartial(object: Partial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
     fromAmino(object: SourceCodeInfo_LocationAmino): SourceCodeInfo_Location;
     toAmino(message: SourceCodeInfo_Location): SourceCodeInfo_LocationAmino;
@@ -2334,6 +2384,8 @@ export declare const GeneratedCodeInfo: {
     isAmino(o: any): o is GeneratedCodeInfoAmino;
     encode(message: GeneratedCodeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GeneratedCodeInfo;
+    fromJSON(object: any): GeneratedCodeInfo;
+    toJSON(message: GeneratedCodeInfo): unknown;
     fromPartial(object: Partial<GeneratedCodeInfo>): GeneratedCodeInfo;
     fromAmino(object: GeneratedCodeInfoAmino): GeneratedCodeInfo;
     toAmino(message: GeneratedCodeInfo): GeneratedCodeInfoAmino;
@@ -2349,6 +2401,8 @@ export declare const GeneratedCodeInfo_Annotation: {
     isAmino(o: any): o is GeneratedCodeInfo_AnnotationAmino;
     encode(message: GeneratedCodeInfo_Annotation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
+    fromJSON(object: any): GeneratedCodeInfo_Annotation;
+    toJSON(message: GeneratedCodeInfo_Annotation): unknown;
     fromPartial(object: Partial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation;
     fromAmino(object: GeneratedCodeInfo_AnnotationAmino): GeneratedCodeInfo_Annotation;
     toAmino(message: GeneratedCodeInfo_Annotation): GeneratedCodeInfo_AnnotationAmino;

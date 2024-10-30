@@ -295,6 +295,8 @@ export declare const ClientState: {
     isAmino(o: any): o is ClientStateAmino;
     encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
+    fromJSON(object: any): ClientState;
+    toJSON(message: ClientState): unknown;
     fromPartial(object: Partial<ClientState>): ClientState;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;
@@ -312,6 +314,8 @@ export declare const ConsensusState: {
     isAmino(o: any): o is ConsensusStateAmino;
     encode(message: ConsensusState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusState;
+    fromJSON(object: any): ConsensusState;
+    toJSON(message: ConsensusState): unknown;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
     fromAmino(object: ConsensusStateAmino): ConsensusState;
     toAmino(message: ConsensusState): ConsensusStateAmino;
@@ -329,6 +333,8 @@ export declare const Misbehaviour: {
     isAmino(o: any): o is MisbehaviourAmino;
     encode(message: Misbehaviour, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Misbehaviour;
+    fromJSON(object: any): Misbehaviour;
+    toJSON(message: Misbehaviour): unknown;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
     fromAmino(object: MisbehaviourAmino): Misbehaviour;
     toAmino(message: Misbehaviour): MisbehaviourAmino;
@@ -346,6 +352,8 @@ export declare const Header: {
     isAmino(o: any): o is HeaderAmino;
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
+    fromJSON(object: any): Header;
+    toJSON(message: Header): unknown;
     fromPartial(object: Partial<Header>): Header;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
@@ -363,6 +371,8 @@ export declare const Fraction: {
     isAmino(o: any): o is FractionAmino;
     encode(message: Fraction, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Fraction;
+    fromJSON(object: any): Fraction;
+    toJSON(message: Fraction): unknown;
     fromPartial(object: Partial<Fraction>): Fraction;
     fromAmino(object: FractionAmino): Fraction;
     toAmino(message: Fraction): FractionAmino;

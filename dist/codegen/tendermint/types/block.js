@@ -4,6 +4,7 @@ exports.Block = void 0;
 const types_1 = require("./types");
 const evidence_1 = require("./evidence");
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
 function createBaseBlock() {
     return {
@@ -64,6 +65,22 @@ exports.Block = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            header: (0, helpers_1.isSet)(object.header) ? types_1.Header.fromJSON(object.header) : undefined,
+            data: (0, helpers_1.isSet)(object.data) ? types_1.Data.fromJSON(object.data) : undefined,
+            evidence: (0, helpers_1.isSet)(object.evidence) ? evidence_1.EvidenceList.fromJSON(object.evidence) : undefined,
+            lastCommit: (0, helpers_1.isSet)(object.lastCommit) ? types_1.Commit.fromJSON(object.lastCommit) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.header !== undefined && (obj.header = message.header ? types_1.Header.toJSON(message.header) : undefined);
+        message.data !== undefined && (obj.data = message.data ? types_1.Data.toJSON(message.data) : undefined);
+        message.evidence !== undefined && (obj.evidence = message.evidence ? evidence_1.EvidenceList.toJSON(message.evidence) : undefined);
+        message.lastCommit !== undefined && (obj.lastCommit = message.lastCommit ? types_1.Commit.toJSON(message.lastCommit) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBlock();

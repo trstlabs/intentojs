@@ -152,6 +152,8 @@ export declare const InterfaceDescriptor: {
     isAmino(o: any): o is InterfaceDescriptorAmino;
     encode(message: InterfaceDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceDescriptor;
+    fromJSON(object: any): InterfaceDescriptor;
+    toJSON(message: InterfaceDescriptor): unknown;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
     fromAmino(object: InterfaceDescriptorAmino): InterfaceDescriptor;
     toAmino(message: InterfaceDescriptor): InterfaceDescriptorAmino;
@@ -167,6 +169,8 @@ export declare const ScalarDescriptor: {
     isAmino(o: any): o is ScalarDescriptorAmino;
     encode(message: ScalarDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ScalarDescriptor;
+    fromJSON(object: any): ScalarDescriptor;
+    toJSON(message: ScalarDescriptor): unknown;
     fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor;
     fromAmino(object: ScalarDescriptorAmino): ScalarDescriptor;
     toAmino(message: ScalarDescriptor): ScalarDescriptorAmino;

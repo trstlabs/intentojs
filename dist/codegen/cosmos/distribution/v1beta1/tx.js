@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MsgFundCommunityPoolResponse = exports.MsgFundCommunityPool = exports.MsgWithdrawValidatorCommissionResponse = exports.MsgWithdrawValidatorCommission = exports.MsgWithdrawDelegatorRewardResponse = exports.MsgWithdrawDelegatorReward = exports.MsgSetWithdrawAddressResponse = exports.MsgSetWithdrawAddress = void 0;
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseMsgSetWithdrawAddress() {
     return {
@@ -50,6 +51,18 @@ exports.MsgSetWithdrawAddress = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            delegatorAddress: (0, helpers_1.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+            withdrawAddress: (0, helpers_1.isSet)(object.withdrawAddress) ? String(object.withdrawAddress) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+        message.withdrawAddress !== undefined && (obj.withdrawAddress = message.withdrawAddress);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgSetWithdrawAddress();
@@ -128,6 +141,13 @@ exports.MsgSetWithdrawAddressResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgSetWithdrawAddressResponse();
@@ -211,6 +231,18 @@ exports.MsgWithdrawDelegatorReward = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            delegatorAddress: (0, helpers_1.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgWithdrawDelegatorReward();
@@ -298,6 +330,21 @@ exports.MsgWithdrawDelegatorRewardResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgWithdrawDelegatorRewardResponse();
         message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
@@ -382,6 +429,16 @@ exports.MsgWithdrawValidatorCommission = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgWithdrawValidatorCommission();
         message.validatorAddress = object.validatorAddress ?? "";
@@ -462,6 +519,21 @@ exports.MsgWithdrawValidatorCommissionResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgWithdrawValidatorCommissionResponse();
@@ -554,6 +626,23 @@ exports.MsgFundCommunityPool = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : [],
+            depositor: (0, helpers_1.isSet)(object.depositor) ? String(object.depositor) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        message.depositor !== undefined && (obj.depositor = message.depositor);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgFundCommunityPool();
         message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
@@ -634,6 +723,13 @@ exports.MsgFundCommunityPoolResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgFundCommunityPoolResponse();

@@ -178,6 +178,8 @@ export declare const PageRequest: {
     isAmino(o: any): o is PageRequestAmino;
     encode(message: PageRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PageRequest;
+    fromJSON(object: any): PageRequest;
+    toJSON(message: PageRequest): unknown;
     fromPartial(object: Partial<PageRequest>): PageRequest;
     fromAmino(object: PageRequestAmino): PageRequest;
     toAmino(message: PageRequest): PageRequestAmino;
@@ -195,6 +197,8 @@ export declare const PageResponse: {
     isAmino(o: any): o is PageResponseAmino;
     encode(message: PageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PageResponse;
+    fromJSON(object: any): PageResponse;
+    toJSON(message: PageResponse): unknown;
     fromPartial(object: Partial<PageResponse>): PageResponse;
     fromAmino(object: PageResponseAmino): PageResponse;
     toAmino(message: PageResponse): PageResponseAmino;

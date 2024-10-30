@@ -29,6 +29,8 @@ export declare const PublicKey: {
     isAmino(o: any): o is PublicKeyAmino;
     encode(message: PublicKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PublicKey;
+    fromJSON(object: any): PublicKey;
+    toJSON(message: PublicKey): unknown;
     fromPartial(object: Partial<PublicKey>): PublicKey;
     fromAmino(object: PublicKeyAmino): PublicKey;
     toAmino(message: PublicKey): PublicKeyAmino;

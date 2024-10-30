@@ -12,6 +12,8 @@ export declare const cosmos_proto: {
         isAmino(o: any): o is _2.InterfaceDescriptorAmino;
         encode(message: _2.InterfaceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _2.InterfaceDescriptor;
+        fromJSON(object: any): _2.InterfaceDescriptor;
+        toJSON(message: _2.InterfaceDescriptor): unknown;
         fromPartial(object: Partial<_2.InterfaceDescriptor>): _2.InterfaceDescriptor;
         fromAmino(object: _2.InterfaceDescriptorAmino): _2.InterfaceDescriptor;
         toAmino(message: _2.InterfaceDescriptor): _2.InterfaceDescriptorAmino;
@@ -27,6 +29,8 @@ export declare const cosmos_proto: {
         isAmino(o: any): o is _2.ScalarDescriptorAmino;
         encode(message: _2.ScalarDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
         decode(input: Uint8Array | import("..").BinaryReader, length?: number): _2.ScalarDescriptor;
+        fromJSON(object: any): _2.ScalarDescriptor;
+        toJSON(message: _2.ScalarDescriptor): unknown;
         fromPartial(object: Partial<_2.ScalarDescriptor>): _2.ScalarDescriptor;
         fromAmino(object: _2.ScalarDescriptorAmino): _2.ScalarDescriptor;
         toAmino(message: _2.ScalarDescriptor): _2.ScalarDescriptorAmino;

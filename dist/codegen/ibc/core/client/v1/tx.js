@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MsgSubmitMisbehaviourResponse = exports.MsgSubmitMisbehaviour = exports.MsgUpgradeClientResponse = exports.MsgUpgradeClient = exports.MsgUpdateClientResponse = exports.MsgUpdateClient = exports.MsgCreateClientResponse = exports.MsgCreateClient = void 0;
 const any_1 = require("../../../../google/protobuf/any");
 const binary_1 = require("../../../../binary");
-const registry_1 = require("../../../../registry");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 function createBaseMsgCreateClient() {
     return {
         clientState: undefined,
@@ -58,6 +58,20 @@ exports.MsgCreateClient = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clientState: (0, helpers_1.isSet)(object.clientState) ? any_1.Any.fromJSON(object.clientState) : undefined,
+            consensusState: (0, helpers_1.isSet)(object.consensusState) ? any_1.Any.fromJSON(object.consensusState) : undefined,
+            signer: (0, helpers_1.isSet)(object.signer) ? String(object.signer) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientState !== undefined && (obj.clientState = message.clientState ? any_1.Any.toJSON(message.clientState) : undefined);
+        message.consensusState !== undefined && (obj.consensusState = message.consensusState ? any_1.Any.toJSON(message.consensusState) : undefined);
+        message.signer !== undefined && (obj.signer = message.signer);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgCreateClient();
@@ -141,6 +155,13 @@ exports.MsgCreateClientResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgCreateClientResponse();
@@ -232,6 +253,20 @@ exports.MsgUpdateClient = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            header: (0, helpers_1.isSet)(object.header) ? any_1.Any.fromJSON(object.header) : undefined,
+            signer: (0, helpers_1.isSet)(object.signer) ? String(object.signer) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        message.header !== undefined && (obj.header = message.header ? any_1.Any.toJSON(message.header) : undefined);
+        message.signer !== undefined && (obj.signer = message.signer);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgUpdateClient();
         message.clientId = object.clientId ?? "";
@@ -314,6 +349,13 @@ exports.MsgUpdateClientResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgUpdateClientResponse();
@@ -426,6 +468,26 @@ exports.MsgUpgradeClient = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            clientState: (0, helpers_1.isSet)(object.clientState) ? any_1.Any.fromJSON(object.clientState) : undefined,
+            consensusState: (0, helpers_1.isSet)(object.consensusState) ? any_1.Any.fromJSON(object.consensusState) : undefined,
+            proofUpgradeClient: (0, helpers_1.isSet)(object.proofUpgradeClient) ? (0, helpers_1.bytesFromBase64)(object.proofUpgradeClient) : new Uint8Array(),
+            proofUpgradeConsensusState: (0, helpers_1.isSet)(object.proofUpgradeConsensusState) ? (0, helpers_1.bytesFromBase64)(object.proofUpgradeConsensusState) : new Uint8Array(),
+            signer: (0, helpers_1.isSet)(object.signer) ? String(object.signer) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        message.clientState !== undefined && (obj.clientState = message.clientState ? any_1.Any.toJSON(message.clientState) : undefined);
+        message.consensusState !== undefined && (obj.consensusState = message.consensusState ? any_1.Any.toJSON(message.consensusState) : undefined);
+        message.proofUpgradeClient !== undefined && (obj.proofUpgradeClient = (0, helpers_1.base64FromBytes)(message.proofUpgradeClient !== undefined ? message.proofUpgradeClient : new Uint8Array()));
+        message.proofUpgradeConsensusState !== undefined && (obj.proofUpgradeConsensusState = (0, helpers_1.base64FromBytes)(message.proofUpgradeConsensusState !== undefined ? message.proofUpgradeConsensusState : new Uint8Array()));
+        message.signer !== undefined && (obj.signer = message.signer);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgUpgradeClient();
         message.clientId = object.clientId ?? "";
@@ -524,6 +586,13 @@ exports.MsgUpgradeClientResponse = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseMsgUpgradeClientResponse();
         return message;
@@ -614,6 +683,20 @@ exports.MsgSubmitMisbehaviour = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            misbehaviour: (0, helpers_1.isSet)(object.misbehaviour) ? any_1.Any.fromJSON(object.misbehaviour) : undefined,
+            signer: (0, helpers_1.isSet)(object.signer) ? String(object.signer) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        message.misbehaviour !== undefined && (obj.misbehaviour = message.misbehaviour ? any_1.Any.toJSON(message.misbehaviour) : undefined);
+        message.signer !== undefined && (obj.signer = message.signer);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgSubmitMisbehaviour();
         message.clientId = object.clientId ?? "";
@@ -696,6 +779,13 @@ exports.MsgSubmitMisbehaviourResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgSubmitMisbehaviourResponse();

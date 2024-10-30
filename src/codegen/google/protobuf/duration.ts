@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
  * A Duration represents a signed, fixed-length span of time represented
@@ -255,6 +256,18 @@ export const Duration = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Duration {
+    return {
+      seconds: isSet(object.seconds) ? BigInt(object.seconds.toString()) : BigInt(0),
+      nanos: isSet(object.nanos) ? Number(object.nanos) : 0
+    };
+  },
+  toJSON(message: Duration): unknown {
+    const obj: any = {};
+    message.seconds !== undefined && (obj.seconds = (message.seconds || BigInt(0)).toString());
+    message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
+    return obj;
   },
   fromPartial(object: Partial<Duration>): Duration {
     const message = createBaseDuration();

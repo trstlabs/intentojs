@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSON = exports.scalarTypeFromJSON = exports.ScalarTypeAmino = exports.ScalarTypeSDKType = exports.ScalarType = void 0;
 const binary_1 = require("../binary");
+const helpers_1 = require("../helpers");
 const registry_1 = require("../registry");
 var ScalarType;
 (function (ScalarType) {
@@ -89,6 +90,18 @@ exports.InterfaceDescriptor = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined && (obj.description = message.description);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseInterfaceDescriptor();
@@ -191,6 +204,25 @@ exports.ScalarDescriptor = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            fieldType: Array.isArray(object?.fieldType) ? object.fieldType.map((e) => scalarTypeFromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.description !== undefined && (obj.description = message.description);
+        if (message.fieldType) {
+            obj.fieldType = message.fieldType.map(e => scalarTypeToJSON(e));
+        }
+        else {
+            obj.fieldType = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseScalarDescriptor();

@@ -4,6 +4,7 @@ exports.CommunityPoolSpendProposalWithDeposit = exports.DelegationDelegatorRewar
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
 const math_1 = require("@cosmjs/math");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseParams() {
     return {
@@ -65,6 +66,22 @@ exports.Params = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            communityTax: (0, helpers_1.isSet)(object.communityTax) ? String(object.communityTax) : "",
+            baseProposerReward: (0, helpers_1.isSet)(object.baseProposerReward) ? String(object.baseProposerReward) : "",
+            bonusProposerReward: (0, helpers_1.isSet)(object.bonusProposerReward) ? String(object.bonusProposerReward) : "",
+            withdrawAddrEnabled: (0, helpers_1.isSet)(object.withdrawAddrEnabled) ? Boolean(object.withdrawAddrEnabled) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.communityTax !== undefined && (obj.communityTax = message.communityTax);
+        message.baseProposerReward !== undefined && (obj.baseProposerReward = message.baseProposerReward);
+        message.bonusProposerReward !== undefined && (obj.bonusProposerReward = message.bonusProposerReward);
+        message.withdrawAddrEnabled !== undefined && (obj.withdrawAddrEnabled = message.withdrawAddrEnabled);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseParams();
@@ -169,6 +186,23 @@ exports.ValidatorHistoricalRewards = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            cumulativeRewardRatio: Array.isArray(object?.cumulativeRewardRatio) ? object.cumulativeRewardRatio.map((e) => coin_1.DecCoin.fromJSON(e)) : [],
+            referenceCount: (0, helpers_1.isSet)(object.referenceCount) ? Number(object.referenceCount) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.cumulativeRewardRatio) {
+            obj.cumulativeRewardRatio = message.cumulativeRewardRatio.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.cumulativeRewardRatio = [];
+        }
+        message.referenceCount !== undefined && (obj.referenceCount = Math.round(message.referenceCount));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidatorHistoricalRewards();
         message.cumulativeRewardRatio = object.cumulativeRewardRatio?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
@@ -265,6 +299,23 @@ exports.ValidatorCurrentRewards = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => coin_1.DecCoin.fromJSON(e)) : [],
+            period: (0, helpers_1.isSet)(object.period) ? BigInt(object.period.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.rewards) {
+            obj.rewards = message.rewards.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.rewards = [];
+        }
+        message.period !== undefined && (obj.period = (message.period || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidatorCurrentRewards();
         message.rewards = object.rewards?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
@@ -354,6 +405,21 @@ exports.ValidatorAccumulatedCommission = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            commission: Array.isArray(object?.commission) ? object.commission.map((e) => coin_1.DecCoin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.commission) {
+            obj.commission = message.commission.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.commission = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidatorAccumulatedCommission();
         message.commission = object.commission?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
@@ -437,6 +503,21 @@ exports.ValidatorOutstandingRewards = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => coin_1.DecCoin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.rewards) {
+            obj.rewards = message.rewards.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.rewards = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseValidatorOutstandingRewards();
@@ -529,6 +610,18 @@ exports.ValidatorSlashEvent = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            validatorPeriod: (0, helpers_1.isSet)(object.validatorPeriod) ? BigInt(object.validatorPeriod.toString()) : BigInt(0),
+            fraction: (0, helpers_1.isSet)(object.fraction) ? String(object.fraction) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.validatorPeriod !== undefined && (obj.validatorPeriod = (message.validatorPeriod || BigInt(0)).toString());
+        message.fraction !== undefined && (obj.fraction = message.fraction);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidatorSlashEvent();
         message.validatorPeriod = object.validatorPeriod !== undefined && object.validatorPeriod !== null ? BigInt(object.validatorPeriod.toString()) : BigInt(0);
@@ -615,6 +708,21 @@ exports.ValidatorSlashEvents = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            validatorSlashEvents: Array.isArray(object?.validatorSlashEvents) ? object.validatorSlashEvents.map((e) => exports.ValidatorSlashEvent.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.validatorSlashEvents) {
+            obj.validatorSlashEvents = message.validatorSlashEvents.map(e => e ? exports.ValidatorSlashEvent.toJSON(e) : undefined);
+        }
+        else {
+            obj.validatorSlashEvents = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidatorSlashEvents();
         message.validatorSlashEvents = object.validatorSlashEvents?.map(e => exports.ValidatorSlashEvent.fromPartial(e)) || [];
@@ -698,6 +806,21 @@ exports.FeePool = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            communityPool: Array.isArray(object?.communityPool) ? object.communityPool.map((e) => coin_1.DecCoin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.communityPool) {
+            obj.communityPool = message.communityPool.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.communityPool = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseFeePool();
@@ -804,6 +927,27 @@ exports.CommunityPoolSpendProposal = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            recipient: (0, helpers_1.isSet)(object.recipient) ? String(object.recipient) : "",
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.title !== undefined && (obj.title = message.title);
+        message.description !== undefined && (obj.description = message.description);
+        message.recipient !== undefined && (obj.recipient = message.recipient);
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCommunityPoolSpendProposal();
@@ -918,6 +1062,20 @@ exports.DelegatorStartingInfo = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            previousPeriod: (0, helpers_1.isSet)(object.previousPeriod) ? BigInt(object.previousPeriod.toString()) : BigInt(0),
+            stake: (0, helpers_1.isSet)(object.stake) ? String(object.stake) : "",
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.previousPeriod !== undefined && (obj.previousPeriod = (message.previousPeriod || BigInt(0)).toString());
+        message.stake !== undefined && (obj.stake = message.stake);
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseDelegatorStartingInfo();
         message.previousPeriod = object.previousPeriod !== undefined && object.previousPeriod !== null ? BigInt(object.previousPeriod.toString()) : BigInt(0);
@@ -1015,6 +1173,23 @@ exports.DelegationDelegatorReward = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            validatorAddress: (0, helpers_1.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+            reward: Array.isArray(object?.reward) ? object.reward.map((e) => coin_1.DecCoin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+        if (message.reward) {
+            obj.reward = message.reward.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.reward = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseDelegationDelegatorReward();
@@ -1133,6 +1308,24 @@ exports.CommunityPoolSpendProposalWithDeposit = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            recipient: (0, helpers_1.isSet)(object.recipient) ? String(object.recipient) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? String(object.amount) : "",
+            deposit: (0, helpers_1.isSet)(object.deposit) ? String(object.deposit) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.title !== undefined && (obj.title = message.title);
+        message.description !== undefined && (obj.description = message.description);
+        message.recipient !== undefined && (obj.recipient = message.recipient);
+        message.amount !== undefined && (obj.amount = message.amount);
+        message.deposit !== undefined && (obj.deposit = message.deposit);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCommunityPoolSpendProposalWithDeposit();

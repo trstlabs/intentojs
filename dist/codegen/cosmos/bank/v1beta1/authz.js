@@ -45,6 +45,21 @@ exports.SendAuthorization = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            spendLimit: Array.isArray(object?.spendLimit) ? object.spendLimit.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.spendLimit) {
+            obj.spendLimit = message.spendLimit.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.spendLimit = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSendAuthorization();
         message.spendLimit = object.spendLimit?.map(e => coin_1.Coin.fromPartial(e)) || [];

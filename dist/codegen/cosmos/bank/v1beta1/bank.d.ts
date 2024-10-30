@@ -305,6 +305,8 @@ export declare const Params: {
     isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -322,6 +324,8 @@ export declare const SendEnabled: {
     isAmino(o: any): o is SendEnabledAmino;
     encode(message: SendEnabled, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SendEnabled;
+    fromJSON(object: any): SendEnabled;
+    toJSON(message: SendEnabled): unknown;
     fromPartial(object: Partial<SendEnabled>): SendEnabled;
     fromAmino(object: SendEnabledAmino): SendEnabled;
     toAmino(message: SendEnabled): SendEnabledAmino;
@@ -339,6 +343,8 @@ export declare const Input: {
     isAmino(o: any): o is InputAmino;
     encode(message: Input, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Input;
+    fromJSON(object: any): Input;
+    toJSON(message: Input): unknown;
     fromPartial(object: Partial<Input>): Input;
     fromAmino(object: InputAmino): Input;
     toAmino(message: Input): InputAmino;
@@ -356,6 +362,8 @@ export declare const Output: {
     isAmino(o: any): o is OutputAmino;
     encode(message: Output, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Output;
+    fromJSON(object: any): Output;
+    toJSON(message: Output): unknown;
     fromPartial(object: Partial<Output>): Output;
     fromAmino(object: OutputAmino): Output;
     toAmino(message: Output): OutputAmino;
@@ -373,6 +381,8 @@ export declare const Supply: {
     isAmino(o: any): o is SupplyAmino;
     encode(message: Supply, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Supply;
+    fromJSON(object: any): Supply;
+    toJSON(message: Supply): unknown;
     fromPartial(object: Partial<Supply>): Supply;
     fromAmino(object: SupplyAmino): Supply;
     toAmino(message: Supply): SupplyAmino;
@@ -390,6 +400,8 @@ export declare const DenomUnit: {
     isAmino(o: any): o is DenomUnitAmino;
     encode(message: DenomUnit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DenomUnit;
+    fromJSON(object: any): DenomUnit;
+    toJSON(message: DenomUnit): unknown;
     fromPartial(object: Partial<DenomUnit>): DenomUnit;
     fromAmino(object: DenomUnitAmino): DenomUnit;
     toAmino(message: DenomUnit): DenomUnitAmino;
@@ -407,6 +419,8 @@ export declare const Metadata: {
     isAmino(o: any): o is MetadataAmino;
     encode(message: Metadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Metadata;
+    fromJSON(object: any): Metadata;
+    toJSON(message: Metadata): unknown;
     fromPartial(object: Partial<Metadata>): Metadata;
     fromAmino(object: MetadataAmino): Metadata;
     toAmino(message: Metadata): MetadataAmino;

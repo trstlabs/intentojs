@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Params = exports.DenomTrace = void 0;
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseDenomTrace() {
     return {
@@ -49,6 +50,18 @@ exports.DenomTrace = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            path: (0, helpers_1.isSet)(object.path) ? String(object.path) : "",
+            baseDenom: (0, helpers_1.isSet)(object.baseDenom) ? String(object.baseDenom) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.path !== undefined && (obj.path = message.path);
+        message.baseDenom !== undefined && (obj.baseDenom = message.baseDenom);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseDenomTrace();
@@ -142,6 +155,18 @@ exports.Params = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            sendEnabled: (0, helpers_1.isSet)(object.sendEnabled) ? Boolean(object.sendEnabled) : false,
+            receiveEnabled: (0, helpers_1.isSet)(object.receiveEnabled) ? Boolean(object.receiveEnabled) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.sendEnabled !== undefined && (obj.sendEnabled = message.sendEnabled);
+        message.receiveEnabled !== undefined && (obj.receiveEnabled = message.receiveEnabled);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseParams();

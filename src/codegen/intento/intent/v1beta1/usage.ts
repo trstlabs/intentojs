@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface ActionIbcUsage {
   address: string;
@@ -87,6 +88,22 @@ export const ActionIbcUsage = {
     }
     return message;
   },
+  fromJSON(object: any): ActionIbcUsage {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => ActionAck.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ActionIbcUsage): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    if (message.txs) {
+      obj.txs = message.txs.map(e => e ? ActionAck.toJSON(e) : undefined);
+    } else {
+      obj.txs = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<ActionIbcUsage>): ActionIbcUsage {
     const message = createBaseActionIbcUsage();
     message.address = object.address ?? "";
@@ -173,6 +190,18 @@ export const ActionAck = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ActionAck {
+    return {
+      coin: isSet(object.coin) ? Coin.fromJSON(object.coin) : undefined,
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
+    };
+  },
+  toJSON(message: ActionAck): unknown {
+    const obj: any = {};
+    message.coin !== undefined && (obj.coin = message.coin ? Coin.toJSON(message.coin) : undefined);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    return obj;
   },
   fromPartial(object: Partial<ActionAck>): ActionAck {
     const message = createBaseActionAck();

@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface WeightedAddress {
   address: string;
@@ -142,6 +143,18 @@ export const WeightedAddress = {
     }
     return message;
   },
+  fromJSON(object: any): WeightedAddress {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
+  },
+  toJSON(message: WeightedAddress): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
+  },
   fromPartial(object: Partial<WeightedAddress>): WeightedAddress {
     const message = createBaseWeightedAddress();
     message.address = object.address ?? "";
@@ -248,6 +261,24 @@ export const DistributionProportions = {
     }
     return message;
   },
+  fromJSON(object: any): DistributionProportions {
+    return {
+      staking: isSet(object.staking) ? String(object.staking) : "",
+      trustlessContractIncentives: isSet(object.trustlessContractIncentives) ? String(object.trustlessContractIncentives) : "",
+      relayerIncentives: isSet(object.relayerIncentives) ? String(object.relayerIncentives) : "",
+      contributorRewards: isSet(object.contributorRewards) ? String(object.contributorRewards) : "",
+      communityPool: isSet(object.communityPool) ? String(object.communityPool) : ""
+    };
+  },
+  toJSON(message: DistributionProportions): unknown {
+    const obj: any = {};
+    message.staking !== undefined && (obj.staking = message.staking);
+    message.trustlessContractIncentives !== undefined && (obj.trustlessContractIncentives = message.trustlessContractIncentives);
+    message.relayerIncentives !== undefined && (obj.relayerIncentives = message.relayerIncentives);
+    message.contributorRewards !== undefined && (obj.contributorRewards = message.contributorRewards);
+    message.communityPool !== undefined && (obj.communityPool = message.communityPool);
+    return obj;
+  },
   fromPartial(object: Partial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
     message.staking = object.staking ?? "";
@@ -347,6 +378,22 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      distributionProportions: isSet(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
+      weightedContributorRewardsReceivers: Array.isArray(object?.weightedContributorRewardsReceivers) ? object.weightedContributorRewardsReceivers.map((e: any) => WeightedAddress.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.distributionProportions !== undefined && (obj.distributionProportions = message.distributionProportions ? DistributionProportions.toJSON(message.distributionProportions) : undefined);
+    if (message.weightedContributorRewardsReceivers) {
+      obj.weightedContributorRewardsReceivers = message.weightedContributorRewardsReceivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
+    } else {
+      obj.weightedContributorRewardsReceivers = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

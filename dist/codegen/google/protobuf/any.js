@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Any = void 0;
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
 function createBaseAny() {
     return {
         $typeUrl: "/google.protobuf.Any",
@@ -48,6 +49,18 @@ exports.Any = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            typeUrl: (0, helpers_1.isSet)(object.typeUrl) ? String(object.typeUrl) : "",
+            value: (0, helpers_1.isSet)(object.value) ? (0, helpers_1.bytesFromBase64)(object.value) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.typeUrl !== undefined && (obj.typeUrl = message.typeUrl);
+        message.value !== undefined && (obj.value = (0, helpers_1.base64FromBytes)(message.value !== undefined ? message.value : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseAny();

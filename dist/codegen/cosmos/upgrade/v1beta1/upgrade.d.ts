@@ -228,6 +228,8 @@ export declare const Plan: {
     isAmino(o: any): o is PlanAmino;
     encode(message: Plan, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Plan;
+    fromJSON(object: any): Plan;
+    toJSON(message: Plan): unknown;
     fromPartial(object: Partial<Plan>): Plan;
     fromAmino(object: PlanAmino): Plan;
     toAmino(message: Plan): PlanAmino;
@@ -245,6 +247,8 @@ export declare const SoftwareUpgradeProposal: {
     isAmino(o: any): o is SoftwareUpgradeProposalAmino;
     encode(message: SoftwareUpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SoftwareUpgradeProposal;
+    fromJSON(object: any): SoftwareUpgradeProposal;
+    toJSON(message: SoftwareUpgradeProposal): unknown;
     fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
     fromAmino(object: SoftwareUpgradeProposalAmino): SoftwareUpgradeProposal;
     toAmino(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalAmino;
@@ -262,6 +266,8 @@ export declare const CancelSoftwareUpgradeProposal: {
     isAmino(o: any): o is CancelSoftwareUpgradeProposalAmino;
     encode(message: CancelSoftwareUpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
+    fromJSON(object: any): CancelSoftwareUpgradeProposal;
+    toJSON(message: CancelSoftwareUpgradeProposal): unknown;
     fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
     fromAmino(object: CancelSoftwareUpgradeProposalAmino): CancelSoftwareUpgradeProposal;
     toAmino(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalAmino;
@@ -279,6 +285,8 @@ export declare const ModuleVersion: {
     isAmino(o: any): o is ModuleVersionAmino;
     encode(message: ModuleVersion, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModuleVersion;
+    fromJSON(object: any): ModuleVersion;
+    toJSON(message: ModuleVersion): unknown;
     fromPartial(object: Partial<ModuleVersion>): ModuleVersion;
     fromAmino(object: ModuleVersionAmino): ModuleVersion;
     toAmino(message: ModuleVersion): ModuleVersionAmino;

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DecProto = exports.IntProto = exports.DecCoin = exports.Coin = void 0;
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseCoin() {
     return {
@@ -49,6 +50,18 @@ exports.Coin = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? String(object.amount) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        message.amount !== undefined && (obj.amount = message.amount);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCoin();
@@ -143,6 +156,18 @@ exports.DecCoin = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? String(object.amount) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        message.amount !== undefined && (obj.amount = message.amount);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseDecCoin();
         message.denom = object.denom ?? "";
@@ -229,6 +254,16 @@ exports.IntProto = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            int: (0, helpers_1.isSet)(object.int) ? String(object.int) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.int !== undefined && (obj.int = message.int);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseIntProto();
         message.int = object.int ?? "";
@@ -309,6 +344,16 @@ exports.DecProto = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            dec: (0, helpers_1.isSet)(object.dec) ? String(object.dec) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.dec !== undefined && (obj.dec = message.dec);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseDecProto();

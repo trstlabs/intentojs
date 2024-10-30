@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleValidator = exports.Validator = exports.ValidatorSet = void 0;
 const keys_1 = require("../crypto/keys");
 const binary_1 = require("../../binary");
-const registry_1 = require("../../registry");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 function createBaseValidatorSet() {
     return {
         validators: [],
@@ -57,6 +57,25 @@ exports.ValidatorSet = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            validators: Array.isArray(object?.validators) ? object.validators.map((e) => exports.Validator.fromJSON(e)) : [],
+            proposer: (0, helpers_1.isSet)(object.proposer) ? exports.Validator.fromJSON(object.proposer) : undefined,
+            totalVotingPower: (0, helpers_1.isSet)(object.totalVotingPower) ? BigInt(object.totalVotingPower.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.validators) {
+            obj.validators = message.validators.map(e => e ? exports.Validator.toJSON(e) : undefined);
+        }
+        else {
+            obj.validators = [];
+        }
+        message.proposer !== undefined && (obj.proposer = message.proposer ? exports.Validator.toJSON(message.proposer) : undefined);
+        message.totalVotingPower !== undefined && (obj.totalVotingPower = (message.totalVotingPower || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseValidatorSet();
@@ -165,6 +184,22 @@ exports.Validator = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? (0, helpers_1.bytesFromBase64)(object.address) : new Uint8Array(),
+            pubKey: (0, helpers_1.isSet)(object.pubKey) ? keys_1.PublicKey.fromJSON(object.pubKey) : undefined,
+            votingPower: (0, helpers_1.isSet)(object.votingPower) ? BigInt(object.votingPower.toString()) : BigInt(0),
+            proposerPriority: (0, helpers_1.isSet)(object.proposerPriority) ? BigInt(object.proposerPriority.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = (0, helpers_1.base64FromBytes)(message.address !== undefined ? message.address : new Uint8Array()));
+        message.pubKey !== undefined && (obj.pubKey = message.pubKey ? keys_1.PublicKey.toJSON(message.pubKey) : undefined);
+        message.votingPower !== undefined && (obj.votingPower = (message.votingPower || BigInt(0)).toString());
+        message.proposerPriority !== undefined && (obj.proposerPriority = (message.proposerPriority || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseValidator();
         message.address = object.address ?? new Uint8Array();
@@ -259,6 +294,18 @@ exports.SimpleValidator = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            pubKey: (0, helpers_1.isSet)(object.pubKey) ? keys_1.PublicKey.fromJSON(object.pubKey) : undefined,
+            votingPower: (0, helpers_1.isSet)(object.votingPower) ? BigInt(object.votingPower.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.pubKey !== undefined && (obj.pubKey = message.pubKey ? keys_1.PublicKey.toJSON(message.pubKey) : undefined);
+        message.votingPower !== undefined && (obj.votingPower = (message.votingPower || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSimpleValidator();

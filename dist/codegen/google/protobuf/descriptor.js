@@ -420,6 +420,21 @@ exports.FileDescriptorSet = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            file: Array.isArray(object?.file) ? object.file.map((e) => exports.FileDescriptorProto.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.file) {
+            obj.file = message.file.map(e => e ? exports.FileDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.file = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseFileDescriptorSet();
         message.file = object.file?.map(e => exports.FileDescriptorProto.fromPartial(e)) || [];
@@ -592,6 +607,73 @@ exports.FileDescriptorProto = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            package: (0, helpers_1.isSet)(object.package) ? String(object.package) : "",
+            dependency: Array.isArray(object?.dependency) ? object.dependency.map((e) => String(e)) : [],
+            publicDependency: Array.isArray(object?.publicDependency) ? object.publicDependency.map((e) => Number(e)) : [],
+            weakDependency: Array.isArray(object?.weakDependency) ? object.weakDependency.map((e) => Number(e)) : [],
+            messageType: Array.isArray(object?.messageType) ? object.messageType.map((e) => exports.DescriptorProto.fromJSON(e)) : [],
+            enumType: Array.isArray(object?.enumType) ? object.enumType.map((e) => exports.EnumDescriptorProto.fromJSON(e)) : [],
+            service: Array.isArray(object?.service) ? object.service.map((e) => exports.ServiceDescriptorProto.fromJSON(e)) : [],
+            extension: Array.isArray(object?.extension) ? object.extension.map((e) => exports.FieldDescriptorProto.fromJSON(e)) : [],
+            options: (0, helpers_1.isSet)(object.options) ? exports.FileOptions.fromJSON(object.options) : undefined,
+            sourceCodeInfo: (0, helpers_1.isSet)(object.sourceCodeInfo) ? exports.SourceCodeInfo.fromJSON(object.sourceCodeInfo) : undefined,
+            syntax: (0, helpers_1.isSet)(object.syntax) ? String(object.syntax) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.package !== undefined && (obj.package = message.package);
+        if (message.dependency) {
+            obj.dependency = message.dependency.map(e => e);
+        }
+        else {
+            obj.dependency = [];
+        }
+        if (message.publicDependency) {
+            obj.publicDependency = message.publicDependency.map(e => Math.round(e));
+        }
+        else {
+            obj.publicDependency = [];
+        }
+        if (message.weakDependency) {
+            obj.weakDependency = message.weakDependency.map(e => Math.round(e));
+        }
+        else {
+            obj.weakDependency = [];
+        }
+        if (message.messageType) {
+            obj.messageType = message.messageType.map(e => e ? exports.DescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.messageType = [];
+        }
+        if (message.enumType) {
+            obj.enumType = message.enumType.map(e => e ? exports.EnumDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.enumType = [];
+        }
+        if (message.service) {
+            obj.service = message.service.map(e => e ? exports.ServiceDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.service = [];
+        }
+        if (message.extension) {
+            obj.extension = message.extension.map(e => e ? exports.FieldDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.extension = [];
+        }
+        message.options !== undefined && (obj.options = message.options ? exports.FileOptions.toJSON(message.options) : undefined);
+        message.sourceCodeInfo !== undefined && (obj.sourceCodeInfo = message.sourceCodeInfo ? exports.SourceCodeInfo.toJSON(message.sourceCodeInfo) : undefined);
+        message.syntax !== undefined && (obj.syntax = message.syntax);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseFileDescriptorProto();
@@ -805,6 +887,74 @@ exports.DescriptorProto = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            field: Array.isArray(object?.field) ? object.field.map((e) => exports.FieldDescriptorProto.fromJSON(e)) : [],
+            extension: Array.isArray(object?.extension) ? object.extension.map((e) => exports.FieldDescriptorProto.fromJSON(e)) : [],
+            nestedType: Array.isArray(object?.nestedType) ? object.nestedType.map((e) => exports.DescriptorProto.fromJSON(e)) : [],
+            enumType: Array.isArray(object?.enumType) ? object.enumType.map((e) => exports.EnumDescriptorProto.fromJSON(e)) : [],
+            extensionRange: Array.isArray(object?.extensionRange) ? object.extensionRange.map((e) => exports.DescriptorProto_ExtensionRange.fromJSON(e)) : [],
+            oneofDecl: Array.isArray(object?.oneofDecl) ? object.oneofDecl.map((e) => exports.OneofDescriptorProto.fromJSON(e)) : [],
+            options: (0, helpers_1.isSet)(object.options) ? exports.MessageOptions.fromJSON(object.options) : undefined,
+            reservedRange: Array.isArray(object?.reservedRange) ? object.reservedRange.map((e) => exports.DescriptorProto_ReservedRange.fromJSON(e)) : [],
+            reservedName: Array.isArray(object?.reservedName) ? object.reservedName.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        if (message.field) {
+            obj.field = message.field.map(e => e ? exports.FieldDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.field = [];
+        }
+        if (message.extension) {
+            obj.extension = message.extension.map(e => e ? exports.FieldDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.extension = [];
+        }
+        if (message.nestedType) {
+            obj.nestedType = message.nestedType.map(e => e ? exports.DescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.nestedType = [];
+        }
+        if (message.enumType) {
+            obj.enumType = message.enumType.map(e => e ? exports.EnumDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.enumType = [];
+        }
+        if (message.extensionRange) {
+            obj.extensionRange = message.extensionRange.map(e => e ? exports.DescriptorProto_ExtensionRange.toJSON(e) : undefined);
+        }
+        else {
+            obj.extensionRange = [];
+        }
+        if (message.oneofDecl) {
+            obj.oneofDecl = message.oneofDecl.map(e => e ? exports.OneofDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.oneofDecl = [];
+        }
+        message.options !== undefined && (obj.options = message.options ? exports.MessageOptions.toJSON(message.options) : undefined);
+        if (message.reservedRange) {
+            obj.reservedRange = message.reservedRange.map(e => e ? exports.DescriptorProto_ReservedRange.toJSON(e) : undefined);
+        }
+        else {
+            obj.reservedRange = [];
+        }
+        if (message.reservedName) {
+            obj.reservedName = message.reservedName.map(e => e);
+        }
+        else {
+            obj.reservedName = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseDescriptorProto();
         message.name = object.name ?? "";
@@ -961,6 +1111,20 @@ exports.DescriptorProto_ExtensionRange = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            start: (0, helpers_1.isSet)(object.start) ? Number(object.start) : 0,
+            end: (0, helpers_1.isSet)(object.end) ? Number(object.end) : 0,
+            options: (0, helpers_1.isSet)(object.options) ? exports.ExtensionRangeOptions.fromJSON(object.options) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.start !== undefined && (obj.start = Math.round(message.start));
+        message.end !== undefined && (obj.end = Math.round(message.end));
+        message.options !== undefined && (obj.options = message.options ? exports.ExtensionRangeOptions.toJSON(message.options) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseDescriptorProto_ExtensionRange();
         message.start = object.start ?? 0;
@@ -1051,6 +1215,18 @@ exports.DescriptorProto_ReservedRange = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            start: (0, helpers_1.isSet)(object.start) ? Number(object.start) : 0,
+            end: (0, helpers_1.isSet)(object.end) ? Number(object.end) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.start !== undefined && (obj.start = Math.round(message.start));
+        message.end !== undefined && (obj.end = Math.round(message.end));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseDescriptorProto_ReservedRange();
         message.start = object.start ?? 0;
@@ -1128,6 +1304,21 @@ exports.ExtensionRangeOptions = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseExtensionRangeOptions();
@@ -1268,6 +1459,34 @@ exports.FieldDescriptorProto = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            number: (0, helpers_1.isSet)(object.number) ? Number(object.number) : 0,
+            label: (0, helpers_1.isSet)(object.label) ? fieldDescriptorProto_LabelFromJSON(object.label) : -1,
+            type: (0, helpers_1.isSet)(object.type) ? fieldDescriptorProto_TypeFromJSON(object.type) : -1,
+            typeName: (0, helpers_1.isSet)(object.typeName) ? String(object.typeName) : "",
+            extendee: (0, helpers_1.isSet)(object.extendee) ? String(object.extendee) : "",
+            defaultValue: (0, helpers_1.isSet)(object.defaultValue) ? String(object.defaultValue) : "",
+            oneofIndex: (0, helpers_1.isSet)(object.oneofIndex) ? Number(object.oneofIndex) : 0,
+            jsonName: (0, helpers_1.isSet)(object.jsonName) ? String(object.jsonName) : "",
+            options: (0, helpers_1.isSet)(object.options) ? exports.FieldOptions.fromJSON(object.options) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.number !== undefined && (obj.number = Math.round(message.number));
+        message.label !== undefined && (obj.label = fieldDescriptorProto_LabelToJSON(message.label));
+        message.type !== undefined && (obj.type = fieldDescriptorProto_TypeToJSON(message.type));
+        message.typeName !== undefined && (obj.typeName = message.typeName);
+        message.extendee !== undefined && (obj.extendee = message.extendee);
+        message.defaultValue !== undefined && (obj.defaultValue = message.defaultValue);
+        message.oneofIndex !== undefined && (obj.oneofIndex = Math.round(message.oneofIndex));
+        message.jsonName !== undefined && (obj.jsonName = message.jsonName);
+        message.options !== undefined && (obj.options = message.options ? exports.FieldOptions.toJSON(message.options) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseFieldDescriptorProto();
         message.name = object.name ?? "";
@@ -1393,6 +1612,18 @@ exports.OneofDescriptorProto = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            options: (0, helpers_1.isSet)(object.options) ? exports.OneofOptions.fromJSON(object.options) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.options !== undefined && (obj.options = message.options ? exports.OneofOptions.toJSON(message.options) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseOneofDescriptorProto();
         message.name = object.name ?? "";
@@ -1498,6 +1729,39 @@ exports.EnumDescriptorProto = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            value: Array.isArray(object?.value) ? object.value.map((e) => exports.EnumValueDescriptorProto.fromJSON(e)) : [],
+            options: (0, helpers_1.isSet)(object.options) ? exports.EnumOptions.fromJSON(object.options) : undefined,
+            reservedRange: Array.isArray(object?.reservedRange) ? object.reservedRange.map((e) => exports.EnumDescriptorProto_EnumReservedRange.fromJSON(e)) : [],
+            reservedName: Array.isArray(object?.reservedName) ? object.reservedName.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        if (message.value) {
+            obj.value = message.value.map(e => e ? exports.EnumValueDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.value = [];
+        }
+        message.options !== undefined && (obj.options = message.options ? exports.EnumOptions.toJSON(message.options) : undefined);
+        if (message.reservedRange) {
+            obj.reservedRange = message.reservedRange.map(e => e ? exports.EnumDescriptorProto_EnumReservedRange.toJSON(e) : undefined);
+        }
+        else {
+            obj.reservedRange = [];
+        }
+        if (message.reservedName) {
+            obj.reservedName = message.reservedName.map(e => e);
+        }
+        else {
+            obj.reservedName = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseEnumDescriptorProto();
@@ -1608,6 +1872,18 @@ exports.EnumDescriptorProto_EnumReservedRange = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            start: (0, helpers_1.isSet)(object.start) ? Number(object.start) : 0,
+            end: (0, helpers_1.isSet)(object.end) ? Number(object.end) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.start !== undefined && (obj.start = Math.round(message.start));
+        message.end !== undefined && (obj.end = Math.round(message.end));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseEnumDescriptorProto_EnumReservedRange();
         message.start = object.start ?? 0;
@@ -1699,6 +1975,20 @@ exports.EnumValueDescriptorProto = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            number: (0, helpers_1.isSet)(object.number) ? Number(object.number) : 0,
+            options: (0, helpers_1.isSet)(object.options) ? exports.EnumValueOptions.fromJSON(object.options) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.number !== undefined && (obj.number = Math.round(message.number));
+        message.options !== undefined && (obj.options = message.options ? exports.EnumValueOptions.toJSON(message.options) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseEnumValueDescriptorProto();
@@ -1796,6 +2086,25 @@ exports.ServiceDescriptorProto = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            method: Array.isArray(object?.method) ? object.method.map((e) => exports.MethodDescriptorProto.fromJSON(e)) : [],
+            options: (0, helpers_1.isSet)(object.options) ? exports.ServiceOptions.fromJSON(object.options) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        if (message.method) {
+            obj.method = message.method.map(e => e ? exports.MethodDescriptorProto.toJSON(e) : undefined);
+        }
+        else {
+            obj.method = [];
+        }
+        message.options !== undefined && (obj.options = message.options ? exports.ServiceOptions.toJSON(message.options) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseServiceDescriptorProto();
@@ -1917,6 +2226,26 @@ exports.MethodDescriptorProto = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            inputType: (0, helpers_1.isSet)(object.inputType) ? String(object.inputType) : "",
+            outputType: (0, helpers_1.isSet)(object.outputType) ? String(object.outputType) : "",
+            options: (0, helpers_1.isSet)(object.options) ? exports.MethodOptions.fromJSON(object.options) : undefined,
+            clientStreaming: (0, helpers_1.isSet)(object.clientStreaming) ? Boolean(object.clientStreaming) : false,
+            serverStreaming: (0, helpers_1.isSet)(object.serverStreaming) ? Boolean(object.serverStreaming) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.inputType !== undefined && (obj.inputType = message.inputType);
+        message.outputType !== undefined && (obj.outputType = message.outputType);
+        message.options !== undefined && (obj.options = message.options ? exports.MethodOptions.toJSON(message.options) : undefined);
+        message.clientStreaming !== undefined && (obj.clientStreaming = message.clientStreaming);
+        message.serverStreaming !== undefined && (obj.serverStreaming = message.serverStreaming);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMethodDescriptorProto();
@@ -2156,6 +2485,61 @@ exports.FileOptions = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            javaPackage: (0, helpers_1.isSet)(object.javaPackage) ? String(object.javaPackage) : "",
+            javaOuterClassname: (0, helpers_1.isSet)(object.javaOuterClassname) ? String(object.javaOuterClassname) : "",
+            javaMultipleFiles: (0, helpers_1.isSet)(object.javaMultipleFiles) ? Boolean(object.javaMultipleFiles) : false,
+            javaGenerateEqualsAndHash: (0, helpers_1.isSet)(object.javaGenerateEqualsAndHash) ? Boolean(object.javaGenerateEqualsAndHash) : false,
+            javaStringCheckUtf8: (0, helpers_1.isSet)(object.javaStringCheckUtf8) ? Boolean(object.javaStringCheckUtf8) : false,
+            optimizeFor: (0, helpers_1.isSet)(object.optimizeFor) ? fileOptions_OptimizeModeFromJSON(object.optimizeFor) : -1,
+            goPackage: (0, helpers_1.isSet)(object.goPackage) ? String(object.goPackage) : "",
+            ccGenericServices: (0, helpers_1.isSet)(object.ccGenericServices) ? Boolean(object.ccGenericServices) : false,
+            javaGenericServices: (0, helpers_1.isSet)(object.javaGenericServices) ? Boolean(object.javaGenericServices) : false,
+            pyGenericServices: (0, helpers_1.isSet)(object.pyGenericServices) ? Boolean(object.pyGenericServices) : false,
+            phpGenericServices: (0, helpers_1.isSet)(object.phpGenericServices) ? Boolean(object.phpGenericServices) : false,
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            ccEnableArenas: (0, helpers_1.isSet)(object.ccEnableArenas) ? Boolean(object.ccEnableArenas) : false,
+            objcClassPrefix: (0, helpers_1.isSet)(object.objcClassPrefix) ? String(object.objcClassPrefix) : "",
+            csharpNamespace: (0, helpers_1.isSet)(object.csharpNamespace) ? String(object.csharpNamespace) : "",
+            swiftPrefix: (0, helpers_1.isSet)(object.swiftPrefix) ? String(object.swiftPrefix) : "",
+            phpClassPrefix: (0, helpers_1.isSet)(object.phpClassPrefix) ? String(object.phpClassPrefix) : "",
+            phpNamespace: (0, helpers_1.isSet)(object.phpNamespace) ? String(object.phpNamespace) : "",
+            phpMetadataNamespace: (0, helpers_1.isSet)(object.phpMetadataNamespace) ? String(object.phpMetadataNamespace) : "",
+            rubyPackage: (0, helpers_1.isSet)(object.rubyPackage) ? String(object.rubyPackage) : "",
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.javaPackage !== undefined && (obj.javaPackage = message.javaPackage);
+        message.javaOuterClassname !== undefined && (obj.javaOuterClassname = message.javaOuterClassname);
+        message.javaMultipleFiles !== undefined && (obj.javaMultipleFiles = message.javaMultipleFiles);
+        message.javaGenerateEqualsAndHash !== undefined && (obj.javaGenerateEqualsAndHash = message.javaGenerateEqualsAndHash);
+        message.javaStringCheckUtf8 !== undefined && (obj.javaStringCheckUtf8 = message.javaStringCheckUtf8);
+        message.optimizeFor !== undefined && (obj.optimizeFor = fileOptions_OptimizeModeToJSON(message.optimizeFor));
+        message.goPackage !== undefined && (obj.goPackage = message.goPackage);
+        message.ccGenericServices !== undefined && (obj.ccGenericServices = message.ccGenericServices);
+        message.javaGenericServices !== undefined && (obj.javaGenericServices = message.javaGenericServices);
+        message.pyGenericServices !== undefined && (obj.pyGenericServices = message.pyGenericServices);
+        message.phpGenericServices !== undefined && (obj.phpGenericServices = message.phpGenericServices);
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        message.ccEnableArenas !== undefined && (obj.ccEnableArenas = message.ccEnableArenas);
+        message.objcClassPrefix !== undefined && (obj.objcClassPrefix = message.objcClassPrefix);
+        message.csharpNamespace !== undefined && (obj.csharpNamespace = message.csharpNamespace);
+        message.swiftPrefix !== undefined && (obj.swiftPrefix = message.swiftPrefix);
+        message.phpClassPrefix !== undefined && (obj.phpClassPrefix = message.phpClassPrefix);
+        message.phpNamespace !== undefined && (obj.phpNamespace = message.phpNamespace);
+        message.phpMetadataNamespace !== undefined && (obj.phpMetadataNamespace = message.phpMetadataNamespace);
+        message.rubyPackage !== undefined && (obj.rubyPackage = message.rubyPackage);
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseFileOptions();
         message.javaPackage = object.javaPackage ?? "";
@@ -2360,6 +2744,29 @@ exports.MessageOptions = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            messageSetWireFormat: (0, helpers_1.isSet)(object.messageSetWireFormat) ? Boolean(object.messageSetWireFormat) : false,
+            noStandardDescriptorAccessor: (0, helpers_1.isSet)(object.noStandardDescriptorAccessor) ? Boolean(object.noStandardDescriptorAccessor) : false,
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            mapEntry: (0, helpers_1.isSet)(object.mapEntry) ? Boolean(object.mapEntry) : false,
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.messageSetWireFormat !== undefined && (obj.messageSetWireFormat = message.messageSetWireFormat);
+        message.noStandardDescriptorAccessor !== undefined && (obj.noStandardDescriptorAccessor = message.noStandardDescriptorAccessor);
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        message.mapEntry !== undefined && (obj.mapEntry = message.mapEntry);
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMessageOptions();
         message.messageSetWireFormat = object.messageSetWireFormat ?? false;
@@ -2498,6 +2905,33 @@ exports.FieldOptions = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            ctype: (0, helpers_1.isSet)(object.ctype) ? fieldOptions_CTypeFromJSON(object.ctype) : -1,
+            packed: (0, helpers_1.isSet)(object.packed) ? Boolean(object.packed) : false,
+            jstype: (0, helpers_1.isSet)(object.jstype) ? fieldOptions_JSTypeFromJSON(object.jstype) : -1,
+            lazy: (0, helpers_1.isSet)(object.lazy) ? Boolean(object.lazy) : false,
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            weak: (0, helpers_1.isSet)(object.weak) ? Boolean(object.weak) : false,
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.ctype !== undefined && (obj.ctype = fieldOptions_CTypeToJSON(message.ctype));
+        message.packed !== undefined && (obj.packed = message.packed);
+        message.jstype !== undefined && (obj.jstype = fieldOptions_JSTypeToJSON(message.jstype));
+        message.lazy !== undefined && (obj.lazy = message.lazy);
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        message.weak !== undefined && (obj.weak = message.weak);
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseFieldOptions();
         message.ctype = object.ctype ?? 1;
@@ -2604,6 +3038,21 @@ exports.OneofOptions = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseOneofOptions();
         message.uninterpretedOption = object.uninterpretedOption?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
@@ -2693,6 +3142,25 @@ exports.EnumOptions = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            allowAlias: (0, helpers_1.isSet)(object.allowAlias) ? Boolean(object.allowAlias) : false,
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.allowAlias !== undefined && (obj.allowAlias = message.allowAlias);
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseEnumOptions();
@@ -2787,6 +3255,23 @@ exports.EnumValueOptions = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseEnumValueOptions();
         message.deprecated = object.deprecated ?? false;
@@ -2874,6 +3359,23 @@ exports.ServiceOptions = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseServiceOptions();
@@ -2969,6 +3471,25 @@ exports.MethodOptions = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            deprecated: (0, helpers_1.isSet)(object.deprecated) ? Boolean(object.deprecated) : false,
+            idempotencyLevel: (0, helpers_1.isSet)(object.idempotencyLevel) ? methodOptions_IdempotencyLevelFromJSON(object.idempotencyLevel) : -1,
+            uninterpretedOption: Array.isArray(object?.uninterpretedOption) ? object.uninterpretedOption.map((e) => exports.UninterpretedOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.deprecated !== undefined && (obj.deprecated = message.deprecated);
+        message.idempotencyLevel !== undefined && (obj.idempotencyLevel = methodOptions_IdempotencyLevelToJSON(message.idempotencyLevel));
+        if (message.uninterpretedOption) {
+            obj.uninterpretedOption = message.uninterpretedOption.map(e => e ? exports.UninterpretedOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.uninterpretedOption = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMethodOptions();
@@ -3098,6 +3619,33 @@ exports.UninterpretedOption = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            name: Array.isArray(object?.name) ? object.name.map((e) => exports.UninterpretedOption_NamePart.fromJSON(e)) : [],
+            identifierValue: (0, helpers_1.isSet)(object.identifierValue) ? String(object.identifierValue) : "",
+            positiveIntValue: (0, helpers_1.isSet)(object.positiveIntValue) ? BigInt(object.positiveIntValue.toString()) : BigInt(0),
+            negativeIntValue: (0, helpers_1.isSet)(object.negativeIntValue) ? BigInt(object.negativeIntValue.toString()) : BigInt(0),
+            doubleValue: (0, helpers_1.isSet)(object.doubleValue) ? Number(object.doubleValue) : 0,
+            stringValue: (0, helpers_1.isSet)(object.stringValue) ? (0, helpers_1.bytesFromBase64)(object.stringValue) : new Uint8Array(),
+            aggregateValue: (0, helpers_1.isSet)(object.aggregateValue) ? String(object.aggregateValue) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.name) {
+            obj.name = message.name.map(e => e ? exports.UninterpretedOption_NamePart.toJSON(e) : undefined);
+        }
+        else {
+            obj.name = [];
+        }
+        message.identifierValue !== undefined && (obj.identifierValue = message.identifierValue);
+        message.positiveIntValue !== undefined && (obj.positiveIntValue = (message.positiveIntValue || BigInt(0)).toString());
+        message.negativeIntValue !== undefined && (obj.negativeIntValue = (message.negativeIntValue || BigInt(0)).toString());
+        message.doubleValue !== undefined && (obj.doubleValue = message.doubleValue);
+        message.stringValue !== undefined && (obj.stringValue = (0, helpers_1.base64FromBytes)(message.stringValue !== undefined ? message.stringValue : new Uint8Array()));
+        message.aggregateValue !== undefined && (obj.aggregateValue = message.aggregateValue);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseUninterpretedOption();
         message.name = object.name?.map(e => exports.UninterpretedOption_NamePart.fromPartial(e)) || [];
@@ -3211,6 +3759,18 @@ exports.UninterpretedOption_NamePart = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            namePart: (0, helpers_1.isSet)(object.namePart) ? String(object.namePart) : "",
+            isExtension: (0, helpers_1.isSet)(object.isExtension) ? Boolean(object.isExtension) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.namePart !== undefined && (obj.namePart = message.namePart);
+        message.isExtension !== undefined && (obj.isExtension = message.isExtension);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseUninterpretedOption_NamePart();
         message.namePart = object.namePart ?? "";
@@ -3288,6 +3848,21 @@ exports.SourceCodeInfo = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            location: Array.isArray(object?.location) ? object.location.map((e) => exports.SourceCodeInfo_Location.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.location) {
+            obj.location = message.location.map(e => e ? exports.SourceCodeInfo_Location.toJSON(e) : undefined);
+        }
+        else {
+            obj.location = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSourceCodeInfo();
@@ -3413,6 +3988,39 @@ exports.SourceCodeInfo_Location = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            path: Array.isArray(object?.path) ? object.path.map((e) => Number(e)) : [],
+            span: Array.isArray(object?.span) ? object.span.map((e) => Number(e)) : [],
+            leadingComments: (0, helpers_1.isSet)(object.leadingComments) ? String(object.leadingComments) : "",
+            trailingComments: (0, helpers_1.isSet)(object.trailingComments) ? String(object.trailingComments) : "",
+            leadingDetachedComments: Array.isArray(object?.leadingDetachedComments) ? object.leadingDetachedComments.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.path) {
+            obj.path = message.path.map(e => Math.round(e));
+        }
+        else {
+            obj.path = [];
+        }
+        if (message.span) {
+            obj.span = message.span.map(e => Math.round(e));
+        }
+        else {
+            obj.span = [];
+        }
+        message.leadingComments !== undefined && (obj.leadingComments = message.leadingComments);
+        message.trailingComments !== undefined && (obj.trailingComments = message.trailingComments);
+        if (message.leadingDetachedComments) {
+            obj.leadingDetachedComments = message.leadingDetachedComments.map(e => e);
+        }
+        else {
+            obj.leadingDetachedComments = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSourceCodeInfo_Location();
         message.path = object.path?.map(e => e) || [];
@@ -3514,6 +4122,21 @@ exports.GeneratedCodeInfo = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            annotation: Array.isArray(object?.annotation) ? object.annotation.map((e) => exports.GeneratedCodeInfo_Annotation.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.annotation) {
+            obj.annotation = message.annotation.map(e => e ? exports.GeneratedCodeInfo_Annotation.toJSON(e) : undefined);
+        }
+        else {
+            obj.annotation = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGeneratedCodeInfo();
@@ -3621,6 +4244,27 @@ exports.GeneratedCodeInfo_Annotation = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            path: Array.isArray(object?.path) ? object.path.map((e) => Number(e)) : [],
+            sourceFile: (0, helpers_1.isSet)(object.sourceFile) ? String(object.sourceFile) : "",
+            begin: (0, helpers_1.isSet)(object.begin) ? Number(object.begin) : 0,
+            end: (0, helpers_1.isSet)(object.end) ? Number(object.end) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.path) {
+            obj.path = message.path.map(e => Math.round(e));
+        }
+        else {
+            obj.path = [];
+        }
+        message.sourceFile !== undefined && (obj.sourceFile = message.sourceFile);
+        message.begin !== undefined && (obj.begin = Math.round(message.begin));
+        message.end !== undefined && (obj.end = Math.round(message.end));
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGeneratedCodeInfo_Annotation();

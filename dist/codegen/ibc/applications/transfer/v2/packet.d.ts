@@ -56,6 +56,8 @@ export declare const FungibleTokenPacketData: {
     isAmino(o: any): o is FungibleTokenPacketDataAmino;
     encode(message: FungibleTokenPacketData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FungibleTokenPacketData;
+    fromJSON(object: any): FungibleTokenPacketData;
+    toJSON(message: FungibleTokenPacketData): unknown;
     fromPartial(object: Partial<FungibleTokenPacketData>): FungibleTokenPacketData;
     fromAmino(object: FungibleTokenPacketDataAmino): FungibleTokenPacketData;
     toAmino(message: FungibleTokenPacketData): FungibleTokenPacketDataAmino;

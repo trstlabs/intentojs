@@ -1,7 +1,7 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet, bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 import { GlobalDecoderRegistry } from "../../registry";
-import { bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp } from "../../helpers";
 export interface ProtocolVersion {
   p2p: bigint;
   block: bigint;
@@ -185,6 +185,20 @@ export const ProtocolVersion = {
     }
     return message;
   },
+  fromJSON(object: any): ProtocolVersion {
+    return {
+      p2p: isSet(object.p2p) ? BigInt(object.p2p.toString()) : BigInt(0),
+      block: isSet(object.block) ? BigInt(object.block.toString()) : BigInt(0),
+      app: isSet(object.app) ? BigInt(object.app.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: ProtocolVersion): unknown {
+    const obj: any = {};
+    message.p2p !== undefined && (obj.p2p = (message.p2p || BigInt(0)).toString());
+    message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
+    message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
+    return obj;
+  },
   fromPartial(object: Partial<ProtocolVersion>): ProtocolVersion {
     const message = createBaseProtocolVersion();
     message.p2p = object.p2p !== undefined && object.p2p !== null ? BigInt(object.p2p.toString()) : BigInt(0);
@@ -317,6 +331,30 @@ export const NodeInfo = {
     }
     return message;
   },
+  fromJSON(object: any): NodeInfo {
+    return {
+      protocolVersion: isSet(object.protocolVersion) ? ProtocolVersion.fromJSON(object.protocolVersion) : undefined,
+      nodeId: isSet(object.nodeId) ? String(object.nodeId) : "",
+      listenAddr: isSet(object.listenAddr) ? String(object.listenAddr) : "",
+      network: isSet(object.network) ? String(object.network) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      channels: isSet(object.channels) ? bytesFromBase64(object.channels) : new Uint8Array(),
+      moniker: isSet(object.moniker) ? String(object.moniker) : "",
+      other: isSet(object.other) ? NodeInfoOther.fromJSON(object.other) : undefined
+    };
+  },
+  toJSON(message: NodeInfo): unknown {
+    const obj: any = {};
+    message.protocolVersion !== undefined && (obj.protocolVersion = message.protocolVersion ? ProtocolVersion.toJSON(message.protocolVersion) : undefined);
+    message.nodeId !== undefined && (obj.nodeId = message.nodeId);
+    message.listenAddr !== undefined && (obj.listenAddr = message.listenAddr);
+    message.network !== undefined && (obj.network = message.network);
+    message.version !== undefined && (obj.version = message.version);
+    message.channels !== undefined && (obj.channels = base64FromBytes(message.channels !== undefined ? message.channels : new Uint8Array()));
+    message.moniker !== undefined && (obj.moniker = message.moniker);
+    message.other !== undefined && (obj.other = message.other ? NodeInfoOther.toJSON(message.other) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<NodeInfo>): NodeInfo {
     const message = createBaseNodeInfo();
     message.protocolVersion = object.protocolVersion !== undefined && object.protocolVersion !== null ? ProtocolVersion.fromPartial(object.protocolVersion) : undefined;
@@ -432,6 +470,18 @@ export const NodeInfoOther = {
     }
     return message;
   },
+  fromJSON(object: any): NodeInfoOther {
+    return {
+      txIndex: isSet(object.txIndex) ? String(object.txIndex) : "",
+      rpcAddress: isSet(object.rpcAddress) ? String(object.rpcAddress) : ""
+    };
+  },
+  toJSON(message: NodeInfoOther): unknown {
+    const obj: any = {};
+    message.txIndex !== undefined && (obj.txIndex = message.txIndex);
+    message.rpcAddress !== undefined && (obj.rpcAddress = message.rpcAddress);
+    return obj;
+  },
   fromPartial(object: Partial<NodeInfoOther>): NodeInfoOther {
     const message = createBaseNodeInfoOther();
     message.txIndex = object.txIndex ?? "";
@@ -523,6 +573,24 @@ export const PeerInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PeerInfo {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      addressInfo: Array.isArray(object?.addressInfo) ? object.addressInfo.map((e: any) => PeerAddressInfo.fromJSON(e)) : [],
+      lastConnected: isSet(object.lastConnected) ? fromJsonTimestamp(object.lastConnected) : undefined
+    };
+  },
+  toJSON(message: PeerInfo): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    if (message.addressInfo) {
+      obj.addressInfo = message.addressInfo.map(e => e ? PeerAddressInfo.toJSON(e) : undefined);
+    } else {
+      obj.addressInfo = [];
+    }
+    message.lastConnected !== undefined && (obj.lastConnected = message.lastConnected.toISOString());
+    return obj;
   },
   fromPartial(object: Partial<PeerInfo>): PeerInfo {
     const message = createBasePeerInfo();
@@ -629,6 +697,22 @@ export const PeerAddressInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PeerAddressInfo {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      lastDialSuccess: isSet(object.lastDialSuccess) ? fromJsonTimestamp(object.lastDialSuccess) : undefined,
+      lastDialFailure: isSet(object.lastDialFailure) ? fromJsonTimestamp(object.lastDialFailure) : undefined,
+      dialFailures: isSet(object.dialFailures) ? Number(object.dialFailures) : 0
+    };
+  },
+  toJSON(message: PeerAddressInfo): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.lastDialSuccess !== undefined && (obj.lastDialSuccess = message.lastDialSuccess.toISOString());
+    message.lastDialFailure !== undefined && (obj.lastDialFailure = message.lastDialFailure.toISOString());
+    message.dialFailures !== undefined && (obj.dialFailures = Math.round(message.dialFailures));
+    return obj;
   },
   fromPartial(object: Partial<PeerAddressInfo>): PeerAddressInfo {
     const message = createBasePeerAddressInfo();

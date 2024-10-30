@@ -551,6 +551,8 @@ export declare const QueryClientStateRequest: {
     isAmino(o: any): o is QueryClientStateRequestAmino;
     encode(message: QueryClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStateRequest;
+    fromJSON(object: any): QueryClientStateRequest;
+    toJSON(message: QueryClientStateRequest): unknown;
     fromPartial(object: Partial<QueryClientStateRequest>): QueryClientStateRequest;
     fromAmino(object: QueryClientStateRequestAmino): QueryClientStateRequest;
     toAmino(message: QueryClientStateRequest): QueryClientStateRequestAmino;
@@ -568,6 +570,8 @@ export declare const QueryClientStateResponse: {
     isAmino(o: any): o is QueryClientStateResponseAmino;
     encode(message: QueryClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStateResponse;
+    fromJSON(object: any): QueryClientStateResponse;
+    toJSON(message: QueryClientStateResponse): unknown;
     fromPartial(object: Partial<QueryClientStateResponse>): QueryClientStateResponse;
     fromAmino(object: QueryClientStateResponseAmino): QueryClientStateResponse;
     toAmino(message: QueryClientStateResponse): QueryClientStateResponseAmino;
@@ -585,6 +589,8 @@ export declare const QueryClientStatesRequest: {
     isAmino(o: any): o is QueryClientStatesRequestAmino;
     encode(message: QueryClientStatesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatesRequest;
+    fromJSON(object: any): QueryClientStatesRequest;
+    toJSON(message: QueryClientStatesRequest): unknown;
     fromPartial(object: Partial<QueryClientStatesRequest>): QueryClientStatesRequest;
     fromAmino(object: QueryClientStatesRequestAmino): QueryClientStatesRequest;
     toAmino(message: QueryClientStatesRequest): QueryClientStatesRequestAmino;
@@ -602,6 +608,8 @@ export declare const QueryClientStatesResponse: {
     isAmino(o: any): o is QueryClientStatesResponseAmino;
     encode(message: QueryClientStatesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatesResponse;
+    fromJSON(object: any): QueryClientStatesResponse;
+    toJSON(message: QueryClientStatesResponse): unknown;
     fromPartial(object: Partial<QueryClientStatesResponse>): QueryClientStatesResponse;
     fromAmino(object: QueryClientStatesResponseAmino): QueryClientStatesResponse;
     toAmino(message: QueryClientStatesResponse): QueryClientStatesResponseAmino;
@@ -619,6 +627,8 @@ export declare const QueryConsensusStateRequest: {
     isAmino(o: any): o is QueryConsensusStateRequestAmino;
     encode(message: QueryConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateRequest;
+    fromJSON(object: any): QueryConsensusStateRequest;
+    toJSON(message: QueryConsensusStateRequest): unknown;
     fromPartial(object: Partial<QueryConsensusStateRequest>): QueryConsensusStateRequest;
     fromAmino(object: QueryConsensusStateRequestAmino): QueryConsensusStateRequest;
     toAmino(message: QueryConsensusStateRequest): QueryConsensusStateRequestAmino;
@@ -636,6 +646,8 @@ export declare const QueryConsensusStateResponse: {
     isAmino(o: any): o is QueryConsensusStateResponseAmino;
     encode(message: QueryConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateResponse;
+    fromJSON(object: any): QueryConsensusStateResponse;
+    toJSON(message: QueryConsensusStateResponse): unknown;
     fromPartial(object: Partial<QueryConsensusStateResponse>): QueryConsensusStateResponse;
     fromAmino(object: QueryConsensusStateResponseAmino): QueryConsensusStateResponse;
     toAmino(message: QueryConsensusStateResponse): QueryConsensusStateResponseAmino;
@@ -653,6 +665,8 @@ export declare const QueryConsensusStatesRequest: {
     isAmino(o: any): o is QueryConsensusStatesRequestAmino;
     encode(message: QueryConsensusStatesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStatesRequest;
+    fromJSON(object: any): QueryConsensusStatesRequest;
+    toJSON(message: QueryConsensusStatesRequest): unknown;
     fromPartial(object: Partial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest;
     fromAmino(object: QueryConsensusStatesRequestAmino): QueryConsensusStatesRequest;
     toAmino(message: QueryConsensusStatesRequest): QueryConsensusStatesRequestAmino;
@@ -670,6 +684,8 @@ export declare const QueryConsensusStatesResponse: {
     isAmino(o: any): o is QueryConsensusStatesResponseAmino;
     encode(message: QueryConsensusStatesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStatesResponse;
+    fromJSON(object: any): QueryConsensusStatesResponse;
+    toJSON(message: QueryConsensusStatesResponse): unknown;
     fromPartial(object: Partial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse;
     fromAmino(object: QueryConsensusStatesResponseAmino): QueryConsensusStatesResponse;
     toAmino(message: QueryConsensusStatesResponse): QueryConsensusStatesResponseAmino;
@@ -687,6 +703,8 @@ export declare const QueryClientStatusRequest: {
     isAmino(o: any): o is QueryClientStatusRequestAmino;
     encode(message: QueryClientStatusRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatusRequest;
+    fromJSON(object: any): QueryClientStatusRequest;
+    toJSON(message: QueryClientStatusRequest): unknown;
     fromPartial(object: Partial<QueryClientStatusRequest>): QueryClientStatusRequest;
     fromAmino(object: QueryClientStatusRequestAmino): QueryClientStatusRequest;
     toAmino(message: QueryClientStatusRequest): QueryClientStatusRequestAmino;
@@ -704,6 +722,8 @@ export declare const QueryClientStatusResponse: {
     isAmino(o: any): o is QueryClientStatusResponseAmino;
     encode(message: QueryClientStatusResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatusResponse;
+    fromJSON(object: any): QueryClientStatusResponse;
+    toJSON(message: QueryClientStatusResponse): unknown;
     fromPartial(object: Partial<QueryClientStatusResponse>): QueryClientStatusResponse;
     fromAmino(object: QueryClientStatusResponseAmino): QueryClientStatusResponse;
     toAmino(message: QueryClientStatusResponse): QueryClientStatusResponseAmino;
@@ -721,6 +741,8 @@ export declare const QueryClientParamsRequest: {
     isAmino(o: any): o is QueryClientParamsRequestAmino;
     encode(_: QueryClientParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientParamsRequest;
+    fromJSON(_: any): QueryClientParamsRequest;
+    toJSON(_: QueryClientParamsRequest): unknown;
     fromPartial(_: Partial<QueryClientParamsRequest>): QueryClientParamsRequest;
     fromAmino(_: QueryClientParamsRequestAmino): QueryClientParamsRequest;
     toAmino(_: QueryClientParamsRequest): QueryClientParamsRequestAmino;
@@ -738,6 +760,8 @@ export declare const QueryClientParamsResponse: {
     isAmino(o: any): o is QueryClientParamsResponseAmino;
     encode(message: QueryClientParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientParamsResponse;
+    fromJSON(object: any): QueryClientParamsResponse;
+    toJSON(message: QueryClientParamsResponse): unknown;
     fromPartial(object: Partial<QueryClientParamsResponse>): QueryClientParamsResponse;
     fromAmino(object: QueryClientParamsResponseAmino): QueryClientParamsResponse;
     toAmino(message: QueryClientParamsResponse): QueryClientParamsResponseAmino;
@@ -755,6 +779,8 @@ export declare const QueryUpgradedClientStateRequest: {
     isAmino(o: any): o is QueryUpgradedClientStateRequestAmino;
     encode(_: QueryUpgradedClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedClientStateRequest;
+    fromJSON(_: any): QueryUpgradedClientStateRequest;
+    toJSON(_: QueryUpgradedClientStateRequest): unknown;
     fromPartial(_: Partial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest;
     fromAmino(_: QueryUpgradedClientStateRequestAmino): QueryUpgradedClientStateRequest;
     toAmino(_: QueryUpgradedClientStateRequest): QueryUpgradedClientStateRequestAmino;
@@ -772,6 +798,8 @@ export declare const QueryUpgradedClientStateResponse: {
     isAmino(o: any): o is QueryUpgradedClientStateResponseAmino;
     encode(message: QueryUpgradedClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedClientStateResponse;
+    fromJSON(object: any): QueryUpgradedClientStateResponse;
+    toJSON(message: QueryUpgradedClientStateResponse): unknown;
     fromPartial(object: Partial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse;
     fromAmino(object: QueryUpgradedClientStateResponseAmino): QueryUpgradedClientStateResponse;
     toAmino(message: QueryUpgradedClientStateResponse): QueryUpgradedClientStateResponseAmino;
@@ -789,6 +817,8 @@ export declare const QueryUpgradedConsensusStateRequest: {
     isAmino(o: any): o is QueryUpgradedConsensusStateRequestAmino;
     encode(_: QueryUpgradedConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
+    fromJSON(_: any): QueryUpgradedConsensusStateRequest;
+    toJSON(_: QueryUpgradedConsensusStateRequest): unknown;
     fromPartial(_: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
     fromAmino(_: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest;
     toAmino(_: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAmino;
@@ -806,6 +836,8 @@ export declare const QueryUpgradedConsensusStateResponse: {
     isAmino(o: any): o is QueryUpgradedConsensusStateResponseAmino;
     encode(message: QueryUpgradedConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
+    fromJSON(object: any): QueryUpgradedConsensusStateResponse;
+    toJSON(message: QueryUpgradedConsensusStateResponse): unknown;
     fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
     fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse;
     toAmino(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAmino;

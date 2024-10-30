@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export enum Action {
   ActionActionAuthz = 0,
@@ -210,6 +211,28 @@ export const ClaimRecord = {
     }
     return message;
   },
+  fromJSON(object: any): ClaimRecord {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      initialClaimableAmount: Array.isArray(object?.initialClaimableAmount) ? object.initialClaimableAmount.map((e: any) => Coin.fromJSON(e)) : [],
+      status: Array.isArray(object?.status) ? object.status.map((e: any) => Status.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ClaimRecord): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    if (message.initialClaimableAmount) {
+      obj.initialClaimableAmount = message.initialClaimableAmount.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.initialClaimableAmount = [];
+    }
+    if (message.status) {
+      obj.status = message.status.map(e => e ? Status.toJSON(e) : undefined);
+    } else {
+      obj.status = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<ClaimRecord>): ClaimRecord {
     const message = createBaseClaimRecord();
     message.address = object.address ?? "";
@@ -329,6 +352,28 @@ export const Status = {
     }
     return message;
   },
+  fromJSON(object: any): Status {
+    return {
+      actionCompleted: isSet(object.actionCompleted) ? Boolean(object.actionCompleted) : false,
+      vestingPeriodCompleted: Array.isArray(object?.vestingPeriodCompleted) ? object.vestingPeriodCompleted.map((e: any) => Boolean(e)) : [],
+      vestingPeriodClaimed: Array.isArray(object?.vestingPeriodClaimed) ? object.vestingPeriodClaimed.map((e: any) => Boolean(e)) : []
+    };
+  },
+  toJSON(message: Status): unknown {
+    const obj: any = {};
+    message.actionCompleted !== undefined && (obj.actionCompleted = message.actionCompleted);
+    if (message.vestingPeriodCompleted) {
+      obj.vestingPeriodCompleted = message.vestingPeriodCompleted.map(e => e);
+    } else {
+      obj.vestingPeriodCompleted = [];
+    }
+    if (message.vestingPeriodClaimed) {
+      obj.vestingPeriodClaimed = message.vestingPeriodClaimed.map(e => e);
+    } else {
+      obj.vestingPeriodClaimed = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<Status>): Status {
     const message = createBaseStatus();
     message.actionCompleted = object.actionCompleted ?? false;
@@ -416,6 +461,16 @@ export const MsgClaimClaimable = {
     }
     return message;
   },
+  fromJSON(object: any): MsgClaimClaimable {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : ""
+    };
+  },
+  toJSON(message: MsgClaimClaimable): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    return obj;
+  },
   fromPartial(object: Partial<MsgClaimClaimable>): MsgClaimClaimable {
     const message = createBaseMsgClaimClaimable();
     message.sender = object.sender ?? "";
@@ -488,6 +543,20 @@ export const MsgClaimClaimableResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgClaimClaimableResponse {
+    return {
+      claimedAmount: Array.isArray(object?.claimedAmount) ? object.claimedAmount.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgClaimClaimableResponse): unknown {
+    const obj: any = {};
+    if (message.claimedAmount) {
+      obj.claimedAmount = message.claimedAmount.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.claimedAmount = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgClaimClaimableResponse>): MsgClaimClaimableResponse {
     const message = createBaseMsgClaimClaimableResponse();

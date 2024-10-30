@@ -1,8 +1,8 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { ActionInfo, ActionInfoAmino, ActionInfoSDKType } from "./action";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** GenesisState - genesis state of x/intent */
 export interface GenesisState {
   params: Params;
@@ -115,6 +115,34 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      interchainAccountAddresses: Array.isArray(object?.interchainAccountAddresses) ? object.interchainAccountAddresses.map((e: any) => String(e)) : [],
+      actionInfos: Array.isArray(object?.actionInfos) ? object.actionInfos.map((e: any) => ActionInfo.fromJSON(e)) : [],
+      sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    if (message.interchainAccountAddresses) {
+      obj.interchainAccountAddresses = message.interchainAccountAddresses.map(e => e);
+    } else {
+      obj.interchainAccountAddresses = [];
+    }
+    if (message.actionInfos) {
+      obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
+    } else {
+      obj.actionInfos = [];
+    }
+    if (message.sequences) {
+      obj.sequences = message.sequences.map(e => e ? Sequence.toJSON(e) : undefined);
+    } else {
+      obj.sequences = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -215,6 +243,18 @@ export const Sequence = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Sequence {
+    return {
+      idKey: isSet(object.idKey) ? bytesFromBase64(object.idKey) : new Uint8Array(),
+      value: isSet(object.value) ? BigInt(object.value.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Sequence): unknown {
+    const obj: any = {};
+    message.idKey !== undefined && (obj.idKey = base64FromBytes(message.idKey !== undefined ? message.idKey : new Uint8Array()));
+    message.value !== undefined && (obj.value = (message.value || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Sequence>): Sequence {
     const message = createBaseSequence();

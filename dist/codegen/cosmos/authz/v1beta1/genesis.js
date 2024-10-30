@@ -44,6 +44,21 @@ exports.GenesisState = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            authorization: Array.isArray(object?.authorization) ? object.authorization.map((e) => authz_1.GrantAuthorization.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.authorization) {
+            obj.authorization = message.authorization.map(e => e ? authz_1.GrantAuthorization.toJSON(e) : undefined);
+        }
+        else {
+            obj.authorization = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseGenesisState();
         message.authorization = object.authorization?.map(e => authz_1.GrantAuthorization.fromPartial(e)) || [];

@@ -4,6 +4,7 @@ exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QueryDenomTra
 const pagination_1 = require("../../../../cosmos/base/query/v1beta1/pagination");
 const transfer_1 = require("./transfer");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseQueryDenomTraceRequest() {
     return {
@@ -44,6 +45,16 @@ exports.QueryDenomTraceRequest = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            hash: (0, helpers_1.isSet)(object.hash) ? String(object.hash) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.hash !== undefined && (obj.hash = message.hash);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryDenomTraceRequest();
@@ -126,6 +137,16 @@ exports.QueryDenomTraceResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            denomTrace: (0, helpers_1.isSet)(object.denomTrace) ? transfer_1.DenomTrace.fromJSON(object.denomTrace) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denomTrace !== undefined && (obj.denomTrace = message.denomTrace ? transfer_1.DenomTrace.toJSON(message.denomTrace) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryDenomTraceResponse();
         message.denomTrace = object.denomTrace !== undefined && object.denomTrace !== null ? transfer_1.DenomTrace.fromPartial(object.denomTrace) : undefined;
@@ -206,6 +227,16 @@ exports.QueryDenomTracesRequest = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryDenomTracesRequest();
@@ -295,6 +326,23 @@ exports.QueryDenomTracesResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            denomTraces: Array.isArray(object?.denomTraces) ? object.denomTraces.map((e) => transfer_1.DenomTrace.fromJSON(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.denomTraces) {
+            obj.denomTraces = message.denomTraces.map(e => e ? transfer_1.DenomTrace.toJSON(e) : undefined);
+        }
+        else {
+            obj.denomTraces = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseQueryDenomTracesResponse();
         message.denomTraces = object.denomTraces?.map(e => transfer_1.DenomTrace.fromPartial(e)) || [];
@@ -376,6 +424,13 @@ exports.QueryParamsRequest = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseQueryParamsRequest();
         return message;
@@ -451,6 +506,16 @@ exports.QueryParamsResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            params: (0, helpers_1.isSet)(object.params) ? transfer_1.Params.fromJSON(object.params) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.params !== undefined && (obj.params = message.params ? transfer_1.Params.toJSON(message.params) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryParamsResponse();

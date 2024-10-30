@@ -315,6 +315,8 @@ export declare const IdentifiedClientState: {
     isAmino(o: any): o is IdentifiedClientStateAmino;
     encode(message: IdentifiedClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedClientState;
+    fromJSON(object: any): IdentifiedClientState;
+    toJSON(message: IdentifiedClientState): unknown;
     fromPartial(object: Partial<IdentifiedClientState>): IdentifiedClientState;
     fromAmino(object: IdentifiedClientStateAmino): IdentifiedClientState;
     toAmino(message: IdentifiedClientState): IdentifiedClientStateAmino;
@@ -332,6 +334,8 @@ export declare const ConsensusStateWithHeight: {
     isAmino(o: any): o is ConsensusStateWithHeightAmino;
     encode(message: ConsensusStateWithHeight, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusStateWithHeight;
+    fromJSON(object: any): ConsensusStateWithHeight;
+    toJSON(message: ConsensusStateWithHeight): unknown;
     fromPartial(object: Partial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
     fromAmino(object: ConsensusStateWithHeightAmino): ConsensusStateWithHeight;
     toAmino(message: ConsensusStateWithHeight): ConsensusStateWithHeightAmino;
@@ -349,6 +353,8 @@ export declare const ClientConsensusStates: {
     isAmino(o: any): o is ClientConsensusStatesAmino;
     encode(message: ClientConsensusStates, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientConsensusStates;
+    fromJSON(object: any): ClientConsensusStates;
+    toJSON(message: ClientConsensusStates): unknown;
     fromPartial(object: Partial<ClientConsensusStates>): ClientConsensusStates;
     fromAmino(object: ClientConsensusStatesAmino): ClientConsensusStates;
     toAmino(message: ClientConsensusStates): ClientConsensusStatesAmino;
@@ -366,6 +372,8 @@ export declare const ClientUpdateProposal: {
     isAmino(o: any): o is ClientUpdateProposalAmino;
     encode(message: ClientUpdateProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientUpdateProposal;
+    fromJSON(object: any): ClientUpdateProposal;
+    toJSON(message: ClientUpdateProposal): unknown;
     fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal;
     fromAmino(object: ClientUpdateProposalAmino): ClientUpdateProposal;
     toAmino(message: ClientUpdateProposal): ClientUpdateProposalAmino;
@@ -383,6 +391,8 @@ export declare const UpgradeProposal: {
     isAmino(o: any): o is UpgradeProposalAmino;
     encode(message: UpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UpgradeProposal;
+    fromJSON(object: any): UpgradeProposal;
+    toJSON(message: UpgradeProposal): unknown;
     fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal;
     fromAmino(object: UpgradeProposalAmino): UpgradeProposal;
     toAmino(message: UpgradeProposal): UpgradeProposalAmino;
@@ -400,6 +410,8 @@ export declare const Height: {
     isAmino(o: any): o is HeightAmino;
     encode(message: Height, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Height;
+    fromJSON(object: any): Height;
+    toJSON(message: Height): unknown;
     fromPartial(object: Partial<Height>): Height;
     fromAmino(object: HeightAmino): Height;
     toAmino(message: Height): HeightAmino;
@@ -417,6 +429,8 @@ export declare const Params: {
     isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

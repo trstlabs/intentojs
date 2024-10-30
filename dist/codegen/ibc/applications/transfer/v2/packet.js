@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FungibleTokenPacketData = void 0;
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseFungibleTokenPacketData() {
     return {
@@ -63,6 +64,22 @@ exports.FungibleTokenPacketData = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : "",
+            amount: (0, helpers_1.isSet)(object.amount) ? String(object.amount) : "",
+            sender: (0, helpers_1.isSet)(object.sender) ? String(object.sender) : "",
+            receiver: (0, helpers_1.isSet)(object.receiver) ? String(object.receiver) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        message.amount !== undefined && (obj.amount = message.amount);
+        message.sender !== undefined && (obj.sender = message.sender);
+        message.receiver !== undefined && (obj.receiver = message.receiver);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseFungibleTokenPacketData();

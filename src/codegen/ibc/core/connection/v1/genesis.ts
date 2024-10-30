@@ -1,5 +1,6 @@
 import { IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType, ConnectionPaths, ConnectionPathsAmino, ConnectionPathsSDKType, Params, ParamsAmino, ParamsSDKType } from "./connection";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /** GenesisState defines the ibc connection submodule's genesis state. */
 export interface GenesisState {
@@ -92,6 +93,30 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      connections: Array.isArray(object?.connections) ? object.connections.map((e: any) => IdentifiedConnection.fromJSON(e)) : [],
+      clientConnectionPaths: Array.isArray(object?.clientConnectionPaths) ? object.clientConnectionPaths.map((e: any) => ConnectionPaths.fromJSON(e)) : [],
+      nextConnectionSequence: isSet(object.nextConnectionSequence) ? BigInt(object.nextConnectionSequence.toString()) : BigInt(0),
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    if (message.connections) {
+      obj.connections = message.connections.map(e => e ? IdentifiedConnection.toJSON(e) : undefined);
+    } else {
+      obj.connections = [];
+    }
+    if (message.clientConnectionPaths) {
+      obj.clientConnectionPaths = message.clientConnectionPaths.map(e => e ? ConnectionPaths.toJSON(e) : undefined);
+    } else {
+      obj.clientConnectionPaths = [];
+    }
+    message.nextConnectionSequence !== undefined && (obj.nextConnectionSequence = (message.nextConnectionSequence || BigInt(0)).toString());
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

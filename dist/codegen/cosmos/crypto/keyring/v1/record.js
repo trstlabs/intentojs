@@ -4,6 +4,7 @@ exports.Record_Offline = exports.Record_Multi = exports.Record_Ledger = exports.
 const any_1 = require("../../../../google/protobuf/any");
 const hd_1 = require("../../hd/v1/hd");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseRecord() {
     return {
@@ -79,6 +80,26 @@ exports.Record = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            pubKey: (0, helpers_1.isSet)(object.pubKey) ? any_1.Any.fromJSON(object.pubKey) : undefined,
+            local: (0, helpers_1.isSet)(object.local) ? exports.Record_Local.fromJSON(object.local) : undefined,
+            ledger: (0, helpers_1.isSet)(object.ledger) ? exports.Record_Ledger.fromJSON(object.ledger) : undefined,
+            multi: (0, helpers_1.isSet)(object.multi) ? exports.Record_Multi.fromJSON(object.multi) : undefined,
+            offline: (0, helpers_1.isSet)(object.offline) ? exports.Record_Offline.fromJSON(object.offline) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.pubKey !== undefined && (obj.pubKey = message.pubKey ? any_1.Any.toJSON(message.pubKey) : undefined);
+        message.local !== undefined && (obj.local = message.local ? exports.Record_Local.toJSON(message.local) : undefined);
+        message.ledger !== undefined && (obj.ledger = message.ledger ? exports.Record_Ledger.toJSON(message.ledger) : undefined);
+        message.multi !== undefined && (obj.multi = message.multi ? exports.Record_Multi.toJSON(message.multi) : undefined);
+        message.offline !== undefined && (obj.offline = message.offline ? exports.Record_Offline.toJSON(message.offline) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseRecord();
@@ -193,6 +214,18 @@ exports.Record_Local = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            privKey: (0, helpers_1.isSet)(object.privKey) ? any_1.Any.fromJSON(object.privKey) : undefined,
+            privKeyType: (0, helpers_1.isSet)(object.privKeyType) ? String(object.privKeyType) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.privKey !== undefined && (obj.privKey = message.privKey ? any_1.Any.toJSON(message.privKey) : undefined);
+        message.privKeyType !== undefined && (obj.privKeyType = message.privKeyType);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseRecord_Local();
         message.privKey = object.privKey !== undefined && object.privKey !== null ? any_1.Any.fromPartial(object.privKey) : undefined;
@@ -279,6 +312,16 @@ exports.Record_Ledger = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            path: (0, helpers_1.isSet)(object.path) ? hd_1.BIP44Params.fromJSON(object.path) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.path !== undefined && (obj.path = message.path ? hd_1.BIP44Params.toJSON(message.path) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseRecord_Ledger();
         message.path = object.path !== undefined && object.path !== null ? hd_1.BIP44Params.fromPartial(object.path) : undefined;
@@ -352,6 +395,13 @@ exports.Record_Multi = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseRecord_Multi();
         return message;
@@ -419,6 +469,13 @@ exports.Record_Offline = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseRecord_Offline();

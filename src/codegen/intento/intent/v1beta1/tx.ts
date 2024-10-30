@@ -1,7 +1,9 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType } from "./action";
+import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./action";
+import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hostedaccount";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
 export interface MsgRegisterAccount {
@@ -98,9 +100,12 @@ export interface MsgSubmitAction {
   feeFunds: Coin[];
   /** optional configuration parameters */
   configuration?: ExecutionConfiguration;
-  /** for ibc config */
+  /** optional for interchain account */
   connectionId: string;
   hostConnectionId: string;
+  /** optional use of a hosted account */
+  hostedConfig?: HostedConfig;
+  conditions?: ExecutionConditions;
 }
 export interface MsgSubmitActionProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgSubmitAction";
@@ -124,9 +129,12 @@ export interface MsgSubmitActionAmino {
   fee_funds?: CoinAmino[];
   /** optional configuration parameters */
   configuration?: ExecutionConfigurationAmino;
-  /** for ibc config */
+  /** optional for interchain account */
   connection_id?: string;
   host_connection_id?: string;
+  /** optional use of a hosted account */
+  hosted_config?: HostedConfigAmino;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface MsgSubmitActionAminoMsg {
   type: "/intento.intent.v1beta1.MsgSubmitAction";
@@ -144,6 +152,8 @@ export interface MsgSubmitActionSDKType {
   configuration?: ExecutionConfigurationSDKType;
   connection_id: string;
   host_connection_id: string;
+  hosted_config?: HostedConfigSDKType;
+  conditions?: ExecutionConditionsSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitActionResponse {}
@@ -177,6 +187,7 @@ export interface MsgRegisterAccountAndSubmitAction {
   configuration?: ExecutionConfiguration;
   version: string;
   hostConnectionId: string;
+  conditions?: ExecutionConditions;
 }
 export interface MsgRegisterAccountAndSubmitActionProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction";
@@ -203,6 +214,7 @@ export interface MsgRegisterAccountAndSubmitActionAmino {
   configuration?: ExecutionConfigurationAmino;
   version?: string;
   host_connection_id?: string;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface MsgRegisterAccountAndSubmitActionAminoMsg {
   type: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction";
@@ -221,6 +233,7 @@ export interface MsgRegisterAccountAndSubmitActionSDKType {
   configuration?: ExecutionConfigurationSDKType;
   version: string;
   host_connection_id: string;
+  conditions?: ExecutionConditionsSDKType;
 }
 /** MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response type */
 export interface MsgRegisterAccountAndSubmitActionResponse {}
@@ -252,6 +265,8 @@ export interface MsgUpdateAction {
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   feeFunds: Coin[];
   configuration?: ExecutionConfiguration;
+  hostedConfig?: HostedConfig;
+  conditions?: ExecutionConditions;
 }
 export interface MsgUpdateActionProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgUpdateAction";
@@ -276,6 +291,8 @@ export interface MsgUpdateActionAmino {
   /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
   fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
+  hosted_config?: HostedConfigAmino;
+  conditions?: ExecutionConditionsAmino;
 }
 export interface MsgUpdateActionAminoMsg {
   type: "/intento.intent.v1beta1.MsgUpdateAction";
@@ -293,6 +310,8 @@ export interface MsgUpdateActionSDKType {
   interval: string;
   fee_funds: CoinSDKType[];
   configuration?: ExecutionConfigurationSDKType;
+  hosted_config?: HostedConfigSDKType;
+  conditions?: ExecutionConditionsSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
 export interface MsgUpdateActionResponse {}
@@ -308,6 +327,92 @@ export interface MsgUpdateActionResponseAminoMsg {
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
 export interface MsgUpdateActionResponseSDKType {}
+export interface MsgCreateHostedAccount {
+  creator: string;
+  connectionId: string;
+  hostConnectionId: string;
+  version: string;
+  feeCoinsSuported: Coin[];
+}
+export interface MsgCreateHostedAccountProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccount";
+  value: Uint8Array;
+}
+export interface MsgCreateHostedAccountAmino {
+  creator?: string;
+  connection_id?: string;
+  host_connection_id?: string;
+  version?: string;
+  fee_coins_suported?: CoinAmino[];
+}
+export interface MsgCreateHostedAccountAminoMsg {
+  type: "/intento.intent.v1beta1.MsgCreateHostedAccount";
+  value: MsgCreateHostedAccountAmino;
+}
+export interface MsgCreateHostedAccountSDKType {
+  creator: string;
+  connection_id: string;
+  host_connection_id: string;
+  version: string;
+  fee_coins_suported: CoinSDKType[];
+}
+export interface MsgCreateHostedAccountResponse {
+  address: string;
+}
+export interface MsgCreateHostedAccountResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccountResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateHostedAccountResponseAmino {
+  address?: string;
+}
+export interface MsgCreateHostedAccountResponseAminoMsg {
+  type: "/intento.intent.v1beta1.MsgCreateHostedAccountResponse";
+  value: MsgCreateHostedAccountResponseAmino;
+}
+export interface MsgCreateHostedAccountResponseSDKType {
+  address: string;
+}
+export interface MsgUpdateHostedAccount {
+  admin: string;
+  hostedAddress: string;
+  connectionId: string;
+  hostConnectionId: string;
+  hostFeeConfig?: HostFeeConfig;
+}
+export interface MsgUpdateHostedAccountProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount";
+  value: Uint8Array;
+}
+export interface MsgUpdateHostedAccountAmino {
+  admin?: string;
+  hosted_address?: string;
+  connection_id?: string;
+  host_connection_id?: string;
+  host_fee_config?: HostFeeConfigAmino;
+}
+export interface MsgUpdateHostedAccountAminoMsg {
+  type: "/intento.intent.v1beta1.MsgUpdateHostedAccount";
+  value: MsgUpdateHostedAccountAmino;
+}
+export interface MsgUpdateHostedAccountSDKType {
+  admin: string;
+  hosted_address: string;
+  connection_id: string;
+  host_connection_id: string;
+  host_fee_config?: HostFeeConfigSDKType;
+}
+export interface MsgUpdateHostedAccountResponse {}
+export interface MsgUpdateHostedAccountResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccountResponse";
+  value: Uint8Array;
+}
+export interface MsgUpdateHostedAccountResponseAmino {}
+export interface MsgUpdateHostedAccountResponseAminoMsg {
+  type: "/intento.intent.v1beta1.MsgUpdateHostedAccountResponse";
+  value: MsgUpdateHostedAccountResponseAmino;
+}
+export interface MsgUpdateHostedAccountResponseSDKType {}
 function createBaseMsgRegisterAccount(): MsgRegisterAccount {
   return {
     owner: "",
@@ -360,6 +465,20 @@ export const MsgRegisterAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgRegisterAccount {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      version: isSet(object.version) ? String(object.version) : ""
+    };
+  },
+  toJSON(message: MsgRegisterAccount): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.version !== undefined && (obj.version = message.version);
+    return obj;
   },
   fromPartial(object: Partial<MsgRegisterAccount>): MsgRegisterAccount {
     const message = createBaseMsgRegisterAccount();
@@ -435,6 +554,13 @@ export const MsgRegisterAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgRegisterAccountResponse {
+    return {};
+  },
+  toJSON(_: MsgRegisterAccountResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgRegisterAccountResponse>): MsgRegisterAccountResponse {
     const message = createBaseMsgRegisterAccountResponse();
@@ -518,6 +644,20 @@ export const MsgSubmitTx = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSubmitTx {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      msg: isSet(object.msg) ? Any.fromJSON(object.msg) : undefined
+    };
+  },
+  toJSON(message: MsgSubmitTx): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.msg !== undefined && (obj.msg = message.msg ? Any.toJSON(message.msg) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<MsgSubmitTx>): MsgSubmitTx {
     const message = createBaseMsgSubmitTx();
     message.owner = object.owner ?? "";
@@ -593,6 +733,13 @@ export const MsgSubmitTxResponse = {
     }
     return message;
   },
+  fromJSON(_: any): MsgSubmitTxResponse {
+    return {};
+  },
+  toJSON(_: MsgSubmitTxResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<MsgSubmitTxResponse>): MsgSubmitTxResponse {
     const message = createBaseMsgSubmitTxResponse();
     return message;
@@ -633,7 +780,9 @@ function createBaseMsgSubmitAction(): MsgSubmitAction {
     feeFunds: [],
     configuration: undefined,
     connectionId: "",
-    hostConnectionId: ""
+    hostConnectionId: "",
+    hostedConfig: undefined,
+    conditions: undefined
   };
 }
 export const MsgSubmitAction = {
@@ -678,6 +827,12 @@ export const MsgSubmitAction = {
     if (message.hostConnectionId !== "") {
       writer.uint32(90).string(message.hostConnectionId);
     }
+    if (message.hostedConfig !== undefined) {
+      HostedConfig.encode(message.hostedConfig, writer.uint32(98).fork()).ldelim();
+    }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(114).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitAction {
@@ -717,12 +872,58 @@ export const MsgSubmitAction = {
         case 11:
           message.hostConnectionId = reader.string();
           break;
+        case 12:
+          message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
+          break;
+        case 14:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSubmitAction {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      duration: isSet(object.duration) ? String(object.duration) : "",
+      startAt: isSet(object.startAt) ? BigInt(object.startAt.toString()) : BigInt(0),
+      interval: isSet(object.interval) ? String(object.interval) : "",
+      feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: MsgSubmitAction): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.label !== undefined && (obj.label = message.label);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.startAt !== undefined && (obj.startAt = (message.startAt || BigInt(0)).toString());
+    message.interval !== undefined && (obj.interval = message.interval);
+    if (message.feeFunds) {
+      obj.feeFunds = message.feeFunds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeFunds = [];
+    }
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgSubmitAction>): MsgSubmitAction {
     const message = createBaseMsgSubmitAction();
@@ -736,6 +937,8 @@ export const MsgSubmitAction = {
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.connectionId = object.connectionId ?? "";
     message.hostConnectionId = object.hostConnectionId ?? "";
+    message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: MsgSubmitActionAmino): MsgSubmitAction {
@@ -766,6 +969,12 @@ export const MsgSubmitAction = {
     if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
       message.hostConnectionId = object.host_connection_id;
     }
+    if (object.hosted_config !== undefined && object.hosted_config !== null) {
+      message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
+    }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: MsgSubmitAction): MsgSubmitActionAmino {
@@ -788,6 +997,8 @@ export const MsgSubmitAction = {
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
     obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
+    obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitActionAminoMsg): MsgSubmitAction {
@@ -838,6 +1049,13 @@ export const MsgSubmitActionResponse = {
     }
     return message;
   },
+  fromJSON(_: any): MsgSubmitActionResponse {
+    return {};
+  },
+  toJSON(_: MsgSubmitActionResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<MsgSubmitActionResponse>): MsgSubmitActionResponse {
     const message = createBaseMsgSubmitActionResponse();
     return message;
@@ -879,7 +1097,8 @@ function createBaseMsgRegisterAccountAndSubmitAction(): MsgRegisterAccountAndSub
     feeFunds: [],
     configuration: undefined,
     version: "",
-    hostConnectionId: ""
+    hostConnectionId: "",
+    conditions: undefined
   };
 }
 export const MsgRegisterAccountAndSubmitAction = {
@@ -927,6 +1146,9 @@ export const MsgRegisterAccountAndSubmitAction = {
     if (message.hostConnectionId !== "") {
       writer.uint32(90).string(message.hostConnectionId);
     }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(98).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAction {
@@ -969,12 +1191,55 @@ export const MsgRegisterAccountAndSubmitAction = {
         case 11:
           message.hostConnectionId = reader.string();
           break;
+        case 12:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgRegisterAccountAndSubmitAction {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      duration: isSet(object.duration) ? String(object.duration) : "",
+      startAt: isSet(object.startAt) ? BigInt(object.startAt.toString()) : BigInt(0),
+      interval: isSet(object.interval) ? String(object.interval) : "",
+      feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      version: isSet(object.version) ? String(object.version) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: MsgRegisterAccountAndSubmitAction): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.label !== undefined && (obj.label = message.label);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.startAt !== undefined && (obj.startAt = (message.startAt || BigInt(0)).toString());
+    message.interval !== undefined && (obj.interval = message.interval);
+    if (message.feeFunds) {
+      obj.feeFunds = message.feeFunds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeFunds = [];
+    }
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.version !== undefined && (obj.version = message.version);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgRegisterAccountAndSubmitAction>): MsgRegisterAccountAndSubmitAction {
     const message = createBaseMsgRegisterAccountAndSubmitAction();
@@ -989,6 +1254,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.version = object.version ?? "";
     message.hostConnectionId = object.hostConnectionId ?? "";
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: MsgRegisterAccountAndSubmitActionAmino): MsgRegisterAccountAndSubmitAction {
@@ -1022,6 +1288,9 @@ export const MsgRegisterAccountAndSubmitAction = {
     if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
       message.hostConnectionId = object.host_connection_id;
     }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: MsgRegisterAccountAndSubmitAction): MsgRegisterAccountAndSubmitActionAmino {
@@ -1045,6 +1314,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.version = message.version === "" ? undefined : message.version;
     obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgRegisterAccountAndSubmitActionAminoMsg): MsgRegisterAccountAndSubmitAction {
@@ -1095,6 +1365,13 @@ export const MsgRegisterAccountAndSubmitActionResponse = {
     }
     return message;
   },
+  fromJSON(_: any): MsgRegisterAccountAndSubmitActionResponse {
+    return {};
+  },
+  toJSON(_: MsgRegisterAccountAndSubmitActionResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<MsgRegisterAccountAndSubmitActionResponse>): MsgRegisterAccountAndSubmitActionResponse {
     const message = createBaseMsgRegisterAccountAndSubmitActionResponse();
     return message;
@@ -1135,7 +1412,9 @@ function createBaseMsgUpdateAction(): MsgUpdateAction {
     startAt: BigInt(0),
     interval: "",
     feeFunds: [],
-    configuration: undefined
+    configuration: undefined,
+    hostedConfig: undefined,
+    conditions: undefined
   };
 }
 export const MsgUpdateAction = {
@@ -1180,6 +1459,12 @@ export const MsgUpdateAction = {
     if (message.configuration !== undefined) {
       ExecutionConfiguration.encode(message.configuration, writer.uint32(82).fork()).ldelim();
     }
+    if (message.hostedConfig !== undefined) {
+      HostedConfig.encode(message.hostedConfig, writer.uint32(90).fork()).ldelim();
+    }
+    if (message.conditions !== undefined) {
+      ExecutionConditions.encode(message.conditions, writer.uint32(98).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAction {
@@ -1219,12 +1504,58 @@ export const MsgUpdateAction = {
         case 10:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
+        case 11:
+          message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
+          break;
+        case 12:
+          message.conditions = ExecutionConditions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUpdateAction {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      label: isSet(object.label) ? String(object.label) : "",
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
+      endTime: isSet(object.endTime) ? BigInt(object.endTime.toString()) : BigInt(0),
+      startAt: isSet(object.startAt) ? BigInt(object.startAt.toString()) : BigInt(0),
+      interval: isSet(object.interval) ? String(object.interval) : "",
+      feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
+      configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
+      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
+    };
+  },
+  toJSON(message: MsgUpdateAction): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.label !== undefined && (obj.label = message.label);
+    if (message.msgs) {
+      obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.msgs = [];
+    }
+    message.endTime !== undefined && (obj.endTime = (message.endTime || BigInt(0)).toString());
+    message.startAt !== undefined && (obj.startAt = (message.startAt || BigInt(0)).toString());
+    message.interval !== undefined && (obj.interval = message.interval);
+    if (message.feeFunds) {
+      obj.feeFunds = message.feeFunds.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeFunds = [];
+    }
+    message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
+    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgUpdateAction>): MsgUpdateAction {
     const message = createBaseMsgUpdateAction();
@@ -1238,6 +1569,8 @@ export const MsgUpdateAction = {
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
+    message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateActionAmino): MsgUpdateAction {
@@ -1268,6 +1601,12 @@ export const MsgUpdateAction = {
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
     }
+    if (object.hosted_config !== undefined && object.hosted_config !== null) {
+      message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
+    }
+    if (object.conditions !== undefined && object.conditions !== null) {
+      message.conditions = ExecutionConditions.fromAmino(object.conditions);
+    }
     return message;
   },
   toAmino(message: MsgUpdateAction): MsgUpdateActionAmino {
@@ -1290,6 +1629,8 @@ export const MsgUpdateAction = {
       obj.fee_funds = message.feeFunds;
     }
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
+    obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateActionAminoMsg): MsgUpdateAction {
@@ -1340,6 +1681,13 @@ export const MsgUpdateActionResponse = {
     }
     return message;
   },
+  fromJSON(_: any): MsgUpdateActionResponse {
+    return {};
+  },
+  toJSON(_: MsgUpdateActionResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<MsgUpdateActionResponse>): MsgUpdateActionResponse {
     const message = createBaseMsgUpdateActionResponse();
     return message;
@@ -1369,3 +1717,437 @@ export const MsgUpdateActionResponse = {
   }
 };
 GlobalDecoderRegistry.register(MsgUpdateActionResponse.typeUrl, MsgUpdateActionResponse);
+function createBaseMsgCreateHostedAccount(): MsgCreateHostedAccount {
+  return {
+    creator: "",
+    connectionId: "",
+    hostConnectionId: "",
+    version: "",
+    feeCoinsSuported: []
+  };
+}
+export const MsgCreateHostedAccount = {
+  typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccount",
+  is(o: any): o is MsgCreateHostedAccount {
+    return o && (o.$typeUrl === MsgCreateHostedAccount.typeUrl || typeof o.creator === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string" && typeof o.version === "string" && Array.isArray(o.feeCoinsSuported) && (!o.feeCoinsSuported.length || Coin.is(o.feeCoinsSuported[0])));
+  },
+  isSDK(o: any): o is MsgCreateHostedAccountSDKType {
+    return o && (o.$typeUrl === MsgCreateHostedAccount.typeUrl || typeof o.creator === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.version === "string" && Array.isArray(o.fee_coins_suported) && (!o.fee_coins_suported.length || Coin.isSDK(o.fee_coins_suported[0])));
+  },
+  isAmino(o: any): o is MsgCreateHostedAccountAmino {
+    return o && (o.$typeUrl === MsgCreateHostedAccount.typeUrl || typeof o.creator === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.version === "string" && Array.isArray(o.fee_coins_suported) && (!o.fee_coins_suported.length || Coin.isAmino(o.fee_coins_suported[0])));
+  },
+  encode(message: MsgCreateHostedAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.connectionId !== "") {
+      writer.uint32(18).string(message.connectionId);
+    }
+    if (message.hostConnectionId !== "") {
+      writer.uint32(26).string(message.hostConnectionId);
+    }
+    if (message.version !== "") {
+      writer.uint32(34).string(message.version);
+    }
+    for (const v of message.feeCoinsSuported) {
+      Coin.encode(v!, writer.uint32(42).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateHostedAccount {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateHostedAccount();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.connectionId = reader.string();
+          break;
+        case 3:
+          message.hostConnectionId = reader.string();
+          break;
+        case 4:
+          message.version = reader.string();
+          break;
+        case 5:
+          message.feeCoinsSuported.push(Coin.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgCreateHostedAccount {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      feeCoinsSuported: Array.isArray(object?.feeCoinsSuported) ? object.feeCoinsSuported.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgCreateHostedAccount): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.version !== undefined && (obj.version = message.version);
+    if (message.feeCoinsSuported) {
+      obj.feeCoinsSuported = message.feeCoinsSuported.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeCoinsSuported = [];
+    }
+    return obj;
+  },
+  fromPartial(object: Partial<MsgCreateHostedAccount>): MsgCreateHostedAccount {
+    const message = createBaseMsgCreateHostedAccount();
+    message.creator = object.creator ?? "";
+    message.connectionId = object.connectionId ?? "";
+    message.hostConnectionId = object.hostConnectionId ?? "";
+    message.version = object.version ?? "";
+    message.feeCoinsSuported = object.feeCoinsSuported?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgCreateHostedAccountAmino): MsgCreateHostedAccount {
+    const message = createBaseMsgCreateHostedAccount();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
+      message.hostConnectionId = object.host_connection_id;
+    }
+    if (object.version !== undefined && object.version !== null) {
+      message.version = object.version;
+    }
+    message.feeCoinsSuported = object.fee_coins_suported?.map(e => Coin.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgCreateHostedAccount): MsgCreateHostedAccountAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
+    obj.version = message.version === "" ? undefined : message.version;
+    if (message.feeCoinsSuported) {
+      obj.fee_coins_suported = message.feeCoinsSuported.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.fee_coins_suported = message.feeCoinsSuported;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateHostedAccountAminoMsg): MsgCreateHostedAccount {
+    return MsgCreateHostedAccount.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateHostedAccountProtoMsg): MsgCreateHostedAccount {
+    return MsgCreateHostedAccount.decode(message.value);
+  },
+  toProto(message: MsgCreateHostedAccount): Uint8Array {
+    return MsgCreateHostedAccount.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateHostedAccount): MsgCreateHostedAccountProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccount",
+      value: MsgCreateHostedAccount.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(MsgCreateHostedAccount.typeUrl, MsgCreateHostedAccount);
+function createBaseMsgCreateHostedAccountResponse(): MsgCreateHostedAccountResponse {
+  return {
+    address: ""
+  };
+}
+export const MsgCreateHostedAccountResponse = {
+  typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccountResponse",
+  is(o: any): o is MsgCreateHostedAccountResponse {
+    return o && (o.$typeUrl === MsgCreateHostedAccountResponse.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is MsgCreateHostedAccountResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateHostedAccountResponse.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is MsgCreateHostedAccountResponseAmino {
+    return o && (o.$typeUrl === MsgCreateHostedAccountResponse.typeUrl || typeof o.address === "string");
+  },
+  encode(message: MsgCreateHostedAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateHostedAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateHostedAccountResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgCreateHostedAccountResponse {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
+  toJSON(message: MsgCreateHostedAccountResponse): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
+  },
+  fromPartial(object: Partial<MsgCreateHostedAccountResponse>): MsgCreateHostedAccountResponse {
+    const message = createBaseMsgCreateHostedAccountResponse();
+    message.address = object.address ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateHostedAccountResponseAmino): MsgCreateHostedAccountResponse {
+    const message = createBaseMsgCreateHostedAccountResponse();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateHostedAccountResponse): MsgCreateHostedAccountResponseAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateHostedAccountResponseAminoMsg): MsgCreateHostedAccountResponse {
+    return MsgCreateHostedAccountResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateHostedAccountResponseProtoMsg): MsgCreateHostedAccountResponse {
+    return MsgCreateHostedAccountResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateHostedAccountResponse): Uint8Array {
+    return MsgCreateHostedAccountResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateHostedAccountResponse): MsgCreateHostedAccountResponseProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccountResponse",
+      value: MsgCreateHostedAccountResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(MsgCreateHostedAccountResponse.typeUrl, MsgCreateHostedAccountResponse);
+function createBaseMsgUpdateHostedAccount(): MsgUpdateHostedAccount {
+  return {
+    admin: "",
+    hostedAddress: "",
+    connectionId: "",
+    hostConnectionId: "",
+    hostFeeConfig: undefined
+  };
+}
+export const MsgUpdateHostedAccount = {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
+  is(o: any): o is MsgUpdateHostedAccount {
+    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hostedAddress === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
+  },
+  isSDK(o: any): o is MsgUpdateHostedAccountSDKType {
+    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hosted_address === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+  },
+  isAmino(o: any): o is MsgUpdateHostedAccountAmino {
+    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hosted_address === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+  },
+  encode(message: MsgUpdateHostedAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.admin !== "") {
+      writer.uint32(10).string(message.admin);
+    }
+    if (message.hostedAddress !== "") {
+      writer.uint32(18).string(message.hostedAddress);
+    }
+    if (message.connectionId !== "") {
+      writer.uint32(26).string(message.connectionId);
+    }
+    if (message.hostConnectionId !== "") {
+      writer.uint32(34).string(message.hostConnectionId);
+    }
+    if (message.hostFeeConfig !== undefined) {
+      HostFeeConfig.encode(message.hostFeeConfig, writer.uint32(42).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateHostedAccount {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateHostedAccount();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.admin = reader.string();
+          break;
+        case 2:
+          message.hostedAddress = reader.string();
+          break;
+        case 3:
+          message.connectionId = reader.string();
+          break;
+        case 4:
+          message.hostConnectionId = reader.string();
+          break;
+        case 5:
+          message.hostFeeConfig = HostFeeConfig.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgUpdateHostedAccount {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      hostedAddress: isSet(object.hostedAddress) ? String(object.hostedAddress) : "",
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
+      hostFeeConfig: isSet(object.hostFeeConfig) ? HostFeeConfig.fromJSON(object.hostFeeConfig) : undefined
+    };
+  },
+  toJSON(message: MsgUpdateHostedAccount): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
+    message.hostFeeConfig !== undefined && (obj.hostFeeConfig = message.hostFeeConfig ? HostFeeConfig.toJSON(message.hostFeeConfig) : undefined);
+    return obj;
+  },
+  fromPartial(object: Partial<MsgUpdateHostedAccount>): MsgUpdateHostedAccount {
+    const message = createBaseMsgUpdateHostedAccount();
+    message.admin = object.admin ?? "";
+    message.hostedAddress = object.hostedAddress ?? "";
+    message.connectionId = object.connectionId ?? "";
+    message.hostConnectionId = object.hostConnectionId ?? "";
+    message.hostFeeConfig = object.hostFeeConfig !== undefined && object.hostFeeConfig !== null ? HostFeeConfig.fromPartial(object.hostFeeConfig) : undefined;
+    return message;
+  },
+  fromAmino(object: MsgUpdateHostedAccountAmino): MsgUpdateHostedAccount {
+    const message = createBaseMsgUpdateHostedAccount();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.hosted_address !== undefined && object.hosted_address !== null) {
+      message.hostedAddress = object.hosted_address;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
+      message.hostConnectionId = object.host_connection_id;
+    }
+    if (object.host_fee_config !== undefined && object.host_fee_config !== null) {
+      message.hostFeeConfig = HostFeeConfig.fromAmino(object.host_fee_config);
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateHostedAccount): MsgUpdateHostedAccountAmino {
+    const obj: any = {};
+    obj.admin = message.admin === "" ? undefined : message.admin;
+    obj.hosted_address = message.hostedAddress === "" ? undefined : message.hostedAddress;
+    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
+    obj.host_fee_config = message.hostFeeConfig ? HostFeeConfig.toAmino(message.hostFeeConfig) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateHostedAccountAminoMsg): MsgUpdateHostedAccount {
+    return MsgUpdateHostedAccount.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateHostedAccountProtoMsg): MsgUpdateHostedAccount {
+    return MsgUpdateHostedAccount.decode(message.value);
+  },
+  toProto(message: MsgUpdateHostedAccount): Uint8Array {
+    return MsgUpdateHostedAccount.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateHostedAccount): MsgUpdateHostedAccountProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
+      value: MsgUpdateHostedAccount.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(MsgUpdateHostedAccount.typeUrl, MsgUpdateHostedAccount);
+function createBaseMsgUpdateHostedAccountResponse(): MsgUpdateHostedAccountResponse {
+  return {};
+}
+export const MsgUpdateHostedAccountResponse = {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccountResponse",
+  is(o: any): o is MsgUpdateHostedAccountResponse {
+    return o && o.$typeUrl === MsgUpdateHostedAccountResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateHostedAccountResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateHostedAccountResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateHostedAccountResponseAmino {
+    return o && o.$typeUrl === MsgUpdateHostedAccountResponse.typeUrl;
+  },
+  encode(_: MsgUpdateHostedAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateHostedAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateHostedAccountResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(_: any): MsgUpdateHostedAccountResponse {
+    return {};
+  },
+  toJSON(_: MsgUpdateHostedAccountResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+  fromPartial(_: Partial<MsgUpdateHostedAccountResponse>): MsgUpdateHostedAccountResponse {
+    const message = createBaseMsgUpdateHostedAccountResponse();
+    return message;
+  },
+  fromAmino(_: MsgUpdateHostedAccountResponseAmino): MsgUpdateHostedAccountResponse {
+    const message = createBaseMsgUpdateHostedAccountResponse();
+    return message;
+  },
+  toAmino(_: MsgUpdateHostedAccountResponse): MsgUpdateHostedAccountResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateHostedAccountResponseAminoMsg): MsgUpdateHostedAccountResponse {
+    return MsgUpdateHostedAccountResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateHostedAccountResponseProtoMsg): MsgUpdateHostedAccountResponse {
+    return MsgUpdateHostedAccountResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateHostedAccountResponse): Uint8Array {
+    return MsgUpdateHostedAccountResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateHostedAccountResponse): MsgUpdateHostedAccountResponseProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccountResponse",
+      value: MsgUpdateHostedAccountResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(MsgUpdateHostedAccountResponse.typeUrl, MsgUpdateHostedAccountResponse);

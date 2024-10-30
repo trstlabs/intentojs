@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentifiedGenesisMetadata = exports.GenesisMetadata = exports.GenesisState = void 0;
 const client_1 = require("./client");
 const binary_1 = require("../../../../binary");
-const registry_1 = require("../../../../registry");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 function createBaseGenesisState() {
     return {
         clients: [],
@@ -79,6 +79,41 @@ exports.GenesisState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clients: Array.isArray(object?.clients) ? object.clients.map((e) => client_1.IdentifiedClientState.fromJSON(e)) : [],
+            clientsConsensus: Array.isArray(object?.clientsConsensus) ? object.clientsConsensus.map((e) => client_1.ClientConsensusStates.fromJSON(e)) : [],
+            clientsMetadata: Array.isArray(object?.clientsMetadata) ? object.clientsMetadata.map((e) => exports.IdentifiedGenesisMetadata.fromJSON(e)) : [],
+            params: (0, helpers_1.isSet)(object.params) ? client_1.Params.fromJSON(object.params) : undefined,
+            createLocalhost: (0, helpers_1.isSet)(object.createLocalhost) ? Boolean(object.createLocalhost) : false,
+            nextClientSequence: (0, helpers_1.isSet)(object.nextClientSequence) ? BigInt(object.nextClientSequence.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.clients) {
+            obj.clients = message.clients.map(e => e ? client_1.IdentifiedClientState.toJSON(e) : undefined);
+        }
+        else {
+            obj.clients = [];
+        }
+        if (message.clientsConsensus) {
+            obj.clientsConsensus = message.clientsConsensus.map(e => e ? client_1.ClientConsensusStates.toJSON(e) : undefined);
+        }
+        else {
+            obj.clientsConsensus = [];
+        }
+        if (message.clientsMetadata) {
+            obj.clientsMetadata = message.clientsMetadata.map(e => e ? exports.IdentifiedGenesisMetadata.toJSON(e) : undefined);
+        }
+        else {
+            obj.clientsMetadata = [];
+        }
+        message.params !== undefined && (obj.params = message.params ? client_1.Params.toJSON(message.params) : undefined);
+        message.createLocalhost !== undefined && (obj.createLocalhost = message.createLocalhost);
+        message.nextClientSequence !== undefined && (obj.nextClientSequence = (message.nextClientSequence || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();
@@ -202,6 +237,18 @@ exports.GenesisMetadata = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            key: (0, helpers_1.isSet)(object.key) ? (0, helpers_1.bytesFromBase64)(object.key) : new Uint8Array(),
+            value: (0, helpers_1.isSet)(object.value) ? (0, helpers_1.bytesFromBase64)(object.value) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.key !== undefined && (obj.key = (0, helpers_1.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
+        message.value !== undefined && (obj.value = (0, helpers_1.base64FromBytes)(message.value !== undefined ? message.value : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseGenesisMetadata();
         message.key = object.key ?? new Uint8Array();
@@ -294,6 +341,23 @@ exports.IdentifiedGenesisMetadata = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            clientMetadata: Array.isArray(object?.clientMetadata) ? object.clientMetadata.map((e) => exports.GenesisMetadata.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        if (message.clientMetadata) {
+            obj.clientMetadata = message.clientMetadata.map(e => e ? exports.GenesisMetadata.toJSON(e) : undefined);
+        }
+        else {
+            obj.clientMetadata = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseIdentifiedGenesisMetadata();

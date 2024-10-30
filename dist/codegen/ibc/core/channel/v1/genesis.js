@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PacketSequence = exports.GenesisState = void 0;
 const channel_1 = require("./channel");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseGenesisState() {
     return {
@@ -92,6 +93,65 @@ exports.GenesisState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            channels: Array.isArray(object?.channels) ? object.channels.map((e) => channel_1.IdentifiedChannel.fromJSON(e)) : [],
+            acknowledgements: Array.isArray(object?.acknowledgements) ? object.acknowledgements.map((e) => channel_1.PacketState.fromJSON(e)) : [],
+            commitments: Array.isArray(object?.commitments) ? object.commitments.map((e) => channel_1.PacketState.fromJSON(e)) : [],
+            receipts: Array.isArray(object?.receipts) ? object.receipts.map((e) => channel_1.PacketState.fromJSON(e)) : [],
+            sendSequences: Array.isArray(object?.sendSequences) ? object.sendSequences.map((e) => exports.PacketSequence.fromJSON(e)) : [],
+            recvSequences: Array.isArray(object?.recvSequences) ? object.recvSequences.map((e) => exports.PacketSequence.fromJSON(e)) : [],
+            ackSequences: Array.isArray(object?.ackSequences) ? object.ackSequences.map((e) => exports.PacketSequence.fromJSON(e)) : [],
+            nextChannelSequence: (0, helpers_1.isSet)(object.nextChannelSequence) ? BigInt(object.nextChannelSequence.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.channels) {
+            obj.channels = message.channels.map(e => e ? channel_1.IdentifiedChannel.toJSON(e) : undefined);
+        }
+        else {
+            obj.channels = [];
+        }
+        if (message.acknowledgements) {
+            obj.acknowledgements = message.acknowledgements.map(e => e ? channel_1.PacketState.toJSON(e) : undefined);
+        }
+        else {
+            obj.acknowledgements = [];
+        }
+        if (message.commitments) {
+            obj.commitments = message.commitments.map(e => e ? channel_1.PacketState.toJSON(e) : undefined);
+        }
+        else {
+            obj.commitments = [];
+        }
+        if (message.receipts) {
+            obj.receipts = message.receipts.map(e => e ? channel_1.PacketState.toJSON(e) : undefined);
+        }
+        else {
+            obj.receipts = [];
+        }
+        if (message.sendSequences) {
+            obj.sendSequences = message.sendSequences.map(e => e ? exports.PacketSequence.toJSON(e) : undefined);
+        }
+        else {
+            obj.sendSequences = [];
+        }
+        if (message.recvSequences) {
+            obj.recvSequences = message.recvSequences.map(e => e ? exports.PacketSequence.toJSON(e) : undefined);
+        }
+        else {
+            obj.recvSequences = [];
+        }
+        if (message.ackSequences) {
+            obj.ackSequences = message.ackSequences.map(e => e ? exports.PacketSequence.toJSON(e) : undefined);
+        }
+        else {
+            obj.ackSequences = [];
+        }
+        message.nextChannelSequence !== undefined && (obj.nextChannelSequence = (message.nextChannelSequence || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();
@@ -243,6 +303,20 @@ exports.PacketSequence = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            portId: (0, helpers_1.isSet)(object.portId) ? String(object.portId) : "",
+            channelId: (0, helpers_1.isSet)(object.channelId) ? String(object.channelId) : "",
+            sequence: (0, helpers_1.isSet)(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.portId !== undefined && (obj.portId = message.portId);
+        message.channelId !== undefined && (obj.channelId = message.channelId);
+        message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBasePacketSequence();

@@ -72,6 +72,24 @@ exports.PageRequest = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            key: (0, helpers_1.isSet)(object.key) ? (0, helpers_1.bytesFromBase64)(object.key) : new Uint8Array(),
+            offset: (0, helpers_1.isSet)(object.offset) ? BigInt(object.offset.toString()) : BigInt(0),
+            limit: (0, helpers_1.isSet)(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
+            countTotal: (0, helpers_1.isSet)(object.countTotal) ? Boolean(object.countTotal) : false,
+            reverse: (0, helpers_1.isSet)(object.reverse) ? Boolean(object.reverse) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.key !== undefined && (obj.key = (0, helpers_1.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
+        message.offset !== undefined && (obj.offset = (message.offset || BigInt(0)).toString());
+        message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
+        message.countTotal !== undefined && (obj.countTotal = message.countTotal);
+        message.reverse !== undefined && (obj.reverse = message.reverse);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePageRequest();
         message.key = object.key ?? new Uint8Array();
@@ -179,6 +197,18 @@ exports.PageResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            nextKey: (0, helpers_1.isSet)(object.nextKey) ? (0, helpers_1.bytesFromBase64)(object.nextKey) : new Uint8Array(),
+            total: (0, helpers_1.isSet)(object.total) ? BigInt(object.total.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.nextKey !== undefined && (obj.nextKey = (0, helpers_1.base64FromBytes)(message.nextKey !== undefined ? message.nextKey : new Uint8Array()));
+        message.total !== undefined && (obj.total = (message.total || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBasePageResponse();

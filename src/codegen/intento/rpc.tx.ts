@@ -30,6 +30,9 @@ export const createRPCMsgClient = async ({
     },
     intent: {
       v1beta1: new (await import("./intent/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    interchainquery: {
+      v1: new (await import("./interchainquery/v1/messages.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });

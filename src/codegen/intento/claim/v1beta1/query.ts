@@ -1,4 +1,4 @@
-import { Action, ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType } from "./claim";
+import { Action, ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType, actionFromJSON, actionToJSON } from "./claim";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
@@ -212,6 +212,13 @@ export const QueryModuleAccountBalanceRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryModuleAccountBalanceRequest {
+    return {};
+  },
+  toJSON(_: QueryModuleAccountBalanceRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
   fromPartial(_: Partial<QueryModuleAccountBalanceRequest>): QueryModuleAccountBalanceRequest {
     const message = createBaseQueryModuleAccountBalanceRequest();
     return message;
@@ -280,6 +287,20 @@ export const QueryModuleAccountBalanceResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryModuleAccountBalanceResponse {
+    return {
+      moduleAccountBalance: Array.isArray(object?.moduleAccountBalance) ? object.moduleAccountBalance.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: QueryModuleAccountBalanceResponse): unknown {
+    const obj: any = {};
+    if (message.moduleAccountBalance) {
+      obj.moduleAccountBalance = message.moduleAccountBalance.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.moduleAccountBalance = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<QueryModuleAccountBalanceResponse>): QueryModuleAccountBalanceResponse {
     const message = createBaseQueryModuleAccountBalanceResponse();
     message.moduleAccountBalance = object.moduleAccountBalance?.map(e => Coin.fromPartial(e)) || [];
@@ -346,6 +367,13 @@ export const QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
+  toJSON(_: QueryParamsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
@@ -414,6 +442,16 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: QueryParamsResponse): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
@@ -488,6 +526,16 @@ export const QueryClaimRecordRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClaimRecordRequest {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
+  toJSON(message: QueryClaimRecordRequest): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClaimRecordRequest>): QueryClaimRecordRequest {
     const message = createBaseQueryClaimRecordRequest();
     message.address = object.address ?? "";
@@ -560,6 +608,16 @@ export const QueryClaimRecordResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryClaimRecordResponse {
+    return {
+      claimRecord: isSet(object.claimRecord) ? ClaimRecord.fromJSON(object.claimRecord) : undefined
+    };
+  },
+  toJSON(message: QueryClaimRecordResponse): unknown {
+    const obj: any = {};
+    message.claimRecord !== undefined && (obj.claimRecord = message.claimRecord ? ClaimRecord.toJSON(message.claimRecord) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryClaimRecordResponse>): QueryClaimRecordResponse {
     const message = createBaseQueryClaimRecordResponse();
@@ -641,6 +699,18 @@ export const QueryClaimableForActionRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClaimableForActionRequest {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      action: isSet(object.action) ? actionFromJSON(object.action) : -1
+    };
+  },
+  toJSON(message: QueryClaimableForActionRequest): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.action !== undefined && (obj.action = actionToJSON(message.action));
+    return obj;
+  },
   fromPartial(object: Partial<QueryClaimableForActionRequest>): QueryClaimableForActionRequest {
     const message = createBaseQueryClaimableForActionRequest();
     message.address = object.address ?? "";
@@ -719,6 +789,20 @@ export const QueryClaimableForActionResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClaimableForActionResponse {
+    return {
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: QueryClaimableForActionResponse): unknown {
+    const obj: any = {};
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<QueryClaimableForActionResponse>): QueryClaimableForActionResponse {
     const message = createBaseQueryClaimableForActionResponse();
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
@@ -794,6 +878,16 @@ export const QueryTotalClaimableRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryTotalClaimableRequest {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
+  toJSON(message: QueryTotalClaimableRequest): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
+  },
   fromPartial(object: Partial<QueryTotalClaimableRequest>): QueryTotalClaimableRequest {
     const message = createBaseQueryTotalClaimableRequest();
     message.address = object.address ?? "";
@@ -866,6 +960,20 @@ export const QueryTotalClaimableResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryTotalClaimableResponse {
+    return {
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: QueryTotalClaimableResponse): unknown {
+    const obj: any = {};
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<QueryTotalClaimableResponse>): QueryTotalClaimableResponse {
     const message = createBaseQueryTotalClaimableResponse();

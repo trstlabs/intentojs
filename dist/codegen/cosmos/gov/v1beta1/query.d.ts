@@ -430,6 +430,8 @@ export declare const QueryProposalRequest: {
     isAmino(o: any): o is QueryProposalRequestAmino;
     encode(message: QueryProposalRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalRequest;
+    fromJSON(object: any): QueryProposalRequest;
+    toJSON(message: QueryProposalRequest): unknown;
     fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
     fromAmino(object: QueryProposalRequestAmino): QueryProposalRequest;
     toAmino(message: QueryProposalRequest): QueryProposalRequestAmino;
@@ -447,6 +449,8 @@ export declare const QueryProposalResponse: {
     isAmino(o: any): o is QueryProposalResponseAmino;
     encode(message: QueryProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalResponse;
+    fromJSON(object: any): QueryProposalResponse;
+    toJSON(message: QueryProposalResponse): unknown;
     fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
     fromAmino(object: QueryProposalResponseAmino): QueryProposalResponse;
     toAmino(message: QueryProposalResponse): QueryProposalResponseAmino;
@@ -464,6 +468,8 @@ export declare const QueryProposalsRequest: {
     isAmino(o: any): o is QueryProposalsRequestAmino;
     encode(message: QueryProposalsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalsRequest;
+    fromJSON(object: any): QueryProposalsRequest;
+    toJSON(message: QueryProposalsRequest): unknown;
     fromPartial(object: Partial<QueryProposalsRequest>): QueryProposalsRequest;
     fromAmino(object: QueryProposalsRequestAmino): QueryProposalsRequest;
     toAmino(message: QueryProposalsRequest): QueryProposalsRequestAmino;
@@ -481,6 +487,8 @@ export declare const QueryProposalsResponse: {
     isAmino(o: any): o is QueryProposalsResponseAmino;
     encode(message: QueryProposalsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalsResponse;
+    fromJSON(object: any): QueryProposalsResponse;
+    toJSON(message: QueryProposalsResponse): unknown;
     fromPartial(object: Partial<QueryProposalsResponse>): QueryProposalsResponse;
     fromAmino(object: QueryProposalsResponseAmino): QueryProposalsResponse;
     toAmino(message: QueryProposalsResponse): QueryProposalsResponseAmino;
@@ -498,6 +506,8 @@ export declare const QueryVoteRequest: {
     isAmino(o: any): o is QueryVoteRequestAmino;
     encode(message: QueryVoteRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVoteRequest;
+    fromJSON(object: any): QueryVoteRequest;
+    toJSON(message: QueryVoteRequest): unknown;
     fromPartial(object: Partial<QueryVoteRequest>): QueryVoteRequest;
     fromAmino(object: QueryVoteRequestAmino): QueryVoteRequest;
     toAmino(message: QueryVoteRequest): QueryVoteRequestAmino;
@@ -515,6 +525,8 @@ export declare const QueryVoteResponse: {
     isAmino(o: any): o is QueryVoteResponseAmino;
     encode(message: QueryVoteResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVoteResponse;
+    fromJSON(object: any): QueryVoteResponse;
+    toJSON(message: QueryVoteResponse): unknown;
     fromPartial(object: Partial<QueryVoteResponse>): QueryVoteResponse;
     fromAmino(object: QueryVoteResponseAmino): QueryVoteResponse;
     toAmino(message: QueryVoteResponse): QueryVoteResponseAmino;
@@ -532,6 +544,8 @@ export declare const QueryVotesRequest: {
     isAmino(o: any): o is QueryVotesRequestAmino;
     encode(message: QueryVotesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVotesRequest;
+    fromJSON(object: any): QueryVotesRequest;
+    toJSON(message: QueryVotesRequest): unknown;
     fromPartial(object: Partial<QueryVotesRequest>): QueryVotesRequest;
     fromAmino(object: QueryVotesRequestAmino): QueryVotesRequest;
     toAmino(message: QueryVotesRequest): QueryVotesRequestAmino;
@@ -549,6 +563,8 @@ export declare const QueryVotesResponse: {
     isAmino(o: any): o is QueryVotesResponseAmino;
     encode(message: QueryVotesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVotesResponse;
+    fromJSON(object: any): QueryVotesResponse;
+    toJSON(message: QueryVotesResponse): unknown;
     fromPartial(object: Partial<QueryVotesResponse>): QueryVotesResponse;
     fromAmino(object: QueryVotesResponseAmino): QueryVotesResponse;
     toAmino(message: QueryVotesResponse): QueryVotesResponseAmino;
@@ -566,6 +582,8 @@ export declare const QueryParamsRequest: {
     isAmino(o: any): o is QueryParamsRequestAmino;
     encode(message: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(object: any): QueryParamsRequest;
+    toJSON(message: QueryParamsRequest): unknown;
     fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(object: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(message: QueryParamsRequest): QueryParamsRequestAmino;
@@ -583,6 +601,8 @@ export declare const QueryParamsResponse: {
     isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
+    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -600,6 +620,8 @@ export declare const QueryDepositRequest: {
     isAmino(o: any): o is QueryDepositRequestAmino;
     encode(message: QueryDepositRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDepositRequest;
+    fromJSON(object: any): QueryDepositRequest;
+    toJSON(message: QueryDepositRequest): unknown;
     fromPartial(object: Partial<QueryDepositRequest>): QueryDepositRequest;
     fromAmino(object: QueryDepositRequestAmino): QueryDepositRequest;
     toAmino(message: QueryDepositRequest): QueryDepositRequestAmino;
@@ -617,6 +639,8 @@ export declare const QueryDepositResponse: {
     isAmino(o: any): o is QueryDepositResponseAmino;
     encode(message: QueryDepositResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDepositResponse;
+    fromJSON(object: any): QueryDepositResponse;
+    toJSON(message: QueryDepositResponse): unknown;
     fromPartial(object: Partial<QueryDepositResponse>): QueryDepositResponse;
     fromAmino(object: QueryDepositResponseAmino): QueryDepositResponse;
     toAmino(message: QueryDepositResponse): QueryDepositResponseAmino;
@@ -634,6 +658,8 @@ export declare const QueryDepositsRequest: {
     isAmino(o: any): o is QueryDepositsRequestAmino;
     encode(message: QueryDepositsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDepositsRequest;
+    fromJSON(object: any): QueryDepositsRequest;
+    toJSON(message: QueryDepositsRequest): unknown;
     fromPartial(object: Partial<QueryDepositsRequest>): QueryDepositsRequest;
     fromAmino(object: QueryDepositsRequestAmino): QueryDepositsRequest;
     toAmino(message: QueryDepositsRequest): QueryDepositsRequestAmino;
@@ -651,6 +677,8 @@ export declare const QueryDepositsResponse: {
     isAmino(o: any): o is QueryDepositsResponseAmino;
     encode(message: QueryDepositsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDepositsResponse;
+    fromJSON(object: any): QueryDepositsResponse;
+    toJSON(message: QueryDepositsResponse): unknown;
     fromPartial(object: Partial<QueryDepositsResponse>): QueryDepositsResponse;
     fromAmino(object: QueryDepositsResponseAmino): QueryDepositsResponse;
     toAmino(message: QueryDepositsResponse): QueryDepositsResponseAmino;
@@ -668,6 +696,8 @@ export declare const QueryTallyResultRequest: {
     isAmino(o: any): o is QueryTallyResultRequestAmino;
     encode(message: QueryTallyResultRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryTallyResultRequest;
+    fromJSON(object: any): QueryTallyResultRequest;
+    toJSON(message: QueryTallyResultRequest): unknown;
     fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
     fromAmino(object: QueryTallyResultRequestAmino): QueryTallyResultRequest;
     toAmino(message: QueryTallyResultRequest): QueryTallyResultRequestAmino;
@@ -685,6 +715,8 @@ export declare const QueryTallyResultResponse: {
     isAmino(o: any): o is QueryTallyResultResponseAmino;
     encode(message: QueryTallyResultResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryTallyResultResponse;
+    fromJSON(object: any): QueryTallyResultResponse;
+    toJSON(message: QueryTallyResultResponse): unknown;
     fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;
     fromAmino(object: QueryTallyResultResponseAmino): QueryTallyResultResponse;
     toAmino(message: QueryTallyResultResponse): QueryTallyResultResponseAmino;

@@ -2,8 +2,8 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, ConsensusStateWithHeight, ConsensusStateWithHeightAmino, ConsensusStateWithHeightSDKType, Params, ParamsAmino, ParamsSDKType } from "./client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
  * method
@@ -576,6 +576,16 @@ export const QueryClientStateRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClientStateRequest {
+    return {
+      clientId: isSet(object.clientId) ? String(object.clientId) : ""
+    };
+  },
+  toJSON(message: QueryClientStateRequest): unknown {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.clientId = message.clientId);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClientStateRequest>): QueryClientStateRequest {
     const message = createBaseQueryClientStateRequest();
     message.clientId = object.clientId ?? "";
@@ -671,6 +681,20 @@ export const QueryClientStateResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClientStateResponse {
+    return {
+      clientState: isSet(object.clientState) ? Any.fromJSON(object.clientState) : undefined,
+      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined
+    };
+  },
+  toJSON(message: QueryClientStateResponse): unknown {
+    const obj: any = {};
+    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined);
+    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClientStateResponse>): QueryClientStateResponse {
     const message = createBaseQueryClientStateResponse();
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
@@ -762,6 +786,16 @@ export const QueryClientStatesRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClientStatesRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryClientStatesRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClientStatesRequest>): QueryClientStatesRequest {
     const message = createBaseQueryClientStatesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -849,6 +883,22 @@ export const QueryClientStatesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryClientStatesResponse {
+    return {
+      clientStates: Array.isArray(object?.clientStates) ? object.clientStates.map((e: any) => IdentifiedClientState.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryClientStatesResponse): unknown {
+    const obj: any = {};
+    if (message.clientStates) {
+      obj.clientStates = message.clientStates.map(e => e ? IdentifiedClientState.toJSON(e) : undefined);
+    } else {
+      obj.clientStates = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryClientStatesResponse>): QueryClientStatesResponse {
     const message = createBaseQueryClientStatesResponse();
@@ -958,6 +1008,22 @@ export const QueryConsensusStateRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryConsensusStateRequest {
+    return {
+      clientId: isSet(object.clientId) ? String(object.clientId) : "",
+      revisionNumber: isSet(object.revisionNumber) ? BigInt(object.revisionNumber.toString()) : BigInt(0),
+      revisionHeight: isSet(object.revisionHeight) ? BigInt(object.revisionHeight.toString()) : BigInt(0),
+      latestHeight: isSet(object.latestHeight) ? Boolean(object.latestHeight) : false
+    };
+  },
+  toJSON(message: QueryConsensusStateRequest): unknown {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.clientId = message.clientId);
+    message.revisionNumber !== undefined && (obj.revisionNumber = (message.revisionNumber || BigInt(0)).toString());
+    message.revisionHeight !== undefined && (obj.revisionHeight = (message.revisionHeight || BigInt(0)).toString());
+    message.latestHeight !== undefined && (obj.latestHeight = message.latestHeight);
+    return obj;
   },
   fromPartial(object: Partial<QueryConsensusStateRequest>): QueryConsensusStateRequest {
     const message = createBaseQueryConsensusStateRequest();
@@ -1069,6 +1135,20 @@ export const QueryConsensusStateResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryConsensusStateResponse {
+    return {
+      consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined,
+      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined
+    };
+  },
+  toJSON(message: QueryConsensusStateResponse): unknown {
+    const obj: any = {};
+    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
+    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryConsensusStateResponse>): QueryConsensusStateResponse {
     const message = createBaseQueryConsensusStateResponse();
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
@@ -1167,6 +1247,18 @@ export const QueryConsensusStatesRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryConsensusStatesRequest {
+    return {
+      clientId: isSet(object.clientId) ? String(object.clientId) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryConsensusStatesRequest): unknown {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.clientId = message.clientId);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest {
     const message = createBaseQueryConsensusStatesRequest();
     message.clientId = object.clientId ?? "";
@@ -1260,6 +1352,22 @@ export const QueryConsensusStatesResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryConsensusStatesResponse {
+    return {
+      consensusStates: Array.isArray(object?.consensusStates) ? object.consensusStates.map((e: any) => ConsensusStateWithHeight.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+  toJSON(message: QueryConsensusStatesResponse): unknown {
+    const obj: any = {};
+    if (message.consensusStates) {
+      obj.consensusStates = message.consensusStates.map(e => e ? ConsensusStateWithHeight.toJSON(e) : undefined);
+    } else {
+      obj.consensusStates = [];
+    }
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse {
     const message = createBaseQueryConsensusStatesResponse();
     message.consensusStates = object.consensusStates?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
@@ -1348,6 +1456,16 @@ export const QueryClientStatusRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClientStatusRequest {
+    return {
+      clientId: isSet(object.clientId) ? String(object.clientId) : ""
+    };
+  },
+  toJSON(message: QueryClientStatusRequest): unknown {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.clientId = message.clientId);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClientStatusRequest>): QueryClientStatusRequest {
     const message = createBaseQueryClientStatusRequest();
     message.clientId = object.clientId ?? "";
@@ -1429,6 +1547,16 @@ export const QueryClientStatusResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClientStatusResponse {
+    return {
+      status: isSet(object.status) ? String(object.status) : ""
+    };
+  },
+  toJSON(message: QueryClientStatusResponse): unknown {
+    const obj: any = {};
+    message.status !== undefined && (obj.status = message.status);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClientStatusResponse>): QueryClientStatusResponse {
     const message = createBaseQueryClientStatusResponse();
     message.status = object.status ?? "";
@@ -1501,6 +1629,13 @@ export const QueryClientParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryClientParamsRequest {
+    return {};
+  },
+  toJSON(_: QueryClientParamsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<QueryClientParamsRequest>): QueryClientParamsRequest {
     const message = createBaseQueryClientParamsRequest();
@@ -1578,6 +1713,16 @@ export const QueryClientParamsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryClientParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: QueryClientParamsResponse): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryClientParamsResponse>): QueryClientParamsResponse {
     const message = createBaseQueryClientParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -1650,6 +1795,13 @@ export const QueryUpgradedClientStateRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryUpgradedClientStateRequest {
+    return {};
+  },
+  toJSON(_: QueryUpgradedClientStateRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest {
     const message = createBaseQueryUpgradedClientStateRequest();
@@ -1727,6 +1879,16 @@ export const QueryUpgradedClientStateResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryUpgradedClientStateResponse {
+    return {
+      upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
+    };
+  },
+  toJSON(message: QueryUpgradedClientStateResponse): unknown {
+    const obj: any = {};
+    message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? Any.toJSON(message.upgradedClientState) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse {
     const message = createBaseQueryUpgradedClientStateResponse();
     message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
@@ -1799,6 +1961,13 @@ export const QueryUpgradedConsensusStateRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryUpgradedConsensusStateRequest {
+    return {};
+  },
+  toJSON(_: QueryUpgradedConsensusStateRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
@@ -1875,6 +2044,16 @@ export const QueryUpgradedConsensusStateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryUpgradedConsensusStateResponse {
+    return {
+      upgradedConsensusState: isSet(object.upgradedConsensusState) ? Any.fromJSON(object.upgradedConsensusState) : undefined
+    };
+  },
+  toJSON(message: QueryUpgradedConsensusStateResponse): unknown {
+    const obj: any = {};
+    message.upgradedConsensusState !== undefined && (obj.upgradedConsensusState = message.upgradedConsensusState ? Any.toJSON(message.upgradedConsensusState) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse {
     const message = createBaseQueryUpgradedConsensusStateResponse();

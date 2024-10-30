@@ -76,6 +76,8 @@ export declare const App: {
     isAmino(o: any): o is AppAmino;
     encode(message: App, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): App;
+    fromJSON(object: any): App;
+    toJSON(message: App): unknown;
     fromPartial(object: Partial<App>): App;
     fromAmino(object: AppAmino): App;
     toAmino(message: App): AppAmino;
@@ -91,6 +93,8 @@ export declare const Consensus: {
     isAmino(o: any): o is ConsensusAmino;
     encode(message: Consensus, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Consensus;
+    fromJSON(object: any): Consensus;
+    toJSON(message: Consensus): unknown;
     fromPartial(object: Partial<Consensus>): Consensus;
     fromAmino(object: ConsensusAmino): Consensus;
     toAmino(message: Consensus): ConsensusAmino;

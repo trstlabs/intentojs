@@ -121,6 +121,8 @@ export declare const GenesisState: {
     isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
+    toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -138,6 +140,8 @@ export declare const GenesisMetadata: {
     isAmino(o: any): o is GenesisMetadataAmino;
     encode(message: GenesisMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisMetadata;
+    fromJSON(object: any): GenesisMetadata;
+    toJSON(message: GenesisMetadata): unknown;
     fromPartial(object: Partial<GenesisMetadata>): GenesisMetadata;
     fromAmino(object: GenesisMetadataAmino): GenesisMetadata;
     toAmino(message: GenesisMetadata): GenesisMetadataAmino;
@@ -155,6 +159,8 @@ export declare const IdentifiedGenesisMetadata: {
     isAmino(o: any): o is IdentifiedGenesisMetadataAmino;
     encode(message: IdentifiedGenesisMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
+    fromJSON(object: any): IdentifiedGenesisMetadata;
+    toJSON(message: IdentifiedGenesisMetadata): unknown;
     fromPartial(object: Partial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
     fromAmino(object: IdentifiedGenesisMetadataAmino): IdentifiedGenesisMetadata;
     toAmino(message: IdentifiedGenesisMetadata): IdentifiedGenesisMetadataAmino;

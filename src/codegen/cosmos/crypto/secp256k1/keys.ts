@@ -1,5 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * PubKey defines a secp256k1 public key
@@ -99,6 +99,16 @@ export const PubKey = {
     }
     return message;
   },
+  fromJSON(object: any): PubKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
+  },
+  toJSON(message: PubKey): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
+    return obj;
+  },
   fromPartial(object: Partial<PubKey>): PubKey {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
@@ -179,6 +189,16 @@ export const PrivKey = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PrivKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
+  },
+  toJSON(message: PrivKey): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<PrivKey>): PrivKey {
     const message = createBasePrivKey();

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomHttpPattern = exports.HttpRule = exports.Http = void 0;
 const binary_1 = require("../../binary");
+const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
 function createBaseHttp() {
     return {
@@ -48,6 +49,23 @@ exports.Http = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            rules: Array.isArray(object?.rules) ? object.rules.map((e) => exports.HttpRule.fromJSON(e)) : [],
+            fullyDecodeReservedExpansion: (0, helpers_1.isSet)(object.fullyDecodeReservedExpansion) ? Boolean(object.fullyDecodeReservedExpansion) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.rules) {
+            obj.rules = message.rules.map(e => e ? exports.HttpRule.toJSON(e) : undefined);
+        }
+        else {
+            obj.rules = [];
+        }
+        message.fullyDecodeReservedExpansion !== undefined && (obj.fullyDecodeReservedExpansion = message.fullyDecodeReservedExpansion);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseHttp();
@@ -193,6 +211,39 @@ exports.HttpRule = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            selector: (0, helpers_1.isSet)(object.selector) ? String(object.selector) : "",
+            get: (0, helpers_1.isSet)(object.get) ? String(object.get) : undefined,
+            put: (0, helpers_1.isSet)(object.put) ? String(object.put) : undefined,
+            post: (0, helpers_1.isSet)(object.post) ? String(object.post) : undefined,
+            delete: (0, helpers_1.isSet)(object.delete) ? String(object.delete) : undefined,
+            patch: (0, helpers_1.isSet)(object.patch) ? String(object.patch) : undefined,
+            custom: (0, helpers_1.isSet)(object.custom) ? exports.CustomHttpPattern.fromJSON(object.custom) : undefined,
+            body: (0, helpers_1.isSet)(object.body) ? String(object.body) : "",
+            responseBody: (0, helpers_1.isSet)(object.responseBody) ? String(object.responseBody) : "",
+            additionalBindings: Array.isArray(object?.additionalBindings) ? object.additionalBindings.map((e) => exports.HttpRule.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.selector !== undefined && (obj.selector = message.selector);
+        message.get !== undefined && (obj.get = message.get);
+        message.put !== undefined && (obj.put = message.put);
+        message.post !== undefined && (obj.post = message.post);
+        message.delete !== undefined && (obj.delete = message.delete);
+        message.patch !== undefined && (obj.patch = message.patch);
+        message.custom !== undefined && (obj.custom = message.custom ? exports.CustomHttpPattern.toJSON(message.custom) : undefined);
+        message.body !== undefined && (obj.body = message.body);
+        message.responseBody !== undefined && (obj.responseBody = message.responseBody);
+        if (message.additionalBindings) {
+            obj.additionalBindings = message.additionalBindings.map(e => e ? exports.HttpRule.toJSON(e) : undefined);
+        }
+        else {
+            obj.additionalBindings = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseHttpRule();
         message.selector = object.selector ?? "";
@@ -320,6 +371,18 @@ exports.CustomHttpPattern = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            kind: (0, helpers_1.isSet)(object.kind) ? String(object.kind) : "",
+            path: (0, helpers_1.isSet)(object.path) ? String(object.path) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.kind !== undefined && (obj.kind = message.kind);
+        message.path !== undefined && (obj.path = message.path);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCustomHttpPattern();

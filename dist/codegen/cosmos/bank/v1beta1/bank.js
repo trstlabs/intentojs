@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Metadata = exports.DenomUnit = exports.Supply = exports.Output = exports.Input = exports.SendEnabled = exports.Params = void 0;
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseParams() {
     return {
@@ -50,6 +51,23 @@ exports.Params = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            sendEnabled: Array.isArray(object?.sendEnabled) ? object.sendEnabled.map((e) => exports.SendEnabled.fromJSON(e)) : [],
+            defaultSendEnabled: (0, helpers_1.isSet)(object.defaultSendEnabled) ? Boolean(object.defaultSendEnabled) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.sendEnabled) {
+            obj.sendEnabled = message.sendEnabled.map(e => e ? exports.SendEnabled.toJSON(e) : undefined);
+        }
+        else {
+            obj.sendEnabled = [];
+        }
+        message.defaultSendEnabled !== undefined && (obj.defaultSendEnabled = message.defaultSendEnabled);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseParams();
@@ -147,6 +165,18 @@ exports.SendEnabled = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : "",
+            enabled: (0, helpers_1.isSet)(object.enabled) ? Boolean(object.enabled) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        message.enabled !== undefined && (obj.enabled = message.enabled);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSendEnabled();
         message.denom = object.denom ?? "";
@@ -239,6 +269,23 @@ exports.Input = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
+            coins: Array.isArray(object?.coins) ? object.coins.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = message.address);
+        if (message.coins) {
+            obj.coins = message.coins.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.coins = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseInput();
@@ -336,6 +383,23 @@ exports.Output = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
+            coins: Array.isArray(object?.coins) ? object.coins.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = message.address);
+        if (message.coins) {
+            obj.coins = message.coins.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.coins = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseOutput();
         message.address = object.address ?? "";
@@ -425,6 +489,21 @@ exports.Supply = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            total: Array.isArray(object?.total) ? object.total.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.total) {
+            obj.total = message.total.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.total = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSupply();
@@ -523,6 +602,25 @@ exports.DenomUnit = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : "",
+            exponent: (0, helpers_1.isSet)(object.exponent) ? Number(object.exponent) : 0,
+            aliases: Array.isArray(object?.aliases) ? object.aliases.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        message.exponent !== undefined && (obj.exponent = Math.round(message.exponent));
+        if (message.aliases) {
+            obj.aliases = message.aliases.map(e => e);
+        }
+        else {
+            obj.aliases = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseDenomUnit();
@@ -666,6 +764,35 @@ exports.Metadata = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            denomUnits: Array.isArray(object?.denomUnits) ? object.denomUnits.map((e) => exports.DenomUnit.fromJSON(e)) : [],
+            base: (0, helpers_1.isSet)(object.base) ? String(object.base) : "",
+            display: (0, helpers_1.isSet)(object.display) ? String(object.display) : "",
+            name: (0, helpers_1.isSet)(object.name) ? String(object.name) : "",
+            symbol: (0, helpers_1.isSet)(object.symbol) ? String(object.symbol) : "",
+            uri: (0, helpers_1.isSet)(object.uri) ? String(object.uri) : "",
+            uriHash: (0, helpers_1.isSet)(object.uriHash) ? String(object.uriHash) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.description !== undefined && (obj.description = message.description);
+        if (message.denomUnits) {
+            obj.denomUnits = message.denomUnits.map(e => e ? exports.DenomUnit.toJSON(e) : undefined);
+        }
+        else {
+            obj.denomUnits = [];
+        }
+        message.base !== undefined && (obj.base = message.base);
+        message.display !== undefined && (obj.display = message.display);
+        message.name !== undefined && (obj.name = message.name);
+        message.symbol !== undefined && (obj.symbol = message.symbol);
+        message.uri !== undefined && (obj.uri = message.uri);
+        message.uriHash !== undefined && (obj.uriHash = message.uriHash);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMetadata();

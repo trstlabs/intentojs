@@ -286,6 +286,8 @@ export declare const Timestamp: {
     isAmino(o: any): o is string;
     encode(message: Timestamp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Timestamp;
+    fromJSON(object: any): Timestamp;
+    toJSON(message: Timestamp): unknown;
     fromPartial(object: Partial<Timestamp>): Timestamp;
     fromAmino(object: TimestampAmino): Timestamp;
     toAmino(message: Timestamp): TimestampAmino;

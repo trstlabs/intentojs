@@ -189,6 +189,29 @@ exports.Channel = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            state: (0, helpers_1.isSet)(object.state) ? stateFromJSON(object.state) : -1,
+            ordering: (0, helpers_1.isSet)(object.ordering) ? orderFromJSON(object.ordering) : -1,
+            counterparty: (0, helpers_1.isSet)(object.counterparty) ? exports.Counterparty.fromJSON(object.counterparty) : undefined,
+            connectionHops: Array.isArray(object?.connectionHops) ? object.connectionHops.map((e) => String(e)) : [],
+            version: (0, helpers_1.isSet)(object.version) ? String(object.version) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.state !== undefined && (obj.state = stateToJSON(message.state));
+        message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
+        message.counterparty !== undefined && (obj.counterparty = message.counterparty ? exports.Counterparty.toJSON(message.counterparty) : undefined);
+        if (message.connectionHops) {
+            obj.connectionHops = message.connectionHops.map(e => e);
+        }
+        else {
+            obj.connectionHops = [];
+        }
+        message.version !== undefined && (obj.version = message.version);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseChannel();
         message.state = object.state ?? 0;
@@ -335,6 +358,33 @@ exports.IdentifiedChannel = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            state: (0, helpers_1.isSet)(object.state) ? stateFromJSON(object.state) : -1,
+            ordering: (0, helpers_1.isSet)(object.ordering) ? orderFromJSON(object.ordering) : -1,
+            counterparty: (0, helpers_1.isSet)(object.counterparty) ? exports.Counterparty.fromJSON(object.counterparty) : undefined,
+            connectionHops: Array.isArray(object?.connectionHops) ? object.connectionHops.map((e) => String(e)) : [],
+            version: (0, helpers_1.isSet)(object.version) ? String(object.version) : "",
+            portId: (0, helpers_1.isSet)(object.portId) ? String(object.portId) : "",
+            channelId: (0, helpers_1.isSet)(object.channelId) ? String(object.channelId) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.state !== undefined && (obj.state = stateToJSON(message.state));
+        message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
+        message.counterparty !== undefined && (obj.counterparty = message.counterparty ? exports.Counterparty.toJSON(message.counterparty) : undefined);
+        if (message.connectionHops) {
+            obj.connectionHops = message.connectionHops.map(e => e);
+        }
+        else {
+            obj.connectionHops = [];
+        }
+        message.version !== undefined && (obj.version = message.version);
+        message.portId !== undefined && (obj.portId = message.portId);
+        message.channelId !== undefined && (obj.channelId = message.channelId);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseIdentifiedChannel();
         message.state = object.state ?? 0;
@@ -455,6 +505,18 @@ exports.Counterparty = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            portId: (0, helpers_1.isSet)(object.portId) ? String(object.portId) : "",
+            channelId: (0, helpers_1.isSet)(object.channelId) ? String(object.channelId) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.portId !== undefined && (obj.portId = message.portId);
+        message.channelId !== undefined && (obj.channelId = message.channelId);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseCounterparty();
@@ -590,6 +652,30 @@ exports.Packet = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            sequence: (0, helpers_1.isSet)(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0),
+            sourcePort: (0, helpers_1.isSet)(object.sourcePort) ? String(object.sourcePort) : "",
+            sourceChannel: (0, helpers_1.isSet)(object.sourceChannel) ? String(object.sourceChannel) : "",
+            destinationPort: (0, helpers_1.isSet)(object.destinationPort) ? String(object.destinationPort) : "",
+            destinationChannel: (0, helpers_1.isSet)(object.destinationChannel) ? String(object.destinationChannel) : "",
+            data: (0, helpers_1.isSet)(object.data) ? (0, helpers_1.bytesFromBase64)(object.data) : new Uint8Array(),
+            timeoutHeight: (0, helpers_1.isSet)(object.timeoutHeight) ? client_1.Height.fromJSON(object.timeoutHeight) : undefined,
+            timeoutTimestamp: (0, helpers_1.isSet)(object.timeoutTimestamp) ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
+        message.sourcePort !== undefined && (obj.sourcePort = message.sourcePort);
+        message.sourceChannel !== undefined && (obj.sourceChannel = message.sourceChannel);
+        message.destinationPort !== undefined && (obj.destinationPort = message.destinationPort);
+        message.destinationChannel !== undefined && (obj.destinationChannel = message.destinationChannel);
+        message.data !== undefined && (obj.data = (0, helpers_1.base64FromBytes)(message.data !== undefined ? message.data : new Uint8Array()));
+        message.timeoutHeight !== undefined && (obj.timeoutHeight = message.timeoutHeight ? client_1.Height.toJSON(message.timeoutHeight) : undefined);
+        message.timeoutTimestamp !== undefined && (obj.timeoutTimestamp = (message.timeoutTimestamp || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBasePacket();
@@ -728,6 +814,22 @@ exports.PacketState = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            portId: (0, helpers_1.isSet)(object.portId) ? String(object.portId) : "",
+            channelId: (0, helpers_1.isSet)(object.channelId) ? String(object.channelId) : "",
+            sequence: (0, helpers_1.isSet)(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0),
+            data: (0, helpers_1.isSet)(object.data) ? (0, helpers_1.bytesFromBase64)(object.data) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.portId !== undefined && (obj.portId = message.portId);
+        message.channelId !== undefined && (obj.channelId = message.channelId);
+        message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
+        message.data !== undefined && (obj.data = (0, helpers_1.base64FromBytes)(message.data !== undefined ? message.data : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePacketState();
         message.portId = object.portId ?? "";
@@ -830,6 +932,18 @@ exports.Acknowledgement = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            result: (0, helpers_1.isSet)(object.result) ? (0, helpers_1.bytesFromBase64)(object.result) : undefined,
+            error: (0, helpers_1.isSet)(object.error) ? String(object.error) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.result !== undefined && (obj.result = message.result !== undefined ? (0, helpers_1.base64FromBytes)(message.result) : undefined);
+        message.error !== undefined && (obj.error = message.error);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseAcknowledgement();

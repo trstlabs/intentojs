@@ -5,8 +5,8 @@ const any_1 = require("../../../google/protobuf/any");
 const coin_1 = require("../../base/v1beta1/coin");
 const gov_1 = require("./gov");
 const binary_1 = require("../../../binary");
-const registry_1 = require("../../../registry");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 function createBaseMsgSubmitProposal() {
     return {
         content: undefined,
@@ -60,6 +60,25 @@ exports.MsgSubmitProposal = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            content: (0, helpers_1.isSet)(object.content) ? registry_1.GlobalDecoderRegistry.fromJSON(object.content) : undefined,
+            initialDeposit: Array.isArray(object?.initialDeposit) ? object.initialDeposit.map((e) => coin_1.Coin.fromJSON(e)) : [],
+            proposer: (0, helpers_1.isSet)(object.proposer) ? String(object.proposer) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.content !== undefined && (obj.content = message.content ? registry_1.GlobalDecoderRegistry.toJSON(message.content) : undefined);
+        if (message.initialDeposit) {
+            obj.initialDeposit = message.initialDeposit.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.initialDeposit = [];
+        }
+        message.proposer !== undefined && (obj.proposer = message.proposer);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgSubmitProposal();
@@ -154,6 +173,16 @@ exports.MsgSubmitProposalResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            proposalId: (0, helpers_1.isSet)(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgSubmitProposalResponse();
@@ -250,6 +279,20 @@ exports.MsgVote = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            proposalId: (0, helpers_1.isSet)(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0),
+            voter: (0, helpers_1.isSet)(object.voter) ? String(object.voter) : "",
+            option: (0, helpers_1.isSet)(object.option) ? (0, gov_1.voteOptionFromJSON)(object.option) : -1
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
+        message.voter !== undefined && (obj.voter = message.voter);
+        message.option !== undefined && (obj.option = (0, gov_1.voteOptionToJSON)(message.option));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgVote();
         message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
@@ -332,6 +375,13 @@ exports.MsgVoteResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgVoteResponse();
@@ -423,6 +473,25 @@ exports.MsgVoteWeighted = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            proposalId: (0, helpers_1.isSet)(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0),
+            voter: (0, helpers_1.isSet)(object.voter) ? String(object.voter) : "",
+            options: Array.isArray(object?.options) ? object.options.map((e) => gov_1.WeightedVoteOption.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
+        message.voter !== undefined && (obj.voter = message.voter);
+        if (message.options) {
+            obj.options = message.options.map(e => e ? gov_1.WeightedVoteOption.toJSON(e) : undefined);
+        }
+        else {
+            obj.options = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgVoteWeighted();
         message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
@@ -508,6 +577,13 @@ exports.MsgVoteWeightedResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgVoteWeightedResponse();
@@ -599,6 +675,25 @@ exports.MsgDeposit = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            proposalId: (0, helpers_1.isSet)(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0),
+            depositor: (0, helpers_1.isSet)(object.depositor) ? String(object.depositor) : "",
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
+        message.depositor !== undefined && (obj.depositor = message.depositor);
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgDeposit();
         message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
@@ -684,6 +779,13 @@ exports.MsgDepositResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgDepositResponse();

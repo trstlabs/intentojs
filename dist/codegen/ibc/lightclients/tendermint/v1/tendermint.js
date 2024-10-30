@@ -9,8 +9,8 @@ const commitment_1 = require("../../../core/commitment/v1/commitment");
 const types_1 = require("../../../../tendermint/types/types");
 const validator_1 = require("../../../../tendermint/types/validator");
 const binary_1 = require("../../../../binary");
-const registry_1 = require("../../../../registry");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 function createBaseClientState() {
     return {
         chainId: "",
@@ -120,6 +120,46 @@ exports.ClientState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            chainId: (0, helpers_1.isSet)(object.chainId) ? String(object.chainId) : "",
+            trustLevel: (0, helpers_1.isSet)(object.trustLevel) ? exports.Fraction.fromJSON(object.trustLevel) : undefined,
+            trustingPeriod: (0, helpers_1.isSet)(object.trustingPeriod) ? duration_1.Duration.fromJSON(object.trustingPeriod) : undefined,
+            unbondingPeriod: (0, helpers_1.isSet)(object.unbondingPeriod) ? duration_1.Duration.fromJSON(object.unbondingPeriod) : undefined,
+            maxClockDrift: (0, helpers_1.isSet)(object.maxClockDrift) ? duration_1.Duration.fromJSON(object.maxClockDrift) : undefined,
+            frozenHeight: (0, helpers_1.isSet)(object.frozenHeight) ? client_1.Height.fromJSON(object.frozenHeight) : undefined,
+            latestHeight: (0, helpers_1.isSet)(object.latestHeight) ? client_1.Height.fromJSON(object.latestHeight) : undefined,
+            proofSpecs: Array.isArray(object?.proofSpecs) ? object.proofSpecs.map((e) => proofs_1.ProofSpec.fromJSON(e)) : [],
+            upgradePath: Array.isArray(object?.upgradePath) ? object.upgradePath.map((e) => String(e)) : [],
+            allowUpdateAfterExpiry: (0, helpers_1.isSet)(object.allowUpdateAfterExpiry) ? Boolean(object.allowUpdateAfterExpiry) : false,
+            allowUpdateAfterMisbehaviour: (0, helpers_1.isSet)(object.allowUpdateAfterMisbehaviour) ? Boolean(object.allowUpdateAfterMisbehaviour) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.chainId !== undefined && (obj.chainId = message.chainId);
+        message.trustLevel !== undefined && (obj.trustLevel = message.trustLevel ? exports.Fraction.toJSON(message.trustLevel) : undefined);
+        message.trustingPeriod !== undefined && (obj.trustingPeriod = message.trustingPeriod ? duration_1.Duration.toJSON(message.trustingPeriod) : undefined);
+        message.unbondingPeriod !== undefined && (obj.unbondingPeriod = message.unbondingPeriod ? duration_1.Duration.toJSON(message.unbondingPeriod) : undefined);
+        message.maxClockDrift !== undefined && (obj.maxClockDrift = message.maxClockDrift ? duration_1.Duration.toJSON(message.maxClockDrift) : undefined);
+        message.frozenHeight !== undefined && (obj.frozenHeight = message.frozenHeight ? client_1.Height.toJSON(message.frozenHeight) : undefined);
+        message.latestHeight !== undefined && (obj.latestHeight = message.latestHeight ? client_1.Height.toJSON(message.latestHeight) : undefined);
+        if (message.proofSpecs) {
+            obj.proofSpecs = message.proofSpecs.map(e => e ? proofs_1.ProofSpec.toJSON(e) : undefined);
+        }
+        else {
+            obj.proofSpecs = [];
+        }
+        if (message.upgradePath) {
+            obj.upgradePath = message.upgradePath.map(e => e);
+        }
+        else {
+            obj.upgradePath = [];
+        }
+        message.allowUpdateAfterExpiry !== undefined && (obj.allowUpdateAfterExpiry = message.allowUpdateAfterExpiry);
+        message.allowUpdateAfterMisbehaviour !== undefined && (obj.allowUpdateAfterMisbehaviour = message.allowUpdateAfterMisbehaviour);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseClientState();
@@ -272,6 +312,20 @@ exports.ConsensusState = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            timestamp: (0, helpers_1.isSet)(object.timestamp) ? (0, helpers_1.fromJsonTimestamp)(object.timestamp) : undefined,
+            root: (0, helpers_1.isSet)(object.root) ? commitment_1.MerkleRoot.fromJSON(object.root) : undefined,
+            nextValidatorsHash: (0, helpers_1.isSet)(object.nextValidatorsHash) ? (0, helpers_1.bytesFromBase64)(object.nextValidatorsHash) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
+        message.root !== undefined && (obj.root = message.root ? commitment_1.MerkleRoot.toJSON(message.root) : undefined);
+        message.nextValidatorsHash !== undefined && (obj.nextValidatorsHash = (0, helpers_1.base64FromBytes)(message.nextValidatorsHash !== undefined ? message.nextValidatorsHash : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseConsensusState();
         message.timestamp = object.timestamp ?? undefined;
@@ -376,6 +430,20 @@ exports.Misbehaviour = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            header1: (0, helpers_1.isSet)(object.header1) ? exports.Header.fromJSON(object.header1) : undefined,
+            header2: (0, helpers_1.isSet)(object.header2) ? exports.Header.fromJSON(object.header2) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        message.header1 !== undefined && (obj.header1 = message.header1 ? exports.Header.toJSON(message.header1) : undefined);
+        message.header2 !== undefined && (obj.header2 = message.header2 ? exports.Header.toJSON(message.header2) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMisbehaviour();
@@ -489,6 +557,22 @@ exports.Header = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            signedHeader: (0, helpers_1.isSet)(object.signedHeader) ? types_1.SignedHeader.fromJSON(object.signedHeader) : undefined,
+            validatorSet: (0, helpers_1.isSet)(object.validatorSet) ? validator_1.ValidatorSet.fromJSON(object.validatorSet) : undefined,
+            trustedHeight: (0, helpers_1.isSet)(object.trustedHeight) ? client_1.Height.fromJSON(object.trustedHeight) : undefined,
+            trustedValidators: (0, helpers_1.isSet)(object.trustedValidators) ? validator_1.ValidatorSet.fromJSON(object.trustedValidators) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.signedHeader !== undefined && (obj.signedHeader = message.signedHeader ? types_1.SignedHeader.toJSON(message.signedHeader) : undefined);
+        message.validatorSet !== undefined && (obj.validatorSet = message.validatorSet ? validator_1.ValidatorSet.toJSON(message.validatorSet) : undefined);
+        message.trustedHeight !== undefined && (obj.trustedHeight = message.trustedHeight ? client_1.Height.toJSON(message.trustedHeight) : undefined);
+        message.trustedValidators !== undefined && (obj.trustedValidators = message.trustedValidators ? validator_1.ValidatorSet.toJSON(message.trustedValidators) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseHeader();
         message.signedHeader = object.signedHeader !== undefined && object.signedHeader !== null ? types_1.SignedHeader.fromPartial(object.signedHeader) : undefined;
@@ -591,6 +675,18 @@ exports.Fraction = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            numerator: (0, helpers_1.isSet)(object.numerator) ? BigInt(object.numerator.toString()) : BigInt(0),
+            denominator: (0, helpers_1.isSet)(object.denominator) ? BigInt(object.denominator.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.numerator !== undefined && (obj.numerator = (message.numerator || BigInt(0)).toString());
+        message.denominator !== undefined && (obj.denominator = (message.denominator || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseFraction();

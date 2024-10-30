@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BitArray = void 0;
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseBitArray() {
     return {
@@ -58,6 +59,23 @@ exports.BitArray = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            bits: (0, helpers_1.isSet)(object.bits) ? BigInt(object.bits.toString()) : BigInt(0),
+            elems: Array.isArray(object?.elems) ? object.elems.map((e) => BigInt(e.toString())) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.bits !== undefined && (obj.bits = (message.bits || BigInt(0)).toString());
+        if (message.elems) {
+            obj.elems = message.elems.map(e => (e || BigInt(0)).toString());
+        }
+        else {
+            obj.elems = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBitArray();

@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface BitArray {
   bits: bigint;
@@ -74,6 +75,22 @@ export const BitArray = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): BitArray {
+    return {
+      bits: isSet(object.bits) ? BigInt(object.bits.toString()) : BigInt(0),
+      elems: Array.isArray(object?.elems) ? object.elems.map((e: any) => BigInt(e.toString())) : []
+    };
+  },
+  toJSON(message: BitArray): unknown {
+    const obj: any = {};
+    message.bits !== undefined && (obj.bits = (message.bits || BigInt(0)).toString());
+    if (message.elems) {
+      obj.elems = message.elems.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.elems = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<BitArray>): BitArray {
     const message = createBaseBitArray();

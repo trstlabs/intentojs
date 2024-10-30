@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientState = void 0;
 const client_1 = require("../../../core/client/v1/client");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseClientState() {
     return {
@@ -50,6 +51,18 @@ exports.ClientState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            chainId: (0, helpers_1.isSet)(object.chainId) ? String(object.chainId) : "",
+            height: (0, helpers_1.isSet)(object.height) ? client_1.Height.fromJSON(object.height) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.chainId !== undefined && (obj.chainId = message.chainId);
+        message.height !== undefined && (obj.height = message.height ? client_1.Height.toJSON(message.height) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseClientState();

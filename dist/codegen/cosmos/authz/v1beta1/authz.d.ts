@@ -151,6 +151,8 @@ export declare const GenericAuthorization: {
     isAmino(o: any): o is GenericAuthorizationAmino;
     encode(message: GenericAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenericAuthorization;
+    fromJSON(object: any): GenericAuthorization;
+    toJSON(message: GenericAuthorization): unknown;
     fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization;
     fromAmino(object: GenericAuthorizationAmino): GenericAuthorization;
     toAmino(message: GenericAuthorization): GenericAuthorizationAmino;
@@ -168,6 +170,8 @@ export declare const Grant: {
     isAmino(o: any): o is GrantAmino;
     encode(message: Grant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Grant;
+    fromJSON(object: any): Grant;
+    toJSON(message: Grant): unknown;
     fromPartial(object: Partial<Grant>): Grant;
     fromAmino(object: GrantAmino): Grant;
     toAmino(message: Grant): GrantAmino;
@@ -185,6 +189,8 @@ export declare const GrantAuthorization: {
     isAmino(o: any): o is GrantAuthorizationAmino;
     encode(message: GrantAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GrantAuthorization;
+    fromJSON(object: any): GrantAuthorization;
+    toJSON(message: GrantAuthorization): unknown;
     fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization;
     fromAmino(object: GrantAuthorizationAmino): GrantAuthorization;
     toAmino(message: GrantAuthorization): GrantAuthorizationAmino;
@@ -202,6 +208,8 @@ export declare const GrantQueueItem: {
     isAmino(o: any): o is GrantQueueItemAmino;
     encode(message: GrantQueueItem, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GrantQueueItem;
+    fromJSON(object: any): GrantQueueItem;
+    toJSON(message: GrantQueueItem): unknown;
     fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem;
     fromAmino(object: GrantQueueItemAmino): GrantQueueItem;
     toAmino(message: GrantQueueItem): GrantQueueItemAmino;

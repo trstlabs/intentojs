@@ -131,6 +131,29 @@ exports.ConnectionEnd = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            versions: Array.isArray(object?.versions) ? object.versions.map((e) => exports.Version.fromJSON(e)) : [],
+            state: (0, helpers_1.isSet)(object.state) ? stateFromJSON(object.state) : -1,
+            counterparty: (0, helpers_1.isSet)(object.counterparty) ? exports.Counterparty.fromJSON(object.counterparty) : undefined,
+            delayPeriod: (0, helpers_1.isSet)(object.delayPeriod) ? BigInt(object.delayPeriod.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        if (message.versions) {
+            obj.versions = message.versions.map(e => e ? exports.Version.toJSON(e) : undefined);
+        }
+        else {
+            obj.versions = [];
+        }
+        message.state !== undefined && (obj.state = stateToJSON(message.state));
+        message.counterparty !== undefined && (obj.counterparty = message.counterparty ? exports.Counterparty.toJSON(message.counterparty) : undefined);
+        message.delayPeriod !== undefined && (obj.delayPeriod = (message.delayPeriod || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseConnectionEnd();
         message.clientId = object.clientId ?? "";
@@ -270,6 +293,31 @@ exports.IdentifiedConnection = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            id: (0, helpers_1.isSet)(object.id) ? String(object.id) : "",
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            versions: Array.isArray(object?.versions) ? object.versions.map((e) => exports.Version.fromJSON(e)) : [],
+            state: (0, helpers_1.isSet)(object.state) ? stateFromJSON(object.state) : -1,
+            counterparty: (0, helpers_1.isSet)(object.counterparty) ? exports.Counterparty.fromJSON(object.counterparty) : undefined,
+            delayPeriod: (0, helpers_1.isSet)(object.delayPeriod) ? BigInt(object.delayPeriod.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.id !== undefined && (obj.id = message.id);
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        if (message.versions) {
+            obj.versions = message.versions.map(e => e ? exports.Version.toJSON(e) : undefined);
+        }
+        else {
+            obj.versions = [];
+        }
+        message.state !== undefined && (obj.state = stateToJSON(message.state));
+        message.counterparty !== undefined && (obj.counterparty = message.counterparty ? exports.Counterparty.toJSON(message.counterparty) : undefined);
+        message.delayPeriod !== undefined && (obj.delayPeriod = (message.delayPeriod || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseIdentifiedConnection();
         message.id = object.id ?? "";
@@ -393,6 +441,20 @@ exports.Counterparty = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            connectionId: (0, helpers_1.isSet)(object.connectionId) ? String(object.connectionId) : "",
+            prefix: (0, helpers_1.isSet)(object.prefix) ? commitment_1.MerklePrefix.fromJSON(object.prefix) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+        message.prefix !== undefined && (obj.prefix = message.prefix ? commitment_1.MerklePrefix.toJSON(message.prefix) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseCounterparty();
         message.clientId = object.clientId ?? "";
@@ -484,6 +546,21 @@ exports.ClientPaths = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            paths: Array.isArray(object?.paths) ? object.paths.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.paths) {
+            obj.paths = message.paths.map(e => e);
+        }
+        else {
+            obj.paths = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseClientPaths();
         message.paths = object.paths?.map(e => e) || [];
@@ -574,6 +651,23 @@ exports.ConnectionPaths = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            paths: Array.isArray(object?.paths) ? object.paths.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        if (message.paths) {
+            obj.paths = message.paths.map(e => e);
+        }
+        else {
+            obj.paths = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseConnectionPaths();
@@ -671,6 +765,23 @@ exports.Version = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            identifier: (0, helpers_1.isSet)(object.identifier) ? String(object.identifier) : "",
+            features: Array.isArray(object?.features) ? object.features.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.identifier !== undefined && (obj.identifier = message.identifier);
+        if (message.features) {
+            obj.features = message.features.map(e => e);
+        }
+        else {
+            obj.features = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseVersion();
         message.identifier = object.identifier ?? "";
@@ -759,6 +870,16 @@ exports.Params = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            maxExpectedTimePerBlock: (0, helpers_1.isSet)(object.maxExpectedTimePerBlock) ? BigInt(object.maxExpectedTimePerBlock.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.maxExpectedTimePerBlock !== undefined && (obj.maxExpectedTimePerBlock = (message.maxExpectedTimePerBlock || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseParams();

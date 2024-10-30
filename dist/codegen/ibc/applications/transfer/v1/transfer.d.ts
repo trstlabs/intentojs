@@ -103,6 +103,8 @@ export declare const DenomTrace: {
     isAmino(o: any): o is DenomTraceAmino;
     encode(message: DenomTrace, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DenomTrace;
+    fromJSON(object: any): DenomTrace;
+    toJSON(message: DenomTrace): unknown;
     fromPartial(object: Partial<DenomTrace>): DenomTrace;
     fromAmino(object: DenomTraceAmino): DenomTrace;
     toAmino(message: DenomTrace): DenomTraceAmino;
@@ -120,6 +122,8 @@ export declare const Params: {
     isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

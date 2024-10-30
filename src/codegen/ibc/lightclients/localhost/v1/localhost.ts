@@ -1,5 +1,6 @@
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * ClientState defines a loopback (localhost) client. It requires (read-only)
@@ -83,6 +84,18 @@ export const ClientState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ClientState {
+    return {
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
+      height: isSet(object.height) ? Height.fromJSON(object.height) : undefined
+    };
+  },
+  toJSON(message: ClientState): unknown {
+    const obj: any = {};
+    message.chainId !== undefined && (obj.chainId = message.chainId);
+    message.height !== undefined && (obj.height = message.height ? Height.toJSON(message.height) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();

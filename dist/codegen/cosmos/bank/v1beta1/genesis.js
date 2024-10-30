@@ -4,6 +4,7 @@ exports.Balance = exports.GenesisState = void 0;
 const bank_1 = require("./bank");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseGenesisState() {
     return {
@@ -65,6 +66,37 @@ exports.GenesisState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            params: (0, helpers_1.isSet)(object.params) ? bank_1.Params.fromJSON(object.params) : undefined,
+            balances: Array.isArray(object?.balances) ? object.balances.map((e) => exports.Balance.fromJSON(e)) : [],
+            supply: Array.isArray(object?.supply) ? object.supply.map((e) => coin_1.Coin.fromJSON(e)) : [],
+            denomMetadata: Array.isArray(object?.denomMetadata) ? object.denomMetadata.map((e) => bank_1.Metadata.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.params !== undefined && (obj.params = message.params ? bank_1.Params.toJSON(message.params) : undefined);
+        if (message.balances) {
+            obj.balances = message.balances.map(e => e ? exports.Balance.toJSON(e) : undefined);
+        }
+        else {
+            obj.balances = [];
+        }
+        if (message.supply) {
+            obj.supply = message.supply.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.supply = [];
+        }
+        if (message.denomMetadata) {
+            obj.denomMetadata = message.denomMetadata.map(e => e ? bank_1.Metadata.toJSON(e) : undefined);
+        }
+        else {
+            obj.denomMetadata = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();
@@ -177,6 +209,23 @@ exports.Balance = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
+            coins: Array.isArray(object?.coins) ? object.coins.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = message.address);
+        if (message.coins) {
+            obj.coins = message.coins.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.coins = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseBalance();

@@ -5,10 +5,6 @@ import {
   SigningStargateClient,
 } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-// import * as intentoAutoibctxV1beta1TxRegistry from "./codegen/intento/intent/v1beta1/tx.registry";
-// import * as intentoClaimV1beta1ClaimRegistry from "./codegen/intento/claim/v1beta1/claim.registry";
-// import * as intentoAutoibctxV1beta1TxAmino from "./codegen/intento/intent/v1beta1/tx.amino";
-// import * as intentoClaimV1beta1ClaimAmino from "./codegen/intento/claim/v1beta1/claim.amino";
 import { customMsgRegistry } from "./registry";
 import { intentoProtoRegistry, intentoAminoConverters } from "./codegen";
 

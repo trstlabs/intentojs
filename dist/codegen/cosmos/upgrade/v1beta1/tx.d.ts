@@ -139,6 +139,8 @@ export declare const MsgSoftwareUpgrade: {
     isAmino(o: any): o is MsgSoftwareUpgradeAmino;
     encode(message: MsgSoftwareUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSoftwareUpgrade;
+    fromJSON(object: any): MsgSoftwareUpgrade;
+    toJSON(message: MsgSoftwareUpgrade): unknown;
     fromPartial(object: Partial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade;
     fromAmino(object: MsgSoftwareUpgradeAmino): MsgSoftwareUpgrade;
     toAmino(message: MsgSoftwareUpgrade): MsgSoftwareUpgradeAmino;
@@ -156,6 +158,8 @@ export declare const MsgSoftwareUpgradeResponse: {
     isAmino(o: any): o is MsgSoftwareUpgradeResponseAmino;
     encode(_: MsgSoftwareUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSoftwareUpgradeResponse;
+    fromJSON(_: any): MsgSoftwareUpgradeResponse;
+    toJSON(_: MsgSoftwareUpgradeResponse): unknown;
     fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse;
     fromAmino(_: MsgSoftwareUpgradeResponseAmino): MsgSoftwareUpgradeResponse;
     toAmino(_: MsgSoftwareUpgradeResponse): MsgSoftwareUpgradeResponseAmino;
@@ -173,6 +177,8 @@ export declare const MsgCancelUpgrade: {
     isAmino(o: any): o is MsgCancelUpgradeAmino;
     encode(message: MsgCancelUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUpgrade;
+    fromJSON(object: any): MsgCancelUpgrade;
+    toJSON(message: MsgCancelUpgrade): unknown;
     fromPartial(object: Partial<MsgCancelUpgrade>): MsgCancelUpgrade;
     fromAmino(object: MsgCancelUpgradeAmino): MsgCancelUpgrade;
     toAmino(message: MsgCancelUpgrade): MsgCancelUpgradeAmino;
@@ -190,6 +196,8 @@ export declare const MsgCancelUpgradeResponse: {
     isAmino(o: any): o is MsgCancelUpgradeResponseAmino;
     encode(_: MsgCancelUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUpgradeResponse;
+    fromJSON(_: any): MsgCancelUpgradeResponse;
+    toJSON(_: MsgCancelUpgradeResponse): unknown;
     fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse;
     fromAmino(_: MsgCancelUpgradeResponseAmino): MsgCancelUpgradeResponse;
     toAmino(_: MsgCancelUpgradeResponse): MsgCancelUpgradeResponseAmino;

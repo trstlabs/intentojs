@@ -1,8 +1,8 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
 /** Minter represents the minting state. */
 export interface Minter {
   /** current annual expected provisions */
@@ -106,6 +106,16 @@ export const Minter = {
     }
     return message;
   },
+  fromJSON(object: any): Minter {
+    return {
+      annualProvisions: isSet(object.annualProvisions) ? String(object.annualProvisions) : ""
+    };
+  },
+  toJSON(message: Minter): unknown {
+    const obj: any = {};
+    message.annualProvisions !== undefined && (obj.annualProvisions = message.annualProvisions);
+    return obj;
+  },
   fromPartial(object: Partial<Minter>): Minter {
     const message = createBaseMinter();
     message.annualProvisions = object.annualProvisions ?? "";
@@ -206,6 +216,24 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      mintDenom: isSet(object.mintDenom) ? String(object.mintDenom) : "",
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      initialAnnualProvisions: isSet(object.initialAnnualProvisions) ? String(object.initialAnnualProvisions) : "",
+      reductionFactor: isSet(object.reductionFactor) ? String(object.reductionFactor) : "",
+      blocksPerYear: isSet(object.blocksPerYear) ? BigInt(object.blocksPerYear.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.mintDenom !== undefined && (obj.mintDenom = message.mintDenom);
+    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
+    message.initialAnnualProvisions !== undefined && (obj.initialAnnualProvisions = message.initialAnnualProvisions);
+    message.reductionFactor !== undefined && (obj.reductionFactor = message.reductionFactor);
+    message.blocksPerYear !== undefined && (obj.blocksPerYear = (message.blocksPerYear || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

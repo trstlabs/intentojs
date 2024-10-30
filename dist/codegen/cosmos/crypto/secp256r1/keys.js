@@ -44,6 +44,16 @@ exports.PubKey = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            key: (0, helpers_1.isSet)(object.key) ? (0, helpers_1.bytesFromBase64)(object.key) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.key !== undefined && (obj.key = (0, helpers_1.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBasePubKey();
         message.key = object.key ?? new Uint8Array();
@@ -124,6 +134,16 @@ exports.PrivKey = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            secret: (0, helpers_1.isSet)(object.secret) ? (0, helpers_1.bytesFromBase64)(object.secret) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.secret !== undefined && (obj.secret = (0, helpers_1.base64FromBytes)(message.secret !== undefined ? message.secret : new Uint8Array()));
+        return obj;
     },
     fromPartial(object) {
         const message = createBasePrivKey();

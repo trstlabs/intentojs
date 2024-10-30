@@ -4,8 +4,8 @@ exports.SearchTxsResult = exports.TxMsgData = exports.MsgData = exports.Simulati
 const any_1 = require("../../../../google/protobuf/any");
 const types_1 = require("../../../../tendermint/abci/types");
 const binary_1 = require("../../../../binary");
-const registry_1 = require("../../../../registry");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 function createBaseTxResponse() {
     return {
         height: BigInt(0),
@@ -129,6 +129,50 @@ exports.TxResponse = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            height: (0, helpers_1.isSet)(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            txhash: (0, helpers_1.isSet)(object.txhash) ? String(object.txhash) : "",
+            codespace: (0, helpers_1.isSet)(object.codespace) ? String(object.codespace) : "",
+            code: (0, helpers_1.isSet)(object.code) ? Number(object.code) : 0,
+            data: (0, helpers_1.isSet)(object.data) ? String(object.data) : "",
+            rawLog: (0, helpers_1.isSet)(object.rawLog) ? String(object.rawLog) : "",
+            logs: Array.isArray(object?.logs) ? object.logs.map((e) => exports.ABCIMessageLog.fromJSON(e)) : [],
+            info: (0, helpers_1.isSet)(object.info) ? String(object.info) : "",
+            gasWanted: (0, helpers_1.isSet)(object.gasWanted) ? BigInt(object.gasWanted.toString()) : BigInt(0),
+            gasUsed: (0, helpers_1.isSet)(object.gasUsed) ? BigInt(object.gasUsed.toString()) : BigInt(0),
+            tx: (0, helpers_1.isSet)(object.tx) ? any_1.Any.fromJSON(object.tx) : undefined,
+            timestamp: (0, helpers_1.isSet)(object.timestamp) ? String(object.timestamp) : "",
+            events: Array.isArray(object?.events) ? object.events.map((e) => types_1.Event.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.txhash !== undefined && (obj.txhash = message.txhash);
+        message.codespace !== undefined && (obj.codespace = message.codespace);
+        message.code !== undefined && (obj.code = Math.round(message.code));
+        message.data !== undefined && (obj.data = message.data);
+        message.rawLog !== undefined && (obj.rawLog = message.rawLog);
+        if (message.logs) {
+            obj.logs = message.logs.map(e => e ? exports.ABCIMessageLog.toJSON(e) : undefined);
+        }
+        else {
+            obj.logs = [];
+        }
+        message.info !== undefined && (obj.info = message.info);
+        message.gasWanted !== undefined && (obj.gasWanted = (message.gasWanted || BigInt(0)).toString());
+        message.gasUsed !== undefined && (obj.gasUsed = (message.gasUsed || BigInt(0)).toString());
+        message.tx !== undefined && (obj.tx = message.tx ? any_1.Any.toJSON(message.tx) : undefined);
+        message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+        if (message.events) {
+            obj.events = message.events.map(e => e ? types_1.Event.toJSON(e) : undefined);
+        }
+        else {
+            obj.events = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseTxResponse();
@@ -291,6 +335,25 @@ exports.ABCIMessageLog = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            msgIndex: (0, helpers_1.isSet)(object.msgIndex) ? Number(object.msgIndex) : 0,
+            log: (0, helpers_1.isSet)(object.log) ? String(object.log) : "",
+            events: Array.isArray(object?.events) ? object.events.map((e) => exports.StringEvent.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.msgIndex !== undefined && (obj.msgIndex = Math.round(message.msgIndex));
+        message.log !== undefined && (obj.log = message.log);
+        if (message.events) {
+            obj.events = message.events.map(e => e ? exports.StringEvent.toJSON(e) : undefined);
+        }
+        else {
+            obj.events = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseABCIMessageLog();
         message.msgIndex = object.msgIndex ?? 0;
@@ -392,6 +455,23 @@ exports.StringEvent = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            type: (0, helpers_1.isSet)(object.type) ? String(object.type) : "",
+            attributes: Array.isArray(object?.attributes) ? object.attributes.map((e) => exports.Attribute.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.type !== undefined && (obj.type = message.type);
+        if (message.attributes) {
+            obj.attributes = message.attributes.map(e => e ? exports.Attribute.toJSON(e) : undefined);
+        }
+        else {
+            obj.attributes = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseStringEvent();
         message.type = object.type ?? "";
@@ -488,6 +568,18 @@ exports.Attribute = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            key: (0, helpers_1.isSet)(object.key) ? String(object.key) : "",
+            value: (0, helpers_1.isSet)(object.value) ? String(object.value) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseAttribute();
         message.key = object.key ?? "";
@@ -580,6 +672,18 @@ exports.GasInfo = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            gasWanted: (0, helpers_1.isSet)(object.gasWanted) ? BigInt(object.gasWanted.toString()) : BigInt(0),
+            gasUsed: (0, helpers_1.isSet)(object.gasUsed) ? BigInt(object.gasUsed.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.gasWanted !== undefined && (obj.gasWanted = (message.gasWanted || BigInt(0)).toString());
+        message.gasUsed !== undefined && (obj.gasUsed = (message.gasUsed || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseGasInfo();
@@ -687,6 +791,32 @@ exports.Result = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            data: (0, helpers_1.isSet)(object.data) ? (0, helpers_1.bytesFromBase64)(object.data) : new Uint8Array(),
+            log: (0, helpers_1.isSet)(object.log) ? String(object.log) : "",
+            events: Array.isArray(object?.events) ? object.events.map((e) => types_1.Event.fromJSON(e)) : [],
+            msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e) => any_1.Any.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.data !== undefined && (obj.data = (0, helpers_1.base64FromBytes)(message.data !== undefined ? message.data : new Uint8Array()));
+        message.log !== undefined && (obj.log = message.log);
+        if (message.events) {
+            obj.events = message.events.map(e => e ? types_1.Event.toJSON(e) : undefined);
+        }
+        else {
+            obj.events = [];
+        }
+        if (message.msgResponses) {
+            obj.msgResponses = message.msgResponses.map(e => e ? any_1.Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.msgResponses = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseResult();
@@ -797,6 +927,18 @@ exports.SimulationResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            gasInfo: (0, helpers_1.isSet)(object.gasInfo) ? exports.GasInfo.fromJSON(object.gasInfo) : undefined,
+            result: (0, helpers_1.isSet)(object.result) ? exports.Result.fromJSON(object.result) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.gasInfo !== undefined && (obj.gasInfo = message.gasInfo ? exports.GasInfo.toJSON(message.gasInfo) : undefined);
+        message.result !== undefined && (obj.result = message.result ? exports.Result.toJSON(message.result) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseSimulationResponse();
         message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? exports.GasInfo.fromPartial(object.gasInfo) : undefined;
@@ -890,6 +1032,18 @@ exports.MsgData = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            msgType: (0, helpers_1.isSet)(object.msgType) ? String(object.msgType) : "",
+            data: (0, helpers_1.isSet)(object.data) ? (0, helpers_1.bytesFromBase64)(object.data) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.msgType !== undefined && (obj.msgType = message.msgType);
+        message.data !== undefined && (obj.data = (0, helpers_1.base64FromBytes)(message.data !== undefined ? message.data : new Uint8Array()));
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgData();
         message.msgType = object.msgType ?? "";
@@ -982,6 +1136,28 @@ exports.TxMsgData = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            data: Array.isArray(object?.data) ? object.data.map((e) => exports.MsgData.fromJSON(e)) : [],
+            msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e) => any_1.Any.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.data) {
+            obj.data = message.data.map(e => e ? exports.MsgData.toJSON(e) : undefined);
+        }
+        else {
+            obj.data = [];
+        }
+        if (message.msgResponses) {
+            obj.msgResponses = message.msgResponses.map(e => e ? any_1.Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.msgResponses = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseTxMsgData();
@@ -1109,6 +1285,31 @@ exports.SearchTxsResult = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            totalCount: (0, helpers_1.isSet)(object.totalCount) ? BigInt(object.totalCount.toString()) : BigInt(0),
+            count: (0, helpers_1.isSet)(object.count) ? BigInt(object.count.toString()) : BigInt(0),
+            pageNumber: (0, helpers_1.isSet)(object.pageNumber) ? BigInt(object.pageNumber.toString()) : BigInt(0),
+            pageTotal: (0, helpers_1.isSet)(object.pageTotal) ? BigInt(object.pageTotal.toString()) : BigInt(0),
+            limit: (0, helpers_1.isSet)(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
+            txs: Array.isArray(object?.txs) ? object.txs.map((e) => exports.TxResponse.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.totalCount !== undefined && (obj.totalCount = (message.totalCount || BigInt(0)).toString());
+        message.count !== undefined && (obj.count = (message.count || BigInt(0)).toString());
+        message.pageNumber !== undefined && (obj.pageNumber = (message.pageNumber || BigInt(0)).toString());
+        message.pageTotal !== undefined && (obj.pageTotal = (message.pageTotal || BigInt(0)).toString());
+        message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
+        if (message.txs) {
+            obj.txs = message.txs.map(e => e ? exports.TxResponse.toJSON(e) : undefined);
+        }
+        else {
+            obj.txs = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseSearchTxsResult();

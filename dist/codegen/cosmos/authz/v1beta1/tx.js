@@ -4,8 +4,8 @@ exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgGrantResponse = expor
 const authz_1 = require("./authz");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
-const registry_1 = require("../../../registry");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 function createBaseMsgGrant() {
     return {
         granter: "",
@@ -59,6 +59,20 @@ exports.MsgGrant = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            grant: (0, helpers_1.isSet)(object.grant) ? authz_1.Grant.fromJSON(object.grant) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.grant !== undefined && (obj.grant = message.grant ? authz_1.Grant.toJSON(message.grant) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgGrant();
@@ -151,6 +165,21 @@ exports.MsgExecResponse = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
+        }
+        else {
+            obj.results = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgExecResponse();
         message.results = object.results?.map(e => e) || [];
@@ -242,6 +271,23 @@ exports.MsgExec = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => registry_1.GlobalDecoderRegistry.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? registry_1.GlobalDecoderRegistry.toJSON(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgExec();
         message.grantee = object.grantee ?? "";
@@ -322,6 +368,13 @@ exports.MsgGrantResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgGrantResponse();
@@ -413,6 +466,20 @@ exports.MsgRevoke = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            msgTypeUrl: (0, helpers_1.isSet)(object.msgTypeUrl) ? String(object.msgTypeUrl) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.granter !== undefined && (obj.granter = message.granter);
+        message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseMsgRevoke();
         message.granter = object.granter ?? "";
@@ -495,6 +562,13 @@ exports.MsgRevokeResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgRevokeResponse();

@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PeerAddressInfo = exports.PeerInfo = exports.NodeInfoOther = exports.NodeInfo = exports.ProtocolVersion = void 0;
 const timestamp_1 = require("../../google/protobuf/timestamp");
 const binary_1 = require("../../binary");
-const registry_1 = require("../../registry");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 function createBaseProtocolVersion() {
     return {
         p2p: BigInt(0),
@@ -57,6 +57,20 @@ exports.ProtocolVersion = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            p2p: (0, helpers_1.isSet)(object.p2p) ? BigInt(object.p2p.toString()) : BigInt(0),
+            block: (0, helpers_1.isSet)(object.block) ? BigInt(object.block.toString()) : BigInt(0),
+            app: (0, helpers_1.isSet)(object.app) ? BigInt(object.app.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.p2p !== undefined && (obj.p2p = (message.p2p || BigInt(0)).toString());
+        message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
+        message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseProtocolVersion();
@@ -190,6 +204,30 @@ exports.NodeInfo = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            protocolVersion: (0, helpers_1.isSet)(object.protocolVersion) ? exports.ProtocolVersion.fromJSON(object.protocolVersion) : undefined,
+            nodeId: (0, helpers_1.isSet)(object.nodeId) ? String(object.nodeId) : "",
+            listenAddr: (0, helpers_1.isSet)(object.listenAddr) ? String(object.listenAddr) : "",
+            network: (0, helpers_1.isSet)(object.network) ? String(object.network) : "",
+            version: (0, helpers_1.isSet)(object.version) ? String(object.version) : "",
+            channels: (0, helpers_1.isSet)(object.channels) ? (0, helpers_1.bytesFromBase64)(object.channels) : new Uint8Array(),
+            moniker: (0, helpers_1.isSet)(object.moniker) ? String(object.moniker) : "",
+            other: (0, helpers_1.isSet)(object.other) ? exports.NodeInfoOther.fromJSON(object.other) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.protocolVersion !== undefined && (obj.protocolVersion = message.protocolVersion ? exports.ProtocolVersion.toJSON(message.protocolVersion) : undefined);
+        message.nodeId !== undefined && (obj.nodeId = message.nodeId);
+        message.listenAddr !== undefined && (obj.listenAddr = message.listenAddr);
+        message.network !== undefined && (obj.network = message.network);
+        message.version !== undefined && (obj.version = message.version);
+        message.channels !== undefined && (obj.channels = (0, helpers_1.base64FromBytes)(message.channels !== undefined ? message.channels : new Uint8Array()));
+        message.moniker !== undefined && (obj.moniker = message.moniker);
+        message.other !== undefined && (obj.other = message.other ? exports.NodeInfoOther.toJSON(message.other) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseNodeInfo();
         message.protocolVersion = object.protocolVersion !== undefined && object.protocolVersion !== null ? exports.ProtocolVersion.fromPartial(object.protocolVersion) : undefined;
@@ -305,6 +343,18 @@ exports.NodeInfoOther = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            txIndex: (0, helpers_1.isSet)(object.txIndex) ? String(object.txIndex) : "",
+            rpcAddress: (0, helpers_1.isSet)(object.rpcAddress) ? String(object.rpcAddress) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.txIndex !== undefined && (obj.txIndex = message.txIndex);
+        message.rpcAddress !== undefined && (obj.rpcAddress = message.rpcAddress);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseNodeInfoOther();
         message.txIndex = object.txIndex ?? "";
@@ -396,6 +446,25 @@ exports.PeerInfo = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            id: (0, helpers_1.isSet)(object.id) ? String(object.id) : "",
+            addressInfo: Array.isArray(object?.addressInfo) ? object.addressInfo.map((e) => exports.PeerAddressInfo.fromJSON(e)) : [],
+            lastConnected: (0, helpers_1.isSet)(object.lastConnected) ? (0, helpers_1.fromJsonTimestamp)(object.lastConnected) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.id !== undefined && (obj.id = message.id);
+        if (message.addressInfo) {
+            obj.addressInfo = message.addressInfo.map(e => e ? exports.PeerAddressInfo.toJSON(e) : undefined);
+        }
+        else {
+            obj.addressInfo = [];
+        }
+        message.lastConnected !== undefined && (obj.lastConnected = message.lastConnected.toISOString());
+        return obj;
     },
     fromPartial(object) {
         const message = createBasePeerInfo();
@@ -503,6 +572,22 @@ exports.PeerAddressInfo = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
+            lastDialSuccess: (0, helpers_1.isSet)(object.lastDialSuccess) ? (0, helpers_1.fromJsonTimestamp)(object.lastDialSuccess) : undefined,
+            lastDialFailure: (0, helpers_1.isSet)(object.lastDialFailure) ? (0, helpers_1.fromJsonTimestamp)(object.lastDialFailure) : undefined,
+            dialFailures: (0, helpers_1.isSet)(object.dialFailures) ? Number(object.dialFailures) : 0
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = message.address);
+        message.lastDialSuccess !== undefined && (obj.lastDialSuccess = message.lastDialSuccess.toISOString());
+        message.lastDialFailure !== undefined && (obj.lastDialFailure = message.lastDialFailure.toISOString());
+        message.dialFailures !== undefined && (obj.dialFailures = Math.round(message.dialFailures));
+        return obj;
     },
     fromPartial(object) {
         const message = createBasePeerAddressInfo();

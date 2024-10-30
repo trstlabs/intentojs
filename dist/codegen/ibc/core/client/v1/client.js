@@ -4,6 +4,7 @@ exports.Params = exports.Height = exports.UpgradeProposal = exports.ClientUpdate
 const any_1 = require("../../../../google/protobuf/any");
 const upgrade_1 = require("../../../../cosmos/upgrade/v1beta1/upgrade");
 const binary_1 = require("../../../../binary");
+const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
 function createBaseIdentifiedClientState() {
     return {
@@ -51,6 +52,18 @@ exports.IdentifiedClientState = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            clientState: (0, helpers_1.isSet)(object.clientState) ? any_1.Any.fromJSON(object.clientState) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        message.clientState !== undefined && (obj.clientState = message.clientState ? any_1.Any.toJSON(message.clientState) : undefined);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseIdentifiedClientState();
@@ -145,6 +158,18 @@ exports.ConsensusStateWithHeight = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            height: (0, helpers_1.isSet)(object.height) ? exports.Height.fromJSON(object.height) : undefined,
+            consensusState: (0, helpers_1.isSet)(object.consensusState) ? any_1.Any.fromJSON(object.consensusState) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.height !== undefined && (obj.height = message.height ? exports.Height.toJSON(message.height) : undefined);
+        message.consensusState !== undefined && (obj.consensusState = message.consensusState ? any_1.Any.toJSON(message.consensusState) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseConsensusStateWithHeight();
         message.height = object.height !== undefined && object.height !== null ? exports.Height.fromPartial(object.height) : undefined;
@@ -237,6 +262,23 @@ exports.ClientConsensusStates = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            clientId: (0, helpers_1.isSet)(object.clientId) ? String(object.clientId) : "",
+            consensusStates: Array.isArray(object?.consensusStates) ? object.consensusStates.map((e) => exports.ConsensusStateWithHeight.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.clientId !== undefined && (obj.clientId = message.clientId);
+        if (message.consensusStates) {
+            obj.consensusStates = message.consensusStates.map(e => e ? exports.ConsensusStateWithHeight.toJSON(e) : undefined);
+        }
+        else {
+            obj.consensusStates = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseClientConsensusStates();
@@ -348,6 +390,22 @@ exports.ClientUpdateProposal = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            subjectClientId: (0, helpers_1.isSet)(object.subjectClientId) ? String(object.subjectClientId) : "",
+            substituteClientId: (0, helpers_1.isSet)(object.substituteClientId) ? String(object.substituteClientId) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.title !== undefined && (obj.title = message.title);
+        message.description !== undefined && (obj.description = message.description);
+        message.subjectClientId !== undefined && (obj.subjectClientId = message.subjectClientId);
+        message.substituteClientId !== undefined && (obj.substituteClientId = message.substituteClientId);
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseClientUpdateProposal();
@@ -467,6 +525,22 @@ exports.UpgradeProposal = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            description: (0, helpers_1.isSet)(object.description) ? String(object.description) : "",
+            plan: (0, helpers_1.isSet)(object.plan) ? upgrade_1.Plan.fromJSON(object.plan) : undefined,
+            upgradedClientState: (0, helpers_1.isSet)(object.upgradedClientState) ? any_1.Any.fromJSON(object.upgradedClientState) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.title !== undefined && (obj.title = message.title);
+        message.description !== undefined && (obj.description = message.description);
+        message.plan !== undefined && (obj.plan = message.plan ? upgrade_1.Plan.toJSON(message.plan) : undefined);
+        message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? any_1.Any.toJSON(message.upgradedClientState) : undefined);
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseUpgradeProposal();
         message.title = object.title ?? "";
@@ -570,6 +644,18 @@ exports.Height = {
         }
         return message;
     },
+    fromJSON(object) {
+        return {
+            revisionNumber: (0, helpers_1.isSet)(object.revisionNumber) ? BigInt(object.revisionNumber.toString()) : BigInt(0),
+            revisionHeight: (0, helpers_1.isSet)(object.revisionHeight) ? BigInt(object.revisionHeight.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.revisionNumber !== undefined && (obj.revisionNumber = (message.revisionNumber || BigInt(0)).toString());
+        message.revisionHeight !== undefined && (obj.revisionHeight = (message.revisionHeight || BigInt(0)).toString());
+        return obj;
+    },
     fromPartial(object) {
         const message = createBaseHeight();
         message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? BigInt(object.revisionNumber.toString()) : BigInt(0);
@@ -651,6 +737,21 @@ exports.Params = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            allowedClients: Array.isArray(object?.allowedClients) ? object.allowedClients.map((e) => String(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.allowedClients) {
+            obj.allowedClients = message.allowedClients.map(e => e);
+        }
+        else {
+            obj.allowedClients = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseParams();

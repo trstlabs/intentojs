@@ -4,6 +4,7 @@ exports.MsgMultiSendResponse = exports.MsgMultiSend = exports.MsgSendResponse = 
 const coin_1 = require("../../base/v1beta1/coin");
 const bank_1 = require("./bank");
 const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
 function createBaseMsgSend() {
     return {
@@ -58,6 +59,25 @@ exports.MsgSend = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            fromAddress: (0, helpers_1.isSet)(object.fromAddress) ? String(object.fromAddress) : "",
+            toAddress: (0, helpers_1.isSet)(object.toAddress) ? String(object.toAddress) : "",
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
+        message.toAddress !== undefined && (obj.toAddress = message.toAddress);
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgSend();
@@ -145,6 +165,13 @@ exports.MsgSendResponse = {
         }
         return message;
     },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
     fromPartial(_) {
         const message = createBaseMsgSendResponse();
         return message;
@@ -227,6 +254,28 @@ exports.MsgMultiSend = {
             }
         }
         return message;
+    },
+    fromJSON(object) {
+        return {
+            inputs: Array.isArray(object?.inputs) ? object.inputs.map((e) => bank_1.Input.fromJSON(e)) : [],
+            outputs: Array.isArray(object?.outputs) ? object.outputs.map((e) => bank_1.Output.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.inputs) {
+            obj.inputs = message.inputs.map(e => e ? bank_1.Input.toJSON(e) : undefined);
+        }
+        else {
+            obj.inputs = [];
+        }
+        if (message.outputs) {
+            obj.outputs = message.outputs.map(e => e ? bank_1.Output.toJSON(e) : undefined);
+        }
+        else {
+            obj.outputs = [];
+        }
+        return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgMultiSend();
@@ -311,6 +360,13 @@ exports.MsgMultiSendResponse = {
             }
         }
         return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
     },
     fromPartial(_) {
         const message = createBaseMsgMultiSendResponse();

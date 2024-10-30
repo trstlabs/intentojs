@@ -88,6 +88,8 @@ export declare const GenesisState: {
     isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
+    toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -105,6 +107,8 @@ export declare const Balance: {
     isAmino(o: any): o is BalanceAmino;
     encode(message: Balance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Balance;
+    fromJSON(object: any): Balance;
+    toJSON(message: Balance): unknown;
     fromPartial(object: Partial<Balance>): Balance;
     fromAmino(object: BalanceAmino): Balance;
     toAmino(message: Balance): BalanceAmino;

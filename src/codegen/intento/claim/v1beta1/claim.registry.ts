@@ -24,6 +24,22 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    claimClaimable(value: MsgClaimClaimable) {
+      return {
+        typeUrl: "/intento.claim.v1beta1.MsgClaimClaimable",
+        value: MsgClaimClaimable.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    claimClaimable(value: any) {
+      return {
+        typeUrl: "/intento.claim.v1beta1.MsgClaimClaimable",
+        value: MsgClaimClaimable.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     claimClaimable(value: MsgClaimClaimable) {
       return {

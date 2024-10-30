@@ -55,6 +55,8 @@ export declare const BIP44Params: {
     isAmino(o: any): o is BIP44ParamsAmino;
     encode(message: BIP44Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BIP44Params;
+    fromJSON(object: any): BIP44Params;
+    toJSON(message: BIP44Params): unknown;
     fromPartial(object: Partial<BIP44Params>): BIP44Params;
     fromAmino(object: BIP44ParamsAmino): BIP44Params;
     toAmino(message: BIP44Params): BIP44ParamsAmino;

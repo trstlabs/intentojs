@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgRegisterAccount, MsgRegisterAccountResponse, MsgSubmitTx, MsgSubmitTxResponse, MsgSubmitAction, MsgSubmitActionResponse, MsgRegisterAccountAndSubmitAction, MsgRegisterAccountAndSubmitActionResponse, MsgUpdateAction, MsgUpdateActionResponse } from "./tx";
+import { MsgRegisterAccount, MsgRegisterAccountResponse, MsgSubmitTx, MsgSubmitTxResponse, MsgSubmitAction, MsgSubmitActionResponse, MsgRegisterAccountAndSubmitAction, MsgRegisterAccountAndSubmitActionResponse, MsgUpdateAction, MsgUpdateActionResponse, MsgCreateHostedAccount, MsgCreateHostedAccountResponse, MsgUpdateHostedAccount, MsgUpdateHostedAccountResponse } from "./tx";
 /** Msg defines the ica-authentication Msg service. */
 export interface Msg {
   /** Register defines a rpc handler for MsgRegisterAccount */
@@ -9,6 +9,8 @@ export interface Msg {
   submitAction(request: MsgSubmitAction): Promise<MsgSubmitActionResponse>;
   registerAccountAndSubmitAction(request: MsgRegisterAccountAndSubmitAction): Promise<MsgRegisterAccountAndSubmitActionResponse>;
   updateAction(request: MsgUpdateAction): Promise<MsgUpdateActionResponse>;
+  createHostedAccount(request: MsgCreateHostedAccount): Promise<MsgCreateHostedAccountResponse>;
+  updateHostedAccount(request: MsgUpdateHostedAccount): Promise<MsgUpdateHostedAccountResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -19,6 +21,8 @@ export class MsgClientImpl implements Msg {
     this.submitAction = this.submitAction.bind(this);
     this.registerAccountAndSubmitAction = this.registerAccountAndSubmitAction.bind(this);
     this.updateAction = this.updateAction.bind(this);
+    this.createHostedAccount = this.createHostedAccount.bind(this);
+    this.updateHostedAccount = this.updateHostedAccount.bind(this);
   }
   registerAccount(request: MsgRegisterAccount): Promise<MsgRegisterAccountResponse> {
     const data = MsgRegisterAccount.encode(request).finish();
@@ -44,5 +48,15 @@ export class MsgClientImpl implements Msg {
     const data = MsgUpdateAction.encode(request).finish();
     const promise = this.rpc.request("intento.intent.v1beta1.Msg", "UpdateAction", data);
     return promise.then(data => MsgUpdateActionResponse.decode(new BinaryReader(data)));
+  }
+  createHostedAccount(request: MsgCreateHostedAccount): Promise<MsgCreateHostedAccountResponse> {
+    const data = MsgCreateHostedAccount.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Msg", "CreateHostedAccount", data);
+    return promise.then(data => MsgCreateHostedAccountResponse.decode(new BinaryReader(data)));
+  }
+  updateHostedAccount(request: MsgUpdateHostedAccount): Promise<MsgUpdateHostedAccountResponse> {
+    const data = MsgUpdateHostedAccount.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Msg", "UpdateHostedAccount", data);
+    return promise.then(data => MsgUpdateHostedAccountResponse.decode(new BinaryReader(data)));
   }
 }
