@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgSubmitQueryResponse } from "./messages";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/intento.interchainquery.v1.MsgSubmitQueryResponse", MsgSubmitQueryResponse]];
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/stride.interchainquery.v1.MsgSubmitQueryResponse", MsgSubmitQueryResponse]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -11,7 +11,7 @@ export const MessageComposer = {
   encoded: {
     submitQueryResponse(value: MsgSubmitQueryResponse) {
       return {
-        typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+        typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
         value: MsgSubmitQueryResponse.encode(value).finish()
       };
     }
@@ -19,7 +19,7 @@ export const MessageComposer = {
   withTypeUrl: {
     submitQueryResponse(value: MsgSubmitQueryResponse) {
       return {
-        typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+        typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
         value
       };
     }
@@ -27,7 +27,7 @@ export const MessageComposer = {
   toJSON: {
     submitQueryResponse(value: MsgSubmitQueryResponse) {
       return {
-        typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+        typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
         value: MsgSubmitQueryResponse.toJSON(value)
       };
     }
@@ -35,7 +35,7 @@ export const MessageComposer = {
   fromJSON: {
     submitQueryResponse(value: any) {
       return {
-        typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+        typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
         value: MsgSubmitQueryResponse.fromJSON(value)
       };
     }
@@ -43,7 +43,7 @@ export const MessageComposer = {
   fromPartial: {
     submitQueryResponse(value: MsgSubmitQueryResponse) {
       return {
-        typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+        typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
         value: MsgSubmitQueryResponse.fromPartial(value)
       };
     }

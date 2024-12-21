@@ -20,20 +20,20 @@ import * as _71 from "./lightclients/localhost/v1/localhost";
 import * as _72 from "./lightclients/solomachine/v1/solomachine";
 import * as _73 from "./lightclients/solomachine/v2/solomachine";
 import * as _74 from "./lightclients/tendermint/v1/tendermint";
-import * as _143 from "./applications/transfer/v1/query.rpc.Query";
-import * as _144 from "./core/channel/v1/query.rpc.Query";
-import * as _145 from "./core/client/v1/query.rpc.Query";
-import * as _146 from "./core/connection/v1/query.rpc.Query";
-import * as _147 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _148 from "./core/channel/v1/tx.rpc.msg";
-import * as _149 from "./core/client/v1/tx.rpc.msg";
-import * as _150 from "./core/connection/v1/tx.rpc.msg";
+import * as _144 from "./applications/transfer/v1/query.rpc.Query";
+import * as _145 from "./core/channel/v1/query.rpc.Query";
+import * as _146 from "./core/client/v1/query.rpc.Query";
+import * as _147 from "./core/connection/v1/query.rpc.Query";
+import * as _148 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _149 from "./core/channel/v1/tx.rpc.msg";
+import * as _150 from "./core/client/v1/tx.rpc.msg";
+import * as _151 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _147.MsgClientImpl;
-                QueryClientImpl: typeof _143.QueryClientImpl;
+                MsgClientImpl: typeof _148.MsgClientImpl;
+                QueryClientImpl: typeof _144.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     denomTrace(request: _54.QueryDenomTraceRequest): Promise<_54.QueryDenomTraceResponse>;
                     denomTraces(request?: _54.QueryDenomTracesRequest): Promise<_54.QueryDenomTracesResponse>;
@@ -316,8 +316,8 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _148.MsgClientImpl;
-                QueryClientImpl: typeof _144.QueryClientImpl;
+                MsgClientImpl: typeof _149.MsgClientImpl;
+                QueryClientImpl: typeof _145.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     channel(request: _60.QueryChannelRequest): Promise<_60.QueryChannelResponse>;
                     channels(request?: _60.QueryChannelsRequest): Promise<_60.QueryChannelsResponse>;
@@ -1639,8 +1639,8 @@ export declare namespace ibc {
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _149.MsgClientImpl;
-                QueryClientImpl: typeof _145.QueryClientImpl;
+                MsgClientImpl: typeof _150.MsgClientImpl;
+                QueryClientImpl: typeof _146.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     clientState(request: _64.QueryClientStateRequest): Promise<_64.QueryClientStateResponse>;
                     clientStates(request?: _64.QueryClientStatesRequest): Promise<_64.QueryClientStatesResponse>;
@@ -2497,8 +2497,8 @@ export declare namespace ibc {
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _150.MsgClientImpl;
-                QueryClientImpl: typeof _146.QueryClientImpl;
+                MsgClientImpl: typeof _151.MsgClientImpl;
+                QueryClientImpl: typeof _147.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     connection(request: _69.QueryConnectionRequest): Promise<_69.QueryConnectionResponse>;
                     connections(request?: _69.QueryConnectionsRequest): Promise<_69.QueryConnectionsResponse>;
@@ -3899,18 +3899,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _147.MsgClientImpl;
+                        v1: _148.MsgClientImpl;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _148.MsgClientImpl;
-                    };
-                    client: {
                         v1: _149.MsgClientImpl;
                     };
-                    connection: {
+                    client: {
                         v1: _150.MsgClientImpl;
+                    };
+                    connection: {
+                        v1: _151.MsgClientImpl;
                     };
                 };
             };

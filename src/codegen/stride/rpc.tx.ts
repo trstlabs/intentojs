@@ -24,18 +24,9 @@ export const createRPCMsgClient = async ({
       v1beta1: new (await import("../cosmos/upgrade/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
-  intento: {
-    alloc: {
-      v1beta1: new (await import("./alloc/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
-    },
-    claim: {
-      v1beta1: new (await import("./claim/v1beta1/claim.rpc.msg")).MsgClientImpl(rpc)
-    },
-    intent: {
-      v1beta1: new (await import("./intent/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
-    },
-    mint: {
-      v1beta1: new (await import("./mint/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+  stride: {
+    interchainquery: {
+      v1: new (await import("./interchainquery/v1/messages.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });

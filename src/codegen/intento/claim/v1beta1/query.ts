@@ -131,21 +131,21 @@ export interface QueryClaimableForActionRequestSDKType {
   action: Action;
 }
 export interface QueryClaimableForActionResponse {
-  coins: Coin[];
+  total: Coin;
 }
 export interface QueryClaimableForActionResponseProtoMsg {
   typeUrl: "/intento.claim.v1beta1.QueryClaimableForActionResponse";
   value: Uint8Array;
 }
 export interface QueryClaimableForActionResponseAmino {
-  coins?: CoinAmino[];
+  total?: CoinAmino;
 }
 export interface QueryClaimableForActionResponseAminoMsg {
   type: "/intento.claim.v1beta1.QueryClaimableForActionResponse";
   value: QueryClaimableForActionResponseAmino;
 }
 export interface QueryClaimableForActionResponseSDKType {
-  coins: CoinSDKType[];
+  total: CoinSDKType;
 }
 export interface QueryTotalClaimableRequest {
   address: string;
@@ -165,21 +165,21 @@ export interface QueryTotalClaimableRequestSDKType {
   address: string;
 }
 export interface QueryTotalClaimableResponse {
-  coins: Coin[];
+  total: Coin;
 }
 export interface QueryTotalClaimableResponseProtoMsg {
   typeUrl: "/intento.claim.v1beta1.QueryTotalClaimableResponse";
   value: Uint8Array;
 }
 export interface QueryTotalClaimableResponseAmino {
-  coins?: CoinAmino[];
+  total?: CoinAmino;
 }
 export interface QueryTotalClaimableResponseAminoMsg {
   type: "/intento.claim.v1beta1.QueryTotalClaimableResponse";
   value: QueryTotalClaimableResponseAmino;
 }
 export interface QueryTotalClaimableResponseSDKType {
-  coins: CoinSDKType[];
+  total: CoinSDKType;
 }
 function createBaseQueryModuleAccountBalanceRequest(): QueryModuleAccountBalanceRequest {
   return {};
@@ -752,23 +752,23 @@ export const QueryClaimableForActionRequest = {
 GlobalDecoderRegistry.register(QueryClaimableForActionRequest.typeUrl, QueryClaimableForActionRequest);
 function createBaseQueryClaimableForActionResponse(): QueryClaimableForActionResponse {
   return {
-    coins: []
+    total: Coin.fromPartial({})
   };
 }
 export const QueryClaimableForActionResponse = {
   typeUrl: "/intento.claim.v1beta1.QueryClaimableForActionResponse",
   is(o: any): o is QueryClaimableForActionResponse {
-    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])));
+    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Coin.is(o.total));
   },
   isSDK(o: any): o is QueryClaimableForActionResponseSDKType {
-    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])));
+    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Coin.isSDK(o.total));
   },
   isAmino(o: any): o is QueryClaimableForActionResponseAmino {
-    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])));
+    return o && (o.$typeUrl === QueryClaimableForActionResponse.typeUrl || Coin.isAmino(o.total));
   },
   encode(message: QueryClaimableForActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.coins) {
-      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    if (message.total !== undefined) {
+      Coin.encode(message.total, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -780,7 +780,7 @@ export const QueryClaimableForActionResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.coins.push(Coin.decode(reader, reader.uint32()));
+          message.total = Coin.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -791,35 +791,29 @@ export const QueryClaimableForActionResponse = {
   },
   fromJSON(object: any): QueryClaimableForActionResponse {
     return {
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+      total: isSet(object.total) ? Coin.fromJSON(object.total) : undefined
     };
   },
   toJSON(message: QueryClaimableForActionResponse): unknown {
     const obj: any = {};
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
+    message.total !== undefined && (obj.total = message.total ? Coin.toJSON(message.total) : undefined);
     return obj;
   },
   fromPartial(object: Partial<QueryClaimableForActionResponse>): QueryClaimableForActionResponse {
     const message = createBaseQueryClaimableForActionResponse();
-    message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
+    message.total = object.total !== undefined && object.total !== null ? Coin.fromPartial(object.total) : undefined;
     return message;
   },
   fromAmino(object: QueryClaimableForActionResponseAmino): QueryClaimableForActionResponse {
     const message = createBaseQueryClaimableForActionResponse();
-    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
+    if (object.total !== undefined && object.total !== null) {
+      message.total = Coin.fromAmino(object.total);
+    }
     return message;
   },
   toAmino(message: QueryClaimableForActionResponse): QueryClaimableForActionResponseAmino {
     const obj: any = {};
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.coins = message.coins;
-    }
+    obj.total = message.total ? Coin.toAmino(message.total) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryClaimableForActionResponseAminoMsg): QueryClaimableForActionResponse {
@@ -924,23 +918,23 @@ export const QueryTotalClaimableRequest = {
 GlobalDecoderRegistry.register(QueryTotalClaimableRequest.typeUrl, QueryTotalClaimableRequest);
 function createBaseQueryTotalClaimableResponse(): QueryTotalClaimableResponse {
   return {
-    coins: []
+    total: Coin.fromPartial({})
   };
 }
 export const QueryTotalClaimableResponse = {
   typeUrl: "/intento.claim.v1beta1.QueryTotalClaimableResponse",
   is(o: any): o is QueryTotalClaimableResponse {
-    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])));
+    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Coin.is(o.total));
   },
   isSDK(o: any): o is QueryTotalClaimableResponseSDKType {
-    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])));
+    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Coin.isSDK(o.total));
   },
   isAmino(o: any): o is QueryTotalClaimableResponseAmino {
-    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])));
+    return o && (o.$typeUrl === QueryTotalClaimableResponse.typeUrl || Coin.isAmino(o.total));
   },
   encode(message: QueryTotalClaimableResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.coins) {
-      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    if (message.total !== undefined) {
+      Coin.encode(message.total, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -952,7 +946,7 @@ export const QueryTotalClaimableResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.coins.push(Coin.decode(reader, reader.uint32()));
+          message.total = Coin.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -963,35 +957,29 @@ export const QueryTotalClaimableResponse = {
   },
   fromJSON(object: any): QueryTotalClaimableResponse {
     return {
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+      total: isSet(object.total) ? Coin.fromJSON(object.total) : undefined
     };
   },
   toJSON(message: QueryTotalClaimableResponse): unknown {
     const obj: any = {};
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
+    message.total !== undefined && (obj.total = message.total ? Coin.toJSON(message.total) : undefined);
     return obj;
   },
   fromPartial(object: Partial<QueryTotalClaimableResponse>): QueryTotalClaimableResponse {
     const message = createBaseQueryTotalClaimableResponse();
-    message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
+    message.total = object.total !== undefined && object.total !== null ? Coin.fromPartial(object.total) : undefined;
     return message;
   },
   fromAmino(object: QueryTotalClaimableResponseAmino): QueryTotalClaimableResponse {
     const message = createBaseQueryTotalClaimableResponse();
-    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
+    if (object.total !== undefined && object.total !== null) {
+      message.total = Coin.fromAmino(object.total);
+    }
     return message;
   },
   toAmino(message: QueryTotalClaimableResponse): QueryTotalClaimableResponseAmino {
     const obj: any = {};
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.coins = message.coins;
-    }
+    obj.total = message.total ? Coin.toAmino(message.total) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryTotalClaimableResponseAminoMsg): QueryTotalClaimableResponse {

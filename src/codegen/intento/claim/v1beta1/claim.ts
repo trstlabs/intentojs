@@ -3,10 +3,10 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
 export enum Action {
-  ActionActionAuthz = 0,
-  ActionActionWasm = 1,
-  ActionGovernanceVote = 2,
-  ActionDelegateStake = 3,
+  ACTION_ACTION_LOCAL = 0,
+  ACTION_ACTION_ICA = 1,
+  ACTION_GOVERNANCE_VOTE = 2,
+  ACTION_DELEGATE_STAKE = 3,
   UNRECOGNIZED = -1,
 }
 export const ActionSDKType = Action;
@@ -14,17 +14,17 @@ export const ActionAmino = Action;
 export function actionFromJSON(object: any): Action {
   switch (object) {
     case 0:
-    case "ActionActionAuthz":
-      return Action.ActionActionAuthz;
+    case "ACTION_ACTION_LOCAL":
+      return Action.ACTION_ACTION_LOCAL;
     case 1:
-    case "ActionActionWasm":
-      return Action.ActionActionWasm;
+    case "ACTION_ACTION_ICA":
+      return Action.ACTION_ACTION_ICA;
     case 2:
-    case "ActionGovernanceVote":
-      return Action.ActionGovernanceVote;
+    case "ACTION_GOVERNANCE_VOTE":
+      return Action.ACTION_GOVERNANCE_VOTE;
     case 3:
-    case "ActionDelegateStake":
-      return Action.ActionDelegateStake;
+    case "ACTION_DELEGATE_STAKE":
+      return Action.ACTION_DELEGATE_STAKE;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -33,14 +33,14 @@ export function actionFromJSON(object: any): Action {
 }
 export function actionToJSON(object: Action): string {
   switch (object) {
-    case Action.ActionActionAuthz:
-      return "ActionActionAuthz";
-    case Action.ActionActionWasm:
-      return "ActionActionWasm";
-    case Action.ActionGovernanceVote:
-      return "ActionGovernanceVote";
-    case Action.ActionDelegateStake:
-      return "ActionDelegateStake";
+    case Action.ACTION_ACTION_LOCAL:
+      return "ACTION_ACTION_LOCAL";
+    case Action.ACTION_ACTION_ICA:
+      return "ACTION_ACTION_ICA";
+    case Action.ACTION_GOVERNANCE_VOTE:
+      return "ACTION_GOVERNANCE_VOTE";
+    case Action.ACTION_DELEGATE_STAKE:
+      return "ACTION_DELEGATE_STAKE";
     case Action.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
@@ -50,8 +50,8 @@ export function actionToJSON(object: Action): string {
 export interface ClaimRecord {
   /** address of recipient */
   address: string;
-  /** total initial claimable amount for the address */
-  initialClaimableAmount: Coin[];
+  /** maximum claimable amount for the address */
+  maximumClaimableAmount: Coin;
   /** index of status array refers to action enum # */
   status: Status[];
 }
@@ -63,8 +63,8 @@ export interface ClaimRecordProtoMsg {
 export interface ClaimRecordAmino {
   /** address of recipient */
   address?: string;
-  /** total initial claimable amount for the address */
-  initial_claimable_amount?: CoinAmino[];
+  /** maximum claimable amount for the address */
+  maximum_claimable_amount?: CoinAmino;
   /** index of status array refers to action enum # */
   status?: StatusAmino[];
 }
@@ -75,7 +75,7 @@ export interface ClaimRecordAminoMsg {
 /** A Claim Records is the metadata of claim data per address */
 export interface ClaimRecordSDKType {
   address: string;
-  initial_claimable_amount: CoinSDKType[];
+  maximum_claimable_amount: CoinSDKType;
   status: StatusSDKType[];
 }
 /** Status contains for an action if it is completed and claimed */
@@ -86,12 +86,12 @@ export interface Status {
    * true if action is completed
    * index refers to the 4 vesting periods for the given action
    */
-  vestingPeriodCompleted: boolean[];
+  vestingPeriodsCompleted: boolean[];
   /**
    * true if action is completed
    * index refers to the 4 vesting periods for the given action
    */
-  vestingPeriodClaimed: boolean[];
+  vestingPeriodsClaimed: boolean[];
 }
 export interface StatusProtoMsg {
   typeUrl: "/intento.claim.v1beta1.Status";
@@ -105,12 +105,12 @@ export interface StatusAmino {
    * true if action is completed
    * index refers to the 4 vesting periods for the given action
    */
-  vesting_period_completed?: boolean[];
+  vesting_periods_completed?: boolean[];
   /**
    * true if action is completed
    * index refers to the 4 vesting periods for the given action
    */
-  vesting_period_claimed?: boolean[];
+  vesting_periods_claimed?: boolean[];
 }
 export interface StatusAminoMsg {
   type: "/intento.claim.v1beta1.Status";
@@ -119,8 +119,8 @@ export interface StatusAminoMsg {
 /** Status contains for an action if it is completed and claimed */
 export interface StatusSDKType {
   action_completed: boolean;
-  vesting_period_completed: boolean[];
-  vesting_period_claimed: boolean[];
+  vesting_periods_completed: boolean[];
+  vesting_periods_claimed: boolean[];
 }
 export interface MsgClaimClaimable {
   sender: string;
@@ -133,7 +133,7 @@ export interface MsgClaimClaimableAmino {
   sender?: string;
 }
 export interface MsgClaimClaimableAminoMsg {
-  type: "/intento.claim.v1beta1.MsgClaimClaimable";
+  type: "claim/MsgClaimClaimable";
   value: MsgClaimClaimableAmino;
 }
 export interface MsgClaimClaimableSDKType {
@@ -161,27 +161,27 @@ export interface MsgClaimClaimableResponseSDKType {
 function createBaseClaimRecord(): ClaimRecord {
   return {
     address: "",
-    initialClaimableAmount: [],
+    maximumClaimableAmount: Coin.fromPartial({}),
     status: []
   };
 }
 export const ClaimRecord = {
   typeUrl: "/intento.claim.v1beta1.ClaimRecord",
   is(o: any): o is ClaimRecord {
-    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initialClaimableAmount) && (!o.initialClaimableAmount.length || Coin.is(o.initialClaimableAmount[0])) && Array.isArray(o.status) && (!o.status.length || Status.is(o.status[0])));
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Coin.is(o.maximumClaimableAmount) && Array.isArray(o.status) && (!o.status.length || Status.is(o.status[0])));
   },
   isSDK(o: any): o is ClaimRecordSDKType {
-    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initial_claimable_amount) && (!o.initial_claimable_amount.length || Coin.isSDK(o.initial_claimable_amount[0])) && Array.isArray(o.status) && (!o.status.length || Status.isSDK(o.status[0])));
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Coin.isSDK(o.maximum_claimable_amount) && Array.isArray(o.status) && (!o.status.length || Status.isSDK(o.status[0])));
   },
   isAmino(o: any): o is ClaimRecordAmino {
-    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initial_claimable_amount) && (!o.initial_claimable_amount.length || Coin.isAmino(o.initial_claimable_amount[0])) && Array.isArray(o.status) && (!o.status.length || Status.isAmino(o.status[0])));
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Coin.isAmino(o.maximum_claimable_amount) && Array.isArray(o.status) && (!o.status.length || Status.isAmino(o.status[0])));
   },
   encode(message: ClaimRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
-    for (const v of message.initialClaimableAmount) {
-      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    if (message.maximumClaimableAmount !== undefined) {
+      Coin.encode(message.maximumClaimableAmount, writer.uint32(18).fork()).ldelim();
     }
     for (const v of message.status) {
       Status.encode(v!, writer.uint32(26).fork()).ldelim();
@@ -199,7 +199,7 @@ export const ClaimRecord = {
           message.address = reader.string();
           break;
         case 2:
-          message.initialClaimableAmount.push(Coin.decode(reader, reader.uint32()));
+          message.maximumClaimableAmount = Coin.decode(reader, reader.uint32());
           break;
         case 3:
           message.status.push(Status.decode(reader, reader.uint32()));
@@ -214,18 +214,14 @@ export const ClaimRecord = {
   fromJSON(object: any): ClaimRecord {
     return {
       address: isSet(object.address) ? String(object.address) : "",
-      initialClaimableAmount: Array.isArray(object?.initialClaimableAmount) ? object.initialClaimableAmount.map((e: any) => Coin.fromJSON(e)) : [],
+      maximumClaimableAmount: isSet(object.maximumClaimableAmount) ? Coin.fromJSON(object.maximumClaimableAmount) : undefined,
       status: Array.isArray(object?.status) ? object.status.map((e: any) => Status.fromJSON(e)) : []
     };
   },
   toJSON(message: ClaimRecord): unknown {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
-    if (message.initialClaimableAmount) {
-      obj.initialClaimableAmount = message.initialClaimableAmount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.initialClaimableAmount = [];
-    }
+    message.maximumClaimableAmount !== undefined && (obj.maximumClaimableAmount = message.maximumClaimableAmount ? Coin.toJSON(message.maximumClaimableAmount) : undefined);
     if (message.status) {
       obj.status = message.status.map(e => e ? Status.toJSON(e) : undefined);
     } else {
@@ -236,7 +232,7 @@ export const ClaimRecord = {
   fromPartial(object: Partial<ClaimRecord>): ClaimRecord {
     const message = createBaseClaimRecord();
     message.address = object.address ?? "";
-    message.initialClaimableAmount = object.initialClaimableAmount?.map(e => Coin.fromPartial(e)) || [];
+    message.maximumClaimableAmount = object.maximumClaimableAmount !== undefined && object.maximumClaimableAmount !== null ? Coin.fromPartial(object.maximumClaimableAmount) : undefined;
     message.status = object.status?.map(e => Status.fromPartial(e)) || [];
     return message;
   },
@@ -245,18 +241,16 @@ export const ClaimRecord = {
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
     }
-    message.initialClaimableAmount = object.initial_claimable_amount?.map(e => Coin.fromAmino(e)) || [];
+    if (object.maximum_claimable_amount !== undefined && object.maximum_claimable_amount !== null) {
+      message.maximumClaimableAmount = Coin.fromAmino(object.maximum_claimable_amount);
+    }
     message.status = object.status?.map(e => Status.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ClaimRecord): ClaimRecordAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
-    if (message.initialClaimableAmount) {
-      obj.initial_claimable_amount = message.initialClaimableAmount.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.initial_claimable_amount = message.initialClaimableAmount;
-    }
+    obj.maximum_claimable_amount = message.maximumClaimableAmount ? Coin.toAmino(message.maximumClaimableAmount) : undefined;
     if (message.status) {
       obj.status = message.status.map(e => e ? Status.toAmino(e) : undefined);
     } else {
@@ -284,32 +278,32 @@ GlobalDecoderRegistry.register(ClaimRecord.typeUrl, ClaimRecord);
 function createBaseStatus(): Status {
   return {
     actionCompleted: false,
-    vestingPeriodCompleted: [],
-    vestingPeriodClaimed: []
+    vestingPeriodsCompleted: [],
+    vestingPeriodsClaimed: []
   };
 }
 export const Status = {
   typeUrl: "/intento.claim.v1beta1.Status",
   is(o: any): o is Status {
-    return o && (o.$typeUrl === Status.typeUrl || typeof o.actionCompleted === "boolean" && Array.isArray(o.vestingPeriodCompleted) && (!o.vestingPeriodCompleted.length || typeof o.vestingPeriodCompleted[0] === "boolean") && Array.isArray(o.vestingPeriodClaimed) && (!o.vestingPeriodClaimed.length || typeof o.vestingPeriodClaimed[0] === "boolean"));
+    return o && (o.$typeUrl === Status.typeUrl || typeof o.actionCompleted === "boolean" && Array.isArray(o.vestingPeriodsCompleted) && (!o.vestingPeriodsCompleted.length || typeof o.vestingPeriodsCompleted[0] === "boolean") && Array.isArray(o.vestingPeriodsClaimed) && (!o.vestingPeriodsClaimed.length || typeof o.vestingPeriodsClaimed[0] === "boolean"));
   },
   isSDK(o: any): o is StatusSDKType {
-    return o && (o.$typeUrl === Status.typeUrl || typeof o.action_completed === "boolean" && Array.isArray(o.vesting_period_completed) && (!o.vesting_period_completed.length || typeof o.vesting_period_completed[0] === "boolean") && Array.isArray(o.vesting_period_claimed) && (!o.vesting_period_claimed.length || typeof o.vesting_period_claimed[0] === "boolean"));
+    return o && (o.$typeUrl === Status.typeUrl || typeof o.action_completed === "boolean" && Array.isArray(o.vesting_periods_completed) && (!o.vesting_periods_completed.length || typeof o.vesting_periods_completed[0] === "boolean") && Array.isArray(o.vesting_periods_claimed) && (!o.vesting_periods_claimed.length || typeof o.vesting_periods_claimed[0] === "boolean"));
   },
   isAmino(o: any): o is StatusAmino {
-    return o && (o.$typeUrl === Status.typeUrl || typeof o.action_completed === "boolean" && Array.isArray(o.vesting_period_completed) && (!o.vesting_period_completed.length || typeof o.vesting_period_completed[0] === "boolean") && Array.isArray(o.vesting_period_claimed) && (!o.vesting_period_claimed.length || typeof o.vesting_period_claimed[0] === "boolean"));
+    return o && (o.$typeUrl === Status.typeUrl || typeof o.action_completed === "boolean" && Array.isArray(o.vesting_periods_completed) && (!o.vesting_periods_completed.length || typeof o.vesting_periods_completed[0] === "boolean") && Array.isArray(o.vesting_periods_claimed) && (!o.vesting_periods_claimed.length || typeof o.vesting_periods_claimed[0] === "boolean"));
   },
   encode(message: Status, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionCompleted === true) {
       writer.uint32(8).bool(message.actionCompleted);
     }
     writer.uint32(18).fork();
-    for (const v of message.vestingPeriodCompleted) {
+    for (const v of message.vestingPeriodsCompleted) {
       writer.bool(v);
     }
     writer.ldelim();
     writer.uint32(26).fork();
-    for (const v of message.vestingPeriodClaimed) {
+    for (const v of message.vestingPeriodsClaimed) {
       writer.bool(v);
     }
     writer.ldelim();
@@ -329,20 +323,20 @@ export const Status = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.vestingPeriodCompleted.push(reader.bool());
+              message.vestingPeriodsCompleted.push(reader.bool());
             }
           } else {
-            message.vestingPeriodCompleted.push(reader.bool());
+            message.vestingPeriodsCompleted.push(reader.bool());
           }
           break;
         case 3:
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.vestingPeriodClaimed.push(reader.bool());
+              message.vestingPeriodsClaimed.push(reader.bool());
             }
           } else {
-            message.vestingPeriodClaimed.push(reader.bool());
+            message.vestingPeriodsClaimed.push(reader.bool());
           }
           break;
         default:
@@ -355,30 +349,30 @@ export const Status = {
   fromJSON(object: any): Status {
     return {
       actionCompleted: isSet(object.actionCompleted) ? Boolean(object.actionCompleted) : false,
-      vestingPeriodCompleted: Array.isArray(object?.vestingPeriodCompleted) ? object.vestingPeriodCompleted.map((e: any) => Boolean(e)) : [],
-      vestingPeriodClaimed: Array.isArray(object?.vestingPeriodClaimed) ? object.vestingPeriodClaimed.map((e: any) => Boolean(e)) : []
+      vestingPeriodsCompleted: Array.isArray(object?.vestingPeriodsCompleted) ? object.vestingPeriodsCompleted.map((e: any) => Boolean(e)) : [],
+      vestingPeriodsClaimed: Array.isArray(object?.vestingPeriodsClaimed) ? object.vestingPeriodsClaimed.map((e: any) => Boolean(e)) : []
     };
   },
   toJSON(message: Status): unknown {
     const obj: any = {};
     message.actionCompleted !== undefined && (obj.actionCompleted = message.actionCompleted);
-    if (message.vestingPeriodCompleted) {
-      obj.vestingPeriodCompleted = message.vestingPeriodCompleted.map(e => e);
+    if (message.vestingPeriodsCompleted) {
+      obj.vestingPeriodsCompleted = message.vestingPeriodsCompleted.map(e => e);
     } else {
-      obj.vestingPeriodCompleted = [];
+      obj.vestingPeriodsCompleted = [];
     }
-    if (message.vestingPeriodClaimed) {
-      obj.vestingPeriodClaimed = message.vestingPeriodClaimed.map(e => e);
+    if (message.vestingPeriodsClaimed) {
+      obj.vestingPeriodsClaimed = message.vestingPeriodsClaimed.map(e => e);
     } else {
-      obj.vestingPeriodClaimed = [];
+      obj.vestingPeriodsClaimed = [];
     }
     return obj;
   },
   fromPartial(object: Partial<Status>): Status {
     const message = createBaseStatus();
     message.actionCompleted = object.actionCompleted ?? false;
-    message.vestingPeriodCompleted = object.vestingPeriodCompleted?.map(e => e) || [];
-    message.vestingPeriodClaimed = object.vestingPeriodClaimed?.map(e => e) || [];
+    message.vestingPeriodsCompleted = object.vestingPeriodsCompleted?.map(e => e) || [];
+    message.vestingPeriodsClaimed = object.vestingPeriodsClaimed?.map(e => e) || [];
     return message;
   },
   fromAmino(object: StatusAmino): Status {
@@ -386,22 +380,22 @@ export const Status = {
     if (object.action_completed !== undefined && object.action_completed !== null) {
       message.actionCompleted = object.action_completed;
     }
-    message.vestingPeriodCompleted = object.vesting_period_completed?.map(e => e) || [];
-    message.vestingPeriodClaimed = object.vesting_period_claimed?.map(e => e) || [];
+    message.vestingPeriodsCompleted = object.vesting_periods_completed?.map(e => e) || [];
+    message.vestingPeriodsClaimed = object.vesting_periods_claimed?.map(e => e) || [];
     return message;
   },
   toAmino(message: Status): StatusAmino {
     const obj: any = {};
     obj.action_completed = message.actionCompleted === false ? undefined : message.actionCompleted;
-    if (message.vestingPeriodCompleted) {
-      obj.vesting_period_completed = message.vestingPeriodCompleted.map(e => e);
+    if (message.vestingPeriodsCompleted) {
+      obj.vesting_periods_completed = message.vestingPeriodsCompleted.map(e => e);
     } else {
-      obj.vesting_period_completed = message.vestingPeriodCompleted;
+      obj.vesting_periods_completed = message.vestingPeriodsCompleted;
     }
-    if (message.vestingPeriodClaimed) {
-      obj.vesting_period_claimed = message.vestingPeriodClaimed.map(e => e);
+    if (message.vestingPeriodsClaimed) {
+      obj.vesting_periods_claimed = message.vestingPeriodsClaimed.map(e => e);
     } else {
-      obj.vesting_period_claimed = message.vestingPeriodClaimed;
+      obj.vesting_periods_claimed = message.vestingPeriodsClaimed;
     }
     return obj;
   },
@@ -429,6 +423,7 @@ function createBaseMsgClaimClaimable(): MsgClaimClaimable {
 }
 export const MsgClaimClaimable = {
   typeUrl: "/intento.claim.v1beta1.MsgClaimClaimable",
+  aminoType: "claim/MsgClaimClaimable",
   is(o: any): o is MsgClaimClaimable {
     return o && (o.$typeUrl === MsgClaimClaimable.typeUrl || typeof o.sender === "string");
   },
@@ -491,6 +486,12 @@ export const MsgClaimClaimable = {
   fromAminoMsg(object: MsgClaimClaimableAminoMsg): MsgClaimClaimable {
     return MsgClaimClaimable.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgClaimClaimable): MsgClaimClaimableAminoMsg {
+    return {
+      type: "claim/MsgClaimClaimable",
+      value: MsgClaimClaimable.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgClaimClaimableProtoMsg): MsgClaimClaimable {
     return MsgClaimClaimable.decode(message.value);
   },
@@ -505,6 +506,7 @@ export const MsgClaimClaimable = {
   }
 };
 GlobalDecoderRegistry.register(MsgClaimClaimable.typeUrl, MsgClaimClaimable);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgClaimClaimable.aminoType, MsgClaimClaimable.typeUrl);
 function createBaseMsgClaimClaimableResponse(): MsgClaimClaimableResponse {
   return {
     claimedAmount: []

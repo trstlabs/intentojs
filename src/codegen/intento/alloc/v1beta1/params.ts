@@ -1,7 +1,9 @@
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+/** WeightedAddress defines an address with a weight. */
 export interface WeightedAddress {
   address: string;
   weight: string;
@@ -10,92 +12,83 @@ export interface WeightedAddressProtoMsg {
   typeUrl: "/intento.alloc.v1beta1.WeightedAddress";
   value: Uint8Array;
 }
+/** WeightedAddress defines an address with a weight. */
 export interface WeightedAddressAmino {
   address?: string;
-  weight?: string;
+  weight: string;
 }
 export interface WeightedAddressAminoMsg {
   type: "/intento.alloc.v1beta1.WeightedAddress";
   value: WeightedAddressAmino;
 }
+/** WeightedAddress defines an address with a weight. */
 export interface WeightedAddressSDKType {
   address: string;
   weight: string;
 }
+/** DistributionProportions defines the proportion that each bucket  receives. */
 export interface DistributionProportions {
-  staking: string;
-  trustlessContractIncentives: string;
-  relayerIncentives: string;
-  /**
-   * string item_incentives = 3 [
-   * (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
-   * (gogoproto.moretags) = "yaml:\"item_incentives\"",
-   * (gogoproto.nullable) = false
-   * ];
-   */
-  contributorRewards: string;
-  /**
-   * community_pool defines the proportion of the minted minted_denom that is
-   * to be allocated to the community pool.
-   */
+  developerRewards: string;
   communityPool: string;
+  relayerIncentives: string;
 }
 export interface DistributionProportionsProtoMsg {
   typeUrl: "/intento.alloc.v1beta1.DistributionProportions";
   value: Uint8Array;
 }
+/** DistributionProportions defines the proportion that each bucket  receives. */
 export interface DistributionProportionsAmino {
-  staking?: string;
-  trustless_contract_incentives?: string;
-  relayer_incentives?: string;
-  /**
-   * string item_incentives = 3 [
-   * (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
-   * (gogoproto.moretags) = "yaml:\"item_incentives\"",
-   * (gogoproto.nullable) = false
-   * ];
-   */
-  contributor_rewards?: string;
-  /**
-   * community_pool defines the proportion of the minted minted_denom that is
-   * to be allocated to the community pool.
-   */
-  community_pool?: string;
+  developer_rewards: string;
+  community_pool: string;
+  relayer_incentives: string;
 }
 export interface DistributionProportionsAminoMsg {
   type: "/intento.alloc.v1beta1.DistributionProportions";
   value: DistributionProportionsAmino;
 }
+/** DistributionProportions defines the proportion that each bucket  receives. */
 export interface DistributionProportionsSDKType {
-  staking: string;
-  trustless_contract_incentives: string;
-  relayer_incentives: string;
-  contributor_rewards: string;
+  developer_rewards: string;
   community_pool: string;
+  relayer_incentives: string;
 }
+/** Params defines the parameters for the alloc module. */
 export interface Params {
   /** distribution_proportions defines the proportion of the minted denom */
   distributionProportions: DistributionProportions;
-  /** address to receive developer rewards */
-  weightedContributorRewardsReceivers: WeightedAddress[];
+  /** addresses to receive developer rewards */
+  weightedDeveloperRewardsReceivers: WeightedAddress[];
+  /**
+   * SupplementAmount is the amount to be supplemented from the pool on top of
+   * newly minted coins.
+   */
+  supplementAmount: Coin[];
 }
 export interface ParamsProtoMsg {
   typeUrl: "/intento.alloc.v1beta1.Params";
   value: Uint8Array;
 }
+/** Params defines the parameters for the alloc module. */
 export interface ParamsAmino {
   /** distribution_proportions defines the proportion of the minted denom */
-  distribution_proportions?: DistributionProportionsAmino;
-  /** address to receive developer rewards */
-  weighted_contributor_rewards_receivers?: WeightedAddressAmino[];
+  distribution_proportions: DistributionProportionsAmino;
+  /** addresses to receive developer rewards */
+  weighted_developer_rewards_receivers: WeightedAddressAmino[];
+  /**
+   * SupplementAmount is the amount to be supplemented from the pool on top of
+   * newly minted coins.
+   */
+  supplement_amount: CoinAmino[];
 }
 export interface ParamsAminoMsg {
   type: "/intento.alloc.v1beta1.Params";
   value: ParamsAmino;
 }
+/** Params defines the parameters for the alloc module. */
 export interface ParamsSDKType {
   distribution_proportions: DistributionProportionsSDKType;
-  weighted_contributor_rewards_receivers: WeightedAddressSDKType[];
+  weighted_developer_rewards_receivers: WeightedAddressSDKType[];
+  supplement_amount: CoinSDKType[];
 }
 function createBaseWeightedAddress(): WeightedAddress {
   return {
@@ -174,7 +167,7 @@ export const WeightedAddress = {
   toAmino(message: WeightedAddress): WeightedAddressAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
-    obj.weight = message.weight === "" ? undefined : message.weight;
+    obj.weight = message.weight ?? "";
     return obj;
   },
   fromAminoMsg(object: WeightedAddressAminoMsg): WeightedAddress {
@@ -196,39 +189,31 @@ export const WeightedAddress = {
 GlobalDecoderRegistry.register(WeightedAddress.typeUrl, WeightedAddress);
 function createBaseDistributionProportions(): DistributionProportions {
   return {
-    staking: "",
-    trustlessContractIncentives: "",
-    relayerIncentives: "",
-    contributorRewards: "",
-    communityPool: ""
+    developerRewards: "",
+    communityPool: "",
+    relayerIncentives: ""
   };
 }
 export const DistributionProportions = {
   typeUrl: "/intento.alloc.v1beta1.DistributionProportions",
   is(o: any): o is DistributionProportions {
-    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.trustlessContractIncentives === "string" && typeof o.relayerIncentives === "string" && typeof o.contributorRewards === "string" && typeof o.communityPool === "string");
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.developerRewards === "string" && typeof o.communityPool === "string" && typeof o.relayerIncentives === "string");
   },
   isSDK(o: any): o is DistributionProportionsSDKType {
-    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.trustless_contract_incentives === "string" && typeof o.relayer_incentives === "string" && typeof o.contributor_rewards === "string" && typeof o.community_pool === "string");
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.developer_rewards === "string" && typeof o.community_pool === "string" && typeof o.relayer_incentives === "string");
   },
   isAmino(o: any): o is DistributionProportionsAmino {
-    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.trustless_contract_incentives === "string" && typeof o.relayer_incentives === "string" && typeof o.contributor_rewards === "string" && typeof o.community_pool === "string");
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.developer_rewards === "string" && typeof o.community_pool === "string" && typeof o.relayer_incentives === "string");
   },
   encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.staking !== "") {
-      writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
+    if (message.developerRewards !== "") {
+      writer.uint32(10).string(Decimal.fromUserInput(message.developerRewards, 18).atomics);
     }
-    if (message.trustlessContractIncentives !== "") {
-      writer.uint32(18).string(Decimal.fromUserInput(message.trustlessContractIncentives, 18).atomics);
+    if (message.communityPool !== "") {
+      writer.uint32(18).string(Decimal.fromUserInput(message.communityPool, 18).atomics);
     }
     if (message.relayerIncentives !== "") {
       writer.uint32(26).string(Decimal.fromUserInput(message.relayerIncentives, 18).atomics);
-    }
-    if (message.contributorRewards !== "") {
-      writer.uint32(34).string(Decimal.fromUserInput(message.contributorRewards, 18).atomics);
-    }
-    if (message.communityPool !== "") {
-      writer.uint32(42).string(Decimal.fromUserInput(message.communityPool, 18).atomics);
     }
     return writer;
   },
@@ -240,19 +225,13 @@ export const DistributionProportions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.staking = Decimal.fromAtomics(reader.string(), 18).toString();
+          message.developerRewards = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 2:
-          message.trustlessContractIncentives = Decimal.fromAtomics(reader.string(), 18).toString();
+          message.communityPool = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 3:
           message.relayerIncentives = Decimal.fromAtomics(reader.string(), 18).toString();
-          break;
-        case 4:
-          message.contributorRewards = Decimal.fromAtomics(reader.string(), 18).toString();
-          break;
-        case 5:
-          message.communityPool = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         default:
           reader.skipType(tag & 7);
@@ -263,57 +242,43 @@ export const DistributionProportions = {
   },
   fromJSON(object: any): DistributionProportions {
     return {
-      staking: isSet(object.staking) ? String(object.staking) : "",
-      trustlessContractIncentives: isSet(object.trustlessContractIncentives) ? String(object.trustlessContractIncentives) : "",
-      relayerIncentives: isSet(object.relayerIncentives) ? String(object.relayerIncentives) : "",
-      contributorRewards: isSet(object.contributorRewards) ? String(object.contributorRewards) : "",
-      communityPool: isSet(object.communityPool) ? String(object.communityPool) : ""
+      developerRewards: isSet(object.developerRewards) ? String(object.developerRewards) : "",
+      communityPool: isSet(object.communityPool) ? String(object.communityPool) : "",
+      relayerIncentives: isSet(object.relayerIncentives) ? String(object.relayerIncentives) : ""
     };
   },
   toJSON(message: DistributionProportions): unknown {
     const obj: any = {};
-    message.staking !== undefined && (obj.staking = message.staking);
-    message.trustlessContractIncentives !== undefined && (obj.trustlessContractIncentives = message.trustlessContractIncentives);
-    message.relayerIncentives !== undefined && (obj.relayerIncentives = message.relayerIncentives);
-    message.contributorRewards !== undefined && (obj.contributorRewards = message.contributorRewards);
+    message.developerRewards !== undefined && (obj.developerRewards = message.developerRewards);
     message.communityPool !== undefined && (obj.communityPool = message.communityPool);
+    message.relayerIncentives !== undefined && (obj.relayerIncentives = message.relayerIncentives);
     return obj;
   },
   fromPartial(object: Partial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
-    message.staking = object.staking ?? "";
-    message.trustlessContractIncentives = object.trustlessContractIncentives ?? "";
-    message.relayerIncentives = object.relayerIncentives ?? "";
-    message.contributorRewards = object.contributorRewards ?? "";
+    message.developerRewards = object.developerRewards ?? "";
     message.communityPool = object.communityPool ?? "";
+    message.relayerIncentives = object.relayerIncentives ?? "";
     return message;
   },
   fromAmino(object: DistributionProportionsAmino): DistributionProportions {
     const message = createBaseDistributionProportions();
-    if (object.staking !== undefined && object.staking !== null) {
-      message.staking = object.staking;
-    }
-    if (object.trustless_contract_incentives !== undefined && object.trustless_contract_incentives !== null) {
-      message.trustlessContractIncentives = object.trustless_contract_incentives;
-    }
-    if (object.relayer_incentives !== undefined && object.relayer_incentives !== null) {
-      message.relayerIncentives = object.relayer_incentives;
-    }
-    if (object.contributor_rewards !== undefined && object.contributor_rewards !== null) {
-      message.contributorRewards = object.contributor_rewards;
+    if (object.developer_rewards !== undefined && object.developer_rewards !== null) {
+      message.developerRewards = object.developer_rewards;
     }
     if (object.community_pool !== undefined && object.community_pool !== null) {
       message.communityPool = object.community_pool;
+    }
+    if (object.relayer_incentives !== undefined && object.relayer_incentives !== null) {
+      message.relayerIncentives = object.relayer_incentives;
     }
     return message;
   },
   toAmino(message: DistributionProportions): DistributionProportionsAmino {
     const obj: any = {};
-    obj.staking = message.staking === "" ? undefined : message.staking;
-    obj.trustless_contract_incentives = message.trustlessContractIncentives === "" ? undefined : message.trustlessContractIncentives;
-    obj.relayer_incentives = message.relayerIncentives === "" ? undefined : message.relayerIncentives;
-    obj.contributor_rewards = message.contributorRewards === "" ? undefined : message.contributorRewards;
-    obj.community_pool = message.communityPool === "" ? undefined : message.communityPool;
+    obj.developer_rewards = message.developerRewards ?? "";
+    obj.community_pool = message.communityPool ?? "";
+    obj.relayer_incentives = message.relayerIncentives ?? "";
     return obj;
   },
   fromAminoMsg(object: DistributionProportionsAminoMsg): DistributionProportions {
@@ -336,26 +301,30 @@ GlobalDecoderRegistry.register(DistributionProportions.typeUrl, DistributionProp
 function createBaseParams(): Params {
   return {
     distributionProportions: DistributionProportions.fromPartial({}),
-    weightedContributorRewardsReceivers: []
+    weightedDeveloperRewardsReceivers: [],
+    supplementAmount: []
   };
 }
 export const Params = {
   typeUrl: "/intento.alloc.v1beta1.Params",
   is(o: any): o is Params {
-    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.is(o.distributionProportions) && Array.isArray(o.weightedContributorRewardsReceivers) && (!o.weightedContributorRewardsReceivers.length || WeightedAddress.is(o.weightedContributorRewardsReceivers[0])));
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.is(o.distributionProportions) && Array.isArray(o.weightedDeveloperRewardsReceivers) && (!o.weightedDeveloperRewardsReceivers.length || WeightedAddress.is(o.weightedDeveloperRewardsReceivers[0])) && Array.isArray(o.supplementAmount) && (!o.supplementAmount.length || Coin.is(o.supplementAmount[0])));
   },
   isSDK(o: any): o is ParamsSDKType {
-    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isSDK(o.distribution_proportions) && Array.isArray(o.weighted_contributor_rewards_receivers) && (!o.weighted_contributor_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_contributor_rewards_receivers[0])));
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isSDK(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_developer_rewards_receivers[0])) && Array.isArray(o.supplement_amount) && (!o.supplement_amount.length || Coin.isSDK(o.supplement_amount[0])));
   },
   isAmino(o: any): o is ParamsAmino {
-    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isAmino(o.distribution_proportions) && Array.isArray(o.weighted_contributor_rewards_receivers) && (!o.weighted_contributor_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_contributor_rewards_receivers[0])));
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isAmino(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_developer_rewards_receivers[0])) && Array.isArray(o.supplement_amount) && (!o.supplement_amount.length || Coin.isAmino(o.supplement_amount[0])));
   },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distributionProportions !== undefined) {
       DistributionProportions.encode(message.distributionProportions, writer.uint32(10).fork()).ldelim();
     }
-    for (const v of message.weightedContributorRewardsReceivers) {
+    for (const v of message.weightedDeveloperRewardsReceivers) {
       WeightedAddress.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    for (const v of message.supplementAmount) {
+      Coin.encode(v!, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -370,7 +339,10 @@ export const Params = {
           message.distributionProportions = DistributionProportions.decode(reader, reader.uint32());
           break;
         case 2:
-          message.weightedContributorRewardsReceivers.push(WeightedAddress.decode(reader, reader.uint32()));
+          message.weightedDeveloperRewardsReceivers.push(WeightedAddress.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.supplementAmount.push(Coin.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -382,23 +354,30 @@ export const Params = {
   fromJSON(object: any): Params {
     return {
       distributionProportions: isSet(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
-      weightedContributorRewardsReceivers: Array.isArray(object?.weightedContributorRewardsReceivers) ? object.weightedContributorRewardsReceivers.map((e: any) => WeightedAddress.fromJSON(e)) : []
+      weightedDeveloperRewardsReceivers: Array.isArray(object?.weightedDeveloperRewardsReceivers) ? object.weightedDeveloperRewardsReceivers.map((e: any) => WeightedAddress.fromJSON(e)) : [],
+      supplementAmount: Array.isArray(object?.supplementAmount) ? object.supplementAmount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
   toJSON(message: Params): unknown {
     const obj: any = {};
     message.distributionProportions !== undefined && (obj.distributionProportions = message.distributionProportions ? DistributionProportions.toJSON(message.distributionProportions) : undefined);
-    if (message.weightedContributorRewardsReceivers) {
-      obj.weightedContributorRewardsReceivers = message.weightedContributorRewardsReceivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
+    if (message.weightedDeveloperRewardsReceivers) {
+      obj.weightedDeveloperRewardsReceivers = message.weightedDeveloperRewardsReceivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
     } else {
-      obj.weightedContributorRewardsReceivers = [];
+      obj.weightedDeveloperRewardsReceivers = [];
+    }
+    if (message.supplementAmount) {
+      obj.supplementAmount = message.supplementAmount.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.supplementAmount = [];
     }
     return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.distributionProportions = object.distributionProportions !== undefined && object.distributionProportions !== null ? DistributionProportions.fromPartial(object.distributionProportions) : undefined;
-    message.weightedContributorRewardsReceivers = object.weightedContributorRewardsReceivers?.map(e => WeightedAddress.fromPartial(e)) || [];
+    message.weightedDeveloperRewardsReceivers = object.weightedDeveloperRewardsReceivers?.map(e => WeightedAddress.fromPartial(e)) || [];
+    message.supplementAmount = object.supplementAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -406,16 +385,22 @@ export const Params = {
     if (object.distribution_proportions !== undefined && object.distribution_proportions !== null) {
       message.distributionProportions = DistributionProportions.fromAmino(object.distribution_proportions);
     }
-    message.weightedContributorRewardsReceivers = object.weighted_contributor_rewards_receivers?.map(e => WeightedAddress.fromAmino(e)) || [];
+    message.weightedDeveloperRewardsReceivers = object.weighted_developer_rewards_receivers?.map(e => WeightedAddress.fromAmino(e)) || [];
+    message.supplementAmount = object.supplement_amount?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.distribution_proportions = message.distributionProportions ? DistributionProportions.toAmino(message.distributionProportions) : undefined;
-    if (message.weightedContributorRewardsReceivers) {
-      obj.weighted_contributor_rewards_receivers = message.weightedContributorRewardsReceivers.map(e => e ? WeightedAddress.toAmino(e) : undefined);
+    obj.distribution_proportions = message.distributionProportions ? DistributionProportions.toAmino(message.distributionProportions) : DistributionProportions.toAmino(DistributionProportions.fromPartial({}));
+    if (message.weightedDeveloperRewardsReceivers) {
+      obj.weighted_developer_rewards_receivers = message.weightedDeveloperRewardsReceivers.map(e => e ? WeightedAddress.toAmino(e) : undefined);
     } else {
-      obj.weighted_contributor_rewards_receivers = message.weightedContributorRewardsReceivers;
+      obj.weighted_developer_rewards_receivers = message.weightedDeveloperRewardsReceivers;
+    }
+    if (message.supplementAmount) {
+      obj.supplement_amount = message.supplementAmount.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.supplement_amount = message.supplementAmount;
     }
     return obj;
   },

@@ -15,7 +15,10 @@ export interface Params {
   MinActionDuration: Duration;
   /** Minimum period for self-executing Action */
   MinActionInterval: Duration;
-  /** relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo. Rewards are in uinto and topped up in the module account by alloc module. */
+  /**
+   * relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo.
+   * Rewards are in uinto and topped up in the module account by alloc module.
+   */
   relayerRewards: bigint[];
 }
 export interface ParamsProtoMsg {
@@ -34,7 +37,10 @@ export interface ParamsAmino {
   MinActionDuration?: DurationAmino;
   /** Minimum period for self-executing Action */
   MinActionInterval?: DurationAmino;
-  /** relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo. Rewards are in uinto and topped up in the module account by alloc module. */
+  /**
+   * relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo.
+   * Rewards are in uinto and topped up in the module account by alloc module.
+   */
   relayer_rewards?: string[];
 }
 export interface ParamsAminoMsg {

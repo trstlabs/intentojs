@@ -5,7 +5,10 @@ import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hoste
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
-/** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
+/**
+ * MsgRegisterAccount registers an interchain account for the given owner over
+ * the specified connection pair
+ */
 export interface MsgRegisterAccount {
   owner: string;
   connectionId: string;
@@ -15,17 +18,23 @@ export interface MsgRegisterAccountProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgRegisterAccount";
   value: Uint8Array;
 }
-/** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
+/**
+ * MsgRegisterAccount registers an interchain account for the given owner over
+ * the specified connection pair
+ */
 export interface MsgRegisterAccountAmino {
   owner?: string;
   connection_id?: string;
   version?: string;
 }
 export interface MsgRegisterAccountAminoMsg {
-  type: "/intento.intent.v1beta1.MsgRegisterAccount";
+  type: "intent/MsgRegisterAccount";
   value: MsgRegisterAccountAmino;
 }
-/** MsgRegisterAccount registers an interchain account for the given owner over the specified connection pair */
+/**
+ * MsgRegisterAccount registers an interchain account for the given owner over
+ * the specified connection pair
+ */
 export interface MsgRegisterAccountSDKType {
   owner: string;
   connection_id: string;
@@ -45,7 +54,10 @@ export interface MsgRegisterAccountResponseAminoMsg {
 }
 /** MsgRegisterAccountResponse is the response type for Msg/RegisterAccount */
 export interface MsgRegisterAccountResponseSDKType {}
-/** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
+ * locally or using an interchain account
+ */
 export interface MsgSubmitTx {
   owner: string;
   connectionId: string;
@@ -55,17 +67,23 @@ export interface MsgSubmitTxProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgSubmitTx";
   value: Uint8Array;
 }
-/** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
+ * locally or using an interchain account
+ */
 export interface MsgSubmitTxAmino {
   owner?: string;
   connection_id?: string;
   msg?: AnyAmino;
 }
 export interface MsgSubmitTxAminoMsg {
-  type: "/intento.intent.v1beta1.MsgSubmitTx";
+  type: "intent/MsgRegisterAccount";
   value: MsgSubmitTxAmino;
 }
-/** MsgSubmitTx creates and submits an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
+ * locally or using an interchain account
+ */
 export interface MsgSubmitTxSDKType {
   owner: string;
   connection_id: string;
@@ -85,18 +103,27 @@ export interface MsgSubmitTxResponseAminoMsg {
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitTxResponseSDKType {}
-/** MsgSubmitAction creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgSubmitAction creates, submits and schedules an arbitrary transaction msg
+ * to be executed locally or using an interchain account
+ */
 export interface MsgSubmitAction {
   owner: string;
   label: string;
   msgs: (Any)[] | Any[];
   /** duration defines the time that the code should run for */
   duration: string;
-  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
+  /**
+   * start_at when set as a unix time after block inclusion, creates a custom
+   * start time for execution
+   */
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
+  /**
+   * optional fees to be used for auto tx execution limiting the amount of fees
+   * incurred
+   */
   feeFunds: Coin[];
   /** optional configuration parameters */
   configuration?: ExecutionConfiguration;
@@ -114,18 +141,27 @@ export interface MsgSubmitActionProtoMsg {
 export type MsgSubmitActionEncoded = Omit<MsgSubmitAction, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** MsgSubmitAction creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgSubmitAction creates, submits and schedules an arbitrary transaction msg
+ * to be executed locally or using an interchain account
+ */
 export interface MsgSubmitActionAmino {
   owner?: string;
   label?: string;
   msgs?: AnyAmino[];
   /** duration defines the time that the code should run for */
   duration?: string;
-  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
+  /**
+   * start_at when set as a unix time after block inclusion, creates a custom
+   * start time for execution
+   */
   start_at?: string;
   /** interval defines the interval between auto_msg calls */
   interval?: string;
-  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
+  /**
+   * optional fees to be used for auto tx execution limiting the amount of fees
+   * incurred
+   */
   fee_funds?: CoinAmino[];
   /** optional configuration parameters */
   configuration?: ExecutionConfigurationAmino;
@@ -137,10 +173,13 @@ export interface MsgSubmitActionAmino {
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgSubmitActionAminoMsg {
-  type: "/intento.intent.v1beta1.MsgSubmitAction";
+  type: "intent/MsgSubmitAction";
   value: MsgSubmitActionAmino;
 }
-/** MsgSubmitAction creates, submits and schedules an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgSubmitAction creates, submits and schedules an arbitrary transaction msg
+ * to be executed locally or using an interchain account
+ */
 export interface MsgSubmitActionSDKType {
   owner: string;
   label: string;
@@ -169,7 +208,11 @@ export interface MsgSubmitActionResponseAminoMsg {
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitActionResponseSDKType {}
-/** MsgRegisterAccountAndSubmitAction creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
+/**
+ * MsgRegisterAccountAndSubmitAction creates an interchain account, submits and
+ * schedules an arbitrary transaction msg to be executed by this interchain
+ * account
+ */
 export interface MsgRegisterAccountAndSubmitAction {
   owner: string;
   connectionId: string;
@@ -177,13 +220,22 @@ export interface MsgRegisterAccountAndSubmitAction {
   msgs: (Any)[] | Any[];
   /** duration defines the time that the code should run for */
   duration: string;
-  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
+  /**
+   * start_at when set as a unix time after block inclusion, creates a custom
+   * start time for execution
+   */
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
+  /**
+   * optional fees to be used for auto tx execution limiting the amount of fees
+   * incurred
+   */
   feeFunds: Coin[];
-  /** optional array of dependent txs that should be executed before execution is allowed */
+  /**
+   * optional array of dependent txs that should be executed before execution is
+   * allowed
+   */
   configuration?: ExecutionConfiguration;
   version: string;
   hostConnectionId: string;
@@ -196,7 +248,11 @@ export interface MsgRegisterAccountAndSubmitActionProtoMsg {
 export type MsgRegisterAccountAndSubmitActionEncoded = Omit<MsgRegisterAccountAndSubmitAction, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** MsgRegisterAccountAndSubmitAction creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
+/**
+ * MsgRegisterAccountAndSubmitAction creates an interchain account, submits and
+ * schedules an arbitrary transaction msg to be executed by this interchain
+ * account
+ */
 export interface MsgRegisterAccountAndSubmitActionAmino {
   owner?: string;
   connection_id?: string;
@@ -204,23 +260,36 @@ export interface MsgRegisterAccountAndSubmitActionAmino {
   msgs?: AnyAmino[];
   /** duration defines the time that the code should run for */
   duration?: string;
-  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
+  /**
+   * start_at when set as a unix time after block inclusion, creates a custom
+   * start time for execution
+   */
   start_at?: string;
   /** interval defines the interval between auto_msg calls */
   interval?: string;
-  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
+  /**
+   * optional fees to be used for auto tx execution limiting the amount of fees
+   * incurred
+   */
   fee_funds?: CoinAmino[];
-  /** optional array of dependent txs that should be executed before execution is allowed */
+  /**
+   * optional array of dependent txs that should be executed before execution is
+   * allowed
+   */
   configuration?: ExecutionConfigurationAmino;
   version?: string;
   host_connection_id?: string;
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgRegisterAccountAndSubmitActionAminoMsg {
-  type: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction";
+  type: "intent/MsgRegisterAccountAndSubmitAction";
   value: MsgRegisterAccountAndSubmitActionAmino;
 }
-/** MsgRegisterAccountAndSubmitAction creates an interchain account, submits and schedules an arbitrary transaction msg to be executed by this interchain account */
+/**
+ * MsgRegisterAccountAndSubmitAction creates an interchain account, submits and
+ * schedules an arbitrary transaction msg to be executed by this interchain
+ * account
+ */
 export interface MsgRegisterAccountAndSubmitActionSDKType {
   owner: string;
   connection_id: string;
@@ -235,21 +304,33 @@ export interface MsgRegisterAccountAndSubmitActionSDKType {
   host_connection_id: string;
   conditions?: ExecutionConditionsSDKType;
 }
-/** MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response type */
+/**
+ * MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response
+ * type
+ */
 export interface MsgRegisterAccountAndSubmitActionResponse {}
 export interface MsgRegisterAccountAndSubmitActionResponseProtoMsg {
   typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitActionResponse";
   value: Uint8Array;
 }
-/** MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response type */
+/**
+ * MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response
+ * type
+ */
 export interface MsgRegisterAccountAndSubmitActionResponseAmino {}
 export interface MsgRegisterAccountAndSubmitActionResponseAminoMsg {
   type: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitActionResponse";
   value: MsgRegisterAccountAndSubmitActionResponseAmino;
 }
-/** MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response type */
+/**
+ * MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response
+ * type
+ */
 export interface MsgRegisterAccountAndSubmitActionResponseSDKType {}
-/** MsgUpdateAction updates an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgUpdateAction updates an arbitrary transaction msg to be executed locally
+ * or using an interchain account
+ */
 export interface MsgUpdateAction {
   owner: string;
   id: bigint;
@@ -258,11 +339,17 @@ export interface MsgUpdateAction {
   msgs: (Any)[] | Any[];
   /** end_time when set defines the time that the code should run for */
   endTime: bigint;
-  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
+  /**
+   * start_at when set as a unix time after block inclusion, creates a custom
+   * start time for execution
+   */
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
+  /**
+   * optional fees to be used for auto tx execution limiting the amount of fees
+   * incurred
+   */
   feeFunds: Coin[];
   configuration?: ExecutionConfiguration;
   hostedConfig?: HostedConfig;
@@ -275,7 +362,10 @@ export interface MsgUpdateActionProtoMsg {
 export type MsgUpdateActionEncoded = Omit<MsgUpdateAction, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** MsgUpdateAction updates an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgUpdateAction updates an arbitrary transaction msg to be executed locally
+ * or using an interchain account
+ */
 export interface MsgUpdateActionAmino {
   owner?: string;
   id?: string;
@@ -284,21 +374,30 @@ export interface MsgUpdateActionAmino {
   msgs?: AnyAmino[];
   /** end_time when set defines the time that the code should run for */
   end_time?: string;
-  /** start_at when set as a unix time after block inclusion, creates a custom start time for execution */
+  /**
+   * start_at when set as a unix time after block inclusion, creates a custom
+   * start time for execution
+   */
   start_at?: string;
   /** interval defines the interval between auto_msg calls */
   interval?: string;
-  /** optional fees to be used for auto tx execution limiting the amount of fees incurred */
+  /**
+   * optional fees to be used for auto tx execution limiting the amount of fees
+   * incurred
+   */
   fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
   hosted_config?: HostedConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgUpdateActionAminoMsg {
-  type: "/intento.intent.v1beta1.MsgUpdateAction";
+  type: "intent/MsgUpdateAction";
   value: MsgUpdateActionAmino;
 }
-/** MsgUpdateAction updates an arbitrary transaction msg to be executed locally or using an interchain account */
+/**
+ * MsgUpdateAction updates an arbitrary transaction msg to be executed locally
+ * or using an interchain account
+ */
 export interface MsgUpdateActionSDKType {
   owner: string;
   id: bigint;
@@ -346,7 +445,7 @@ export interface MsgCreateHostedAccountAmino {
   fee_coins_suported?: CoinAmino[];
 }
 export interface MsgCreateHostedAccountAminoMsg {
-  type: "/intento.intent.v1beta1.MsgCreateHostedAccount";
+  type: "intent/MsgCreateHostedAccount";
   value: MsgCreateHostedAccountAmino;
 }
 export interface MsgCreateHostedAccountSDKType {
@@ -392,7 +491,7 @@ export interface MsgUpdateHostedAccountAmino {
   host_fee_config?: HostFeeConfigAmino;
 }
 export interface MsgUpdateHostedAccountAminoMsg {
-  type: "/intento.intent.v1beta1.MsgUpdateHostedAccount";
+  type: "intent/MsgUpdateHostedAccount";
   value: MsgUpdateHostedAccountAmino;
 }
 export interface MsgUpdateHostedAccountSDKType {
@@ -422,6 +521,7 @@ function createBaseMsgRegisterAccount(): MsgRegisterAccount {
 }
 export const MsgRegisterAccount = {
   typeUrl: "/intento.intent.v1beta1.MsgRegisterAccount",
+  aminoType: "intent/MsgRegisterAccount",
   is(o: any): o is MsgRegisterAccount {
     return o && (o.$typeUrl === MsgRegisterAccount.typeUrl || typeof o.owner === "string" && typeof o.connectionId === "string" && typeof o.version === "string");
   },
@@ -510,6 +610,12 @@ export const MsgRegisterAccount = {
   fromAminoMsg(object: MsgRegisterAccountAminoMsg): MsgRegisterAccount {
     return MsgRegisterAccount.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgRegisterAccount): MsgRegisterAccountAminoMsg {
+    return {
+      type: "intent/MsgRegisterAccount",
+      value: MsgRegisterAccount.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgRegisterAccountProtoMsg): MsgRegisterAccount {
     return MsgRegisterAccount.decode(message.value);
   },
@@ -524,6 +630,7 @@ export const MsgRegisterAccount = {
   }
 };
 GlobalDecoderRegistry.register(MsgRegisterAccount.typeUrl, MsgRegisterAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRegisterAccount.aminoType, MsgRegisterAccount.typeUrl);
 function createBaseMsgRegisterAccountResponse(): MsgRegisterAccountResponse {
   return {};
 }
@@ -600,6 +707,7 @@ function createBaseMsgSubmitTx(): MsgSubmitTx {
 }
 export const MsgSubmitTx = {
   typeUrl: "/intento.intent.v1beta1.MsgSubmitTx",
+  aminoType: "intent/MsgRegisterAccount",
   is(o: any): o is MsgSubmitTx {
     return o && (o.$typeUrl === MsgSubmitTx.typeUrl || typeof o.owner === "string" && typeof o.connectionId === "string");
   },
@@ -688,6 +796,12 @@ export const MsgSubmitTx = {
   fromAminoMsg(object: MsgSubmitTxAminoMsg): MsgSubmitTx {
     return MsgSubmitTx.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgSubmitTx): MsgSubmitTxAminoMsg {
+    return {
+      type: "intent/MsgRegisterAccount",
+      value: MsgSubmitTx.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgSubmitTxProtoMsg): MsgSubmitTx {
     return MsgSubmitTx.decode(message.value);
   },
@@ -702,6 +816,7 @@ export const MsgSubmitTx = {
   }
 };
 GlobalDecoderRegistry.register(MsgSubmitTx.typeUrl, MsgSubmitTx);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitTx.aminoType, MsgSubmitTx.typeUrl);
 function createBaseMsgSubmitTxResponse(): MsgSubmitTxResponse {
   return {};
 }
@@ -787,6 +902,7 @@ function createBaseMsgSubmitAction(): MsgSubmitAction {
 }
 export const MsgSubmitAction = {
   typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
+  aminoType: "intent/MsgSubmitAction",
   is(o: any): o is MsgSubmitAction {
     return o && (o.$typeUrl === MsgSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
   },
@@ -1004,6 +1120,12 @@ export const MsgSubmitAction = {
   fromAminoMsg(object: MsgSubmitActionAminoMsg): MsgSubmitAction {
     return MsgSubmitAction.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgSubmitAction): MsgSubmitActionAminoMsg {
+    return {
+      type: "intent/MsgSubmitAction",
+      value: MsgSubmitAction.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgSubmitActionProtoMsg): MsgSubmitAction {
     return MsgSubmitAction.decode(message.value);
   },
@@ -1018,6 +1140,7 @@ export const MsgSubmitAction = {
   }
 };
 GlobalDecoderRegistry.register(MsgSubmitAction.typeUrl, MsgSubmitAction);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitAction.aminoType, MsgSubmitAction.typeUrl);
 function createBaseMsgSubmitActionResponse(): MsgSubmitActionResponse {
   return {};
 }
@@ -1103,6 +1226,7 @@ function createBaseMsgRegisterAccountAndSubmitAction(): MsgRegisterAccountAndSub
 }
 export const MsgRegisterAccountAndSubmitAction = {
   typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
+  aminoType: "intent/MsgRegisterAccountAndSubmitAction",
   is(o: any): o is MsgRegisterAccountAndSubmitAction {
     return o && (o.$typeUrl === MsgRegisterAccountAndSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.version === "string" && typeof o.hostConnectionId === "string");
   },
@@ -1320,6 +1444,12 @@ export const MsgRegisterAccountAndSubmitAction = {
   fromAminoMsg(object: MsgRegisterAccountAndSubmitActionAminoMsg): MsgRegisterAccountAndSubmitAction {
     return MsgRegisterAccountAndSubmitAction.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgRegisterAccountAndSubmitAction): MsgRegisterAccountAndSubmitActionAminoMsg {
+    return {
+      type: "intent/MsgRegisterAccountAndSubmitAction",
+      value: MsgRegisterAccountAndSubmitAction.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgRegisterAccountAndSubmitActionProtoMsg): MsgRegisterAccountAndSubmitAction {
     return MsgRegisterAccountAndSubmitAction.decode(message.value);
   },
@@ -1334,6 +1464,7 @@ export const MsgRegisterAccountAndSubmitAction = {
   }
 };
 GlobalDecoderRegistry.register(MsgRegisterAccountAndSubmitAction.typeUrl, MsgRegisterAccountAndSubmitAction);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRegisterAccountAndSubmitAction.aminoType, MsgRegisterAccountAndSubmitAction.typeUrl);
 function createBaseMsgRegisterAccountAndSubmitActionResponse(): MsgRegisterAccountAndSubmitActionResponse {
   return {};
 }
@@ -1419,6 +1550,7 @@ function createBaseMsgUpdateAction(): MsgUpdateAction {
 }
 export const MsgUpdateAction = {
   typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
+  aminoType: "intent/MsgUpdateAction",
   is(o: any): o is MsgUpdateAction {
     return o && (o.$typeUrl === MsgUpdateAction.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.endTime === "bigint" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])));
   },
@@ -1636,6 +1768,12 @@ export const MsgUpdateAction = {
   fromAminoMsg(object: MsgUpdateActionAminoMsg): MsgUpdateAction {
     return MsgUpdateAction.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgUpdateAction): MsgUpdateActionAminoMsg {
+    return {
+      type: "intent/MsgUpdateAction",
+      value: MsgUpdateAction.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgUpdateActionProtoMsg): MsgUpdateAction {
     return MsgUpdateAction.decode(message.value);
   },
@@ -1650,6 +1788,7 @@ export const MsgUpdateAction = {
   }
 };
 GlobalDecoderRegistry.register(MsgUpdateAction.typeUrl, MsgUpdateAction);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateAction.aminoType, MsgUpdateAction.typeUrl);
 function createBaseMsgUpdateActionResponse(): MsgUpdateActionResponse {
   return {};
 }
@@ -1728,6 +1867,7 @@ function createBaseMsgCreateHostedAccount(): MsgCreateHostedAccount {
 }
 export const MsgCreateHostedAccount = {
   typeUrl: "/intento.intent.v1beta1.MsgCreateHostedAccount",
+  aminoType: "intent/MsgCreateHostedAccount",
   is(o: any): o is MsgCreateHostedAccount {
     return o && (o.$typeUrl === MsgCreateHostedAccount.typeUrl || typeof o.creator === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string" && typeof o.version === "string" && Array.isArray(o.feeCoinsSuported) && (!o.feeCoinsSuported.length || Coin.is(o.feeCoinsSuported[0])));
   },
@@ -1848,6 +1988,12 @@ export const MsgCreateHostedAccount = {
   fromAminoMsg(object: MsgCreateHostedAccountAminoMsg): MsgCreateHostedAccount {
     return MsgCreateHostedAccount.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgCreateHostedAccount): MsgCreateHostedAccountAminoMsg {
+    return {
+      type: "intent/MsgCreateHostedAccount",
+      value: MsgCreateHostedAccount.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgCreateHostedAccountProtoMsg): MsgCreateHostedAccount {
     return MsgCreateHostedAccount.decode(message.value);
   },
@@ -1862,6 +2008,7 @@ export const MsgCreateHostedAccount = {
   }
 };
 GlobalDecoderRegistry.register(MsgCreateHostedAccount.typeUrl, MsgCreateHostedAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateHostedAccount.aminoType, MsgCreateHostedAccount.typeUrl);
 function createBaseMsgCreateHostedAccountResponse(): MsgCreateHostedAccountResponse {
   return {
     address: ""
@@ -1956,6 +2103,7 @@ function createBaseMsgUpdateHostedAccount(): MsgUpdateHostedAccount {
 }
 export const MsgUpdateHostedAccount = {
   typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
+  aminoType: "intent/MsgUpdateHostedAccount",
   is(o: any): o is MsgUpdateHostedAccount {
     return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hostedAddress === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
   },
@@ -2070,6 +2218,12 @@ export const MsgUpdateHostedAccount = {
   fromAminoMsg(object: MsgUpdateHostedAccountAminoMsg): MsgUpdateHostedAccount {
     return MsgUpdateHostedAccount.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgUpdateHostedAccount): MsgUpdateHostedAccountAminoMsg {
+    return {
+      type: "intent/MsgUpdateHostedAccount",
+      value: MsgUpdateHostedAccount.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgUpdateHostedAccountProtoMsg): MsgUpdateHostedAccount {
     return MsgUpdateHostedAccount.decode(message.value);
   },
@@ -2084,6 +2238,7 @@ export const MsgUpdateHostedAccount = {
   }
 };
 GlobalDecoderRegistry.register(MsgUpdateHostedAccount.typeUrl, MsgUpdateHostedAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateHostedAccount.aminoType, MsgUpdateHostedAccount.typeUrl);
 function createBaseMsgUpdateHostedAccountResponse(): MsgUpdateHostedAccountResponse {
   return {};
 }

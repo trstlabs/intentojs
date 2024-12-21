@@ -12,7 +12,7 @@ export interface MsgSubmitQueryResponse {
   fromAddress: string;
 }
 export interface MsgSubmitQueryResponseProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse";
+  typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse";
   value: Uint8Array;
 }
 /** MsgSubmitQueryResponse represents a message type to fulfil a query request. */
@@ -25,7 +25,7 @@ export interface MsgSubmitQueryResponseAmino {
   from_address?: string;
 }
 export interface MsgSubmitQueryResponseAminoMsg {
-  type: "/intento.interchainquery.v1.MsgSubmitQueryResponse";
+  type: "icq/MsgSubmitQueryResponse";
   value: MsgSubmitQueryResponseAmino;
 }
 /** MsgSubmitQueryResponse represents a message type to fulfil a query request. */
@@ -43,7 +43,7 @@ export interface MsgSubmitQueryResponseSDKType {
  */
 export interface MsgSubmitQueryResponseResponse {}
 export interface MsgSubmitQueryResponseResponseProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponseResponse";
+  typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponseResponse";
   value: Uint8Array;
 }
 /**
@@ -52,7 +52,7 @@ export interface MsgSubmitQueryResponseResponseProtoMsg {
  */
 export interface MsgSubmitQueryResponseResponseAmino {}
 export interface MsgSubmitQueryResponseResponseAminoMsg {
-  type: "/intento.interchainquery.v1.MsgSubmitQueryResponseResponse";
+  type: "/stride.interchainquery.v1.MsgSubmitQueryResponseResponse";
   value: MsgSubmitQueryResponseResponseAmino;
 }
 /**
@@ -71,7 +71,8 @@ function createBaseMsgSubmitQueryResponse(): MsgSubmitQueryResponse {
   };
 }
 export const MsgSubmitQueryResponse = {
-  typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+  typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
+  aminoType: "icq/MsgSubmitQueryResponse",
   is(o: any): o is MsgSubmitQueryResponse {
     return o && (o.$typeUrl === MsgSubmitQueryResponse.typeUrl || typeof o.chainId === "string" && typeof o.queryId === "string" && (o.result instanceof Uint8Array || typeof o.result === "string") && typeof o.height === "bigint" && typeof o.fromAddress === "string");
   },
@@ -199,6 +200,12 @@ export const MsgSubmitQueryResponse = {
   fromAminoMsg(object: MsgSubmitQueryResponseAminoMsg): MsgSubmitQueryResponse {
     return MsgSubmitQueryResponse.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgSubmitQueryResponse): MsgSubmitQueryResponseAminoMsg {
+    return {
+      type: "icq/MsgSubmitQueryResponse",
+      value: MsgSubmitQueryResponse.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgSubmitQueryResponseProtoMsg): MsgSubmitQueryResponse {
     return MsgSubmitQueryResponse.decode(message.value);
   },
@@ -207,17 +214,18 @@ export const MsgSubmitQueryResponse = {
   },
   toProtoMsg(message: MsgSubmitQueryResponse): MsgSubmitQueryResponseProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponse",
+      typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
       value: MsgSubmitQueryResponse.encode(message).finish()
     };
   }
 };
 GlobalDecoderRegistry.register(MsgSubmitQueryResponse.typeUrl, MsgSubmitQueryResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitQueryResponse.aminoType, MsgSubmitQueryResponse.typeUrl);
 function createBaseMsgSubmitQueryResponseResponse(): MsgSubmitQueryResponseResponse {
   return {};
 }
 export const MsgSubmitQueryResponseResponse = {
-  typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponseResponse",
+  typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponseResponse",
   is(o: any): o is MsgSubmitQueryResponseResponse {
     return o && o.$typeUrl === MsgSubmitQueryResponseResponse.typeUrl;
   },
@@ -274,7 +282,7 @@ export const MsgSubmitQueryResponseResponse = {
   },
   toProtoMsg(message: MsgSubmitQueryResponseResponse): MsgSubmitQueryResponseResponseProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.MsgSubmitQueryResponseResponse",
+      typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponseResponse",
       value: MsgSubmitQueryResponseResponse.encode(message).finish()
     };
   }

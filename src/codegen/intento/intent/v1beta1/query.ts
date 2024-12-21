@@ -69,6 +69,7 @@ export interface QueryInterchainAccountFromAddressResponseSDKType {
 }
 /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
 export interface QueryActionRequest {
+  /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
   id: string;
 }
 export interface QueryActionRequestProtoMsg {
@@ -77,6 +78,7 @@ export interface QueryActionRequestProtoMsg {
 }
 /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
 export interface QueryActionRequestAmino {
+  /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
   id?: string;
 }
 export interface QueryActionRequestAminoMsg {
@@ -107,7 +109,10 @@ export interface QueryActionResponseAminoMsg {
 export interface QueryActionResponseSDKType {
   action_info: ActionInfoSDKType;
 }
-/** QueryActionHistoryRequest is the request type for the Query/QueryActionHistoryRequest RPC */
+/**
+ * QueryActionHistoryRequest is the request type for the
+ * Query/QueryActionHistoryRequest RPC
+ */
 export interface QueryActionHistoryRequest {
   /** id of the action */
   id: string;
@@ -118,7 +123,10 @@ export interface QueryActionHistoryRequestProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryActionHistoryRequest";
   value: Uint8Array;
 }
-/** QueryActionHistoryRequest is the request type for the Query/QueryActionHistoryRequest RPC */
+/**
+ * QueryActionHistoryRequest is the request type for the
+ * Query/QueryActionHistoryRequest RPC
+ */
 export interface QueryActionHistoryRequestAmino {
   /** id of the action */
   id?: string;
@@ -129,12 +137,18 @@ export interface QueryActionHistoryRequestAminoMsg {
   type: "/intento.intent.v1beta1.QueryActionHistoryRequest";
   value: QueryActionHistoryRequestAmino;
 }
-/** QueryActionHistoryRequest is the request type for the Query/QueryActionHistoryRequest RPC */
+/**
+ * QueryActionHistoryRequest is the request type for the
+ * Query/QueryActionHistoryRequest RPC
+ */
 export interface QueryActionHistoryRequestSDKType {
   id: string;
   pagination?: PageRequestSDKType;
 }
-/** QueryActionHistoryResponse the response type for the Query/QueryActionHistoryResponse RPC */
+/**
+ * QueryActionHistoryResponse the response type for the
+ * Query/QueryActionHistoryResponse RPC
+ */
 export interface QueryActionHistoryResponse {
   history: ActionHistoryEntry[];
   /** Pagination defines the pagination in the response. */
@@ -144,7 +158,10 @@ export interface QueryActionHistoryResponseProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryActionHistoryResponse";
   value: Uint8Array;
 }
-/** QueryActionHistoryResponse the response type for the Query/QueryActionHistoryResponse RPC */
+/**
+ * QueryActionHistoryResponse the response type for the
+ * Query/QueryActionHistoryResponse RPC
+ */
 export interface QueryActionHistoryResponseAmino {
   history?: ActionHistoryEntryAmino[];
   /** Pagination defines the pagination in the response. */
@@ -154,7 +171,10 @@ export interface QueryActionHistoryResponseAminoMsg {
   type: "/intento.intent.v1beta1.QueryActionHistoryResponse";
   value: QueryActionHistoryResponseAmino;
 }
-/** QueryActionHistoryResponse the response type for the Query/QueryActionHistoryResponse RPC */
+/**
+ * QueryActionHistoryResponse the response type for the
+ * Query/QueryActionHistoryResponse RPC
+ */
 export interface QueryActionHistoryResponseSDKType {
   history: ActionHistoryEntrySDKType[];
   pagination?: PageResponseSDKType;
@@ -312,6 +332,7 @@ export interface QueryParamsResponseSDKType {
 }
 /** QueryHostedAccount is the request type for the Query/Params RPC method. */
 export interface QueryHostedAccountRequest {
+  /** QueryHostedAccount is the request type for the Query/Params RPC method. */
   address: string;
 }
 export interface QueryHostedAccountRequestProtoMsg {
@@ -320,6 +341,7 @@ export interface QueryHostedAccountRequestProtoMsg {
 }
 /** QueryHostedAccount is the request type for the Query/Params RPC method. */
 export interface QueryHostedAccountRequestAmino {
+  /** QueryHostedAccount is the request type for the Query/Params RPC method. */
   address?: string;
 }
 export interface QueryHostedAccountRequestAminoMsg {
@@ -330,7 +352,10 @@ export interface QueryHostedAccountRequestAminoMsg {
 export interface QueryHostedAccountRequestSDKType {
   address: string;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountResponse {
   /** HostedAccount */
   hostedAccount: HostedAccount;
@@ -339,7 +364,10 @@ export interface QueryHostedAccountResponseProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryHostedAccountResponse";
   value: Uint8Array;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountResponseAmino {
   /** HostedAccount */
   hosted_account?: HostedAccountAmino;
@@ -348,11 +376,17 @@ export interface QueryHostedAccountResponseAminoMsg {
   type: "/intento.intent.v1beta1.QueryHostedAccountResponse";
   value: QueryHostedAccountResponseAmino;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountResponseSDKType {
   hosted_account: HostedAccountSDKType;
 }
-/** QueryHostedAccounts is the request type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccounts is the request type for the Query/HostedAccount RPC
+ * method.
+ */
 export interface QueryHostedAccountsRequest {
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
@@ -361,7 +395,10 @@ export interface QueryHostedAccountsRequestProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsRequest";
   value: Uint8Array;
 }
-/** QueryHostedAccounts is the request type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccounts is the request type for the Query/HostedAccount RPC
+ * method.
+ */
 export interface QueryHostedAccountsRequestAmino {
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequestAmino;
@@ -370,11 +407,17 @@ export interface QueryHostedAccountsRequestAminoMsg {
   type: "/intento.intent.v1beta1.QueryHostedAccountsRequest";
   value: QueryHostedAccountsRequestAmino;
 }
-/** QueryHostedAccounts is the request type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccounts is the request type for the Query/HostedAccount RPC
+ * method.
+ */
 export interface QueryHostedAccountsRequestSDKType {
   pagination?: PageRequestSDKType;
 }
-/** QueryHostedAccountsResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountsResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountsResponse {
   /** HostedAccounts */
   hostedAccounts: HostedAccount[];
@@ -385,7 +428,10 @@ export interface QueryHostedAccountsResponseProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsResponse";
   value: Uint8Array;
 }
-/** QueryHostedAccountsResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountsResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountsResponseAmino {
   /** HostedAccounts */
   hosted_accounts?: HostedAccountAmino[];
@@ -396,7 +442,10 @@ export interface QueryHostedAccountsResponseAminoMsg {
   type: "/intento.intent.v1beta1.QueryHostedAccountsResponse";
   value: QueryHostedAccountsResponseAmino;
 }
-/** QueryHostedAccountsResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountsResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountsResponseSDKType {
   hosted_accounts: HostedAccountSDKType[];
   pagination?: PageResponseSDKType;
@@ -426,7 +475,10 @@ export interface QueryHostedAccountsByAdminRequestSDKType {
   admin: string;
   pagination?: PageRequestSDKType;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountsByAdminResponse {
   /** HostedAccounts */
   hostedAccounts: HostedAccount[];
@@ -437,7 +489,10 @@ export interface QueryHostedAccountsByAdminResponseProtoMsg {
   typeUrl: "/intento.intent.v1beta1.QueryHostedAccountsByAdminResponse";
   value: Uint8Array;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountsByAdminResponseAmino {
   /** HostedAccounts */
   hosted_accounts?: HostedAccountAmino[];
@@ -448,7 +503,10 @@ export interface QueryHostedAccountsByAdminResponseAminoMsg {
   type: "/intento.intent.v1beta1.QueryHostedAccountsByAdminResponse";
   value: QueryHostedAccountsByAdminResponseAmino;
 }
-/** QueryHostedAccountResponse is the response type for the Query/HostedAccount RPC method. */
+/**
+ * QueryHostedAccountResponse is the response type for the Query/HostedAccount
+ * RPC method.
+ */
 export interface QueryHostedAccountsByAdminResponseSDKType {
   hosted_accounts: HostedAccountSDKType[];
   pagination?: PageResponseSDKType;

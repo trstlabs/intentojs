@@ -1,6 +1,7 @@
-import * as _87 from "./alloc/v1beta1/genesis";
-import * as _88 from "./alloc/v1beta1/params";
-import * as _89 from "./alloc/v1beta1/query";
+import * as _86 from "./alloc/v1beta1/genesis";
+import * as _87 from "./alloc/v1beta1/params";
+import * as _88 from "./alloc/v1beta1/query";
+import * as _89 from "./alloc/v1beta1/tx";
 import * as _90 from "./claim/v1beta1/claim";
 import * as _91 from "./claim/v1beta1/genesis";
 import * as _92 from "./claim/v1beta1/params";
@@ -13,33 +14,40 @@ import * as _98 from "./intent/v1beta1/query";
 import * as _99 from "./intent/v1beta1/tx";
 import * as _100 from "./intent/v1beta1/usage";
 import * as _101 from "./interchainquery/v1/genesis";
-import * as _102 from "./interchainquery/v1/messages";
-import * as _103 from "./interchainquery/v1/query";
-import * as _104 from "./mint/v1beta1/genesis";
-import * as _105 from "./mint/v1beta1/mint";
-import * as _106 from "./mint/v1beta1/query";
-import * as _151 from "./claim/v1beta1/claim.amino";
-import * as _152 from "./intent/v1beta1/tx.amino";
-import * as _153 from "./interchainquery/v1/messages.amino";
-import * as _154 from "./claim/v1beta1/claim.registry";
-import * as _155 from "./intent/v1beta1/tx.registry";
-import * as _156 from "./interchainquery/v1/messages.registry";
-import * as _157 from "./alloc/v1beta1/query.rpc.Query";
-import * as _158 from "./claim/v1beta1/query.rpc.Query";
-import * as _159 from "./intent/v1beta1/query.rpc.Query";
-import * as _160 from "./mint/v1beta1/query.rpc.Query";
-import * as _161 from "./claim/v1beta1/claim.rpc.msg";
-import * as _162 from "./intent/v1beta1/tx.rpc.msg";
-import * as _163 from "./interchainquery/v1/messages.rpc.msg";
-import * as _168 from "./rpc.query";
-import * as _169 from "./rpc.tx";
+import * as _102 from "./interchainquery/v1/query";
+import * as _103 from "./mint/v1beta1/genesis";
+import * as _104 from "./mint/v1beta1/mint";
+import * as _105 from "./mint/v1beta1/query";
+import * as _106 from "./mint/v1beta1/tx";
+import * as _152 from "./alloc/v1beta1/tx.amino";
+import * as _153 from "./claim/v1beta1/claim.amino";
+import * as _154 from "./intent/v1beta1/tx.amino";
+import * as _155 from "./mint/v1beta1/tx.amino";
+import * as _156 from "./alloc/v1beta1/tx.registry";
+import * as _157 from "./claim/v1beta1/claim.registry";
+import * as _158 from "./intent/v1beta1/tx.registry";
+import * as _159 from "./mint/v1beta1/tx.registry";
+import * as _160 from "./alloc/v1beta1/query.rpc.Query";
+import * as _161 from "./claim/v1beta1/query.rpc.Query";
+import * as _162 from "./intent/v1beta1/query.rpc.Query";
+import * as _163 from "./mint/v1beta1/query.rpc.Query";
+import * as _164 from "./alloc/v1beta1/tx.rpc.msg";
+import * as _165 from "./claim/v1beta1/claim.rpc.msg";
+import * as _166 from "./intent/v1beta1/tx.rpc.msg";
+import * as _167 from "./mint/v1beta1/tx.rpc.msg";
+import * as _175 from "./rpc.query";
+import * as _176 from "./rpc.tx";
 export namespace intento {
   export namespace alloc {
     export const v1beta1 = {
+      ..._86,
       ..._87,
       ..._88,
       ..._89,
-      ..._157
+      ..._152,
+      ..._156,
+      ..._160,
+      ..._164
     };
   }
   export namespace claim {
@@ -48,10 +56,10 @@ export namespace intento {
       ..._91,
       ..._92,
       ..._93,
-      ..._151,
-      ..._154,
-      ..._158,
-      ..._161
+      ..._153,
+      ..._157,
+      ..._161,
+      ..._165
     };
   }
   export namespace intent {
@@ -63,32 +71,32 @@ export namespace intento {
       ..._98,
       ..._99,
       ..._100,
-      ..._152,
-      ..._155,
-      ..._159,
-      ..._162
+      ..._154,
+      ..._158,
+      ..._162,
+      ..._166
     };
   }
   export namespace interchainquery {
     export const v1 = {
       ..._101,
-      ..._102,
-      ..._103,
-      ..._153,
-      ..._156,
-      ..._163
+      ..._102
     };
   }
   export namespace mint {
     export const v1beta1 = {
+      ..._103,
       ..._104,
       ..._105,
       ..._106,
-      ..._160
+      ..._155,
+      ..._159,
+      ..._163,
+      ..._167
     };
   }
   export const ClientFactory = {
-    ..._168,
-    ..._169
+    ..._175,
+    ..._176
   };
 }

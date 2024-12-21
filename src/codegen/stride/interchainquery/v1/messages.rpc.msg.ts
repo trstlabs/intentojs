@@ -14,7 +14,7 @@ export class MsgClientImpl implements Msg {
   }
   submitQueryResponse(request: MsgSubmitQueryResponse): Promise<MsgSubmitQueryResponseResponse> {
     const data = MsgSubmitQueryResponse.encode(request).finish();
-    const promise = this.rpc.request("intento.interchainquery.v1.Msg", "SubmitQueryResponse", data);
+    const promise = this.rpc.request("stride.interchainquery.v1.Msg", "SubmitQueryResponse", data);
     return promise.then(data => MsgSubmitQueryResponseResponse.decode(new BinaryReader(data)));
   }
 }

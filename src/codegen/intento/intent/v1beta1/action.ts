@@ -208,47 +208,74 @@ export interface HostedConfigSDKType {
   hosted_address: string;
   fee_coin_limit: CoinSDKType;
 }
-/** ExecutionConfiguration provides the execution-related configuration of the action */
+/**
+ * ExecutionConfiguration provides the execution-related configuration of the
+ * action
+ */
 export interface ExecutionConfiguration {
   /** if true, the action response outputs are saved and can be used in logic */
-  saveMsgResponses: boolean;
+  saveResponses: boolean;
   /** if true, the action is not updatable */
   updatingDisabled: boolean;
-  /** If true, will execute until we get a successful Action, if false/unset will always execute */
+  /**
+   * If true, will execute until we get a successful Action, if false/unset will
+   * always execute
+   */
   stopOnSuccess: boolean;
-  /** If true, will execute until successful Action, if false/unset will always execute */
+  /**
+   * If true, will execute until successful Action, if false/unset will always
+   * execute
+   */
   stopOnFailure: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallbackToOwnerBalance: boolean;
-  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
+  /**
+   * If true, allows the action to continue execution after an ibc channel times
+   * out (recommended)
+   */
   reregisterIcaAfterTimeout: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConfiguration";
   value: Uint8Array;
 }
-/** ExecutionConfiguration provides the execution-related configuration of the action */
+/**
+ * ExecutionConfiguration provides the execution-related configuration of the
+ * action
+ */
 export interface ExecutionConfigurationAmino {
   /** if true, the action response outputs are saved and can be used in logic */
-  save_msg_responses?: boolean;
+  save_responses?: boolean;
   /** if true, the action is not updatable */
   updating_disabled?: boolean;
-  /** If true, will execute until we get a successful Action, if false/unset will always execute */
+  /**
+   * If true, will execute until we get a successful Action, if false/unset will
+   * always execute
+   */
   stop_on_success?: boolean;
-  /** If true, will execute until successful Action, if false/unset will always execute */
+  /**
+   * If true, will execute until successful Action, if false/unset will always
+   * execute
+   */
   stop_on_failure?: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallback_to_owner_balance?: boolean;
-  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
+  /**
+   * If true, allows the action to continue execution after an ibc channel times
+   * out (recommended)
+   */
   reregister_ica_after_timeout?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConfiguration";
   value: ExecutionConfigurationAmino;
 }
-/** ExecutionConfiguration provides the execution-related configuration of the action */
+/**
+ * ExecutionConfiguration provides the execution-related configuration of the
+ * action
+ */
 export interface ExecutionConfigurationSDKType {
-  save_msg_responses: boolean;
+  save_responses: boolean;
   updating_disabled: boolean;
   stop_on_success: boolean;
   stop_on_failure: boolean;
@@ -284,10 +311,15 @@ export interface ActionHistoryEntry {
   executed: boolean;
   /** timed out from execution over IBC */
   timedOut: boolean;
-  /** errors from execution, if executed and no error the execution was succesfull */
+  /**
+   * errors from execution, if executed and no error the execution was
+   * succesfull
+   */
   errors: string[];
   /** will be empty when save_responses is false */
   msgResponses: Any[];
+  /** will be empty when save_responses is false */
+  queryResponse: string;
 }
 export interface ActionHistoryEntryProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry";
@@ -302,10 +334,15 @@ export interface ActionHistoryEntryAmino {
   executed?: boolean;
   /** timed out from execution over IBC */
   timed_out?: boolean;
-  /** errors from execution, if executed and no error the execution was succesfull */
+  /**
+   * errors from execution, if executed and no error the execution was
+   * succesfull
+   */
   errors?: string[];
   /** will be empty when save_responses is false */
   msg_responses?: AnyAmino[];
+  /** will be empty when save_responses is false */
+  query_response?: string;
 }
 export interface ActionHistoryEntryAminoMsg {
   type: "/intento.intent.v1beta1.ActionHistoryEntry";
@@ -320,20 +357,36 @@ export interface ActionHistoryEntrySDKType {
   timed_out: boolean;
   errors: string[];
   msg_responses: AnySDKType[];
+  query_response: string;
 }
 /** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditions {
-  /** Replace value with value from message or response from another action’s latest output */
+  /**
+   * Replace value with value from message or response from another action’s
+   * latest output
+   */
   useResponseValue?: UseResponseValue;
   /** Comparison with response response value */
   responseComparison?: ResponseComparison;
-  /** optional array of dependent intents that when executing succesfully, stops execution */
+  /**
+   * optional array of dependent intents that when executing succesfully, stops
+   * execution
+   */
   stopOnSuccessOf: bigint[];
-  /** optional array of dependent intents that when not executing succesfully, stops execution */
+  /**
+   * optional array of dependent intents that when not executing succesfully,
+   * stops execution
+   */
   stopOnFailureOf: bigint[];
-  /** optional array of dependent intents that should be executed succesfully after their latest call before execution is allowed */
+  /**
+   * optional array of dependent intents that should be executed succesfully
+   * after their latest call before execution is allowed
+   */
   skipOnFailureOf: bigint[];
-  /** optional array of dependent intents that should fail after their latest call before execution is allowed */
+  /**
+   * optional array of dependent intents that should fail after their latest
+   * call before execution is allowed
+   */
   skipOnSuccessOf: bigint[];
   icqConfig?: ICQConfig;
 }
@@ -343,17 +396,32 @@ export interface ExecutionConditionsProtoMsg {
 }
 /** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditionsAmino {
-  /** Replace value with value from message or response from another action’s latest output */
+  /**
+   * Replace value with value from message or response from another action’s
+   * latest output
+   */
   use_response_value?: UseResponseValueAmino;
   /** Comparison with response response value */
   response_comparison?: ResponseComparisonAmino;
-  /** optional array of dependent intents that when executing succesfully, stops execution */
+  /**
+   * optional array of dependent intents that when executing succesfully, stops
+   * execution
+   */
   stop_on_success_of?: string[];
-  /** optional array of dependent intents that when not executing succesfully, stops execution */
+  /**
+   * optional array of dependent intents that when not executing succesfully,
+   * stops execution
+   */
   stop_on_failure_of?: string[];
-  /** optional array of dependent intents that should be executed succesfully after their latest call before execution is allowed */
+  /**
+   * optional array of dependent intents that should be executed succesfully
+   * after their latest call before execution is allowed
+   */
   skip_on_failure_of?: string[];
-  /** optional array of dependent intents that should fail after their latest call before execution is allowed */
+  /**
+   * optional array of dependent intents that should fail after their latest
+   * call before execution is allowed
+   */
   skip_on_success_of?: string[];
   icq_config?: ICQConfigAmino;
 }
@@ -371,9 +439,11 @@ export interface ExecutionConditionsSDKType {
   skip_on_success_of: bigint[];
   icq_config?: ICQConfigSDKType;
 }
-/** Replace value with value from message or response from another action’s latest output before execution */
+/**
+ * Replace value with value from message or response from another action’s
+ * latest output before execution
+ */
 export interface UseResponseValue {
-  /** action to get the latest response value from, optional */
   actionId: bigint;
   /** index of the responses */
   responseIndex: number;
@@ -383,7 +453,10 @@ export interface UseResponseValue {
   msgsIndex: number;
   /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msgKey: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /**
+   * can be anything from sdk.Int, sdk.Coin, sdk.Coins,
+   * string, []string, []sdk.Int
+   */
   valueType: string;
   fromIcq: boolean;
 }
@@ -391,9 +464,11 @@ export interface UseResponseValueProtoMsg {
   typeUrl: "/intento.intent.v1beta1.UseResponseValue";
   value: Uint8Array;
 }
-/** Replace value with value from message or response from another action’s latest output before execution */
+/**
+ * Replace value with value from message or response from another action’s
+ * latest output before execution
+ */
 export interface UseResponseValueAmino {
-  /** action to get the latest response value from, optional */
   action_id?: string;
   /** index of the responses */
   response_index?: number;
@@ -403,7 +478,10 @@ export interface UseResponseValueAmino {
   msgs_index?: number;
   /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msg_key?: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /**
+   * can be anything from sdk.Int, sdk.Coin, sdk.Coins,
+   * string, []string, []sdk.Int
+   */
   value_type?: string;
   from_icq?: boolean;
 }
@@ -411,7 +489,10 @@ export interface UseResponseValueAminoMsg {
   type: "/intento.intent.v1beta1.UseResponseValue";
   value: UseResponseValueAmino;
 }
-/** Replace value with value from message or response from another action’s latest output before execution */
+/**
+ * Replace value with value from message or response from another action’s
+ * latest output before execution
+ */
 export interface UseResponseValueSDKType {
   action_id: bigint;
   response_index: number;
@@ -421,45 +502,56 @@ export interface UseResponseValueSDKType {
   value_type: string;
   from_icq: boolean;
 }
-/** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
+/**
+ * ResponseComparison is checked on the response in JSON before execution of
+ * action and outputs true or false
+ */
 export interface ResponseComparison {
-  /** action to get the latest response value from, optional */
   actionId: bigint;
   /** index of the response */
   responseIndex: number;
   /** e.g. Amount[0].Amount, FromAddress */
   responseKey: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /**
+   * can be anything from sdk.Int, sdk.Coin, sdk.Coins,
+   * string, []string, []sdk.Int
+   */
   valueType: string;
   comparisonOperator: ComparisonOperator;
   comparisonOperand: string;
-  /** true to use query response from icq config */
   fromIcq: boolean;
 }
 export interface ResponseComparisonProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ResponseComparison";
   value: Uint8Array;
 }
-/** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
+/**
+ * ResponseComparison is checked on the response in JSON before execution of
+ * action and outputs true or false
+ */
 export interface ResponseComparisonAmino {
-  /** action to get the latest response value from, optional */
   action_id?: string;
   /** index of the response */
   response_index?: number;
   /** e.g. Amount[0].Amount, FromAddress */
   response_key?: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /**
+   * can be anything from sdk.Int, sdk.Coin, sdk.Coins,
+   * string, []string, []sdk.Int
+   */
   value_type?: string;
   comparison_operator?: ComparisonOperator;
   comparison_operand?: string;
-  /** true to use query response from icq config */
   from_icq?: boolean;
 }
 export interface ResponseComparisonAminoMsg {
   type: "/intento.intent.v1beta1.ResponseComparison";
   value: ResponseComparisonAmino;
 }
-/** ResponseComparison is checked on the response in JSON before execution of action and outputs true or false */
+/**
+ * ResponseComparison is checked on the response in JSON before execution of
+ * action and outputs true or false
+ */
 export interface ResponseComparisonSDKType {
   action_id: bigint;
   response_index: number;
@@ -477,7 +569,11 @@ export interface ICQConfig {
   timeoutDuration: Duration;
   /** e.g. store/bank/key store/staking/key */
   queryType: string;
-  /** key in the store to query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this in TP. See x/interchainquery/types/keys.go */
+  /**
+   * key in the store to query e.g.
+   * stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this
+   * in TP. See x/interchainquery/types/keys.go
+   */
   queryKey: string;
 }
 export interface ICQConfigProtoMsg {
@@ -492,7 +588,11 @@ export interface ICQConfigAmino {
   timeout_duration?: DurationAmino;
   /** e.g. store/bank/key store/staking/key */
   query_type?: string;
-  /** key in the store to query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this in TP. See x/interchainquery/types/keys.go */
+  /**
+   * key in the store to query e.g.
+   * stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this
+   * in TP. See x/interchainquery/types/keys.go
+   */
   query_key?: string;
 }
 export interface ICQConfigAminoMsg {
@@ -995,7 +1095,7 @@ export const HostedConfig = {
 GlobalDecoderRegistry.register(HostedConfig.typeUrl, HostedConfig);
 function createBaseExecutionConfiguration(): ExecutionConfiguration {
   return {
-    saveMsgResponses: false,
+    saveResponses: false,
     updatingDisabled: false,
     stopOnSuccess: false,
     stopOnFailure: false,
@@ -1006,17 +1106,17 @@ function createBaseExecutionConfiguration(): ExecutionConfiguration {
 export const ExecutionConfiguration = {
   typeUrl: "/intento.intent.v1beta1.ExecutionConfiguration",
   is(o: any): o is ExecutionConfiguration {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveMsgResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.fallbackToOwnerBalance === "boolean" && typeof o.reregisterIcaAfterTimeout === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.fallbackToOwnerBalance === "boolean" && typeof o.reregisterIcaAfterTimeout === "boolean");
   },
   isSDK(o: any): o is ExecutionConfigurationSDKType {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_msg_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
   },
   isAmino(o: any): o is ExecutionConfigurationAmino {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_msg_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
   },
   encode(message: ExecutionConfiguration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.saveMsgResponses === true) {
-      writer.uint32(8).bool(message.saveMsgResponses);
+    if (message.saveResponses === true) {
+      writer.uint32(8).bool(message.saveResponses);
     }
     if (message.updatingDisabled === true) {
       writer.uint32(16).bool(message.updatingDisabled);
@@ -1043,7 +1143,7 @@ export const ExecutionConfiguration = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.saveMsgResponses = reader.bool();
+          message.saveResponses = reader.bool();
           break;
         case 2:
           message.updatingDisabled = reader.bool();
@@ -1069,7 +1169,7 @@ export const ExecutionConfiguration = {
   },
   fromJSON(object: any): ExecutionConfiguration {
     return {
-      saveMsgResponses: isSet(object.saveMsgResponses) ? Boolean(object.saveMsgResponses) : false,
+      saveResponses: isSet(object.saveResponses) ? Boolean(object.saveResponses) : false,
       updatingDisabled: isSet(object.updatingDisabled) ? Boolean(object.updatingDisabled) : false,
       stopOnSuccess: isSet(object.stopOnSuccess) ? Boolean(object.stopOnSuccess) : false,
       stopOnFailure: isSet(object.stopOnFailure) ? Boolean(object.stopOnFailure) : false,
@@ -1079,7 +1179,7 @@ export const ExecutionConfiguration = {
   },
   toJSON(message: ExecutionConfiguration): unknown {
     const obj: any = {};
-    message.saveMsgResponses !== undefined && (obj.saveMsgResponses = message.saveMsgResponses);
+    message.saveResponses !== undefined && (obj.saveResponses = message.saveResponses);
     message.updatingDisabled !== undefined && (obj.updatingDisabled = message.updatingDisabled);
     message.stopOnSuccess !== undefined && (obj.stopOnSuccess = message.stopOnSuccess);
     message.stopOnFailure !== undefined && (obj.stopOnFailure = message.stopOnFailure);
@@ -1089,7 +1189,7 @@ export const ExecutionConfiguration = {
   },
   fromPartial(object: Partial<ExecutionConfiguration>): ExecutionConfiguration {
     const message = createBaseExecutionConfiguration();
-    message.saveMsgResponses = object.saveMsgResponses ?? false;
+    message.saveResponses = object.saveResponses ?? false;
     message.updatingDisabled = object.updatingDisabled ?? false;
     message.stopOnSuccess = object.stopOnSuccess ?? false;
     message.stopOnFailure = object.stopOnFailure ?? false;
@@ -1099,8 +1199,8 @@ export const ExecutionConfiguration = {
   },
   fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
     const message = createBaseExecutionConfiguration();
-    if (object.save_msg_responses !== undefined && object.save_msg_responses !== null) {
-      message.saveMsgResponses = object.save_msg_responses;
+    if (object.save_responses !== undefined && object.save_responses !== null) {
+      message.saveResponses = object.save_responses;
     }
     if (object.updating_disabled !== undefined && object.updating_disabled !== null) {
       message.updatingDisabled = object.updating_disabled;
@@ -1121,7 +1221,7 @@ export const ExecutionConfiguration = {
   },
   toAmino(message: ExecutionConfiguration): ExecutionConfigurationAmino {
     const obj: any = {};
-    obj.save_msg_responses = message.saveMsgResponses === false ? undefined : message.saveMsgResponses;
+    obj.save_responses = message.saveResponses === false ? undefined : message.saveResponses;
     obj.updating_disabled = message.updatingDisabled === false ? undefined : message.updatingDisabled;
     obj.stop_on_success = message.stopOnSuccess === false ? undefined : message.stopOnSuccess;
     obj.stop_on_failure = message.stopOnFailure === false ? undefined : message.stopOnFailure;
@@ -1243,19 +1343,20 @@ function createBaseActionHistoryEntry(): ActionHistoryEntry {
     executed: false,
     timedOut: false,
     errors: [],
-    msgResponses: []
+    msgResponses: [],
+    queryResponse: ""
   };
 }
 export const ActionHistoryEntry = {
   typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry",
   is(o: any): o is ActionHistoryEntry {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])));
+    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && typeof o.queryResponse === "string");
   },
   isSDK(o: any): o is ActionHistoryEntrySDKType {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])));
+    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && typeof o.query_response === "string");
   },
   isAmino(o: any): o is ActionHistoryEntryAmino {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])));
+    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && typeof o.query_response === "string");
   },
   encode(message: ActionHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
@@ -1278,6 +1379,9 @@ export const ActionHistoryEntry = {
     }
     for (const v of message.msgResponses) {
       Any.encode(v!, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.queryResponse !== "") {
+      writer.uint32(66).string(message.queryResponse);
     }
     return writer;
   },
@@ -1309,6 +1413,9 @@ export const ActionHistoryEntry = {
         case 7:
           message.msgResponses.push(Any.decode(reader, reader.uint32()));
           break;
+        case 8:
+          message.queryResponse = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1324,7 +1431,8 @@ export const ActionHistoryEntry = {
       executed: isSet(object.executed) ? Boolean(object.executed) : false,
       timedOut: isSet(object.timedOut) ? Boolean(object.timedOut) : false,
       errors: Array.isArray(object?.errors) ? object.errors.map((e: any) => String(e)) : [],
-      msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : []
+      msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : [],
+      queryResponse: isSet(object.queryResponse) ? String(object.queryResponse) : ""
     };
   },
   toJSON(message: ActionHistoryEntry): unknown {
@@ -1344,6 +1452,7 @@ export const ActionHistoryEntry = {
     } else {
       obj.msgResponses = [];
     }
+    message.queryResponse !== undefined && (obj.queryResponse = message.queryResponse);
     return obj;
   },
   fromPartial(object: Partial<ActionHistoryEntry>): ActionHistoryEntry {
@@ -1355,6 +1464,7 @@ export const ActionHistoryEntry = {
     message.timedOut = object.timedOut ?? false;
     message.errors = object.errors?.map(e => e) || [];
     message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
+    message.queryResponse = object.queryResponse ?? "";
     return message;
   },
   fromAmino(object: ActionHistoryEntryAmino): ActionHistoryEntry {
@@ -1376,6 +1486,9 @@ export const ActionHistoryEntry = {
     }
     message.errors = object.errors?.map(e => e) || [];
     message.msgResponses = object.msg_responses?.map(e => Any.fromAmino(e)) || [];
+    if (object.query_response !== undefined && object.query_response !== null) {
+      message.queryResponse = object.query_response;
+    }
     return message;
   },
   toAmino(message: ActionHistoryEntry): ActionHistoryEntryAmino {
@@ -1395,6 +1508,7 @@ export const ActionHistoryEntry = {
     } else {
       obj.msg_responses = message.msgResponses;
     }
+    obj.query_response = message.queryResponse === "" ? undefined : message.queryResponse;
     return obj;
   },
   fromAminoMsg(object: ActionHistoryEntryAminoMsg): ActionHistoryEntry {
