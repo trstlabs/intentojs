@@ -4,7 +4,7 @@ import {
   MsgInstantiateContract,
   MsgInstantiateContract2,
   MsgExecuteContract,
-} from "./codegen/cosmwasm/wasm/v1/cosmwasm";
+} from "./codegen/cosmwasm/wasm/v1/tx";
 import * as osmo from "./codegen/osmosis/gamm/v1beta1/gamm";
 
 export const customMsgRegistry: ReadonlyArray<
