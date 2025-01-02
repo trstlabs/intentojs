@@ -24,6 +24,8 @@ __exportStar(require("./ics23/bundle"), exports);
 __exportStar(require("./cosmos_proto/bundle"), exports);
 __exportStar(require("./cosmos/bundle"), exports);
 __exportStar(require("./cosmos/client"), exports);
+__exportStar(require("./cosmwasm/bundle"), exports);
+__exportStar(require("./cosmwasm/client"), exports);
 __exportStar(require("./gogoproto/bundle"), exports);
 __exportStar(require("./google/bundle"), exports);
 __exportStar(require("./ibc/bundle"), exports);

@@ -1,6 +1,7 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { SendAuthorization, SendAuthorizationProtoMsg, SendAuthorizationSDKType } from "../../bank/v1beta1/authz";
 import { StakeAuthorization, StakeAuthorizationProtoMsg, StakeAuthorizationSDKType } from "../../staking/v1beta1/authz";
+import { ContractExecutionAuthorization, ContractExecutionAuthorizationProtoMsg, ContractExecutionAuthorizationSDKType, ContractMigrationAuthorization, ContractMigrationAuthorizationProtoMsg, ContractMigrationAuthorizationSDKType } from "../../../cosmwasm/wasm/v1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
@@ -40,7 +41,7 @@ export interface GenericAuthorizationSDKType {
  * the provide method with expiration time.
  */
 export interface Grant {
-    authorization?: GenericAuthorization | SendAuthorization | StakeAuthorization | Any | undefined;
+    authorization?: GenericAuthorization | SendAuthorization | StakeAuthorization | ContractExecutionAuthorization | ContractMigrationAuthorization | Any | undefined;
     /**
      * time when the grant will expire and will be pruned. If null, then the grant
      * doesn't have a time expiration (other conditions  in `authorization`
@@ -53,7 +54,7 @@ export interface GrantProtoMsg {
     value: Uint8Array;
 }
 export type GrantEncoded = Omit<Grant, "authorization"> & {
-    authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | AnyProtoMsg | undefined;
+    authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | ContractExecutionAuthorizationProtoMsg | ContractMigrationAuthorizationProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * Grant gives permissions to execute
@@ -77,7 +78,7 @@ export interface GrantAminoMsg {
  * the provide method with expiration time.
  */
 export interface GrantSDKType {
-    authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
+    authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | ContractExecutionAuthorizationSDKType | ContractMigrationAuthorizationSDKType | AnySDKType | undefined;
     expiration?: Date;
 }
 /**
@@ -87,7 +88,7 @@ export interface GrantSDKType {
 export interface GrantAuthorization {
     granter: string;
     grantee: string;
-    authorization?: GenericAuthorization | SendAuthorization | StakeAuthorization | Any | undefined;
+    authorization?: GenericAuthorization | SendAuthorization | StakeAuthorization | ContractExecutionAuthorization | ContractMigrationAuthorization | Any | undefined;
     expiration?: Date;
 }
 export interface GrantAuthorizationProtoMsg {
@@ -95,7 +96,7 @@ export interface GrantAuthorizationProtoMsg {
     value: Uint8Array;
 }
 export type GrantAuthorizationEncoded = Omit<GrantAuthorization, "authorization"> & {
-    authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | AnyProtoMsg | undefined;
+    authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | ContractExecutionAuthorizationProtoMsg | ContractMigrationAuthorizationProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * GrantAuthorization extends a grant with both the addresses of the grantee and granter.
@@ -118,7 +119,7 @@ export interface GrantAuthorizationAminoMsg {
 export interface GrantAuthorizationSDKType {
     granter: string;
     grantee: string;
-    authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
+    authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | ContractExecutionAuthorizationSDKType | ContractMigrationAuthorizationSDKType | AnySDKType | undefined;
     expiration?: Date;
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */

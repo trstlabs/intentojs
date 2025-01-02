@@ -1,18 +1,18 @@
 // @ts-nocheck
 import { GeneratedType } from "@cosmjs/proto-signing";
-import {
-  MsgInstantiateContract,
-  MsgInstantiateContract2,
-  MsgExecuteContract,
-} from "./codegen/cosmwasm/wasm/v1/cosmwasm";
+// import {
+//   MsgInstantiateContract,
+//   MsgInstantiateContract2,
+//   MsgExecuteContract,
+// } from "./codegen/cosmwasm/wasm/v1/cosmwasm";
 import * as osmo from "./codegen/osmosis/gamm/v1beta1/gamm";
 
 export const customMsgRegistry: ReadonlyArray<
   [string, TelescopeGeneratedCodec]
 > = [
-  ["/cosmwasm.wasm.v1.MsgInstantiateContract", MsgInstantiateContract],
-  ["/cosmwasm.wasm.v1.MsgInstantiateContract2", MsgInstantiateContract2],
-  ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract],
+  // ["/cosmwasm.wasm.v1.MsgInstantiateContract", MsgInstantiateContract],
+  // ["/cosmwasm.wasm.v1.MsgInstantiateContract2", MsgInstantiateContract2],
+  // ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract],
   ["/osmosis.gamm.v1beta1.MsgJoinPool", osmo.MsgJoinPool],
   ["/osmosis.gamm.v1beta1.MsgExitPool", osmo.MsgExitPool],
   [

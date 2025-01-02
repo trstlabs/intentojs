@@ -6,6 +6,56 @@ import { TimeoutPolicy, timeoutPolicyFromJSON, timeoutPolicyToJSON } from "../..
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+export enum AfterGetValue {
+  PARSE = 0,
+  MULITPLY = 1,
+  DIVIDE = 2,
+  SUBSTRACT = 3,
+  ADD = 4,
+  UNRECOGNIZED = -1,
+}
+export const AfterGetValueSDKType = AfterGetValue;
+export const AfterGetValueAmino = AfterGetValue;
+export function afterGetValueFromJSON(object: any): AfterGetValue {
+  switch (object) {
+    case 0:
+    case "PARSE":
+      return AfterGetValue.PARSE;
+    case 1:
+    case "MULITPLY":
+      return AfterGetValue.MULITPLY;
+    case 2:
+    case "DIVIDE":
+      return AfterGetValue.DIVIDE;
+    case 3:
+    case "SUBSTRACT":
+      return AfterGetValue.SUBSTRACT;
+    case 4:
+    case "ADD":
+      return AfterGetValue.ADD;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return AfterGetValue.UNRECOGNIZED;
+  }
+}
+export function afterGetValueToJSON(object: AfterGetValue): string {
+  switch (object) {
+    case AfterGetValue.PARSE:
+      return "PARSE";
+    case AfterGetValue.MULITPLY:
+      return "MULITPLY";
+    case AfterGetValue.DIVIDE:
+      return "DIVIDE";
+    case AfterGetValue.SUBSTRACT:
+      return "SUBSTRACT";
+    case AfterGetValue.ADD:
+      return "ADD";
+    case AfterGetValue.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
 /** Comparison operators that can be used for various types. */
 export enum ComparisonOperator {
   /** EQUAL - Equality check (for all types) */
@@ -229,10 +279,7 @@ export interface ExecutionConfiguration {
   stopOnFailure: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallbackToOwnerBalance: boolean;
-  /**
-   * If true, allows the action to continue execution after an ibc channel times
-   * out (recommended)
-   */
+  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
   reregisterIcaAfterTimeout: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
@@ -260,10 +307,7 @@ export interface ExecutionConfigurationAmino {
   stop_on_failure?: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallback_to_owner_balance?: boolean;
-  /**
-   * If true, allows the action to continue execution after an ibc channel times
-   * out (recommended)
-   */
+  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
   reregister_ica_after_timeout?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
@@ -365,9 +409,9 @@ export interface ExecutionConditions {
    * Replace value with value from message or response from another action’s
    * latest output
    */
-  useResponseValue?: UseResponseValue;
+  feedbackLoops: FeedbackLoop[];
   /** Comparison with response response value */
-  responseComparison?: ResponseComparison;
+  comparisons: Comparison[];
   /**
    * optional array of dependent intents that when executing succesfully, stops
    * execution
@@ -388,7 +432,8 @@ export interface ExecutionConditions {
    * call before execution is allowed
    */
   skipOnSuccessOf: bigint[];
-  icqConfig?: ICQConfig;
+  /** True: Use AND for combining conditions. False: Use OR for combining conditions. */
+  useAndForConditions: boolean;
 }
 export interface ExecutionConditionsProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
@@ -400,9 +445,9 @@ export interface ExecutionConditionsAmino {
    * Replace value with value from message or response from another action’s
    * latest output
    */
-  use_response_value?: UseResponseValueAmino;
+  feedback_loops?: FeedbackLoopAmino[];
   /** Comparison with response response value */
-  response_comparison?: ResponseComparisonAmino;
+  comparisons?: ComparisonAmino[];
   /**
    * optional array of dependent intents that when executing succesfully, stops
    * execution
@@ -423,7 +468,8 @@ export interface ExecutionConditionsAmino {
    * call before execution is allowed
    */
   skip_on_success_of?: string[];
-  icq_config?: ICQConfigAmino;
+  /** True: Use AND for combining conditions. False: Use OR for combining conditions. */
+  use_and_for_conditions?: boolean;
 }
 export interface ExecutionConditionsAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConditions";
@@ -431,19 +477,20 @@ export interface ExecutionConditionsAminoMsg {
 }
 /** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditionsSDKType {
-  use_response_value?: UseResponseValueSDKType;
-  response_comparison?: ResponseComparisonSDKType;
+  feedback_loops: FeedbackLoopSDKType[];
+  comparisons: ComparisonSDKType[];
   stop_on_success_of: bigint[];
   stop_on_failure_of: bigint[];
   skip_on_failure_of: bigint[];
   skip_on_success_of: bigint[];
-  icq_config?: ICQConfigSDKType;
+  use_and_for_conditions: boolean;
 }
 /**
  * Replace value with value from message or response from another action’s
  * latest output before execution
  */
-export interface UseResponseValue {
+export interface FeedbackLoop {
+  /** action to get the latest response value from, optional */
   actionId: bigint;
   /** index of the responses */
   responseIndex: number;
@@ -458,17 +505,23 @@ export interface UseResponseValue {
    * string, []string, []sdk.Int
    */
   valueType: string;
-  fromIcq: boolean;
+  /** True: Calculate the difference with the previous value. */
+  calculateDifference: boolean;
+  /** query ID to query */
+  queryId: string;
+  /** config of ICQ to perform */
+  icqConfig?: ICQConfig;
 }
-export interface UseResponseValueProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.UseResponseValue";
+export interface FeedbackLoopProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.FeedbackLoop";
   value: Uint8Array;
 }
 /**
  * Replace value with value from message or response from another action’s
  * latest output before execution
  */
-export interface UseResponseValueAmino {
+export interface FeedbackLoopAmino {
+  /** action to get the latest response value from, optional */
   action_id?: string;
   /** index of the responses */
   response_index?: number;
@@ -483,83 +536,104 @@ export interface UseResponseValueAmino {
    * string, []string, []sdk.Int
    */
   value_type?: string;
-  from_icq?: boolean;
+  /** True: Calculate the difference with the previous value. */
+  calculate_difference?: boolean;
+  /** query ID to query */
+  query_id?: string;
+  /** config of ICQ to perform */
+  icq_config?: ICQConfigAmino;
 }
-export interface UseResponseValueAminoMsg {
-  type: "/intento.intent.v1beta1.UseResponseValue";
-  value: UseResponseValueAmino;
+export interface FeedbackLoopAminoMsg {
+  type: "/intento.intent.v1beta1.FeedbackLoop";
+  value: FeedbackLoopAmino;
 }
 /**
  * Replace value with value from message or response from another action’s
  * latest output before execution
  */
-export interface UseResponseValueSDKType {
+export interface FeedbackLoopSDKType {
   action_id: bigint;
   response_index: number;
   response_key: string;
   msgs_index: number;
   msg_key: string;
   value_type: string;
-  from_icq: boolean;
+  calculate_difference: boolean;
+  query_id: string;
+  icq_config?: ICQConfigSDKType;
 }
 /**
- * ResponseComparison is checked on the response in JSON before execution of
+ * Comparison is checked on the response in JSON before execution of
  * action and outputs true or false
  */
-export interface ResponseComparison {
+export interface Comparison {
+  /** get the latest response value from other action, optional */
   actionId: bigint;
-  /** index of the response */
+  /** index of the message response, optional */
   responseIndex: number;
-  /** e.g. Amount[0].Amount, FromAddress */
+  /** e.g. Amount[0].Amount, FromAddress, optional */
   responseKey: string;
   /**
    * can be anything from sdk.Int, sdk.Coin, sdk.Coins,
    * string, []string, []sdk.Int
    */
   valueType: string;
-  comparisonOperator: ComparisonOperator;
-  comparisonOperand: string;
-  fromIcq: boolean;
+  operator: ComparisonOperator;
+  operand: string;
+  /** True: Calculate the difference with the previous value. */
+  calculateDifference: boolean;
+  /** query ID to query */
+  queryId: string;
+  /** config of ICQ to perform */
+  icqConfig?: ICQConfig;
 }
-export interface ResponseComparisonProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.ResponseComparison";
+export interface ComparisonProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.Comparison";
   value: Uint8Array;
 }
 /**
- * ResponseComparison is checked on the response in JSON before execution of
+ * Comparison is checked on the response in JSON before execution of
  * action and outputs true or false
  */
-export interface ResponseComparisonAmino {
+export interface ComparisonAmino {
+  /** get the latest response value from other action, optional */
   action_id?: string;
-  /** index of the response */
+  /** index of the message response, optional */
   response_index?: number;
-  /** e.g. Amount[0].Amount, FromAddress */
+  /** e.g. Amount[0].Amount, FromAddress, optional */
   response_key?: string;
   /**
    * can be anything from sdk.Int, sdk.Coin, sdk.Coins,
    * string, []string, []sdk.Int
    */
   value_type?: string;
-  comparison_operator?: ComparisonOperator;
-  comparison_operand?: string;
-  from_icq?: boolean;
+  operator?: ComparisonOperator;
+  operand?: string;
+  /** True: Calculate the difference with the previous value. */
+  calculate_difference?: boolean;
+  /** query ID to query */
+  query_id?: string;
+  /** config of ICQ to perform */
+  icq_config?: ICQConfigAmino;
 }
-export interface ResponseComparisonAminoMsg {
-  type: "/intento.intent.v1beta1.ResponseComparison";
-  value: ResponseComparisonAmino;
+export interface ComparisonAminoMsg {
+  type: "/intento.intent.v1beta1.Comparison";
+  value: ComparisonAmino;
 }
 /**
- * ResponseComparison is checked on the response in JSON before execution of
+ * Comparison is checked on the response in JSON before execution of
  * action and outputs true or false
  */
-export interface ResponseComparisonSDKType {
+export interface ComparisonSDKType {
   action_id: bigint;
   response_index: number;
   response_key: string;
   value_type: string;
-  comparison_operator: ComparisonOperator;
-  comparison_operand: string;
-  from_icq: boolean;
+  operator: ComparisonOperator;
+  operand: string;
+  calculate_difference: boolean;
+  query_id: string;
+  icq_config?: ICQConfigSDKType;
 }
 /** config for using interchain queries */
 export interface ICQConfig {
@@ -569,11 +643,7 @@ export interface ICQConfig {
   timeoutDuration: Duration;
   /** e.g. store/bank/key store/staking/key */
   queryType: string;
-  /**
-   * key in the store to query e.g.
-   * stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this
-   * in TP. See x/interchainquery/types/keys.go
-   */
+  /** key in the store that stores the query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) */
   queryKey: string;
 }
 export interface ICQConfigProtoMsg {
@@ -588,11 +658,7 @@ export interface ICQConfigAmino {
   timeout_duration?: DurationAmino;
   /** e.g. store/bank/key store/staking/key */
   query_type?: string;
-  /**
-   * key in the store to query e.g.
-   * stakingtypes.GetValidatorKey(validatorAddressBz) idea: abstract this
-   * in TP. See x/interchainquery/types/keys.go
-   */
+  /** key in the store that stores the query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) */
   query_key?: string;
 }
 export interface ICQConfigAminoMsg {
@@ -1530,32 +1596,32 @@ export const ActionHistoryEntry = {
 GlobalDecoderRegistry.register(ActionHistoryEntry.typeUrl, ActionHistoryEntry);
 function createBaseExecutionConditions(): ExecutionConditions {
   return {
-    useResponseValue: undefined,
-    responseComparison: undefined,
+    feedbackLoops: [],
+    comparisons: [],
     stopOnSuccessOf: [],
     stopOnFailureOf: [],
     skipOnFailureOf: [],
     skipOnSuccessOf: [],
-    icqConfig: undefined
+    useAndForConditions: false
   };
 }
 export const ExecutionConditions = {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions",
   is(o: any): o is ExecutionConditions {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint"));
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedbackLoops) && (!o.feedbackLoops.length || FeedbackLoop.is(o.feedbackLoops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.is(o.comparisons[0])) && Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint") && typeof o.useAndForConditions === "boolean");
   },
   isSDK(o: any): o is ExecutionConditionsSDKType {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedback_loops) && (!o.feedback_loops.length || FeedbackLoop.isSDK(o.feedback_loops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.isSDK(o.comparisons[0])) && Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint") && typeof o.use_and_for_conditions === "boolean");
   },
   isAmino(o: any): o is ExecutionConditionsAmino {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint"));
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedback_loops) && (!o.feedback_loops.length || FeedbackLoop.isAmino(o.feedback_loops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.isAmino(o.comparisons[0])) && Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint") && typeof o.use_and_for_conditions === "boolean");
   },
   encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.useResponseValue !== undefined) {
-      UseResponseValue.encode(message.useResponseValue, writer.uint32(18).fork()).ldelim();
+    for (const v of message.feedbackLoops) {
+      FeedbackLoop.encode(v!, writer.uint32(18).fork()).ldelim();
     }
-    if (message.responseComparison !== undefined) {
-      ResponseComparison.encode(message.responseComparison, writer.uint32(10).fork()).ldelim();
+    for (const v of message.comparisons) {
+      Comparison.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     writer.uint32(42).fork();
     for (const v of message.stopOnSuccessOf) {
@@ -1577,8 +1643,8 @@ export const ExecutionConditions = {
       writer.uint64(v);
     }
     writer.ldelim();
-    if (message.icqConfig !== undefined) {
-      ICQConfig.encode(message.icqConfig, writer.uint32(74).fork()).ldelim();
+    if (message.useAndForConditions === true) {
+      writer.uint32(72).bool(message.useAndForConditions);
     }
     return writer;
   },
@@ -1590,10 +1656,10 @@ export const ExecutionConditions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 2:
-          message.useResponseValue = UseResponseValue.decode(reader, reader.uint32());
+          message.feedbackLoops.push(FeedbackLoop.decode(reader, reader.uint32()));
           break;
         case 1:
-          message.responseComparison = ResponseComparison.decode(reader, reader.uint32());
+          message.comparisons.push(Comparison.decode(reader, reader.uint32()));
           break;
         case 5:
           if ((tag & 7) === 2) {
@@ -1636,7 +1702,7 @@ export const ExecutionConditions = {
           }
           break;
         case 9:
-          message.icqConfig = ICQConfig.decode(reader, reader.uint32());
+          message.useAndForConditions = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1647,19 +1713,27 @@ export const ExecutionConditions = {
   },
   fromJSON(object: any): ExecutionConditions {
     return {
-      useResponseValue: isSet(object.useResponseValue) ? UseResponseValue.fromJSON(object.useResponseValue) : undefined,
-      responseComparison: isSet(object.responseComparison) ? ResponseComparison.fromJSON(object.responseComparison) : undefined,
+      feedbackLoops: Array.isArray(object?.feedbackLoops) ? object.feedbackLoops.map((e: any) => FeedbackLoop.fromJSON(e)) : [],
+      comparisons: Array.isArray(object?.comparisons) ? object.comparisons.map((e: any) => Comparison.fromJSON(e)) : [],
       stopOnSuccessOf: Array.isArray(object?.stopOnSuccessOf) ? object.stopOnSuccessOf.map((e: any) => BigInt(e.toString())) : [],
       stopOnFailureOf: Array.isArray(object?.stopOnFailureOf) ? object.stopOnFailureOf.map((e: any) => BigInt(e.toString())) : [],
       skipOnFailureOf: Array.isArray(object?.skipOnFailureOf) ? object.skipOnFailureOf.map((e: any) => BigInt(e.toString())) : [],
       skipOnSuccessOf: Array.isArray(object?.skipOnSuccessOf) ? object.skipOnSuccessOf.map((e: any) => BigInt(e.toString())) : [],
-      icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
+      useAndForConditions: isSet(object.useAndForConditions) ? Boolean(object.useAndForConditions) : false
     };
   },
   toJSON(message: ExecutionConditions): unknown {
     const obj: any = {};
-    message.useResponseValue !== undefined && (obj.useResponseValue = message.useResponseValue ? UseResponseValue.toJSON(message.useResponseValue) : undefined);
-    message.responseComparison !== undefined && (obj.responseComparison = message.responseComparison ? ResponseComparison.toJSON(message.responseComparison) : undefined);
+    if (message.feedbackLoops) {
+      obj.feedbackLoops = message.feedbackLoops.map(e => e ? FeedbackLoop.toJSON(e) : undefined);
+    } else {
+      obj.feedbackLoops = [];
+    }
+    if (message.comparisons) {
+      obj.comparisons = message.comparisons.map(e => e ? Comparison.toJSON(e) : undefined);
+    } else {
+      obj.comparisons = [];
+    }
     if (message.stopOnSuccessOf) {
       obj.stopOnSuccessOf = message.stopOnSuccessOf.map(e => (e || BigInt(0)).toString());
     } else {
@@ -1680,41 +1754,45 @@ export const ExecutionConditions = {
     } else {
       obj.skipOnSuccessOf = [];
     }
-    message.icqConfig !== undefined && (obj.icqConfig = message.icqConfig ? ICQConfig.toJSON(message.icqConfig) : undefined);
+    message.useAndForConditions !== undefined && (obj.useAndForConditions = message.useAndForConditions);
     return obj;
   },
   fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
     const message = createBaseExecutionConditions();
-    message.useResponseValue = object.useResponseValue !== undefined && object.useResponseValue !== null ? UseResponseValue.fromPartial(object.useResponseValue) : undefined;
-    message.responseComparison = object.responseComparison !== undefined && object.responseComparison !== null ? ResponseComparison.fromPartial(object.responseComparison) : undefined;
+    message.feedbackLoops = object.feedbackLoops?.map(e => FeedbackLoop.fromPartial(e)) || [];
+    message.comparisons = object.comparisons?.map(e => Comparison.fromPartial(e)) || [];
     message.stopOnSuccessOf = object.stopOnSuccessOf?.map(e => BigInt(e.toString())) || [];
     message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnSuccessOf = object.skipOnSuccessOf?.map(e => BigInt(e.toString())) || [];
-    message.icqConfig = object.icqConfig !== undefined && object.icqConfig !== null ? ICQConfig.fromPartial(object.icqConfig) : undefined;
+    message.useAndForConditions = object.useAndForConditions ?? false;
     return message;
   },
   fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
     const message = createBaseExecutionConditions();
-    if (object.use_response_value !== undefined && object.use_response_value !== null) {
-      message.useResponseValue = UseResponseValue.fromAmino(object.use_response_value);
-    }
-    if (object.response_comparison !== undefined && object.response_comparison !== null) {
-      message.responseComparison = ResponseComparison.fromAmino(object.response_comparison);
-    }
+    message.feedbackLoops = object.feedback_loops?.map(e => FeedbackLoop.fromAmino(e)) || [];
+    message.comparisons = object.comparisons?.map(e => Comparison.fromAmino(e)) || [];
     message.stopOnSuccessOf = object.stop_on_success_of?.map(e => BigInt(e)) || [];
     message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
     message.skipOnFailureOf = object.skip_on_failure_of?.map(e => BigInt(e)) || [];
     message.skipOnSuccessOf = object.skip_on_success_of?.map(e => BigInt(e)) || [];
-    if (object.icq_config !== undefined && object.icq_config !== null) {
-      message.icqConfig = ICQConfig.fromAmino(object.icq_config);
+    if (object.use_and_for_conditions !== undefined && object.use_and_for_conditions !== null) {
+      message.useAndForConditions = object.use_and_for_conditions;
     }
     return message;
   },
   toAmino(message: ExecutionConditions): ExecutionConditionsAmino {
     const obj: any = {};
-    obj.use_response_value = message.useResponseValue ? UseResponseValue.toAmino(message.useResponseValue) : undefined;
-    obj.response_comparison = message.responseComparison ? ResponseComparison.toAmino(message.responseComparison) : undefined;
+    if (message.feedbackLoops) {
+      obj.feedback_loops = message.feedbackLoops.map(e => e ? FeedbackLoop.toAmino(e) : undefined);
+    } else {
+      obj.feedback_loops = message.feedbackLoops;
+    }
+    if (message.comparisons) {
+      obj.comparisons = message.comparisons.map(e => e ? Comparison.toAmino(e) : undefined);
+    } else {
+      obj.comparisons = message.comparisons;
+    }
     if (message.stopOnSuccessOf) {
       obj.stop_on_success_of = message.stopOnSuccessOf.map(e => e.toString());
     } else {
@@ -1735,7 +1813,7 @@ export const ExecutionConditions = {
     } else {
       obj.skip_on_success_of = message.skipOnSuccessOf;
     }
-    obj.icq_config = message.icqConfig ? ICQConfig.toAmino(message.icqConfig) : undefined;
+    obj.use_and_for_conditions = message.useAndForConditions === false ? undefined : message.useAndForConditions;
     return obj;
   },
   fromAminoMsg(object: ExecutionConditionsAminoMsg): ExecutionConditions {
@@ -1755,7 +1833,7 @@ export const ExecutionConditions = {
   }
 };
 GlobalDecoderRegistry.register(ExecutionConditions.typeUrl, ExecutionConditions);
-function createBaseUseResponseValue(): UseResponseValue {
+function createBaseFeedbackLoop(): FeedbackLoop {
   return {
     actionId: BigInt(0),
     responseIndex: 0,
@@ -1763,21 +1841,23 @@ function createBaseUseResponseValue(): UseResponseValue {
     msgsIndex: 0,
     msgKey: "",
     valueType: "",
-    fromIcq: false
+    calculateDifference: false,
+    queryId: "",
+    icqConfig: undefined
   };
 }
-export const UseResponseValue = {
-  typeUrl: "/intento.intent.v1beta1.UseResponseValue",
-  is(o: any): o is UseResponseValue {
-    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string" && typeof o.fromIcq === "boolean");
+export const FeedbackLoop = {
+  typeUrl: "/intento.intent.v1beta1.FeedbackLoop",
+  is(o: any): o is FeedbackLoop {
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string" && typeof o.calculateDifference === "boolean" && typeof o.queryId === "string");
   },
-  isSDK(o: any): o is UseResponseValueSDKType {
-    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.from_icq === "boolean");
+  isSDK(o: any): o is FeedbackLoopSDKType {
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.calculate_difference === "boolean" && typeof o.query_id === "string");
   },
-  isAmino(o: any): o is UseResponseValueAmino {
-    return o && (o.$typeUrl === UseResponseValue.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.from_icq === "boolean");
+  isAmino(o: any): o is FeedbackLoopAmino {
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.calculate_difference === "boolean" && typeof o.query_id === "string");
   },
-  encode(message: UseResponseValue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: FeedbackLoop, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.actionId);
     }
@@ -1796,15 +1876,21 @@ export const UseResponseValue = {
     if (message.valueType !== "") {
       writer.uint32(50).string(message.valueType);
     }
-    if (message.fromIcq === true) {
-      writer.uint32(56).bool(message.fromIcq);
+    if (message.calculateDifference === true) {
+      writer.uint32(56).bool(message.calculateDifference);
+    }
+    if (message.queryId !== "") {
+      writer.uint32(66).string(message.queryId);
+    }
+    if (message.icqConfig !== undefined) {
+      ICQConfig.encode(message.icqConfig, writer.uint32(74).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): UseResponseValue {
+  decode(input: BinaryReader | Uint8Array, length?: number): FeedbackLoop {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUseResponseValue();
+    const message = createBaseFeedbackLoop();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1827,7 +1913,13 @@ export const UseResponseValue = {
           message.valueType = reader.string();
           break;
         case 7:
-          message.fromIcq = reader.bool();
+          message.calculateDifference = reader.bool();
+          break;
+        case 8:
+          message.queryId = reader.string();
+          break;
+        case 9:
+          message.icqConfig = ICQConfig.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1836,7 +1928,7 @@ export const UseResponseValue = {
     }
     return message;
   },
-  fromJSON(object: any): UseResponseValue {
+  fromJSON(object: any): FeedbackLoop {
     return {
       actionId: isSet(object.actionId) ? BigInt(object.actionId.toString()) : BigInt(0),
       responseIndex: isSet(object.responseIndex) ? Number(object.responseIndex) : 0,
@@ -1844,10 +1936,12 @@ export const UseResponseValue = {
       msgsIndex: isSet(object.msgsIndex) ? Number(object.msgsIndex) : 0,
       msgKey: isSet(object.msgKey) ? String(object.msgKey) : "",
       valueType: isSet(object.valueType) ? String(object.valueType) : "",
-      fromIcq: isSet(object.fromIcq) ? Boolean(object.fromIcq) : false
+      calculateDifference: isSet(object.calculateDifference) ? Boolean(object.calculateDifference) : false,
+      queryId: isSet(object.queryId) ? String(object.queryId) : "",
+      icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
     };
   },
-  toJSON(message: UseResponseValue): unknown {
+  toJSON(message: FeedbackLoop): unknown {
     const obj: any = {};
     message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
     message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
@@ -1855,22 +1949,26 @@ export const UseResponseValue = {
     message.msgsIndex !== undefined && (obj.msgsIndex = Math.round(message.msgsIndex));
     message.msgKey !== undefined && (obj.msgKey = message.msgKey);
     message.valueType !== undefined && (obj.valueType = message.valueType);
-    message.fromIcq !== undefined && (obj.fromIcq = message.fromIcq);
+    message.calculateDifference !== undefined && (obj.calculateDifference = message.calculateDifference);
+    message.queryId !== undefined && (obj.queryId = message.queryId);
+    message.icqConfig !== undefined && (obj.icqConfig = message.icqConfig ? ICQConfig.toJSON(message.icqConfig) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<UseResponseValue>): UseResponseValue {
-    const message = createBaseUseResponseValue();
+  fromPartial(object: Partial<FeedbackLoop>): FeedbackLoop {
+    const message = createBaseFeedbackLoop();
     message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
     message.responseIndex = object.responseIndex ?? 0;
     message.responseKey = object.responseKey ?? "";
     message.msgsIndex = object.msgsIndex ?? 0;
     message.msgKey = object.msgKey ?? "";
     message.valueType = object.valueType ?? "";
-    message.fromIcq = object.fromIcq ?? false;
+    message.calculateDifference = object.calculateDifference ?? false;
+    message.queryId = object.queryId ?? "";
+    message.icqConfig = object.icqConfig !== undefined && object.icqConfig !== null ? ICQConfig.fromPartial(object.icqConfig) : undefined;
     return message;
   },
-  fromAmino(object: UseResponseValueAmino): UseResponseValue {
-    const message = createBaseUseResponseValue();
+  fromAmino(object: FeedbackLoopAmino): FeedbackLoop {
+    const message = createBaseFeedbackLoop();
     if (object.action_id !== undefined && object.action_id !== null) {
       message.actionId = BigInt(object.action_id);
     }
@@ -1889,12 +1987,18 @@ export const UseResponseValue = {
     if (object.value_type !== undefined && object.value_type !== null) {
       message.valueType = object.value_type;
     }
-    if (object.from_icq !== undefined && object.from_icq !== null) {
-      message.fromIcq = object.from_icq;
+    if (object.calculate_difference !== undefined && object.calculate_difference !== null) {
+      message.calculateDifference = object.calculate_difference;
+    }
+    if (object.query_id !== undefined && object.query_id !== null) {
+      message.queryId = object.query_id;
+    }
+    if (object.icq_config !== undefined && object.icq_config !== null) {
+      message.icqConfig = ICQConfig.fromAmino(object.icq_config);
     }
     return message;
   },
-  toAmino(message: UseResponseValue): UseResponseValueAmino {
+  toAmino(message: FeedbackLoop): FeedbackLoopAmino {
     const obj: any = {};
     obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
@@ -1902,49 +2006,53 @@ export const UseResponseValue = {
     obj.msgs_index = message.msgsIndex === 0 ? undefined : message.msgsIndex;
     obj.msg_key = message.msgKey === "" ? undefined : message.msgKey;
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
-    obj.from_icq = message.fromIcq === false ? undefined : message.fromIcq;
+    obj.calculate_difference = message.calculateDifference === false ? undefined : message.calculateDifference;
+    obj.query_id = message.queryId === "" ? undefined : message.queryId;
+    obj.icq_config = message.icqConfig ? ICQConfig.toAmino(message.icqConfig) : undefined;
     return obj;
   },
-  fromAminoMsg(object: UseResponseValueAminoMsg): UseResponseValue {
-    return UseResponseValue.fromAmino(object.value);
+  fromAminoMsg(object: FeedbackLoopAminoMsg): FeedbackLoop {
+    return FeedbackLoop.fromAmino(object.value);
   },
-  fromProtoMsg(message: UseResponseValueProtoMsg): UseResponseValue {
-    return UseResponseValue.decode(message.value);
+  fromProtoMsg(message: FeedbackLoopProtoMsg): FeedbackLoop {
+    return FeedbackLoop.decode(message.value);
   },
-  toProto(message: UseResponseValue): Uint8Array {
-    return UseResponseValue.encode(message).finish();
+  toProto(message: FeedbackLoop): Uint8Array {
+    return FeedbackLoop.encode(message).finish();
   },
-  toProtoMsg(message: UseResponseValue): UseResponseValueProtoMsg {
+  toProtoMsg(message: FeedbackLoop): FeedbackLoopProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.UseResponseValue",
-      value: UseResponseValue.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.FeedbackLoop",
+      value: FeedbackLoop.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(UseResponseValue.typeUrl, UseResponseValue);
-function createBaseResponseComparison(): ResponseComparison {
+GlobalDecoderRegistry.register(FeedbackLoop.typeUrl, FeedbackLoop);
+function createBaseComparison(): Comparison {
   return {
     actionId: BigInt(0),
     responseIndex: 0,
     responseKey: "",
     valueType: "",
-    comparisonOperator: 0,
-    comparisonOperand: "",
-    fromIcq: false
+    operator: 0,
+    operand: "",
+    calculateDifference: false,
+    queryId: "",
+    icqConfig: undefined
   };
 }
-export const ResponseComparison = {
-  typeUrl: "/intento.intent.v1beta1.ResponseComparison",
-  is(o: any): o is ResponseComparison {
-    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.comparisonOperator) && typeof o.comparisonOperand === "string" && typeof o.fromIcq === "boolean");
+export const Comparison = {
+  typeUrl: "/intento.intent.v1beta1.Comparison",
+  is(o: any): o is Comparison {
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.operator) && typeof o.operand === "string" && typeof o.calculateDifference === "boolean" && typeof o.queryId === "string");
   },
-  isSDK(o: any): o is ResponseComparisonSDKType {
-    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string" && typeof o.from_icq === "boolean");
+  isSDK(o: any): o is ComparisonSDKType {
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string" && typeof o.calculate_difference === "boolean" && typeof o.query_id === "string");
   },
-  isAmino(o: any): o is ResponseComparisonAmino {
-    return o && (o.$typeUrl === ResponseComparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.comparison_operator) && typeof o.comparison_operand === "string" && typeof o.from_icq === "boolean");
+  isAmino(o: any): o is ComparisonAmino {
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string" && typeof o.calculate_difference === "boolean" && typeof o.query_id === "string");
   },
-  encode(message: ResponseComparison, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: Comparison, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.actionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.actionId);
     }
@@ -1957,21 +2065,27 @@ export const ResponseComparison = {
     if (message.valueType !== "") {
       writer.uint32(34).string(message.valueType);
     }
-    if (message.comparisonOperator !== 0) {
-      writer.uint32(40).int32(message.comparisonOperator);
+    if (message.operator !== 0) {
+      writer.uint32(40).int32(message.operator);
     }
-    if (message.comparisonOperand !== "") {
-      writer.uint32(50).string(message.comparisonOperand);
+    if (message.operand !== "") {
+      writer.uint32(50).string(message.operand);
     }
-    if (message.fromIcq === true) {
-      writer.uint32(56).bool(message.fromIcq);
+    if (message.calculateDifference === true) {
+      writer.uint32(56).bool(message.calculateDifference);
+    }
+    if (message.queryId !== "") {
+      writer.uint32(66).string(message.queryId);
+    }
+    if (message.icqConfig !== undefined) {
+      ICQConfig.encode(message.icqConfig, writer.uint32(74).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ResponseComparison {
+  decode(input: BinaryReader | Uint8Array, length?: number): Comparison {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseResponseComparison();
+    const message = createBaseComparison();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1988,13 +2102,19 @@ export const ResponseComparison = {
           message.valueType = reader.string();
           break;
         case 5:
-          message.comparisonOperator = (reader.int32() as any);
+          message.operator = (reader.int32() as any);
           break;
         case 6:
-          message.comparisonOperand = reader.string();
+          message.operand = reader.string();
           break;
         case 7:
-          message.fromIcq = reader.bool();
+          message.calculateDifference = reader.bool();
+          break;
+        case 8:
+          message.queryId = reader.string();
+          break;
+        case 9:
+          message.icqConfig = ICQConfig.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -2003,41 +2123,47 @@ export const ResponseComparison = {
     }
     return message;
   },
-  fromJSON(object: any): ResponseComparison {
+  fromJSON(object: any): Comparison {
     return {
       actionId: isSet(object.actionId) ? BigInt(object.actionId.toString()) : BigInt(0),
       responseIndex: isSet(object.responseIndex) ? Number(object.responseIndex) : 0,
       responseKey: isSet(object.responseKey) ? String(object.responseKey) : "",
       valueType: isSet(object.valueType) ? String(object.valueType) : "",
-      comparisonOperator: isSet(object.comparisonOperator) ? comparisonOperatorFromJSON(object.comparisonOperator) : -1,
-      comparisonOperand: isSet(object.comparisonOperand) ? String(object.comparisonOperand) : "",
-      fromIcq: isSet(object.fromIcq) ? Boolean(object.fromIcq) : false
+      operator: isSet(object.operator) ? comparisonOperatorFromJSON(object.operator) : -1,
+      operand: isSet(object.operand) ? String(object.operand) : "",
+      calculateDifference: isSet(object.calculateDifference) ? Boolean(object.calculateDifference) : false,
+      queryId: isSet(object.queryId) ? String(object.queryId) : "",
+      icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
     };
   },
-  toJSON(message: ResponseComparison): unknown {
+  toJSON(message: Comparison): unknown {
     const obj: any = {};
     message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
     message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
     message.responseKey !== undefined && (obj.responseKey = message.responseKey);
     message.valueType !== undefined && (obj.valueType = message.valueType);
-    message.comparisonOperator !== undefined && (obj.comparisonOperator = comparisonOperatorToJSON(message.comparisonOperator));
-    message.comparisonOperand !== undefined && (obj.comparisonOperand = message.comparisonOperand);
-    message.fromIcq !== undefined && (obj.fromIcq = message.fromIcq);
+    message.operator !== undefined && (obj.operator = comparisonOperatorToJSON(message.operator));
+    message.operand !== undefined && (obj.operand = message.operand);
+    message.calculateDifference !== undefined && (obj.calculateDifference = message.calculateDifference);
+    message.queryId !== undefined && (obj.queryId = message.queryId);
+    message.icqConfig !== undefined && (obj.icqConfig = message.icqConfig ? ICQConfig.toJSON(message.icqConfig) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<ResponseComparison>): ResponseComparison {
-    const message = createBaseResponseComparison();
+  fromPartial(object: Partial<Comparison>): Comparison {
+    const message = createBaseComparison();
     message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
     message.responseIndex = object.responseIndex ?? 0;
     message.responseKey = object.responseKey ?? "";
     message.valueType = object.valueType ?? "";
-    message.comparisonOperator = object.comparisonOperator ?? 0;
-    message.comparisonOperand = object.comparisonOperand ?? "";
-    message.fromIcq = object.fromIcq ?? false;
+    message.operator = object.operator ?? 0;
+    message.operand = object.operand ?? "";
+    message.calculateDifference = object.calculateDifference ?? false;
+    message.queryId = object.queryId ?? "";
+    message.icqConfig = object.icqConfig !== undefined && object.icqConfig !== null ? ICQConfig.fromPartial(object.icqConfig) : undefined;
     return message;
   },
-  fromAmino(object: ResponseComparisonAmino): ResponseComparison {
-    const message = createBaseResponseComparison();
+  fromAmino(object: ComparisonAmino): Comparison {
+    const message = createBaseComparison();
     if (object.action_id !== undefined && object.action_id !== null) {
       message.actionId = BigInt(object.action_id);
     }
@@ -2050,45 +2176,53 @@ export const ResponseComparison = {
     if (object.value_type !== undefined && object.value_type !== null) {
       message.valueType = object.value_type;
     }
-    if (object.comparison_operator !== undefined && object.comparison_operator !== null) {
-      message.comparisonOperator = object.comparison_operator;
+    if (object.operator !== undefined && object.operator !== null) {
+      message.operator = object.operator;
     }
-    if (object.comparison_operand !== undefined && object.comparison_operand !== null) {
-      message.comparisonOperand = object.comparison_operand;
+    if (object.operand !== undefined && object.operand !== null) {
+      message.operand = object.operand;
     }
-    if (object.from_icq !== undefined && object.from_icq !== null) {
-      message.fromIcq = object.from_icq;
+    if (object.calculate_difference !== undefined && object.calculate_difference !== null) {
+      message.calculateDifference = object.calculate_difference;
+    }
+    if (object.query_id !== undefined && object.query_id !== null) {
+      message.queryId = object.query_id;
+    }
+    if (object.icq_config !== undefined && object.icq_config !== null) {
+      message.icqConfig = ICQConfig.fromAmino(object.icq_config);
     }
     return message;
   },
-  toAmino(message: ResponseComparison): ResponseComparisonAmino {
+  toAmino(message: Comparison): ComparisonAmino {
     const obj: any = {};
     obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
     obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
-    obj.comparison_operator = message.comparisonOperator === 0 ? undefined : message.comparisonOperator;
-    obj.comparison_operand = message.comparisonOperand === "" ? undefined : message.comparisonOperand;
-    obj.from_icq = message.fromIcq === false ? undefined : message.fromIcq;
+    obj.operator = message.operator === 0 ? undefined : message.operator;
+    obj.operand = message.operand === "" ? undefined : message.operand;
+    obj.calculate_difference = message.calculateDifference === false ? undefined : message.calculateDifference;
+    obj.query_id = message.queryId === "" ? undefined : message.queryId;
+    obj.icq_config = message.icqConfig ? ICQConfig.toAmino(message.icqConfig) : undefined;
     return obj;
   },
-  fromAminoMsg(object: ResponseComparisonAminoMsg): ResponseComparison {
-    return ResponseComparison.fromAmino(object.value);
+  fromAminoMsg(object: ComparisonAminoMsg): Comparison {
+    return Comparison.fromAmino(object.value);
   },
-  fromProtoMsg(message: ResponseComparisonProtoMsg): ResponseComparison {
-    return ResponseComparison.decode(message.value);
+  fromProtoMsg(message: ComparisonProtoMsg): Comparison {
+    return Comparison.decode(message.value);
   },
-  toProto(message: ResponseComparison): Uint8Array {
-    return ResponseComparison.encode(message).finish();
+  toProto(message: Comparison): Uint8Array {
+    return Comparison.encode(message).finish();
   },
-  toProtoMsg(message: ResponseComparison): ResponseComparisonProtoMsg {
+  toProtoMsg(message: Comparison): ComparisonProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.ResponseComparison",
-      value: ResponseComparison.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.Comparison",
+      value: Comparison.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(ResponseComparison.typeUrl, ResponseComparison);
+GlobalDecoderRegistry.register(Comparison.typeUrl, Comparison);
 function createBaseICQConfig(): ICQConfig {
   return {
     connectionId: "",
