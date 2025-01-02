@@ -3,79 +3,8 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, WeightedVoteOption, WeightedVoteOptionAmino, WeightedVoteOptionSDKType, TextProposal, TextProposalProtoMsg, TextProposalSDKType, voteOptionFromJSON, voteOptionToJSON } from "./gov";
 import { CommunityPoolSpendProposal, CommunityPoolSpendProposalProtoMsg, CommunityPoolSpendProposalSDKType, CommunityPoolSpendProposalWithDeposit, CommunityPoolSpendProposalWithDepositProtoMsg, CommunityPoolSpendProposalWithDepositSDKType } from "../../distribution/v1beta1/distribution";
 import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgradeProposalSDKType, CancelSoftwareUpgradeProposal, CancelSoftwareUpgradeProposalProtoMsg, CancelSoftwareUpgradeProposalSDKType } from "../../upgrade/v1beta1/upgrade";
-import { StoreCodeProposal as StoreCodeProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { StoreCodeProposalProtoMsg as StoreCodeProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { StoreCodeProposalSDKType as StoreCodeProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { InstantiateContractProposal as InstantiateContractProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { InstantiateContractProposalProtoMsg as InstantiateContractProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { InstantiateContractProposalSDKType as InstantiateContractProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { InstantiateContract2Proposal as InstantiateContract2Proposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { InstantiateContract2ProposalProtoMsg as InstantiateContract2Proposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { InstantiateContract2ProposalSDKType as InstantiateContract2Proposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { MigrateContractProposal as MigrateContractProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { MigrateContractProposalProtoMsg as MigrateContractProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { MigrateContractProposalSDKType as MigrateContractProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { SudoContractProposal as SudoContractProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { SudoContractProposalProtoMsg as SudoContractProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { SudoContractProposalSDKType as SudoContractProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { ExecuteContractProposal as ExecuteContractProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { ExecuteContractProposalProtoMsg as ExecuteContractProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { ExecuteContractProposalSDKType as ExecuteContractProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { UpdateAdminProposal as UpdateAdminProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { UpdateAdminProposalProtoMsg as UpdateAdminProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { UpdateAdminProposalSDKType as UpdateAdminProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { ClearAdminProposal as ClearAdminProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { ClearAdminProposalProtoMsg as ClearAdminProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { ClearAdminProposalSDKType as ClearAdminProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { PinCodesProposal as PinCodesProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { PinCodesProposalProtoMsg as PinCodesProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { PinCodesProposalSDKType as PinCodesProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { UnpinCodesProposal as UnpinCodesProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { UnpinCodesProposalProtoMsg as UnpinCodesProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { UnpinCodesProposalSDKType as UnpinCodesProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { UpdateInstantiateConfigProposal as UpdateInstantiateConfigProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { UpdateInstantiateConfigProposalProtoMsg as UpdateInstantiateConfigProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { UpdateInstantiateConfigProposalSDKType as UpdateInstantiateConfigProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { StoreAndInstantiateContractProposal as StoreAndInstantiateContractProposal1 } from "../../../cosmwasm/wasm/v1/proposal";
-import { StoreAndInstantiateContractProposalProtoMsg as StoreAndInstantiateContractProposal1ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal";
-import { StoreAndInstantiateContractProposalSDKType as StoreAndInstantiateContractProposal1SDKType } from "../../../cosmwasm/wasm/v1/proposal";
+import { StoreCodeProposal, StoreCodeProposalProtoMsg, StoreCodeProposalSDKType, InstantiateContractProposal, InstantiateContractProposalProtoMsg, InstantiateContractProposalSDKType, InstantiateContract2Proposal, InstantiateContract2ProposalProtoMsg, InstantiateContract2ProposalSDKType, MigrateContractProposal, MigrateContractProposalProtoMsg, MigrateContractProposalSDKType, SudoContractProposal, SudoContractProposalProtoMsg, SudoContractProposalSDKType, ExecuteContractProposal, ExecuteContractProposalProtoMsg, ExecuteContractProposalSDKType, UpdateAdminProposal, UpdateAdminProposalProtoMsg, UpdateAdminProposalSDKType, ClearAdminProposal, ClearAdminProposalProtoMsg, ClearAdminProposalSDKType, PinCodesProposal, PinCodesProposalProtoMsg, PinCodesProposalSDKType, UnpinCodesProposal, UnpinCodesProposalProtoMsg, UnpinCodesProposalSDKType, UpdateInstantiateConfigProposal, UpdateInstantiateConfigProposalProtoMsg, UpdateInstantiateConfigProposalSDKType, StoreAndInstantiateContractProposal, StoreAndInstantiateContractProposalProtoMsg, StoreAndInstantiateContractProposalSDKType } from "../../../cosmwasm/wasm/v1/proposal";
 import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposalSDKType, UpgradeProposal, UpgradeProposalProtoMsg, UpgradeProposalSDKType } from "../../../ibc/core/client/v1/client";
-import { StoreCodeProposal as StoreCodeProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { StoreCodeProposalProtoMsg as StoreCodeProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { StoreCodeProposalSDKType as StoreCodeProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { InstantiateContractProposal as InstantiateContractProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { InstantiateContractProposalProtoMsg as InstantiateContractProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { InstantiateContractProposalSDKType as InstantiateContractProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { InstantiateContract2Proposal as InstantiateContract2Proposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { InstantiateContract2ProposalProtoMsg as InstantiateContract2Proposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { InstantiateContract2ProposalSDKType as InstantiateContract2Proposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { MigrateContractProposal as MigrateContractProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { MigrateContractProposalProtoMsg as MigrateContractProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { MigrateContractProposalSDKType as MigrateContractProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { SudoContractProposal as SudoContractProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { SudoContractProposalProtoMsg as SudoContractProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { SudoContractProposalSDKType as SudoContractProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ExecuteContractProposal as ExecuteContractProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ExecuteContractProposalProtoMsg as ExecuteContractProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ExecuteContractProposalSDKType as ExecuteContractProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UpdateAdminProposal as UpdateAdminProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UpdateAdminProposalProtoMsg as UpdateAdminProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UpdateAdminProposalSDKType as UpdateAdminProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ClearAdminProposal as ClearAdminProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ClearAdminProposalProtoMsg as ClearAdminProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ClearAdminProposalSDKType as ClearAdminProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { PinCodesProposal as PinCodesProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { PinCodesProposalProtoMsg as PinCodesProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { PinCodesProposalSDKType as PinCodesProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UnpinCodesProposal as UnpinCodesProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UnpinCodesProposalProtoMsg as UnpinCodesProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UnpinCodesProposalSDKType as UnpinCodesProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UpdateInstantiateConfigProposal as UpdateInstantiateConfigProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UpdateInstantiateConfigProposalProtoMsg as UpdateInstantiateConfigProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { UpdateInstantiateConfigProposalSDKType as UpdateInstantiateConfigProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { StoreAndInstantiateContractProposal as StoreAndInstantiateContractProposal2 } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { StoreAndInstantiateContractProposalProtoMsg as StoreAndInstantiateContractProposal2ProtoMsg } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { StoreAndInstantiateContractProposalSDKType as StoreAndInstantiateContractProposal2SDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
@@ -84,7 +13,7 @@ import { GlobalDecoderRegistry } from "../../../registry";
  * proposal Content.
  */
 export interface MsgSubmitProposal {
-  content?: CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | StoreCodeProposal1 | InstantiateContractProposal1 | InstantiateContract2Proposal1 | MigrateContractProposal1 | SudoContractProposal1 | ExecuteContractProposal1 | UpdateAdminProposal1 | ClearAdminProposal1 | PinCodesProposal1 | UnpinCodesProposal1 | UpdateInstantiateConfigProposal1 | StoreAndInstantiateContractProposal1 | ClientUpdateProposal | UpgradeProposal | StoreCodeProposal2 | InstantiateContractProposal2 | InstantiateContract2Proposal2 | MigrateContractProposal2 | SudoContractProposal2 | ExecuteContractProposal2 | UpdateAdminProposal2 | ClearAdminProposal2 | PinCodesProposal2 | UnpinCodesProposal2 | UpdateInstantiateConfigProposal2 | StoreAndInstantiateContractProposal2 | Any | undefined;
+  content?: CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | StoreCodeProposal | InstantiateContractProposal | InstantiateContract2Proposal | MigrateContractProposal | SudoContractProposal | ExecuteContractProposal | UpdateAdminProposal | ClearAdminProposal | PinCodesProposal | UnpinCodesProposal | UpdateInstantiateConfigProposal | StoreAndInstantiateContractProposal | ClientUpdateProposal | UpgradeProposal | Any | undefined;
   initialDeposit: Coin[];
   proposer: string;
 }
@@ -93,7 +22,7 @@ export interface MsgSubmitProposalProtoMsg {
   value: Uint8Array;
 }
 export type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
-  content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | StoreCodeProposal1ProtoMsg | InstantiateContractProposal1ProtoMsg | InstantiateContract2Proposal1ProtoMsg | MigrateContractProposal1ProtoMsg | SudoContractProposal1ProtoMsg | ExecuteContractProposal1ProtoMsg | UpdateAdminProposal1ProtoMsg | ClearAdminProposal1ProtoMsg | PinCodesProposal1ProtoMsg | UnpinCodesProposal1ProtoMsg | UpdateInstantiateConfigProposal1ProtoMsg | StoreAndInstantiateContractProposal1ProtoMsg | ClientUpdateProposalProtoMsg | UpgradeProposalProtoMsg | StoreCodeProposal2ProtoMsg | InstantiateContractProposal2ProtoMsg | InstantiateContract2Proposal2ProtoMsg | MigrateContractProposal2ProtoMsg | SudoContractProposal2ProtoMsg | ExecuteContractProposal2ProtoMsg | UpdateAdminProposal2ProtoMsg | ClearAdminProposal2ProtoMsg | PinCodesProposal2ProtoMsg | UnpinCodesProposal2ProtoMsg | UpdateInstantiateConfigProposal2ProtoMsg | StoreAndInstantiateContractProposal2ProtoMsg | AnyProtoMsg | undefined;
+  content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | StoreCodeProposalProtoMsg | InstantiateContractProposalProtoMsg | InstantiateContract2ProposalProtoMsg | MigrateContractProposalProtoMsg | SudoContractProposalProtoMsg | ExecuteContractProposalProtoMsg | UpdateAdminProposalProtoMsg | ClearAdminProposalProtoMsg | PinCodesProposalProtoMsg | UnpinCodesProposalProtoMsg | UpdateInstantiateConfigProposalProtoMsg | StoreAndInstantiateContractProposalProtoMsg | ClientUpdateProposalProtoMsg | UpgradeProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
@@ -113,7 +42,7 @@ export interface MsgSubmitProposalAminoMsg {
  * proposal Content.
  */
 export interface MsgSubmitProposalSDKType {
-  content?: CommunityPoolSpendProposalSDKType | CommunityPoolSpendProposalWithDepositSDKType | TextProposalSDKType | SoftwareUpgradeProposalSDKType | CancelSoftwareUpgradeProposalSDKType | StoreCodeProposal1SDKType | InstantiateContractProposal1SDKType | InstantiateContract2Proposal1SDKType | MigrateContractProposal1SDKType | SudoContractProposal1SDKType | ExecuteContractProposal1SDKType | UpdateAdminProposal1SDKType | ClearAdminProposal1SDKType | PinCodesProposal1SDKType | UnpinCodesProposal1SDKType | UpdateInstantiateConfigProposal1SDKType | StoreAndInstantiateContractProposal1SDKType | ClientUpdateProposalSDKType | UpgradeProposalSDKType | StoreCodeProposal2SDKType | InstantiateContractProposal2SDKType | InstantiateContract2Proposal2SDKType | MigrateContractProposal2SDKType | SudoContractProposal2SDKType | ExecuteContractProposal2SDKType | UpdateAdminProposal2SDKType | ClearAdminProposal2SDKType | PinCodesProposal2SDKType | UnpinCodesProposal2SDKType | UpdateInstantiateConfigProposal2SDKType | StoreAndInstantiateContractProposal2SDKType | AnySDKType | undefined;
+  content?: CommunityPoolSpendProposalSDKType | CommunityPoolSpendProposalWithDepositSDKType | TextProposalSDKType | SoftwareUpgradeProposalSDKType | CancelSoftwareUpgradeProposalSDKType | StoreCodeProposalSDKType | InstantiateContractProposalSDKType | InstantiateContract2ProposalSDKType | MigrateContractProposalSDKType | SudoContractProposalSDKType | ExecuteContractProposalSDKType | UpdateAdminProposalSDKType | ClearAdminProposalSDKType | PinCodesProposalSDKType | UnpinCodesProposalSDKType | UpdateInstantiateConfigProposalSDKType | StoreAndInstantiateContractProposalSDKType | ClientUpdateProposalSDKType | UpgradeProposalSDKType | AnySDKType | undefined;
   initial_deposit: CoinSDKType[];
   proposer: string;
 }
