@@ -4,58 +4,8 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { TimeoutPolicy, timeoutPolicyFromJSON, timeoutPolicyToJSON } from "../../interchainquery/v1/genesis";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
-export enum AfterGetValue {
-  PARSE = 0,
-  MULITPLY = 1,
-  DIVIDE = 2,
-  SUBSTRACT = 3,
-  ADD = 4,
-  UNRECOGNIZED = -1,
-}
-export const AfterGetValueSDKType = AfterGetValue;
-export const AfterGetValueAmino = AfterGetValue;
-export function afterGetValueFromJSON(object: any): AfterGetValue {
-  switch (object) {
-    case 0:
-    case "PARSE":
-      return AfterGetValue.PARSE;
-    case 1:
-    case "MULITPLY":
-      return AfterGetValue.MULITPLY;
-    case 2:
-    case "DIVIDE":
-      return AfterGetValue.DIVIDE;
-    case 3:
-    case "SUBSTRACT":
-      return AfterGetValue.SUBSTRACT;
-    case 4:
-    case "ADD":
-      return AfterGetValue.ADD;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return AfterGetValue.UNRECOGNIZED;
-  }
-}
-export function afterGetValueToJSON(object: AfterGetValue): string {
-  switch (object) {
-    case AfterGetValue.PARSE:
-      return "PARSE";
-    case AfterGetValue.MULITPLY:
-      return "MULITPLY";
-    case AfterGetValue.DIVIDE:
-      return "DIVIDE";
-    case AfterGetValue.SUBSTRACT:
-      return "SUBSTRACT";
-    case AfterGetValue.ADD:
-      return "ADD";
-    case AfterGetValue.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
-  }
-}
 /** Comparison operators that can be used for various types. */
 export enum ComparisonOperator {
   /** EQUAL - Equality check (for all types) */
@@ -363,7 +313,7 @@ export interface ActionHistoryEntry {
   /** will be empty when save_responses is false */
   msgResponses: Any[];
   /** will be empty when save_responses is false */
-  queryResponse: string;
+  queryResponses: string[];
 }
 export interface ActionHistoryEntryProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry";
@@ -386,7 +336,7 @@ export interface ActionHistoryEntryAmino {
   /** will be empty when save_responses is false */
   msg_responses?: AnyAmino[];
   /** will be empty when save_responses is false */
-  query_response?: string;
+  query_responses?: string[];
 }
 export interface ActionHistoryEntryAminoMsg {
   type: "/intento.intent.v1beta1.ActionHistoryEntry";
@@ -401,7 +351,7 @@ export interface ActionHistoryEntrySDKType {
   timed_out: boolean;
   errors: string[];
   msg_responses: AnySDKType[];
-  query_response: string;
+  query_responses: string[];
 }
 /** ExecutionConditions provides execution conditions for the action */
 export interface ExecutionConditions {
@@ -432,8 +382,8 @@ export interface ExecutionConditions {
    * call before execution is allowed
    */
   skipOnSuccessOf: bigint[];
-  /** True: Use AND for combining conditions. False: Use OR for combining conditions. */
-  useAndForConditions: boolean;
+  /** True: Use AND for combining comparisons. False: Use OR for combining comparisons. */
+  useAndForComparisons: boolean;
 }
 export interface ExecutionConditionsProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
@@ -468,8 +418,8 @@ export interface ExecutionConditionsAmino {
    * call before execution is allowed
    */
   skip_on_success_of?: string[];
-  /** True: Use AND for combining conditions. False: Use OR for combining conditions. */
-  use_and_for_conditions?: boolean;
+  /** True: Use AND for combining comparisons. False: Use OR for combining comparisons. */
+  use_and_for_comparisons?: boolean;
 }
 export interface ExecutionConditionsAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConditions";
@@ -483,7 +433,7 @@ export interface ExecutionConditionsSDKType {
   stop_on_failure_of: bigint[];
   skip_on_failure_of: bigint[];
   skip_on_success_of: bigint[];
-  use_and_for_conditions: boolean;
+  use_and_for_comparisons: boolean;
 }
 /**
  * Replace value with value from message or response from another action’s
@@ -505,7 +455,7 @@ export interface FeedbackLoop {
    * string, []string, []sdk.Int
    */
   valueType: string;
-  /** True: Calculate the difference with the previous value. */
+  /** True: Calculate the difference with the previous value instead of using the value directly. */
   calculateDifference: boolean;
   /** query ID to query */
   queryId: string;
@@ -536,7 +486,7 @@ export interface FeedbackLoopAmino {
    * string, []string, []sdk.Int
    */
   value_type?: string;
-  /** True: Calculate the difference with the previous value. */
+  /** True: Calculate the difference with the previous value instead of using the value directly. */
   calculate_difference?: boolean;
   /** query ID to query */
   query_id?: string;
@@ -645,6 +595,8 @@ export interface ICQConfig {
   queryType: string;
   /** key in the store that stores the query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) */
   queryKey: string;
+  /** should be reset after execution */
+  response: Uint8Array;
 }
 export interface ICQConfigProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ICQConfig";
@@ -660,6 +612,8 @@ export interface ICQConfigAmino {
   query_type?: string;
   /** key in the store that stores the query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) */
   query_key?: string;
+  /** should be reset after execution */
+  response?: string;
 }
 export interface ICQConfigAminoMsg {
   type: "/intento.intent.v1beta1.ICQConfig";
@@ -673,6 +627,7 @@ export interface ICQConfigSDKType {
   timeout_duration: DurationSDKType;
   query_type: string;
   query_key: string;
+  response: Uint8Array;
 }
 function createBaseActionInfo(): ActionInfo {
   return {
@@ -1410,19 +1365,19 @@ function createBaseActionHistoryEntry(): ActionHistoryEntry {
     timedOut: false,
     errors: [],
     msgResponses: [],
-    queryResponse: ""
+    queryResponses: []
   };
 }
 export const ActionHistoryEntry = {
   typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry",
   is(o: any): o is ActionHistoryEntry {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && typeof o.queryResponse === "string");
+    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && Array.isArray(o.queryResponses) && (!o.queryResponses.length || typeof o.queryResponses[0] === "string"));
   },
   isSDK(o: any): o is ActionHistoryEntrySDKType {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && typeof o.query_response === "string");
+    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string"));
   },
   isAmino(o: any): o is ActionHistoryEntryAmino {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && typeof o.query_response === "string");
+    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string"));
   },
   encode(message: ActionHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
@@ -1446,8 +1401,8 @@ export const ActionHistoryEntry = {
     for (const v of message.msgResponses) {
       Any.encode(v!, writer.uint32(58).fork()).ldelim();
     }
-    if (message.queryResponse !== "") {
-      writer.uint32(66).string(message.queryResponse);
+    for (const v of message.queryResponses) {
+      writer.uint32(66).string(v!);
     }
     return writer;
   },
@@ -1480,7 +1435,7 @@ export const ActionHistoryEntry = {
           message.msgResponses.push(Any.decode(reader, reader.uint32()));
           break;
         case 8:
-          message.queryResponse = reader.string();
+          message.queryResponses.push(reader.string());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1498,7 +1453,7 @@ export const ActionHistoryEntry = {
       timedOut: isSet(object.timedOut) ? Boolean(object.timedOut) : false,
       errors: Array.isArray(object?.errors) ? object.errors.map((e: any) => String(e)) : [],
       msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : [],
-      queryResponse: isSet(object.queryResponse) ? String(object.queryResponse) : ""
+      queryResponses: Array.isArray(object?.queryResponses) ? object.queryResponses.map((e: any) => String(e)) : []
     };
   },
   toJSON(message: ActionHistoryEntry): unknown {
@@ -1518,7 +1473,11 @@ export const ActionHistoryEntry = {
     } else {
       obj.msgResponses = [];
     }
-    message.queryResponse !== undefined && (obj.queryResponse = message.queryResponse);
+    if (message.queryResponses) {
+      obj.queryResponses = message.queryResponses.map(e => e);
+    } else {
+      obj.queryResponses = [];
+    }
     return obj;
   },
   fromPartial(object: Partial<ActionHistoryEntry>): ActionHistoryEntry {
@@ -1530,7 +1489,7 @@ export const ActionHistoryEntry = {
     message.timedOut = object.timedOut ?? false;
     message.errors = object.errors?.map(e => e) || [];
     message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
-    message.queryResponse = object.queryResponse ?? "";
+    message.queryResponses = object.queryResponses?.map(e => e) || [];
     return message;
   },
   fromAmino(object: ActionHistoryEntryAmino): ActionHistoryEntry {
@@ -1552,9 +1511,7 @@ export const ActionHistoryEntry = {
     }
     message.errors = object.errors?.map(e => e) || [];
     message.msgResponses = object.msg_responses?.map(e => Any.fromAmino(e)) || [];
-    if (object.query_response !== undefined && object.query_response !== null) {
-      message.queryResponse = object.query_response;
-    }
+    message.queryResponses = object.query_responses?.map(e => e) || [];
     return message;
   },
   toAmino(message: ActionHistoryEntry): ActionHistoryEntryAmino {
@@ -1574,7 +1531,11 @@ export const ActionHistoryEntry = {
     } else {
       obj.msg_responses = message.msgResponses;
     }
-    obj.query_response = message.queryResponse === "" ? undefined : message.queryResponse;
+    if (message.queryResponses) {
+      obj.query_responses = message.queryResponses.map(e => e);
+    } else {
+      obj.query_responses = message.queryResponses;
+    }
     return obj;
   },
   fromAminoMsg(object: ActionHistoryEntryAminoMsg): ActionHistoryEntry {
@@ -1602,19 +1563,19 @@ function createBaseExecutionConditions(): ExecutionConditions {
     stopOnFailureOf: [],
     skipOnFailureOf: [],
     skipOnSuccessOf: [],
-    useAndForConditions: false
+    useAndForComparisons: false
   };
 }
 export const ExecutionConditions = {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions",
   is(o: any): o is ExecutionConditions {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedbackLoops) && (!o.feedbackLoops.length || FeedbackLoop.is(o.feedbackLoops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.is(o.comparisons[0])) && Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint") && typeof o.useAndForConditions === "boolean");
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedbackLoops) && (!o.feedbackLoops.length || FeedbackLoop.is(o.feedbackLoops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.is(o.comparisons[0])) && Array.isArray(o.stopOnSuccessOf) && (!o.stopOnSuccessOf.length || typeof o.stopOnSuccessOf[0] === "bigint") && Array.isArray(o.stopOnFailureOf) && (!o.stopOnFailureOf.length || typeof o.stopOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnFailureOf) && (!o.skipOnFailureOf.length || typeof o.skipOnFailureOf[0] === "bigint") && Array.isArray(o.skipOnSuccessOf) && (!o.skipOnSuccessOf.length || typeof o.skipOnSuccessOf[0] === "bigint") && typeof o.useAndForComparisons === "boolean");
   },
   isSDK(o: any): o is ExecutionConditionsSDKType {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedback_loops) && (!o.feedback_loops.length || FeedbackLoop.isSDK(o.feedback_loops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.isSDK(o.comparisons[0])) && Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint") && typeof o.use_and_for_conditions === "boolean");
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedback_loops) && (!o.feedback_loops.length || FeedbackLoop.isSDK(o.feedback_loops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.isSDK(o.comparisons[0])) && Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint") && typeof o.use_and_for_comparisons === "boolean");
   },
   isAmino(o: any): o is ExecutionConditionsAmino {
-    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedback_loops) && (!o.feedback_loops.length || FeedbackLoop.isAmino(o.feedback_loops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.isAmino(o.comparisons[0])) && Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint") && typeof o.use_and_for_conditions === "boolean");
+    return o && (o.$typeUrl === ExecutionConditions.typeUrl || Array.isArray(o.feedback_loops) && (!o.feedback_loops.length || FeedbackLoop.isAmino(o.feedback_loops[0])) && Array.isArray(o.comparisons) && (!o.comparisons.length || Comparison.isAmino(o.comparisons[0])) && Array.isArray(o.stop_on_success_of) && (!o.stop_on_success_of.length || typeof o.stop_on_success_of[0] === "bigint") && Array.isArray(o.stop_on_failure_of) && (!o.stop_on_failure_of.length || typeof o.stop_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_failure_of) && (!o.skip_on_failure_of.length || typeof o.skip_on_failure_of[0] === "bigint") && Array.isArray(o.skip_on_success_of) && (!o.skip_on_success_of.length || typeof o.skip_on_success_of[0] === "bigint") && typeof o.use_and_for_comparisons === "boolean");
   },
   encode(message: ExecutionConditions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.feedbackLoops) {
@@ -1643,8 +1604,8 @@ export const ExecutionConditions = {
       writer.uint64(v);
     }
     writer.ldelim();
-    if (message.useAndForConditions === true) {
-      writer.uint32(72).bool(message.useAndForConditions);
+    if (message.useAndForComparisons === true) {
+      writer.uint32(72).bool(message.useAndForComparisons);
     }
     return writer;
   },
@@ -1702,7 +1663,7 @@ export const ExecutionConditions = {
           }
           break;
         case 9:
-          message.useAndForConditions = reader.bool();
+          message.useAndForComparisons = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1719,7 +1680,7 @@ export const ExecutionConditions = {
       stopOnFailureOf: Array.isArray(object?.stopOnFailureOf) ? object.stopOnFailureOf.map((e: any) => BigInt(e.toString())) : [],
       skipOnFailureOf: Array.isArray(object?.skipOnFailureOf) ? object.skipOnFailureOf.map((e: any) => BigInt(e.toString())) : [],
       skipOnSuccessOf: Array.isArray(object?.skipOnSuccessOf) ? object.skipOnSuccessOf.map((e: any) => BigInt(e.toString())) : [],
-      useAndForConditions: isSet(object.useAndForConditions) ? Boolean(object.useAndForConditions) : false
+      useAndForComparisons: isSet(object.useAndForComparisons) ? Boolean(object.useAndForComparisons) : false
     };
   },
   toJSON(message: ExecutionConditions): unknown {
@@ -1754,7 +1715,7 @@ export const ExecutionConditions = {
     } else {
       obj.skipOnSuccessOf = [];
     }
-    message.useAndForConditions !== undefined && (obj.useAndForConditions = message.useAndForConditions);
+    message.useAndForComparisons !== undefined && (obj.useAndForComparisons = message.useAndForComparisons);
     return obj;
   },
   fromPartial(object: Partial<ExecutionConditions>): ExecutionConditions {
@@ -1765,7 +1726,7 @@ export const ExecutionConditions = {
     message.stopOnFailureOf = object.stopOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnFailureOf = object.skipOnFailureOf?.map(e => BigInt(e.toString())) || [];
     message.skipOnSuccessOf = object.skipOnSuccessOf?.map(e => BigInt(e.toString())) || [];
-    message.useAndForConditions = object.useAndForConditions ?? false;
+    message.useAndForComparisons = object.useAndForComparisons ?? false;
     return message;
   },
   fromAmino(object: ExecutionConditionsAmino): ExecutionConditions {
@@ -1776,8 +1737,8 @@ export const ExecutionConditions = {
     message.stopOnFailureOf = object.stop_on_failure_of?.map(e => BigInt(e)) || [];
     message.skipOnFailureOf = object.skip_on_failure_of?.map(e => BigInt(e)) || [];
     message.skipOnSuccessOf = object.skip_on_success_of?.map(e => BigInt(e)) || [];
-    if (object.use_and_for_conditions !== undefined && object.use_and_for_conditions !== null) {
-      message.useAndForConditions = object.use_and_for_conditions;
+    if (object.use_and_for_comparisons !== undefined && object.use_and_for_comparisons !== null) {
+      message.useAndForComparisons = object.use_and_for_comparisons;
     }
     return message;
   },
@@ -1813,7 +1774,7 @@ export const ExecutionConditions = {
     } else {
       obj.skip_on_success_of = message.skipOnSuccessOf;
     }
-    obj.use_and_for_conditions = message.useAndForConditions === false ? undefined : message.useAndForConditions;
+    obj.use_and_for_comparisons = message.useAndForComparisons === false ? undefined : message.useAndForComparisons;
     return obj;
   },
   fromAminoMsg(object: ExecutionConditionsAminoMsg): ExecutionConditions {
@@ -2230,19 +2191,20 @@ function createBaseICQConfig(): ICQConfig {
     timeoutPolicy: 0,
     timeoutDuration: Duration.fromPartial({}),
     queryType: "",
-    queryKey: ""
+    queryKey: "",
+    response: new Uint8Array()
   };
 }
 export const ICQConfig = {
   typeUrl: "/intento.intent.v1beta1.ICQConfig",
   is(o: any): o is ICQConfig {
-    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connectionId === "string" && typeof o.chainId === "string" && isSet(o.timeoutPolicy) && Duration.is(o.timeoutDuration) && typeof o.queryType === "string" && typeof o.queryKey === "string");
+    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connectionId === "string" && typeof o.chainId === "string" && isSet(o.timeoutPolicy) && Duration.is(o.timeoutDuration) && typeof o.queryType === "string" && typeof o.queryKey === "string" && (o.response instanceof Uint8Array || typeof o.response === "string"));
   },
   isSDK(o: any): o is ICQConfigSDKType {
-    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connection_id === "string" && typeof o.chain_id === "string" && isSet(o.timeout_policy) && Duration.isSDK(o.timeout_duration) && typeof o.query_type === "string" && typeof o.query_key === "string");
+    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connection_id === "string" && typeof o.chain_id === "string" && isSet(o.timeout_policy) && Duration.isSDK(o.timeout_duration) && typeof o.query_type === "string" && typeof o.query_key === "string" && (o.response instanceof Uint8Array || typeof o.response === "string"));
   },
   isAmino(o: any): o is ICQConfigAmino {
-    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connection_id === "string" && typeof o.chain_id === "string" && isSet(o.timeout_policy) && Duration.isAmino(o.timeout_duration) && typeof o.query_type === "string" && typeof o.query_key === "string");
+    return o && (o.$typeUrl === ICQConfig.typeUrl || typeof o.connection_id === "string" && typeof o.chain_id === "string" && isSet(o.timeout_policy) && Duration.isAmino(o.timeout_duration) && typeof o.query_type === "string" && typeof o.query_key === "string" && (o.response instanceof Uint8Array || typeof o.response === "string"));
   },
   encode(message: ICQConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.connectionId !== "") {
@@ -2262,6 +2224,9 @@ export const ICQConfig = {
     }
     if (message.queryKey !== "") {
       writer.uint32(50).string(message.queryKey);
+    }
+    if (message.response.length !== 0) {
+      writer.uint32(58).bytes(message.response);
     }
     return writer;
   },
@@ -2290,6 +2255,9 @@ export const ICQConfig = {
         case 6:
           message.queryKey = reader.string();
           break;
+        case 7:
+          message.response = reader.bytes();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2304,7 +2272,8 @@ export const ICQConfig = {
       timeoutPolicy: isSet(object.timeoutPolicy) ? timeoutPolicyFromJSON(object.timeoutPolicy) : -1,
       timeoutDuration: isSet(object.timeoutDuration) ? Duration.fromJSON(object.timeoutDuration) : undefined,
       queryType: isSet(object.queryType) ? String(object.queryType) : "",
-      queryKey: isSet(object.queryKey) ? String(object.queryKey) : ""
+      queryKey: isSet(object.queryKey) ? String(object.queryKey) : "",
+      response: isSet(object.response) ? bytesFromBase64(object.response) : new Uint8Array()
     };
   },
   toJSON(message: ICQConfig): unknown {
@@ -2315,6 +2284,7 @@ export const ICQConfig = {
     message.timeoutDuration !== undefined && (obj.timeoutDuration = message.timeoutDuration ? Duration.toJSON(message.timeoutDuration) : undefined);
     message.queryType !== undefined && (obj.queryType = message.queryType);
     message.queryKey !== undefined && (obj.queryKey = message.queryKey);
+    message.response !== undefined && (obj.response = base64FromBytes(message.response !== undefined ? message.response : new Uint8Array()));
     return obj;
   },
   fromPartial(object: Partial<ICQConfig>): ICQConfig {
@@ -2325,6 +2295,7 @@ export const ICQConfig = {
     message.timeoutDuration = object.timeoutDuration !== undefined && object.timeoutDuration !== null ? Duration.fromPartial(object.timeoutDuration) : undefined;
     message.queryType = object.queryType ?? "";
     message.queryKey = object.queryKey ?? "";
+    message.response = object.response ?? new Uint8Array();
     return message;
   },
   fromAmino(object: ICQConfigAmino): ICQConfig {
@@ -2347,6 +2318,9 @@ export const ICQConfig = {
     if (object.query_key !== undefined && object.query_key !== null) {
       message.queryKey = object.query_key;
     }
+    if (object.response !== undefined && object.response !== null) {
+      message.response = bytesFromBase64(object.response);
+    }
     return message;
   },
   toAmino(message: ICQConfig): ICQConfigAmino {
@@ -2357,6 +2331,7 @@ export const ICQConfig = {
     obj.timeout_duration = message.timeoutDuration ? Duration.toAmino(message.timeoutDuration) : undefined;
     obj.query_type = message.queryType === "" ? undefined : message.queryType;
     obj.query_key = message.queryKey === "" ? undefined : message.queryKey;
+    obj.response = message.response ? base64FromBytes(message.response) : undefined;
     return obj;
   },
   fromAminoMsg(object: ICQConfigAminoMsg): ICQConfig {
