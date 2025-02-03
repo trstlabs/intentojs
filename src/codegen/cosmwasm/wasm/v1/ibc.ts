@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgIBCSend */
 export interface MsgIBCSend {
@@ -145,7 +146,7 @@ export const MsgIBCSend = {
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
     };
   },
-  toJSON(message: MsgIBCSend): unknown {
+  toJSON(message: MsgIBCSend): JsonSafe<MsgIBCSend> {
     const obj: any = {};
     message.channel !== undefined && (obj.channel = message.channel);
     message.timeoutHeight !== undefined && (obj.timeoutHeight = (message.timeoutHeight || BigInt(0)).toString());
@@ -180,8 +181,8 @@ export const MsgIBCSend = {
   toAmino(message: MsgIBCSend): MsgIBCSendAmino {
     const obj: any = {};
     obj.channel = message.channel === "" ? undefined : message.channel;
-    obj.timeout_height = message.timeoutHeight !== BigInt(0) ? message.timeoutHeight.toString() : undefined;
-    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+    obj.timeout_height = message.timeoutHeight !== BigInt(0) ? message.timeoutHeight?.toString() : undefined;
+    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
@@ -254,7 +255,7 @@ export const MsgIBCCloseChannel = {
       channel: isSet(object.channel) ? String(object.channel) : ""
     };
   },
-  toJSON(message: MsgIBCCloseChannel): unknown {
+  toJSON(message: MsgIBCCloseChannel): JsonSafe<MsgIBCCloseChannel> {
     const obj: any = {};
     message.channel !== undefined && (obj.channel = message.channel);
     return obj;

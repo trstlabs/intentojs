@@ -1,7 +1,8 @@
 import { IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType, ConnectionPaths, ConnectionPathsAmino, ConnectionPathsSDKType, Params, ParamsAmino, ParamsSDKType } from "./connection";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc connection submodule's genesis state. */
 export interface GenesisState {
   connections: IdentifiedConnection[];
@@ -102,7 +103,7 @@ export const GenesisState = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     if (message.connections) {
       obj.connections = message.connections.map(e => e ? IdentifiedConnection.toJSON(e) : undefined);
@@ -150,7 +151,7 @@ export const GenesisState = {
     } else {
       obj.client_connection_paths = message.clientConnectionPaths;
     }
-    obj.next_connection_sequence = message.nextConnectionSequence !== BigInt(0) ? message.nextConnectionSequence.toString() : undefined;
+    obj.next_connection_sequence = message.nextConnectionSequence !== BigInt(0) ? message.nextConnectionSequence?.toString() : undefined;
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },

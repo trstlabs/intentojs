@@ -1,5 +1,6 @@
 import { GrantAuthorization, GrantAuthorizationAmino, GrantAuthorizationSDKType } from "./authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the authz module's genesis state. */
 export interface GenesisState {
@@ -66,7 +67,7 @@ export const GenesisState = {
       authorization: Array.isArray(object?.authorization) ? object.authorization.map((e: any) => GrantAuthorization.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     if (message.authorization) {
       obj.authorization = message.authorization.map(e => e ? GrantAuthorization.toJSON(e) : undefined);

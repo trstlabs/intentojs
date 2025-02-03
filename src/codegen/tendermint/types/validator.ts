@@ -1,7 +1,8 @@
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
 import { GlobalDecoderRegistry } from "../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
+import { JsonSafe } from "../../json-safe";
 export interface ValidatorSet {
   validators: Validator[];
   proposer?: Validator;
@@ -131,7 +132,7 @@ export const ValidatorSet = {
       totalVotingPower: isSet(object.totalVotingPower) ? BigInt(object.totalVotingPower.toString()) : BigInt(0)
     };
   },
-  toJSON(message: ValidatorSet): unknown {
+  toJSON(message: ValidatorSet): JsonSafe<ValidatorSet> {
     const obj: any = {};
     if (message.validators) {
       obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
@@ -168,7 +169,7 @@ export const ValidatorSet = {
       obj.validators = message.validators;
     }
     obj.proposer = message.proposer ? Validator.toAmino(message.proposer) : undefined;
-    obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower.toString() : undefined;
+    obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ValidatorSetAminoMsg): ValidatorSet {
@@ -256,7 +257,7 @@ export const Validator = {
       proposerPriority: isSet(object.proposerPriority) ? BigInt(object.proposerPriority.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Validator): unknown {
+  toJSON(message: Validator): JsonSafe<Validator> {
     const obj: any = {};
     message.address !== undefined && (obj.address = base64FromBytes(message.address !== undefined ? message.address : new Uint8Array()));
     message.pubKey !== undefined && (obj.pubKey = message.pubKey ? PublicKey.toJSON(message.pubKey) : undefined);
@@ -292,8 +293,8 @@ export const Validator = {
     const obj: any = {};
     obj.address = message.address ? base64FromBytes(message.address) : undefined;
     obj.pub_key = message.pubKey ? PublicKey.toAmino(message.pubKey) : undefined;
-    obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower.toString() : undefined;
-    obj.proposer_priority = message.proposerPriority !== BigInt(0) ? message.proposerPriority.toString() : undefined;
+    obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower?.toString() : undefined;
+    obj.proposer_priority = message.proposerPriority !== BigInt(0) ? message.proposerPriority?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ValidatorAminoMsg): Validator {
@@ -365,7 +366,7 @@ export const SimpleValidator = {
       votingPower: isSet(object.votingPower) ? BigInt(object.votingPower.toString()) : BigInt(0)
     };
   },
-  toJSON(message: SimpleValidator): unknown {
+  toJSON(message: SimpleValidator): JsonSafe<SimpleValidator> {
     const obj: any = {};
     message.pubKey !== undefined && (obj.pubKey = message.pubKey ? PublicKey.toJSON(message.pubKey) : undefined);
     message.votingPower !== undefined && (obj.votingPower = (message.votingPower || BigInt(0)).toString());
@@ -390,7 +391,7 @@ export const SimpleValidator = {
   toAmino(message: SimpleValidator): SimpleValidatorAmino {
     const obj: any = {};
     obj.pub_key = message.pubKey ? PublicKey.toAmino(message.pubKey) : undefined;
-    obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower.toString() : undefined;
+    obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: SimpleValidatorAminoMsg): SimpleValidator {

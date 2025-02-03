@@ -1,7 +1,8 @@
 import { DenomTrace, DenomTraceAmino, DenomTraceSDKType, Params, ParamsAmino, ParamsSDKType } from "./transfer";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisState {
   portId: string;
@@ -89,7 +90,7 @@ export const GenesisState = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.portId !== undefined && (obj.portId = message.portId);
     if (message.denomTraces) {

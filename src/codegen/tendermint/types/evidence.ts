@@ -2,8 +2,9 @@ import { Vote, VoteAmino, VoteSDKType, LightBlock, LightBlockAmino, LightBlockSD
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator, ValidatorAmino, ValidatorSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 import { GlobalDecoderRegistry } from "../../registry";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+import { JsonSafe } from "../../json-safe";
 export interface Evidence {
   duplicateVoteEvidence?: DuplicateVoteEvidence;
   lightClientAttackEvidence?: LightClientAttackEvidence;
@@ -157,7 +158,7 @@ export const Evidence = {
       lightClientAttackEvidence: isSet(object.lightClientAttackEvidence) ? LightClientAttackEvidence.fromJSON(object.lightClientAttackEvidence) : undefined
     };
   },
-  toJSON(message: Evidence): unknown {
+  toJSON(message: Evidence): JsonSafe<Evidence> {
     const obj: any = {};
     message.duplicateVoteEvidence !== undefined && (obj.duplicateVoteEvidence = message.duplicateVoteEvidence ? DuplicateVoteEvidence.toJSON(message.duplicateVoteEvidence) : undefined);
     message.lightClientAttackEvidence !== undefined && (obj.lightClientAttackEvidence = message.lightClientAttackEvidence ? LightClientAttackEvidence.toJSON(message.lightClientAttackEvidence) : undefined);
@@ -278,7 +279,7 @@ export const DuplicateVoteEvidence = {
       timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
     };
   },
-  toJSON(message: DuplicateVoteEvidence): unknown {
+  toJSON(message: DuplicateVoteEvidence): JsonSafe<DuplicateVoteEvidence> {
     const obj: any = {};
     message.voteA !== undefined && (obj.voteA = message.voteA ? Vote.toJSON(message.voteA) : undefined);
     message.voteB !== undefined && (obj.voteB = message.voteB ? Vote.toJSON(message.voteB) : undefined);
@@ -319,8 +320,8 @@ export const DuplicateVoteEvidence = {
     const obj: any = {};
     obj.vote_a = message.voteA ? Vote.toAmino(message.voteA) : undefined;
     obj.vote_b = message.voteB ? Vote.toAmino(message.voteB) : undefined;
-    obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower.toString() : undefined;
-    obj.validator_power = message.validatorPower !== BigInt(0) ? message.validatorPower.toString() : undefined;
+    obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower?.toString() : undefined;
+    obj.validator_power = message.validatorPower !== BigInt(0) ? message.validatorPower?.toString() : undefined;
     obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
     return obj;
   },
@@ -417,7 +418,7 @@ export const LightClientAttackEvidence = {
       timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
     };
   },
-  toJSON(message: LightClientAttackEvidence): unknown {
+  toJSON(message: LightClientAttackEvidence): JsonSafe<LightClientAttackEvidence> {
     const obj: any = {};
     message.conflictingBlock !== undefined && (obj.conflictingBlock = message.conflictingBlock ? LightBlock.toJSON(message.conflictingBlock) : undefined);
     message.commonHeight !== undefined && (obj.commonHeight = (message.commonHeight || BigInt(0)).toString());
@@ -459,13 +460,13 @@ export const LightClientAttackEvidence = {
   toAmino(message: LightClientAttackEvidence): LightClientAttackEvidenceAmino {
     const obj: any = {};
     obj.conflicting_block = message.conflictingBlock ? LightBlock.toAmino(message.conflictingBlock) : undefined;
-    obj.common_height = message.commonHeight !== BigInt(0) ? message.commonHeight.toString() : undefined;
+    obj.common_height = message.commonHeight !== BigInt(0) ? message.commonHeight?.toString() : undefined;
     if (message.byzantineValidators) {
       obj.byzantine_validators = message.byzantineValidators.map(e => e ? Validator.toAmino(e) : undefined);
     } else {
       obj.byzantine_validators = message.byzantineValidators;
     }
-    obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower.toString() : undefined;
+    obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower?.toString() : undefined;
     obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
     return obj;
   },
@@ -530,7 +531,7 @@ export const EvidenceList = {
       evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Evidence.fromJSON(e)) : []
     };
   },
-  toJSON(message: EvidenceList): unknown {
+  toJSON(message: EvidenceList): JsonSafe<EvidenceList> {
     const obj: any = {};
     if (message.evidence) {
       obj.evidence = message.evidence.map(e => e ? Evidence.toJSON(e) : undefined);

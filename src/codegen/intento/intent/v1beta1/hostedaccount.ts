@@ -1,8 +1,9 @@
 import { ICAConfig, ICAConfigAmino, ICAConfigSDKType } from "./action";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 export interface HostedAccount {
   hostedAddress: string;
   icaConfig?: ICAConfig;
@@ -106,7 +107,7 @@ export const HostedAccount = {
       hostFeeConfig: isSet(object.hostFeeConfig) ? HostFeeConfig.fromJSON(object.hostFeeConfig) : undefined
     };
   },
-  toJSON(message: HostedAccount): unknown {
+  toJSON(message: HostedAccount): JsonSafe<HostedAccount> {
     const obj: any = {};
     message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
     message.icaConfig !== undefined && (obj.icaConfig = message.icaConfig ? ICAConfig.toJSON(message.icaConfig) : undefined);
@@ -209,7 +210,7 @@ export const HostFeeConfig = {
       feeCoinsSuported: Array.isArray(object?.feeCoinsSuported) ? object.feeCoinsSuported.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: HostFeeConfig): unknown {
+  toJSON(message: HostFeeConfig): JsonSafe<HostFeeConfig> {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
     if (message.feeCoinsSuported) {

@@ -2,8 +2,9 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsAmino, ParamsSDKType, BaseAccount, BaseAccountProtoMsg, BaseAccountSDKType, ModuleAccount, ModuleAccountProtoMsg, ModuleAccountSDKType } from "./auth";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /**
  * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
  * 
@@ -359,7 +360,7 @@ export const QueryAccountsRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryAccountsRequest): unknown {
+  toJSON(message: QueryAccountsRequest): JsonSafe<QueryAccountsRequest> {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
@@ -458,7 +459,7 @@ export const QueryAccountsResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryAccountsResponse): unknown {
+  toJSON(message: QueryAccountsResponse): JsonSafe<QueryAccountsResponse> {
     const obj: any = {};
     if (message.accounts) {
       obj.accounts = message.accounts.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
@@ -470,7 +471,7 @@ export const QueryAccountsResponse = {
   },
   fromPartial(object: Partial<QueryAccountsResponse>): QueryAccountsResponse {
     const message = createBaseQueryAccountsResponse();
-    message.accounts = object.accounts?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
+    message.accounts = object.accounts?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
@@ -561,7 +562,7 @@ export const QueryAccountRequest = {
       address: isSet(object.address) ? String(object.address) : ""
     };
   },
-  toJSON(message: QueryAccountRequest): unknown {
+  toJSON(message: QueryAccountRequest): JsonSafe<QueryAccountRequest> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     return obj;
@@ -642,7 +643,7 @@ export const QueryModuleAccountsRequest = {
   fromJSON(_: any): QueryModuleAccountsRequest {
     return {};
   },
-  toJSON(_: QueryModuleAccountsRequest): unknown {
+  toJSON(_: QueryModuleAccountsRequest): JsonSafe<QueryModuleAccountsRequest> {
     const obj: any = {};
     return obj;
   },
@@ -727,7 +728,7 @@ export const QueryParamsResponse = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: QueryParamsResponse): unknown {
+  toJSON(message: QueryParamsResponse): JsonSafe<QueryParamsResponse> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     return obj;
@@ -818,7 +819,7 @@ export const QueryAccountResponse = {
       account: isSet(object.account) ? GlobalDecoderRegistry.fromJSON(object.account) : undefined
     };
   },
-  toJSON(message: QueryAccountResponse): unknown {
+  toJSON(message: QueryAccountResponse): JsonSafe<QueryAccountResponse> {
     const obj: any = {};
     message.account !== undefined && (obj.account = message.account ? GlobalDecoderRegistry.toJSON(message.account) : undefined);
     return obj;
@@ -899,7 +900,7 @@ export const QueryParamsRequest = {
   fromJSON(_: any): QueryParamsRequest {
     return {};
   },
-  toJSON(_: QueryParamsRequest): unknown {
+  toJSON(_: QueryParamsRequest): JsonSafe<QueryParamsRequest> {
     const obj: any = {};
     return obj;
   },
@@ -984,7 +985,7 @@ export const QueryModuleAccountsResponse = {
       accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : []
     };
   },
-  toJSON(message: QueryModuleAccountsResponse): unknown {
+  toJSON(message: QueryModuleAccountsResponse): JsonSafe<QueryModuleAccountsResponse> {
     const obj: any = {};
     if (message.accounts) {
       obj.accounts = message.accounts.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
@@ -995,7 +996,7 @@ export const QueryModuleAccountsResponse = {
   },
   fromPartial(object: Partial<QueryModuleAccountsResponse>): QueryModuleAccountsResponse {
     const message = createBaseQueryModuleAccountsResponse();
-    message.accounts = object.accounts?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
+    message.accounts = object.accounts?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     return message;
   },
   fromAmino(object: QueryModuleAccountsResponseAmino): QueryModuleAccountsResponse {
@@ -1071,7 +1072,7 @@ export const Bech32PrefixRequest = {
   fromJSON(_: any): Bech32PrefixRequest {
     return {};
   },
-  toJSON(_: Bech32PrefixRequest): unknown {
+  toJSON(_: Bech32PrefixRequest): JsonSafe<Bech32PrefixRequest> {
     const obj: any = {};
     return obj;
   },
@@ -1156,7 +1157,7 @@ export const Bech32PrefixResponse = {
       bech32Prefix: isSet(object.bech32Prefix) ? String(object.bech32Prefix) : ""
     };
   },
-  toJSON(message: Bech32PrefixResponse): unknown {
+  toJSON(message: Bech32PrefixResponse): JsonSafe<Bech32PrefixResponse> {
     const obj: any = {};
     message.bech32Prefix !== undefined && (obj.bech32Prefix = message.bech32Prefix);
     return obj;
@@ -1247,7 +1248,7 @@ export const AddressBytesToStringRequest = {
       addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
     };
   },
-  toJSON(message: AddressBytesToStringRequest): unknown {
+  toJSON(message: AddressBytesToStringRequest): JsonSafe<AddressBytesToStringRequest> {
     const obj: any = {};
     message.addressBytes !== undefined && (obj.addressBytes = base64FromBytes(message.addressBytes !== undefined ? message.addressBytes : new Uint8Array()));
     return obj;
@@ -1338,7 +1339,7 @@ export const AddressBytesToStringResponse = {
       addressString: isSet(object.addressString) ? String(object.addressString) : ""
     };
   },
-  toJSON(message: AddressBytesToStringResponse): unknown {
+  toJSON(message: AddressBytesToStringResponse): JsonSafe<AddressBytesToStringResponse> {
     const obj: any = {};
     message.addressString !== undefined && (obj.addressString = message.addressString);
     return obj;
@@ -1429,7 +1430,7 @@ export const AddressStringToBytesRequest = {
       addressString: isSet(object.addressString) ? String(object.addressString) : ""
     };
   },
-  toJSON(message: AddressStringToBytesRequest): unknown {
+  toJSON(message: AddressStringToBytesRequest): JsonSafe<AddressStringToBytesRequest> {
     const obj: any = {};
     message.addressString !== undefined && (obj.addressString = message.addressString);
     return obj;
@@ -1520,7 +1521,7 @@ export const AddressStringToBytesResponse = {
       addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
     };
   },
-  toJSON(message: AddressStringToBytesResponse): unknown {
+  toJSON(message: AddressStringToBytesResponse): JsonSafe<AddressStringToBytesResponse> {
     const obj: any = {};
     message.addressBytes !== undefined && (obj.addressBytes = base64FromBytes(message.addressBytes !== undefined ? message.addressBytes : new Uint8Array()));
     return obj;

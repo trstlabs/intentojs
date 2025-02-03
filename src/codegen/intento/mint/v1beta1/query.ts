@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -126,7 +127,7 @@ export const QueryParamsRequest = {
   fromJSON(_: any): QueryParamsRequest {
     return {};
   },
-  toJSON(_: QueryParamsRequest): unknown {
+  toJSON(_: QueryParamsRequest): JsonSafe<QueryParamsRequest> {
     const obj: any = {};
     return obj;
   },
@@ -203,7 +204,7 @@ export const QueryParamsResponse = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: QueryParamsResponse): unknown {
+  toJSON(message: QueryParamsResponse): JsonSafe<QueryParamsResponse> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     return obj;
@@ -276,7 +277,7 @@ export const QueryAnnualProvisionsRequest = {
   fromJSON(_: any): QueryAnnualProvisionsRequest {
     return {};
   },
-  toJSON(_: QueryAnnualProvisionsRequest): unknown {
+  toJSON(_: QueryAnnualProvisionsRequest): JsonSafe<QueryAnnualProvisionsRequest> {
     const obj: any = {};
     return obj;
   },
@@ -353,7 +354,7 @@ export const QueryAnnualProvisionsResponse = {
       annualProvisions: isSet(object.annualProvisions) ? bytesFromBase64(object.annualProvisions) : new Uint8Array()
     };
   },
-  toJSON(message: QueryAnnualProvisionsResponse): unknown {
+  toJSON(message: QueryAnnualProvisionsResponse): JsonSafe<QueryAnnualProvisionsResponse> {
     const obj: any = {};
     message.annualProvisions !== undefined && (obj.annualProvisions = base64FromBytes(message.annualProvisions !== undefined ? message.annualProvisions : new Uint8Array()));
     return obj;

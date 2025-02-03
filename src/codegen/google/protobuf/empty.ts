@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
@@ -78,7 +79,7 @@ export const Empty = {
   fromJSON(_: any): Empty {
     return {};
   },
-  toJSON(_: Empty): unknown {
+  toJSON(_: Empty): JsonSafe<Empty> {
     const obj: any = {};
     return obj;
   },

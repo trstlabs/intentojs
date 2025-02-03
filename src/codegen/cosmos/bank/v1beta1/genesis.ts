@@ -1,8 +1,9 @@
 import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "./bank";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
@@ -151,7 +152,7 @@ export const GenesisState = {
       denomMetadata: Array.isArray(object?.denomMetadata) ? object.denomMetadata.map((e: any) => Metadata.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     if (message.balances) {
@@ -286,7 +287,7 @@ export const Balance = {
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: Balance): unknown {
+  toJSON(message: Balance): JsonSafe<Balance> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     if (message.coins) {

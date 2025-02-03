@@ -2,6 +2,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** Minter represents the minting state. */
 export interface Minter {
@@ -111,7 +112,7 @@ export const Minter = {
       annualProvisions: isSet(object.annualProvisions) ? String(object.annualProvisions) : ""
     };
   },
-  toJSON(message: Minter): unknown {
+  toJSON(message: Minter): JsonSafe<Minter> {
     const obj: any = {};
     message.annualProvisions !== undefined && (obj.annualProvisions = message.annualProvisions);
     return obj;
@@ -226,7 +227,7 @@ export const Params = {
       blocksPerYear: isSet(object.blocksPerYear) ? BigInt(object.blocksPerYear.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     message.mintDenom !== undefined && (obj.mintDenom = message.mintDenom);
     message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
@@ -269,7 +270,7 @@ export const Params = {
     obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
     obj.initial_annual_provisions = message.initialAnnualProvisions === "" ? undefined : message.initialAnnualProvisions;
     obj.reduction_factor = message.reductionFactor === "" ? undefined : message.reductionFactor;
-    obj.blocks_per_year = message.blocksPerYear !== BigInt(0) ? message.blocksPerYear.toString() : undefined;
+    obj.blocks_per_year = message.blocksPerYear !== BigInt(0) ? message.blocksPerYear?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {

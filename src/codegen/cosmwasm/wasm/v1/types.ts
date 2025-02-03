@@ -1,6 +1,7 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
 /** AccessType permission types */
@@ -416,7 +417,7 @@ export const AccessTypeParam = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.value = (reader.int32() as any);
+          message.value = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -430,7 +431,7 @@ export const AccessTypeParam = {
       value: isSet(object.value) ? accessTypeFromJSON(object.value) : -1
     };
   },
-  toJSON(message: AccessTypeParam): unknown {
+  toJSON(message: AccessTypeParam): JsonSafe<AccessTypeParam> {
     const obj: any = {};
     message.value !== undefined && (obj.value = accessTypeToJSON(message.value));
     return obj;
@@ -515,7 +516,7 @@ export const AccessConfig = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.permission = (reader.int32() as any);
+          message.permission = reader.int32() as any;
           break;
         case 2:
           message.address = reader.string();
@@ -537,7 +538,7 @@ export const AccessConfig = {
       addresses: Array.isArray(object?.addresses) ? object.addresses.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: AccessConfig): unknown {
+  toJSON(message: AccessConfig): JsonSafe<AccessConfig> {
     const obj: any = {};
     message.permission !== undefined && (obj.permission = accessTypeToJSON(message.permission));
     message.address !== undefined && (obj.address = message.address);
@@ -639,7 +640,7 @@ export const Params = {
           message.codeUploadAccess = AccessConfig.decode(reader, reader.uint32());
           break;
         case 2:
-          message.instantiateDefaultPermission = (reader.int32() as any);
+          message.instantiateDefaultPermission = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -654,7 +655,7 @@ export const Params = {
       instantiateDefaultPermission: isSet(object.instantiateDefaultPermission) ? accessTypeFromJSON(object.instantiateDefaultPermission) : -1
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     message.codeUploadAccess !== undefined && (obj.codeUploadAccess = message.codeUploadAccess ? AccessConfig.toJSON(message.codeUploadAccess) : undefined);
     message.instantiateDefaultPermission !== undefined && (obj.instantiateDefaultPermission = accessTypeToJSON(message.instantiateDefaultPermission));
@@ -767,7 +768,7 @@ export const CodeInfo = {
       instantiateConfig: isSet(object.instantiateConfig) ? AccessConfig.fromJSON(object.instantiateConfig) : undefined
     };
   },
-  toJSON(message: CodeInfo): unknown {
+  toJSON(message: CodeInfo): JsonSafe<CodeInfo> {
     const obj: any = {};
     message.codeHash !== undefined && (obj.codeHash = base64FromBytes(message.codeHash !== undefined ? message.codeHash : new Uint8Array()));
     message.creator !== undefined && (obj.creator = message.creator);
@@ -918,7 +919,7 @@ export const ContractInfo = {
       extension: isSet(object.extension) ? GlobalDecoderRegistry.fromJSON(object.extension) : undefined
     };
   },
-  toJSON(message: ContractInfo): unknown {
+  toJSON(message: ContractInfo): JsonSafe<ContractInfo> {
     const obj: any = {};
     message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
     message.creator !== undefined && (obj.creator = message.creator);
@@ -967,7 +968,7 @@ export const ContractInfo = {
   },
   toAmino(message: ContractInfo): ContractInfoAmino {
     const obj: any = {};
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId.toString() : undefined;
+    obj.code_id = message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.admin = message.admin === "" ? undefined : message.admin;
     obj.label = message.label === "" ? undefined : message.label;
@@ -1043,7 +1044,7 @@ export const ContractCodeHistoryEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.operation = (reader.int32() as any);
+          message.operation = reader.int32() as any;
           break;
         case 2:
           message.codeId = reader.uint64();
@@ -1069,7 +1070,7 @@ export const ContractCodeHistoryEntry = {
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array()
     };
   },
-  toJSON(message: ContractCodeHistoryEntry): unknown {
+  toJSON(message: ContractCodeHistoryEntry): JsonSafe<ContractCodeHistoryEntry> {
     const obj: any = {};
     message.operation !== undefined && (obj.operation = contractCodeHistoryOperationTypeToJSON(message.operation));
     message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
@@ -1104,7 +1105,7 @@ export const ContractCodeHistoryEntry = {
   toAmino(message: ContractCodeHistoryEntry): ContractCodeHistoryEntryAmino {
     const obj: any = {};
     obj.operation = message.operation === 0 ? undefined : message.operation;
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId.toString() : undefined;
+    obj.code_id = message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
     obj.updated = message.updated ? AbsoluteTxPosition.toAmino(message.updated) : undefined;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
@@ -1186,7 +1187,7 @@ export const AbsoluteTxPosition = {
       txIndex: isSet(object.txIndex) ? BigInt(object.txIndex.toString()) : BigInt(0)
     };
   },
-  toJSON(message: AbsoluteTxPosition): unknown {
+  toJSON(message: AbsoluteTxPosition): JsonSafe<AbsoluteTxPosition> {
     const obj: any = {};
     message.blockHeight !== undefined && (obj.blockHeight = (message.blockHeight || BigInt(0)).toString());
     message.txIndex !== undefined && (obj.txIndex = (message.txIndex || BigInt(0)).toString());
@@ -1210,8 +1211,8 @@ export const AbsoluteTxPosition = {
   },
   toAmino(message: AbsoluteTxPosition): AbsoluteTxPositionAmino {
     const obj: any = {};
-    obj.block_height = message.blockHeight !== BigInt(0) ? message.blockHeight.toString() : undefined;
-    obj.tx_index = message.txIndex !== BigInt(0) ? message.txIndex.toString() : undefined;
+    obj.block_height = message.blockHeight !== BigInt(0) ? message.blockHeight?.toString() : undefined;
+    obj.tx_index = message.txIndex !== BigInt(0) ? message.txIndex?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: AbsoluteTxPositionAminoMsg): AbsoluteTxPosition {
@@ -1291,7 +1292,7 @@ export const Model = {
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
     };
   },
-  toJSON(message: Model): unknown {
+  toJSON(message: Model): JsonSafe<Model> {
     const obj: any = {};
     message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
     message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));

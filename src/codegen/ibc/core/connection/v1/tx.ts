@@ -2,8 +2,9 @@ import { Counterparty, CounterpartyAmino, CounterpartySDKType, Version, VersionA
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MsgConnectionOpenInit defines the msg sent by an account on Chain A to
  * initialize a connection with Chain B.
@@ -386,7 +387,7 @@ export const MsgConnectionOpenInit = {
       signer: isSet(object.signer) ? String(object.signer) : ""
     };
   },
-  toJSON(message: MsgConnectionOpenInit): unknown {
+  toJSON(message: MsgConnectionOpenInit): JsonSafe<MsgConnectionOpenInit> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toJSON(message.counterparty) : undefined);
@@ -428,7 +429,7 @@ export const MsgConnectionOpenInit = {
     obj.client_id = message.clientId === "" ? undefined : message.clientId;
     obj.counterparty = message.counterparty ? Counterparty.toAmino(message.counterparty) : undefined;
     obj.version = message.version ? Version.toAmino(message.version) : undefined;
-    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod?.toString() : undefined;
     obj.signer = message.signer === "" ? undefined : message.signer;
     return obj;
   },
@@ -491,7 +492,7 @@ export const MsgConnectionOpenInitResponse = {
   fromJSON(_: any): MsgConnectionOpenInitResponse {
     return {};
   },
-  toJSON(_: MsgConnectionOpenInitResponse): unknown {
+  toJSON(_: MsgConnectionOpenInitResponse): JsonSafe<MsgConnectionOpenInitResponse> {
     const obj: any = {};
     return obj;
   },
@@ -664,7 +665,7 @@ export const MsgConnectionOpenTry = {
       signer: isSet(object.signer) ? String(object.signer) : ""
     };
   },
-  toJSON(message: MsgConnectionOpenTry): unknown {
+  toJSON(message: MsgConnectionOpenTry): JsonSafe<MsgConnectionOpenTry> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     message.previousConnectionId !== undefined && (obj.previousConnectionId = message.previousConnectionId);
@@ -744,7 +745,7 @@ export const MsgConnectionOpenTry = {
     obj.previous_connection_id = message.previousConnectionId === "" ? undefined : message.previousConnectionId;
     obj.client_state = message.clientState ? Any.toAmino(message.clientState) : undefined;
     obj.counterparty = message.counterparty ? Counterparty.toAmino(message.counterparty) : undefined;
-    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod?.toString() : undefined;
     if (message.counterpartyVersions) {
       obj.counterparty_versions = message.counterpartyVersions.map(e => e ? Version.toAmino(e) : undefined);
     } else {
@@ -817,7 +818,7 @@ export const MsgConnectionOpenTryResponse = {
   fromJSON(_: any): MsgConnectionOpenTryResponse {
     return {};
   },
-  toJSON(_: MsgConnectionOpenTryResponse): unknown {
+  toJSON(_: MsgConnectionOpenTryResponse): JsonSafe<MsgConnectionOpenTryResponse> {
     const obj: any = {};
     return obj;
   },
@@ -974,7 +975,7 @@ export const MsgConnectionOpenAck = {
       signer: isSet(object.signer) ? String(object.signer) : ""
     };
   },
-  toJSON(message: MsgConnectionOpenAck): unknown {
+  toJSON(message: MsgConnectionOpenAck): JsonSafe<MsgConnectionOpenAck> {
     const obj: any = {};
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
     message.counterpartyConnectionId !== undefined && (obj.counterpartyConnectionId = message.counterpartyConnectionId);
@@ -1109,7 +1110,7 @@ export const MsgConnectionOpenAckResponse = {
   fromJSON(_: any): MsgConnectionOpenAckResponse {
     return {};
   },
-  toJSON(_: MsgConnectionOpenAckResponse): unknown {
+  toJSON(_: MsgConnectionOpenAckResponse): JsonSafe<MsgConnectionOpenAckResponse> {
     const obj: any = {};
     return obj;
   },
@@ -1218,7 +1219,7 @@ export const MsgConnectionOpenConfirm = {
       signer: isSet(object.signer) ? String(object.signer) : ""
     };
   },
-  toJSON(message: MsgConnectionOpenConfirm): unknown {
+  toJSON(message: MsgConnectionOpenConfirm): JsonSafe<MsgConnectionOpenConfirm> {
     const obj: any = {};
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
     message.proofAck !== undefined && (obj.proofAck = base64FromBytes(message.proofAck !== undefined ? message.proofAck : new Uint8Array()));
@@ -1317,7 +1318,7 @@ export const MsgConnectionOpenConfirmResponse = {
   fromJSON(_: any): MsgConnectionOpenConfirmResponse {
     return {};
   },
-  toJSON(_: MsgConnectionOpenConfirmResponse): unknown {
+  toJSON(_: MsgConnectionOpenConfirmResponse): JsonSafe<MsgConnectionOpenConfirmResponse> {
     const obj: any = {};
     return obj;
   },

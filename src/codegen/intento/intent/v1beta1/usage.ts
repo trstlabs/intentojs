@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface ActionIbcUsage {
   address: string;
@@ -94,7 +95,7 @@ export const ActionIbcUsage = {
       txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => ActionAck.fromJSON(e)) : []
     };
   },
-  toJSON(message: ActionIbcUsage): unknown {
+  toJSON(message: ActionIbcUsage): JsonSafe<ActionIbcUsage> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     if (message.txs) {
@@ -197,7 +198,7 @@ export const ActionAck = {
       connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
     };
   },
-  toJSON(message: ActionAck): unknown {
+  toJSON(message: ActionAck): JsonSafe<ActionAck> {
     const obj: any = {};
     message.coin !== undefined && (obj.coin = message.coin ? Coin.toJSON(message.coin) : undefined);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);

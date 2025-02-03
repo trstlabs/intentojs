@@ -2,6 +2,7 @@ import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmi
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
@@ -469,7 +470,7 @@ export const QueryProposalRequest = {
       proposalId: isSet(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0)
     };
   },
-  toJSON(message: QueryProposalRequest): unknown {
+  toJSON(message: QueryProposalRequest): JsonSafe<QueryProposalRequest> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     return obj;
@@ -488,7 +489,7 @@ export const QueryProposalRequest = {
   },
   toAmino(message: QueryProposalRequest): QueryProposalRequestAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryProposalRequestAminoMsg): QueryProposalRequest {
@@ -560,7 +561,7 @@ export const QueryProposalResponse = {
       proposal: isSet(object.proposal) ? Proposal.fromJSON(object.proposal) : undefined
     };
   },
-  toJSON(message: QueryProposalResponse): unknown {
+  toJSON(message: QueryProposalResponse): JsonSafe<QueryProposalResponse> {
     const obj: any = {};
     message.proposal !== undefined && (obj.proposal = message.proposal ? Proposal.toJSON(message.proposal) : undefined);
     return obj;
@@ -649,7 +650,7 @@ export const QueryProposalsRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.proposalStatus = (reader.int32() as any);
+          message.proposalStatus = reader.int32() as any;
           break;
         case 2:
           message.voter = reader.string();
@@ -675,7 +676,7 @@ export const QueryProposalsRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryProposalsRequest): unknown {
+  toJSON(message: QueryProposalsRequest): JsonSafe<QueryProposalsRequest> {
     const obj: any = {};
     message.proposalStatus !== undefined && (obj.proposalStatus = proposalStatusToJSON(message.proposalStatus));
     message.voter !== undefined && (obj.voter = message.voter);
@@ -792,7 +793,7 @@ export const QueryProposalsResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryProposalsResponse): unknown {
+  toJSON(message: QueryProposalsResponse): JsonSafe<QueryProposalsResponse> {
     const obj: any = {};
     if (message.proposals) {
       obj.proposals = message.proposals.map(e => e ? Proposal.toJSON(e) : undefined);
@@ -903,7 +904,7 @@ export const QueryVoteRequest = {
       voter: isSet(object.voter) ? String(object.voter) : ""
     };
   },
-  toJSON(message: QueryVoteRequest): unknown {
+  toJSON(message: QueryVoteRequest): JsonSafe<QueryVoteRequest> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.voter !== undefined && (obj.voter = message.voter);
@@ -927,7 +928,7 @@ export const QueryVoteRequest = {
   },
   toAmino(message: QueryVoteRequest): QueryVoteRequestAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.voter = message.voter === "" ? undefined : message.voter;
     return obj;
   },
@@ -1000,7 +1001,7 @@ export const QueryVoteResponse = {
       vote: isSet(object.vote) ? Vote.fromJSON(object.vote) : undefined
     };
   },
-  toJSON(message: QueryVoteResponse): unknown {
+  toJSON(message: QueryVoteResponse): JsonSafe<QueryVoteResponse> {
     const obj: any = {};
     message.vote !== undefined && (obj.vote = message.vote ? Vote.toJSON(message.vote) : undefined);
     return obj;
@@ -1099,7 +1100,7 @@ export const QueryVotesRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryVotesRequest): unknown {
+  toJSON(message: QueryVotesRequest): JsonSafe<QueryVotesRequest> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
@@ -1123,7 +1124,7 @@ export const QueryVotesRequest = {
   },
   toAmino(message: QueryVotesRequest): QueryVotesRequestAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
@@ -1204,7 +1205,7 @@ export const QueryVotesResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryVotesResponse): unknown {
+  toJSON(message: QueryVotesResponse): JsonSafe<QueryVotesResponse> {
     const obj: any = {};
     if (message.votes) {
       obj.votes = message.votes.map(e => e ? Vote.toJSON(e) : undefined);
@@ -1307,7 +1308,7 @@ export const QueryParamsRequest = {
       paramsType: isSet(object.paramsType) ? String(object.paramsType) : ""
     };
   },
-  toJSON(message: QueryParamsRequest): unknown {
+  toJSON(message: QueryParamsRequest): JsonSafe<QueryParamsRequest> {
     const obj: any = {};
     message.paramsType !== undefined && (obj.paramsType = message.paramsType);
     return obj;
@@ -1414,7 +1415,7 @@ export const QueryParamsResponse = {
       tallyParams: isSet(object.tallyParams) ? TallyParams.fromJSON(object.tallyParams) : undefined
     };
   },
-  toJSON(message: QueryParamsResponse): unknown {
+  toJSON(message: QueryParamsResponse): JsonSafe<QueryParamsResponse> {
     const obj: any = {};
     message.votingParams !== undefined && (obj.votingParams = message.votingParams ? VotingParams.toJSON(message.votingParams) : undefined);
     message.depositParams !== undefined && (obj.depositParams = message.depositParams ? DepositParams.toJSON(message.depositParams) : undefined);
@@ -1525,7 +1526,7 @@ export const QueryDepositRequest = {
       depositor: isSet(object.depositor) ? String(object.depositor) : ""
     };
   },
-  toJSON(message: QueryDepositRequest): unknown {
+  toJSON(message: QueryDepositRequest): JsonSafe<QueryDepositRequest> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.depositor !== undefined && (obj.depositor = message.depositor);
@@ -1549,7 +1550,7 @@ export const QueryDepositRequest = {
   },
   toAmino(message: QueryDepositRequest): QueryDepositRequestAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     return obj;
   },
@@ -1622,7 +1623,7 @@ export const QueryDepositResponse = {
       deposit: isSet(object.deposit) ? Deposit.fromJSON(object.deposit) : undefined
     };
   },
-  toJSON(message: QueryDepositResponse): unknown {
+  toJSON(message: QueryDepositResponse): JsonSafe<QueryDepositResponse> {
     const obj: any = {};
     message.deposit !== undefined && (obj.deposit = message.deposit ? Deposit.toJSON(message.deposit) : undefined);
     return obj;
@@ -1721,7 +1722,7 @@ export const QueryDepositsRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryDepositsRequest): unknown {
+  toJSON(message: QueryDepositsRequest): JsonSafe<QueryDepositsRequest> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
@@ -1745,7 +1746,7 @@ export const QueryDepositsRequest = {
   },
   toAmino(message: QueryDepositsRequest): QueryDepositsRequestAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
@@ -1826,7 +1827,7 @@ export const QueryDepositsResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryDepositsResponse): unknown {
+  toJSON(message: QueryDepositsResponse): JsonSafe<QueryDepositsResponse> {
     const obj: any = {};
     if (message.deposits) {
       obj.deposits = message.deposits.map(e => e ? Deposit.toJSON(e) : undefined);
@@ -1929,7 +1930,7 @@ export const QueryTallyResultRequest = {
       proposalId: isSet(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0)
     };
   },
-  toJSON(message: QueryTallyResultRequest): unknown {
+  toJSON(message: QueryTallyResultRequest): JsonSafe<QueryTallyResultRequest> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     return obj;
@@ -1948,7 +1949,7 @@ export const QueryTallyResultRequest = {
   },
   toAmino(message: QueryTallyResultRequest): QueryTallyResultRequestAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryTallyResultRequestAminoMsg): QueryTallyResultRequest {
@@ -2020,7 +2021,7 @@ export const QueryTallyResultResponse = {
       tally: isSet(object.tally) ? TallyResult.fromJSON(object.tally) : undefined
     };
   },
-  toJSON(message: QueryTallyResultResponse): unknown {
+  toJSON(message: QueryTallyResultResponse): JsonSafe<QueryTallyResultResponse> {
     const obj: any = {};
     message.tally !== undefined && (obj.tally = message.tally ? TallyResult.toJSON(message.tally) : undefined);
     return obj;

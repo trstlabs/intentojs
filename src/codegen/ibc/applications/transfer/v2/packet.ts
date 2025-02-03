@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * FungibleTokenPacketData defines a struct for the packet payload
@@ -119,7 +120,7 @@ export const FungibleTokenPacketData = {
       receiver: isSet(object.receiver) ? String(object.receiver) : ""
     };
   },
-  toJSON(message: FungibleTokenPacketData): unknown {
+  toJSON(message: FungibleTokenPacketData): JsonSafe<FungibleTokenPacketData> {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
     message.amount !== undefined && (obj.amount = message.amount);

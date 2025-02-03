@@ -5,6 +5,7 @@ import { HostedAccount, HostedAccountAmino, HostedAccountSDKType } from "./hoste
 import { ActionIbcUsage, ActionIbcUsageAmino, ActionIbcUsageSDKType } from "./usage";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * QueryInterchainAccountFromAddressRequest is the request type for the
@@ -69,7 +70,6 @@ export interface QueryInterchainAccountFromAddressResponseSDKType {
 }
 /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
 export interface QueryActionRequest {
-  /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
   id: string;
 }
 export interface QueryActionRequestProtoMsg {
@@ -78,7 +78,6 @@ export interface QueryActionRequestProtoMsg {
 }
 /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
 export interface QueryActionRequestAmino {
-  /** QueryActionRequest is the request type for the Query/ActionRequest RPC */
   id?: string;
 }
 export interface QueryActionRequestAminoMsg {
@@ -332,7 +331,6 @@ export interface QueryParamsResponseSDKType {
 }
 /** QueryHostedAccount is the request type for the Query/Params RPC method. */
 export interface QueryHostedAccountRequest {
-  /** QueryHostedAccount is the request type for the Query/Params RPC method. */
   address: string;
 }
 export interface QueryHostedAccountRequestProtoMsg {
@@ -341,7 +339,6 @@ export interface QueryHostedAccountRequestProtoMsg {
 }
 /** QueryHostedAccount is the request type for the Query/Params RPC method. */
 export interface QueryHostedAccountRequestAmino {
-  /** QueryHostedAccount is the request type for the Query/Params RPC method. */
   address?: string;
 }
 export interface QueryHostedAccountRequestAminoMsg {
@@ -628,7 +625,7 @@ export const QueryInterchainAccountFromAddressRequest = {
       connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
     };
   },
-  toJSON(message: QueryInterchainAccountFromAddressRequest): unknown {
+  toJSON(message: QueryInterchainAccountFromAddressRequest): JsonSafe<QueryInterchainAccountFromAddressRequest> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -717,7 +714,7 @@ export const QueryInterchainAccountFromAddressResponse = {
       interchainAccountAddress: isSet(object.interchainAccountAddress) ? String(object.interchainAccountAddress) : ""
     };
   },
-  toJSON(message: QueryInterchainAccountFromAddressResponse): unknown {
+  toJSON(message: QueryInterchainAccountFromAddressResponse): JsonSafe<QueryInterchainAccountFromAddressResponse> {
     const obj: any = {};
     message.interchainAccountAddress !== undefined && (obj.interchainAccountAddress = message.interchainAccountAddress);
     return obj;
@@ -800,7 +797,7 @@ export const QueryActionRequest = {
       id: isSet(object.id) ? String(object.id) : ""
     };
   },
-  toJSON(message: QueryActionRequest): unknown {
+  toJSON(message: QueryActionRequest): JsonSafe<QueryActionRequest> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     return obj;
@@ -883,7 +880,7 @@ export const QueryActionResponse = {
       actionInfo: isSet(object.actionInfo) ? ActionInfo.fromJSON(object.actionInfo) : undefined
     };
   },
-  toJSON(message: QueryActionResponse): unknown {
+  toJSON(message: QueryActionResponse): JsonSafe<QueryActionResponse> {
     const obj: any = {};
     message.actionInfo !== undefined && (obj.actionInfo = message.actionInfo ? ActionInfo.toJSON(message.actionInfo) : undefined);
     return obj;
@@ -974,7 +971,7 @@ export const QueryActionHistoryRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionHistoryRequest): unknown {
+  toJSON(message: QueryActionHistoryRequest): JsonSafe<QueryActionHistoryRequest> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
@@ -1071,7 +1068,7 @@ export const QueryActionHistoryResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionHistoryResponse): unknown {
+  toJSON(message: QueryActionHistoryResponse): JsonSafe<QueryActionHistoryResponse> {
     const obj: any = {};
     if (message.history) {
       obj.history = message.history.map(e => e ? ActionHistoryEntry.toJSON(e) : undefined);
@@ -1166,7 +1163,7 @@ export const QueryActionsRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsRequest): unknown {
+  toJSON(message: QueryActionsRequest): JsonSafe<QueryActionsRequest> {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
@@ -1257,7 +1254,7 @@ export const QueryActionsResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsResponse): unknown {
+  toJSON(message: QueryActionsResponse): JsonSafe<QueryActionsResponse> {
     const obj: any = {};
     if (message.actionInfos) {
       obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
@@ -1360,7 +1357,7 @@ export const QueryActionsForOwnerRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsForOwnerRequest): unknown {
+  toJSON(message: QueryActionsForOwnerRequest): JsonSafe<QueryActionsForOwnerRequest> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
@@ -1457,7 +1454,7 @@ export const QueryActionsForOwnerResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsForOwnerResponse): unknown {
+  toJSON(message: QueryActionsForOwnerResponse): JsonSafe<QueryActionsForOwnerResponse> {
     const obj: any = {};
     if (message.actionInfos) {
       obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
@@ -1542,7 +1539,7 @@ export const QueryParamsRequest = {
   fromJSON(_: any): QueryParamsRequest {
     return {};
   },
-  toJSON(_: QueryParamsRequest): unknown {
+  toJSON(_: QueryParamsRequest): JsonSafe<QueryParamsRequest> {
     const obj: any = {};
     return obj;
   },
@@ -1619,7 +1616,7 @@ export const QueryParamsResponse = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: QueryParamsResponse): unknown {
+  toJSON(message: QueryParamsResponse): JsonSafe<QueryParamsResponse> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     return obj;
@@ -1702,7 +1699,7 @@ export const QueryHostedAccountRequest = {
       address: isSet(object.address) ? String(object.address) : ""
     };
   },
-  toJSON(message: QueryHostedAccountRequest): unknown {
+  toJSON(message: QueryHostedAccountRequest): JsonSafe<QueryHostedAccountRequest> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     return obj;
@@ -1785,7 +1782,7 @@ export const QueryHostedAccountResponse = {
       hostedAccount: isSet(object.hostedAccount) ? HostedAccount.fromJSON(object.hostedAccount) : undefined
     };
   },
-  toJSON(message: QueryHostedAccountResponse): unknown {
+  toJSON(message: QueryHostedAccountResponse): JsonSafe<QueryHostedAccountResponse> {
     const obj: any = {};
     message.hostedAccount !== undefined && (obj.hostedAccount = message.hostedAccount ? HostedAccount.toJSON(message.hostedAccount) : undefined);
     return obj;
@@ -1868,7 +1865,7 @@ export const QueryHostedAccountsRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryHostedAccountsRequest): unknown {
+  toJSON(message: QueryHostedAccountsRequest): JsonSafe<QueryHostedAccountsRequest> {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
@@ -1959,7 +1956,7 @@ export const QueryHostedAccountsResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryHostedAccountsResponse): unknown {
+  toJSON(message: QueryHostedAccountsResponse): JsonSafe<QueryHostedAccountsResponse> {
     const obj: any = {};
     if (message.hostedAccounts) {
       obj.hostedAccounts = message.hostedAccounts.map(e => e ? HostedAccount.toJSON(e) : undefined);
@@ -2062,7 +2059,7 @@ export const QueryHostedAccountsByAdminRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryHostedAccountsByAdminRequest): unknown {
+  toJSON(message: QueryHostedAccountsByAdminRequest): JsonSafe<QueryHostedAccountsByAdminRequest> {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
@@ -2159,7 +2156,7 @@ export const QueryHostedAccountsByAdminResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryHostedAccountsByAdminResponse): unknown {
+  toJSON(message: QueryHostedAccountsByAdminResponse): JsonSafe<QueryHostedAccountsByAdminResponse> {
     const obj: any = {};
     if (message.hostedAccounts) {
       obj.hostedAccounts = message.hostedAccounts.map(e => e ? HostedAccount.toJSON(e) : undefined);
@@ -2254,7 +2251,7 @@ export const QueryActionIbcUsageRequest = {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionIbcUsageRequest): unknown {
+  toJSON(message: QueryActionIbcUsageRequest): JsonSafe<QueryActionIbcUsageRequest> {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
@@ -2345,7 +2342,7 @@ export const QueryActionIbcUsageResponse = {
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionIbcUsageResponse): unknown {
+  toJSON(message: QueryActionIbcUsageResponse): JsonSafe<QueryActionIbcUsageResponse> {
     const obj: any = {};
     if (message.actionIbcUsage) {
       obj.actionIbcUsage = message.actionIbcUsage.map(e => e ? ActionIbcUsage.toJSON(e) : undefined);

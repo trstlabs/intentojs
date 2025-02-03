@@ -2,6 +2,7 @@ import { MerklePrefix, MerklePrefixAmino, MerklePrefixSDKType } from "../../comm
 import { isSet } from "../../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -402,7 +403,7 @@ export const ConnectionEnd = {
           message.versions.push(Version.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.state = (reader.int32() as any);
+          message.state = reader.int32() as any;
           break;
         case 4:
           message.counterparty = Counterparty.decode(reader, reader.uint32());
@@ -426,7 +427,7 @@ export const ConnectionEnd = {
       delayPeriod: isSet(object.delayPeriod) ? BigInt(object.delayPeriod.toString()) : BigInt(0)
     };
   },
-  toJSON(message: ConnectionEnd): unknown {
+  toJSON(message: ConnectionEnd): JsonSafe<ConnectionEnd> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     if (message.versions) {
@@ -475,7 +476,7 @@ export const ConnectionEnd = {
     }
     obj.state = message.state === 0 ? undefined : message.state;
     obj.counterparty = message.counterparty ? Counterparty.toAmino(message.counterparty) : undefined;
-    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ConnectionEndAminoMsg): ConnectionEnd {
@@ -562,7 +563,7 @@ export const IdentifiedConnection = {
           message.versions.push(Version.decode(reader, reader.uint32()));
           break;
         case 4:
-          message.state = (reader.int32() as any);
+          message.state = reader.int32() as any;
           break;
         case 5:
           message.counterparty = Counterparty.decode(reader, reader.uint32());
@@ -587,7 +588,7 @@ export const IdentifiedConnection = {
       delayPeriod: isSet(object.delayPeriod) ? BigInt(object.delayPeriod.toString()) : BigInt(0)
     };
   },
-  toJSON(message: IdentifiedConnection): unknown {
+  toJSON(message: IdentifiedConnection): JsonSafe<IdentifiedConnection> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.clientId !== undefined && (obj.clientId = message.clientId);
@@ -642,7 +643,7 @@ export const IdentifiedConnection = {
     }
     obj.state = message.state === 0 ? undefined : message.state;
     obj.counterparty = message.counterparty ? Counterparty.toAmino(message.counterparty) : undefined;
-    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+    obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: IdentifiedConnectionAminoMsg): IdentifiedConnection {
@@ -730,7 +731,7 @@ export const Counterparty = {
       prefix: isSet(object.prefix) ? MerklePrefix.fromJSON(object.prefix) : undefined
     };
   },
-  toJSON(message: Counterparty): unknown {
+  toJSON(message: Counterparty): JsonSafe<Counterparty> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -833,7 +834,7 @@ export const ClientPaths = {
       paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: ClientPaths): unknown {
+  toJSON(message: ClientPaths): JsonSafe<ClientPaths> {
     const obj: any = {};
     if (message.paths) {
       obj.paths = message.paths.map(e => e);
@@ -938,7 +939,7 @@ export const ConnectionPaths = {
       paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: ConnectionPaths): unknown {
+  toJSON(message: ConnectionPaths): JsonSafe<ConnectionPaths> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     if (message.paths) {
@@ -1049,7 +1050,7 @@ export const Version = {
       features: Array.isArray(object?.features) ? object.features.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: Version): unknown {
+  toJSON(message: Version): JsonSafe<Version> {
     const obj: any = {};
     message.identifier !== undefined && (obj.identifier = message.identifier);
     if (message.features) {
@@ -1152,7 +1153,7 @@ export const Params = {
       maxExpectedTimePerBlock: isSet(object.maxExpectedTimePerBlock) ? BigInt(object.maxExpectedTimePerBlock.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     message.maxExpectedTimePerBlock !== undefined && (obj.maxExpectedTimePerBlock = (message.maxExpectedTimePerBlock || BigInt(0)).toString());
     return obj;
@@ -1171,7 +1172,7 @@ export const Params = {
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.max_expected_time_per_block = message.maxExpectedTimePerBlock !== BigInt(0) ? message.maxExpectedTimePerBlock.toString() : undefined;
+    obj.max_expected_time_per_block = message.maxExpectedTimePerBlock !== BigInt(0) ? message.maxExpectedTimePerBlock?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {

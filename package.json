@@ -36,7 +36,7 @@
     "url": "https://github.com/trstlabs/intentojs/issues"
   },
   "devDependencies": {
-    "@cosmology/telescope": "^1.4.12",
+    "@cosmology/telescope": "^1.11.9",
     "@protobufs/cosmos": "^0.1.0",
     "@protobufs/cosmos_proto": "^0.0.10",
     "@protobufs/cosmwasm": "^0.1.1",
@@ -56,9 +56,9 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@cosmjs/amino": "^0.32.0",
-    "@cosmjs/proto-signing": "^0.32.0",
-    "@cosmjs/stargate": "^0.32.0",
+    "@cosmjs/amino": "^0.32.4",
+    "@cosmjs/proto-signing": "^0.32.4",
+    "@cosmjs/stargate": "^0.32.4",
     "@cosmjs/tendermint-rpc": "^0.32.0"
   }
 }

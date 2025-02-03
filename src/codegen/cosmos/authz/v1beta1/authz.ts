@@ -5,6 +5,7 @@ import { StakeAuthorization, StakeAuthorizationProtoMsg, StakeAuthorizationSDKTy
 import { ContractExecutionAuthorization, ContractExecutionAuthorizationProtoMsg, ContractExecutionAuthorizationSDKType, ContractMigrationAuthorization, ContractMigrationAuthorizationProtoMsg, ContractMigrationAuthorizationSDKType } from "../../../cosmwasm/wasm/v1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
@@ -193,7 +194,7 @@ export const GenericAuthorization = {
       msg: isSet(object.msg) ? String(object.msg) : ""
     };
   },
-  toJSON(message: GenericAuthorization): unknown {
+  toJSON(message: GenericAuthorization): JsonSafe<GenericAuthorization> {
     const obj: any = {};
     message.msg !== undefined && (obj.msg = message.msg);
     return obj;
@@ -292,7 +293,7 @@ export const Grant = {
       expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
     };
   },
-  toJSON(message: Grant): unknown {
+  toJSON(message: Grant): JsonSafe<Grant> {
     const obj: any = {};
     message.authorization !== undefined && (obj.authorization = message.authorization ? GlobalDecoderRegistry.toJSON(message.authorization) : undefined);
     message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
@@ -413,7 +414,7 @@ export const GrantAuthorization = {
       expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
     };
   },
-  toJSON(message: GrantAuthorization): unknown {
+  toJSON(message: GrantAuthorization): JsonSafe<GrantAuthorization> {
     const obj: any = {};
     message.granter !== undefined && (obj.granter = message.granter);
     message.grantee !== undefined && (obj.grantee = message.grantee);
@@ -522,7 +523,7 @@ export const GrantQueueItem = {
       msgTypeUrls: Array.isArray(object?.msgTypeUrls) ? object.msgTypeUrls.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: GrantQueueItem): unknown {
+  toJSON(message: GrantQueueItem): JsonSafe<GrantQueueItem> {
     const obj: any = {};
     if (message.msgTypeUrls) {
       obj.msgTypeUrls = message.msgTypeUrls.map(e => e);

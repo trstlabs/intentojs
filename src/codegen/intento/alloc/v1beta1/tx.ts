@@ -2,6 +2,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * MsgFundFairburnPool allows an account to directly
@@ -176,7 +177,7 @@ export const MsgFundFairburnPool = {
       amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: MsgFundFairburnPool): unknown {
+  toJSON(message: MsgFundFairburnPool): JsonSafe<MsgFundFairburnPool> {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
     if (message.amount) {
@@ -268,7 +269,7 @@ export const MsgFundFairburnPoolResponse = {
   fromJSON(_: any): MsgFundFairburnPoolResponse {
     return {};
   },
-  toJSON(_: MsgFundFairburnPoolResponse): unknown {
+  toJSON(_: MsgFundFairburnPoolResponse): JsonSafe<MsgFundFairburnPoolResponse> {
     const obj: any = {};
     return obj;
   },
@@ -354,7 +355,7 @@ export const MsgUpdateParams = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: MsgUpdateParams): unknown {
+  toJSON(message: MsgUpdateParams): JsonSafe<MsgUpdateParams> {
     const obj: any = {};
     message.authority !== undefined && (obj.authority = message.authority);
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
@@ -440,7 +441,7 @@ export const MsgUpdateParamsResponse = {
   fromJSON(_: any): MsgUpdateParamsResponse {
     return {};
   },
-  toJSON(_: MsgUpdateParamsResponse): unknown {
+  toJSON(_: MsgUpdateParamsResponse): JsonSafe<MsgUpdateParamsResponse> {
     const obj: any = {};
     return obj;
   },

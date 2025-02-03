@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { JsonSafe } from "../../json-safe";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
  * App includes the protocol and software version for the application.
@@ -123,7 +124,7 @@ export const App = {
       software: isSet(object.software) ? String(object.software) : ""
     };
   },
-  toJSON(message: App): unknown {
+  toJSON(message: App): JsonSafe<App> {
     const obj: any = {};
     message.protocol !== undefined && (obj.protocol = (message.protocol || BigInt(0)).toString());
     message.software !== undefined && (obj.software = message.software);
@@ -147,7 +148,7 @@ export const App = {
   },
   toAmino(message: App): AppAmino {
     const obj: any = {};
-    obj.protocol = message.protocol !== BigInt(0) ? message.protocol.toString() : undefined;
+    obj.protocol = message.protocol !== BigInt(0) ? message.protocol?.toString() : undefined;
     obj.software = message.software === "" ? undefined : message.software;
     return obj;
   },
@@ -220,7 +221,7 @@ export const Consensus = {
       app: isSet(object.app) ? BigInt(object.app.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Consensus): unknown {
+  toJSON(message: Consensus): JsonSafe<Consensus> {
     const obj: any = {};
     message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
     message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
@@ -244,8 +245,8 @@ export const Consensus = {
   },
   toAmino(message: Consensus): ConsensusAmino {
     const obj: any = {};
-    obj.block = message.block !== BigInt(0) ? message.block.toString() : undefined;
-    obj.app = message.app !== BigInt(0) ? message.app.toString() : undefined;
+    obj.block = message.block !== BigInt(0) ? message.block?.toString() : undefined;
+    obj.app = message.app !== BigInt(0) ? message.app?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ConsensusAminoMsg): Consensus {

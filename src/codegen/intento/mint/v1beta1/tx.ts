@@ -1,7 +1,8 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /**
  * MsgUpdateParams is the request type for updating module's params.
  * 
@@ -120,7 +121,7 @@ export const MsgUpdateParams = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: MsgUpdateParams): unknown {
+  toJSON(message: MsgUpdateParams): JsonSafe<MsgUpdateParams> {
     const obj: any = {};
     message.authority !== undefined && (obj.authority = message.authority);
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
@@ -206,7 +207,7 @@ export const MsgUpdateParamsResponse = {
   fromJSON(_: any): MsgUpdateParamsResponse {
     return {};
   },
-  toJSON(_: MsgUpdateParamsResponse): unknown {
+  toJSON(_: MsgUpdateParamsResponse): JsonSafe<MsgUpdateParamsResponse> {
     const obj: any = {};
     return obj;
   },

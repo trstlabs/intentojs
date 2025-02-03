@@ -9,6 +9,7 @@ import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposa
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export enum VoteOption {
@@ -521,7 +522,7 @@ export const WeightedVoteOption = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         case 2:
           message.weight = Decimal.fromAtomics(reader.string(), 18).toString();
@@ -539,7 +540,7 @@ export const WeightedVoteOption = {
       weight: isSet(object.weight) ? String(object.weight) : ""
     };
   },
-  toJSON(message: WeightedVoteOption): unknown {
+  toJSON(message: WeightedVoteOption): JsonSafe<WeightedVoteOption> {
     const obj: any = {};
     message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
     message.weight !== undefined && (obj.weight = message.weight);
@@ -645,7 +646,7 @@ export const TextProposal = {
       description: isSet(object.description) ? String(object.description) : ""
     };
   },
-  toJSON(message: TextProposal): unknown {
+  toJSON(message: TextProposal): JsonSafe<TextProposal> {
     const obj: any = {};
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
@@ -758,7 +759,7 @@ export const Deposit = {
       amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: Deposit): unknown {
+  toJSON(message: Deposit): JsonSafe<Deposit> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.depositor !== undefined && (obj.depositor = message.depositor);
@@ -789,7 +790,7 @@ export const Deposit = {
   },
   toAmino(message: Deposit): DepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
@@ -891,7 +892,7 @@ export const Proposal = {
           message.content = GlobalDecoderRegistry.unwrapAny(reader);
           break;
         case 3:
-          message.status = (reader.int32() as any);
+          message.status = reader.int32() as any;
           break;
         case 4:
           message.finalTallyResult = TallyResult.decode(reader, reader.uint32());
@@ -931,7 +932,7 @@ export const Proposal = {
       votingEndTime: isSet(object.votingEndTime) ? fromJsonTimestamp(object.votingEndTime) : undefined
     };
   },
-  toJSON(message: Proposal): unknown {
+  toJSON(message: Proposal): JsonSafe<Proposal> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.content !== undefined && (obj.content = message.content ? GlobalDecoderRegistry.toJSON(message.content) : undefined);
@@ -992,7 +993,7 @@ export const Proposal = {
   },
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.content = message.content ? GlobalDecoderRegistry.toAminoMsg(message.content) : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.final_tally_result = message.finalTallyResult ? TallyResult.toAmino(message.finalTallyResult) : undefined;
@@ -1100,7 +1101,7 @@ export const TallyResult = {
       noWithVeto: isSet(object.noWithVeto) ? String(object.noWithVeto) : ""
     };
   },
-  toJSON(message: TallyResult): unknown {
+  toJSON(message: TallyResult): JsonSafe<TallyResult> {
     const obj: any = {};
     message.yes !== undefined && (obj.yes = message.yes);
     message.abstain !== undefined && (obj.abstain = message.abstain);
@@ -1213,7 +1214,7 @@ export const Vote = {
           message.voter = reader.string();
           break;
         case 3:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         case 4:
           message.options.push(WeightedVoteOption.decode(reader, reader.uint32()));
@@ -1233,7 +1234,7 @@ export const Vote = {
       options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e)) : []
     };
   },
-  toJSON(message: Vote): unknown {
+  toJSON(message: Vote): JsonSafe<Vote> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.voter !== undefined && (obj.voter = message.voter);
@@ -1269,7 +1270,7 @@ export const Vote = {
   },
   toAmino(message: Vote): VoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     if (message.options) {
@@ -1356,7 +1357,7 @@ export const DepositParams = {
       maxDepositPeriod: isSet(object.maxDepositPeriod) ? Duration.fromJSON(object.maxDepositPeriod) : undefined
     };
   },
-  toJSON(message: DepositParams): unknown {
+  toJSON(message: DepositParams): JsonSafe<DepositParams> {
     const obj: any = {};
     if (message.minDeposit) {
       obj.minDeposit = message.minDeposit.map(e => e ? Coin.toJSON(e) : undefined);
@@ -1459,7 +1460,7 @@ export const VotingParams = {
       votingPeriod: isSet(object.votingPeriod) ? Duration.fromJSON(object.votingPeriod) : undefined
     };
   },
-  toJSON(message: VotingParams): unknown {
+  toJSON(message: VotingParams): JsonSafe<VotingParams> {
     const obj: any = {};
     message.votingPeriod !== undefined && (obj.votingPeriod = message.votingPeriod ? Duration.toJSON(message.votingPeriod) : undefined);
     return obj;
@@ -1566,7 +1567,7 @@ export const TallyParams = {
       vetoThreshold: isSet(object.vetoThreshold) ? bytesFromBase64(object.vetoThreshold) : new Uint8Array()
     };
   },
-  toJSON(message: TallyParams): unknown {
+  toJSON(message: TallyParams): JsonSafe<TallyParams> {
     const obj: any = {};
     message.quorum !== undefined && (obj.quorum = base64FromBytes(message.quorum !== undefined ? message.quorum : new Uint8Array()));
     message.threshold !== undefined && (obj.threshold = base64FromBytes(message.threshold !== undefined ? message.threshold : new Uint8Array()));

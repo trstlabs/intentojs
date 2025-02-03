@@ -1,8 +1,9 @@
 import { Header, HeaderAmino, HeaderSDKType, Data, DataAmino, DataSDKType, Commit, CommitAmino, CommitSDKType } from "./types";
 import { EvidenceList, EvidenceListAmino, EvidenceListSDKType } from "./evidence";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet } from "../../helpers";
 import { GlobalDecoderRegistry } from "../../registry";
+import { isSet } from "../../helpers";
+import { JsonSafe } from "../../json-safe";
 export interface Block {
   header: Header;
   data: Data;
@@ -97,7 +98,7 @@ export const Block = {
       lastCommit: isSet(object.lastCommit) ? Commit.fromJSON(object.lastCommit) : undefined
     };
   },
-  toJSON(message: Block): unknown {
+  toJSON(message: Block): JsonSafe<Block> {
     const obj: any = {};
     message.header !== undefined && (obj.header = message.header ? Header.toJSON(message.header) : undefined);
     message.data !== undefined && (obj.data = message.data ? Data.toJSON(message.data) : undefined);

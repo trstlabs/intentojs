@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * PubKey defines a secp256k1 public key
@@ -104,7 +105,7 @@ export const PubKey = {
       key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
     };
   },
-  toJSON(message: PubKey): unknown {
+  toJSON(message: PubKey): JsonSafe<PubKey> {
     const obj: any = {};
     message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
     return obj;
@@ -195,7 +196,7 @@ export const PrivKey = {
       key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
     };
   },
-  toJSON(message: PrivKey): unknown {
+  toJSON(message: PrivKey): JsonSafe<PrivKey> {
     const obj: any = {};
     message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
     return obj;

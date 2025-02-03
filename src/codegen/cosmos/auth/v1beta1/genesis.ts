@@ -1,8 +1,9 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./auth";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the auth module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
@@ -83,7 +84,7 @@ export const GenesisState = {
       accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => Any.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     if (message.accounts) {

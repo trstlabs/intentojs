@@ -2,6 +2,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { JsonSafe } from "../../../json-safe";
 export enum TimeoutPolicy {
   REJECT_QUERY_RESPONSE = 0,
   RETRY_QUERY_REQUEST = 1,
@@ -241,7 +242,7 @@ export const Query = {
           message.callbackData = reader.bytes();
           break;
         case 15:
-          message.timeoutPolicy = (reader.int32() as any);
+          message.timeoutPolicy = reader.int32() as any;
           break;
         case 14:
           message.timeoutDuration = Duration.decode(reader, reader.uint32());
@@ -279,7 +280,7 @@ export const Query = {
       submissionHeight: isSet(object.submissionHeight) ? BigInt(object.submissionHeight.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Query): unknown {
+  toJSON(message: Query): JsonSafe<Query> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -368,9 +369,9 @@ export const Query = {
     obj.callback_data = message.callbackData ? base64FromBytes(message.callbackData) : undefined;
     obj.timeout_policy = message.timeoutPolicy === 0 ? undefined : message.timeoutPolicy;
     obj.timeout_duration = message.timeoutDuration ? Duration.toAmino(message.timeoutDuration) : undefined;
-    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
     obj.request_sent = message.requestSent === false ? undefined : message.requestSent;
-    obj.submission_height = message.submissionHeight !== BigInt(0) ? message.submissionHeight.toString() : undefined;
+    obj.submission_height = message.submissionHeight !== BigInt(0) ? message.submissionHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAminoMsg): Query {
@@ -458,7 +459,7 @@ export const DataPoint = {
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
     };
   },
-  toJSON(message: DataPoint): unknown {
+  toJSON(message: DataPoint): JsonSafe<DataPoint> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.remoteHeight !== undefined && (obj.remoteHeight = message.remoteHeight);
@@ -559,7 +560,7 @@ export const GenesisState = {
       queries: Array.isArray(object?.queries) ? object.queries.map((e: any) => Query.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     if (message.queries) {
       obj.queries = message.queries.map(e => e ? Query.toJSON(e) : undefined);

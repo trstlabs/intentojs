@@ -4,6 +4,7 @@ import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigura
 import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hostedaccount";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * MsgRegisterAccount registers an interchain account for the given owner over
@@ -573,7 +574,7 @@ export const MsgRegisterAccount = {
       version: isSet(object.version) ? String(object.version) : ""
     };
   },
-  toJSON(message: MsgRegisterAccount): unknown {
+  toJSON(message: MsgRegisterAccount): JsonSafe<MsgRegisterAccount> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -665,7 +666,7 @@ export const MsgRegisterAccountResponse = {
   fromJSON(_: any): MsgRegisterAccountResponse {
     return {};
   },
-  toJSON(_: MsgRegisterAccountResponse): unknown {
+  toJSON(_: MsgRegisterAccountResponse): JsonSafe<MsgRegisterAccountResponse> {
     const obj: any = {};
     return obj;
   },
@@ -759,7 +760,7 @@ export const MsgSubmitTx = {
       msg: isSet(object.msg) ? Any.fromJSON(object.msg) : undefined
     };
   },
-  toJSON(message: MsgSubmitTx): unknown {
+  toJSON(message: MsgSubmitTx): JsonSafe<MsgSubmitTx> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -851,7 +852,7 @@ export const MsgSubmitTxResponse = {
   fromJSON(_: any): MsgSubmitTxResponse {
     return {};
   },
-  toJSON(_: MsgSubmitTxResponse): unknown {
+  toJSON(_: MsgSubmitTxResponse): JsonSafe<MsgSubmitTxResponse> {
     const obj: any = {};
     return obj;
   },
@@ -1017,7 +1018,7 @@ export const MsgSubmitAction = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: MsgSubmitAction): unknown {
+  toJSON(message: MsgSubmitAction): JsonSafe<MsgSubmitAction> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.label !== undefined && (obj.label = message.label);
@@ -1045,7 +1046,7 @@ export const MsgSubmitAction = {
     const message = createBaseMsgSubmitAction();
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
-    message.msgs = object.msgs?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
+    message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     message.duration = object.duration ?? "";
     message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
@@ -1103,7 +1104,7 @@ export const MsgSubmitAction = {
       obj.msgs = message.msgs;
     }
     obj.duration = message.duration === "" ? undefined : message.duration;
-    obj.start_at = message.startAt !== BigInt(0) ? message.startAt.toString() : undefined;
+    obj.start_at = message.startAt !== BigInt(0) ? message.startAt?.toString() : undefined;
     obj.interval = message.interval === "" ? undefined : message.interval;
     if (message.feeFunds) {
       obj.fee_funds = message.feeFunds.map(e => e ? Coin.toAmino(e) : undefined);
@@ -1175,7 +1176,7 @@ export const MsgSubmitActionResponse = {
   fromJSON(_: any): MsgSubmitActionResponse {
     return {};
   },
-  toJSON(_: MsgSubmitActionResponse): unknown {
+  toJSON(_: MsgSubmitActionResponse): JsonSafe<MsgSubmitActionResponse> {
     const obj: any = {};
     return obj;
   },
@@ -1341,7 +1342,7 @@ export const MsgRegisterAccountAndSubmitAction = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: MsgRegisterAccountAndSubmitAction): unknown {
+  toJSON(message: MsgRegisterAccountAndSubmitAction): JsonSafe<MsgRegisterAccountAndSubmitAction> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -1370,7 +1371,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
-    message.msgs = object.msgs?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
+    message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     message.duration = object.duration ?? "";
     message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
@@ -1428,7 +1429,7 @@ export const MsgRegisterAccountAndSubmitAction = {
       obj.msgs = message.msgs;
     }
     obj.duration = message.duration === "" ? undefined : message.duration;
-    obj.start_at = message.startAt !== BigInt(0) ? message.startAt.toString() : undefined;
+    obj.start_at = message.startAt !== BigInt(0) ? message.startAt?.toString() : undefined;
     obj.interval = message.interval === "" ? undefined : message.interval;
     if (message.feeFunds) {
       obj.fee_funds = message.feeFunds.map(e => e ? Coin.toAmino(e) : undefined);
@@ -1499,7 +1500,7 @@ export const MsgRegisterAccountAndSubmitActionResponse = {
   fromJSON(_: any): MsgRegisterAccountAndSubmitActionResponse {
     return {};
   },
-  toJSON(_: MsgRegisterAccountAndSubmitActionResponse): unknown {
+  toJSON(_: MsgRegisterAccountAndSubmitActionResponse): JsonSafe<MsgRegisterAccountAndSubmitActionResponse> {
     const obj: any = {};
     return obj;
   },
@@ -1665,7 +1666,7 @@ export const MsgUpdateAction = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: MsgUpdateAction): unknown {
+  toJSON(message: MsgUpdateAction): JsonSafe<MsgUpdateAction> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
@@ -1695,7 +1696,7 @@ export const MsgUpdateAction = {
     message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
     message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
-    message.msgs = object.msgs?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
+    message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     message.endTime = object.endTime !== undefined && object.endTime !== null ? BigInt(object.endTime.toString()) : BigInt(0);
     message.startAt = object.startAt !== undefined && object.startAt !== null ? BigInt(object.startAt.toString()) : BigInt(0);
     message.interval = object.interval ?? "";
@@ -1744,7 +1745,7 @@ export const MsgUpdateAction = {
   toAmino(message: MsgUpdateAction): MsgUpdateActionAmino {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.id = message.id !== BigInt(0) ? message.id.toString() : undefined;
+    obj.id = message.id !== BigInt(0) ? message.id?.toString() : undefined;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
     obj.label = message.label === "" ? undefined : message.label;
     if (message.msgs) {
@@ -1752,8 +1753,8 @@ export const MsgUpdateAction = {
     } else {
       obj.msgs = message.msgs;
     }
-    obj.end_time = message.endTime !== BigInt(0) ? message.endTime.toString() : undefined;
-    obj.start_at = message.startAt !== BigInt(0) ? message.startAt.toString() : undefined;
+    obj.end_time = message.endTime !== BigInt(0) ? message.endTime?.toString() : undefined;
+    obj.start_at = message.startAt !== BigInt(0) ? message.startAt?.toString() : undefined;
     obj.interval = message.interval === "" ? undefined : message.interval;
     if (message.feeFunds) {
       obj.fee_funds = message.feeFunds.map(e => e ? Coin.toAmino(e) : undefined);
@@ -1823,7 +1824,7 @@ export const MsgUpdateActionResponse = {
   fromJSON(_: any): MsgUpdateActionResponse {
     return {};
   },
-  toJSON(_: MsgUpdateActionResponse): unknown {
+  toJSON(_: MsgUpdateActionResponse): JsonSafe<MsgUpdateActionResponse> {
     const obj: any = {};
     return obj;
   },
@@ -1933,7 +1934,7 @@ export const MsgCreateHostedAccount = {
       feeCoinsSuported: Array.isArray(object?.feeCoinsSuported) ? object.feeCoinsSuported.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: MsgCreateHostedAccount): unknown {
+  toJSON(message: MsgCreateHostedAccount): JsonSafe<MsgCreateHostedAccount> {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -2053,7 +2054,7 @@ export const MsgCreateHostedAccountResponse = {
       address: isSet(object.address) ? String(object.address) : ""
     };
   },
-  toJSON(message: MsgCreateHostedAccountResponse): unknown {
+  toJSON(message: MsgCreateHostedAccountResponse): JsonSafe<MsgCreateHostedAccountResponse> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     return obj;
@@ -2169,7 +2170,7 @@ export const MsgUpdateHostedAccount = {
       hostFeeConfig: isSet(object.hostFeeConfig) ? HostFeeConfig.fromJSON(object.hostFeeConfig) : undefined
     };
   },
-  toJSON(message: MsgUpdateHostedAccount): unknown {
+  toJSON(message: MsgUpdateHostedAccount): JsonSafe<MsgUpdateHostedAccount> {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
     message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
@@ -2273,7 +2274,7 @@ export const MsgUpdateHostedAccountResponse = {
   fromJSON(_: any): MsgUpdateHostedAccountResponse {
     return {};
   },
-  toJSON(_: MsgUpdateHostedAccountResponse): unknown {
+  toJSON(_: MsgUpdateHostedAccountResponse): JsonSafe<MsgUpdateHostedAccountResponse> {
     const obj: any = {};
     return obj;
   },

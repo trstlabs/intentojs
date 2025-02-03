@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44Params {
@@ -126,7 +127,7 @@ export const BIP44Params = {
       addressIndex: isSet(object.addressIndex) ? Number(object.addressIndex) : 0
     };
   },
-  toJSON(message: BIP44Params): unknown {
+  toJSON(message: BIP44Params): JsonSafe<BIP44Params> {
     const obj: any = {};
     message.purpose !== undefined && (obj.purpose = Math.round(message.purpose));
     message.coinType !== undefined && (obj.coinType = Math.round(message.coinType));

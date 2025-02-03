@@ -1,8 +1,9 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { ActionInfo, ActionInfoAmino, ActionInfoSDKType } from "./action";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState - genesis state of x/intent */
 export interface GenesisState {
   params: Params;
@@ -123,7 +124,7 @@ export const GenesisState = {
       sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     if (message.interchainAccountAddresses) {
@@ -250,7 +251,7 @@ export const Sequence = {
       value: isSet(object.value) ? BigInt(object.value.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Sequence): unknown {
+  toJSON(message: Sequence): JsonSafe<Sequence> {
     const obj: any = {};
     message.idKey !== undefined && (obj.idKey = base64FromBytes(message.idKey !== undefined ? message.idKey : new Uint8Array()));
     message.value !== undefined && (obj.value = (message.value || BigInt(0)).toString());
@@ -275,7 +276,7 @@ export const Sequence = {
   toAmino(message: Sequence): SequenceAmino {
     const obj: any = {};
     obj.id_key = message.idKey ? base64FromBytes(message.idKey) : undefined;
-    obj.value = message.value !== BigInt(0) ? message.value.toString() : undefined;
+    obj.value = message.value !== BigInt(0) ? message.value?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: SequenceAminoMsg): Sequence {

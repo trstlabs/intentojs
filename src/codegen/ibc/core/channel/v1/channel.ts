@@ -2,6 +2,7 @@ import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -477,10 +478,10 @@ export const Channel = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.state = (reader.int32() as any);
+          message.state = reader.int32() as any;
           break;
         case 2:
-          message.ordering = (reader.int32() as any);
+          message.ordering = reader.int32() as any;
           break;
         case 3:
           message.counterparty = Counterparty.decode(reader, reader.uint32());
@@ -507,7 +508,7 @@ export const Channel = {
       version: isSet(object.version) ? String(object.version) : ""
     };
   },
-  toJSON(message: Channel): unknown {
+  toJSON(message: Channel): JsonSafe<Channel> {
     const obj: any = {};
     message.state !== undefined && (obj.state = stateToJSON(message.state));
     message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
@@ -638,10 +639,10 @@ export const IdentifiedChannel = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.state = (reader.int32() as any);
+          message.state = reader.int32() as any;
           break;
         case 2:
-          message.ordering = (reader.int32() as any);
+          message.ordering = reader.int32() as any;
           break;
         case 3:
           message.counterparty = Counterparty.decode(reader, reader.uint32());
@@ -676,7 +677,7 @@ export const IdentifiedChannel = {
       channelId: isSet(object.channelId) ? String(object.channelId) : ""
     };
   },
-  toJSON(message: IdentifiedChannel): unknown {
+  toJSON(message: IdentifiedChannel): JsonSafe<IdentifiedChannel> {
     const obj: any = {};
     message.state !== undefined && (obj.state = stateToJSON(message.state));
     message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
@@ -817,7 +818,7 @@ export const Counterparty = {
       channelId: isSet(object.channelId) ? String(object.channelId) : ""
     };
   },
-  toJSON(message: Counterparty): unknown {
+  toJSON(message: Counterparty): JsonSafe<Counterparty> {
     const obj: any = {};
     message.portId !== undefined && (obj.portId = message.portId);
     message.channelId !== undefined && (obj.channelId = message.channelId);
@@ -970,7 +971,7 @@ export const Packet = {
       timeoutTimestamp: isSet(object.timeoutTimestamp) ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Packet): unknown {
+  toJSON(message: Packet): JsonSafe<Packet> {
     const obj: any = {};
     message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
     message.sourcePort !== undefined && (obj.sourcePort = message.sourcePort);
@@ -1024,14 +1025,14 @@ export const Packet = {
   },
   toAmino(message: Packet): PacketAmino {
     const obj: any = {};
-    obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+    obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
     obj.source_port = message.sourcePort === "" ? undefined : message.sourcePort;
     obj.source_channel = message.sourceChannel === "" ? undefined : message.sourceChannel;
     obj.destination_port = message.destinationPort === "" ? undefined : message.destinationPort;
     obj.destination_channel = message.destinationChannel === "" ? undefined : message.destinationChannel;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : {};
-    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: PacketAminoMsg): Packet {
@@ -1127,7 +1128,7 @@ export const PacketState = {
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
     };
   },
-  toJSON(message: PacketState): unknown {
+  toJSON(message: PacketState): JsonSafe<PacketState> {
     const obj: any = {};
     message.portId !== undefined && (obj.portId = message.portId);
     message.channelId !== undefined && (obj.channelId = message.channelId);
@@ -1163,7 +1164,7 @@ export const PacketState = {
     const obj: any = {};
     obj.port_id = message.portId === "" ? undefined : message.portId;
     obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-    obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+    obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
@@ -1244,7 +1245,7 @@ export const Acknowledgement = {
       error: isSet(object.error) ? String(object.error) : undefined
     };
   },
-  toJSON(message: Acknowledgement): unknown {
+  toJSON(message: Acknowledgement): JsonSafe<Acknowledgement> {
     const obj: any = {};
     message.result !== undefined && (obj.result = message.result !== undefined ? base64FromBytes(message.result) : undefined);
     message.error !== undefined && (obj.error = message.error);

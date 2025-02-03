@@ -1,20 +1,21 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** Params defines the params for activeness of Actions on governance proposals. */
 export interface Params {
-  ActionFundsCommission: bigint;
-  ActionFlexFeeMul: bigint;
-  ActionConstantFee: bigint;
+  actionFundsCommission: bigint;
+  actionFlexFeeMul: bigint;
+  actionConstantFee: bigint;
   gasFeeCoins: Coin[];
   /** Maximum period for self-executing Action */
-  MaxActionDuration: Duration;
+  maxActionDuration: Duration;
   /** Minimum period for self-executing Action */
-  MinActionDuration: Duration;
+  minActionDuration: Duration;
   /** Minimum period for self-executing Action */
-  MinActionInterval: Duration;
+  minActionInterval: Duration;
   /**
    * relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo.
    * Rewards are in uinto and topped up in the module account by alloc module.
@@ -60,20 +61,20 @@ export interface ParamsSDKType {
 }
 function createBaseParams(): Params {
   return {
-    ActionFundsCommission: BigInt(0),
-    ActionFlexFeeMul: BigInt(0),
-    ActionConstantFee: BigInt(0),
+    actionFundsCommission: BigInt(0),
+    actionFlexFeeMul: BigInt(0),
+    actionConstantFee: BigInt(0),
     gasFeeCoins: [],
-    MaxActionDuration: Duration.fromPartial({}),
-    MinActionDuration: Duration.fromPartial({}),
-    MinActionInterval: Duration.fromPartial({}),
+    maxActionDuration: Duration.fromPartial({}),
+    minActionDuration: Duration.fromPartial({}),
+    minActionInterval: Duration.fromPartial({}),
     relayerRewards: []
   };
 }
 export const Params = {
   typeUrl: "/intento.intent.v1beta1.Params",
   is(o: any): o is Params {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.ActionFundsCommission === "bigint" && typeof o.ActionFlexFeeMul === "bigint" && typeof o.ActionConstantFee === "bigint" && Array.isArray(o.gasFeeCoins) && (!o.gasFeeCoins.length || Coin.is(o.gasFeeCoins[0])) && Duration.is(o.MaxActionDuration) && Duration.is(o.MinActionDuration) && Duration.is(o.MinActionInterval) && Array.isArray(o.relayerRewards) && (!o.relayerRewards.length || typeof o.relayerRewards[0] === "bigint"));
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.actionFundsCommission === "bigint" && typeof o.actionFlexFeeMul === "bigint" && typeof o.actionConstantFee === "bigint" && Array.isArray(o.gasFeeCoins) && (!o.gasFeeCoins.length || Coin.is(o.gasFeeCoins[0])) && Duration.is(o.maxActionDuration) && Duration.is(o.minActionDuration) && Duration.is(o.minActionInterval) && Array.isArray(o.relayerRewards) && (!o.relayerRewards.length || typeof o.relayerRewards[0] === "bigint"));
   },
   isSDK(o: any): o is ParamsSDKType {
     return o && (o.$typeUrl === Params.typeUrl || typeof o.ActionFundsCommission === "bigint" && typeof o.ActionFlexFeeMul === "bigint" && typeof o.ActionConstantFee === "bigint" && Array.isArray(o.gas_fee_coins) && (!o.gas_fee_coins.length || Coin.isSDK(o.gas_fee_coins[0])) && Duration.isSDK(o.MaxActionDuration) && Duration.isSDK(o.MinActionDuration) && Duration.isSDK(o.MinActionInterval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
@@ -82,26 +83,26 @@ export const Params = {
     return o && (o.$typeUrl === Params.typeUrl || typeof o.ActionFundsCommission === "bigint" && typeof o.ActionFlexFeeMul === "bigint" && typeof o.ActionConstantFee === "bigint" && Array.isArray(o.gas_fee_coins) && (!o.gas_fee_coins.length || Coin.isAmino(o.gas_fee_coins[0])) && Duration.isAmino(o.MaxActionDuration) && Duration.isAmino(o.MinActionDuration) && Duration.isAmino(o.MinActionInterval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
   },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.ActionFundsCommission !== BigInt(0)) {
-      writer.uint32(8).int64(message.ActionFundsCommission);
+    if (message.actionFundsCommission !== BigInt(0)) {
+      writer.uint32(8).int64(message.actionFundsCommission);
     }
-    if (message.ActionFlexFeeMul !== BigInt(0)) {
-      writer.uint32(16).int64(message.ActionFlexFeeMul);
+    if (message.actionFlexFeeMul !== BigInt(0)) {
+      writer.uint32(16).int64(message.actionFlexFeeMul);
     }
-    if (message.ActionConstantFee !== BigInt(0)) {
-      writer.uint32(24).int64(message.ActionConstantFee);
+    if (message.actionConstantFee !== BigInt(0)) {
+      writer.uint32(24).int64(message.actionConstantFee);
     }
     for (const v of message.gasFeeCoins) {
       Coin.encode(v!, writer.uint32(34).fork()).ldelim();
     }
-    if (message.MaxActionDuration !== undefined) {
-      Duration.encode(message.MaxActionDuration, writer.uint32(42).fork()).ldelim();
+    if (message.maxActionDuration !== undefined) {
+      Duration.encode(message.maxActionDuration, writer.uint32(42).fork()).ldelim();
     }
-    if (message.MinActionDuration !== undefined) {
-      Duration.encode(message.MinActionDuration, writer.uint32(50).fork()).ldelim();
+    if (message.minActionDuration !== undefined) {
+      Duration.encode(message.minActionDuration, writer.uint32(50).fork()).ldelim();
     }
-    if (message.MinActionInterval !== undefined) {
-      Duration.encode(message.MinActionInterval, writer.uint32(66).fork()).ldelim();
+    if (message.minActionInterval !== undefined) {
+      Duration.encode(message.minActionInterval, writer.uint32(66).fork()).ldelim();
     }
     writer.uint32(74).fork();
     for (const v of message.relayerRewards) {
@@ -118,25 +119,25 @@ export const Params = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.ActionFundsCommission = reader.int64();
+          message.actionFundsCommission = reader.int64();
           break;
         case 2:
-          message.ActionFlexFeeMul = reader.int64();
+          message.actionFlexFeeMul = reader.int64();
           break;
         case 3:
-          message.ActionConstantFee = reader.int64();
+          message.actionConstantFee = reader.int64();
           break;
         case 4:
           message.gasFeeCoins.push(Coin.decode(reader, reader.uint32()));
           break;
         case 5:
-          message.MaxActionDuration = Duration.decode(reader, reader.uint32());
+          message.maxActionDuration = Duration.decode(reader, reader.uint32());
           break;
         case 6:
-          message.MinActionDuration = Duration.decode(reader, reader.uint32());
+          message.minActionDuration = Duration.decode(reader, reader.uint32());
           break;
         case 8:
-          message.MinActionInterval = Duration.decode(reader, reader.uint32());
+          message.minActionInterval = Duration.decode(reader, reader.uint32());
           break;
         case 9:
           if ((tag & 7) === 2) {
@@ -157,29 +158,29 @@ export const Params = {
   },
   fromJSON(object: any): Params {
     return {
-      ActionFundsCommission: isSet(object.ActionFundsCommission) ? BigInt(object.ActionFundsCommission.toString()) : BigInt(0),
-      ActionFlexFeeMul: isSet(object.ActionFlexFeeMul) ? BigInt(object.ActionFlexFeeMul.toString()) : BigInt(0),
-      ActionConstantFee: isSet(object.ActionConstantFee) ? BigInt(object.ActionConstantFee.toString()) : BigInt(0),
+      actionFundsCommission: isSet(object.actionFundsCommission) ? BigInt(object.actionFundsCommission.toString()) : BigInt(0),
+      actionFlexFeeMul: isSet(object.actionFlexFeeMul) ? BigInt(object.actionFlexFeeMul.toString()) : BigInt(0),
+      actionConstantFee: isSet(object.actionConstantFee) ? BigInt(object.actionConstantFee.toString()) : BigInt(0),
       gasFeeCoins: Array.isArray(object?.gasFeeCoins) ? object.gasFeeCoins.map((e: any) => Coin.fromJSON(e)) : [],
-      MaxActionDuration: isSet(object.MaxActionDuration) ? Duration.fromJSON(object.MaxActionDuration) : undefined,
-      MinActionDuration: isSet(object.MinActionDuration) ? Duration.fromJSON(object.MinActionDuration) : undefined,
-      MinActionInterval: isSet(object.MinActionInterval) ? Duration.fromJSON(object.MinActionInterval) : undefined,
+      maxActionDuration: isSet(object.maxActionDuration) ? Duration.fromJSON(object.maxActionDuration) : undefined,
+      minActionDuration: isSet(object.minActionDuration) ? Duration.fromJSON(object.minActionDuration) : undefined,
+      minActionInterval: isSet(object.minActionInterval) ? Duration.fromJSON(object.minActionInterval) : undefined,
       relayerRewards: Array.isArray(object?.relayerRewards) ? object.relayerRewards.map((e: any) => BigInt(e.toString())) : []
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
-    message.ActionFundsCommission !== undefined && (obj.ActionFundsCommission = (message.ActionFundsCommission || BigInt(0)).toString());
-    message.ActionFlexFeeMul !== undefined && (obj.ActionFlexFeeMul = (message.ActionFlexFeeMul || BigInt(0)).toString());
-    message.ActionConstantFee !== undefined && (obj.ActionConstantFee = (message.ActionConstantFee || BigInt(0)).toString());
+    message.actionFundsCommission !== undefined && (obj.actionFundsCommission = (message.actionFundsCommission || BigInt(0)).toString());
+    message.actionFlexFeeMul !== undefined && (obj.actionFlexFeeMul = (message.actionFlexFeeMul || BigInt(0)).toString());
+    message.actionConstantFee !== undefined && (obj.actionConstantFee = (message.actionConstantFee || BigInt(0)).toString());
     if (message.gasFeeCoins) {
       obj.gasFeeCoins = message.gasFeeCoins.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
       obj.gasFeeCoins = [];
     }
-    message.MaxActionDuration !== undefined && (obj.MaxActionDuration = message.MaxActionDuration ? Duration.toJSON(message.MaxActionDuration) : undefined);
-    message.MinActionDuration !== undefined && (obj.MinActionDuration = message.MinActionDuration ? Duration.toJSON(message.MinActionDuration) : undefined);
-    message.MinActionInterval !== undefined && (obj.MinActionInterval = message.MinActionInterval ? Duration.toJSON(message.MinActionInterval) : undefined);
+    message.maxActionDuration !== undefined && (obj.maxActionDuration = message.maxActionDuration ? Duration.toJSON(message.maxActionDuration) : undefined);
+    message.minActionDuration !== undefined && (obj.minActionDuration = message.minActionDuration ? Duration.toJSON(message.minActionDuration) : undefined);
+    message.minActionInterval !== undefined && (obj.minActionInterval = message.minActionInterval ? Duration.toJSON(message.minActionInterval) : undefined);
     if (message.relayerRewards) {
       obj.relayerRewards = message.relayerRewards.map(e => (e || BigInt(0)).toString());
     } else {
@@ -189,53 +190,53 @@ export const Params = {
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.ActionFundsCommission = object.ActionFundsCommission !== undefined && object.ActionFundsCommission !== null ? BigInt(object.ActionFundsCommission.toString()) : BigInt(0);
-    message.ActionFlexFeeMul = object.ActionFlexFeeMul !== undefined && object.ActionFlexFeeMul !== null ? BigInt(object.ActionFlexFeeMul.toString()) : BigInt(0);
-    message.ActionConstantFee = object.ActionConstantFee !== undefined && object.ActionConstantFee !== null ? BigInt(object.ActionConstantFee.toString()) : BigInt(0);
+    message.actionFundsCommission = object.actionFundsCommission !== undefined && object.actionFundsCommission !== null ? BigInt(object.actionFundsCommission.toString()) : BigInt(0);
+    message.actionFlexFeeMul = object.actionFlexFeeMul !== undefined && object.actionFlexFeeMul !== null ? BigInt(object.actionFlexFeeMul.toString()) : BigInt(0);
+    message.actionConstantFee = object.actionConstantFee !== undefined && object.actionConstantFee !== null ? BigInt(object.actionConstantFee.toString()) : BigInt(0);
     message.gasFeeCoins = object.gasFeeCoins?.map(e => Coin.fromPartial(e)) || [];
-    message.MaxActionDuration = object.MaxActionDuration !== undefined && object.MaxActionDuration !== null ? Duration.fromPartial(object.MaxActionDuration) : undefined;
-    message.MinActionDuration = object.MinActionDuration !== undefined && object.MinActionDuration !== null ? Duration.fromPartial(object.MinActionDuration) : undefined;
-    message.MinActionInterval = object.MinActionInterval !== undefined && object.MinActionInterval !== null ? Duration.fromPartial(object.MinActionInterval) : undefined;
+    message.maxActionDuration = object.maxActionDuration !== undefined && object.maxActionDuration !== null ? Duration.fromPartial(object.maxActionDuration) : undefined;
+    message.minActionDuration = object.minActionDuration !== undefined && object.minActionDuration !== null ? Duration.fromPartial(object.minActionDuration) : undefined;
+    message.minActionInterval = object.minActionInterval !== undefined && object.minActionInterval !== null ? Duration.fromPartial(object.minActionInterval) : undefined;
     message.relayerRewards = object.relayerRewards?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
     const message = createBaseParams();
     if (object.ActionFundsCommission !== undefined && object.ActionFundsCommission !== null) {
-      message.ActionFundsCommission = BigInt(object.ActionFundsCommission);
+      message.actionFundsCommission = BigInt(object.ActionFundsCommission);
     }
     if (object.ActionFlexFeeMul !== undefined && object.ActionFlexFeeMul !== null) {
-      message.ActionFlexFeeMul = BigInt(object.ActionFlexFeeMul);
+      message.actionFlexFeeMul = BigInt(object.ActionFlexFeeMul);
     }
     if (object.ActionConstantFee !== undefined && object.ActionConstantFee !== null) {
-      message.ActionConstantFee = BigInt(object.ActionConstantFee);
+      message.actionConstantFee = BigInt(object.ActionConstantFee);
     }
     message.gasFeeCoins = object.gas_fee_coins?.map(e => Coin.fromAmino(e)) || [];
     if (object.MaxActionDuration !== undefined && object.MaxActionDuration !== null) {
-      message.MaxActionDuration = Duration.fromAmino(object.MaxActionDuration);
+      message.maxActionDuration = Duration.fromAmino(object.MaxActionDuration);
     }
     if (object.MinActionDuration !== undefined && object.MinActionDuration !== null) {
-      message.MinActionDuration = Duration.fromAmino(object.MinActionDuration);
+      message.minActionDuration = Duration.fromAmino(object.MinActionDuration);
     }
     if (object.MinActionInterval !== undefined && object.MinActionInterval !== null) {
-      message.MinActionInterval = Duration.fromAmino(object.MinActionInterval);
+      message.minActionInterval = Duration.fromAmino(object.MinActionInterval);
     }
     message.relayerRewards = object.relayer_rewards?.map(e => BigInt(e)) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.ActionFundsCommission = message.ActionFundsCommission !== BigInt(0) ? message.ActionFundsCommission.toString() : undefined;
-    obj.ActionFlexFeeMul = message.ActionFlexFeeMul !== BigInt(0) ? message.ActionFlexFeeMul.toString() : undefined;
-    obj.ActionConstantFee = message.ActionConstantFee !== BigInt(0) ? message.ActionConstantFee.toString() : undefined;
+    obj.ActionFundsCommission = message.actionFundsCommission !== BigInt(0) ? message.actionFundsCommission?.toString() : undefined;
+    obj.ActionFlexFeeMul = message.actionFlexFeeMul !== BigInt(0) ? message.actionFlexFeeMul?.toString() : undefined;
+    obj.ActionConstantFee = message.actionConstantFee !== BigInt(0) ? message.actionConstantFee?.toString() : undefined;
     if (message.gasFeeCoins) {
       obj.gas_fee_coins = message.gasFeeCoins.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.gas_fee_coins = message.gasFeeCoins;
     }
-    obj.MaxActionDuration = message.MaxActionDuration ? Duration.toAmino(message.MaxActionDuration) : undefined;
-    obj.MinActionDuration = message.MinActionDuration ? Duration.toAmino(message.MinActionDuration) : undefined;
-    obj.MinActionInterval = message.MinActionInterval ? Duration.toAmino(message.MinActionInterval) : undefined;
+    obj.MaxActionDuration = message.maxActionDuration ? Duration.toAmino(message.maxActionDuration) : undefined;
+    obj.MinActionDuration = message.minActionDuration ? Duration.toAmino(message.minActionDuration) : undefined;
+    obj.MinActionInterval = message.minActionInterval ? Duration.toAmino(message.minActionInterval) : undefined;
     if (message.relayerRewards) {
       obj.relayer_rewards = message.relayerRewards.map(e => e.toString());
     } else {

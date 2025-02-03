@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface BitArray {
   bits: bigint;
@@ -82,7 +83,7 @@ export const BitArray = {
       elems: Array.isArray(object?.elems) ? object.elems.map((e: any) => BigInt(e.toString())) : []
     };
   },
-  toJSON(message: BitArray): unknown {
+  toJSON(message: BitArray): JsonSafe<BitArray> {
     const obj: any = {};
     message.bits !== undefined && (obj.bits = (message.bits || BigInt(0)).toString());
     if (message.elems) {
@@ -108,7 +109,7 @@ export const BitArray = {
   },
   toAmino(message: BitArray): BitArrayAmino {
     const obj: any = {};
-    obj.bits = message.bits !== BigInt(0) ? message.bits.toString() : undefined;
+    obj.bits = message.bits !== BigInt(0) ? message.bits?.toString() : undefined;
     if (message.elems) {
       obj.elems = message.elems.map(e => e.toString());
     } else {

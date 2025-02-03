@@ -2,6 +2,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 /** WeightedAddress defines an address with a weight. */
 export interface WeightedAddress {
@@ -142,7 +143,7 @@ export const WeightedAddress = {
       weight: isSet(object.weight) ? String(object.weight) : ""
     };
   },
-  toJSON(message: WeightedAddress): unknown {
+  toJSON(message: WeightedAddress): JsonSafe<WeightedAddress> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     message.weight !== undefined && (obj.weight = message.weight);
@@ -247,7 +248,7 @@ export const DistributionProportions = {
       relayerIncentives: isSet(object.relayerIncentives) ? String(object.relayerIncentives) : ""
     };
   },
-  toJSON(message: DistributionProportions): unknown {
+  toJSON(message: DistributionProportions): JsonSafe<DistributionProportions> {
     const obj: any = {};
     message.developerRewards !== undefined && (obj.developerRewards = message.developerRewards);
     message.communityPool !== undefined && (obj.communityPool = message.communityPool);
@@ -358,7 +359,7 @@ export const Params = {
       supplementAmount: Array.isArray(object?.supplementAmount) ? object.supplementAmount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     message.distributionProportions !== undefined && (obj.distributionProportions = message.distributionProportions ? DistributionProportions.toJSON(message.distributionProportions) : undefined);
     if (message.weightedDeveloperRewardsReceivers) {

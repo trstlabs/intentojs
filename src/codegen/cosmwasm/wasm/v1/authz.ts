@@ -1,6 +1,7 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
@@ -393,7 +394,7 @@ export const ContractExecutionAuthorization = {
       grants: Array.isArray(object?.grants) ? object.grants.map((e: any) => ContractGrant.fromJSON(e)) : []
     };
   },
-  toJSON(message: ContractExecutionAuthorization): unknown {
+  toJSON(message: ContractExecutionAuthorization): JsonSafe<ContractExecutionAuthorization> {
     const obj: any = {};
     if (message.grants) {
       obj.grants = message.grants.map(e => e ? ContractGrant.toJSON(e) : undefined);
@@ -491,7 +492,7 @@ export const ContractMigrationAuthorization = {
       grants: Array.isArray(object?.grants) ? object.grants.map((e: any) => ContractGrant.fromJSON(e)) : []
     };
   },
-  toJSON(message: ContractMigrationAuthorization): unknown {
+  toJSON(message: ContractMigrationAuthorization): JsonSafe<ContractMigrationAuthorization> {
     const obj: any = {};
     if (message.grants) {
       obj.grants = message.grants.map(e => e ? ContractGrant.toJSON(e) : undefined);
@@ -604,7 +605,7 @@ export const ContractGrant = {
       filter: isSet(object.filter) ? GlobalDecoderRegistry.fromJSON(object.filter) : undefined
     };
   },
-  toJSON(message: ContractGrant): unknown {
+  toJSON(message: ContractGrant): JsonSafe<ContractGrant> {
     const obj: any = {};
     message.contract !== undefined && (obj.contract = message.contract);
     message.limit !== undefined && (obj.limit = message.limit ? GlobalDecoderRegistry.toJSON(message.limit) : undefined);
@@ -708,7 +709,7 @@ export const MaxCallsLimit = {
       remaining: isSet(object.remaining) ? BigInt(object.remaining.toString()) : BigInt(0)
     };
   },
-  toJSON(message: MaxCallsLimit): unknown {
+  toJSON(message: MaxCallsLimit): JsonSafe<MaxCallsLimit> {
     const obj: any = {};
     message.remaining !== undefined && (obj.remaining = (message.remaining || BigInt(0)).toString());
     return obj;
@@ -727,7 +728,7 @@ export const MaxCallsLimit = {
   },
   toAmino(message: MaxCallsLimit): MaxCallsLimitAmino {
     const obj: any = {};
-    obj.remaining = message.remaining !== BigInt(0) ? message.remaining.toString() : undefined;
+    obj.remaining = message.remaining !== BigInt(0) ? message.remaining?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MaxCallsLimitAminoMsg): MaxCallsLimit {
@@ -800,7 +801,7 @@ export const MaxFundsLimit = {
       amounts: Array.isArray(object?.amounts) ? object.amounts.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: MaxFundsLimit): unknown {
+  toJSON(message: MaxFundsLimit): JsonSafe<MaxFundsLimit> {
     const obj: any = {};
     if (message.amounts) {
       obj.amounts = message.amounts.map(e => e ? Coin.toJSON(e) : undefined);
@@ -906,7 +907,7 @@ export const CombinedLimit = {
       amounts: Array.isArray(object?.amounts) ? object.amounts.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: CombinedLimit): unknown {
+  toJSON(message: CombinedLimit): JsonSafe<CombinedLimit> {
     const obj: any = {};
     message.callsRemaining !== undefined && (obj.callsRemaining = (message.callsRemaining || BigInt(0)).toString());
     if (message.amounts) {
@@ -932,7 +933,7 @@ export const CombinedLimit = {
   },
   toAmino(message: CombinedLimit): CombinedLimitAmino {
     const obj: any = {};
-    obj.calls_remaining = message.callsRemaining !== BigInt(0) ? message.callsRemaining.toString() : undefined;
+    obj.calls_remaining = message.callsRemaining !== BigInt(0) ? message.callsRemaining?.toString() : undefined;
     if (message.amounts) {
       obj.amounts = message.amounts.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
@@ -1001,7 +1002,7 @@ export const AllowAllMessagesFilter = {
   fromJSON(_: any): AllowAllMessagesFilter {
     return {};
   },
-  toJSON(_: AllowAllMessagesFilter): unknown {
+  toJSON(_: AllowAllMessagesFilter): JsonSafe<AllowAllMessagesFilter> {
     const obj: any = {};
     return obj;
   },
@@ -1087,7 +1088,7 @@ export const AcceptedMessageKeysFilter = {
       keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: AcceptedMessageKeysFilter): unknown {
+  toJSON(message: AcceptedMessageKeysFilter): JsonSafe<AcceptedMessageKeysFilter> {
     const obj: any = {};
     if (message.keys) {
       obj.keys = message.keys.map(e => e);
@@ -1185,7 +1186,7 @@ export const AcceptedMessagesFilter = {
       messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => bytesFromBase64(e)) : []
     };
   },
-  toJSON(message: AcceptedMessagesFilter): unknown {
+  toJSON(message: AcceptedMessagesFilter): JsonSafe<AcceptedMessagesFilter> {
     const obj: any = {};
     if (message.messages) {
       obj.messages = message.messages.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));

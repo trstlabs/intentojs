@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
@@ -150,7 +151,7 @@ export const DenomTrace = {
       baseDenom: isSet(object.baseDenom) ? String(object.baseDenom) : ""
     };
   },
-  toJSON(message: DenomTrace): unknown {
+  toJSON(message: DenomTrace): JsonSafe<DenomTrace> {
     const obj: any = {};
     message.path !== undefined && (obj.path = message.path);
     message.baseDenom !== undefined && (obj.baseDenom = message.baseDenom);
@@ -255,7 +256,7 @@ export const Params = {
       receiveEnabled: isSet(object.receiveEnabled) ? Boolean(object.receiveEnabled) : false
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     message.sendEnabled !== undefined && (obj.sendEnabled = message.sendEnabled);
     message.receiveEnabled !== undefined && (obj.receiveEnabled = message.receiveEnabled);

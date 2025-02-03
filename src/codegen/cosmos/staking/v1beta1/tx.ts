@@ -3,9 +3,10 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
-import { encodePubkey, decodePubkey } from "@cosmjs/proto-signing";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
+import { encodePubkey, decodePubkey } from "@cosmjs/proto-signing";
 import { Decimal } from "@cosmjs/math";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
@@ -372,7 +373,7 @@ export const MsgCreateValidator = {
       value: isSet(object.value) ? Coin.fromJSON(object.value) : undefined
     };
   },
-  toJSON(message: MsgCreateValidator): unknown {
+  toJSON(message: MsgCreateValidator): JsonSafe<MsgCreateValidator> {
     const obj: any = {};
     message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
     message.commission !== undefined && (obj.commission = message.commission ? CommissionRates.toJSON(message.commission) : undefined);
@@ -489,7 +490,7 @@ export const MsgCreateValidatorResponse = {
   fromJSON(_: any): MsgCreateValidatorResponse {
     return {};
   },
-  toJSON(_: MsgCreateValidatorResponse): unknown {
+  toJSON(_: MsgCreateValidatorResponse): JsonSafe<MsgCreateValidatorResponse> {
     const obj: any = {};
     return obj;
   },
@@ -598,7 +599,7 @@ export const MsgEditValidator = {
       minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
     };
   },
-  toJSON(message: MsgEditValidator): unknown {
+  toJSON(message: MsgEditValidator): JsonSafe<MsgEditValidator> {
     const obj: any = {};
     message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
     message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
@@ -697,7 +698,7 @@ export const MsgEditValidatorResponse = {
   fromJSON(_: any): MsgEditValidatorResponse {
     return {};
   },
-  toJSON(_: MsgEditValidatorResponse): unknown {
+  toJSON(_: MsgEditValidatorResponse): JsonSafe<MsgEditValidatorResponse> {
     const obj: any = {};
     return obj;
   },
@@ -798,7 +799,7 @@ export const MsgDelegate = {
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
-  toJSON(message: MsgDelegate): unknown {
+  toJSON(message: MsgDelegate): JsonSafe<MsgDelegate> {
     const obj: any = {};
     message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
@@ -891,7 +892,7 @@ export const MsgDelegateResponse = {
   fromJSON(_: any): MsgDelegateResponse {
     return {};
   },
-  toJSON(_: MsgDelegateResponse): unknown {
+  toJSON(_: MsgDelegateResponse): JsonSafe<MsgDelegateResponse> {
     const obj: any = {};
     return obj;
   },
@@ -1000,7 +1001,7 @@ export const MsgBeginRedelegate = {
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
-  toJSON(message: MsgBeginRedelegate): unknown {
+  toJSON(message: MsgBeginRedelegate): JsonSafe<MsgBeginRedelegate> {
     const obj: any = {};
     message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     message.validatorSrcAddress !== undefined && (obj.validatorSrcAddress = message.validatorSrcAddress);
@@ -1109,7 +1110,7 @@ export const MsgBeginRedelegateResponse = {
       completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
     };
   },
-  toJSON(message: MsgBeginRedelegateResponse): unknown {
+  toJSON(message: MsgBeginRedelegateResponse): JsonSafe<MsgBeginRedelegateResponse> {
     const obj: any = {};
     message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
     return obj;
@@ -1216,7 +1217,7 @@ export const MsgUndelegate = {
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
-  toJSON(message: MsgUndelegate): unknown {
+  toJSON(message: MsgUndelegate): JsonSafe<MsgUndelegate> {
     const obj: any = {};
     message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
@@ -1319,7 +1320,7 @@ export const MsgUndelegateResponse = {
       completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
     };
   },
-  toJSON(message: MsgUndelegateResponse): unknown {
+  toJSON(message: MsgUndelegateResponse): JsonSafe<MsgUndelegateResponse> {
     const obj: any = {};
     message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
     return obj;

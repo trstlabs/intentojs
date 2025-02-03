@@ -1,7 +1,8 @@
 import { IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, ClientConsensusStates, ClientConsensusStatesAmino, ClientConsensusStatesSDKType, Params, ParamsAmino, ParamsSDKType } from "./client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc client submodule's genesis state. */
 export interface GenesisState {
   /** client states with their corresponding identifiers */
@@ -200,7 +201,7 @@ export const GenesisState = {
       nextClientSequence: isSet(object.nextClientSequence) ? BigInt(object.nextClientSequence.toString()) : BigInt(0)
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     if (message.clients) {
       obj.clients = message.clients.map(e => e ? IdentifiedClientState.toJSON(e) : undefined);
@@ -267,7 +268,7 @@ export const GenesisState = {
     }
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     obj.create_localhost = message.createLocalhost === false ? undefined : message.createLocalhost;
-    obj.next_client_sequence = message.nextClientSequence !== BigInt(0) ? message.nextClientSequence.toString() : undefined;
+    obj.next_client_sequence = message.nextClientSequence !== BigInt(0) ? message.nextClientSequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -347,7 +348,7 @@ export const GenesisMetadata = {
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
     };
   },
-  toJSON(message: GenesisMetadata): unknown {
+  toJSON(message: GenesisMetadata): JsonSafe<GenesisMetadata> {
     const obj: any = {};
     message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
     message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
@@ -452,7 +453,7 @@ export const IdentifiedGenesisMetadata = {
       clientMetadata: Array.isArray(object?.clientMetadata) ? object.clientMetadata.map((e: any) => GenesisMetadata.fromJSON(e)) : []
     };
   },
-  toJSON(message: IdentifiedGenesisMetadata): unknown {
+  toJSON(message: IdentifiedGenesisMetadata): JsonSafe<IdentifiedGenesisMetadata> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     if (message.clientMetadata) {

@@ -1,7 +1,8 @@
 import { ProofOps, ProofOpsAmino, ProofOpsSDKType } from "../../../tendermint/crypto/proof";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** MsgSubmitQueryResponse represents a message type to fulfil a query request. */
 export interface MsgSubmitQueryResponse {
   chainId: string;
@@ -145,7 +146,7 @@ export const MsgSubmitQueryResponse = {
       fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : ""
     };
   },
-  toJSON(message: MsgSubmitQueryResponse): unknown {
+  toJSON(message: MsgSubmitQueryResponse): JsonSafe<MsgSubmitQueryResponse> {
     const obj: any = {};
     message.chainId !== undefined && (obj.chainId = message.chainId);
     message.queryId !== undefined && (obj.queryId = message.queryId);
@@ -193,7 +194,7 @@ export const MsgSubmitQueryResponse = {
     obj.query_id = message.queryId === "" ? undefined : message.queryId;
     obj.result = message.result ? base64FromBytes(message.result) : undefined;
     obj.proof_ops = message.proofOps ? ProofOps.toAmino(message.proofOps) : undefined;
-    obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+    obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
     obj.from_address = message.fromAddress === "" ? undefined : message.fromAddress;
     return obj;
   },
@@ -255,7 +256,7 @@ export const MsgSubmitQueryResponseResponse = {
   fromJSON(_: any): MsgSubmitQueryResponseResponse {
     return {};
   },
-  toJSON(_: MsgSubmitQueryResponseResponse): unknown {
+  toJSON(_: MsgSubmitQueryResponseResponse): JsonSafe<MsgSubmitQueryResponseResponse> {
     const obj: any = {};
     return obj;
   },

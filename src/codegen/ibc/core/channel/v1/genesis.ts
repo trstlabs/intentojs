@@ -1,6 +1,7 @@
 import { IdentifiedChannel, IdentifiedChannelAmino, IdentifiedChannelSDKType, PacketState, PacketStateAmino, PacketStateSDKType } from "./channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /** GenesisState defines the ibc channel submodule's genesis state. */
 export interface GenesisState {
@@ -181,7 +182,7 @@ export const GenesisState = {
       nextChannelSequence: isSet(object.nextChannelSequence) ? BigInt(object.nextChannelSequence.toString()) : BigInt(0)
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     if (message.channels) {
       obj.channels = message.channels.map(e => e ? IdentifiedChannel.toJSON(e) : undefined);
@@ -284,7 +285,7 @@ export const GenesisState = {
     } else {
       obj.ack_sequences = message.ackSequences;
     }
-    obj.next_channel_sequence = message.nextChannelSequence !== BigInt(0) ? message.nextChannelSequence.toString() : undefined;
+    obj.next_channel_sequence = message.nextChannelSequence !== BigInt(0) ? message.nextChannelSequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -372,7 +373,7 @@ export const PacketSequence = {
       sequence: isSet(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0)
     };
   },
-  toJSON(message: PacketSequence): unknown {
+  toJSON(message: PacketSequence): JsonSafe<PacketSequence> {
     const obj: any = {};
     message.portId !== undefined && (obj.portId = message.portId);
     message.channelId !== undefined && (obj.channelId = message.channelId);
@@ -403,7 +404,7 @@ export const PacketSequence = {
     const obj: any = {};
     obj.port_id = message.portId === "" ? undefined : message.portId;
     obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-    obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+    obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: PacketSequenceAminoMsg): PacketSequence {

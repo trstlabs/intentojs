@@ -1,7 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 export enum Action {
   ACTION_ACTION_LOCAL = 0,
   ACTION_ACTION_ICA = 1,
@@ -218,7 +219,7 @@ export const ClaimRecord = {
       status: Array.isArray(object?.status) ? object.status.map((e: any) => Status.fromJSON(e)) : []
     };
   },
-  toJSON(message: ClaimRecord): unknown {
+  toJSON(message: ClaimRecord): JsonSafe<ClaimRecord> {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     message.maximumClaimableAmount !== undefined && (obj.maximumClaimableAmount = message.maximumClaimableAmount ? Coin.toJSON(message.maximumClaimableAmount) : undefined);
@@ -353,7 +354,7 @@ export const Status = {
       vestingPeriodsClaimed: Array.isArray(object?.vestingPeriodsClaimed) ? object.vestingPeriodsClaimed.map((e: any) => Boolean(e)) : []
     };
   },
-  toJSON(message: Status): unknown {
+  toJSON(message: Status): JsonSafe<Status> {
     const obj: any = {};
     message.actionCompleted !== undefined && (obj.actionCompleted = message.actionCompleted);
     if (message.vestingPeriodsCompleted) {
@@ -461,7 +462,7 @@ export const MsgClaimClaimable = {
       sender: isSet(object.sender) ? String(object.sender) : ""
     };
   },
-  toJSON(message: MsgClaimClaimable): unknown {
+  toJSON(message: MsgClaimClaimable): JsonSafe<MsgClaimClaimable> {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
     return obj;
@@ -551,7 +552,7 @@ export const MsgClaimClaimableResponse = {
       claimedAmount: Array.isArray(object?.claimedAmount) ? object.claimedAmount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: MsgClaimClaimableResponse): unknown {
+  toJSON(message: MsgClaimClaimableResponse): JsonSafe<MsgClaimClaimableResponse> {
     const obj: any = {};
     if (message.claimedAmount) {
       obj.claimedAmount = message.claimedAmount.map(e => e ? Coin.toJSON(e) : undefined);

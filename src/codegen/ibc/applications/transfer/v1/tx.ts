@@ -1,8 +1,9 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
@@ -186,7 +187,7 @@ export const MsgTransfer = {
       timeoutTimestamp: isSet(object.timeoutTimestamp) ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0)
     };
   },
-  toJSON(message: MsgTransfer): unknown {
+  toJSON(message: MsgTransfer): JsonSafe<MsgTransfer> {
     const obj: any = {};
     message.sourcePort !== undefined && (obj.sourcePort = message.sourcePort);
     message.sourceChannel !== undefined && (obj.sourceChannel = message.sourceChannel);
@@ -241,7 +242,7 @@ export const MsgTransfer = {
     obj.sender = message.sender === "" ? undefined : message.sender;
     obj.receiver = message.receiver === "" ? undefined : message.receiver;
     obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : {};
-    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgTransferAminoMsg): MsgTransfer {
@@ -303,7 +304,7 @@ export const MsgTransferResponse = {
   fromJSON(_: any): MsgTransferResponse {
     return {};
   },
-  toJSON(_: MsgTransferResponse): unknown {
+  toJSON(_: MsgTransferResponse): JsonSafe<MsgTransferResponse> {
     const obj: any = {};
     return obj;
   },

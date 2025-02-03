@@ -2,8 +2,9 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType } from "./claim";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the claim module's genesis state. */
 export interface GenesisState {
   /** balance of the claim module's account */
@@ -96,7 +97,7 @@ export const GenesisState = {
       claimRecords: Array.isArray(object?.claimRecords) ? object.claimRecords.map((e: any) => ClaimRecord.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.moduleAccountBalance !== undefined && (obj.moduleAccountBalance = message.moduleAccountBalance ? Coin.toJSON(message.moduleAccountBalance) : undefined);
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);

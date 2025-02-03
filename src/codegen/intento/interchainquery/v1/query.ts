@@ -1,5 +1,6 @@
 import { Query, QueryAmino, QuerySDKType } from "./genesis";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface QueryPendingQueriesRequest {}
 export interface QueryPendingQueriesRequestProtoMsg {
@@ -63,7 +64,7 @@ export const QueryPendingQueriesRequest = {
   fromJSON(_: any): QueryPendingQueriesRequest {
     return {};
   },
-  toJSON(_: QueryPendingQueriesRequest): unknown {
+  toJSON(_: QueryPendingQueriesRequest): JsonSafe<QueryPendingQueriesRequest> {
     const obj: any = {};
     return obj;
   },
@@ -140,7 +141,7 @@ export const QueryPendingQueriesResponse = {
       pendingQueries: Array.isArray(object?.pendingQueries) ? object.pendingQueries.map((e: any) => Query.fromJSON(e)) : []
     };
   },
-  toJSON(message: QueryPendingQueriesResponse): unknown {
+  toJSON(message: QueryPendingQueriesResponse): JsonSafe<QueryPendingQueriesResponse> {
     const obj: any = {};
     if (message.pendingQueries) {
       obj.pendingQueries = message.pendingQueries.map(e => e ? Query.toJSON(e) : undefined);

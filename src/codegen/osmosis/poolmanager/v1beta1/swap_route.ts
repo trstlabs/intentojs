@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface SwapAmountInRoute {
   poolId: bigint;
@@ -94,7 +95,7 @@ export const SwapAmountInRoute = {
       tokenOutDenom: isSet(object.tokenOutDenom) ? String(object.tokenOutDenom) : ""
     };
   },
-  toJSON(message: SwapAmountInRoute): unknown {
+  toJSON(message: SwapAmountInRoute): JsonSafe<SwapAmountInRoute> {
     const obj: any = {};
     message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
     message.tokenOutDenom !== undefined && (obj.tokenOutDenom = message.tokenOutDenom);
@@ -118,7 +119,7 @@ export const SwapAmountInRoute = {
   },
   toAmino(message: SwapAmountInRoute): SwapAmountInRouteAmino {
     const obj: any = {};
-    obj.pool_id = message.poolId !== BigInt(0) ? message.poolId.toString() : undefined;
+    obj.pool_id = message.poolId !== BigInt(0) ? message.poolId?.toString() : undefined;
     obj.token_out_denom = message.tokenOutDenom === "" ? undefined : message.tokenOutDenom;
     return obj;
   },
@@ -199,7 +200,7 @@ export const SwapAmountOutRoute = {
       tokenInDenom: isSet(object.tokenInDenom) ? String(object.tokenInDenom) : ""
     };
   },
-  toJSON(message: SwapAmountOutRoute): unknown {
+  toJSON(message: SwapAmountOutRoute): JsonSafe<SwapAmountOutRoute> {
     const obj: any = {};
     message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
     message.tokenInDenom !== undefined && (obj.tokenInDenom = message.tokenInDenom);
@@ -223,7 +224,7 @@ export const SwapAmountOutRoute = {
   },
   toAmino(message: SwapAmountOutRoute): SwapAmountOutRouteAmino {
     const obj: any = {};
-    obj.pool_id = message.poolId !== BigInt(0) ? message.poolId.toString() : undefined;
+    obj.pool_id = message.poolId !== BigInt(0) ? message.poolId?.toString() : undefined;
     obj.token_in_denom = message.tokenInDenom === "" ? undefined : message.tokenInDenom;
     return obj;
   },

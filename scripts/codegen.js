@@ -66,7 +66,9 @@ telescope({
           "ibc.core.port.v1",
           "ibc.core.types.v1",
         ],
+        hardProtos: [],
       },
+
       methods: {
         fromJSON: true,
         toJSON: true,

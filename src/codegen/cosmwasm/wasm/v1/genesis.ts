@@ -1,7 +1,8 @@
 import { Params, ParamsAmino, ParamsSDKType, CodeInfo, CodeInfoAmino, CodeInfoSDKType, ContractInfo, ContractInfoAmino, ContractInfoSDKType, Model, ModelAmino, ModelSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState - genesis state of x/wasm */
 export interface GenesisState {
   params: Params;
@@ -183,7 +184,7 @@ export const GenesisState = {
       sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromJSON(e)) : []
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     if (message.codes) {
@@ -334,7 +335,7 @@ export const Code = {
       pinned: isSet(object.pinned) ? Boolean(object.pinned) : false
     };
   },
-  toJSON(message: Code): unknown {
+  toJSON(message: Code): JsonSafe<Code> {
     const obj: any = {};
     message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
     message.codeInfo !== undefined && (obj.codeInfo = message.codeInfo ? CodeInfo.toJSON(message.codeInfo) : undefined);
@@ -368,7 +369,7 @@ export const Code = {
   },
   toAmino(message: Code): CodeAmino {
     const obj: any = {};
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId.toString() : undefined;
+    obj.code_id = message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
     obj.code_info = message.codeInfo ? CodeInfo.toAmino(message.codeInfo) : undefined;
     obj.code_bytes = message.codeBytes ? base64FromBytes(message.codeBytes) : undefined;
     obj.pinned = message.pinned === false ? undefined : message.pinned;
@@ -467,7 +468,7 @@ export const Contract = {
       contractCodeHistory: Array.isArray(object?.contractCodeHistory) ? object.contractCodeHistory.map((e: any) => ContractCodeHistoryEntry.fromJSON(e)) : []
     };
   },
-  toJSON(message: Contract): unknown {
+  toJSON(message: Contract): JsonSafe<Contract> {
     const obj: any = {};
     message.contractAddress !== undefined && (obj.contractAddress = message.contractAddress);
     message.contractInfo !== undefined && (obj.contractInfo = message.contractInfo ? ContractInfo.toJSON(message.contractInfo) : undefined);
@@ -596,7 +597,7 @@ export const Sequence = {
       value: isSet(object.value) ? BigInt(object.value.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Sequence): unknown {
+  toJSON(message: Sequence): JsonSafe<Sequence> {
     const obj: any = {};
     message.idKey !== undefined && (obj.idKey = base64FromBytes(message.idKey !== undefined ? message.idKey : new Uint8Array()));
     message.value !== undefined && (obj.value = (message.value || BigInt(0)).toString());
@@ -621,7 +622,7 @@ export const Sequence = {
   toAmino(message: Sequence): SequenceAmino {
     const obj: any = {};
     obj.id_key = message.idKey ? base64FromBytes(message.idKey) : undefined;
-    obj.value = message.value !== BigInt(0) ? message.value.toString() : undefined;
+    obj.value = message.value !== BigInt(0) ? message.value?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: SequenceAminoMsg): Sequence {

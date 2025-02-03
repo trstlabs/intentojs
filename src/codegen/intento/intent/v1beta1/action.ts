@@ -4,8 +4,9 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { TimeoutPolicy, timeoutPolicyFromJSON, timeoutPolicyToJSON } from "../../interchainquery/v1/genesis";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** Comparison operators that can be used for various types. */
 export enum ComparisonOperator {
   /** EQUAL - Equality check (for all types) */
@@ -450,12 +451,9 @@ export interface FeedbackLoop {
   msgsIndex: number;
   /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msgKey: string;
-  /**
-   * can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int
-   * bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly.
-   */
+  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   valueType: string;
-  /** config of ICQ to perform */
+  /** bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly. */
   icqConfig?: ICQConfig;
 }
 export interface FeedbackLoopProtoMsg {
@@ -477,12 +475,9 @@ export interface FeedbackLoopAmino {
   msgs_index?: number;
   /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msg_key?: string;
-  /**
-   * can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int
-   * bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly.
-   */
+  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
   value_type?: string;
-  /** config of ICQ to perform */
+  /** bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly. */
   icq_config?: ICQConfigAmino;
 }
 export interface FeedbackLoopAminoMsg {
@@ -751,7 +746,7 @@ export const ActionInfo = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: ActionInfo): unknown {
+  toJSON(message: ActionInfo): JsonSafe<ActionInfo> {
     const obj: any = {};
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
     message.owner !== undefined && (obj.owner = message.owner);
@@ -783,7 +778,7 @@ export const ActionInfo = {
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
     message.feeAddress = object.feeAddress ?? "";
-    message.msgs = object.msgs?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
+    message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     message.interval = object.interval !== undefined && object.interval !== null ? Duration.fromPartial(object.interval) : undefined;
     message.startTime = object.startTime ?? undefined;
     message.execTime = object.execTime ?? undefined;
@@ -839,7 +834,7 @@ export const ActionInfo = {
   },
   toAmino(message: ActionInfo): ActionInfoAmino {
     const obj: any = {};
-    obj.id = message.id !== BigInt(0) ? message.id.toString() : undefined;
+    obj.id = message.id !== BigInt(0) ? message.id?.toString() : undefined;
     obj.owner = message.owner === "" ? undefined : message.owner;
     obj.label = message.label === "" ? undefined : message.label;
     obj.fee_address = message.feeAddress === "" ? undefined : message.feeAddress;
@@ -940,7 +935,7 @@ export const ICAConfig = {
       hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : ""
     };
   },
-  toJSON(message: ICAConfig): unknown {
+  toJSON(message: ICAConfig): JsonSafe<ICAConfig> {
     const obj: any = {};
     message.portId !== undefined && (obj.portId = message.portId);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -1043,7 +1038,7 @@ export const HostedConfig = {
       feeCoinLimit: isSet(object.feeCoinLimit) ? Coin.fromJSON(object.feeCoinLimit) : undefined
     };
   },
-  toJSON(message: HostedConfig): unknown {
+  toJSON(message: HostedConfig): JsonSafe<HostedConfig> {
     const obj: any = {};
     message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
     message.feeCoinLimit !== undefined && (obj.feeCoinLimit = message.feeCoinLimit ? Coin.toJSON(message.feeCoinLimit) : undefined);
@@ -1172,7 +1167,7 @@ export const ExecutionConfiguration = {
       reregisterIcaAfterTimeout: isSet(object.reregisterIcaAfterTimeout) ? Boolean(object.reregisterIcaAfterTimeout) : false
     };
   },
-  toJSON(message: ExecutionConfiguration): unknown {
+  toJSON(message: ExecutionConfiguration): JsonSafe<ExecutionConfiguration> {
     const obj: any = {};
     message.saveResponses !== undefined && (obj.saveResponses = message.saveResponses);
     message.updatingDisabled !== undefined && (obj.updatingDisabled = message.updatingDisabled);
@@ -1285,7 +1280,7 @@ export const ActionHistory = {
       history: Array.isArray(object?.history) ? object.history.map((e: any) => ActionHistoryEntry.fromJSON(e)) : []
     };
   },
-  toJSON(message: ActionHistory): unknown {
+  toJSON(message: ActionHistory): JsonSafe<ActionHistory> {
     const obj: any = {};
     if (message.history) {
       obj.history = message.history.map(e => e ? ActionHistoryEntry.toJSON(e) : undefined);
@@ -1430,7 +1425,7 @@ export const ActionHistoryEntry = {
       queryResponses: Array.isArray(object?.queryResponses) ? object.queryResponses.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: ActionHistoryEntry): unknown {
+  toJSON(message: ActionHistoryEntry): JsonSafe<ActionHistoryEntry> {
     const obj: any = {};
     message.scheduledExecTime !== undefined && (obj.scheduledExecTime = message.scheduledExecTime.toISOString());
     message.actualExecTime !== undefined && (obj.actualExecTime = message.actualExecTime.toISOString());
@@ -1657,7 +1652,7 @@ export const ExecutionConditions = {
       useAndForComparisons: isSet(object.useAndForComparisons) ? Boolean(object.useAndForComparisons) : false
     };
   },
-  toJSON(message: ExecutionConditions): unknown {
+  toJSON(message: ExecutionConditions): JsonSafe<ExecutionConditions> {
     const obj: any = {};
     if (message.feedbackLoops) {
       obj.feedbackLoops = message.feedbackLoops.map(e => e ? FeedbackLoop.toJSON(e) : undefined);
@@ -1860,7 +1855,7 @@ export const FeedbackLoop = {
       icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
     };
   },
-  toJSON(message: FeedbackLoop): unknown {
+  toJSON(message: FeedbackLoop): JsonSafe<FeedbackLoop> {
     const obj: any = {};
     message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
     message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
@@ -1909,7 +1904,7 @@ export const FeedbackLoop = {
   },
   toAmino(message: FeedbackLoop): FeedbackLoopAmino {
     const obj: any = {};
-    obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
+    obj.action_id = message.actionId !== BigInt(0) ? message.actionId?.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
     obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
     obj.msgs_index = message.msgsIndex === 0 ? undefined : message.msgsIndex;
@@ -2001,7 +1996,7 @@ export const Comparison = {
           message.valueType = reader.string();
           break;
         case 5:
-          message.operator = (reader.int32() as any);
+          message.operator = reader.int32() as any;
           break;
         case 6:
           message.operand = reader.string();
@@ -2027,7 +2022,7 @@ export const Comparison = {
       icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
     };
   },
-  toJSON(message: Comparison): unknown {
+  toJSON(message: Comparison): JsonSafe<Comparison> {
     const obj: any = {};
     message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
     message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
@@ -2076,7 +2071,7 @@ export const Comparison = {
   },
   toAmino(message: Comparison): ComparisonAmino {
     const obj: any = {};
-    obj.action_id = message.actionId !== BigInt(0) ? message.actionId.toString() : undefined;
+    obj.action_id = message.actionId !== BigInt(0) ? message.actionId?.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
     obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
@@ -2162,7 +2157,7 @@ export const ICQConfig = {
           message.chainId = reader.string();
           break;
         case 3:
-          message.timeoutPolicy = (reader.int32() as any);
+          message.timeoutPolicy = reader.int32() as any;
           break;
         case 4:
           message.timeoutDuration = Duration.decode(reader, reader.uint32());
@@ -2194,7 +2189,7 @@ export const ICQConfig = {
       response: isSet(object.response) ? bytesFromBase64(object.response) : new Uint8Array()
     };
   },
-  toJSON(message: ICQConfig): unknown {
+  toJSON(message: ICQConfig): JsonSafe<ICQConfig> {
     const obj: any = {};
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
     message.chainId !== undefined && (obj.chainId = message.chainId);

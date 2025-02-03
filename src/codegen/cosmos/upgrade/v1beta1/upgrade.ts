@@ -3,6 +3,7 @@ import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { JsonSafe } from "../../../json-safe";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
   /**
@@ -300,7 +301,7 @@ export const Plan = {
       upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
     };
   },
-  toJSON(message: Plan): unknown {
+  toJSON(message: Plan): JsonSafe<Plan> {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.time !== undefined && (obj.time = message.time.toISOString());
@@ -341,7 +342,7 @@ export const Plan = {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
     obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
-    obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+    obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
     obj.info = message.info === "" ? undefined : message.info;
     obj.upgraded_client_state = message.upgradedClientState ? Any.toAmino(message.upgradedClientState) : undefined;
     return obj;
@@ -432,7 +433,7 @@ export const SoftwareUpgradeProposal = {
       plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined
     };
   },
-  toJSON(message: SoftwareUpgradeProposal): unknown {
+  toJSON(message: SoftwareUpgradeProposal): JsonSafe<SoftwareUpgradeProposal> {
     const obj: any = {};
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
@@ -544,7 +545,7 @@ export const CancelSoftwareUpgradeProposal = {
       description: isSet(object.description) ? String(object.description) : ""
     };
   },
-  toJSON(message: CancelSoftwareUpgradeProposal): unknown {
+  toJSON(message: CancelSoftwareUpgradeProposal): JsonSafe<CancelSoftwareUpgradeProposal> {
     const obj: any = {};
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
@@ -649,7 +650,7 @@ export const ModuleVersion = {
       version: isSet(object.version) ? BigInt(object.version.toString()) : BigInt(0)
     };
   },
-  toJSON(message: ModuleVersion): unknown {
+  toJSON(message: ModuleVersion): JsonSafe<ModuleVersion> {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.version !== undefined && (obj.version = (message.version || BigInt(0)).toString());
@@ -674,7 +675,7 @@ export const ModuleVersion = {
   toAmino(message: ModuleVersion): ModuleVersionAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
-    obj.version = message.version !== BigInt(0) ? message.version.toString() : undefined;
+    obj.version = message.version !== BigInt(0) ? message.version?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ModuleVersionAminoMsg): ModuleVersion {

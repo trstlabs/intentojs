@@ -3,6 +3,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { JsonSafe } from "../../../json-safe";
 /** Params defines the claim module's parameters. */
 export interface Params {
   airdropStartTime: Date;
@@ -113,7 +114,7 @@ export const Params = {
       durationVestingPeriods: Array.isArray(object?.durationVestingPeriods) ? object.durationVestingPeriods.map((e: any) => Duration.fromJSON(e)) : []
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     message.airdropStartTime !== undefined && (obj.airdropStartTime = message.airdropStartTime.toISOString());
     message.durationUntilDecay !== undefined && (obj.durationUntilDecay = message.durationUntilDecay ? Duration.toJSON(message.durationUntilDecay) : undefined);

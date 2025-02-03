@@ -1,6 +1,7 @@
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../../registry";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
@@ -289,7 +290,7 @@ export const SignatureDescriptors = {
       signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor.fromJSON(e)) : []
     };
   },
-  toJSON(message: SignatureDescriptors): unknown {
+  toJSON(message: SignatureDescriptors): JsonSafe<SignatureDescriptors> {
     const obj: any = {};
     if (message.signatures) {
       obj.signatures = message.signatures.map(e => e ? SignatureDescriptor.toJSON(e) : undefined);
@@ -402,7 +403,7 @@ export const SignatureDescriptor = {
       sequence: isSet(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0)
     };
   },
-  toJSON(message: SignatureDescriptor): unknown {
+  toJSON(message: SignatureDescriptor): JsonSafe<SignatureDescriptor> {
     const obj: any = {};
     message.publicKey !== undefined && (obj.publicKey = message.publicKey ? Any.toJSON(message.publicKey) : undefined);
     message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toJSON(message.data) : undefined);
@@ -433,7 +434,7 @@ export const SignatureDescriptor = {
     const obj: any = {};
     obj.public_key = message.publicKey ? Any.toAmino(message.publicKey) : undefined;
     obj.data = message.data ? SignatureDescriptor_Data.toAmino(message.data) : undefined;
-    obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+    obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: SignatureDescriptorAminoMsg): SignatureDescriptor {
@@ -513,7 +514,7 @@ export const SignatureDescriptor_Data = {
       multi: isSet(object.multi) ? SignatureDescriptor_Data_Multi.fromJSON(object.multi) : undefined
     };
   },
-  toJSON(message: SignatureDescriptor_Data): unknown {
+  toJSON(message: SignatureDescriptor_Data): JsonSafe<SignatureDescriptor_Data> {
     const obj: any = {};
     message.single !== undefined && (obj.single = message.single ? SignatureDescriptor_Data_Single.toJSON(message.single) : undefined);
     message.multi !== undefined && (obj.multi = message.multi ? SignatureDescriptor_Data_Multi.toJSON(message.multi) : undefined);
@@ -600,7 +601,7 @@ export const SignatureDescriptor_Data_Single = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.mode = (reader.int32() as any);
+          message.mode = reader.int32() as any;
           break;
         case 2:
           message.signature = reader.bytes();
@@ -618,7 +619,7 @@ export const SignatureDescriptor_Data_Single = {
       signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array()
     };
   },
-  toJSON(message: SignatureDescriptor_Data_Single): unknown {
+  toJSON(message: SignatureDescriptor_Data_Single): JsonSafe<SignatureDescriptor_Data_Single> {
     const obj: any = {};
     message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
     message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
@@ -723,7 +724,7 @@ export const SignatureDescriptor_Data_Multi = {
       signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor_Data.fromJSON(e)) : []
     };
   },
-  toJSON(message: SignatureDescriptor_Data_Multi): unknown {
+  toJSON(message: SignatureDescriptor_Data_Multi): JsonSafe<SignatureDescriptor_Data_Multi> {
     const obj: any = {};
     message.bitarray !== undefined && (obj.bitarray = message.bitarray ? CompactBitArray.toJSON(message.bitarray) : undefined);
     if (message.signatures) {

@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../binary";
 import { isSet } from "../helpers";
+import { JsonSafe } from "../json-safe";
 import { GlobalDecoderRegistry } from "../registry";
 export enum ScalarType {
   SCALAR_TYPE_UNSPECIFIED = 0,
@@ -227,7 +228,7 @@ export const InterfaceDescriptor = {
       description: isSet(object.description) ? String(object.description) : ""
     };
   },
-  toJSON(message: InterfaceDescriptor): unknown {
+  toJSON(message: InterfaceDescriptor): JsonSafe<InterfaceDescriptor> {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.description !== undefined && (obj.description = message.description);
@@ -321,10 +322,10 @@ export const ScalarDescriptor = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.fieldType.push((reader.int32() as any));
+              message.fieldType.push(reader.int32() as any);
             }
           } else {
-            message.fieldType.push((reader.int32() as any));
+            message.fieldType.push(reader.int32() as any);
           }
           break;
         default:
@@ -341,7 +342,7 @@ export const ScalarDescriptor = {
       fieldType: Array.isArray(object?.fieldType) ? object.fieldType.map((e: any) => scalarTypeFromJSON(e)) : []
     };
   },
-  toJSON(message: ScalarDescriptor): unknown {
+  toJSON(message: ScalarDescriptor): JsonSafe<ScalarDescriptor> {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.description !== undefined && (obj.description = message.description);

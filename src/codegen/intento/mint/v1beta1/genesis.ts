@@ -1,7 +1,8 @@
 import { Minter, MinterAmino, MinterSDKType, Params, ParamsAmino, ParamsSDKType } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the mint module's genesis state. */
 export interface GenesisState {
   /** minter is a space for holding current inflation information. */
@@ -81,7 +82,7 @@ export const GenesisState = {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
-  toJSON(message: GenesisState): unknown {
+  toJSON(message: GenesisState): JsonSafe<GenesisState> {
     const obj: any = {};
     message.minter !== undefined && (obj.minter = message.minter ? Minter.toJSON(message.minter) : undefined);
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);

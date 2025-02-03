@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
@@ -249,7 +250,7 @@ export const PageRequest = {
       reverse: isSet(object.reverse) ? Boolean(object.reverse) : false
     };
   },
-  toJSON(message: PageRequest): unknown {
+  toJSON(message: PageRequest): JsonSafe<PageRequest> {
     const obj: any = {};
     message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
     message.offset !== undefined && (obj.offset = (message.offset || BigInt(0)).toString());
@@ -289,8 +290,8 @@ export const PageRequest = {
   toAmino(message: PageRequest): PageRequestAmino {
     const obj: any = {};
     obj.key = message.key ? base64FromBytes(message.key) : undefined;
-    obj.offset = message.offset !== BigInt(0) ? message.offset.toString() : undefined;
-    obj.limit = message.limit !== BigInt(0) ? message.limit.toString() : undefined;
+    obj.offset = message.offset !== BigInt(0) ? message.offset?.toString() : undefined;
+    obj.limit = message.limit !== BigInt(0) ? message.limit?.toString() : undefined;
     obj.count_total = message.countTotal === false ? undefined : message.countTotal;
     obj.reverse = message.reverse === false ? undefined : message.reverse;
     return obj;
@@ -372,7 +373,7 @@ export const PageResponse = {
       total: isSet(object.total) ? BigInt(object.total.toString()) : BigInt(0)
     };
   },
-  toJSON(message: PageResponse): unknown {
+  toJSON(message: PageResponse): JsonSafe<PageResponse> {
     const obj: any = {};
     message.nextKey !== undefined && (obj.nextKey = base64FromBytes(message.nextKey !== undefined ? message.nextKey : new Uint8Array()));
     message.total !== undefined && (obj.total = (message.total || BigInt(0)).toString());
@@ -397,7 +398,7 @@ export const PageResponse = {
   toAmino(message: PageResponse): PageResponseAmino {
     const obj: any = {};
     obj.next_key = message.nextKey ? base64FromBytes(message.nextKey) : undefined;
-    obj.total = message.total !== BigInt(0) ? message.total.toString() : undefined;
+    obj.total = message.total !== BigInt(0) ? message.total?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: PageResponseAminoMsg): PageResponse {

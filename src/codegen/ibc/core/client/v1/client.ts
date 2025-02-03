@@ -1,8 +1,9 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanAmino, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet } from "../../../../helpers";
 import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -362,7 +363,7 @@ export const IdentifiedClientState = {
       clientState: isSet(object.clientState) ? Any.fromJSON(object.clientState) : undefined
     };
   },
-  toJSON(message: IdentifiedClientState): unknown {
+  toJSON(message: IdentifiedClientState): JsonSafe<IdentifiedClientState> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined);
@@ -467,7 +468,7 @@ export const ConsensusStateWithHeight = {
       consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined
     };
   },
-  toJSON(message: ConsensusStateWithHeight): unknown {
+  toJSON(message: ConsensusStateWithHeight): JsonSafe<ConsensusStateWithHeight> {
     const obj: any = {};
     message.height !== undefined && (obj.height = message.height ? Height.toJSON(message.height) : undefined);
     message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
@@ -572,7 +573,7 @@ export const ClientConsensusStates = {
       consensusStates: Array.isArray(object?.consensusStates) ? object.consensusStates.map((e: any) => ConsensusStateWithHeight.fromJSON(e)) : []
     };
   },
-  toJSON(message: ClientConsensusStates): unknown {
+  toJSON(message: ClientConsensusStates): JsonSafe<ClientConsensusStates> {
     const obj: any = {};
     message.clientId !== undefined && (obj.clientId = message.clientId);
     if (message.consensusStates) {
@@ -700,7 +701,7 @@ export const ClientUpdateProposal = {
       substituteClientId: isSet(object.substituteClientId) ? String(object.substituteClientId) : ""
     };
   },
-  toJSON(message: ClientUpdateProposal): unknown {
+  toJSON(message: ClientUpdateProposal): JsonSafe<ClientUpdateProposal> {
     const obj: any = {};
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
@@ -834,7 +835,7 @@ export const UpgradeProposal = {
       upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
     };
   },
-  toJSON(message: UpgradeProposal): unknown {
+  toJSON(message: UpgradeProposal): JsonSafe<UpgradeProposal> {
     const obj: any = {};
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
@@ -951,7 +952,7 @@ export const Height = {
       revisionHeight: isSet(object.revisionHeight) ? BigInt(object.revisionHeight.toString()) : BigInt(0)
     };
   },
-  toJSON(message: Height): unknown {
+  toJSON(message: Height): JsonSafe<Height> {
     const obj: any = {};
     message.revisionNumber !== undefined && (obj.revisionNumber = (message.revisionNumber || BigInt(0)).toString());
     message.revisionHeight !== undefined && (obj.revisionHeight = (message.revisionHeight || BigInt(0)).toString());
@@ -971,8 +972,8 @@ export const Height = {
   },
   toAmino(message: Height): HeightAmino {
     const obj: any = {};
-    obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber.toString() : undefined;
-    obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight.toString() : undefined;
+    obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber?.toString() : undefined;
+    obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: HeightAminoMsg): Height {
@@ -1044,7 +1045,7 @@ export const Params = {
       allowedClients: Array.isArray(object?.allowedClients) ? object.allowedClients.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: Params): unknown {
+  toJSON(message: Params): JsonSafe<Params> {
     const obj: any = {};
     if (message.allowedClients) {
       obj.allowedClients = message.allowedClients.map(e => e);

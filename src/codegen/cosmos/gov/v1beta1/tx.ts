@@ -6,8 +6,9 @@ import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgra
 import { StoreCodeProposal, StoreCodeProposalProtoMsg, StoreCodeProposalSDKType, InstantiateContractProposal, InstantiateContractProposalProtoMsg, InstantiateContractProposalSDKType, InstantiateContract2Proposal, InstantiateContract2ProposalProtoMsg, InstantiateContract2ProposalSDKType, MigrateContractProposal, MigrateContractProposalProtoMsg, MigrateContractProposalSDKType, SudoContractProposal, SudoContractProposalProtoMsg, SudoContractProposalSDKType, ExecuteContractProposal, ExecuteContractProposalProtoMsg, ExecuteContractProposalSDKType, UpdateAdminProposal, UpdateAdminProposalProtoMsg, UpdateAdminProposalSDKType, ClearAdminProposal, ClearAdminProposalProtoMsg, ClearAdminProposalSDKType, PinCodesProposal, PinCodesProposalProtoMsg, PinCodesProposalSDKType, UnpinCodesProposal, UnpinCodesProposalProtoMsg, UnpinCodesProposalSDKType, UpdateInstantiateConfigProposal, UpdateInstantiateConfigProposalProtoMsg, UpdateInstantiateConfigProposalSDKType, StoreAndInstantiateContractProposal, StoreAndInstantiateContractProposalProtoMsg, StoreAndInstantiateContractProposalSDKType } from "../../../cosmwasm/wasm/v1/proposal";
 import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposalSDKType, UpgradeProposal, UpgradeProposalProtoMsg, UpgradeProposalSDKType } from "../../../ibc/core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
 import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
+import { JsonSafe } from "../../../json-safe";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -271,7 +272,7 @@ export const MsgSubmitProposal = {
       proposer: isSet(object.proposer) ? String(object.proposer) : ""
     };
   },
-  toJSON(message: MsgSubmitProposal): unknown {
+  toJSON(message: MsgSubmitProposal): JsonSafe<MsgSubmitProposal> {
     const obj: any = {};
     message.content !== undefined && (obj.content = message.content ? GlobalDecoderRegistry.toJSON(message.content) : undefined);
     if (message.initialDeposit) {
@@ -380,7 +381,7 @@ export const MsgSubmitProposalResponse = {
       proposalId: isSet(object.proposalId) ? BigInt(object.proposalId.toString()) : BigInt(0)
     };
   },
-  toJSON(message: MsgSubmitProposalResponse): unknown {
+  toJSON(message: MsgSubmitProposalResponse): JsonSafe<MsgSubmitProposalResponse> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     return obj;
@@ -399,7 +400,7 @@ export const MsgSubmitProposalResponse = {
   },
   toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
     return obj;
   },
   fromAminoMsg(object: MsgSubmitProposalResponseAminoMsg): MsgSubmitProposalResponse {
@@ -471,7 +472,7 @@ export const MsgVote = {
           message.voter = reader.string();
           break;
         case 3:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -487,7 +488,7 @@ export const MsgVote = {
       option: isSet(object.option) ? voteOptionFromJSON(object.option) : -1
     };
   },
-  toJSON(message: MsgVote): unknown {
+  toJSON(message: MsgVote): JsonSafe<MsgVote> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.voter !== undefined && (obj.voter = message.voter);
@@ -516,7 +517,7 @@ export const MsgVote = {
   },
   toAmino(message: MsgVote): MsgVoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     return obj;
@@ -580,7 +581,7 @@ export const MsgVoteResponse = {
   fromJSON(_: any): MsgVoteResponse {
     return {};
   },
-  toJSON(_: MsgVoteResponse): unknown {
+  toJSON(_: MsgVoteResponse): JsonSafe<MsgVoteResponse> {
     const obj: any = {};
     return obj;
   },
@@ -681,7 +682,7 @@ export const MsgVoteWeighted = {
       options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e)) : []
     };
   },
-  toJSON(message: MsgVoteWeighted): unknown {
+  toJSON(message: MsgVoteWeighted): JsonSafe<MsgVoteWeighted> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.voter !== undefined && (obj.voter = message.voter);
@@ -712,7 +713,7 @@ export const MsgVoteWeighted = {
   },
   toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
     obj.voter = message.voter === "" ? undefined : message.voter;
     if (message.options) {
       obj.options = message.options.map(e => e ? WeightedVoteOption.toAmino(e) : undefined);
@@ -780,7 +781,7 @@ export const MsgVoteWeightedResponse = {
   fromJSON(_: any): MsgVoteWeightedResponse {
     return {};
   },
-  toJSON(_: MsgVoteWeightedResponse): unknown {
+  toJSON(_: MsgVoteWeightedResponse): JsonSafe<MsgVoteWeightedResponse> {
     const obj: any = {};
     return obj;
   },
@@ -881,7 +882,7 @@ export const MsgDeposit = {
       amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
-  toJSON(message: MsgDeposit): unknown {
+  toJSON(message: MsgDeposit): JsonSafe<MsgDeposit> {
     const obj: any = {};
     message.proposalId !== undefined && (obj.proposalId = (message.proposalId || BigInt(0)).toString());
     message.depositor !== undefined && (obj.depositor = message.depositor);
@@ -912,7 +913,7 @@ export const MsgDeposit = {
   },
   toAmino(message: MsgDeposit): MsgDepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
@@ -980,7 +981,7 @@ export const MsgDepositResponse = {
   fromJSON(_: any): MsgDepositResponse {
     return {};
   },
-  toJSON(_: MsgDepositResponse): unknown {
+  toJSON(_: MsgDepositResponse): JsonSafe<MsgDepositResponse> {
     const obj: any = {};
     return obj;
   },
