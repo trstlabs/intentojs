@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryActionRequest, QueryActionResponse, QueryActionHistoryRequest, QueryActionHistoryResponse, QueryActionsRequest, QueryActionsResponse, QueryActionsForOwnerRequest, QueryActionsForOwnerResponse, QueryHostedAccountRequest, QueryHostedAccountResponse, QueryHostedAccountsRequest, QueryHostedAccountsResponse, QueryHostedAccountsByAdminRequest, QueryHostedAccountsByAdminResponse, QueryParamsRequest, QueryParamsResponse, QueryActionIbcUsageRequest, QueryActionIbcUsageResponse } from "./query";
+import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryFlowRequest, QueryFlowResponse, QueryFlowHistoryRequest, QueryFlowHistoryResponse, QueryFlowsRequest, QueryFlowsResponse, QueryFlowsForOwnerRequest, QueryFlowsForOwnerResponse, QueryHostedAccountRequest, QueryHostedAccountResponse, QueryHostedAccountsRequest, QueryHostedAccountsResponse, QueryHostedAccountsByAdminRequest, QueryHostedAccountsByAdminResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -9,66 +9,63 @@ export interface Query {
    * owner address on a given connection pair
    */
   interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse>;
-  /** Action returns the auto-executing interchain account tx */
-  action(request: QueryActionRequest): Promise<QueryActionResponse>;
-  /** ActionHistory returns the auto tx history */
-  actionHistory(request: QueryActionHistoryRequest): Promise<QueryActionHistoryResponse>;
-  /** Actions returns the all auto-executing interchain account messages */
-  actions(request?: QueryActionsRequest): Promise<QueryActionsResponse>;
+  /** Flow returns the auto-executing interchain account tx */
+  flow(request: QueryFlowRequest): Promise<QueryFlowResponse>;
+  /** FlowHistory returns the auto tx history */
+  flowHistory(request: QueryFlowHistoryRequest): Promise<QueryFlowHistoryResponse>;
+  /** Flows returns the all auto-executing interchain account messages */
+  flows(request?: QueryFlowsRequest): Promise<QueryFlowsResponse>;
   /**
-   * ActionsForOwner returns the auto-executing interchain account messages for
+   * FlowsForOwner returns the auto-executing interchain account messages for
    * given owner
    */
-  actionsForOwner(request: QueryActionsForOwnerRequest): Promise<QueryActionsForOwnerResponse>;
+  flowsForOwner(request: QueryFlowsForOwnerRequest): Promise<QueryFlowsForOwnerResponse>;
   hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse>;
   hostedAccounts(request?: QueryHostedAccountsRequest): Promise<QueryHostedAccountsResponse>;
   hostedAccountsByAdmin(request: QueryHostedAccountsByAdminRequest): Promise<QueryHostedAccountsByAdminResponse>;
   /** Params returns the total set of Intent parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /** ActionIbcTxUsage returns statistics on usage of IBC transactions */
-  actionIbcTxUsage(request?: QueryActionIbcUsageRequest): Promise<QueryActionIbcUsageResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.interchainAccountFromAddress = this.interchainAccountFromAddress.bind(this);
-    this.action = this.action.bind(this);
-    this.actionHistory = this.actionHistory.bind(this);
-    this.actions = this.actions.bind(this);
-    this.actionsForOwner = this.actionsForOwner.bind(this);
+    this.flow = this.flow.bind(this);
+    this.flowHistory = this.flowHistory.bind(this);
+    this.flows = this.flows.bind(this);
+    this.flowsForOwner = this.flowsForOwner.bind(this);
     this.hostedAccount = this.hostedAccount.bind(this);
     this.hostedAccounts = this.hostedAccounts.bind(this);
     this.hostedAccountsByAdmin = this.hostedAccountsByAdmin.bind(this);
     this.params = this.params.bind(this);
-    this.actionIbcTxUsage = this.actionIbcTxUsage.bind(this);
   }
   interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse> {
     const data = QueryInterchainAccountFromAddressRequest.encode(request).finish();
     const promise = this.rpc.request("intento.intent.v1beta1.Query", "InterchainAccountFromAddress", data);
     return promise.then(data => QueryInterchainAccountFromAddressResponse.decode(new BinaryReader(data)));
   }
-  action(request: QueryActionRequest): Promise<QueryActionResponse> {
-    const data = QueryActionRequest.encode(request).finish();
-    const promise = this.rpc.request("intento.intent.v1beta1.Query", "Action", data);
-    return promise.then(data => QueryActionResponse.decode(new BinaryReader(data)));
+  flow(request: QueryFlowRequest): Promise<QueryFlowResponse> {
+    const data = QueryFlowRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "Flow", data);
+    return promise.then(data => QueryFlowResponse.decode(new BinaryReader(data)));
   }
-  actionHistory(request: QueryActionHistoryRequest): Promise<QueryActionHistoryResponse> {
-    const data = QueryActionHistoryRequest.encode(request).finish();
-    const promise = this.rpc.request("intento.intent.v1beta1.Query", "ActionHistory", data);
-    return promise.then(data => QueryActionHistoryResponse.decode(new BinaryReader(data)));
+  flowHistory(request: QueryFlowHistoryRequest): Promise<QueryFlowHistoryResponse> {
+    const data = QueryFlowHistoryRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "FlowHistory", data);
+    return promise.then(data => QueryFlowHistoryResponse.decode(new BinaryReader(data)));
   }
-  actions(request: QueryActionsRequest = {
+  flows(request: QueryFlowsRequest = {
     pagination: undefined
-  }): Promise<QueryActionsResponse> {
-    const data = QueryActionsRequest.encode(request).finish();
-    const promise = this.rpc.request("intento.intent.v1beta1.Query", "Actions", data);
-    return promise.then(data => QueryActionsResponse.decode(new BinaryReader(data)));
+  }): Promise<QueryFlowsResponse> {
+    const data = QueryFlowsRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "Flows", data);
+    return promise.then(data => QueryFlowsResponse.decode(new BinaryReader(data)));
   }
-  actionsForOwner(request: QueryActionsForOwnerRequest): Promise<QueryActionsForOwnerResponse> {
-    const data = QueryActionsForOwnerRequest.encode(request).finish();
-    const promise = this.rpc.request("intento.intent.v1beta1.Query", "ActionsForOwner", data);
-    return promise.then(data => QueryActionsForOwnerResponse.decode(new BinaryReader(data)));
+  flowsForOwner(request: QueryFlowsForOwnerRequest): Promise<QueryFlowsForOwnerResponse> {
+    const data = QueryFlowsForOwnerRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Query", "FlowsForOwner", data);
+    return promise.then(data => QueryFlowsForOwnerResponse.decode(new BinaryReader(data)));
   }
   hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse> {
     const data = QueryHostedAccountRequest.encode(request).finish();
@@ -92,13 +89,6 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("intento.intent.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
   }
-  actionIbcTxUsage(request: QueryActionIbcUsageRequest = {
-    pagination: undefined
-  }): Promise<QueryActionIbcUsageResponse> {
-    const data = QueryActionIbcUsageRequest.encode(request).finish();
-    const promise = this.rpc.request("intento.intent.v1beta1.Query", "ActionIbcTxUsage", data);
-    return promise.then(data => QueryActionIbcUsageResponse.decode(new BinaryReader(data)));
-  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -107,17 +97,17 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse> {
       return queryService.interchainAccountFromAddress(request);
     },
-    action(request: QueryActionRequest): Promise<QueryActionResponse> {
-      return queryService.action(request);
+    flow(request: QueryFlowRequest): Promise<QueryFlowResponse> {
+      return queryService.flow(request);
     },
-    actionHistory(request: QueryActionHistoryRequest): Promise<QueryActionHistoryResponse> {
-      return queryService.actionHistory(request);
+    flowHistory(request: QueryFlowHistoryRequest): Promise<QueryFlowHistoryResponse> {
+      return queryService.flowHistory(request);
     },
-    actions(request?: QueryActionsRequest): Promise<QueryActionsResponse> {
-      return queryService.actions(request);
+    flows(request?: QueryFlowsRequest): Promise<QueryFlowsResponse> {
+      return queryService.flows(request);
     },
-    actionsForOwner(request: QueryActionsForOwnerRequest): Promise<QueryActionsForOwnerResponse> {
-      return queryService.actionsForOwner(request);
+    flowsForOwner(request: QueryFlowsForOwnerRequest): Promise<QueryFlowsForOwnerResponse> {
+      return queryService.flowsForOwner(request);
     },
     hostedAccount(request: QueryHostedAccountRequest): Promise<QueryHostedAccountResponse> {
       return queryService.hostedAccount(request);
@@ -130,9 +120,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
-    },
-    actionIbcTxUsage(request?: QueryActionIbcUsageRequest): Promise<QueryActionIbcUsageResponse> {
-      return queryService.actionIbcTxUsage(request);
     }
   };
 };

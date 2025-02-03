@@ -3,6 +3,7 @@ import { Channel, ChannelAmino, ChannelSDKType, IdentifiedChannel, IdentifiedCha
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 export interface QueryChannelRequest {
     /** port unique identifier */
@@ -1034,7 +1035,7 @@ export declare const QueryChannelRequest: {
     encode(message: QueryChannelRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelRequest;
     fromJSON(object: any): QueryChannelRequest;
-    toJSON(message: QueryChannelRequest): unknown;
+    toJSON(message: QueryChannelRequest): JsonSafe<QueryChannelRequest>;
     fromPartial(object: Partial<QueryChannelRequest>): QueryChannelRequest;
     fromAmino(object: QueryChannelRequestAmino): QueryChannelRequest;
     toAmino(message: QueryChannelRequest): QueryChannelRequestAmino;
@@ -1053,7 +1054,7 @@ export declare const QueryChannelResponse: {
     encode(message: QueryChannelResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelResponse;
     fromJSON(object: any): QueryChannelResponse;
-    toJSON(message: QueryChannelResponse): unknown;
+    toJSON(message: QueryChannelResponse): JsonSafe<QueryChannelResponse>;
     fromPartial(object: Partial<QueryChannelResponse>): QueryChannelResponse;
     fromAmino(object: QueryChannelResponseAmino): QueryChannelResponse;
     toAmino(message: QueryChannelResponse): QueryChannelResponseAmino;
@@ -1072,7 +1073,7 @@ export declare const QueryChannelsRequest: {
     encode(message: QueryChannelsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelsRequest;
     fromJSON(object: any): QueryChannelsRequest;
-    toJSON(message: QueryChannelsRequest): unknown;
+    toJSON(message: QueryChannelsRequest): JsonSafe<QueryChannelsRequest>;
     fromPartial(object: Partial<QueryChannelsRequest>): QueryChannelsRequest;
     fromAmino(object: QueryChannelsRequestAmino): QueryChannelsRequest;
     toAmino(message: QueryChannelsRequest): QueryChannelsRequestAmino;
@@ -1091,7 +1092,7 @@ export declare const QueryChannelsResponse: {
     encode(message: QueryChannelsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelsResponse;
     fromJSON(object: any): QueryChannelsResponse;
-    toJSON(message: QueryChannelsResponse): unknown;
+    toJSON(message: QueryChannelsResponse): JsonSafe<QueryChannelsResponse>;
     fromPartial(object: Partial<QueryChannelsResponse>): QueryChannelsResponse;
     fromAmino(object: QueryChannelsResponseAmino): QueryChannelsResponse;
     toAmino(message: QueryChannelsResponse): QueryChannelsResponseAmino;
@@ -1110,7 +1111,7 @@ export declare const QueryConnectionChannelsRequest: {
     encode(message: QueryConnectionChannelsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionChannelsRequest;
     fromJSON(object: any): QueryConnectionChannelsRequest;
-    toJSON(message: QueryConnectionChannelsRequest): unknown;
+    toJSON(message: QueryConnectionChannelsRequest): JsonSafe<QueryConnectionChannelsRequest>;
     fromPartial(object: Partial<QueryConnectionChannelsRequest>): QueryConnectionChannelsRequest;
     fromAmino(object: QueryConnectionChannelsRequestAmino): QueryConnectionChannelsRequest;
     toAmino(message: QueryConnectionChannelsRequest): QueryConnectionChannelsRequestAmino;
@@ -1129,7 +1130,7 @@ export declare const QueryConnectionChannelsResponse: {
     encode(message: QueryConnectionChannelsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
     fromJSON(object: any): QueryConnectionChannelsResponse;
-    toJSON(message: QueryConnectionChannelsResponse): unknown;
+    toJSON(message: QueryConnectionChannelsResponse): JsonSafe<QueryConnectionChannelsResponse>;
     fromPartial(object: Partial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse;
     fromAmino(object: QueryConnectionChannelsResponseAmino): QueryConnectionChannelsResponse;
     toAmino(message: QueryConnectionChannelsResponse): QueryConnectionChannelsResponseAmino;
@@ -1148,7 +1149,7 @@ export declare const QueryChannelClientStateRequest: {
     encode(message: QueryChannelClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelClientStateRequest;
     fromJSON(object: any): QueryChannelClientStateRequest;
-    toJSON(message: QueryChannelClientStateRequest): unknown;
+    toJSON(message: QueryChannelClientStateRequest): JsonSafe<QueryChannelClientStateRequest>;
     fromPartial(object: Partial<QueryChannelClientStateRequest>): QueryChannelClientStateRequest;
     fromAmino(object: QueryChannelClientStateRequestAmino): QueryChannelClientStateRequest;
     toAmino(message: QueryChannelClientStateRequest): QueryChannelClientStateRequestAmino;
@@ -1167,7 +1168,7 @@ export declare const QueryChannelClientStateResponse: {
     encode(message: QueryChannelClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelClientStateResponse;
     fromJSON(object: any): QueryChannelClientStateResponse;
-    toJSON(message: QueryChannelClientStateResponse): unknown;
+    toJSON(message: QueryChannelClientStateResponse): JsonSafe<QueryChannelClientStateResponse>;
     fromPartial(object: Partial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse;
     fromAmino(object: QueryChannelClientStateResponseAmino): QueryChannelClientStateResponse;
     toAmino(message: QueryChannelClientStateResponse): QueryChannelClientStateResponseAmino;
@@ -1186,7 +1187,7 @@ export declare const QueryChannelConsensusStateRequest: {
     encode(message: QueryChannelConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelConsensusStateRequest;
     fromJSON(object: any): QueryChannelConsensusStateRequest;
-    toJSON(message: QueryChannelConsensusStateRequest): unknown;
+    toJSON(message: QueryChannelConsensusStateRequest): JsonSafe<QueryChannelConsensusStateRequest>;
     fromPartial(object: Partial<QueryChannelConsensusStateRequest>): QueryChannelConsensusStateRequest;
     fromAmino(object: QueryChannelConsensusStateRequestAmino): QueryChannelConsensusStateRequest;
     toAmino(message: QueryChannelConsensusStateRequest): QueryChannelConsensusStateRequestAmino;
@@ -1205,7 +1206,7 @@ export declare const QueryChannelConsensusStateResponse: {
     encode(message: QueryChannelConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
     fromJSON(object: any): QueryChannelConsensusStateResponse;
-    toJSON(message: QueryChannelConsensusStateResponse): unknown;
+    toJSON(message: QueryChannelConsensusStateResponse): JsonSafe<QueryChannelConsensusStateResponse>;
     fromPartial(object: Partial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse;
     fromAmino(object: QueryChannelConsensusStateResponseAmino): QueryChannelConsensusStateResponse;
     toAmino(message: QueryChannelConsensusStateResponse): QueryChannelConsensusStateResponseAmino;
@@ -1224,7 +1225,7 @@ export declare const QueryPacketCommitmentRequest: {
     encode(message: QueryPacketCommitmentRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentRequest;
     fromJSON(object: any): QueryPacketCommitmentRequest;
-    toJSON(message: QueryPacketCommitmentRequest): unknown;
+    toJSON(message: QueryPacketCommitmentRequest): JsonSafe<QueryPacketCommitmentRequest>;
     fromPartial(object: Partial<QueryPacketCommitmentRequest>): QueryPacketCommitmentRequest;
     fromAmino(object: QueryPacketCommitmentRequestAmino): QueryPacketCommitmentRequest;
     toAmino(message: QueryPacketCommitmentRequest): QueryPacketCommitmentRequestAmino;
@@ -1243,7 +1244,7 @@ export declare const QueryPacketCommitmentResponse: {
     encode(message: QueryPacketCommitmentResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
     fromJSON(object: any): QueryPacketCommitmentResponse;
-    toJSON(message: QueryPacketCommitmentResponse): unknown;
+    toJSON(message: QueryPacketCommitmentResponse): JsonSafe<QueryPacketCommitmentResponse>;
     fromPartial(object: Partial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse;
     fromAmino(object: QueryPacketCommitmentResponseAmino): QueryPacketCommitmentResponse;
     toAmino(message: QueryPacketCommitmentResponse): QueryPacketCommitmentResponseAmino;
@@ -1262,7 +1263,7 @@ export declare const QueryPacketCommitmentsRequest: {
     encode(message: QueryPacketCommitmentsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentsRequest;
     fromJSON(object: any): QueryPacketCommitmentsRequest;
-    toJSON(message: QueryPacketCommitmentsRequest): unknown;
+    toJSON(message: QueryPacketCommitmentsRequest): JsonSafe<QueryPacketCommitmentsRequest>;
     fromPartial(object: Partial<QueryPacketCommitmentsRequest>): QueryPacketCommitmentsRequest;
     fromAmino(object: QueryPacketCommitmentsRequestAmino): QueryPacketCommitmentsRequest;
     toAmino(message: QueryPacketCommitmentsRequest): QueryPacketCommitmentsRequestAmino;
@@ -1281,7 +1282,7 @@ export declare const QueryPacketCommitmentsResponse: {
     encode(message: QueryPacketCommitmentsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
     fromJSON(object: any): QueryPacketCommitmentsResponse;
-    toJSON(message: QueryPacketCommitmentsResponse): unknown;
+    toJSON(message: QueryPacketCommitmentsResponse): JsonSafe<QueryPacketCommitmentsResponse>;
     fromPartial(object: Partial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse;
     fromAmino(object: QueryPacketCommitmentsResponseAmino): QueryPacketCommitmentsResponse;
     toAmino(message: QueryPacketCommitmentsResponse): QueryPacketCommitmentsResponseAmino;
@@ -1300,7 +1301,7 @@ export declare const QueryPacketReceiptRequest: {
     encode(message: QueryPacketReceiptRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketReceiptRequest;
     fromJSON(object: any): QueryPacketReceiptRequest;
-    toJSON(message: QueryPacketReceiptRequest): unknown;
+    toJSON(message: QueryPacketReceiptRequest): JsonSafe<QueryPacketReceiptRequest>;
     fromPartial(object: Partial<QueryPacketReceiptRequest>): QueryPacketReceiptRequest;
     fromAmino(object: QueryPacketReceiptRequestAmino): QueryPacketReceiptRequest;
     toAmino(message: QueryPacketReceiptRequest): QueryPacketReceiptRequestAmino;
@@ -1319,7 +1320,7 @@ export declare const QueryPacketReceiptResponse: {
     encode(message: QueryPacketReceiptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketReceiptResponse;
     fromJSON(object: any): QueryPacketReceiptResponse;
-    toJSON(message: QueryPacketReceiptResponse): unknown;
+    toJSON(message: QueryPacketReceiptResponse): JsonSafe<QueryPacketReceiptResponse>;
     fromPartial(object: Partial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse;
     fromAmino(object: QueryPacketReceiptResponseAmino): QueryPacketReceiptResponse;
     toAmino(message: QueryPacketReceiptResponse): QueryPacketReceiptResponseAmino;
@@ -1338,7 +1339,7 @@ export declare const QueryPacketAcknowledgementRequest: {
     encode(message: QueryPacketAcknowledgementRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementRequest;
     fromJSON(object: any): QueryPacketAcknowledgementRequest;
-    toJSON(message: QueryPacketAcknowledgementRequest): unknown;
+    toJSON(message: QueryPacketAcknowledgementRequest): JsonSafe<QueryPacketAcknowledgementRequest>;
     fromPartial(object: Partial<QueryPacketAcknowledgementRequest>): QueryPacketAcknowledgementRequest;
     fromAmino(object: QueryPacketAcknowledgementRequestAmino): QueryPacketAcknowledgementRequest;
     toAmino(message: QueryPacketAcknowledgementRequest): QueryPacketAcknowledgementRequestAmino;
@@ -1357,7 +1358,7 @@ export declare const QueryPacketAcknowledgementResponse: {
     encode(message: QueryPacketAcknowledgementResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
     fromJSON(object: any): QueryPacketAcknowledgementResponse;
-    toJSON(message: QueryPacketAcknowledgementResponse): unknown;
+    toJSON(message: QueryPacketAcknowledgementResponse): JsonSafe<QueryPacketAcknowledgementResponse>;
     fromPartial(object: Partial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse;
     fromAmino(object: QueryPacketAcknowledgementResponseAmino): QueryPacketAcknowledgementResponse;
     toAmino(message: QueryPacketAcknowledgementResponse): QueryPacketAcknowledgementResponseAmino;
@@ -1376,7 +1377,7 @@ export declare const QueryPacketAcknowledgementsRequest: {
     encode(message: QueryPacketAcknowledgementsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementsRequest;
     fromJSON(object: any): QueryPacketAcknowledgementsRequest;
-    toJSON(message: QueryPacketAcknowledgementsRequest): unknown;
+    toJSON(message: QueryPacketAcknowledgementsRequest): JsonSafe<QueryPacketAcknowledgementsRequest>;
     fromPartial(object: Partial<QueryPacketAcknowledgementsRequest>): QueryPacketAcknowledgementsRequest;
     fromAmino(object: QueryPacketAcknowledgementsRequestAmino): QueryPacketAcknowledgementsRequest;
     toAmino(message: QueryPacketAcknowledgementsRequest): QueryPacketAcknowledgementsRequestAmino;
@@ -1395,7 +1396,7 @@ export declare const QueryPacketAcknowledgementsResponse: {
     encode(message: QueryPacketAcknowledgementsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
     fromJSON(object: any): QueryPacketAcknowledgementsResponse;
-    toJSON(message: QueryPacketAcknowledgementsResponse): unknown;
+    toJSON(message: QueryPacketAcknowledgementsResponse): JsonSafe<QueryPacketAcknowledgementsResponse>;
     fromPartial(object: Partial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse;
     fromAmino(object: QueryPacketAcknowledgementsResponseAmino): QueryPacketAcknowledgementsResponse;
     toAmino(message: QueryPacketAcknowledgementsResponse): QueryPacketAcknowledgementsResponseAmino;
@@ -1414,7 +1415,7 @@ export declare const QueryUnreceivedPacketsRequest: {
     encode(message: QueryUnreceivedPacketsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedPacketsRequest;
     fromJSON(object: any): QueryUnreceivedPacketsRequest;
-    toJSON(message: QueryUnreceivedPacketsRequest): unknown;
+    toJSON(message: QueryUnreceivedPacketsRequest): JsonSafe<QueryUnreceivedPacketsRequest>;
     fromPartial(object: Partial<QueryUnreceivedPacketsRequest>): QueryUnreceivedPacketsRequest;
     fromAmino(object: QueryUnreceivedPacketsRequestAmino): QueryUnreceivedPacketsRequest;
     toAmino(message: QueryUnreceivedPacketsRequest): QueryUnreceivedPacketsRequestAmino;
@@ -1433,7 +1434,7 @@ export declare const QueryUnreceivedPacketsResponse: {
     encode(message: QueryUnreceivedPacketsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
     fromJSON(object: any): QueryUnreceivedPacketsResponse;
-    toJSON(message: QueryUnreceivedPacketsResponse): unknown;
+    toJSON(message: QueryUnreceivedPacketsResponse): JsonSafe<QueryUnreceivedPacketsResponse>;
     fromPartial(object: Partial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse;
     fromAmino(object: QueryUnreceivedPacketsResponseAmino): QueryUnreceivedPacketsResponse;
     toAmino(message: QueryUnreceivedPacketsResponse): QueryUnreceivedPacketsResponseAmino;
@@ -1452,7 +1453,7 @@ export declare const QueryUnreceivedAcksRequest: {
     encode(message: QueryUnreceivedAcksRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedAcksRequest;
     fromJSON(object: any): QueryUnreceivedAcksRequest;
-    toJSON(message: QueryUnreceivedAcksRequest): unknown;
+    toJSON(message: QueryUnreceivedAcksRequest): JsonSafe<QueryUnreceivedAcksRequest>;
     fromPartial(object: Partial<QueryUnreceivedAcksRequest>): QueryUnreceivedAcksRequest;
     fromAmino(object: QueryUnreceivedAcksRequestAmino): QueryUnreceivedAcksRequest;
     toAmino(message: QueryUnreceivedAcksRequest): QueryUnreceivedAcksRequestAmino;
@@ -1471,7 +1472,7 @@ export declare const QueryUnreceivedAcksResponse: {
     encode(message: QueryUnreceivedAcksResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
     fromJSON(object: any): QueryUnreceivedAcksResponse;
-    toJSON(message: QueryUnreceivedAcksResponse): unknown;
+    toJSON(message: QueryUnreceivedAcksResponse): JsonSafe<QueryUnreceivedAcksResponse>;
     fromPartial(object: Partial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse;
     fromAmino(object: QueryUnreceivedAcksResponseAmino): QueryUnreceivedAcksResponse;
     toAmino(message: QueryUnreceivedAcksResponse): QueryUnreceivedAcksResponseAmino;
@@ -1490,7 +1491,7 @@ export declare const QueryNextSequenceReceiveRequest: {
     encode(message: QueryNextSequenceReceiveRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceReceiveRequest;
     fromJSON(object: any): QueryNextSequenceReceiveRequest;
-    toJSON(message: QueryNextSequenceReceiveRequest): unknown;
+    toJSON(message: QueryNextSequenceReceiveRequest): JsonSafe<QueryNextSequenceReceiveRequest>;
     fromPartial(object: Partial<QueryNextSequenceReceiveRequest>): QueryNextSequenceReceiveRequest;
     fromAmino(object: QueryNextSequenceReceiveRequestAmino): QueryNextSequenceReceiveRequest;
     toAmino(message: QueryNextSequenceReceiveRequest): QueryNextSequenceReceiveRequestAmino;
@@ -1509,7 +1510,7 @@ export declare const QueryNextSequenceReceiveResponse: {
     encode(message: QueryNextSequenceReceiveResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
     fromJSON(object: any): QueryNextSequenceReceiveResponse;
-    toJSON(message: QueryNextSequenceReceiveResponse): unknown;
+    toJSON(message: QueryNextSequenceReceiveResponse): JsonSafe<QueryNextSequenceReceiveResponse>;
     fromPartial(object: Partial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse;
     fromAmino(object: QueryNextSequenceReceiveResponseAmino): QueryNextSequenceReceiveResponse;
     toAmino(message: QueryNextSequenceReceiveResponse): QueryNextSequenceReceiveResponseAmino;

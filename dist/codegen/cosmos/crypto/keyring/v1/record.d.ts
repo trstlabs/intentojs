@@ -1,6 +1,7 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BIP44Params, BIP44ParamsAmino, BIP44ParamsSDKType } from "../../hd/v1/hd";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** Record is used for representing a key in the keyring. */
 export interface Record {
     /** name represents a name of Record */
@@ -143,7 +144,7 @@ export declare const Record: {
     encode(message: Record, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record;
     fromJSON(object: any): Record;
-    toJSON(message: Record): unknown;
+    toJSON(message: Record): JsonSafe<Record>;
     fromPartial(object: Partial<Record>): Record;
     fromAmino(object: RecordAmino): Record;
     toAmino(message: Record): RecordAmino;
@@ -162,7 +163,7 @@ export declare const Record_Local: {
     encode(message: Record_Local, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Local;
     fromJSON(object: any): Record_Local;
-    toJSON(message: Record_Local): unknown;
+    toJSON(message: Record_Local): JsonSafe<Record_Local>;
     fromPartial(object: Partial<Record_Local>): Record_Local;
     fromAmino(object: Record_LocalAmino): Record_Local;
     toAmino(message: Record_Local): Record_LocalAmino;
@@ -181,7 +182,7 @@ export declare const Record_Ledger: {
     encode(message: Record_Ledger, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Ledger;
     fromJSON(object: any): Record_Ledger;
-    toJSON(message: Record_Ledger): unknown;
+    toJSON(message: Record_Ledger): JsonSafe<Record_Ledger>;
     fromPartial(object: Partial<Record_Ledger>): Record_Ledger;
     fromAmino(object: Record_LedgerAmino): Record_Ledger;
     toAmino(message: Record_Ledger): Record_LedgerAmino;
@@ -200,7 +201,7 @@ export declare const Record_Multi: {
     encode(_: Record_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Multi;
     fromJSON(_: any): Record_Multi;
-    toJSON(_: Record_Multi): unknown;
+    toJSON(_: Record_Multi): JsonSafe<Record_Multi>;
     fromPartial(_: Partial<Record_Multi>): Record_Multi;
     fromAmino(_: Record_MultiAmino): Record_Multi;
     toAmino(_: Record_Multi): Record_MultiAmino;
@@ -219,7 +220,7 @@ export declare const Record_Offline: {
     encode(_: Record_Offline, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Offline;
     fromJSON(_: any): Record_Offline;
-    toJSON(_: Record_Offline): unknown;
+    toJSON(_: Record_Offline): JsonSafe<Record_Offline>;
     fromPartial(_: Partial<Record_Offline>): Record_Offline;
     fromAmino(_: Record_OfflineAmino): Record_Offline;
     toAmino(_: Record_Offline): Record_OfflineAmino;

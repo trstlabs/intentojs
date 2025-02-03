@@ -1011,8 +1011,8 @@ exports.QueryChannelConsensusStateRequest = {
         const obj = {};
         obj.port_id = message.portId === "" ? undefined : message.portId;
         obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-        obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber.toString() : undefined;
-        obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight.toString() : undefined;
+        obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber?.toString() : undefined;
+        obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1264,7 +1264,7 @@ exports.QueryPacketCommitmentRequest = {
         const obj = {};
         obj.port_id = message.portId === "" ? undefined : message.portId;
         obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1748,7 +1748,7 @@ exports.QueryPacketReceiptRequest = {
         const obj = {};
         obj.port_id = message.portId === "" ? undefined : message.portId;
         obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1986,7 +1986,7 @@ exports.QueryPacketAcknowledgementRequest = {
         const obj = {};
         obj.port_id = message.portId === "" ? undefined : message.portId;
         obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -3125,7 +3125,7 @@ exports.QueryNextSequenceReceiveResponse = {
     },
     toAmino(message) {
         const obj = {};
-        obj.next_sequence_receive = message.nextSequenceReceive !== BigInt(0) ? message.nextSequenceReceive.toString() : undefined;
+        obj.next_sequence_receive = message.nextSequenceReceive !== BigInt(0) ? message.nextSequenceReceive?.toString() : undefined;
         obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proofHeight ? client_1.Height.toAmino(message.proofHeight) : {};
         return obj;

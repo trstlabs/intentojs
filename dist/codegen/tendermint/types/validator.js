@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleValidator = exports.Validator = exports.ValidatorSet = void 0;
 const keys_1 = require("../crypto/keys");
 const binary_1 = require("../../binary");
-const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
+const helpers_1 = require("../../helpers");
 function createBaseValidatorSet() {
     return {
         validators: [],
@@ -104,7 +104,7 @@ exports.ValidatorSet = {
             obj.validators = message.validators;
         }
         obj.proposer = message.proposer ? exports.Validator.toAmino(message.proposer) : undefined;
-        obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower.toString() : undefined;
+        obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -228,8 +228,8 @@ exports.Validator = {
         const obj = {};
         obj.address = message.address ? (0, helpers_1.base64FromBytes)(message.address) : undefined;
         obj.pub_key = message.pubKey ? keys_1.PublicKey.toAmino(message.pubKey) : undefined;
-        obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower.toString() : undefined;
-        obj.proposer_priority = message.proposerPriority !== BigInt(0) ? message.proposerPriority.toString() : undefined;
+        obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower?.toString() : undefined;
+        obj.proposer_priority = message.proposerPriority !== BigInt(0) ? message.proposerPriority?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -326,7 +326,7 @@ exports.SimpleValidator = {
     toAmino(message) {
         const obj = {};
         obj.pub_key = message.pubKey ? keys_1.PublicKey.toAmino(message.pubKey) : undefined;
-        obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower.toString() : undefined;
+        obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

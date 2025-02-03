@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
  * source tracing information path.
@@ -104,7 +105,7 @@ export declare const DenomTrace: {
     encode(message: DenomTrace, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DenomTrace;
     fromJSON(object: any): DenomTrace;
-    toJSON(message: DenomTrace): unknown;
+    toJSON(message: DenomTrace): JsonSafe<DenomTrace>;
     fromPartial(object: Partial<DenomTrace>): DenomTrace;
     fromAmino(object: DenomTraceAmino): DenomTrace;
     toAmino(message: DenomTrace): DenomTraceAmino;
@@ -123,7 +124,7 @@ export declare const Params: {
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
+    toJSON(message: Params): JsonSafe<Params>;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

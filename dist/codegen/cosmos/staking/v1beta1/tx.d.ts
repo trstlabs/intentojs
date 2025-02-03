@@ -2,6 +2,7 @@ import { Description, DescriptionAmino, DescriptionSDKType, CommissionRates, Com
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
     description: Description;
@@ -292,7 +293,7 @@ export declare const MsgCreateValidator: {
     encode(message: MsgCreateValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateValidator;
     fromJSON(object: any): MsgCreateValidator;
-    toJSON(message: MsgCreateValidator): unknown;
+    toJSON(message: MsgCreateValidator): JsonSafe<MsgCreateValidator>;
     fromPartial(object: Partial<MsgCreateValidator>): MsgCreateValidator;
     fromAmino(object: MsgCreateValidatorAmino): MsgCreateValidator;
     toAmino(message: MsgCreateValidator): MsgCreateValidatorAmino;
@@ -311,7 +312,7 @@ export declare const MsgCreateValidatorResponse: {
     encode(_: MsgCreateValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateValidatorResponse;
     fromJSON(_: any): MsgCreateValidatorResponse;
-    toJSON(_: MsgCreateValidatorResponse): unknown;
+    toJSON(_: MsgCreateValidatorResponse): JsonSafe<MsgCreateValidatorResponse>;
     fromPartial(_: Partial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
     fromAmino(_: MsgCreateValidatorResponseAmino): MsgCreateValidatorResponse;
     toAmino(_: MsgCreateValidatorResponse): MsgCreateValidatorResponseAmino;
@@ -330,7 +331,7 @@ export declare const MsgEditValidator: {
     encode(message: MsgEditValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgEditValidator;
     fromJSON(object: any): MsgEditValidator;
-    toJSON(message: MsgEditValidator): unknown;
+    toJSON(message: MsgEditValidator): JsonSafe<MsgEditValidator>;
     fromPartial(object: Partial<MsgEditValidator>): MsgEditValidator;
     fromAmino(object: MsgEditValidatorAmino): MsgEditValidator;
     toAmino(message: MsgEditValidator): MsgEditValidatorAmino;
@@ -349,7 +350,7 @@ export declare const MsgEditValidatorResponse: {
     encode(_: MsgEditValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgEditValidatorResponse;
     fromJSON(_: any): MsgEditValidatorResponse;
-    toJSON(_: MsgEditValidatorResponse): unknown;
+    toJSON(_: MsgEditValidatorResponse): JsonSafe<MsgEditValidatorResponse>;
     fromPartial(_: Partial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
     fromAmino(_: MsgEditValidatorResponseAmino): MsgEditValidatorResponse;
     toAmino(_: MsgEditValidatorResponse): MsgEditValidatorResponseAmino;
@@ -368,7 +369,7 @@ export declare const MsgDelegate: {
     encode(message: MsgDelegate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegate;
     fromJSON(object: any): MsgDelegate;
-    toJSON(message: MsgDelegate): unknown;
+    toJSON(message: MsgDelegate): JsonSafe<MsgDelegate>;
     fromPartial(object: Partial<MsgDelegate>): MsgDelegate;
     fromAmino(object: MsgDelegateAmino): MsgDelegate;
     toAmino(message: MsgDelegate): MsgDelegateAmino;
@@ -387,7 +388,7 @@ export declare const MsgDelegateResponse: {
     encode(_: MsgDelegateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateResponse;
     fromJSON(_: any): MsgDelegateResponse;
-    toJSON(_: MsgDelegateResponse): unknown;
+    toJSON(_: MsgDelegateResponse): JsonSafe<MsgDelegateResponse>;
     fromPartial(_: Partial<MsgDelegateResponse>): MsgDelegateResponse;
     fromAmino(_: MsgDelegateResponseAmino): MsgDelegateResponse;
     toAmino(_: MsgDelegateResponse): MsgDelegateResponseAmino;
@@ -406,7 +407,7 @@ export declare const MsgBeginRedelegate: {
     encode(message: MsgBeginRedelegate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginRedelegate;
     fromJSON(object: any): MsgBeginRedelegate;
-    toJSON(message: MsgBeginRedelegate): unknown;
+    toJSON(message: MsgBeginRedelegate): JsonSafe<MsgBeginRedelegate>;
     fromPartial(object: Partial<MsgBeginRedelegate>): MsgBeginRedelegate;
     fromAmino(object: MsgBeginRedelegateAmino): MsgBeginRedelegate;
     toAmino(message: MsgBeginRedelegate): MsgBeginRedelegateAmino;
@@ -425,7 +426,7 @@ export declare const MsgBeginRedelegateResponse: {
     encode(message: MsgBeginRedelegateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
     fromJSON(object: any): MsgBeginRedelegateResponse;
-    toJSON(message: MsgBeginRedelegateResponse): unknown;
+    toJSON(message: MsgBeginRedelegateResponse): JsonSafe<MsgBeginRedelegateResponse>;
     fromPartial(object: Partial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
     fromAmino(object: MsgBeginRedelegateResponseAmino): MsgBeginRedelegateResponse;
     toAmino(message: MsgBeginRedelegateResponse): MsgBeginRedelegateResponseAmino;
@@ -444,7 +445,7 @@ export declare const MsgUndelegate: {
     encode(message: MsgUndelegate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegate;
     fromJSON(object: any): MsgUndelegate;
-    toJSON(message: MsgUndelegate): unknown;
+    toJSON(message: MsgUndelegate): JsonSafe<MsgUndelegate>;
     fromPartial(object: Partial<MsgUndelegate>): MsgUndelegate;
     fromAmino(object: MsgUndelegateAmino): MsgUndelegate;
     toAmino(message: MsgUndelegate): MsgUndelegateAmino;
@@ -463,7 +464,7 @@ export declare const MsgUndelegateResponse: {
     encode(message: MsgUndelegateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateResponse;
     fromJSON(object: any): MsgUndelegateResponse;
-    toJSON(message: MsgUndelegateResponse): unknown;
+    toJSON(message: MsgUndelegateResponse): JsonSafe<MsgUndelegateResponse>;
     fromPartial(object: Partial<MsgUndelegateResponse>): MsgUndelegateResponse;
     fromAmino(object: MsgUndelegateResponseAmino): MsgUndelegateResponse;
     toAmino(message: MsgUndelegateResponse): MsgUndelegateResponseAmino;

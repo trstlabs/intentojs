@@ -641,8 +641,8 @@ exports.QueryValidatorSlashesRequest = {
     toAmino(message) {
         const obj = {};
         obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
-        obj.starting_height = message.startingHeight !== BigInt(0) ? message.startingHeight.toString() : undefined;
-        obj.ending_height = message.endingHeight !== BigInt(0) ? message.endingHeight.toString() : undefined;
+        obj.starting_height = message.startingHeight !== BigInt(0) ? message.startingHeight?.toString() : undefined;
+        obj.ending_height = message.endingHeight !== BigInt(0) ? message.endingHeight?.toString() : undefined;
         obj.pagination = message.pagination ? pagination_1.PageRequest.toAmino(message.pagination) : undefined;
         return obj;
     },

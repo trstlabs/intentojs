@@ -4,8 +4,8 @@ exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QueryPoolResp
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const staking_1 = require("./staking");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseQueryValidatorsRequest() {
     return {
         status: "",
@@ -2394,7 +2394,7 @@ exports.QueryHistoricalInfoRequest = {
     },
     toAmino(message) {
         const obj = {};
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

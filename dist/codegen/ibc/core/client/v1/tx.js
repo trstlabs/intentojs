@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MsgSubmitMisbehaviourResponse = exports.MsgSubmitMisbehaviour = exports.MsgUpgradeClientResponse = exports.MsgUpgradeClient = exports.MsgUpdateClientResponse = exports.MsgUpdateClient = exports.MsgCreateClientResponse = exports.MsgCreateClient = void 0;
 const any_1 = require("../../../../google/protobuf/any");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseMsgCreateClient() {
     return {
         clientState: undefined,

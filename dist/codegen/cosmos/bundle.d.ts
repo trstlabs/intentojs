@@ -76,7 +76,15 @@ export declare namespace cosmos {
                 encode(message: _5.QueryAccountsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryAccountsRequest;
                 fromJSON(object: any): _5.QueryAccountsRequest;
-                toJSON(message: _5.QueryAccountsRequest): unknown;
+                toJSON(message: _5.QueryAccountsRequest): {
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_5.QueryAccountsRequest>): _5.QueryAccountsRequest;
                 fromAmino(object: _5.QueryAccountsRequestAmino): _5.QueryAccountsRequest;
                 toAmino(message: _5.QueryAccountsRequest): _5.QueryAccountsRequestAmino;
@@ -95,7 +103,31 @@ export declare namespace cosmos {
                 encode(message: _5.QueryAccountsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryAccountsResponse;
                 fromJSON(object: any): _5.QueryAccountsResponse;
-                toJSON(message: _5.QueryAccountsResponse): unknown;
+                toJSON(message: _5.QueryAccountsResponse): {
+                    accounts: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[] | ({
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.auth.v1beta1.BaseAccount";
+                        address: string;
+                        pubKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        accountNumber: string;
+                        sequence: string;
+                    })[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_5.QueryAccountsResponse>): _5.QueryAccountsResponse;
                 fromAmino(object: _5.QueryAccountsResponseAmino): _5.QueryAccountsResponse;
                 toAmino(message: _5.QueryAccountsResponse): _5.QueryAccountsResponseAmino;
@@ -114,7 +146,9 @@ export declare namespace cosmos {
                 encode(message: _5.QueryAccountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryAccountRequest;
                 fromJSON(object: any): _5.QueryAccountRequest;
-                toJSON(message: _5.QueryAccountRequest): unknown;
+                toJSON(message: _5.QueryAccountRequest): {
+                    address: string;
+                };
                 fromPartial(object: Partial<_5.QueryAccountRequest>): _5.QueryAccountRequest;
                 fromAmino(object: _5.QueryAccountRequestAmino): _5.QueryAccountRequest;
                 toAmino(message: _5.QueryAccountRequest): _5.QueryAccountRequestAmino;
@@ -133,7 +167,7 @@ export declare namespace cosmos {
                 encode(_: _5.QueryModuleAccountsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryModuleAccountsRequest;
                 fromJSON(_: any): _5.QueryModuleAccountsRequest;
-                toJSON(_: _5.QueryModuleAccountsRequest): unknown;
+                toJSON(_: _5.QueryModuleAccountsRequest): {};
                 fromPartial(_: Partial<_5.QueryModuleAccountsRequest>): _5.QueryModuleAccountsRequest;
                 fromAmino(_: _5.QueryModuleAccountsRequestAmino): _5.QueryModuleAccountsRequest;
                 toAmino(_: _5.QueryModuleAccountsRequest): _5.QueryModuleAccountsRequestAmino;
@@ -152,7 +186,15 @@ export declare namespace cosmos {
                 encode(message: _5.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryParamsResponse;
                 fromJSON(object: any): _5.QueryParamsResponse;
-                toJSON(message: _5.QueryParamsResponse): unknown;
+                toJSON(message: _5.QueryParamsResponse): {
+                    params: {
+                        maxMemoCharacters: string;
+                        txSigLimit: string;
+                        txSizeCostPerByte: string;
+                        sigVerifyCostEd25519: string;
+                        sigVerifyCostSecp256k1: string;
+                    };
+                };
                 fromPartial(object: Partial<_5.QueryParamsResponse>): _5.QueryParamsResponse;
                 fromAmino(object: _5.QueryParamsResponseAmino): _5.QueryParamsResponse;
                 toAmino(message: _5.QueryParamsResponse): _5.QueryParamsResponseAmino;
@@ -171,7 +213,23 @@ export declare namespace cosmos {
                 encode(message: _5.QueryAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryAccountResponse;
                 fromJSON(object: any): _5.QueryAccountResponse;
-                toJSON(message: _5.QueryAccountResponse): unknown;
+                toJSON(message: _5.QueryAccountResponse): {
+                    account?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.auth.v1beta1.BaseAccount";
+                        address: string;
+                        pubKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        accountNumber: string;
+                        sequence: string;
+                    };
+                };
                 fromPartial(object: Partial<_5.QueryAccountResponse>): _5.QueryAccountResponse;
                 fromAmino(object: _5.QueryAccountResponseAmino): _5.QueryAccountResponse;
                 toAmino(message: _5.QueryAccountResponse): _5.QueryAccountResponseAmino;
@@ -190,7 +248,7 @@ export declare namespace cosmos {
                 encode(_: _5.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryParamsRequest;
                 fromJSON(_: any): _5.QueryParamsRequest;
-                toJSON(_: _5.QueryParamsRequest): unknown;
+                toJSON(_: _5.QueryParamsRequest): {};
                 fromPartial(_: Partial<_5.QueryParamsRequest>): _5.QueryParamsRequest;
                 fromAmino(_: _5.QueryParamsRequestAmino): _5.QueryParamsRequest;
                 toAmino(_: _5.QueryParamsRequest): _5.QueryParamsRequestAmino;
@@ -209,7 +267,32 @@ export declare namespace cosmos {
                 encode(message: _5.QueryModuleAccountsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.QueryModuleAccountsResponse;
                 fromJSON(object: any): _5.QueryModuleAccountsResponse;
-                toJSON(message: _5.QueryModuleAccountsResponse): unknown;
+                toJSON(message: _5.QueryModuleAccountsResponse): {
+                    accounts: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[] | ({
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.auth.v1beta1.ModuleAccount";
+                        baseAccount?: {
+                            $typeUrl?: "/cosmos.auth.v1beta1.BaseAccount";
+                            address: string;
+                            pubKey?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            accountNumber: string;
+                            sequence: string;
+                        };
+                        name: string;
+                        permissions: string[];
+                    })[];
+                };
                 fromPartial(object: Partial<_5.QueryModuleAccountsResponse>): _5.QueryModuleAccountsResponse;
                 fromAmino(object: _5.QueryModuleAccountsResponseAmino): _5.QueryModuleAccountsResponse;
                 toAmino(message: _5.QueryModuleAccountsResponse): _5.QueryModuleAccountsResponseAmino;
@@ -228,7 +311,7 @@ export declare namespace cosmos {
                 encode(_: _5.Bech32PrefixRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.Bech32PrefixRequest;
                 fromJSON(_: any): _5.Bech32PrefixRequest;
-                toJSON(_: _5.Bech32PrefixRequest): unknown;
+                toJSON(_: _5.Bech32PrefixRequest): {};
                 fromPartial(_: Partial<_5.Bech32PrefixRequest>): _5.Bech32PrefixRequest;
                 fromAmino(_: _5.Bech32PrefixRequestAmino): _5.Bech32PrefixRequest;
                 toAmino(_: _5.Bech32PrefixRequest): _5.Bech32PrefixRequestAmino;
@@ -247,7 +330,9 @@ export declare namespace cosmos {
                 encode(message: _5.Bech32PrefixResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.Bech32PrefixResponse;
                 fromJSON(object: any): _5.Bech32PrefixResponse;
-                toJSON(message: _5.Bech32PrefixResponse): unknown;
+                toJSON(message: _5.Bech32PrefixResponse): {
+                    bech32Prefix: string;
+                };
                 fromPartial(object: Partial<_5.Bech32PrefixResponse>): _5.Bech32PrefixResponse;
                 fromAmino(object: _5.Bech32PrefixResponseAmino): _5.Bech32PrefixResponse;
                 toAmino(message: _5.Bech32PrefixResponse): _5.Bech32PrefixResponseAmino;
@@ -266,7 +351,9 @@ export declare namespace cosmos {
                 encode(message: _5.AddressBytesToStringRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.AddressBytesToStringRequest;
                 fromJSON(object: any): _5.AddressBytesToStringRequest;
-                toJSON(message: _5.AddressBytesToStringRequest): unknown;
+                toJSON(message: _5.AddressBytesToStringRequest): {
+                    addressBytes: string;
+                };
                 fromPartial(object: Partial<_5.AddressBytesToStringRequest>): _5.AddressBytesToStringRequest;
                 fromAmino(object: _5.AddressBytesToStringRequestAmino): _5.AddressBytesToStringRequest;
                 toAmino(message: _5.AddressBytesToStringRequest): _5.AddressBytesToStringRequestAmino;
@@ -285,7 +372,9 @@ export declare namespace cosmos {
                 encode(message: _5.AddressBytesToStringResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.AddressBytesToStringResponse;
                 fromJSON(object: any): _5.AddressBytesToStringResponse;
-                toJSON(message: _5.AddressBytesToStringResponse): unknown;
+                toJSON(message: _5.AddressBytesToStringResponse): {
+                    addressString: string;
+                };
                 fromPartial(object: Partial<_5.AddressBytesToStringResponse>): _5.AddressBytesToStringResponse;
                 fromAmino(object: _5.AddressBytesToStringResponseAmino): _5.AddressBytesToStringResponse;
                 toAmino(message: _5.AddressBytesToStringResponse): _5.AddressBytesToStringResponseAmino;
@@ -304,7 +393,9 @@ export declare namespace cosmos {
                 encode(message: _5.AddressStringToBytesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.AddressStringToBytesRequest;
                 fromJSON(object: any): _5.AddressStringToBytesRequest;
-                toJSON(message: _5.AddressStringToBytesRequest): unknown;
+                toJSON(message: _5.AddressStringToBytesRequest): {
+                    addressString: string;
+                };
                 fromPartial(object: Partial<_5.AddressStringToBytesRequest>): _5.AddressStringToBytesRequest;
                 fromAmino(object: _5.AddressStringToBytesRequestAmino): _5.AddressStringToBytesRequest;
                 toAmino(message: _5.AddressStringToBytesRequest): _5.AddressStringToBytesRequestAmino;
@@ -323,7 +414,9 @@ export declare namespace cosmos {
                 encode(message: _5.AddressStringToBytesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.AddressStringToBytesResponse;
                 fromJSON(object: any): _5.AddressStringToBytesResponse;
-                toJSON(message: _5.AddressStringToBytesResponse): unknown;
+                toJSON(message: _5.AddressStringToBytesResponse): {
+                    addressBytes: string;
+                };
                 fromPartial(object: Partial<_5.AddressStringToBytesResponse>): _5.AddressStringToBytesResponse;
                 fromAmino(object: _5.AddressStringToBytesResponseAmino): _5.AddressStringToBytesResponse;
                 toAmino(message: _5.AddressStringToBytesResponse): _5.AddressStringToBytesResponseAmino;
@@ -342,7 +435,20 @@ export declare namespace cosmos {
                 encode(message: _4.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.GenesisState;
                 fromJSON(object: any): _4.GenesisState;
-                toJSON(message: _4.GenesisState): unknown;
+                toJSON(message: _4.GenesisState): {
+                    params: {
+                        maxMemoCharacters: string;
+                        txSigLimit: string;
+                        txSizeCostPerByte: string;
+                        sigVerifyCostEd25519: string;
+                        sigVerifyCostSecp256k1: string;
+                    };
+                    accounts: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_4.GenesisState>): _4.GenesisState;
                 fromAmino(object: _4.GenesisStateAmino): _4.GenesisState;
                 toAmino(message: _4.GenesisState): _4.GenesisStateAmino;
@@ -361,7 +467,17 @@ export declare namespace cosmos {
                 encode(message: _3.BaseAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _3.BaseAccount;
                 fromJSON(object: any): _3.BaseAccount;
-                toJSON(message: _3.BaseAccount): unknown;
+                toJSON(message: _3.BaseAccount): {
+                    $typeUrl?: "/cosmos.auth.v1beta1.BaseAccount";
+                    address: string;
+                    pubKey?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    };
+                    accountNumber: string;
+                    sequence: string;
+                };
                 fromPartial(object: Partial<_3.BaseAccount>): _3.BaseAccount;
                 fromAmino(object: _3.BaseAccountAmino): _3.BaseAccount;
                 toAmino(message: _3.BaseAccount): _3.BaseAccountAmino;
@@ -380,7 +496,22 @@ export declare namespace cosmos {
                 encode(message: _3.ModuleAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _3.ModuleAccount;
                 fromJSON(object: any): _3.ModuleAccount;
-                toJSON(message: _3.ModuleAccount): unknown;
+                toJSON(message: _3.ModuleAccount): {
+                    $typeUrl?: "/cosmos.auth.v1beta1.ModuleAccount";
+                    baseAccount?: {
+                        $typeUrl?: "/cosmos.auth.v1beta1.BaseAccount";
+                        address: string;
+                        pubKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        accountNumber: string;
+                        sequence: string;
+                    };
+                    name: string;
+                    permissions: string[];
+                };
                 fromPartial(object: Partial<_3.ModuleAccount>): _3.ModuleAccount;
                 fromAmino(object: _3.ModuleAccountAmino): _3.ModuleAccount;
                 toAmino(message: _3.ModuleAccount): _3.ModuleAccountAmino;
@@ -399,7 +530,13 @@ export declare namespace cosmos {
                 encode(message: _3.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _3.Params;
                 fromJSON(object: any): _3.Params;
-                toJSON(message: _3.Params): unknown;
+                toJSON(message: _3.Params): {
+                    maxMemoCharacters: string;
+                    txSigLimit: string;
+                    txSizeCostPerByte: string;
+                    sigVerifyCostEd25519: string;
+                    sigVerifyCostSecp256k1: string;
+                };
                 fromPartial(object: Partial<_3.Params>): _3.Params;
                 fromAmino(object: _3.ParamsAmino): _3.Params;
                 toAmino(message: _3.Params): _3.ParamsAmino;
@@ -454,15 +591,137 @@ export declare namespace cosmos {
                 toJSON: {
                     grant(value: _10.MsgGrant): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            granter: string;
+                            grantee: string;
+                            grant: {
+                                authorization?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                                    spendLimit: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                                    maxTokens?: {
+                                        denom: string;
+                                        amount: string;
+                                    };
+                                    allowList?: {
+                                        address: string[];
+                                    };
+                                    denyList?: {
+                                        address: string[];
+                                    };
+                                    authorizationType: _34.AuthorizationType;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                                    grants: {
+                                        contract: string;
+                                        limit?: {
+                                            $typeUrl?: string;
+                                            typeUrl: string;
+                                            value: string;
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                            remaining: string;
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                            amounts: {
+                                                denom: string;
+                                                amount: string;
+                                            }[];
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                            callsRemaining: string;
+                                            amounts: {
+                                                denom: string;
+                                                amount: string;
+                                            }[];
+                                        };
+                                        filter?: {
+                                            $typeUrl?: string;
+                                            typeUrl: string;
+                                            value: string;
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                            keys: string[];
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                            messages: string[];
+                                        };
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                                    grants: {
+                                        contract: string;
+                                        limit?: {
+                                            $typeUrl?: string;
+                                            typeUrl: string;
+                                            value: string;
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                            remaining: string;
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                            amounts: {
+                                                denom: string;
+                                                amount: string;
+                                            }[];
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                            callsRemaining: string;
+                                            amounts: {
+                                                denom: string;
+                                                amount: string;
+                                            }[];
+                                        };
+                                        filter?: {
+                                            $typeUrl?: string;
+                                            typeUrl: string;
+                                            value: string;
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                            keys: string[];
+                                        } | {
+                                            $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                            messages: string[];
+                                        };
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                                    msg: string;
+                                };
+                                expiration?: string;
+                            };
+                        };
                     };
                     exec(value: _10.MsgExec): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            grantee: string;
+                            msgs: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                        };
                     };
                     revoke(value: _10.MsgRevoke): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            granter: string;
+                            grantee: string;
+                            msgTypeUrl: string;
+                        };
                     };
                 };
                 fromJSON: {
@@ -520,7 +779,118 @@ export declare namespace cosmos {
                 encode(message: _10.MsgGrant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgGrant;
                 fromJSON(object: any): _10.MsgGrant;
-                toJSON(message: _10.MsgGrant): unknown;
+                toJSON(message: _10.MsgGrant): {
+                    granter: string;
+                    grantee: string;
+                    grant: {
+                        authorization?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                            spendLimit: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                            maxTokens?: {
+                                denom: string;
+                                amount: string;
+                            };
+                            allowList?: {
+                                address: string[];
+                            };
+                            denyList?: {
+                                address: string[];
+                            };
+                            authorizationType: _34.AuthorizationType;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                            msg: string;
+                        };
+                        expiration?: string;
+                    };
+                };
                 fromPartial(object: Partial<_10.MsgGrant>): _10.MsgGrant;
                 fromAmino(object: _10.MsgGrantAmino): _10.MsgGrant;
                 toAmino(message: _10.MsgGrant): _10.MsgGrantAmino;
@@ -539,7 +909,9 @@ export declare namespace cosmos {
                 encode(message: _10.MsgExecResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgExecResponse;
                 fromJSON(object: any): _10.MsgExecResponse;
-                toJSON(message: _10.MsgExecResponse): unknown;
+                toJSON(message: _10.MsgExecResponse): {
+                    results: string[];
+                };
                 fromPartial(object: Partial<_10.MsgExecResponse>): _10.MsgExecResponse;
                 fromAmino(object: _10.MsgExecResponseAmino): _10.MsgExecResponse;
                 toAmino(message: _10.MsgExecResponse): _10.MsgExecResponseAmino;
@@ -558,7 +930,14 @@ export declare namespace cosmos {
                 encode(message: _10.MsgExec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgExec;
                 fromJSON(object: any): _10.MsgExec;
-                toJSON(message: _10.MsgExec): unknown;
+                toJSON(message: _10.MsgExec): {
+                    grantee: string;
+                    msgs: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_10.MsgExec>): _10.MsgExec;
                 fromAmino(object: _10.MsgExecAmino): _10.MsgExec;
                 toAmino(message: _10.MsgExec): _10.MsgExecAmino;
@@ -577,7 +956,7 @@ export declare namespace cosmos {
                 encode(_: _10.MsgGrantResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgGrantResponse;
                 fromJSON(_: any): _10.MsgGrantResponse;
-                toJSON(_: _10.MsgGrantResponse): unknown;
+                toJSON(_: _10.MsgGrantResponse): {};
                 fromPartial(_: Partial<_10.MsgGrantResponse>): _10.MsgGrantResponse;
                 fromAmino(_: _10.MsgGrantResponseAmino): _10.MsgGrantResponse;
                 toAmino(_: _10.MsgGrantResponse): _10.MsgGrantResponseAmino;
@@ -596,7 +975,11 @@ export declare namespace cosmos {
                 encode(message: _10.MsgRevoke, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgRevoke;
                 fromJSON(object: any): _10.MsgRevoke;
-                toJSON(message: _10.MsgRevoke): unknown;
+                toJSON(message: _10.MsgRevoke): {
+                    granter: string;
+                    grantee: string;
+                    msgTypeUrl: string;
+                };
                 fromPartial(object: Partial<_10.MsgRevoke>): _10.MsgRevoke;
                 fromAmino(object: _10.MsgRevokeAmino): _10.MsgRevoke;
                 toAmino(message: _10.MsgRevoke): _10.MsgRevokeAmino;
@@ -615,7 +998,7 @@ export declare namespace cosmos {
                 encode(_: _10.MsgRevokeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgRevokeResponse;
                 fromJSON(_: any): _10.MsgRevokeResponse;
-                toJSON(_: _10.MsgRevokeResponse): unknown;
+                toJSON(_: _10.MsgRevokeResponse): {};
                 fromPartial(_: Partial<_10.MsgRevokeResponse>): _10.MsgRevokeResponse;
                 fromAmino(_: _10.MsgRevokeResponseAmino): _10.MsgRevokeResponse;
                 toAmino(_: _10.MsgRevokeResponse): _10.MsgRevokeResponseAmino;
@@ -634,7 +1017,18 @@ export declare namespace cosmos {
                 encode(message: _9.QueryGrantsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.QueryGrantsRequest;
                 fromJSON(object: any): _9.QueryGrantsRequest;
-                toJSON(message: _9.QueryGrantsRequest): unknown;
+                toJSON(message: _9.QueryGrantsRequest): {
+                    granter: string;
+                    grantee: string;
+                    msgTypeUrl: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_9.QueryGrantsRequest>): _9.QueryGrantsRequest;
                 fromAmino(object: _9.QueryGrantsRequestAmino): _9.QueryGrantsRequest;
                 toAmino(message: _9.QueryGrantsRequest): _9.QueryGrantsRequestAmino;
@@ -653,7 +1047,120 @@ export declare namespace cosmos {
                 encode(message: _9.QueryGrantsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.QueryGrantsResponse;
                 fromJSON(object: any): _9.QueryGrantsResponse;
-                toJSON(message: _9.QueryGrantsResponse): unknown;
+                toJSON(message: _9.QueryGrantsResponse): {
+                    grants: {
+                        authorization?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                            spendLimit: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                            maxTokens?: {
+                                denom: string;
+                                amount: string;
+                            };
+                            allowList?: {
+                                address: string[];
+                            };
+                            denyList?: {
+                                address: string[];
+                            };
+                            authorizationType: _34.AuthorizationType;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                            msg: string;
+                        };
+                        expiration?: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_9.QueryGrantsResponse>): _9.QueryGrantsResponse;
                 fromAmino(object: _9.QueryGrantsResponseAmino): _9.QueryGrantsResponse;
                 toAmino(message: _9.QueryGrantsResponse): _9.QueryGrantsResponseAmino;
@@ -672,7 +1179,16 @@ export declare namespace cosmos {
                 encode(message: _9.QueryGranterGrantsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.QueryGranterGrantsRequest;
                 fromJSON(object: any): _9.QueryGranterGrantsRequest;
-                toJSON(message: _9.QueryGranterGrantsRequest): unknown;
+                toJSON(message: _9.QueryGranterGrantsRequest): {
+                    granter: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_9.QueryGranterGrantsRequest>): _9.QueryGranterGrantsRequest;
                 fromAmino(object: _9.QueryGranterGrantsRequestAmino): _9.QueryGranterGrantsRequest;
                 toAmino(message: _9.QueryGranterGrantsRequest): _9.QueryGranterGrantsRequestAmino;
@@ -691,7 +1207,122 @@ export declare namespace cosmos {
                 encode(message: _9.QueryGranterGrantsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.QueryGranterGrantsResponse;
                 fromJSON(object: any): _9.QueryGranterGrantsResponse;
-                toJSON(message: _9.QueryGranterGrantsResponse): unknown;
+                toJSON(message: _9.QueryGranterGrantsResponse): {
+                    grants: {
+                        granter: string;
+                        grantee: string;
+                        authorization?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                            spendLimit: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                            maxTokens?: {
+                                denom: string;
+                                amount: string;
+                            };
+                            allowList?: {
+                                address: string[];
+                            };
+                            denyList?: {
+                                address: string[];
+                            };
+                            authorizationType: _34.AuthorizationType;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                            msg: string;
+                        };
+                        expiration?: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_9.QueryGranterGrantsResponse>): _9.QueryGranterGrantsResponse;
                 fromAmino(object: _9.QueryGranterGrantsResponseAmino): _9.QueryGranterGrantsResponse;
                 toAmino(message: _9.QueryGranterGrantsResponse): _9.QueryGranterGrantsResponseAmino;
@@ -710,7 +1341,16 @@ export declare namespace cosmos {
                 encode(message: _9.QueryGranteeGrantsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.QueryGranteeGrantsRequest;
                 fromJSON(object: any): _9.QueryGranteeGrantsRequest;
-                toJSON(message: _9.QueryGranteeGrantsRequest): unknown;
+                toJSON(message: _9.QueryGranteeGrantsRequest): {
+                    grantee: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_9.QueryGranteeGrantsRequest>): _9.QueryGranteeGrantsRequest;
                 fromAmino(object: _9.QueryGranteeGrantsRequestAmino): _9.QueryGranteeGrantsRequest;
                 toAmino(message: _9.QueryGranteeGrantsRequest): _9.QueryGranteeGrantsRequestAmino;
@@ -729,7 +1369,122 @@ export declare namespace cosmos {
                 encode(message: _9.QueryGranteeGrantsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.QueryGranteeGrantsResponse;
                 fromJSON(object: any): _9.QueryGranteeGrantsResponse;
-                toJSON(message: _9.QueryGranteeGrantsResponse): unknown;
+                toJSON(message: _9.QueryGranteeGrantsResponse): {
+                    grants: {
+                        granter: string;
+                        grantee: string;
+                        authorization?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                            spendLimit: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                            maxTokens?: {
+                                denom: string;
+                                amount: string;
+                            };
+                            allowList?: {
+                                address: string[];
+                            };
+                            denyList?: {
+                                address: string[];
+                            };
+                            authorizationType: _34.AuthorizationType;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                            msg: string;
+                        };
+                        expiration?: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_9.QueryGranteeGrantsResponse>): _9.QueryGranteeGrantsResponse;
                 fromAmino(object: _9.QueryGranteeGrantsResponseAmino): _9.QueryGranteeGrantsResponse;
                 toAmino(message: _9.QueryGranteeGrantsResponse): _9.QueryGranteeGrantsResponseAmino;
@@ -748,7 +1503,118 @@ export declare namespace cosmos {
                 encode(message: _8.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.GenesisState;
                 fromJSON(object: any): _8.GenesisState;
-                toJSON(message: _8.GenesisState): unknown;
+                toJSON(message: _8.GenesisState): {
+                    authorization: {
+                        granter: string;
+                        grantee: string;
+                        authorization?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                            spendLimit: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                            maxTokens?: {
+                                denom: string;
+                                amount: string;
+                            };
+                            allowList?: {
+                                address: string[];
+                            };
+                            denyList?: {
+                                address: string[];
+                            };
+                            authorizationType: _34.AuthorizationType;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                            grants: {
+                                contract: string;
+                                limit?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                    remaining: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                    callsRemaining: string;
+                                    amounts: {
+                                        denom: string;
+                                        amount: string;
+                                    }[];
+                                };
+                                filter?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                    keys: string[];
+                                } | {
+                                    $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                    messages: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                            msg: string;
+                        };
+                        expiration?: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_8.GenesisState>): _8.GenesisState;
                 fromAmino(object: _8.GenesisStateAmino): _8.GenesisState;
                 toAmino(message: _8.GenesisState): _8.GenesisStateAmino;
@@ -767,7 +1633,11 @@ export declare namespace cosmos {
                 encode(message: _7.EventGrant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _7.EventGrant;
                 fromJSON(object: any): _7.EventGrant;
-                toJSON(message: _7.EventGrant): unknown;
+                toJSON(message: _7.EventGrant): {
+                    msgTypeUrl: string;
+                    granter: string;
+                    grantee: string;
+                };
                 fromPartial(object: Partial<_7.EventGrant>): _7.EventGrant;
                 fromAmino(object: _7.EventGrantAmino): _7.EventGrant;
                 toAmino(message: _7.EventGrant): _7.EventGrantAmino;
@@ -786,7 +1656,11 @@ export declare namespace cosmos {
                 encode(message: _7.EventRevoke, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _7.EventRevoke;
                 fromJSON(object: any): _7.EventRevoke;
-                toJSON(message: _7.EventRevoke): unknown;
+                toJSON(message: _7.EventRevoke): {
+                    msgTypeUrl: string;
+                    granter: string;
+                    grantee: string;
+                };
                 fromPartial(object: Partial<_7.EventRevoke>): _7.EventRevoke;
                 fromAmino(object: _7.EventRevokeAmino): _7.EventRevoke;
                 toAmino(message: _7.EventRevoke): _7.EventRevokeAmino;
@@ -805,7 +1679,10 @@ export declare namespace cosmos {
                 encode(message: _6.GenericAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _6.GenericAuthorization;
                 fromJSON(object: any): _6.GenericAuthorization;
-                toJSON(message: _6.GenericAuthorization): unknown;
+                toJSON(message: _6.GenericAuthorization): {
+                    $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                    msg: string;
+                };
                 fromPartial(object: Partial<_6.GenericAuthorization>): _6.GenericAuthorization;
                 fromAmino(object: _6.GenericAuthorizationAmino): _6.GenericAuthorization;
                 toAmino(message: _6.GenericAuthorization): _6.GenericAuthorizationAmino;
@@ -824,7 +1701,114 @@ export declare namespace cosmos {
                 encode(message: _6.Grant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _6.Grant;
                 fromJSON(object: any): _6.Grant;
-                toJSON(message: _6.Grant): unknown;
+                toJSON(message: _6.Grant): {
+                    authorization?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                        spendLimit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                        maxTokens?: {
+                            denom: string;
+                            amount: string;
+                        };
+                        allowList?: {
+                            address: string[];
+                        };
+                        denyList?: {
+                            address: string[];
+                        };
+                        authorizationType: _34.AuthorizationType;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                        grants: {
+                            contract: string;
+                            limit?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                remaining: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                callsRemaining: string;
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            };
+                            filter?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                keys: string[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                messages: string[];
+                            };
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                        grants: {
+                            contract: string;
+                            limit?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                remaining: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                callsRemaining: string;
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            };
+                            filter?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                keys: string[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                messages: string[];
+                            };
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                        msg: string;
+                    };
+                    expiration?: string;
+                };
                 fromPartial(object: Partial<_6.Grant>): _6.Grant;
                 fromAmino(object: _6.GrantAmino): _6.Grant;
                 toAmino(message: _6.Grant): _6.GrantAmino;
@@ -843,7 +1827,116 @@ export declare namespace cosmos {
                 encode(message: _6.GrantAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _6.GrantAuthorization;
                 fromJSON(object: any): _6.GrantAuthorization;
-                toJSON(message: _6.GrantAuthorization): unknown;
+                toJSON(message: _6.GrantAuthorization): {
+                    granter: string;
+                    grantee: string;
+                    authorization?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                        spendLimit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                        maxTokens?: {
+                            denom: string;
+                            amount: string;
+                        };
+                        allowList?: {
+                            address: string[];
+                        };
+                        denyList?: {
+                            address: string[];
+                        };
+                        authorizationType: _34.AuthorizationType;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ContractExecutionAuthorization";
+                        grants: {
+                            contract: string;
+                            limit?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                remaining: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                callsRemaining: string;
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            };
+                            filter?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                keys: string[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                messages: string[];
+                            };
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ContractMigrationAuthorization";
+                        grants: {
+                            contract: string;
+                            limit?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxCallsLimit";
+                                remaining: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MaxFundsLimit";
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.CombinedLimit";
+                                callsRemaining: string;
+                                amounts: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            };
+                            filter?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter";
+                                keys: string[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.AcceptedMessagesFilter";
+                                messages: string[];
+                            };
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmos.authz.v1beta1.GenericAuthorization";
+                        msg: string;
+                    };
+                    expiration?: string;
+                };
                 fromPartial(object: Partial<_6.GrantAuthorization>): _6.GrantAuthorization;
                 fromAmino(object: _6.GrantAuthorizationAmino): _6.GrantAuthorization;
                 toAmino(message: _6.GrantAuthorization): _6.GrantAuthorizationAmino;
@@ -862,7 +1955,9 @@ export declare namespace cosmos {
                 encode(message: _6.GrantQueueItem, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _6.GrantQueueItem;
                 fromJSON(object: any): _6.GrantQueueItem;
-                toJSON(message: _6.GrantQueueItem): unknown;
+                toJSON(message: _6.GrantQueueItem): {
+                    msgTypeUrls: string[];
+                };
                 fromPartial(object: Partial<_6.GrantQueueItem>): _6.GrantQueueItem;
                 fromAmino(object: _6.GrantQueueItemAmino): _6.GrantQueueItem;
                 toAmino(message: _6.GrantQueueItem): _6.GrantQueueItemAmino;
@@ -915,11 +2010,33 @@ export declare namespace cosmos {
                 toJSON: {
                     send(value: _15.MsgSend): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            fromAddress: string;
+                            toAddress: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        };
                     };
                     multiSend(value: _15.MsgMultiSend): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            inputs: {
+                                address: string;
+                                coins: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            }[];
+                            outputs: {
+                                address: string;
+                                coins: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            }[];
+                        };
                     };
                 };
                 fromJSON: {
@@ -964,7 +2081,14 @@ export declare namespace cosmos {
                 encode(message: _15.MsgSend, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgSend;
                 fromJSON(object: any): _15.MsgSend;
-                toJSON(message: _15.MsgSend): unknown;
+                toJSON(message: _15.MsgSend): {
+                    fromAddress: string;
+                    toAddress: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_15.MsgSend>): _15.MsgSend;
                 fromAmino(object: _15.MsgSendAmino): _15.MsgSend;
                 toAmino(message: _15.MsgSend): _15.MsgSendAmino;
@@ -983,7 +2107,7 @@ export declare namespace cosmos {
                 encode(_: _15.MsgSendResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgSendResponse;
                 fromJSON(_: any): _15.MsgSendResponse;
-                toJSON(_: _15.MsgSendResponse): unknown;
+                toJSON(_: _15.MsgSendResponse): {};
                 fromPartial(_: Partial<_15.MsgSendResponse>): _15.MsgSendResponse;
                 fromAmino(_: _15.MsgSendResponseAmino): _15.MsgSendResponse;
                 toAmino(_: _15.MsgSendResponse): _15.MsgSendResponseAmino;
@@ -1002,7 +2126,22 @@ export declare namespace cosmos {
                 encode(message: _15.MsgMultiSend, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgMultiSend;
                 fromJSON(object: any): _15.MsgMultiSend;
-                toJSON(message: _15.MsgMultiSend): unknown;
+                toJSON(message: _15.MsgMultiSend): {
+                    inputs: {
+                        address: string;
+                        coins: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                    outputs: {
+                        address: string;
+                        coins: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                };
                 fromPartial(object: Partial<_15.MsgMultiSend>): _15.MsgMultiSend;
                 fromAmino(object: _15.MsgMultiSendAmino): _15.MsgMultiSend;
                 toAmino(message: _15.MsgMultiSend): _15.MsgMultiSendAmino;
@@ -1021,7 +2160,7 @@ export declare namespace cosmos {
                 encode(_: _15.MsgMultiSendResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgMultiSendResponse;
                 fromJSON(_: any): _15.MsgMultiSendResponse;
-                toJSON(_: _15.MsgMultiSendResponse): unknown;
+                toJSON(_: _15.MsgMultiSendResponse): {};
                 fromPartial(_: Partial<_15.MsgMultiSendResponse>): _15.MsgMultiSendResponse;
                 fromAmino(_: _15.MsgMultiSendResponseAmino): _15.MsgMultiSendResponse;
                 toAmino(_: _15.MsgMultiSendResponse): _15.MsgMultiSendResponseAmino;
@@ -1040,7 +2179,10 @@ export declare namespace cosmos {
                 encode(message: _14.QueryBalanceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryBalanceRequest;
                 fromJSON(object: any): _14.QueryBalanceRequest;
-                toJSON(message: _14.QueryBalanceRequest): unknown;
+                toJSON(message: _14.QueryBalanceRequest): {
+                    address: string;
+                    denom: string;
+                };
                 fromPartial(object: Partial<_14.QueryBalanceRequest>): _14.QueryBalanceRequest;
                 fromAmino(object: _14.QueryBalanceRequestAmino): _14.QueryBalanceRequest;
                 toAmino(message: _14.QueryBalanceRequest): _14.QueryBalanceRequestAmino;
@@ -1059,7 +2201,12 @@ export declare namespace cosmos {
                 encode(message: _14.QueryBalanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryBalanceResponse;
                 fromJSON(object: any): _14.QueryBalanceResponse;
-                toJSON(message: _14.QueryBalanceResponse): unknown;
+                toJSON(message: _14.QueryBalanceResponse): {
+                    balance?: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryBalanceResponse>): _14.QueryBalanceResponse;
                 fromAmino(object: _14.QueryBalanceResponseAmino): _14.QueryBalanceResponse;
                 toAmino(message: _14.QueryBalanceResponse): _14.QueryBalanceResponseAmino;
@@ -1078,7 +2225,16 @@ export declare namespace cosmos {
                 encode(message: _14.QueryAllBalancesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryAllBalancesRequest;
                 fromJSON(object: any): _14.QueryAllBalancesRequest;
-                toJSON(message: _14.QueryAllBalancesRequest): unknown;
+                toJSON(message: _14.QueryAllBalancesRequest): {
+                    address: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryAllBalancesRequest>): _14.QueryAllBalancesRequest;
                 fromAmino(object: _14.QueryAllBalancesRequestAmino): _14.QueryAllBalancesRequest;
                 toAmino(message: _14.QueryAllBalancesRequest): _14.QueryAllBalancesRequestAmino;
@@ -1097,7 +2253,16 @@ export declare namespace cosmos {
                 encode(message: _14.QueryAllBalancesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryAllBalancesResponse;
                 fromJSON(object: any): _14.QueryAllBalancesResponse;
-                toJSON(message: _14.QueryAllBalancesResponse): unknown;
+                toJSON(message: _14.QueryAllBalancesResponse): {
+                    balances: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryAllBalancesResponse>): _14.QueryAllBalancesResponse;
                 fromAmino(object: _14.QueryAllBalancesResponseAmino): _14.QueryAllBalancesResponse;
                 toAmino(message: _14.QueryAllBalancesResponse): _14.QueryAllBalancesResponseAmino;
@@ -1116,7 +2281,16 @@ export declare namespace cosmos {
                 encode(message: _14.QuerySpendableBalancesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QuerySpendableBalancesRequest;
                 fromJSON(object: any): _14.QuerySpendableBalancesRequest;
-                toJSON(message: _14.QuerySpendableBalancesRequest): unknown;
+                toJSON(message: _14.QuerySpendableBalancesRequest): {
+                    address: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_14.QuerySpendableBalancesRequest>): _14.QuerySpendableBalancesRequest;
                 fromAmino(object: _14.QuerySpendableBalancesRequestAmino): _14.QuerySpendableBalancesRequest;
                 toAmino(message: _14.QuerySpendableBalancesRequest): _14.QuerySpendableBalancesRequestAmino;
@@ -1135,7 +2309,16 @@ export declare namespace cosmos {
                 encode(message: _14.QuerySpendableBalancesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QuerySpendableBalancesResponse;
                 fromJSON(object: any): _14.QuerySpendableBalancesResponse;
-                toJSON(message: _14.QuerySpendableBalancesResponse): unknown;
+                toJSON(message: _14.QuerySpendableBalancesResponse): {
+                    balances: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QuerySpendableBalancesResponse>): _14.QuerySpendableBalancesResponse;
                 fromAmino(object: _14.QuerySpendableBalancesResponseAmino): _14.QuerySpendableBalancesResponse;
                 toAmino(message: _14.QuerySpendableBalancesResponse): _14.QuerySpendableBalancesResponseAmino;
@@ -1154,7 +2337,15 @@ export declare namespace cosmos {
                 encode(message: _14.QueryTotalSupplyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryTotalSupplyRequest;
                 fromJSON(object: any): _14.QueryTotalSupplyRequest;
-                toJSON(message: _14.QueryTotalSupplyRequest): unknown;
+                toJSON(message: _14.QueryTotalSupplyRequest): {
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryTotalSupplyRequest>): _14.QueryTotalSupplyRequest;
                 fromAmino(object: _14.QueryTotalSupplyRequestAmino): _14.QueryTotalSupplyRequest;
                 toAmino(message: _14.QueryTotalSupplyRequest): _14.QueryTotalSupplyRequestAmino;
@@ -1173,7 +2364,16 @@ export declare namespace cosmos {
                 encode(message: _14.QueryTotalSupplyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryTotalSupplyResponse;
                 fromJSON(object: any): _14.QueryTotalSupplyResponse;
-                toJSON(message: _14.QueryTotalSupplyResponse): unknown;
+                toJSON(message: _14.QueryTotalSupplyResponse): {
+                    supply: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryTotalSupplyResponse>): _14.QueryTotalSupplyResponse;
                 fromAmino(object: _14.QueryTotalSupplyResponseAmino): _14.QueryTotalSupplyResponse;
                 toAmino(message: _14.QueryTotalSupplyResponse): _14.QueryTotalSupplyResponseAmino;
@@ -1192,7 +2392,9 @@ export declare namespace cosmos {
                 encode(message: _14.QuerySupplyOfRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QuerySupplyOfRequest;
                 fromJSON(object: any): _14.QuerySupplyOfRequest;
-                toJSON(message: _14.QuerySupplyOfRequest): unknown;
+                toJSON(message: _14.QuerySupplyOfRequest): {
+                    denom: string;
+                };
                 fromPartial(object: Partial<_14.QuerySupplyOfRequest>): _14.QuerySupplyOfRequest;
                 fromAmino(object: _14.QuerySupplyOfRequestAmino): _14.QuerySupplyOfRequest;
                 toAmino(message: _14.QuerySupplyOfRequest): _14.QuerySupplyOfRequestAmino;
@@ -1211,7 +2413,12 @@ export declare namespace cosmos {
                 encode(message: _14.QuerySupplyOfResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QuerySupplyOfResponse;
                 fromJSON(object: any): _14.QuerySupplyOfResponse;
-                toJSON(message: _14.QuerySupplyOfResponse): unknown;
+                toJSON(message: _14.QuerySupplyOfResponse): {
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QuerySupplyOfResponse>): _14.QuerySupplyOfResponse;
                 fromAmino(object: _14.QuerySupplyOfResponseAmino): _14.QuerySupplyOfResponse;
                 toAmino(message: _14.QuerySupplyOfResponse): _14.QuerySupplyOfResponseAmino;
@@ -1230,7 +2437,7 @@ export declare namespace cosmos {
                 encode(_: _14.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryParamsRequest;
                 fromJSON(_: any): _14.QueryParamsRequest;
-                toJSON(_: _14.QueryParamsRequest): unknown;
+                toJSON(_: _14.QueryParamsRequest): {};
                 fromPartial(_: Partial<_14.QueryParamsRequest>): _14.QueryParamsRequest;
                 fromAmino(_: _14.QueryParamsRequestAmino): _14.QueryParamsRequest;
                 toAmino(_: _14.QueryParamsRequest): _14.QueryParamsRequestAmino;
@@ -1249,7 +2456,15 @@ export declare namespace cosmos {
                 encode(message: _14.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryParamsResponse;
                 fromJSON(object: any): _14.QueryParamsResponse;
-                toJSON(message: _14.QueryParamsResponse): unknown;
+                toJSON(message: _14.QueryParamsResponse): {
+                    params: {
+                        sendEnabled: {
+                            denom: string;
+                            enabled: boolean;
+                        }[];
+                        defaultSendEnabled: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryParamsResponse>): _14.QueryParamsResponse;
                 fromAmino(object: _14.QueryParamsResponseAmino): _14.QueryParamsResponse;
                 toAmino(message: _14.QueryParamsResponse): _14.QueryParamsResponseAmino;
@@ -1268,7 +2483,15 @@ export declare namespace cosmos {
                 encode(message: _14.QueryDenomsMetadataRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryDenomsMetadataRequest;
                 fromJSON(object: any): _14.QueryDenomsMetadataRequest;
-                toJSON(message: _14.QueryDenomsMetadataRequest): unknown;
+                toJSON(message: _14.QueryDenomsMetadataRequest): {
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryDenomsMetadataRequest>): _14.QueryDenomsMetadataRequest;
                 fromAmino(object: _14.QueryDenomsMetadataRequestAmino): _14.QueryDenomsMetadataRequest;
                 toAmino(message: _14.QueryDenomsMetadataRequest): _14.QueryDenomsMetadataRequestAmino;
@@ -1287,7 +2510,26 @@ export declare namespace cosmos {
                 encode(message: _14.QueryDenomsMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryDenomsMetadataResponse;
                 fromJSON(object: any): _14.QueryDenomsMetadataResponse;
-                toJSON(message: _14.QueryDenomsMetadataResponse): unknown;
+                toJSON(message: _14.QueryDenomsMetadataResponse): {
+                    metadatas: {
+                        description: string;
+                        denomUnits: {
+                            denom: string;
+                            exponent: number;
+                            aliases: string[];
+                        }[];
+                        base: string;
+                        display: string;
+                        name: string;
+                        symbol: string;
+                        uri: string;
+                        uriHash: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryDenomsMetadataResponse>): _14.QueryDenomsMetadataResponse;
                 fromAmino(object: _14.QueryDenomsMetadataResponseAmino): _14.QueryDenomsMetadataResponse;
                 toAmino(message: _14.QueryDenomsMetadataResponse): _14.QueryDenomsMetadataResponseAmino;
@@ -1306,7 +2548,9 @@ export declare namespace cosmos {
                 encode(message: _14.QueryDenomMetadataRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryDenomMetadataRequest;
                 fromJSON(object: any): _14.QueryDenomMetadataRequest;
-                toJSON(message: _14.QueryDenomMetadataRequest): unknown;
+                toJSON(message: _14.QueryDenomMetadataRequest): {
+                    denom: string;
+                };
                 fromPartial(object: Partial<_14.QueryDenomMetadataRequest>): _14.QueryDenomMetadataRequest;
                 fromAmino(object: _14.QueryDenomMetadataRequestAmino): _14.QueryDenomMetadataRequest;
                 toAmino(message: _14.QueryDenomMetadataRequest): _14.QueryDenomMetadataRequestAmino;
@@ -1325,7 +2569,22 @@ export declare namespace cosmos {
                 encode(message: _14.QueryDenomMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryDenomMetadataResponse;
                 fromJSON(object: any): _14.QueryDenomMetadataResponse;
-                toJSON(message: _14.QueryDenomMetadataResponse): unknown;
+                toJSON(message: _14.QueryDenomMetadataResponse): {
+                    metadata: {
+                        description: string;
+                        denomUnits: {
+                            denom: string;
+                            exponent: number;
+                            aliases: string[];
+                        }[];
+                        base: string;
+                        display: string;
+                        name: string;
+                        symbol: string;
+                        uri: string;
+                        uriHash: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryDenomMetadataResponse>): _14.QueryDenomMetadataResponse;
                 fromAmino(object: _14.QueryDenomMetadataResponseAmino): _14.QueryDenomMetadataResponse;
                 toAmino(message: _14.QueryDenomMetadataResponse): _14.QueryDenomMetadataResponseAmino;
@@ -1344,7 +2603,16 @@ export declare namespace cosmos {
                 encode(message: _14.QueryDenomOwnersRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryDenomOwnersRequest;
                 fromJSON(object: any): _14.QueryDenomOwnersRequest;
-                toJSON(message: _14.QueryDenomOwnersRequest): unknown;
+                toJSON(message: _14.QueryDenomOwnersRequest): {
+                    denom: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryDenomOwnersRequest>): _14.QueryDenomOwnersRequest;
                 fromAmino(object: _14.QueryDenomOwnersRequestAmino): _14.QueryDenomOwnersRequest;
                 toAmino(message: _14.QueryDenomOwnersRequest): _14.QueryDenomOwnersRequestAmino;
@@ -1363,7 +2631,13 @@ export declare namespace cosmos {
                 encode(message: _14.DenomOwner, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.DenomOwner;
                 fromJSON(object: any): _14.DenomOwner;
-                toJSON(message: _14.DenomOwner): unknown;
+                toJSON(message: _14.DenomOwner): {
+                    address: string;
+                    balance: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.DenomOwner>): _14.DenomOwner;
                 fromAmino(object: _14.DenomOwnerAmino): _14.DenomOwner;
                 toAmino(message: _14.DenomOwner): _14.DenomOwnerAmino;
@@ -1382,7 +2656,19 @@ export declare namespace cosmos {
                 encode(message: _14.QueryDenomOwnersResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.QueryDenomOwnersResponse;
                 fromJSON(object: any): _14.QueryDenomOwnersResponse;
-                toJSON(message: _14.QueryDenomOwnersResponse): unknown;
+                toJSON(message: _14.QueryDenomOwnersResponse): {
+                    denomOwners: {
+                        address: string;
+                        balance: {
+                            denom: string;
+                            amount: string;
+                        };
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_14.QueryDenomOwnersResponse>): _14.QueryDenomOwnersResponse;
                 fromAmino(object: _14.QueryDenomOwnersResponseAmino): _14.QueryDenomOwnersResponse;
                 toAmino(message: _14.QueryDenomOwnersResponse): _14.QueryDenomOwnersResponseAmino;
@@ -1401,7 +2687,40 @@ export declare namespace cosmos {
                 encode(message: _13.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.GenesisState;
                 fromJSON(object: any): _13.GenesisState;
-                toJSON(message: _13.GenesisState): unknown;
+                toJSON(message: _13.GenesisState): {
+                    params: {
+                        sendEnabled: {
+                            denom: string;
+                            enabled: boolean;
+                        }[];
+                        defaultSendEnabled: boolean;
+                    };
+                    balances: {
+                        address: string;
+                        coins: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                    supply: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    denomMetadata: {
+                        description: string;
+                        denomUnits: {
+                            denom: string;
+                            exponent: number;
+                            aliases: string[];
+                        }[];
+                        base: string;
+                        display: string;
+                        name: string;
+                        symbol: string;
+                        uri: string;
+                        uriHash: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_13.GenesisState>): _13.GenesisState;
                 fromAmino(object: _13.GenesisStateAmino): _13.GenesisState;
                 toAmino(message: _13.GenesisState): _13.GenesisStateAmino;
@@ -1420,7 +2739,13 @@ export declare namespace cosmos {
                 encode(message: _13.Balance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.Balance;
                 fromJSON(object: any): _13.Balance;
-                toJSON(message: _13.Balance): unknown;
+                toJSON(message: _13.Balance): {
+                    address: string;
+                    coins: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_13.Balance>): _13.Balance;
                 fromAmino(object: _13.BalanceAmino): _13.Balance;
                 toAmino(message: _13.Balance): _13.BalanceAmino;
@@ -1439,7 +2764,13 @@ export declare namespace cosmos {
                 encode(message: _12.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.Params;
                 fromJSON(object: any): _12.Params;
-                toJSON(message: _12.Params): unknown;
+                toJSON(message: _12.Params): {
+                    sendEnabled: {
+                        denom: string;
+                        enabled: boolean;
+                    }[];
+                    defaultSendEnabled: boolean;
+                };
                 fromPartial(object: Partial<_12.Params>): _12.Params;
                 fromAmino(object: _12.ParamsAmino): _12.Params;
                 toAmino(message: _12.Params): _12.ParamsAmino;
@@ -1458,7 +2789,10 @@ export declare namespace cosmos {
                 encode(message: _12.SendEnabled, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.SendEnabled;
                 fromJSON(object: any): _12.SendEnabled;
-                toJSON(message: _12.SendEnabled): unknown;
+                toJSON(message: _12.SendEnabled): {
+                    denom: string;
+                    enabled: boolean;
+                };
                 fromPartial(object: Partial<_12.SendEnabled>): _12.SendEnabled;
                 fromAmino(object: _12.SendEnabledAmino): _12.SendEnabled;
                 toAmino(message: _12.SendEnabled): _12.SendEnabledAmino;
@@ -1477,7 +2811,13 @@ export declare namespace cosmos {
                 encode(message: _12.Input, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.Input;
                 fromJSON(object: any): _12.Input;
-                toJSON(message: _12.Input): unknown;
+                toJSON(message: _12.Input): {
+                    address: string;
+                    coins: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_12.Input>): _12.Input;
                 fromAmino(object: _12.InputAmino): _12.Input;
                 toAmino(message: _12.Input): _12.InputAmino;
@@ -1496,7 +2836,13 @@ export declare namespace cosmos {
                 encode(message: _12.Output, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.Output;
                 fromJSON(object: any): _12.Output;
-                toJSON(message: _12.Output): unknown;
+                toJSON(message: _12.Output): {
+                    address: string;
+                    coins: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_12.Output>): _12.Output;
                 fromAmino(object: _12.OutputAmino): _12.Output;
                 toAmino(message: _12.Output): _12.OutputAmino;
@@ -1515,7 +2861,13 @@ export declare namespace cosmos {
                 encode(message: _12.Supply, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.Supply;
                 fromJSON(object: any): _12.Supply;
-                toJSON(message: _12.Supply): unknown;
+                toJSON(message: _12.Supply): {
+                    $typeUrl?: "/cosmos.bank.v1beta1.Supply";
+                    total: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_12.Supply>): _12.Supply;
                 fromAmino(object: _12.SupplyAmino): _12.Supply;
                 toAmino(message: _12.Supply): _12.SupplyAmino;
@@ -1534,7 +2886,11 @@ export declare namespace cosmos {
                 encode(message: _12.DenomUnit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.DenomUnit;
                 fromJSON(object: any): _12.DenomUnit;
-                toJSON(message: _12.DenomUnit): unknown;
+                toJSON(message: _12.DenomUnit): {
+                    denom: string;
+                    exponent: number;
+                    aliases: string[];
+                };
                 fromPartial(object: Partial<_12.DenomUnit>): _12.DenomUnit;
                 fromAmino(object: _12.DenomUnitAmino): _12.DenomUnit;
                 toAmino(message: _12.DenomUnit): _12.DenomUnitAmino;
@@ -1553,7 +2909,20 @@ export declare namespace cosmos {
                 encode(message: _12.Metadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.Metadata;
                 fromJSON(object: any): _12.Metadata;
-                toJSON(message: _12.Metadata): unknown;
+                toJSON(message: _12.Metadata): {
+                    description: string;
+                    denomUnits: {
+                        denom: string;
+                        exponent: number;
+                        aliases: string[];
+                    }[];
+                    base: string;
+                    display: string;
+                    name: string;
+                    symbol: string;
+                    uri: string;
+                    uriHash: string;
+                };
                 fromPartial(object: Partial<_12.Metadata>): _12.Metadata;
                 fromAmino(object: _12.MetadataAmino): _12.Metadata;
                 toAmino(message: _12.Metadata): _12.MetadataAmino;
@@ -1572,7 +2941,13 @@ export declare namespace cosmos {
                 encode(message: _11.SendAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _11.SendAuthorization;
                 fromJSON(object: any): _11.SendAuthorization;
-                toJSON(message: _11.SendAuthorization): unknown;
+                toJSON(message: _11.SendAuthorization): {
+                    $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+                    spendLimit: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_11.SendAuthorization>): _11.SendAuthorization;
                 fromAmino(object: _11.SendAuthorizationAmino): _11.SendAuthorization;
                 toAmino(message: _11.SendAuthorization): _11.SendAuthorizationAmino;
@@ -1596,7 +2971,42 @@ export declare namespace cosmos {
                     encode(message: _16.TxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.TxResponse;
                     fromJSON(object: any): _16.TxResponse;
-                    toJSON(message: _16.TxResponse): unknown;
+                    toJSON(message: _16.TxResponse): {
+                        height: string;
+                        txhash: string;
+                        codespace: string;
+                        code: number;
+                        data: string;
+                        rawLog: string;
+                        logs: {
+                            msgIndex: number;
+                            log: string;
+                            events: {
+                                type: string;
+                                attributes: {
+                                    key: string;
+                                    value: string;
+                                }[];
+                            }[];
+                        }[];
+                        info: string;
+                        gasWanted: string;
+                        gasUsed: string;
+                        tx?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        timestamp: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                                index: boolean;
+                            }[];
+                        }[];
+                    };
                     fromPartial(object: Partial<_16.TxResponse>): _16.TxResponse;
                     fromAmino(object: _16.TxResponseAmino): _16.TxResponse;
                     toAmino(message: _16.TxResponse): _16.TxResponseAmino;
@@ -1615,7 +3025,17 @@ export declare namespace cosmos {
                     encode(message: _16.ABCIMessageLog, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.ABCIMessageLog;
                     fromJSON(object: any): _16.ABCIMessageLog;
-                    toJSON(message: _16.ABCIMessageLog): unknown;
+                    toJSON(message: _16.ABCIMessageLog): {
+                        msgIndex: number;
+                        log: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                            }[];
+                        }[];
+                    };
                     fromPartial(object: Partial<_16.ABCIMessageLog>): _16.ABCIMessageLog;
                     fromAmino(object: _16.ABCIMessageLogAmino): _16.ABCIMessageLog;
                     toAmino(message: _16.ABCIMessageLog): _16.ABCIMessageLogAmino;
@@ -1634,7 +3054,13 @@ export declare namespace cosmos {
                     encode(message: _16.StringEvent, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.StringEvent;
                     fromJSON(object: any): _16.StringEvent;
-                    toJSON(message: _16.StringEvent): unknown;
+                    toJSON(message: _16.StringEvent): {
+                        type: string;
+                        attributes: {
+                            key: string;
+                            value: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_16.StringEvent>): _16.StringEvent;
                     fromAmino(object: _16.StringEventAmino): _16.StringEvent;
                     toAmino(message: _16.StringEvent): _16.StringEventAmino;
@@ -1653,7 +3079,10 @@ export declare namespace cosmos {
                     encode(message: _16.Attribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.Attribute;
                     fromJSON(object: any): _16.Attribute;
-                    toJSON(message: _16.Attribute): unknown;
+                    toJSON(message: _16.Attribute): {
+                        key: string;
+                        value: string;
+                    };
                     fromPartial(object: Partial<_16.Attribute>): _16.Attribute;
                     fromAmino(object: _16.AttributeAmino): _16.Attribute;
                     toAmino(message: _16.Attribute): _16.AttributeAmino;
@@ -1672,7 +3101,10 @@ export declare namespace cosmos {
                     encode(message: _16.GasInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.GasInfo;
                     fromJSON(object: any): _16.GasInfo;
-                    toJSON(message: _16.GasInfo): unknown;
+                    toJSON(message: _16.GasInfo): {
+                        gasWanted: string;
+                        gasUsed: string;
+                    };
                     fromPartial(object: Partial<_16.GasInfo>): _16.GasInfo;
                     fromAmino(object: _16.GasInfoAmino): _16.GasInfo;
                     toAmino(message: _16.GasInfo): _16.GasInfoAmino;
@@ -1691,7 +3123,23 @@ export declare namespace cosmos {
                     encode(message: _16.Result, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.Result;
                     fromJSON(object: any): _16.Result;
-                    toJSON(message: _16.Result): unknown;
+                    toJSON(message: _16.Result): {
+                        data: string;
+                        log: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                                index: boolean;
+                            }[];
+                        }[];
+                        msgResponses: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_16.Result>): _16.Result;
                     fromAmino(object: _16.ResultAmino): _16.Result;
                     toAmino(message: _16.Result): _16.ResultAmino;
@@ -1710,7 +3158,29 @@ export declare namespace cosmos {
                     encode(message: _16.SimulationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.SimulationResponse;
                     fromJSON(object: any): _16.SimulationResponse;
-                    toJSON(message: _16.SimulationResponse): unknown;
+                    toJSON(message: _16.SimulationResponse): {
+                        gasInfo: {
+                            gasWanted: string;
+                            gasUsed: string;
+                        };
+                        result?: {
+                            data: string;
+                            log: string;
+                            events: {
+                                type: string;
+                                attributes: {
+                                    key: string;
+                                    value: string;
+                                    index: boolean;
+                                }[];
+                            }[];
+                            msgResponses: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                        };
+                    };
                     fromPartial(object: Partial<_16.SimulationResponse>): _16.SimulationResponse;
                     fromAmino(object: _16.SimulationResponseAmino): _16.SimulationResponse;
                     toAmino(message: _16.SimulationResponse): _16.SimulationResponseAmino;
@@ -1729,7 +3199,10 @@ export declare namespace cosmos {
                     encode(message: _16.MsgData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.MsgData;
                     fromJSON(object: any): _16.MsgData;
-                    toJSON(message: _16.MsgData): unknown;
+                    toJSON(message: _16.MsgData): {
+                        msgType: string;
+                        data: string;
+                    };
                     fromPartial(object: Partial<_16.MsgData>): _16.MsgData;
                     fromAmino(object: _16.MsgDataAmino): _16.MsgData;
                     toAmino(message: _16.MsgData): _16.MsgDataAmino;
@@ -1748,7 +3221,17 @@ export declare namespace cosmos {
                     encode(message: _16.TxMsgData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.TxMsgData;
                     fromJSON(object: any): _16.TxMsgData;
-                    toJSON(message: _16.TxMsgData): unknown;
+                    toJSON(message: _16.TxMsgData): {
+                        data: {
+                            msgType: string;
+                            data: string;
+                        }[];
+                        msgResponses: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_16.TxMsgData>): _16.TxMsgData;
                     fromAmino(object: _16.TxMsgDataAmino): _16.TxMsgData;
                     toAmino(message: _16.TxMsgData): _16.TxMsgDataAmino;
@@ -1767,7 +3250,49 @@ export declare namespace cosmos {
                     encode(message: _16.SearchTxsResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.SearchTxsResult;
                     fromJSON(object: any): _16.SearchTxsResult;
-                    toJSON(message: _16.SearchTxsResult): unknown;
+                    toJSON(message: _16.SearchTxsResult): {
+                        totalCount: string;
+                        count: string;
+                        pageNumber: string;
+                        pageTotal: string;
+                        limit: string;
+                        txs: {
+                            height: string;
+                            txhash: string;
+                            codespace: string;
+                            code: number;
+                            data: string;
+                            rawLog: string;
+                            logs: {
+                                msgIndex: number;
+                                log: string;
+                                events: {
+                                    type: string;
+                                    attributes: {
+                                        key: string;
+                                        value: string;
+                                    }[];
+                                }[];
+                            }[];
+                            info: string;
+                            gasWanted: string;
+                            gasUsed: string;
+                            tx?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            timestamp: string;
+                            events: {
+                                type: string;
+                                attributes: {
+                                    key: string;
+                                    value: string;
+                                    index: boolean;
+                                }[];
+                            }[];
+                        }[];
+                    };
                     fromPartial(object: Partial<_16.SearchTxsResult>): _16.SearchTxsResult;
                     fromAmino(object: _16.SearchTxsResultAmino): _16.SearchTxsResult;
                     toAmino(message: _16.SearchTxsResult): _16.SearchTxsResultAmino;
@@ -1790,7 +3315,13 @@ export declare namespace cosmos {
                     encode(message: _17.PageRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.PageRequest;
                     fromJSON(object: any): _17.PageRequest;
-                    toJSON(message: _17.PageRequest): unknown;
+                    toJSON(message: _17.PageRequest): {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
                     fromPartial(object: Partial<_17.PageRequest>): _17.PageRequest;
                     fromAmino(object: _17.PageRequestAmino): _17.PageRequest;
                     toAmino(message: _17.PageRequest): _17.PageRequestAmino;
@@ -1809,7 +3340,10 @@ export declare namespace cosmos {
                     encode(message: _17.PageResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.PageResponse;
                     fromJSON(object: any): _17.PageResponse;
-                    toJSON(message: _17.PageResponse): unknown;
+                    toJSON(message: _17.PageResponse): {
+                        nextKey: string;
+                        total: string;
+                    };
                     fromPartial(object: Partial<_17.PageResponse>): _17.PageResponse;
                     fromAmino(object: _17.PageResponseAmino): _17.PageResponse;
                     toAmino(message: _17.PageResponse): _17.PageResponseAmino;
@@ -1832,7 +3366,50 @@ export declare namespace cosmos {
                     encode(message: _18.AppDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.AppDescriptor;
                     fromJSON(object: any): _18.AppDescriptor;
-                    toJSON(message: _18.AppDescriptor): unknown;
+                    toJSON(message: _18.AppDescriptor): {
+                        authn?: {
+                            signModes: {
+                                name: string;
+                                number: number;
+                                authnInfoProviderMethodFullname: string;
+                            }[];
+                        };
+                        chain?: {
+                            id: string;
+                        };
+                        codec?: {
+                            interfaces: {
+                                fullname: string;
+                                interfaceAcceptingMessages: {
+                                    fullname: string;
+                                    fieldDescriptorNames: string[];
+                                }[];
+                                interfaceImplementers: {
+                                    fullname: string;
+                                    typeUrl: string;
+                                }[];
+                            }[];
+                        };
+                        configuration?: {
+                            bech32AccountAddressPrefix: string;
+                        };
+                        queryServices?: {
+                            queryServices: {
+                                fullname: string;
+                                isModule: boolean;
+                                methods: {
+                                    name: string;
+                                    fullQueryPath: string;
+                                }[];
+                            }[];
+                        };
+                        tx?: {
+                            fullname: string;
+                            msgs: {
+                                msgTypeUrl: string;
+                            }[];
+                        };
+                    };
                     fromPartial(object: Partial<_18.AppDescriptor>): _18.AppDescriptor;
                     fromAmino(object: _18.AppDescriptorAmino): _18.AppDescriptor;
                     toAmino(message: _18.AppDescriptor): _18.AppDescriptorAmino;
@@ -1851,7 +3428,12 @@ export declare namespace cosmos {
                     encode(message: _18.TxDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.TxDescriptor;
                     fromJSON(object: any): _18.TxDescriptor;
-                    toJSON(message: _18.TxDescriptor): unknown;
+                    toJSON(message: _18.TxDescriptor): {
+                        fullname: string;
+                        msgs: {
+                            msgTypeUrl: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_18.TxDescriptor>): _18.TxDescriptor;
                     fromAmino(object: _18.TxDescriptorAmino): _18.TxDescriptor;
                     toAmino(message: _18.TxDescriptor): _18.TxDescriptorAmino;
@@ -1870,7 +3452,13 @@ export declare namespace cosmos {
                     encode(message: _18.AuthnDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.AuthnDescriptor;
                     fromJSON(object: any): _18.AuthnDescriptor;
-                    toJSON(message: _18.AuthnDescriptor): unknown;
+                    toJSON(message: _18.AuthnDescriptor): {
+                        signModes: {
+                            name: string;
+                            number: number;
+                            authnInfoProviderMethodFullname: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_18.AuthnDescriptor>): _18.AuthnDescriptor;
                     fromAmino(object: _18.AuthnDescriptorAmino): _18.AuthnDescriptor;
                     toAmino(message: _18.AuthnDescriptor): _18.AuthnDescriptorAmino;
@@ -1889,7 +3477,11 @@ export declare namespace cosmos {
                     encode(message: _18.SigningModeDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.SigningModeDescriptor;
                     fromJSON(object: any): _18.SigningModeDescriptor;
-                    toJSON(message: _18.SigningModeDescriptor): unknown;
+                    toJSON(message: _18.SigningModeDescriptor): {
+                        name: string;
+                        number: number;
+                        authnInfoProviderMethodFullname: string;
+                    };
                     fromPartial(object: Partial<_18.SigningModeDescriptor>): _18.SigningModeDescriptor;
                     fromAmino(object: _18.SigningModeDescriptorAmino): _18.SigningModeDescriptor;
                     toAmino(message: _18.SigningModeDescriptor): _18.SigningModeDescriptorAmino;
@@ -1908,7 +3500,9 @@ export declare namespace cosmos {
                     encode(message: _18.ChainDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.ChainDescriptor;
                     fromJSON(object: any): _18.ChainDescriptor;
-                    toJSON(message: _18.ChainDescriptor): unknown;
+                    toJSON(message: _18.ChainDescriptor): {
+                        id: string;
+                    };
                     fromPartial(object: Partial<_18.ChainDescriptor>): _18.ChainDescriptor;
                     fromAmino(object: _18.ChainDescriptorAmino): _18.ChainDescriptor;
                     toAmino(message: _18.ChainDescriptor): _18.ChainDescriptorAmino;
@@ -1927,7 +3521,19 @@ export declare namespace cosmos {
                     encode(message: _18.CodecDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.CodecDescriptor;
                     fromJSON(object: any): _18.CodecDescriptor;
-                    toJSON(message: _18.CodecDescriptor): unknown;
+                    toJSON(message: _18.CodecDescriptor): {
+                        interfaces: {
+                            fullname: string;
+                            interfaceAcceptingMessages: {
+                                fullname: string;
+                                fieldDescriptorNames: string[];
+                            }[];
+                            interfaceImplementers: {
+                                fullname: string;
+                                typeUrl: string;
+                            }[];
+                        }[];
+                    };
                     fromPartial(object: Partial<_18.CodecDescriptor>): _18.CodecDescriptor;
                     fromAmino(object: _18.CodecDescriptorAmino): _18.CodecDescriptor;
                     toAmino(message: _18.CodecDescriptor): _18.CodecDescriptorAmino;
@@ -1946,7 +3552,17 @@ export declare namespace cosmos {
                     encode(message: _18.InterfaceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.InterfaceDescriptor;
                     fromJSON(object: any): _18.InterfaceDescriptor;
-                    toJSON(message: _18.InterfaceDescriptor): unknown;
+                    toJSON(message: _18.InterfaceDescriptor): {
+                        fullname: string;
+                        interfaceAcceptingMessages: {
+                            fullname: string;
+                            fieldDescriptorNames: string[];
+                        }[];
+                        interfaceImplementers: {
+                            fullname: string;
+                            typeUrl: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_18.InterfaceDescriptor>): _18.InterfaceDescriptor;
                     fromAmino(object: _18.InterfaceDescriptorAmino): _18.InterfaceDescriptor;
                     toAmino(message: _18.InterfaceDescriptor): _18.InterfaceDescriptorAmino;
@@ -1965,7 +3581,10 @@ export declare namespace cosmos {
                     encode(message: _18.InterfaceImplementerDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.InterfaceImplementerDescriptor;
                     fromJSON(object: any): _18.InterfaceImplementerDescriptor;
-                    toJSON(message: _18.InterfaceImplementerDescriptor): unknown;
+                    toJSON(message: _18.InterfaceImplementerDescriptor): {
+                        fullname: string;
+                        typeUrl: string;
+                    };
                     fromPartial(object: Partial<_18.InterfaceImplementerDescriptor>): _18.InterfaceImplementerDescriptor;
                     fromAmino(object: _18.InterfaceImplementerDescriptorAmino): _18.InterfaceImplementerDescriptor;
                     toAmino(message: _18.InterfaceImplementerDescriptor): _18.InterfaceImplementerDescriptorAmino;
@@ -1984,7 +3603,10 @@ export declare namespace cosmos {
                     encode(message: _18.InterfaceAcceptingMessageDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.InterfaceAcceptingMessageDescriptor;
                     fromJSON(object: any): _18.InterfaceAcceptingMessageDescriptor;
-                    toJSON(message: _18.InterfaceAcceptingMessageDescriptor): unknown;
+                    toJSON(message: _18.InterfaceAcceptingMessageDescriptor): {
+                        fullname: string;
+                        fieldDescriptorNames: string[];
+                    };
                     fromPartial(object: Partial<_18.InterfaceAcceptingMessageDescriptor>): _18.InterfaceAcceptingMessageDescriptor;
                     fromAmino(object: _18.InterfaceAcceptingMessageDescriptorAmino): _18.InterfaceAcceptingMessageDescriptor;
                     toAmino(message: _18.InterfaceAcceptingMessageDescriptor): _18.InterfaceAcceptingMessageDescriptorAmino;
@@ -2003,7 +3625,9 @@ export declare namespace cosmos {
                     encode(message: _18.ConfigurationDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.ConfigurationDescriptor;
                     fromJSON(object: any): _18.ConfigurationDescriptor;
-                    toJSON(message: _18.ConfigurationDescriptor): unknown;
+                    toJSON(message: _18.ConfigurationDescriptor): {
+                        bech32AccountAddressPrefix: string;
+                    };
                     fromPartial(object: Partial<_18.ConfigurationDescriptor>): _18.ConfigurationDescriptor;
                     fromAmino(object: _18.ConfigurationDescriptorAmino): _18.ConfigurationDescriptor;
                     toAmino(message: _18.ConfigurationDescriptor): _18.ConfigurationDescriptorAmino;
@@ -2022,7 +3646,9 @@ export declare namespace cosmos {
                     encode(message: _18.MsgDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.MsgDescriptor;
                     fromJSON(object: any): _18.MsgDescriptor;
-                    toJSON(message: _18.MsgDescriptor): unknown;
+                    toJSON(message: _18.MsgDescriptor): {
+                        msgTypeUrl: string;
+                    };
                     fromPartial(object: Partial<_18.MsgDescriptor>): _18.MsgDescriptor;
                     fromAmino(object: _18.MsgDescriptorAmino): _18.MsgDescriptor;
                     toAmino(message: _18.MsgDescriptor): _18.MsgDescriptorAmino;
@@ -2041,7 +3667,7 @@ export declare namespace cosmos {
                     encode(_: _18.GetAuthnDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetAuthnDescriptorRequest;
                     fromJSON(_: any): _18.GetAuthnDescriptorRequest;
-                    toJSON(_: _18.GetAuthnDescriptorRequest): unknown;
+                    toJSON(_: _18.GetAuthnDescriptorRequest): {};
                     fromPartial(_: Partial<_18.GetAuthnDescriptorRequest>): _18.GetAuthnDescriptorRequest;
                     fromAmino(_: _18.GetAuthnDescriptorRequestAmino): _18.GetAuthnDescriptorRequest;
                     toAmino(_: _18.GetAuthnDescriptorRequest): _18.GetAuthnDescriptorRequestAmino;
@@ -2060,7 +3686,15 @@ export declare namespace cosmos {
                     encode(message: _18.GetAuthnDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetAuthnDescriptorResponse;
                     fromJSON(object: any): _18.GetAuthnDescriptorResponse;
-                    toJSON(message: _18.GetAuthnDescriptorResponse): unknown;
+                    toJSON(message: _18.GetAuthnDescriptorResponse): {
+                        authn?: {
+                            signModes: {
+                                name: string;
+                                number: number;
+                                authnInfoProviderMethodFullname: string;
+                            }[];
+                        };
+                    };
                     fromPartial(object: Partial<_18.GetAuthnDescriptorResponse>): _18.GetAuthnDescriptorResponse;
                     fromAmino(object: _18.GetAuthnDescriptorResponseAmino): _18.GetAuthnDescriptorResponse;
                     toAmino(message: _18.GetAuthnDescriptorResponse): _18.GetAuthnDescriptorResponseAmino;
@@ -2079,7 +3713,7 @@ export declare namespace cosmos {
                     encode(_: _18.GetChainDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetChainDescriptorRequest;
                     fromJSON(_: any): _18.GetChainDescriptorRequest;
-                    toJSON(_: _18.GetChainDescriptorRequest): unknown;
+                    toJSON(_: _18.GetChainDescriptorRequest): {};
                     fromPartial(_: Partial<_18.GetChainDescriptorRequest>): _18.GetChainDescriptorRequest;
                     fromAmino(_: _18.GetChainDescriptorRequestAmino): _18.GetChainDescriptorRequest;
                     toAmino(_: _18.GetChainDescriptorRequest): _18.GetChainDescriptorRequestAmino;
@@ -2098,7 +3732,11 @@ export declare namespace cosmos {
                     encode(message: _18.GetChainDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetChainDescriptorResponse;
                     fromJSON(object: any): _18.GetChainDescriptorResponse;
-                    toJSON(message: _18.GetChainDescriptorResponse): unknown;
+                    toJSON(message: _18.GetChainDescriptorResponse): {
+                        chain?: {
+                            id: string;
+                        };
+                    };
                     fromPartial(object: Partial<_18.GetChainDescriptorResponse>): _18.GetChainDescriptorResponse;
                     fromAmino(object: _18.GetChainDescriptorResponseAmino): _18.GetChainDescriptorResponse;
                     toAmino(message: _18.GetChainDescriptorResponse): _18.GetChainDescriptorResponseAmino;
@@ -2117,7 +3755,7 @@ export declare namespace cosmos {
                     encode(_: _18.GetCodecDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetCodecDescriptorRequest;
                     fromJSON(_: any): _18.GetCodecDescriptorRequest;
-                    toJSON(_: _18.GetCodecDescriptorRequest): unknown;
+                    toJSON(_: _18.GetCodecDescriptorRequest): {};
                     fromPartial(_: Partial<_18.GetCodecDescriptorRequest>): _18.GetCodecDescriptorRequest;
                     fromAmino(_: _18.GetCodecDescriptorRequestAmino): _18.GetCodecDescriptorRequest;
                     toAmino(_: _18.GetCodecDescriptorRequest): _18.GetCodecDescriptorRequestAmino;
@@ -2136,7 +3774,21 @@ export declare namespace cosmos {
                     encode(message: _18.GetCodecDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetCodecDescriptorResponse;
                     fromJSON(object: any): _18.GetCodecDescriptorResponse;
-                    toJSON(message: _18.GetCodecDescriptorResponse): unknown;
+                    toJSON(message: _18.GetCodecDescriptorResponse): {
+                        codec?: {
+                            interfaces: {
+                                fullname: string;
+                                interfaceAcceptingMessages: {
+                                    fullname: string;
+                                    fieldDescriptorNames: string[];
+                                }[];
+                                interfaceImplementers: {
+                                    fullname: string;
+                                    typeUrl: string;
+                                }[];
+                            }[];
+                        };
+                    };
                     fromPartial(object: Partial<_18.GetCodecDescriptorResponse>): _18.GetCodecDescriptorResponse;
                     fromAmino(object: _18.GetCodecDescriptorResponseAmino): _18.GetCodecDescriptorResponse;
                     toAmino(message: _18.GetCodecDescriptorResponse): _18.GetCodecDescriptorResponseAmino;
@@ -2155,7 +3807,7 @@ export declare namespace cosmos {
                     encode(_: _18.GetConfigurationDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetConfigurationDescriptorRequest;
                     fromJSON(_: any): _18.GetConfigurationDescriptorRequest;
-                    toJSON(_: _18.GetConfigurationDescriptorRequest): unknown;
+                    toJSON(_: _18.GetConfigurationDescriptorRequest): {};
                     fromPartial(_: Partial<_18.GetConfigurationDescriptorRequest>): _18.GetConfigurationDescriptorRequest;
                     fromAmino(_: _18.GetConfigurationDescriptorRequestAmino): _18.GetConfigurationDescriptorRequest;
                     toAmino(_: _18.GetConfigurationDescriptorRequest): _18.GetConfigurationDescriptorRequestAmino;
@@ -2174,7 +3826,11 @@ export declare namespace cosmos {
                     encode(message: _18.GetConfigurationDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetConfigurationDescriptorResponse;
                     fromJSON(object: any): _18.GetConfigurationDescriptorResponse;
-                    toJSON(message: _18.GetConfigurationDescriptorResponse): unknown;
+                    toJSON(message: _18.GetConfigurationDescriptorResponse): {
+                        config?: {
+                            bech32AccountAddressPrefix: string;
+                        };
+                    };
                     fromPartial(object: Partial<_18.GetConfigurationDescriptorResponse>): _18.GetConfigurationDescriptorResponse;
                     fromAmino(object: _18.GetConfigurationDescriptorResponseAmino): _18.GetConfigurationDescriptorResponse;
                     toAmino(message: _18.GetConfigurationDescriptorResponse): _18.GetConfigurationDescriptorResponseAmino;
@@ -2193,7 +3849,7 @@ export declare namespace cosmos {
                     encode(_: _18.GetQueryServicesDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetQueryServicesDescriptorRequest;
                     fromJSON(_: any): _18.GetQueryServicesDescriptorRequest;
-                    toJSON(_: _18.GetQueryServicesDescriptorRequest): unknown;
+                    toJSON(_: _18.GetQueryServicesDescriptorRequest): {};
                     fromPartial(_: Partial<_18.GetQueryServicesDescriptorRequest>): _18.GetQueryServicesDescriptorRequest;
                     fromAmino(_: _18.GetQueryServicesDescriptorRequestAmino): _18.GetQueryServicesDescriptorRequest;
                     toAmino(_: _18.GetQueryServicesDescriptorRequest): _18.GetQueryServicesDescriptorRequestAmino;
@@ -2212,7 +3868,18 @@ export declare namespace cosmos {
                     encode(message: _18.GetQueryServicesDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetQueryServicesDescriptorResponse;
                     fromJSON(object: any): _18.GetQueryServicesDescriptorResponse;
-                    toJSON(message: _18.GetQueryServicesDescriptorResponse): unknown;
+                    toJSON(message: _18.GetQueryServicesDescriptorResponse): {
+                        queries?: {
+                            queryServices: {
+                                fullname: string;
+                                isModule: boolean;
+                                methods: {
+                                    name: string;
+                                    fullQueryPath: string;
+                                }[];
+                            }[];
+                        };
+                    };
                     fromPartial(object: Partial<_18.GetQueryServicesDescriptorResponse>): _18.GetQueryServicesDescriptorResponse;
                     fromAmino(object: _18.GetQueryServicesDescriptorResponseAmino): _18.GetQueryServicesDescriptorResponse;
                     toAmino(message: _18.GetQueryServicesDescriptorResponse): _18.GetQueryServicesDescriptorResponseAmino;
@@ -2231,7 +3898,7 @@ export declare namespace cosmos {
                     encode(_: _18.GetTxDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetTxDescriptorRequest;
                     fromJSON(_: any): _18.GetTxDescriptorRequest;
-                    toJSON(_: _18.GetTxDescriptorRequest): unknown;
+                    toJSON(_: _18.GetTxDescriptorRequest): {};
                     fromPartial(_: Partial<_18.GetTxDescriptorRequest>): _18.GetTxDescriptorRequest;
                     fromAmino(_: _18.GetTxDescriptorRequestAmino): _18.GetTxDescriptorRequest;
                     toAmino(_: _18.GetTxDescriptorRequest): _18.GetTxDescriptorRequestAmino;
@@ -2250,7 +3917,14 @@ export declare namespace cosmos {
                     encode(message: _18.GetTxDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GetTxDescriptorResponse;
                     fromJSON(object: any): _18.GetTxDescriptorResponse;
-                    toJSON(message: _18.GetTxDescriptorResponse): unknown;
+                    toJSON(message: _18.GetTxDescriptorResponse): {
+                        tx?: {
+                            fullname: string;
+                            msgs: {
+                                msgTypeUrl: string;
+                            }[];
+                        };
+                    };
                     fromPartial(object: Partial<_18.GetTxDescriptorResponse>): _18.GetTxDescriptorResponse;
                     fromAmino(object: _18.GetTxDescriptorResponseAmino): _18.GetTxDescriptorResponse;
                     toAmino(message: _18.GetTxDescriptorResponse): _18.GetTxDescriptorResponseAmino;
@@ -2269,7 +3943,16 @@ export declare namespace cosmos {
                     encode(message: _18.QueryServicesDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.QueryServicesDescriptor;
                     fromJSON(object: any): _18.QueryServicesDescriptor;
-                    toJSON(message: _18.QueryServicesDescriptor): unknown;
+                    toJSON(message: _18.QueryServicesDescriptor): {
+                        queryServices: {
+                            fullname: string;
+                            isModule: boolean;
+                            methods: {
+                                name: string;
+                                fullQueryPath: string;
+                            }[];
+                        }[];
+                    };
                     fromPartial(object: Partial<_18.QueryServicesDescriptor>): _18.QueryServicesDescriptor;
                     fromAmino(object: _18.QueryServicesDescriptorAmino): _18.QueryServicesDescriptor;
                     toAmino(message: _18.QueryServicesDescriptor): _18.QueryServicesDescriptorAmino;
@@ -2288,7 +3971,14 @@ export declare namespace cosmos {
                     encode(message: _18.QueryServiceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.QueryServiceDescriptor;
                     fromJSON(object: any): _18.QueryServiceDescriptor;
-                    toJSON(message: _18.QueryServiceDescriptor): unknown;
+                    toJSON(message: _18.QueryServiceDescriptor): {
+                        fullname: string;
+                        isModule: boolean;
+                        methods: {
+                            name: string;
+                            fullQueryPath: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_18.QueryServiceDescriptor>): _18.QueryServiceDescriptor;
                     fromAmino(object: _18.QueryServiceDescriptorAmino): _18.QueryServiceDescriptor;
                     toAmino(message: _18.QueryServiceDescriptor): _18.QueryServiceDescriptorAmino;
@@ -2307,7 +3997,10 @@ export declare namespace cosmos {
                     encode(message: _18.QueryMethodDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.QueryMethodDescriptor;
                     fromJSON(object: any): _18.QueryMethodDescriptor;
-                    toJSON(message: _18.QueryMethodDescriptor): unknown;
+                    toJSON(message: _18.QueryMethodDescriptor): {
+                        name: string;
+                        fullQueryPath: string;
+                    };
                     fromPartial(object: Partial<_18.QueryMethodDescriptor>): _18.QueryMethodDescriptor;
                     fromAmino(object: _18.QueryMethodDescriptorAmino): _18.QueryMethodDescriptor;
                     toAmino(message: _18.QueryMethodDescriptor): _18.QueryMethodDescriptorAmino;
@@ -2329,7 +4022,10 @@ export declare namespace cosmos {
                 encode(message: _19.Coin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.Coin;
                 fromJSON(object: any): _19.Coin;
-                toJSON(message: _19.Coin): unknown;
+                toJSON(message: _19.Coin): {
+                    denom: string;
+                    amount: string;
+                };
                 fromPartial(object: Partial<_19.Coin>): _19.Coin;
                 fromAmino(object: _19.CoinAmino): _19.Coin;
                 toAmino(message: _19.Coin): _19.CoinAmino;
@@ -2348,7 +4044,10 @@ export declare namespace cosmos {
                 encode(message: _19.DecCoin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.DecCoin;
                 fromJSON(object: any): _19.DecCoin;
-                toJSON(message: _19.DecCoin): unknown;
+                toJSON(message: _19.DecCoin): {
+                    denom: string;
+                    amount: string;
+                };
                 fromPartial(object: Partial<_19.DecCoin>): _19.DecCoin;
                 fromAmino(object: _19.DecCoinAmino): _19.DecCoin;
                 toAmino(message: _19.DecCoin): _19.DecCoinAmino;
@@ -2367,7 +4066,9 @@ export declare namespace cosmos {
                 encode(message: _19.IntProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.IntProto;
                 fromJSON(object: any): _19.IntProto;
-                toJSON(message: _19.IntProto): unknown;
+                toJSON(message: _19.IntProto): {
+                    int: string;
+                };
                 fromPartial(object: Partial<_19.IntProto>): _19.IntProto;
                 fromAmino(object: _19.IntProtoAmino): _19.IntProto;
                 toAmino(message: _19.IntProto): _19.IntProtoAmino;
@@ -2386,7 +4087,9 @@ export declare namespace cosmos {
                 encode(message: _19.DecProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.DecProto;
                 fromJSON(object: any): _19.DecProto;
-                toJSON(message: _19.DecProto): unknown;
+                toJSON(message: _19.DecProto): {
+                    dec: string;
+                };
                 fromPartial(object: Partial<_19.DecProto>): _19.DecProto;
                 fromAmino(object: _19.DecProtoAmino): _19.DecProto;
                 toAmino(message: _19.DecProto): _19.DecProtoAmino;
@@ -2409,7 +4112,9 @@ export declare namespace cosmos {
                 encode(message: _20.PubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _20.PubKey;
                 fromJSON(object: any): _20.PubKey;
-                toJSON(message: _20.PubKey): unknown;
+                toJSON(message: _20.PubKey): {
+                    key: string;
+                };
                 fromPartial(object: Partial<_20.PubKey>): _20.PubKey;
                 fromAmino(object: _20.PubKeyAmino): _20.PubKey;
                 toAmino(message: _20.PubKey): _20.PubKeyAmino;
@@ -2428,7 +4133,9 @@ export declare namespace cosmos {
                 encode(message: _20.PrivKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _20.PrivKey;
                 fromJSON(object: any): _20.PrivKey;
-                toJSON(message: _20.PrivKey): unknown;
+                toJSON(message: _20.PrivKey): {
+                    key: string;
+                };
                 fromPartial(object: Partial<_20.PrivKey>): _20.PrivKey;
                 fromAmino(object: _20.PrivKeyAmino): _20.PrivKey;
                 toAmino(message: _20.PrivKey): _20.PrivKeyAmino;
@@ -2450,7 +4157,13 @@ export declare namespace cosmos {
                     encode(message: _21.BIP44Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _21.BIP44Params;
                     fromJSON(object: any): _21.BIP44Params;
-                    toJSON(message: _21.BIP44Params): unknown;
+                    toJSON(message: _21.BIP44Params): {
+                        purpose: number;
+                        coinType: number;
+                        account: number;
+                        change: boolean;
+                        addressIndex: number;
+                    };
                     fromPartial(object: Partial<_21.BIP44Params>): _21.BIP44Params;
                     fromAmino(object: _21.BIP44ParamsAmino): _21.BIP44Params;
                     toAmino(message: _21.BIP44Params): _21.BIP44ParamsAmino;
@@ -2473,7 +4186,33 @@ export declare namespace cosmos {
                     encode(message: _22.Record, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _22.Record;
                     fromJSON(object: any): _22.Record;
-                    toJSON(message: _22.Record): unknown;
+                    toJSON(message: _22.Record): {
+                        name: string;
+                        pubKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        local?: {
+                            privKey?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            privKeyType: string;
+                        };
+                        ledger?: {
+                            path?: {
+                                purpose: number;
+                                coinType: number;
+                                account: number;
+                                change: boolean;
+                                addressIndex: number;
+                            };
+                        };
+                        multi?: {};
+                        offline?: {};
+                    };
                     fromPartial(object: Partial<_22.Record>): _22.Record;
                     fromAmino(object: _22.RecordAmino): _22.Record;
                     toAmino(message: _22.Record): _22.RecordAmino;
@@ -2492,7 +4231,14 @@ export declare namespace cosmos {
                     encode(message: _22.Record_Local, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _22.Record_Local;
                     fromJSON(object: any): _22.Record_Local;
-                    toJSON(message: _22.Record_Local): unknown;
+                    toJSON(message: _22.Record_Local): {
+                        privKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        privKeyType: string;
+                    };
                     fromPartial(object: Partial<_22.Record_Local>): _22.Record_Local;
                     fromAmino(object: _22.Record_LocalAmino): _22.Record_Local;
                     toAmino(message: _22.Record_Local): _22.Record_LocalAmino;
@@ -2511,7 +4257,15 @@ export declare namespace cosmos {
                     encode(message: _22.Record_Ledger, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _22.Record_Ledger;
                     fromJSON(object: any): _22.Record_Ledger;
-                    toJSON(message: _22.Record_Ledger): unknown;
+                    toJSON(message: _22.Record_Ledger): {
+                        path?: {
+                            purpose: number;
+                            coinType: number;
+                            account: number;
+                            change: boolean;
+                            addressIndex: number;
+                        };
+                    };
                     fromPartial(object: Partial<_22.Record_Ledger>): _22.Record_Ledger;
                     fromAmino(object: _22.Record_LedgerAmino): _22.Record_Ledger;
                     toAmino(message: _22.Record_Ledger): _22.Record_LedgerAmino;
@@ -2530,7 +4284,7 @@ export declare namespace cosmos {
                     encode(_: _22.Record_Multi, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _22.Record_Multi;
                     fromJSON(_: any): _22.Record_Multi;
-                    toJSON(_: _22.Record_Multi): unknown;
+                    toJSON(_: _22.Record_Multi): {};
                     fromPartial(_: Partial<_22.Record_Multi>): _22.Record_Multi;
                     fromAmino(_: _22.Record_MultiAmino): _22.Record_Multi;
                     toAmino(_: _22.Record_Multi): _22.Record_MultiAmino;
@@ -2549,7 +4303,7 @@ export declare namespace cosmos {
                     encode(_: _22.Record_Offline, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _22.Record_Offline;
                     fromJSON(_: any): _22.Record_Offline;
-                    toJSON(_: _22.Record_Offline): unknown;
+                    toJSON(_: _22.Record_Offline): {};
                     fromPartial(_: Partial<_22.Record_Offline>): _22.Record_Offline;
                     fromAmino(_: _22.Record_OfflineAmino): _22.Record_Offline;
                     toAmino(_: _22.Record_Offline): _22.Record_OfflineAmino;
@@ -2571,7 +4325,14 @@ export declare namespace cosmos {
                 encode(message: _23.LegacyAminoPubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.LegacyAminoPubKey;
                 fromJSON(object: any): _23.LegacyAminoPubKey;
-                toJSON(message: _23.LegacyAminoPubKey): unknown;
+                toJSON(message: _23.LegacyAminoPubKey): {
+                    threshold: number;
+                    publicKeys: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_23.LegacyAminoPubKey>): _23.LegacyAminoPubKey;
                 fromAmino(object: _23.LegacyAminoPubKeyAmino): _23.LegacyAminoPubKey;
                 toAmino(message: _23.LegacyAminoPubKey): _23.LegacyAminoPubKeyAmino;
@@ -2592,7 +4353,9 @@ export declare namespace cosmos {
                 encode(message: _24.PubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.PubKey;
                 fromJSON(object: any): _24.PubKey;
-                toJSON(message: _24.PubKey): unknown;
+                toJSON(message: _24.PubKey): {
+                    key: string;
+                };
                 fromPartial(object: Partial<_24.PubKey>): _24.PubKey;
                 fromAmino(object: _24.PubKeyAmino): _24.PubKey;
                 toAmino(message: _24.PubKey): _24.PubKeyAmino;
@@ -2611,7 +4374,9 @@ export declare namespace cosmos {
                 encode(message: _24.PrivKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.PrivKey;
                 fromJSON(object: any): _24.PrivKey;
-                toJSON(message: _24.PrivKey): unknown;
+                toJSON(message: _24.PrivKey): {
+                    key: string;
+                };
                 fromPartial(object: Partial<_24.PrivKey>): _24.PrivKey;
                 fromAmino(object: _24.PrivKeyAmino): _24.PrivKey;
                 toAmino(message: _24.PrivKey): _24.PrivKeyAmino;
@@ -2632,7 +4397,9 @@ export declare namespace cosmos {
                 encode(message: _25.PubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _25.PubKey;
                 fromJSON(object: any): _25.PubKey;
-                toJSON(message: _25.PubKey): unknown;
+                toJSON(message: _25.PubKey): {
+                    key: string;
+                };
                 fromPartial(object: Partial<_25.PubKey>): _25.PubKey;
                 fromAmino(object: _25.PubKeyAmino): _25.PubKey;
                 toAmino(message: _25.PubKey): _25.PubKeyAmino;
@@ -2651,7 +4418,9 @@ export declare namespace cosmos {
                 encode(message: _25.PrivKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _25.PrivKey;
                 fromJSON(object: any): _25.PrivKey;
-                toJSON(message: _25.PrivKey): unknown;
+                toJSON(message: _25.PrivKey): {
+                    secret: string;
+                };
                 fromPartial(object: Partial<_25.PrivKey>): _25.PrivKey;
                 fromAmino(object: _25.PrivKeyAmino): _25.PrivKey;
                 toAmino(message: _25.PrivKey): _25.PrivKeyAmino;
@@ -2720,19 +4489,33 @@ export declare namespace cosmos {
                 toJSON: {
                     setWithdrawAddress(value: _29.MsgSetWithdrawAddress): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            delegatorAddress: string;
+                            withdrawAddress: string;
+                        };
                     };
                     withdrawDelegatorReward(value: _29.MsgWithdrawDelegatorReward): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                        };
                     };
                     withdrawValidatorCommission(value: _29.MsgWithdrawValidatorCommission): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            validatorAddress: string;
+                        };
                     };
                     fundCommunityPool(value: _29.MsgFundCommunityPool): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            depositor: string;
+                        };
                     };
                 };
                 fromJSON: {
@@ -2803,7 +4586,10 @@ export declare namespace cosmos {
                 encode(message: _29.MsgSetWithdrawAddress, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgSetWithdrawAddress;
                 fromJSON(object: any): _29.MsgSetWithdrawAddress;
-                toJSON(message: _29.MsgSetWithdrawAddress): unknown;
+                toJSON(message: _29.MsgSetWithdrawAddress): {
+                    delegatorAddress: string;
+                    withdrawAddress: string;
+                };
                 fromPartial(object: Partial<_29.MsgSetWithdrawAddress>): _29.MsgSetWithdrawAddress;
                 fromAmino(object: _29.MsgSetWithdrawAddressAmino): _29.MsgSetWithdrawAddress;
                 toAmino(message: _29.MsgSetWithdrawAddress): _29.MsgSetWithdrawAddressAmino;
@@ -2822,7 +4608,7 @@ export declare namespace cosmos {
                 encode(_: _29.MsgSetWithdrawAddressResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgSetWithdrawAddressResponse;
                 fromJSON(_: any): _29.MsgSetWithdrawAddressResponse;
-                toJSON(_: _29.MsgSetWithdrawAddressResponse): unknown;
+                toJSON(_: _29.MsgSetWithdrawAddressResponse): {};
                 fromPartial(_: Partial<_29.MsgSetWithdrawAddressResponse>): _29.MsgSetWithdrawAddressResponse;
                 fromAmino(_: _29.MsgSetWithdrawAddressResponseAmino): _29.MsgSetWithdrawAddressResponse;
                 toAmino(_: _29.MsgSetWithdrawAddressResponse): _29.MsgSetWithdrawAddressResponseAmino;
@@ -2841,7 +4627,10 @@ export declare namespace cosmos {
                 encode(message: _29.MsgWithdrawDelegatorReward, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgWithdrawDelegatorReward;
                 fromJSON(object: any): _29.MsgWithdrawDelegatorReward;
-                toJSON(message: _29.MsgWithdrawDelegatorReward): unknown;
+                toJSON(message: _29.MsgWithdrawDelegatorReward): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                };
                 fromPartial(object: Partial<_29.MsgWithdrawDelegatorReward>): _29.MsgWithdrawDelegatorReward;
                 fromAmino(object: _29.MsgWithdrawDelegatorRewardAmino): _29.MsgWithdrawDelegatorReward;
                 toAmino(message: _29.MsgWithdrawDelegatorReward): _29.MsgWithdrawDelegatorRewardAmino;
@@ -2860,7 +4649,12 @@ export declare namespace cosmos {
                 encode(message: _29.MsgWithdrawDelegatorRewardResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgWithdrawDelegatorRewardResponse;
                 fromJSON(object: any): _29.MsgWithdrawDelegatorRewardResponse;
-                toJSON(message: _29.MsgWithdrawDelegatorRewardResponse): unknown;
+                toJSON(message: _29.MsgWithdrawDelegatorRewardResponse): {
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_29.MsgWithdrawDelegatorRewardResponse>): _29.MsgWithdrawDelegatorRewardResponse;
                 fromAmino(object: _29.MsgWithdrawDelegatorRewardResponseAmino): _29.MsgWithdrawDelegatorRewardResponse;
                 toAmino(message: _29.MsgWithdrawDelegatorRewardResponse): _29.MsgWithdrawDelegatorRewardResponseAmino;
@@ -2879,7 +4673,9 @@ export declare namespace cosmos {
                 encode(message: _29.MsgWithdrawValidatorCommission, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgWithdrawValidatorCommission;
                 fromJSON(object: any): _29.MsgWithdrawValidatorCommission;
-                toJSON(message: _29.MsgWithdrawValidatorCommission): unknown;
+                toJSON(message: _29.MsgWithdrawValidatorCommission): {
+                    validatorAddress: string;
+                };
                 fromPartial(object: Partial<_29.MsgWithdrawValidatorCommission>): _29.MsgWithdrawValidatorCommission;
                 fromAmino(object: _29.MsgWithdrawValidatorCommissionAmino): _29.MsgWithdrawValidatorCommission;
                 toAmino(message: _29.MsgWithdrawValidatorCommission): _29.MsgWithdrawValidatorCommissionAmino;
@@ -2898,7 +4694,12 @@ export declare namespace cosmos {
                 encode(message: _29.MsgWithdrawValidatorCommissionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgWithdrawValidatorCommissionResponse;
                 fromJSON(object: any): _29.MsgWithdrawValidatorCommissionResponse;
-                toJSON(message: _29.MsgWithdrawValidatorCommissionResponse): unknown;
+                toJSON(message: _29.MsgWithdrawValidatorCommissionResponse): {
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_29.MsgWithdrawValidatorCommissionResponse>): _29.MsgWithdrawValidatorCommissionResponse;
                 fromAmino(object: _29.MsgWithdrawValidatorCommissionResponseAmino): _29.MsgWithdrawValidatorCommissionResponse;
                 toAmino(message: _29.MsgWithdrawValidatorCommissionResponse): _29.MsgWithdrawValidatorCommissionResponseAmino;
@@ -2917,7 +4718,13 @@ export declare namespace cosmos {
                 encode(message: _29.MsgFundCommunityPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgFundCommunityPool;
                 fromJSON(object: any): _29.MsgFundCommunityPool;
-                toJSON(message: _29.MsgFundCommunityPool): unknown;
+                toJSON(message: _29.MsgFundCommunityPool): {
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    depositor: string;
+                };
                 fromPartial(object: Partial<_29.MsgFundCommunityPool>): _29.MsgFundCommunityPool;
                 fromAmino(object: _29.MsgFundCommunityPoolAmino): _29.MsgFundCommunityPool;
                 toAmino(message: _29.MsgFundCommunityPool): _29.MsgFundCommunityPoolAmino;
@@ -2936,7 +4743,7 @@ export declare namespace cosmos {
                 encode(_: _29.MsgFundCommunityPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgFundCommunityPoolResponse;
                 fromJSON(_: any): _29.MsgFundCommunityPoolResponse;
-                toJSON(_: _29.MsgFundCommunityPoolResponse): unknown;
+                toJSON(_: _29.MsgFundCommunityPoolResponse): {};
                 fromPartial(_: Partial<_29.MsgFundCommunityPoolResponse>): _29.MsgFundCommunityPoolResponse;
                 fromAmino(_: _29.MsgFundCommunityPoolResponseAmino): _29.MsgFundCommunityPoolResponse;
                 toAmino(_: _29.MsgFundCommunityPoolResponse): _29.MsgFundCommunityPoolResponseAmino;
@@ -2955,7 +4762,7 @@ export declare namespace cosmos {
                 encode(_: _28.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryParamsRequest;
                 fromJSON(_: any): _28.QueryParamsRequest;
-                toJSON(_: _28.QueryParamsRequest): unknown;
+                toJSON(_: _28.QueryParamsRequest): {};
                 fromPartial(_: Partial<_28.QueryParamsRequest>): _28.QueryParamsRequest;
                 fromAmino(_: _28.QueryParamsRequestAmino): _28.QueryParamsRequest;
                 toAmino(_: _28.QueryParamsRequest): _28.QueryParamsRequestAmino;
@@ -2974,7 +4781,14 @@ export declare namespace cosmos {
                 encode(message: _28.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryParamsResponse;
                 fromJSON(object: any): _28.QueryParamsResponse;
-                toJSON(message: _28.QueryParamsResponse): unknown;
+                toJSON(message: _28.QueryParamsResponse): {
+                    params: {
+                        communityTax: string;
+                        baseProposerReward: string;
+                        bonusProposerReward: string;
+                        withdrawAddrEnabled: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_28.QueryParamsResponse>): _28.QueryParamsResponse;
                 fromAmino(object: _28.QueryParamsResponseAmino): _28.QueryParamsResponse;
                 toAmino(message: _28.QueryParamsResponse): _28.QueryParamsResponseAmino;
@@ -2993,7 +4807,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryValidatorOutstandingRewardsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryValidatorOutstandingRewardsRequest;
                 fromJSON(object: any): _28.QueryValidatorOutstandingRewardsRequest;
-                toJSON(message: _28.QueryValidatorOutstandingRewardsRequest): unknown;
+                toJSON(message: _28.QueryValidatorOutstandingRewardsRequest): {
+                    validatorAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryValidatorOutstandingRewardsRequest>): _28.QueryValidatorOutstandingRewardsRequest;
                 fromAmino(object: _28.QueryValidatorOutstandingRewardsRequestAmino): _28.QueryValidatorOutstandingRewardsRequest;
                 toAmino(message: _28.QueryValidatorOutstandingRewardsRequest): _28.QueryValidatorOutstandingRewardsRequestAmino;
@@ -3012,7 +4828,14 @@ export declare namespace cosmos {
                 encode(message: _28.QueryValidatorOutstandingRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryValidatorOutstandingRewardsResponse;
                 fromJSON(object: any): _28.QueryValidatorOutstandingRewardsResponse;
-                toJSON(message: _28.QueryValidatorOutstandingRewardsResponse): unknown;
+                toJSON(message: _28.QueryValidatorOutstandingRewardsResponse): {
+                    rewards: {
+                        rewards: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_28.QueryValidatorOutstandingRewardsResponse>): _28.QueryValidatorOutstandingRewardsResponse;
                 fromAmino(object: _28.QueryValidatorOutstandingRewardsResponseAmino): _28.QueryValidatorOutstandingRewardsResponse;
                 toAmino(message: _28.QueryValidatorOutstandingRewardsResponse): _28.QueryValidatorOutstandingRewardsResponseAmino;
@@ -3031,7 +4854,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryValidatorCommissionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryValidatorCommissionRequest;
                 fromJSON(object: any): _28.QueryValidatorCommissionRequest;
-                toJSON(message: _28.QueryValidatorCommissionRequest): unknown;
+                toJSON(message: _28.QueryValidatorCommissionRequest): {
+                    validatorAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryValidatorCommissionRequest>): _28.QueryValidatorCommissionRequest;
                 fromAmino(object: _28.QueryValidatorCommissionRequestAmino): _28.QueryValidatorCommissionRequest;
                 toAmino(message: _28.QueryValidatorCommissionRequest): _28.QueryValidatorCommissionRequestAmino;
@@ -3050,7 +4875,14 @@ export declare namespace cosmos {
                 encode(message: _28.QueryValidatorCommissionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryValidatorCommissionResponse;
                 fromJSON(object: any): _28.QueryValidatorCommissionResponse;
-                toJSON(message: _28.QueryValidatorCommissionResponse): unknown;
+                toJSON(message: _28.QueryValidatorCommissionResponse): {
+                    commission: {
+                        commission: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_28.QueryValidatorCommissionResponse>): _28.QueryValidatorCommissionResponse;
                 fromAmino(object: _28.QueryValidatorCommissionResponseAmino): _28.QueryValidatorCommissionResponse;
                 toAmino(message: _28.QueryValidatorCommissionResponse): _28.QueryValidatorCommissionResponseAmino;
@@ -3069,7 +4901,18 @@ export declare namespace cosmos {
                 encode(message: _28.QueryValidatorSlashesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryValidatorSlashesRequest;
                 fromJSON(object: any): _28.QueryValidatorSlashesRequest;
-                toJSON(message: _28.QueryValidatorSlashesRequest): unknown;
+                toJSON(message: _28.QueryValidatorSlashesRequest): {
+                    validatorAddress: string;
+                    startingHeight: string;
+                    endingHeight: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_28.QueryValidatorSlashesRequest>): _28.QueryValidatorSlashesRequest;
                 fromAmino(object: _28.QueryValidatorSlashesRequestAmino): _28.QueryValidatorSlashesRequest;
                 toAmino(message: _28.QueryValidatorSlashesRequest): _28.QueryValidatorSlashesRequestAmino;
@@ -3088,7 +4931,16 @@ export declare namespace cosmos {
                 encode(message: _28.QueryValidatorSlashesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryValidatorSlashesResponse;
                 fromJSON(object: any): _28.QueryValidatorSlashesResponse;
-                toJSON(message: _28.QueryValidatorSlashesResponse): unknown;
+                toJSON(message: _28.QueryValidatorSlashesResponse): {
+                    slashes: {
+                        validatorPeriod: string;
+                        fraction: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_28.QueryValidatorSlashesResponse>): _28.QueryValidatorSlashesResponse;
                 fromAmino(object: _28.QueryValidatorSlashesResponseAmino): _28.QueryValidatorSlashesResponse;
                 toAmino(message: _28.QueryValidatorSlashesResponse): _28.QueryValidatorSlashesResponseAmino;
@@ -3107,7 +4959,10 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegationRewardsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegationRewardsRequest;
                 fromJSON(object: any): _28.QueryDelegationRewardsRequest;
-                toJSON(message: _28.QueryDelegationRewardsRequest): unknown;
+                toJSON(message: _28.QueryDelegationRewardsRequest): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryDelegationRewardsRequest>): _28.QueryDelegationRewardsRequest;
                 fromAmino(object: _28.QueryDelegationRewardsRequestAmino): _28.QueryDelegationRewardsRequest;
                 toAmino(message: _28.QueryDelegationRewardsRequest): _28.QueryDelegationRewardsRequestAmino;
@@ -3126,7 +4981,12 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegationRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegationRewardsResponse;
                 fromJSON(object: any): _28.QueryDelegationRewardsResponse;
-                toJSON(message: _28.QueryDelegationRewardsResponse): unknown;
+                toJSON(message: _28.QueryDelegationRewardsResponse): {
+                    rewards: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_28.QueryDelegationRewardsResponse>): _28.QueryDelegationRewardsResponse;
                 fromAmino(object: _28.QueryDelegationRewardsResponseAmino): _28.QueryDelegationRewardsResponse;
                 toAmino(message: _28.QueryDelegationRewardsResponse): _28.QueryDelegationRewardsResponseAmino;
@@ -3145,7 +5005,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegationTotalRewardsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegationTotalRewardsRequest;
                 fromJSON(object: any): _28.QueryDelegationTotalRewardsRequest;
-                toJSON(message: _28.QueryDelegationTotalRewardsRequest): unknown;
+                toJSON(message: _28.QueryDelegationTotalRewardsRequest): {
+                    delegatorAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryDelegationTotalRewardsRequest>): _28.QueryDelegationTotalRewardsRequest;
                 fromAmino(object: _28.QueryDelegationTotalRewardsRequestAmino): _28.QueryDelegationTotalRewardsRequest;
                 toAmino(message: _28.QueryDelegationTotalRewardsRequest): _28.QueryDelegationTotalRewardsRequestAmino;
@@ -3164,7 +5026,19 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegationTotalRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegationTotalRewardsResponse;
                 fromJSON(object: any): _28.QueryDelegationTotalRewardsResponse;
-                toJSON(message: _28.QueryDelegationTotalRewardsResponse): unknown;
+                toJSON(message: _28.QueryDelegationTotalRewardsResponse): {
+                    rewards: {
+                        validatorAddress: string;
+                        reward: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                    total: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_28.QueryDelegationTotalRewardsResponse>): _28.QueryDelegationTotalRewardsResponse;
                 fromAmino(object: _28.QueryDelegationTotalRewardsResponseAmino): _28.QueryDelegationTotalRewardsResponse;
                 toAmino(message: _28.QueryDelegationTotalRewardsResponse): _28.QueryDelegationTotalRewardsResponseAmino;
@@ -3183,7 +5057,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegatorValidatorsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegatorValidatorsRequest;
                 fromJSON(object: any): _28.QueryDelegatorValidatorsRequest;
-                toJSON(message: _28.QueryDelegatorValidatorsRequest): unknown;
+                toJSON(message: _28.QueryDelegatorValidatorsRequest): {
+                    delegatorAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryDelegatorValidatorsRequest>): _28.QueryDelegatorValidatorsRequest;
                 fromAmino(object: _28.QueryDelegatorValidatorsRequestAmino): _28.QueryDelegatorValidatorsRequest;
                 toAmino(message: _28.QueryDelegatorValidatorsRequest): _28.QueryDelegatorValidatorsRequestAmino;
@@ -3202,7 +5078,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegatorValidatorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegatorValidatorsResponse;
                 fromJSON(object: any): _28.QueryDelegatorValidatorsResponse;
-                toJSON(message: _28.QueryDelegatorValidatorsResponse): unknown;
+                toJSON(message: _28.QueryDelegatorValidatorsResponse): {
+                    validators: string[];
+                };
                 fromPartial(object: Partial<_28.QueryDelegatorValidatorsResponse>): _28.QueryDelegatorValidatorsResponse;
                 fromAmino(object: _28.QueryDelegatorValidatorsResponseAmino): _28.QueryDelegatorValidatorsResponse;
                 toAmino(message: _28.QueryDelegatorValidatorsResponse): _28.QueryDelegatorValidatorsResponseAmino;
@@ -3221,7 +5099,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegatorWithdrawAddressRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegatorWithdrawAddressRequest;
                 fromJSON(object: any): _28.QueryDelegatorWithdrawAddressRequest;
-                toJSON(message: _28.QueryDelegatorWithdrawAddressRequest): unknown;
+                toJSON(message: _28.QueryDelegatorWithdrawAddressRequest): {
+                    delegatorAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryDelegatorWithdrawAddressRequest>): _28.QueryDelegatorWithdrawAddressRequest;
                 fromAmino(object: _28.QueryDelegatorWithdrawAddressRequestAmino): _28.QueryDelegatorWithdrawAddressRequest;
                 toAmino(message: _28.QueryDelegatorWithdrawAddressRequest): _28.QueryDelegatorWithdrawAddressRequestAmino;
@@ -3240,7 +5120,9 @@ export declare namespace cosmos {
                 encode(message: _28.QueryDelegatorWithdrawAddressResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDelegatorWithdrawAddressResponse;
                 fromJSON(object: any): _28.QueryDelegatorWithdrawAddressResponse;
-                toJSON(message: _28.QueryDelegatorWithdrawAddressResponse): unknown;
+                toJSON(message: _28.QueryDelegatorWithdrawAddressResponse): {
+                    withdrawAddress: string;
+                };
                 fromPartial(object: Partial<_28.QueryDelegatorWithdrawAddressResponse>): _28.QueryDelegatorWithdrawAddressResponse;
                 fromAmino(object: _28.QueryDelegatorWithdrawAddressResponseAmino): _28.QueryDelegatorWithdrawAddressResponse;
                 toAmino(message: _28.QueryDelegatorWithdrawAddressResponse): _28.QueryDelegatorWithdrawAddressResponseAmino;
@@ -3259,7 +5141,7 @@ export declare namespace cosmos {
                 encode(_: _28.QueryCommunityPoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryCommunityPoolRequest;
                 fromJSON(_: any): _28.QueryCommunityPoolRequest;
-                toJSON(_: _28.QueryCommunityPoolRequest): unknown;
+                toJSON(_: _28.QueryCommunityPoolRequest): {};
                 fromPartial(_: Partial<_28.QueryCommunityPoolRequest>): _28.QueryCommunityPoolRequest;
                 fromAmino(_: _28.QueryCommunityPoolRequestAmino): _28.QueryCommunityPoolRequest;
                 toAmino(_: _28.QueryCommunityPoolRequest): _28.QueryCommunityPoolRequestAmino;
@@ -3278,7 +5160,12 @@ export declare namespace cosmos {
                 encode(message: _28.QueryCommunityPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryCommunityPoolResponse;
                 fromJSON(object: any): _28.QueryCommunityPoolResponse;
-                toJSON(message: _28.QueryCommunityPoolResponse): unknown;
+                toJSON(message: _28.QueryCommunityPoolResponse): {
+                    pool: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_28.QueryCommunityPoolResponse>): _28.QueryCommunityPoolResponse;
                 fromAmino(object: _28.QueryCommunityPoolResponseAmino): _28.QueryCommunityPoolResponse;
                 toAmino(message: _28.QueryCommunityPoolResponse): _28.QueryCommunityPoolResponseAmino;
@@ -3297,7 +5184,10 @@ export declare namespace cosmos {
                 encode(message: _27.DelegatorWithdrawInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.DelegatorWithdrawInfo;
                 fromJSON(object: any): _27.DelegatorWithdrawInfo;
-                toJSON(message: _27.DelegatorWithdrawInfo): unknown;
+                toJSON(message: _27.DelegatorWithdrawInfo): {
+                    delegatorAddress: string;
+                    withdrawAddress: string;
+                };
                 fromPartial(object: Partial<_27.DelegatorWithdrawInfo>): _27.DelegatorWithdrawInfo;
                 fromAmino(object: _27.DelegatorWithdrawInfoAmino): _27.DelegatorWithdrawInfo;
                 toAmino(message: _27.DelegatorWithdrawInfo): _27.DelegatorWithdrawInfoAmino;
@@ -3316,7 +5206,13 @@ export declare namespace cosmos {
                 encode(message: _27.ValidatorOutstandingRewardsRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.ValidatorOutstandingRewardsRecord;
                 fromJSON(object: any): _27.ValidatorOutstandingRewardsRecord;
-                toJSON(message: _27.ValidatorOutstandingRewardsRecord): unknown;
+                toJSON(message: _27.ValidatorOutstandingRewardsRecord): {
+                    validatorAddress: string;
+                    outstandingRewards: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_27.ValidatorOutstandingRewardsRecord>): _27.ValidatorOutstandingRewardsRecord;
                 fromAmino(object: _27.ValidatorOutstandingRewardsRecordAmino): _27.ValidatorOutstandingRewardsRecord;
                 toAmino(message: _27.ValidatorOutstandingRewardsRecord): _27.ValidatorOutstandingRewardsRecordAmino;
@@ -3335,7 +5231,15 @@ export declare namespace cosmos {
                 encode(message: _27.ValidatorAccumulatedCommissionRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.ValidatorAccumulatedCommissionRecord;
                 fromJSON(object: any): _27.ValidatorAccumulatedCommissionRecord;
-                toJSON(message: _27.ValidatorAccumulatedCommissionRecord): unknown;
+                toJSON(message: _27.ValidatorAccumulatedCommissionRecord): {
+                    validatorAddress: string;
+                    accumulated: {
+                        commission: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_27.ValidatorAccumulatedCommissionRecord>): _27.ValidatorAccumulatedCommissionRecord;
                 fromAmino(object: _27.ValidatorAccumulatedCommissionRecordAmino): _27.ValidatorAccumulatedCommissionRecord;
                 toAmino(message: _27.ValidatorAccumulatedCommissionRecord): _27.ValidatorAccumulatedCommissionRecordAmino;
@@ -3354,7 +5258,17 @@ export declare namespace cosmos {
                 encode(message: _27.ValidatorHistoricalRewardsRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.ValidatorHistoricalRewardsRecord;
                 fromJSON(object: any): _27.ValidatorHistoricalRewardsRecord;
-                toJSON(message: _27.ValidatorHistoricalRewardsRecord): unknown;
+                toJSON(message: _27.ValidatorHistoricalRewardsRecord): {
+                    validatorAddress: string;
+                    period: string;
+                    rewards: {
+                        cumulativeRewardRatio: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        referenceCount: number;
+                    };
+                };
                 fromPartial(object: Partial<_27.ValidatorHistoricalRewardsRecord>): _27.ValidatorHistoricalRewardsRecord;
                 fromAmino(object: _27.ValidatorHistoricalRewardsRecordAmino): _27.ValidatorHistoricalRewardsRecord;
                 toAmino(message: _27.ValidatorHistoricalRewardsRecord): _27.ValidatorHistoricalRewardsRecordAmino;
@@ -3373,7 +5287,16 @@ export declare namespace cosmos {
                 encode(message: _27.ValidatorCurrentRewardsRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.ValidatorCurrentRewardsRecord;
                 fromJSON(object: any): _27.ValidatorCurrentRewardsRecord;
-                toJSON(message: _27.ValidatorCurrentRewardsRecord): unknown;
+                toJSON(message: _27.ValidatorCurrentRewardsRecord): {
+                    validatorAddress: string;
+                    rewards: {
+                        rewards: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        period: string;
+                    };
+                };
                 fromPartial(object: Partial<_27.ValidatorCurrentRewardsRecord>): _27.ValidatorCurrentRewardsRecord;
                 fromAmino(object: _27.ValidatorCurrentRewardsRecordAmino): _27.ValidatorCurrentRewardsRecord;
                 toAmino(message: _27.ValidatorCurrentRewardsRecord): _27.ValidatorCurrentRewardsRecordAmino;
@@ -3392,7 +5315,15 @@ export declare namespace cosmos {
                 encode(message: _27.DelegatorStartingInfoRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.DelegatorStartingInfoRecord;
                 fromJSON(object: any): _27.DelegatorStartingInfoRecord;
-                toJSON(message: _27.DelegatorStartingInfoRecord): unknown;
+                toJSON(message: _27.DelegatorStartingInfoRecord): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                    startingInfo: {
+                        previousPeriod: string;
+                        stake: string;
+                        height: string;
+                    };
+                };
                 fromPartial(object: Partial<_27.DelegatorStartingInfoRecord>): _27.DelegatorStartingInfoRecord;
                 fromAmino(object: _27.DelegatorStartingInfoRecordAmino): _27.DelegatorStartingInfoRecord;
                 toAmino(message: _27.DelegatorStartingInfoRecord): _27.DelegatorStartingInfoRecordAmino;
@@ -3411,7 +5342,15 @@ export declare namespace cosmos {
                 encode(message: _27.ValidatorSlashEventRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.ValidatorSlashEventRecord;
                 fromJSON(object: any): _27.ValidatorSlashEventRecord;
-                toJSON(message: _27.ValidatorSlashEventRecord): unknown;
+                toJSON(message: _27.ValidatorSlashEventRecord): {
+                    validatorAddress: string;
+                    height: string;
+                    period: string;
+                    validatorSlashEvent: {
+                        validatorPeriod: string;
+                        fraction: string;
+                    };
+                };
                 fromPartial(object: Partial<_27.ValidatorSlashEventRecord>): _27.ValidatorSlashEventRecord;
                 fromAmino(object: _27.ValidatorSlashEventRecordAmino): _27.ValidatorSlashEventRecord;
                 toAmino(message: _27.ValidatorSlashEventRecord): _27.ValidatorSlashEventRecordAmino;
@@ -3430,7 +5369,80 @@ export declare namespace cosmos {
                 encode(message: _27.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.GenesisState;
                 fromJSON(object: any): _27.GenesisState;
-                toJSON(message: _27.GenesisState): unknown;
+                toJSON(message: _27.GenesisState): {
+                    params: {
+                        communityTax: string;
+                        baseProposerReward: string;
+                        bonusProposerReward: string;
+                        withdrawAddrEnabled: boolean;
+                    };
+                    feePool: {
+                        communityPool: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    };
+                    delegatorWithdrawInfos: {
+                        delegatorAddress: string;
+                        withdrawAddress: string;
+                    }[];
+                    previousProposer: string;
+                    outstandingRewards: {
+                        validatorAddress: string;
+                        outstandingRewards: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                    validatorAccumulatedCommissions: {
+                        validatorAddress: string;
+                        accumulated: {
+                            commission: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        };
+                    }[];
+                    validatorHistoricalRewards: {
+                        validatorAddress: string;
+                        period: string;
+                        rewards: {
+                            cumulativeRewardRatio: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            referenceCount: number;
+                        };
+                    }[];
+                    validatorCurrentRewards: {
+                        validatorAddress: string;
+                        rewards: {
+                            rewards: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            period: string;
+                        };
+                    }[];
+                    delegatorStartingInfos: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        startingInfo: {
+                            previousPeriod: string;
+                            stake: string;
+                            height: string;
+                        };
+                    }[];
+                    validatorSlashEvents: {
+                        validatorAddress: string;
+                        height: string;
+                        period: string;
+                        validatorSlashEvent: {
+                            validatorPeriod: string;
+                            fraction: string;
+                        };
+                    }[];
+                };
                 fromPartial(object: Partial<_27.GenesisState>): _27.GenesisState;
                 fromAmino(object: _27.GenesisStateAmino): _27.GenesisState;
                 toAmino(message: _27.GenesisState): _27.GenesisStateAmino;
@@ -3449,7 +5461,12 @@ export declare namespace cosmos {
                 encode(message: _26.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.Params;
                 fromJSON(object: any): _26.Params;
-                toJSON(message: _26.Params): unknown;
+                toJSON(message: _26.Params): {
+                    communityTax: string;
+                    baseProposerReward: string;
+                    bonusProposerReward: string;
+                    withdrawAddrEnabled: boolean;
+                };
                 fromPartial(object: Partial<_26.Params>): _26.Params;
                 fromAmino(object: _26.ParamsAmino): _26.Params;
                 toAmino(message: _26.Params): _26.ParamsAmino;
@@ -3468,7 +5485,13 @@ export declare namespace cosmos {
                 encode(message: _26.ValidatorHistoricalRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.ValidatorHistoricalRewards;
                 fromJSON(object: any): _26.ValidatorHistoricalRewards;
-                toJSON(message: _26.ValidatorHistoricalRewards): unknown;
+                toJSON(message: _26.ValidatorHistoricalRewards): {
+                    cumulativeRewardRatio: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    referenceCount: number;
+                };
                 fromPartial(object: Partial<_26.ValidatorHistoricalRewards>): _26.ValidatorHistoricalRewards;
                 fromAmino(object: _26.ValidatorHistoricalRewardsAmino): _26.ValidatorHistoricalRewards;
                 toAmino(message: _26.ValidatorHistoricalRewards): _26.ValidatorHistoricalRewardsAmino;
@@ -3487,7 +5510,13 @@ export declare namespace cosmos {
                 encode(message: _26.ValidatorCurrentRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.ValidatorCurrentRewards;
                 fromJSON(object: any): _26.ValidatorCurrentRewards;
-                toJSON(message: _26.ValidatorCurrentRewards): unknown;
+                toJSON(message: _26.ValidatorCurrentRewards): {
+                    rewards: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    period: string;
+                };
                 fromPartial(object: Partial<_26.ValidatorCurrentRewards>): _26.ValidatorCurrentRewards;
                 fromAmino(object: _26.ValidatorCurrentRewardsAmino): _26.ValidatorCurrentRewards;
                 toAmino(message: _26.ValidatorCurrentRewards): _26.ValidatorCurrentRewardsAmino;
@@ -3506,7 +5535,12 @@ export declare namespace cosmos {
                 encode(message: _26.ValidatorAccumulatedCommission, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.ValidatorAccumulatedCommission;
                 fromJSON(object: any): _26.ValidatorAccumulatedCommission;
-                toJSON(message: _26.ValidatorAccumulatedCommission): unknown;
+                toJSON(message: _26.ValidatorAccumulatedCommission): {
+                    commission: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_26.ValidatorAccumulatedCommission>): _26.ValidatorAccumulatedCommission;
                 fromAmino(object: _26.ValidatorAccumulatedCommissionAmino): _26.ValidatorAccumulatedCommission;
                 toAmino(message: _26.ValidatorAccumulatedCommission): _26.ValidatorAccumulatedCommissionAmino;
@@ -3525,7 +5559,12 @@ export declare namespace cosmos {
                 encode(message: _26.ValidatorOutstandingRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.ValidatorOutstandingRewards;
                 fromJSON(object: any): _26.ValidatorOutstandingRewards;
-                toJSON(message: _26.ValidatorOutstandingRewards): unknown;
+                toJSON(message: _26.ValidatorOutstandingRewards): {
+                    rewards: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_26.ValidatorOutstandingRewards>): _26.ValidatorOutstandingRewards;
                 fromAmino(object: _26.ValidatorOutstandingRewardsAmino): _26.ValidatorOutstandingRewards;
                 toAmino(message: _26.ValidatorOutstandingRewards): _26.ValidatorOutstandingRewardsAmino;
@@ -3544,7 +5583,10 @@ export declare namespace cosmos {
                 encode(message: _26.ValidatorSlashEvent, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.ValidatorSlashEvent;
                 fromJSON(object: any): _26.ValidatorSlashEvent;
-                toJSON(message: _26.ValidatorSlashEvent): unknown;
+                toJSON(message: _26.ValidatorSlashEvent): {
+                    validatorPeriod: string;
+                    fraction: string;
+                };
                 fromPartial(object: Partial<_26.ValidatorSlashEvent>): _26.ValidatorSlashEvent;
                 fromAmino(object: _26.ValidatorSlashEventAmino): _26.ValidatorSlashEvent;
                 toAmino(message: _26.ValidatorSlashEvent): _26.ValidatorSlashEventAmino;
@@ -3563,7 +5605,12 @@ export declare namespace cosmos {
                 encode(message: _26.ValidatorSlashEvents, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.ValidatorSlashEvents;
                 fromJSON(object: any): _26.ValidatorSlashEvents;
-                toJSON(message: _26.ValidatorSlashEvents): unknown;
+                toJSON(message: _26.ValidatorSlashEvents): {
+                    validatorSlashEvents: {
+                        validatorPeriod: string;
+                        fraction: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_26.ValidatorSlashEvents>): _26.ValidatorSlashEvents;
                 fromAmino(object: _26.ValidatorSlashEventsAmino): _26.ValidatorSlashEvents;
                 toAmino(message: _26.ValidatorSlashEvents): _26.ValidatorSlashEventsAmino;
@@ -3582,7 +5629,12 @@ export declare namespace cosmos {
                 encode(message: _26.FeePool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.FeePool;
                 fromJSON(object: any): _26.FeePool;
-                toJSON(message: _26.FeePool): unknown;
+                toJSON(message: _26.FeePool): {
+                    communityPool: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_26.FeePool>): _26.FeePool;
                 fromAmino(object: _26.FeePoolAmino): _26.FeePool;
                 toAmino(message: _26.FeePool): _26.FeePoolAmino;
@@ -3601,7 +5653,16 @@ export declare namespace cosmos {
                 encode(message: _26.CommunityPoolSpendProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.CommunityPoolSpendProposal;
                 fromJSON(object: any): _26.CommunityPoolSpendProposal;
-                toJSON(message: _26.CommunityPoolSpendProposal): unknown;
+                toJSON(message: _26.CommunityPoolSpendProposal): {
+                    $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                    title: string;
+                    description: string;
+                    recipient: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_26.CommunityPoolSpendProposal>): _26.CommunityPoolSpendProposal;
                 fromAmino(object: _26.CommunityPoolSpendProposalAmino): _26.CommunityPoolSpendProposal;
                 toAmino(message: _26.CommunityPoolSpendProposal): _26.CommunityPoolSpendProposalAmino;
@@ -3620,7 +5681,11 @@ export declare namespace cosmos {
                 encode(message: _26.DelegatorStartingInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.DelegatorStartingInfo;
                 fromJSON(object: any): _26.DelegatorStartingInfo;
-                toJSON(message: _26.DelegatorStartingInfo): unknown;
+                toJSON(message: _26.DelegatorStartingInfo): {
+                    previousPeriod: string;
+                    stake: string;
+                    height: string;
+                };
                 fromPartial(object: Partial<_26.DelegatorStartingInfo>): _26.DelegatorStartingInfo;
                 fromAmino(object: _26.DelegatorStartingInfoAmino): _26.DelegatorStartingInfo;
                 toAmino(message: _26.DelegatorStartingInfo): _26.DelegatorStartingInfoAmino;
@@ -3639,7 +5704,13 @@ export declare namespace cosmos {
                 encode(message: _26.DelegationDelegatorReward, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.DelegationDelegatorReward;
                 fromJSON(object: any): _26.DelegationDelegatorReward;
-                toJSON(message: _26.DelegationDelegatorReward): unknown;
+                toJSON(message: _26.DelegationDelegatorReward): {
+                    validatorAddress: string;
+                    reward: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_26.DelegationDelegatorReward>): _26.DelegationDelegatorReward;
                 fromAmino(object: _26.DelegationDelegatorRewardAmino): _26.DelegationDelegatorReward;
                 toAmino(message: _26.DelegationDelegatorReward): _26.DelegationDelegatorRewardAmino;
@@ -3658,7 +5729,14 @@ export declare namespace cosmos {
                 encode(message: _26.CommunityPoolSpendProposalWithDeposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.CommunityPoolSpendProposalWithDeposit;
                 fromJSON(object: any): _26.CommunityPoolSpendProposalWithDeposit;
-                toJSON(message: _26.CommunityPoolSpendProposalWithDeposit): unknown;
+                toJSON(message: _26.CommunityPoolSpendProposalWithDeposit): {
+                    $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                    title: string;
+                    description: string;
+                    recipient: string;
+                    amount: string;
+                    deposit: string;
+                };
                 fromPartial(object: Partial<_26.CommunityPoolSpendProposalWithDeposit>): _26.CommunityPoolSpendProposalWithDeposit;
                 fromAmino(object: _26.CommunityPoolSpendProposalWithDepositAmino): _26.CommunityPoolSpendProposalWithDeposit;
                 toAmino(message: _26.CommunityPoolSpendProposalWithDeposit): _26.CommunityPoolSpendProposalWithDepositAmino;
@@ -3726,19 +5804,235 @@ export declare namespace cosmos {
                 toJSON: {
                     submitProposal(value: _33.MsgSubmitProposal): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            content?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            } | {
+                                $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                                title: string;
+                                description: string;
+                                recipient: string;
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                                title: string;
+                                description: string;
+                                recipient: string;
+                                amount: string;
+                                deposit: string;
+                            } | {
+                                $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                                title: string;
+                                description: string;
+                                plan: {
+                                    name: string;
+                                    time: string;
+                                    height: string;
+                                    info: string;
+                                    upgradedClientState?: {
+                                        $typeUrl?: string;
+                                        typeUrl: string;
+                                        value: string;
+                                    };
+                                };
+                            } | {
+                                $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                                title: string;
+                                description: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.StoreCodeProposal";
+                                title: string;
+                                description: string;
+                                runAs: string;
+                                wasmByteCode: string;
+                                instantiatePermission?: {
+                                    permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                    address: string;
+                                    addresses: string[];
+                                };
+                                unpinCode: boolean;
+                                source: string;
+                                builder: string;
+                                codeHash: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContractProposal";
+                                title: string;
+                                description: string;
+                                runAs: string;
+                                admin: string;
+                                codeId: string;
+                                label: string;
+                                msg: string;
+                                funds: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContract2Proposal";
+                                title: string;
+                                description: string;
+                                runAs: string;
+                                admin: string;
+                                codeId: string;
+                                label: string;
+                                msg: string;
+                                funds: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                salt: string;
+                                fixMsg: boolean;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.MigrateContractProposal";
+                                title: string;
+                                description: string;
+                                contract: string;
+                                codeId: string;
+                                msg: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.SudoContractProposal";
+                                title: string;
+                                description: string;
+                                contract: string;
+                                msg: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.ExecuteContractProposal";
+                                title: string;
+                                description: string;
+                                runAs: string;
+                                contract: string;
+                                msg: string;
+                                funds: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.UpdateAdminProposal";
+                                title: string;
+                                description: string;
+                                newAdmin: string;
+                                contract: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.ClearAdminProposal";
+                                title: string;
+                                description: string;
+                                contract: string;
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.PinCodesProposal";
+                                title: string;
+                                description: string;
+                                codeIds: string[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.UnpinCodesProposal";
+                                title: string;
+                                description: string;
+                                codeIds: string[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal";
+                                title: string;
+                                description: string;
+                                accessConfigUpdates: {
+                                    codeId: string;
+                                    instantiatePermission: {
+                                        permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                        address: string;
+                                        addresses: string[];
+                                    };
+                                }[];
+                            } | {
+                                $typeUrl?: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal";
+                                title: string;
+                                description: string;
+                                runAs: string;
+                                wasmByteCode: string;
+                                instantiatePermission?: {
+                                    permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                    address: string;
+                                    addresses: string[];
+                                };
+                                unpinCode: boolean;
+                                admin: string;
+                                label: string;
+                                msg: string;
+                                funds: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                source: string;
+                                builder: string;
+                                codeHash: string;
+                            } | {
+                                $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+                                title: string;
+                                description: string;
+                                subjectClientId: string;
+                                substituteClientId: string;
+                            } | {
+                                $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+                                title: string;
+                                description: string;
+                                plan: {
+                                    name: string;
+                                    time: string;
+                                    height: string;
+                                    info: string;
+                                    upgradedClientState?: {
+                                        $typeUrl?: string;
+                                        typeUrl: string;
+                                        value: string;
+                                    };
+                                };
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            } | {
+                                $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                                title: string;
+                                description: string;
+                            };
+                            initialDeposit: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            proposer: string;
+                        };
                     };
                     vote(value: _33.MsgVote): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            proposalId: string;
+                            voter: string;
+                            option: _31.VoteOption;
+                        };
                     };
                     voteWeighted(value: _33.MsgVoteWeighted): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            proposalId: string;
+                            voter: string;
+                            options: {
+                                option: _31.VoteOption;
+                                weight: string;
+                            }[];
+                        };
                     };
                     deposit(value: _33.MsgDeposit): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            proposalId: string;
+                            depositor: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        };
                     };
                 };
                 fromJSON: {
@@ -3809,7 +6103,205 @@ export declare namespace cosmos {
                 encode(message: _33.MsgSubmitProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgSubmitProposal;
                 fromJSON(object: any): _33.MsgSubmitProposal;
-                toJSON(message: _33.MsgSubmitProposal): unknown;
+                toJSON(message: _33.MsgSubmitProposal): {
+                    content?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                        title: string;
+                        description: string;
+                        recipient: string;
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                        title: string;
+                        description: string;
+                        recipient: string;
+                        amount: string;
+                        deposit: string;
+                    } | {
+                        $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                        title: string;
+                        description: string;
+                        plan: {
+                            name: string;
+                            time: string;
+                            height: string;
+                            info: string;
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        };
+                    } | {
+                        $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                        title: string;
+                        description: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.StoreCodeProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        wasmByteCode: string;
+                        instantiatePermission?: {
+                            permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                            address: string;
+                            addresses: string[];
+                        };
+                        unpinCode: boolean;
+                        source: string;
+                        builder: string;
+                        codeHash: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContractProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        admin: string;
+                        codeId: string;
+                        label: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContract2Proposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        admin: string;
+                        codeId: string;
+                        label: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        salt: string;
+                        fixMsg: boolean;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.MigrateContractProposal";
+                        title: string;
+                        description: string;
+                        contract: string;
+                        codeId: string;
+                        msg: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.SudoContractProposal";
+                        title: string;
+                        description: string;
+                        contract: string;
+                        msg: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ExecuteContractProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        contract: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.UpdateAdminProposal";
+                        title: string;
+                        description: string;
+                        newAdmin: string;
+                        contract: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ClearAdminProposal";
+                        title: string;
+                        description: string;
+                        contract: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.PinCodesProposal";
+                        title: string;
+                        description: string;
+                        codeIds: string[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.UnpinCodesProposal";
+                        title: string;
+                        description: string;
+                        codeIds: string[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal";
+                        title: string;
+                        description: string;
+                        accessConfigUpdates: {
+                            codeId: string;
+                            instantiatePermission: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        wasmByteCode: string;
+                        instantiatePermission?: {
+                            permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                            address: string;
+                            addresses: string[];
+                        };
+                        unpinCode: boolean;
+                        admin: string;
+                        label: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        source: string;
+                        builder: string;
+                        codeHash: string;
+                    } | {
+                        $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+                        title: string;
+                        description: string;
+                        subjectClientId: string;
+                        substituteClientId: string;
+                    } | {
+                        $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+                        title: string;
+                        description: string;
+                        plan: {
+                            name: string;
+                            time: string;
+                            height: string;
+                            info: string;
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        };
+                        upgradedClientState?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                    } | {
+                        $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                        title: string;
+                        description: string;
+                    };
+                    initialDeposit: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    proposer: string;
+                };
                 fromPartial(object: Partial<_33.MsgSubmitProposal>): _33.MsgSubmitProposal;
                 fromAmino(object: _33.MsgSubmitProposalAmino): _33.MsgSubmitProposal;
                 toAmino(message: _33.MsgSubmitProposal): _33.MsgSubmitProposalAmino;
@@ -3828,7 +6320,9 @@ export declare namespace cosmos {
                 encode(message: _33.MsgSubmitProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgSubmitProposalResponse;
                 fromJSON(object: any): _33.MsgSubmitProposalResponse;
-                toJSON(message: _33.MsgSubmitProposalResponse): unknown;
+                toJSON(message: _33.MsgSubmitProposalResponse): {
+                    proposalId: string;
+                };
                 fromPartial(object: Partial<_33.MsgSubmitProposalResponse>): _33.MsgSubmitProposalResponse;
                 fromAmino(object: _33.MsgSubmitProposalResponseAmino): _33.MsgSubmitProposalResponse;
                 toAmino(message: _33.MsgSubmitProposalResponse): _33.MsgSubmitProposalResponseAmino;
@@ -3847,7 +6341,11 @@ export declare namespace cosmos {
                 encode(message: _33.MsgVote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgVote;
                 fromJSON(object: any): _33.MsgVote;
-                toJSON(message: _33.MsgVote): unknown;
+                toJSON(message: _33.MsgVote): {
+                    proposalId: string;
+                    voter: string;
+                    option: _31.VoteOption;
+                };
                 fromPartial(object: Partial<_33.MsgVote>): _33.MsgVote;
                 fromAmino(object: _33.MsgVoteAmino): _33.MsgVote;
                 toAmino(message: _33.MsgVote): _33.MsgVoteAmino;
@@ -3866,7 +6364,7 @@ export declare namespace cosmos {
                 encode(_: _33.MsgVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgVoteResponse;
                 fromJSON(_: any): _33.MsgVoteResponse;
-                toJSON(_: _33.MsgVoteResponse): unknown;
+                toJSON(_: _33.MsgVoteResponse): {};
                 fromPartial(_: Partial<_33.MsgVoteResponse>): _33.MsgVoteResponse;
                 fromAmino(_: _33.MsgVoteResponseAmino): _33.MsgVoteResponse;
                 toAmino(_: _33.MsgVoteResponse): _33.MsgVoteResponseAmino;
@@ -3885,7 +6383,14 @@ export declare namespace cosmos {
                 encode(message: _33.MsgVoteWeighted, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgVoteWeighted;
                 fromJSON(object: any): _33.MsgVoteWeighted;
-                toJSON(message: _33.MsgVoteWeighted): unknown;
+                toJSON(message: _33.MsgVoteWeighted): {
+                    proposalId: string;
+                    voter: string;
+                    options: {
+                        option: _31.VoteOption;
+                        weight: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_33.MsgVoteWeighted>): _33.MsgVoteWeighted;
                 fromAmino(object: _33.MsgVoteWeightedAmino): _33.MsgVoteWeighted;
                 toAmino(message: _33.MsgVoteWeighted): _33.MsgVoteWeightedAmino;
@@ -3904,7 +6409,7 @@ export declare namespace cosmos {
                 encode(_: _33.MsgVoteWeightedResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgVoteWeightedResponse;
                 fromJSON(_: any): _33.MsgVoteWeightedResponse;
-                toJSON(_: _33.MsgVoteWeightedResponse): unknown;
+                toJSON(_: _33.MsgVoteWeightedResponse): {};
                 fromPartial(_: Partial<_33.MsgVoteWeightedResponse>): _33.MsgVoteWeightedResponse;
                 fromAmino(_: _33.MsgVoteWeightedResponseAmino): _33.MsgVoteWeightedResponse;
                 toAmino(_: _33.MsgVoteWeightedResponse): _33.MsgVoteWeightedResponseAmino;
@@ -3923,7 +6428,14 @@ export declare namespace cosmos {
                 encode(message: _33.MsgDeposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgDeposit;
                 fromJSON(object: any): _33.MsgDeposit;
-                toJSON(message: _33.MsgDeposit): unknown;
+                toJSON(message: _33.MsgDeposit): {
+                    proposalId: string;
+                    depositor: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_33.MsgDeposit>): _33.MsgDeposit;
                 fromAmino(object: _33.MsgDepositAmino): _33.MsgDeposit;
                 toAmino(message: _33.MsgDeposit): _33.MsgDepositAmino;
@@ -3942,7 +6454,7 @@ export declare namespace cosmos {
                 encode(_: _33.MsgDepositResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.MsgDepositResponse;
                 fromJSON(_: any): _33.MsgDepositResponse;
-                toJSON(_: _33.MsgDepositResponse): unknown;
+                toJSON(_: _33.MsgDepositResponse): {};
                 fromPartial(_: Partial<_33.MsgDepositResponse>): _33.MsgDepositResponse;
                 fromAmino(_: _33.MsgDepositResponseAmino): _33.MsgDepositResponse;
                 toAmino(_: _33.MsgDepositResponse): _33.MsgDepositResponseAmino;
@@ -3961,7 +6473,9 @@ export declare namespace cosmos {
                 encode(message: _32.QueryProposalRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryProposalRequest;
                 fromJSON(object: any): _32.QueryProposalRequest;
-                toJSON(message: _32.QueryProposalRequest): unknown;
+                toJSON(message: _32.QueryProposalRequest): {
+                    proposalId: string;
+                };
                 fromPartial(object: Partial<_32.QueryProposalRequest>): _32.QueryProposalRequest;
                 fromAmino(object: _32.QueryProposalRequestAmino): _32.QueryProposalRequest;
                 toAmino(message: _32.QueryProposalRequest): _32.QueryProposalRequestAmino;
@@ -3980,7 +6494,218 @@ export declare namespace cosmos {
                 encode(message: _32.QueryProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryProposalResponse;
                 fromJSON(object: any): _32.QueryProposalResponse;
-                toJSON(message: _32.QueryProposalResponse): unknown;
+                toJSON(message: _32.QueryProposalResponse): {
+                    proposal: {
+                        proposalId: string;
+                        content?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                            title: string;
+                            description: string;
+                            recipient: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                            title: string;
+                            description: string;
+                            recipient: string;
+                            amount: string;
+                            deposit: string;
+                        } | {
+                            $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                            title: string;
+                            description: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                        } | {
+                            $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                            title: string;
+                            description: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.StoreCodeProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            wasmByteCode: string;
+                            instantiatePermission?: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                            unpinCode: boolean;
+                            source: string;
+                            builder: string;
+                            codeHash: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            admin: string;
+                            codeId: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContract2Proposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            admin: string;
+                            codeId: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            salt: string;
+                            fixMsg: boolean;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.MigrateContractProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                            codeId: string;
+                            msg: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.SudoContractProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                            msg: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ExecuteContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            contract: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UpdateAdminProposal";
+                            title: string;
+                            description: string;
+                            newAdmin: string;
+                            contract: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ClearAdminProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.PinCodesProposal";
+                            title: string;
+                            description: string;
+                            codeIds: string[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UnpinCodesProposal";
+                            title: string;
+                            description: string;
+                            codeIds: string[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal";
+                            title: string;
+                            description: string;
+                            accessConfigUpdates: {
+                                codeId: string;
+                                instantiatePermission: {
+                                    permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                    address: string;
+                                    addresses: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            wasmByteCode: string;
+                            instantiatePermission?: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                            unpinCode: boolean;
+                            admin: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            source: string;
+                            builder: string;
+                            codeHash: string;
+                        } | {
+                            $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+                            title: string;
+                            description: string;
+                            subjectClientId: string;
+                            substituteClientId: string;
+                        } | {
+                            $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+                            title: string;
+                            description: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        } | {
+                            $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                            title: string;
+                            description: string;
+                        };
+                        status: _31.ProposalStatus;
+                        finalTallyResult: {
+                            yes: string;
+                            abstain: string;
+                            no: string;
+                            noWithVeto: string;
+                        };
+                        submitTime: string;
+                        depositEndTime: string;
+                        totalDeposit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        votingStartTime: string;
+                        votingEndTime: string;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryProposalResponse>): _32.QueryProposalResponse;
                 fromAmino(object: _32.QueryProposalResponseAmino): _32.QueryProposalResponse;
                 toAmino(message: _32.QueryProposalResponse): _32.QueryProposalResponseAmino;
@@ -3999,7 +6724,18 @@ export declare namespace cosmos {
                 encode(message: _32.QueryProposalsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryProposalsRequest;
                 fromJSON(object: any): _32.QueryProposalsRequest;
-                toJSON(message: _32.QueryProposalsRequest): unknown;
+                toJSON(message: _32.QueryProposalsRequest): {
+                    proposalStatus: _31.ProposalStatus;
+                    voter: string;
+                    depositor: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryProposalsRequest>): _32.QueryProposalsRequest;
                 fromAmino(object: _32.QueryProposalsRequestAmino): _32.QueryProposalsRequest;
                 toAmino(message: _32.QueryProposalsRequest): _32.QueryProposalsRequestAmino;
@@ -4018,7 +6754,222 @@ export declare namespace cosmos {
                 encode(message: _32.QueryProposalsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryProposalsResponse;
                 fromJSON(object: any): _32.QueryProposalsResponse;
-                toJSON(message: _32.QueryProposalsResponse): unknown;
+                toJSON(message: _32.QueryProposalsResponse): {
+                    proposals: {
+                        proposalId: string;
+                        content?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                            title: string;
+                            description: string;
+                            recipient: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                            title: string;
+                            description: string;
+                            recipient: string;
+                            amount: string;
+                            deposit: string;
+                        } | {
+                            $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                            title: string;
+                            description: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                        } | {
+                            $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                            title: string;
+                            description: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.StoreCodeProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            wasmByteCode: string;
+                            instantiatePermission?: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                            unpinCode: boolean;
+                            source: string;
+                            builder: string;
+                            codeHash: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            admin: string;
+                            codeId: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContract2Proposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            admin: string;
+                            codeId: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            salt: string;
+                            fixMsg: boolean;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.MigrateContractProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                            codeId: string;
+                            msg: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.SudoContractProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                            msg: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ExecuteContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            contract: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UpdateAdminProposal";
+                            title: string;
+                            description: string;
+                            newAdmin: string;
+                            contract: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ClearAdminProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.PinCodesProposal";
+                            title: string;
+                            description: string;
+                            codeIds: string[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UnpinCodesProposal";
+                            title: string;
+                            description: string;
+                            codeIds: string[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal";
+                            title: string;
+                            description: string;
+                            accessConfigUpdates: {
+                                codeId: string;
+                                instantiatePermission: {
+                                    permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                    address: string;
+                                    addresses: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            wasmByteCode: string;
+                            instantiatePermission?: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                            unpinCode: boolean;
+                            admin: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            source: string;
+                            builder: string;
+                            codeHash: string;
+                        } | {
+                            $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+                            title: string;
+                            description: string;
+                            subjectClientId: string;
+                            substituteClientId: string;
+                        } | {
+                            $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+                            title: string;
+                            description: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        } | {
+                            $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                            title: string;
+                            description: string;
+                        };
+                        status: _31.ProposalStatus;
+                        finalTallyResult: {
+                            yes: string;
+                            abstain: string;
+                            no: string;
+                            noWithVeto: string;
+                        };
+                        submitTime: string;
+                        depositEndTime: string;
+                        totalDeposit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        votingStartTime: string;
+                        votingEndTime: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryProposalsResponse>): _32.QueryProposalsResponse;
                 fromAmino(object: _32.QueryProposalsResponseAmino): _32.QueryProposalsResponse;
                 toAmino(message: _32.QueryProposalsResponse): _32.QueryProposalsResponseAmino;
@@ -4037,7 +6988,10 @@ export declare namespace cosmos {
                 encode(message: _32.QueryVoteRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryVoteRequest;
                 fromJSON(object: any): _32.QueryVoteRequest;
-                toJSON(message: _32.QueryVoteRequest): unknown;
+                toJSON(message: _32.QueryVoteRequest): {
+                    proposalId: string;
+                    voter: string;
+                };
                 fromPartial(object: Partial<_32.QueryVoteRequest>): _32.QueryVoteRequest;
                 fromAmino(object: _32.QueryVoteRequestAmino): _32.QueryVoteRequest;
                 toAmino(message: _32.QueryVoteRequest): _32.QueryVoteRequestAmino;
@@ -4056,7 +7010,17 @@ export declare namespace cosmos {
                 encode(message: _32.QueryVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryVoteResponse;
                 fromJSON(object: any): _32.QueryVoteResponse;
-                toJSON(message: _32.QueryVoteResponse): unknown;
+                toJSON(message: _32.QueryVoteResponse): {
+                    vote: {
+                        proposalId: string;
+                        voter: string;
+                        option: _31.VoteOption;
+                        options: {
+                            option: _31.VoteOption;
+                            weight: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryVoteResponse>): _32.QueryVoteResponse;
                 fromAmino(object: _32.QueryVoteResponseAmino): _32.QueryVoteResponse;
                 toAmino(message: _32.QueryVoteResponse): _32.QueryVoteResponseAmino;
@@ -4075,7 +7039,16 @@ export declare namespace cosmos {
                 encode(message: _32.QueryVotesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryVotesRequest;
                 fromJSON(object: any): _32.QueryVotesRequest;
-                toJSON(message: _32.QueryVotesRequest): unknown;
+                toJSON(message: _32.QueryVotesRequest): {
+                    proposalId: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryVotesRequest>): _32.QueryVotesRequest;
                 fromAmino(object: _32.QueryVotesRequestAmino): _32.QueryVotesRequest;
                 toAmino(message: _32.QueryVotesRequest): _32.QueryVotesRequestAmino;
@@ -4094,7 +7067,21 @@ export declare namespace cosmos {
                 encode(message: _32.QueryVotesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryVotesResponse;
                 fromJSON(object: any): _32.QueryVotesResponse;
-                toJSON(message: _32.QueryVotesResponse): unknown;
+                toJSON(message: _32.QueryVotesResponse): {
+                    votes: {
+                        proposalId: string;
+                        voter: string;
+                        option: _31.VoteOption;
+                        options: {
+                            option: _31.VoteOption;
+                            weight: string;
+                        }[];
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryVotesResponse>): _32.QueryVotesResponse;
                 fromAmino(object: _32.QueryVotesResponseAmino): _32.QueryVotesResponse;
                 toAmino(message: _32.QueryVotesResponse): _32.QueryVotesResponseAmino;
@@ -4113,7 +7100,9 @@ export declare namespace cosmos {
                 encode(message: _32.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryParamsRequest;
                 fromJSON(object: any): _32.QueryParamsRequest;
-                toJSON(message: _32.QueryParamsRequest): unknown;
+                toJSON(message: _32.QueryParamsRequest): {
+                    paramsType: string;
+                };
                 fromPartial(object: Partial<_32.QueryParamsRequest>): _32.QueryParamsRequest;
                 fromAmino(object: _32.QueryParamsRequestAmino): _32.QueryParamsRequest;
                 toAmino(message: _32.QueryParamsRequest): _32.QueryParamsRequestAmino;
@@ -4132,7 +7121,29 @@ export declare namespace cosmos {
                 encode(message: _32.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryParamsResponse;
                 fromJSON(object: any): _32.QueryParamsResponse;
-                toJSON(message: _32.QueryParamsResponse): unknown;
+                toJSON(message: _32.QueryParamsResponse): {
+                    votingParams: {
+                        votingPeriod: {
+                            seconds: string;
+                            nanos: number;
+                        };
+                    };
+                    depositParams: {
+                        minDeposit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        maxDepositPeriod: {
+                            seconds: string;
+                            nanos: number;
+                        };
+                    };
+                    tallyParams: {
+                        quorum: string;
+                        threshold: string;
+                        vetoThreshold: string;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryParamsResponse>): _32.QueryParamsResponse;
                 fromAmino(object: _32.QueryParamsResponseAmino): _32.QueryParamsResponse;
                 toAmino(message: _32.QueryParamsResponse): _32.QueryParamsResponseAmino;
@@ -4151,7 +7162,10 @@ export declare namespace cosmos {
                 encode(message: _32.QueryDepositRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryDepositRequest;
                 fromJSON(object: any): _32.QueryDepositRequest;
-                toJSON(message: _32.QueryDepositRequest): unknown;
+                toJSON(message: _32.QueryDepositRequest): {
+                    proposalId: string;
+                    depositor: string;
+                };
                 fromPartial(object: Partial<_32.QueryDepositRequest>): _32.QueryDepositRequest;
                 fromAmino(object: _32.QueryDepositRequestAmino): _32.QueryDepositRequest;
                 toAmino(message: _32.QueryDepositRequest): _32.QueryDepositRequestAmino;
@@ -4170,7 +7184,16 @@ export declare namespace cosmos {
                 encode(message: _32.QueryDepositResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryDepositResponse;
                 fromJSON(object: any): _32.QueryDepositResponse;
-                toJSON(message: _32.QueryDepositResponse): unknown;
+                toJSON(message: _32.QueryDepositResponse): {
+                    deposit: {
+                        proposalId: string;
+                        depositor: string;
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryDepositResponse>): _32.QueryDepositResponse;
                 fromAmino(object: _32.QueryDepositResponseAmino): _32.QueryDepositResponse;
                 toAmino(message: _32.QueryDepositResponse): _32.QueryDepositResponseAmino;
@@ -4189,7 +7212,16 @@ export declare namespace cosmos {
                 encode(message: _32.QueryDepositsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryDepositsRequest;
                 fromJSON(object: any): _32.QueryDepositsRequest;
-                toJSON(message: _32.QueryDepositsRequest): unknown;
+                toJSON(message: _32.QueryDepositsRequest): {
+                    proposalId: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryDepositsRequest>): _32.QueryDepositsRequest;
                 fromAmino(object: _32.QueryDepositsRequestAmino): _32.QueryDepositsRequest;
                 toAmino(message: _32.QueryDepositsRequest): _32.QueryDepositsRequestAmino;
@@ -4208,7 +7240,20 @@ export declare namespace cosmos {
                 encode(message: _32.QueryDepositsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryDepositsResponse;
                 fromJSON(object: any): _32.QueryDepositsResponse;
-                toJSON(message: _32.QueryDepositsResponse): unknown;
+                toJSON(message: _32.QueryDepositsResponse): {
+                    deposits: {
+                        proposalId: string;
+                        depositor: string;
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryDepositsResponse>): _32.QueryDepositsResponse;
                 fromAmino(object: _32.QueryDepositsResponseAmino): _32.QueryDepositsResponse;
                 toAmino(message: _32.QueryDepositsResponse): _32.QueryDepositsResponseAmino;
@@ -4227,7 +7272,9 @@ export declare namespace cosmos {
                 encode(message: _32.QueryTallyResultRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryTallyResultRequest;
                 fromJSON(object: any): _32.QueryTallyResultRequest;
-                toJSON(message: _32.QueryTallyResultRequest): unknown;
+                toJSON(message: _32.QueryTallyResultRequest): {
+                    proposalId: string;
+                };
                 fromPartial(object: Partial<_32.QueryTallyResultRequest>): _32.QueryTallyResultRequest;
                 fromAmino(object: _32.QueryTallyResultRequestAmino): _32.QueryTallyResultRequest;
                 toAmino(message: _32.QueryTallyResultRequest): _32.QueryTallyResultRequestAmino;
@@ -4246,7 +7293,14 @@ export declare namespace cosmos {
                 encode(message: _32.QueryTallyResultResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryTallyResultResponse;
                 fromJSON(object: any): _32.QueryTallyResultResponse;
-                toJSON(message: _32.QueryTallyResultResponse): unknown;
+                toJSON(message: _32.QueryTallyResultResponse): {
+                    tally: {
+                        yes: string;
+                        abstain: string;
+                        no: string;
+                        noWithVeto: string;
+                    };
+                };
                 fromPartial(object: Partial<_32.QueryTallyResultResponse>): _32.QueryTallyResultResponse;
                 fromAmino(object: _32.QueryTallyResultResponseAmino): _32.QueryTallyResultResponse;
                 toAmino(message: _32.QueryTallyResultResponse): _32.QueryTallyResultResponseAmino;
@@ -4275,7 +7329,10 @@ export declare namespace cosmos {
                 encode(message: _31.WeightedVoteOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.WeightedVoteOption;
                 fromJSON(object: any): _31.WeightedVoteOption;
-                toJSON(message: _31.WeightedVoteOption): unknown;
+                toJSON(message: _31.WeightedVoteOption): {
+                    option: _31.VoteOption;
+                    weight: string;
+                };
                 fromPartial(object: Partial<_31.WeightedVoteOption>): _31.WeightedVoteOption;
                 fromAmino(object: _31.WeightedVoteOptionAmino): _31.WeightedVoteOption;
                 toAmino(message: _31.WeightedVoteOption): _31.WeightedVoteOptionAmino;
@@ -4294,7 +7351,11 @@ export declare namespace cosmos {
                 encode(message: _31.TextProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.TextProposal;
                 fromJSON(object: any): _31.TextProposal;
-                toJSON(message: _31.TextProposal): unknown;
+                toJSON(message: _31.TextProposal): {
+                    $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                    title: string;
+                    description: string;
+                };
                 fromPartial(object: Partial<_31.TextProposal>): _31.TextProposal;
                 fromAmino(object: _31.TextProposalAmino): _31.TextProposal;
                 toAmino(message: _31.TextProposal): _31.TextProposalAmino;
@@ -4313,7 +7374,14 @@ export declare namespace cosmos {
                 encode(message: _31.Deposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.Deposit;
                 fromJSON(object: any): _31.Deposit;
-                toJSON(message: _31.Deposit): unknown;
+                toJSON(message: _31.Deposit): {
+                    proposalId: string;
+                    depositor: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_31.Deposit>): _31.Deposit;
                 fromAmino(object: _31.DepositAmino): _31.Deposit;
                 toAmino(message: _31.Deposit): _31.DepositAmino;
@@ -4332,7 +7400,216 @@ export declare namespace cosmos {
                 encode(message: _31.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.Proposal;
                 fromJSON(object: any): _31.Proposal;
-                toJSON(message: _31.Proposal): unknown;
+                toJSON(message: _31.Proposal): {
+                    proposalId: string;
+                    content?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    } | {
+                        $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                        title: string;
+                        description: string;
+                        recipient: string;
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                        title: string;
+                        description: string;
+                        recipient: string;
+                        amount: string;
+                        deposit: string;
+                    } | {
+                        $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                        title: string;
+                        description: string;
+                        plan: {
+                            name: string;
+                            time: string;
+                            height: string;
+                            info: string;
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        };
+                    } | {
+                        $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                        title: string;
+                        description: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.StoreCodeProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        wasmByteCode: string;
+                        instantiatePermission?: {
+                            permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                            address: string;
+                            addresses: string[];
+                        };
+                        unpinCode: boolean;
+                        source: string;
+                        builder: string;
+                        codeHash: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContractProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        admin: string;
+                        codeId: string;
+                        label: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContract2Proposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        admin: string;
+                        codeId: string;
+                        label: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        salt: string;
+                        fixMsg: boolean;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.MigrateContractProposal";
+                        title: string;
+                        description: string;
+                        contract: string;
+                        codeId: string;
+                        msg: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.SudoContractProposal";
+                        title: string;
+                        description: string;
+                        contract: string;
+                        msg: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ExecuteContractProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        contract: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.UpdateAdminProposal";
+                        title: string;
+                        description: string;
+                        newAdmin: string;
+                        contract: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.ClearAdminProposal";
+                        title: string;
+                        description: string;
+                        contract: string;
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.PinCodesProposal";
+                        title: string;
+                        description: string;
+                        codeIds: string[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.UnpinCodesProposal";
+                        title: string;
+                        description: string;
+                        codeIds: string[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal";
+                        title: string;
+                        description: string;
+                        accessConfigUpdates: {
+                            codeId: string;
+                            instantiatePermission: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                        }[];
+                    } | {
+                        $typeUrl?: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal";
+                        title: string;
+                        description: string;
+                        runAs: string;
+                        wasmByteCode: string;
+                        instantiatePermission?: {
+                            permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                            address: string;
+                            addresses: string[];
+                        };
+                        unpinCode: boolean;
+                        admin: string;
+                        label: string;
+                        msg: string;
+                        funds: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        source: string;
+                        builder: string;
+                        codeHash: string;
+                    } | {
+                        $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+                        title: string;
+                        description: string;
+                        subjectClientId: string;
+                        substituteClientId: string;
+                    } | {
+                        $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+                        title: string;
+                        description: string;
+                        plan: {
+                            name: string;
+                            time: string;
+                            height: string;
+                            info: string;
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        };
+                        upgradedClientState?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                    } | {
+                        $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                        title: string;
+                        description: string;
+                    };
+                    status: _31.ProposalStatus;
+                    finalTallyResult: {
+                        yes: string;
+                        abstain: string;
+                        no: string;
+                        noWithVeto: string;
+                    };
+                    submitTime: string;
+                    depositEndTime: string;
+                    totalDeposit: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    votingStartTime: string;
+                    votingEndTime: string;
+                };
                 fromPartial(object: Partial<_31.Proposal>): _31.Proposal;
                 fromAmino(object: _31.ProposalAmino): _31.Proposal;
                 toAmino(message: _31.Proposal): _31.ProposalAmino;
@@ -4351,7 +7628,12 @@ export declare namespace cosmos {
                 encode(message: _31.TallyResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.TallyResult;
                 fromJSON(object: any): _31.TallyResult;
-                toJSON(message: _31.TallyResult): unknown;
+                toJSON(message: _31.TallyResult): {
+                    yes: string;
+                    abstain: string;
+                    no: string;
+                    noWithVeto: string;
+                };
                 fromPartial(object: Partial<_31.TallyResult>): _31.TallyResult;
                 fromAmino(object: _31.TallyResultAmino): _31.TallyResult;
                 toAmino(message: _31.TallyResult): _31.TallyResultAmino;
@@ -4370,7 +7652,15 @@ export declare namespace cosmos {
                 encode(message: _31.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.Vote;
                 fromJSON(object: any): _31.Vote;
-                toJSON(message: _31.Vote): unknown;
+                toJSON(message: _31.Vote): {
+                    proposalId: string;
+                    voter: string;
+                    option: _31.VoteOption;
+                    options: {
+                        option: _31.VoteOption;
+                        weight: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_31.Vote>): _31.Vote;
                 fromAmino(object: _31.VoteAmino): _31.Vote;
                 toAmino(message: _31.Vote): _31.VoteAmino;
@@ -4389,7 +7679,16 @@ export declare namespace cosmos {
                 encode(message: _31.DepositParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.DepositParams;
                 fromJSON(object: any): _31.DepositParams;
-                toJSON(message: _31.DepositParams): unknown;
+                toJSON(message: _31.DepositParams): {
+                    minDeposit: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    maxDepositPeriod: {
+                        seconds: string;
+                        nanos: number;
+                    };
+                };
                 fromPartial(object: Partial<_31.DepositParams>): _31.DepositParams;
                 fromAmino(object: _31.DepositParamsAmino): _31.DepositParams;
                 toAmino(message: _31.DepositParams): _31.DepositParamsAmino;
@@ -4408,7 +7707,12 @@ export declare namespace cosmos {
                 encode(message: _31.VotingParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.VotingParams;
                 fromJSON(object: any): _31.VotingParams;
-                toJSON(message: _31.VotingParams): unknown;
+                toJSON(message: _31.VotingParams): {
+                    votingPeriod: {
+                        seconds: string;
+                        nanos: number;
+                    };
+                };
                 fromPartial(object: Partial<_31.VotingParams>): _31.VotingParams;
                 fromAmino(object: _31.VotingParamsAmino): _31.VotingParams;
                 toAmino(message: _31.VotingParams): _31.VotingParamsAmino;
@@ -4427,7 +7731,11 @@ export declare namespace cosmos {
                 encode(message: _31.TallyParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.TallyParams;
                 fromJSON(object: any): _31.TallyParams;
-                toJSON(message: _31.TallyParams): unknown;
+                toJSON(message: _31.TallyParams): {
+                    quorum: string;
+                    threshold: string;
+                    vetoThreshold: string;
+                };
                 fromPartial(object: Partial<_31.TallyParams>): _31.TallyParams;
                 fromAmino(object: _31.TallyParamsAmino): _31.TallyParams;
                 toAmino(message: _31.TallyParams): _31.TallyParamsAmino;
@@ -4446,7 +7754,257 @@ export declare namespace cosmos {
                 encode(message: _30.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.GenesisState;
                 fromJSON(object: any): _30.GenesisState;
-                toJSON(message: _30.GenesisState): unknown;
+                toJSON(message: _30.GenesisState): {
+                    startingProposalId: string;
+                    deposits: {
+                        proposalId: string;
+                        depositor: string;
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                    }[];
+                    votes: {
+                        proposalId: string;
+                        voter: string;
+                        option: _31.VoteOption;
+                        options: {
+                            option: _31.VoteOption;
+                            weight: string;
+                        }[];
+                    }[];
+                    proposals: {
+                        proposalId: string;
+                        content?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        } | {
+                            $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
+                            title: string;
+                            description: string;
+                            recipient: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit";
+                            title: string;
+                            description: string;
+                            recipient: string;
+                            amount: string;
+                            deposit: string;
+                        } | {
+                            $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                            title: string;
+                            description: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                        } | {
+                            $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                            title: string;
+                            description: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.StoreCodeProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            wasmByteCode: string;
+                            instantiatePermission?: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                            unpinCode: boolean;
+                            source: string;
+                            builder: string;
+                            codeHash: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            admin: string;
+                            codeId: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.InstantiateContract2Proposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            admin: string;
+                            codeId: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            salt: string;
+                            fixMsg: boolean;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.MigrateContractProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                            codeId: string;
+                            msg: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.SudoContractProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                            msg: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ExecuteContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            contract: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UpdateAdminProposal";
+                            title: string;
+                            description: string;
+                            newAdmin: string;
+                            contract: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.ClearAdminProposal";
+                            title: string;
+                            description: string;
+                            contract: string;
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.PinCodesProposal";
+                            title: string;
+                            description: string;
+                            codeIds: string[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UnpinCodesProposal";
+                            title: string;
+                            description: string;
+                            codeIds: string[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal";
+                            title: string;
+                            description: string;
+                            accessConfigUpdates: {
+                                codeId: string;
+                                instantiatePermission: {
+                                    permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                    address: string;
+                                    addresses: string[];
+                                };
+                            }[];
+                        } | {
+                            $typeUrl?: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal";
+                            title: string;
+                            description: string;
+                            runAs: string;
+                            wasmByteCode: string;
+                            instantiatePermission?: {
+                                permission: import("../cosmwasm/wasm/v1/types").AccessType;
+                                address: string;
+                                addresses: string[];
+                            };
+                            unpinCode: boolean;
+                            admin: string;
+                            label: string;
+                            msg: string;
+                            funds: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            source: string;
+                            builder: string;
+                            codeHash: string;
+                        } | {
+                            $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+                            title: string;
+                            description: string;
+                            subjectClientId: string;
+                            substituteClientId: string;
+                        } | {
+                            $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+                            title: string;
+                            description: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                            upgradedClientState?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                        } | {
+                            $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+                            title: string;
+                            description: string;
+                        };
+                        status: _31.ProposalStatus;
+                        finalTallyResult: {
+                            yes: string;
+                            abstain: string;
+                            no: string;
+                            noWithVeto: string;
+                        };
+                        submitTime: string;
+                        depositEndTime: string;
+                        totalDeposit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        votingStartTime: string;
+                        votingEndTime: string;
+                    }[];
+                    depositParams: {
+                        minDeposit: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        maxDepositPeriod: {
+                            seconds: string;
+                            nanos: number;
+                        };
+                    };
+                    votingParams: {
+                        votingPeriod: {
+                            seconds: string;
+                            nanos: number;
+                        };
+                    };
+                    tallyParams: {
+                        quorum: string;
+                        threshold: string;
+                        vetoThreshold: string;
+                    };
+                };
                 fromPartial(object: Partial<_30.GenesisState>): _30.GenesisState;
                 fromAmino(object: _30.GenesisStateAmino): _30.GenesisState;
                 toAmino(message: _30.GenesisState): _30.GenesisStateAmino;
@@ -4528,23 +8086,81 @@ export declare namespace cosmos {
                 toJSON: {
                     createValidator(value: _38.MsgCreateValidator): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            description: {
+                                moniker: string;
+                                identity: string;
+                                website: string;
+                                securityContact: string;
+                                details: string;
+                            };
+                            commission: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            minSelfDelegation: string;
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                            pubkey?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            value: {
+                                denom: string;
+                                amount: string;
+                            };
+                        };
                     };
                     editValidator(value: _38.MsgEditValidator): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            description: {
+                                moniker: string;
+                                identity: string;
+                                website: string;
+                                securityContact: string;
+                                details: string;
+                            };
+                            validatorAddress: string;
+                            commissionRate: string;
+                            minSelfDelegation: string;
+                        };
                     };
                     delegate(value: _38.MsgDelegate): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            };
+                        };
                     };
                     beginRedelegate(value: _38.MsgBeginRedelegate): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            delegatorAddress: string;
+                            validatorSrcAddress: string;
+                            validatorDstAddress: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            };
+                        };
                     };
                     undelegate(value: _38.MsgUndelegate): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            };
+                        };
                     };
                 };
                 fromJSON: {
@@ -4628,7 +8244,32 @@ export declare namespace cosmos {
                 encode(message: _38.MsgCreateValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgCreateValidator;
                 fromJSON(object: any): _38.MsgCreateValidator;
-                toJSON(message: _38.MsgCreateValidator): unknown;
+                toJSON(message: _38.MsgCreateValidator): {
+                    description: {
+                        moniker: string;
+                        identity: string;
+                        website: string;
+                        securityContact: string;
+                        details: string;
+                    };
+                    commission: {
+                        rate: string;
+                        maxRate: string;
+                        maxChangeRate: string;
+                    };
+                    minSelfDelegation: string;
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                    pubkey?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    };
+                    value: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_38.MsgCreateValidator>): _38.MsgCreateValidator;
                 fromAmino(object: _38.MsgCreateValidatorAmino): _38.MsgCreateValidator;
                 toAmino(message: _38.MsgCreateValidator): _38.MsgCreateValidatorAmino;
@@ -4647,7 +8288,7 @@ export declare namespace cosmos {
                 encode(_: _38.MsgCreateValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgCreateValidatorResponse;
                 fromJSON(_: any): _38.MsgCreateValidatorResponse;
-                toJSON(_: _38.MsgCreateValidatorResponse): unknown;
+                toJSON(_: _38.MsgCreateValidatorResponse): {};
                 fromPartial(_: Partial<_38.MsgCreateValidatorResponse>): _38.MsgCreateValidatorResponse;
                 fromAmino(_: _38.MsgCreateValidatorResponseAmino): _38.MsgCreateValidatorResponse;
                 toAmino(_: _38.MsgCreateValidatorResponse): _38.MsgCreateValidatorResponseAmino;
@@ -4666,7 +8307,18 @@ export declare namespace cosmos {
                 encode(message: _38.MsgEditValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgEditValidator;
                 fromJSON(object: any): _38.MsgEditValidator;
-                toJSON(message: _38.MsgEditValidator): unknown;
+                toJSON(message: _38.MsgEditValidator): {
+                    description: {
+                        moniker: string;
+                        identity: string;
+                        website: string;
+                        securityContact: string;
+                        details: string;
+                    };
+                    validatorAddress: string;
+                    commissionRate: string;
+                    minSelfDelegation: string;
+                };
                 fromPartial(object: Partial<_38.MsgEditValidator>): _38.MsgEditValidator;
                 fromAmino(object: _38.MsgEditValidatorAmino): _38.MsgEditValidator;
                 toAmino(message: _38.MsgEditValidator): _38.MsgEditValidatorAmino;
@@ -4685,7 +8337,7 @@ export declare namespace cosmos {
                 encode(_: _38.MsgEditValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgEditValidatorResponse;
                 fromJSON(_: any): _38.MsgEditValidatorResponse;
-                toJSON(_: _38.MsgEditValidatorResponse): unknown;
+                toJSON(_: _38.MsgEditValidatorResponse): {};
                 fromPartial(_: Partial<_38.MsgEditValidatorResponse>): _38.MsgEditValidatorResponse;
                 fromAmino(_: _38.MsgEditValidatorResponseAmino): _38.MsgEditValidatorResponse;
                 toAmino(_: _38.MsgEditValidatorResponse): _38.MsgEditValidatorResponseAmino;
@@ -4704,7 +8356,14 @@ export declare namespace cosmos {
                 encode(message: _38.MsgDelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgDelegate;
                 fromJSON(object: any): _38.MsgDelegate;
-                toJSON(message: _38.MsgDelegate): unknown;
+                toJSON(message: _38.MsgDelegate): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_38.MsgDelegate>): _38.MsgDelegate;
                 fromAmino(object: _38.MsgDelegateAmino): _38.MsgDelegate;
                 toAmino(message: _38.MsgDelegate): _38.MsgDelegateAmino;
@@ -4723,7 +8382,7 @@ export declare namespace cosmos {
                 encode(_: _38.MsgDelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgDelegateResponse;
                 fromJSON(_: any): _38.MsgDelegateResponse;
-                toJSON(_: _38.MsgDelegateResponse): unknown;
+                toJSON(_: _38.MsgDelegateResponse): {};
                 fromPartial(_: Partial<_38.MsgDelegateResponse>): _38.MsgDelegateResponse;
                 fromAmino(_: _38.MsgDelegateResponseAmino): _38.MsgDelegateResponse;
                 toAmino(_: _38.MsgDelegateResponse): _38.MsgDelegateResponseAmino;
@@ -4742,7 +8401,15 @@ export declare namespace cosmos {
                 encode(message: _38.MsgBeginRedelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgBeginRedelegate;
                 fromJSON(object: any): _38.MsgBeginRedelegate;
-                toJSON(message: _38.MsgBeginRedelegate): unknown;
+                toJSON(message: _38.MsgBeginRedelegate): {
+                    delegatorAddress: string;
+                    validatorSrcAddress: string;
+                    validatorDstAddress: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_38.MsgBeginRedelegate>): _38.MsgBeginRedelegate;
                 fromAmino(object: _38.MsgBeginRedelegateAmino): _38.MsgBeginRedelegate;
                 toAmino(message: _38.MsgBeginRedelegate): _38.MsgBeginRedelegateAmino;
@@ -4761,7 +8428,9 @@ export declare namespace cosmos {
                 encode(message: _38.MsgBeginRedelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgBeginRedelegateResponse;
                 fromJSON(object: any): _38.MsgBeginRedelegateResponse;
-                toJSON(message: _38.MsgBeginRedelegateResponse): unknown;
+                toJSON(message: _38.MsgBeginRedelegateResponse): {
+                    completionTime: string;
+                };
                 fromPartial(object: Partial<_38.MsgBeginRedelegateResponse>): _38.MsgBeginRedelegateResponse;
                 fromAmino(object: _38.MsgBeginRedelegateResponseAmino): _38.MsgBeginRedelegateResponse;
                 toAmino(message: _38.MsgBeginRedelegateResponse): _38.MsgBeginRedelegateResponseAmino;
@@ -4780,7 +8449,14 @@ export declare namespace cosmos {
                 encode(message: _38.MsgUndelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgUndelegate;
                 fromJSON(object: any): _38.MsgUndelegate;
-                toJSON(message: _38.MsgUndelegate): unknown;
+                toJSON(message: _38.MsgUndelegate): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_38.MsgUndelegate>): _38.MsgUndelegate;
                 fromAmino(object: _38.MsgUndelegateAmino): _38.MsgUndelegate;
                 toAmino(message: _38.MsgUndelegate): _38.MsgUndelegateAmino;
@@ -4799,7 +8475,9 @@ export declare namespace cosmos {
                 encode(message: _38.MsgUndelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.MsgUndelegateResponse;
                 fromJSON(object: any): _38.MsgUndelegateResponse;
-                toJSON(message: _38.MsgUndelegateResponse): unknown;
+                toJSON(message: _38.MsgUndelegateResponse): {
+                    completionTime: string;
+                };
                 fromPartial(object: Partial<_38.MsgUndelegateResponse>): _38.MsgUndelegateResponse;
                 fromAmino(object: _38.MsgUndelegateResponseAmino): _38.MsgUndelegateResponse;
                 toAmino(message: _38.MsgUndelegateResponse): _38.MsgUndelegateResponseAmino;
@@ -4823,7 +8501,63 @@ export declare namespace cosmos {
                 encode(message: _37.HistoricalInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.HistoricalInfo;
                 fromJSON(object: any): _37.HistoricalInfo;
-                toJSON(message: _37.HistoricalInfo): unknown;
+                toJSON(message: _37.HistoricalInfo): {
+                    header: {
+                        version: {
+                            block: string;
+                            app: string;
+                        };
+                        chainId: string;
+                        height: string;
+                        time: string;
+                        lastBlockId: {
+                            hash: string;
+                            partSetHeader: {
+                                total: number;
+                                hash: string;
+                            };
+                        };
+                        lastCommitHash: string;
+                        dataHash: string;
+                        validatorsHash: string;
+                        nextValidatorsHash: string;
+                        consensusHash: string;
+                        appHash: string;
+                        lastResultsHash: string;
+                        evidenceHash: string;
+                        proposerAddress: string;
+                    };
+                    valset: {
+                        operatorAddress: string;
+                        consensusPubkey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        jailed: boolean;
+                        status: _37.BondStatus;
+                        tokens: string;
+                        delegatorShares: string;
+                        description: {
+                            moniker: string;
+                            identity: string;
+                            website: string;
+                            securityContact: string;
+                            details: string;
+                        };
+                        unbondingHeight: string;
+                        unbondingTime: string;
+                        commission: {
+                            commissionRates: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            updateTime: string;
+                        };
+                        minSelfDelegation: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_37.HistoricalInfo>): _37.HistoricalInfo;
                 fromAmino(object: _37.HistoricalInfoAmino): _37.HistoricalInfo;
                 toAmino(message: _37.HistoricalInfo): _37.HistoricalInfoAmino;
@@ -4842,7 +8576,11 @@ export declare namespace cosmos {
                 encode(message: _37.CommissionRates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.CommissionRates;
                 fromJSON(object: any): _37.CommissionRates;
-                toJSON(message: _37.CommissionRates): unknown;
+                toJSON(message: _37.CommissionRates): {
+                    rate: string;
+                    maxRate: string;
+                    maxChangeRate: string;
+                };
                 fromPartial(object: Partial<_37.CommissionRates>): _37.CommissionRates;
                 fromAmino(object: _37.CommissionRatesAmino): _37.CommissionRates;
                 toAmino(message: _37.CommissionRates): _37.CommissionRatesAmino;
@@ -4861,7 +8599,14 @@ export declare namespace cosmos {
                 encode(message: _37.Commission, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Commission;
                 fromJSON(object: any): _37.Commission;
-                toJSON(message: _37.Commission): unknown;
+                toJSON(message: _37.Commission): {
+                    commissionRates: {
+                        rate: string;
+                        maxRate: string;
+                        maxChangeRate: string;
+                    };
+                    updateTime: string;
+                };
                 fromPartial(object: Partial<_37.Commission>): _37.Commission;
                 fromAmino(object: _37.CommissionAmino): _37.Commission;
                 toAmino(message: _37.Commission): _37.CommissionAmino;
@@ -4880,7 +8625,13 @@ export declare namespace cosmos {
                 encode(message: _37.Description, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Description;
                 fromJSON(object: any): _37.Description;
-                toJSON(message: _37.Description): unknown;
+                toJSON(message: _37.Description): {
+                    moniker: string;
+                    identity: string;
+                    website: string;
+                    securityContact: string;
+                    details: string;
+                };
                 fromPartial(object: Partial<_37.Description>): _37.Description;
                 fromAmino(object: _37.DescriptionAmino): _37.Description;
                 toAmino(message: _37.Description): _37.DescriptionAmino;
@@ -4899,7 +8650,36 @@ export declare namespace cosmos {
                 encode(message: _37.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Validator;
                 fromJSON(object: any): _37.Validator;
-                toJSON(message: _37.Validator): unknown;
+                toJSON(message: _37.Validator): {
+                    operatorAddress: string;
+                    consensusPubkey?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    };
+                    jailed: boolean;
+                    status: _37.BondStatus;
+                    tokens: string;
+                    delegatorShares: string;
+                    description: {
+                        moniker: string;
+                        identity: string;
+                        website: string;
+                        securityContact: string;
+                        details: string;
+                    };
+                    unbondingHeight: string;
+                    unbondingTime: string;
+                    commission: {
+                        commissionRates: {
+                            rate: string;
+                            maxRate: string;
+                            maxChangeRate: string;
+                        };
+                        updateTime: string;
+                    };
+                    minSelfDelegation: string;
+                };
                 fromPartial(object: Partial<_37.Validator>): _37.Validator;
                 fromAmino(object: _37.ValidatorAmino): _37.Validator;
                 toAmino(message: _37.Validator): _37.ValidatorAmino;
@@ -4918,7 +8698,9 @@ export declare namespace cosmos {
                 encode(message: _37.ValAddresses, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.ValAddresses;
                 fromJSON(object: any): _37.ValAddresses;
-                toJSON(message: _37.ValAddresses): unknown;
+                toJSON(message: _37.ValAddresses): {
+                    addresses: string[];
+                };
                 fromPartial(object: Partial<_37.ValAddresses>): _37.ValAddresses;
                 fromAmino(object: _37.ValAddressesAmino): _37.ValAddresses;
                 toAmino(message: _37.ValAddresses): _37.ValAddressesAmino;
@@ -4937,7 +8719,10 @@ export declare namespace cosmos {
                 encode(message: _37.DVPair, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.DVPair;
                 fromJSON(object: any): _37.DVPair;
-                toJSON(message: _37.DVPair): unknown;
+                toJSON(message: _37.DVPair): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                };
                 fromPartial(object: Partial<_37.DVPair>): _37.DVPair;
                 fromAmino(object: _37.DVPairAmino): _37.DVPair;
                 toAmino(message: _37.DVPair): _37.DVPairAmino;
@@ -4956,7 +8741,12 @@ export declare namespace cosmos {
                 encode(message: _37.DVPairs, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.DVPairs;
                 fromJSON(object: any): _37.DVPairs;
-                toJSON(message: _37.DVPairs): unknown;
+                toJSON(message: _37.DVPairs): {
+                    pairs: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_37.DVPairs>): _37.DVPairs;
                 fromAmino(object: _37.DVPairsAmino): _37.DVPairs;
                 toAmino(message: _37.DVPairs): _37.DVPairsAmino;
@@ -4975,7 +8765,11 @@ export declare namespace cosmos {
                 encode(message: _37.DVVTriplet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.DVVTriplet;
                 fromJSON(object: any): _37.DVVTriplet;
-                toJSON(message: _37.DVVTriplet): unknown;
+                toJSON(message: _37.DVVTriplet): {
+                    delegatorAddress: string;
+                    validatorSrcAddress: string;
+                    validatorDstAddress: string;
+                };
                 fromPartial(object: Partial<_37.DVVTriplet>): _37.DVVTriplet;
                 fromAmino(object: _37.DVVTripletAmino): _37.DVVTriplet;
                 toAmino(message: _37.DVVTriplet): _37.DVVTripletAmino;
@@ -4994,7 +8788,13 @@ export declare namespace cosmos {
                 encode(message: _37.DVVTriplets, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.DVVTriplets;
                 fromJSON(object: any): _37.DVVTriplets;
-                toJSON(message: _37.DVVTriplets): unknown;
+                toJSON(message: _37.DVVTriplets): {
+                    triplets: {
+                        delegatorAddress: string;
+                        validatorSrcAddress: string;
+                        validatorDstAddress: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_37.DVVTriplets>): _37.DVVTriplets;
                 fromAmino(object: _37.DVVTripletsAmino): _37.DVVTriplets;
                 toAmino(message: _37.DVVTriplets): _37.DVVTripletsAmino;
@@ -5013,7 +8813,11 @@ export declare namespace cosmos {
                 encode(message: _37.Delegation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Delegation;
                 fromJSON(object: any): _37.Delegation;
-                toJSON(message: _37.Delegation): unknown;
+                toJSON(message: _37.Delegation): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                    shares: string;
+                };
                 fromPartial(object: Partial<_37.Delegation>): _37.Delegation;
                 fromAmino(object: _37.DelegationAmino): _37.Delegation;
                 toAmino(message: _37.Delegation): _37.DelegationAmino;
@@ -5032,7 +8836,16 @@ export declare namespace cosmos {
                 encode(message: _37.UnbondingDelegation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.UnbondingDelegation;
                 fromJSON(object: any): _37.UnbondingDelegation;
-                toJSON(message: _37.UnbondingDelegation): unknown;
+                toJSON(message: _37.UnbondingDelegation): {
+                    delegatorAddress: string;
+                    validatorAddress: string;
+                    entries: {
+                        creationHeight: string;
+                        completionTime: string;
+                        initialBalance: string;
+                        balance: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_37.UnbondingDelegation>): _37.UnbondingDelegation;
                 fromAmino(object: _37.UnbondingDelegationAmino): _37.UnbondingDelegation;
                 toAmino(message: _37.UnbondingDelegation): _37.UnbondingDelegationAmino;
@@ -5051,7 +8864,12 @@ export declare namespace cosmos {
                 encode(message: _37.UnbondingDelegationEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.UnbondingDelegationEntry;
                 fromJSON(object: any): _37.UnbondingDelegationEntry;
-                toJSON(message: _37.UnbondingDelegationEntry): unknown;
+                toJSON(message: _37.UnbondingDelegationEntry): {
+                    creationHeight: string;
+                    completionTime: string;
+                    initialBalance: string;
+                    balance: string;
+                };
                 fromPartial(object: Partial<_37.UnbondingDelegationEntry>): _37.UnbondingDelegationEntry;
                 fromAmino(object: _37.UnbondingDelegationEntryAmino): _37.UnbondingDelegationEntry;
                 toAmino(message: _37.UnbondingDelegationEntry): _37.UnbondingDelegationEntryAmino;
@@ -5070,7 +8888,12 @@ export declare namespace cosmos {
                 encode(message: _37.RedelegationEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.RedelegationEntry;
                 fromJSON(object: any): _37.RedelegationEntry;
-                toJSON(message: _37.RedelegationEntry): unknown;
+                toJSON(message: _37.RedelegationEntry): {
+                    creationHeight: string;
+                    completionTime: string;
+                    initialBalance: string;
+                    sharesDst: string;
+                };
                 fromPartial(object: Partial<_37.RedelegationEntry>): _37.RedelegationEntry;
                 fromAmino(object: _37.RedelegationEntryAmino): _37.RedelegationEntry;
                 toAmino(message: _37.RedelegationEntry): _37.RedelegationEntryAmino;
@@ -5089,7 +8912,17 @@ export declare namespace cosmos {
                 encode(message: _37.Redelegation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Redelegation;
                 fromJSON(object: any): _37.Redelegation;
-                toJSON(message: _37.Redelegation): unknown;
+                toJSON(message: _37.Redelegation): {
+                    delegatorAddress: string;
+                    validatorSrcAddress: string;
+                    validatorDstAddress: string;
+                    entries: {
+                        creationHeight: string;
+                        completionTime: string;
+                        initialBalance: string;
+                        sharesDst: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_37.Redelegation>): _37.Redelegation;
                 fromAmino(object: _37.RedelegationAmino): _37.Redelegation;
                 toAmino(message: _37.Redelegation): _37.RedelegationAmino;
@@ -5108,7 +8941,17 @@ export declare namespace cosmos {
                 encode(message: _37.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Params;
                 fromJSON(object: any): _37.Params;
-                toJSON(message: _37.Params): unknown;
+                toJSON(message: _37.Params): {
+                    unbondingTime: {
+                        seconds: string;
+                        nanos: number;
+                    };
+                    maxValidators: number;
+                    maxEntries: number;
+                    historicalEntries: number;
+                    bondDenom: string;
+                    minCommissionRate: string;
+                };
                 fromPartial(object: Partial<_37.Params>): _37.Params;
                 fromAmino(object: _37.ParamsAmino): _37.Params;
                 toAmino(message: _37.Params): _37.ParamsAmino;
@@ -5127,7 +8970,17 @@ export declare namespace cosmos {
                 encode(message: _37.DelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.DelegationResponse;
                 fromJSON(object: any): _37.DelegationResponse;
-                toJSON(message: _37.DelegationResponse): unknown;
+                toJSON(message: _37.DelegationResponse): {
+                    delegation: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        shares: string;
+                    };
+                    balance: {
+                        denom: string;
+                        amount: string;
+                    };
+                };
                 fromPartial(object: Partial<_37.DelegationResponse>): _37.DelegationResponse;
                 fromAmino(object: _37.DelegationResponseAmino): _37.DelegationResponse;
                 toAmino(message: _37.DelegationResponse): _37.DelegationResponseAmino;
@@ -5146,7 +8999,15 @@ export declare namespace cosmos {
                 encode(message: _37.RedelegationEntryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.RedelegationEntryResponse;
                 fromJSON(object: any): _37.RedelegationEntryResponse;
-                toJSON(message: _37.RedelegationEntryResponse): unknown;
+                toJSON(message: _37.RedelegationEntryResponse): {
+                    redelegationEntry: {
+                        creationHeight: string;
+                        completionTime: string;
+                        initialBalance: string;
+                        sharesDst: string;
+                    };
+                    balance: string;
+                };
                 fromPartial(object: Partial<_37.RedelegationEntryResponse>): _37.RedelegationEntryResponse;
                 fromAmino(object: _37.RedelegationEntryResponseAmino): _37.RedelegationEntryResponse;
                 toAmino(message: _37.RedelegationEntryResponse): _37.RedelegationEntryResponseAmino;
@@ -5165,7 +9026,28 @@ export declare namespace cosmos {
                 encode(message: _37.RedelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.RedelegationResponse;
                 fromJSON(object: any): _37.RedelegationResponse;
-                toJSON(message: _37.RedelegationResponse): unknown;
+                toJSON(message: _37.RedelegationResponse): {
+                    redelegation: {
+                        delegatorAddress: string;
+                        validatorSrcAddress: string;
+                        validatorDstAddress: string;
+                        entries: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            sharesDst: string;
+                        }[];
+                    };
+                    entries: {
+                        redelegationEntry: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            sharesDst: string;
+                        };
+                        balance: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_37.RedelegationResponse>): _37.RedelegationResponse;
                 fromAmino(object: _37.RedelegationResponseAmino): _37.RedelegationResponse;
                 toAmino(message: _37.RedelegationResponse): _37.RedelegationResponseAmino;
@@ -5184,7 +9066,10 @@ export declare namespace cosmos {
                 encode(message: _37.Pool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Pool;
                 fromJSON(object: any): _37.Pool;
-                toJSON(message: _37.Pool): unknown;
+                toJSON(message: _37.Pool): {
+                    notBondedTokens: string;
+                    bondedTokens: string;
+                };
                 fromPartial(object: Partial<_37.Pool>): _37.Pool;
                 fromAmino(object: _37.PoolAmino): _37.Pool;
                 toAmino(message: _37.Pool): _37.PoolAmino;
@@ -5203,7 +9088,16 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorsRequest;
                 fromJSON(object: any): _36.QueryValidatorsRequest;
-                toJSON(message: _36.QueryValidatorsRequest): unknown;
+                toJSON(message: _36.QueryValidatorsRequest): {
+                    status: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorsRequest>): _36.QueryValidatorsRequest;
                 fromAmino(object: _36.QueryValidatorsRequestAmino): _36.QueryValidatorsRequest;
                 toAmino(message: _36.QueryValidatorsRequest): _36.QueryValidatorsRequestAmino;
@@ -5222,7 +9116,42 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorsResponse;
                 fromJSON(object: any): _36.QueryValidatorsResponse;
-                toJSON(message: _36.QueryValidatorsResponse): unknown;
+                toJSON(message: _36.QueryValidatorsResponse): {
+                    validators: {
+                        operatorAddress: string;
+                        consensusPubkey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        jailed: boolean;
+                        status: _37.BondStatus;
+                        tokens: string;
+                        delegatorShares: string;
+                        description: {
+                            moniker: string;
+                            identity: string;
+                            website: string;
+                            securityContact: string;
+                            details: string;
+                        };
+                        unbondingHeight: string;
+                        unbondingTime: string;
+                        commission: {
+                            commissionRates: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            updateTime: string;
+                        };
+                        minSelfDelegation: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorsResponse>): _36.QueryValidatorsResponse;
                 fromAmino(object: _36.QueryValidatorsResponseAmino): _36.QueryValidatorsResponse;
                 toAmino(message: _36.QueryValidatorsResponse): _36.QueryValidatorsResponseAmino;
@@ -5241,7 +9170,9 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorRequest;
                 fromJSON(object: any): _36.QueryValidatorRequest;
-                toJSON(message: _36.QueryValidatorRequest): unknown;
+                toJSON(message: _36.QueryValidatorRequest): {
+                    validatorAddr: string;
+                };
                 fromPartial(object: Partial<_36.QueryValidatorRequest>): _36.QueryValidatorRequest;
                 fromAmino(object: _36.QueryValidatorRequestAmino): _36.QueryValidatorRequest;
                 toAmino(message: _36.QueryValidatorRequest): _36.QueryValidatorRequestAmino;
@@ -5260,7 +9191,38 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorResponse;
                 fromJSON(object: any): _36.QueryValidatorResponse;
-                toJSON(message: _36.QueryValidatorResponse): unknown;
+                toJSON(message: _36.QueryValidatorResponse): {
+                    validator: {
+                        operatorAddress: string;
+                        consensusPubkey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        jailed: boolean;
+                        status: _37.BondStatus;
+                        tokens: string;
+                        delegatorShares: string;
+                        description: {
+                            moniker: string;
+                            identity: string;
+                            website: string;
+                            securityContact: string;
+                            details: string;
+                        };
+                        unbondingHeight: string;
+                        unbondingTime: string;
+                        commission: {
+                            commissionRates: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            updateTime: string;
+                        };
+                        minSelfDelegation: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorResponse>): _36.QueryValidatorResponse;
                 fromAmino(object: _36.QueryValidatorResponseAmino): _36.QueryValidatorResponse;
                 toAmino(message: _36.QueryValidatorResponse): _36.QueryValidatorResponseAmino;
@@ -5279,7 +9241,16 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorDelegationsRequest;
                 fromJSON(object: any): _36.QueryValidatorDelegationsRequest;
-                toJSON(message: _36.QueryValidatorDelegationsRequest): unknown;
+                toJSON(message: _36.QueryValidatorDelegationsRequest): {
+                    validatorAddr: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorDelegationsRequest>): _36.QueryValidatorDelegationsRequest;
                 fromAmino(object: _36.QueryValidatorDelegationsRequestAmino): _36.QueryValidatorDelegationsRequest;
                 toAmino(message: _36.QueryValidatorDelegationsRequest): _36.QueryValidatorDelegationsRequestAmino;
@@ -5298,7 +9269,23 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorDelegationsResponse;
                 fromJSON(object: any): _36.QueryValidatorDelegationsResponse;
-                toJSON(message: _36.QueryValidatorDelegationsResponse): unknown;
+                toJSON(message: _36.QueryValidatorDelegationsResponse): {
+                    delegationResponses: {
+                        delegation: {
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                            shares: string;
+                        };
+                        balance: {
+                            denom: string;
+                            amount: string;
+                        };
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorDelegationsResponse>): _36.QueryValidatorDelegationsResponse;
                 fromAmino(object: _36.QueryValidatorDelegationsResponseAmino): _36.QueryValidatorDelegationsResponse;
                 toAmino(message: _36.QueryValidatorDelegationsResponse): _36.QueryValidatorDelegationsResponseAmino;
@@ -5317,7 +9304,16 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorUnbondingDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorUnbondingDelegationsRequest;
                 fromJSON(object: any): _36.QueryValidatorUnbondingDelegationsRequest;
-                toJSON(message: _36.QueryValidatorUnbondingDelegationsRequest): unknown;
+                toJSON(message: _36.QueryValidatorUnbondingDelegationsRequest): {
+                    validatorAddr: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorUnbondingDelegationsRequest>): _36.QueryValidatorUnbondingDelegationsRequest;
                 fromAmino(object: _36.QueryValidatorUnbondingDelegationsRequestAmino): _36.QueryValidatorUnbondingDelegationsRequest;
                 toAmino(message: _36.QueryValidatorUnbondingDelegationsRequest): _36.QueryValidatorUnbondingDelegationsRequestAmino;
@@ -5336,7 +9332,22 @@ export declare namespace cosmos {
                 encode(message: _36.QueryValidatorUnbondingDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryValidatorUnbondingDelegationsResponse;
                 fromJSON(object: any): _36.QueryValidatorUnbondingDelegationsResponse;
-                toJSON(message: _36.QueryValidatorUnbondingDelegationsResponse): unknown;
+                toJSON(message: _36.QueryValidatorUnbondingDelegationsResponse): {
+                    unbondingResponses: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        entries: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            balance: string;
+                        }[];
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryValidatorUnbondingDelegationsResponse>): _36.QueryValidatorUnbondingDelegationsResponse;
                 fromAmino(object: _36.QueryValidatorUnbondingDelegationsResponseAmino): _36.QueryValidatorUnbondingDelegationsResponse;
                 toAmino(message: _36.QueryValidatorUnbondingDelegationsResponse): _36.QueryValidatorUnbondingDelegationsResponseAmino;
@@ -5355,7 +9366,10 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegationRequest;
                 fromJSON(object: any): _36.QueryDelegationRequest;
-                toJSON(message: _36.QueryDelegationRequest): unknown;
+                toJSON(message: _36.QueryDelegationRequest): {
+                    delegatorAddr: string;
+                    validatorAddr: string;
+                };
                 fromPartial(object: Partial<_36.QueryDelegationRequest>): _36.QueryDelegationRequest;
                 fromAmino(object: _36.QueryDelegationRequestAmino): _36.QueryDelegationRequest;
                 toAmino(message: _36.QueryDelegationRequest): _36.QueryDelegationRequestAmino;
@@ -5374,7 +9388,19 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegationResponse;
                 fromJSON(object: any): _36.QueryDelegationResponse;
-                toJSON(message: _36.QueryDelegationResponse): unknown;
+                toJSON(message: _36.QueryDelegationResponse): {
+                    delegationResponse?: {
+                        delegation: {
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                            shares: string;
+                        };
+                        balance: {
+                            denom: string;
+                            amount: string;
+                        };
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegationResponse>): _36.QueryDelegationResponse;
                 fromAmino(object: _36.QueryDelegationResponseAmino): _36.QueryDelegationResponse;
                 toAmino(message: _36.QueryDelegationResponse): _36.QueryDelegationResponseAmino;
@@ -5393,7 +9419,10 @@ export declare namespace cosmos {
                 encode(message: _36.QueryUnbondingDelegationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryUnbondingDelegationRequest;
                 fromJSON(object: any): _36.QueryUnbondingDelegationRequest;
-                toJSON(message: _36.QueryUnbondingDelegationRequest): unknown;
+                toJSON(message: _36.QueryUnbondingDelegationRequest): {
+                    delegatorAddr: string;
+                    validatorAddr: string;
+                };
                 fromPartial(object: Partial<_36.QueryUnbondingDelegationRequest>): _36.QueryUnbondingDelegationRequest;
                 fromAmino(object: _36.QueryUnbondingDelegationRequestAmino): _36.QueryUnbondingDelegationRequest;
                 toAmino(message: _36.QueryUnbondingDelegationRequest): _36.QueryUnbondingDelegationRequestAmino;
@@ -5412,7 +9441,18 @@ export declare namespace cosmos {
                 encode(message: _36.QueryUnbondingDelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryUnbondingDelegationResponse;
                 fromJSON(object: any): _36.QueryUnbondingDelegationResponse;
-                toJSON(message: _36.QueryUnbondingDelegationResponse): unknown;
+                toJSON(message: _36.QueryUnbondingDelegationResponse): {
+                    unbond: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        entries: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            balance: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryUnbondingDelegationResponse>): _36.QueryUnbondingDelegationResponse;
                 fromAmino(object: _36.QueryUnbondingDelegationResponseAmino): _36.QueryUnbondingDelegationResponse;
                 toAmino(message: _36.QueryUnbondingDelegationResponse): _36.QueryUnbondingDelegationResponseAmino;
@@ -5431,7 +9471,16 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorDelegationsRequest;
                 fromJSON(object: any): _36.QueryDelegatorDelegationsRequest;
-                toJSON(message: _36.QueryDelegatorDelegationsRequest): unknown;
+                toJSON(message: _36.QueryDelegatorDelegationsRequest): {
+                    delegatorAddr: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorDelegationsRequest>): _36.QueryDelegatorDelegationsRequest;
                 fromAmino(object: _36.QueryDelegatorDelegationsRequestAmino): _36.QueryDelegatorDelegationsRequest;
                 toAmino(message: _36.QueryDelegatorDelegationsRequest): _36.QueryDelegatorDelegationsRequestAmino;
@@ -5450,7 +9499,23 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorDelegationsResponse;
                 fromJSON(object: any): _36.QueryDelegatorDelegationsResponse;
-                toJSON(message: _36.QueryDelegatorDelegationsResponse): unknown;
+                toJSON(message: _36.QueryDelegatorDelegationsResponse): {
+                    delegationResponses: {
+                        delegation: {
+                            delegatorAddress: string;
+                            validatorAddress: string;
+                            shares: string;
+                        };
+                        balance: {
+                            denom: string;
+                            amount: string;
+                        };
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorDelegationsResponse>): _36.QueryDelegatorDelegationsResponse;
                 fromAmino(object: _36.QueryDelegatorDelegationsResponseAmino): _36.QueryDelegatorDelegationsResponse;
                 toAmino(message: _36.QueryDelegatorDelegationsResponse): _36.QueryDelegatorDelegationsResponseAmino;
@@ -5469,7 +9534,16 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorUnbondingDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorUnbondingDelegationsRequest;
                 fromJSON(object: any): _36.QueryDelegatorUnbondingDelegationsRequest;
-                toJSON(message: _36.QueryDelegatorUnbondingDelegationsRequest): unknown;
+                toJSON(message: _36.QueryDelegatorUnbondingDelegationsRequest): {
+                    delegatorAddr: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorUnbondingDelegationsRequest>): _36.QueryDelegatorUnbondingDelegationsRequest;
                 fromAmino(object: _36.QueryDelegatorUnbondingDelegationsRequestAmino): _36.QueryDelegatorUnbondingDelegationsRequest;
                 toAmino(message: _36.QueryDelegatorUnbondingDelegationsRequest): _36.QueryDelegatorUnbondingDelegationsRequestAmino;
@@ -5488,7 +9562,22 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorUnbondingDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorUnbondingDelegationsResponse;
                 fromJSON(object: any): _36.QueryDelegatorUnbondingDelegationsResponse;
-                toJSON(message: _36.QueryDelegatorUnbondingDelegationsResponse): unknown;
+                toJSON(message: _36.QueryDelegatorUnbondingDelegationsResponse): {
+                    unbondingResponses: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        entries: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            balance: string;
+                        }[];
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorUnbondingDelegationsResponse>): _36.QueryDelegatorUnbondingDelegationsResponse;
                 fromAmino(object: _36.QueryDelegatorUnbondingDelegationsResponseAmino): _36.QueryDelegatorUnbondingDelegationsResponse;
                 toAmino(message: _36.QueryDelegatorUnbondingDelegationsResponse): _36.QueryDelegatorUnbondingDelegationsResponseAmino;
@@ -5507,7 +9596,18 @@ export declare namespace cosmos {
                 encode(message: _36.QueryRedelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryRedelegationsRequest;
                 fromJSON(object: any): _36.QueryRedelegationsRequest;
-                toJSON(message: _36.QueryRedelegationsRequest): unknown;
+                toJSON(message: _36.QueryRedelegationsRequest): {
+                    delegatorAddr: string;
+                    srcValidatorAddr: string;
+                    dstValidatorAddr: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryRedelegationsRequest>): _36.QueryRedelegationsRequest;
                 fromAmino(object: _36.QueryRedelegationsRequestAmino): _36.QueryRedelegationsRequest;
                 toAmino(message: _36.QueryRedelegationsRequest): _36.QueryRedelegationsRequestAmino;
@@ -5526,7 +9626,34 @@ export declare namespace cosmos {
                 encode(message: _36.QueryRedelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryRedelegationsResponse;
                 fromJSON(object: any): _36.QueryRedelegationsResponse;
-                toJSON(message: _36.QueryRedelegationsResponse): unknown;
+                toJSON(message: _36.QueryRedelegationsResponse): {
+                    redelegationResponses: {
+                        redelegation: {
+                            delegatorAddress: string;
+                            validatorSrcAddress: string;
+                            validatorDstAddress: string;
+                            entries: {
+                                creationHeight: string;
+                                completionTime: string;
+                                initialBalance: string;
+                                sharesDst: string;
+                            }[];
+                        };
+                        entries: {
+                            redelegationEntry: {
+                                creationHeight: string;
+                                completionTime: string;
+                                initialBalance: string;
+                                sharesDst: string;
+                            };
+                            balance: string;
+                        }[];
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryRedelegationsResponse>): _36.QueryRedelegationsResponse;
                 fromAmino(object: _36.QueryRedelegationsResponseAmino): _36.QueryRedelegationsResponse;
                 toAmino(message: _36.QueryRedelegationsResponse): _36.QueryRedelegationsResponseAmino;
@@ -5545,7 +9672,16 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorValidatorsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorValidatorsRequest;
                 fromJSON(object: any): _36.QueryDelegatorValidatorsRequest;
-                toJSON(message: _36.QueryDelegatorValidatorsRequest): unknown;
+                toJSON(message: _36.QueryDelegatorValidatorsRequest): {
+                    delegatorAddr: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorValidatorsRequest>): _36.QueryDelegatorValidatorsRequest;
                 fromAmino(object: _36.QueryDelegatorValidatorsRequestAmino): _36.QueryDelegatorValidatorsRequest;
                 toAmino(message: _36.QueryDelegatorValidatorsRequest): _36.QueryDelegatorValidatorsRequestAmino;
@@ -5564,7 +9700,42 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorValidatorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorValidatorsResponse;
                 fromJSON(object: any): _36.QueryDelegatorValidatorsResponse;
-                toJSON(message: _36.QueryDelegatorValidatorsResponse): unknown;
+                toJSON(message: _36.QueryDelegatorValidatorsResponse): {
+                    validators: {
+                        operatorAddress: string;
+                        consensusPubkey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        jailed: boolean;
+                        status: _37.BondStatus;
+                        tokens: string;
+                        delegatorShares: string;
+                        description: {
+                            moniker: string;
+                            identity: string;
+                            website: string;
+                            securityContact: string;
+                            details: string;
+                        };
+                        unbondingHeight: string;
+                        unbondingTime: string;
+                        commission: {
+                            commissionRates: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            updateTime: string;
+                        };
+                        minSelfDelegation: string;
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorValidatorsResponse>): _36.QueryDelegatorValidatorsResponse;
                 fromAmino(object: _36.QueryDelegatorValidatorsResponseAmino): _36.QueryDelegatorValidatorsResponse;
                 toAmino(message: _36.QueryDelegatorValidatorsResponse): _36.QueryDelegatorValidatorsResponseAmino;
@@ -5583,7 +9754,10 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorValidatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorValidatorRequest;
                 fromJSON(object: any): _36.QueryDelegatorValidatorRequest;
-                toJSON(message: _36.QueryDelegatorValidatorRequest): unknown;
+                toJSON(message: _36.QueryDelegatorValidatorRequest): {
+                    delegatorAddr: string;
+                    validatorAddr: string;
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorValidatorRequest>): _36.QueryDelegatorValidatorRequest;
                 fromAmino(object: _36.QueryDelegatorValidatorRequestAmino): _36.QueryDelegatorValidatorRequest;
                 toAmino(message: _36.QueryDelegatorValidatorRequest): _36.QueryDelegatorValidatorRequestAmino;
@@ -5602,7 +9776,38 @@ export declare namespace cosmos {
                 encode(message: _36.QueryDelegatorValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryDelegatorValidatorResponse;
                 fromJSON(object: any): _36.QueryDelegatorValidatorResponse;
-                toJSON(message: _36.QueryDelegatorValidatorResponse): unknown;
+                toJSON(message: _36.QueryDelegatorValidatorResponse): {
+                    validator: {
+                        operatorAddress: string;
+                        consensusPubkey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        jailed: boolean;
+                        status: _37.BondStatus;
+                        tokens: string;
+                        delegatorShares: string;
+                        description: {
+                            moniker: string;
+                            identity: string;
+                            website: string;
+                            securityContact: string;
+                            details: string;
+                        };
+                        unbondingHeight: string;
+                        unbondingTime: string;
+                        commission: {
+                            commissionRates: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            updateTime: string;
+                        };
+                        minSelfDelegation: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryDelegatorValidatorResponse>): _36.QueryDelegatorValidatorResponse;
                 fromAmino(object: _36.QueryDelegatorValidatorResponseAmino): _36.QueryDelegatorValidatorResponse;
                 toAmino(message: _36.QueryDelegatorValidatorResponse): _36.QueryDelegatorValidatorResponseAmino;
@@ -5621,7 +9826,9 @@ export declare namespace cosmos {
                 encode(message: _36.QueryHistoricalInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryHistoricalInfoRequest;
                 fromJSON(object: any): _36.QueryHistoricalInfoRequest;
-                toJSON(message: _36.QueryHistoricalInfoRequest): unknown;
+                toJSON(message: _36.QueryHistoricalInfoRequest): {
+                    height: string;
+                };
                 fromPartial(object: Partial<_36.QueryHistoricalInfoRequest>): _36.QueryHistoricalInfoRequest;
                 fromAmino(object: _36.QueryHistoricalInfoRequestAmino): _36.QueryHistoricalInfoRequest;
                 toAmino(message: _36.QueryHistoricalInfoRequest): _36.QueryHistoricalInfoRequestAmino;
@@ -5640,7 +9847,65 @@ export declare namespace cosmos {
                 encode(message: _36.QueryHistoricalInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryHistoricalInfoResponse;
                 fromJSON(object: any): _36.QueryHistoricalInfoResponse;
-                toJSON(message: _36.QueryHistoricalInfoResponse): unknown;
+                toJSON(message: _36.QueryHistoricalInfoResponse): {
+                    hist?: {
+                        header: {
+                            version: {
+                                block: string;
+                                app: string;
+                            };
+                            chainId: string;
+                            height: string;
+                            time: string;
+                            lastBlockId: {
+                                hash: string;
+                                partSetHeader: {
+                                    total: number;
+                                    hash: string;
+                                };
+                            };
+                            lastCommitHash: string;
+                            dataHash: string;
+                            validatorsHash: string;
+                            nextValidatorsHash: string;
+                            consensusHash: string;
+                            appHash: string;
+                            lastResultsHash: string;
+                            evidenceHash: string;
+                            proposerAddress: string;
+                        };
+                        valset: {
+                            operatorAddress: string;
+                            consensusPubkey?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            jailed: boolean;
+                            status: _37.BondStatus;
+                            tokens: string;
+                            delegatorShares: string;
+                            description: {
+                                moniker: string;
+                                identity: string;
+                                website: string;
+                                securityContact: string;
+                                details: string;
+                            };
+                            unbondingHeight: string;
+                            unbondingTime: string;
+                            commission: {
+                                commissionRates: {
+                                    rate: string;
+                                    maxRate: string;
+                                    maxChangeRate: string;
+                                };
+                                updateTime: string;
+                            };
+                            minSelfDelegation: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryHistoricalInfoResponse>): _36.QueryHistoricalInfoResponse;
                 fromAmino(object: _36.QueryHistoricalInfoResponseAmino): _36.QueryHistoricalInfoResponse;
                 toAmino(message: _36.QueryHistoricalInfoResponse): _36.QueryHistoricalInfoResponseAmino;
@@ -5659,7 +9924,7 @@ export declare namespace cosmos {
                 encode(_: _36.QueryPoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryPoolRequest;
                 fromJSON(_: any): _36.QueryPoolRequest;
-                toJSON(_: _36.QueryPoolRequest): unknown;
+                toJSON(_: _36.QueryPoolRequest): {};
                 fromPartial(_: Partial<_36.QueryPoolRequest>): _36.QueryPoolRequest;
                 fromAmino(_: _36.QueryPoolRequestAmino): _36.QueryPoolRequest;
                 toAmino(_: _36.QueryPoolRequest): _36.QueryPoolRequestAmino;
@@ -5678,7 +9943,12 @@ export declare namespace cosmos {
                 encode(message: _36.QueryPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryPoolResponse;
                 fromJSON(object: any): _36.QueryPoolResponse;
-                toJSON(message: _36.QueryPoolResponse): unknown;
+                toJSON(message: _36.QueryPoolResponse): {
+                    pool: {
+                        notBondedTokens: string;
+                        bondedTokens: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryPoolResponse>): _36.QueryPoolResponse;
                 fromAmino(object: _36.QueryPoolResponseAmino): _36.QueryPoolResponse;
                 toAmino(message: _36.QueryPoolResponse): _36.QueryPoolResponseAmino;
@@ -5697,7 +9967,7 @@ export declare namespace cosmos {
                 encode(_: _36.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryParamsRequest;
                 fromJSON(_: any): _36.QueryParamsRequest;
-                toJSON(_: _36.QueryParamsRequest): unknown;
+                toJSON(_: _36.QueryParamsRequest): {};
                 fromPartial(_: Partial<_36.QueryParamsRequest>): _36.QueryParamsRequest;
                 fromAmino(_: _36.QueryParamsRequestAmino): _36.QueryParamsRequest;
                 toAmino(_: _36.QueryParamsRequest): _36.QueryParamsRequestAmino;
@@ -5716,7 +9986,19 @@ export declare namespace cosmos {
                 encode(message: _36.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.QueryParamsResponse;
                 fromJSON(object: any): _36.QueryParamsResponse;
-                toJSON(message: _36.QueryParamsResponse): unknown;
+                toJSON(message: _36.QueryParamsResponse): {
+                    params: {
+                        unbondingTime: {
+                            seconds: string;
+                            nanos: number;
+                        };
+                        maxValidators: number;
+                        maxEntries: number;
+                        historicalEntries: number;
+                        bondDenom: string;
+                        minCommissionRate: string;
+                    };
+                };
                 fromPartial(object: Partial<_36.QueryParamsResponse>): _36.QueryParamsResponse;
                 fromAmino(object: _36.QueryParamsResponseAmino): _36.QueryParamsResponse;
                 toAmino(message: _36.QueryParamsResponse): _36.QueryParamsResponseAmino;
@@ -5735,7 +10017,81 @@ export declare namespace cosmos {
                 encode(message: _35.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _35.GenesisState;
                 fromJSON(object: any): _35.GenesisState;
-                toJSON(message: _35.GenesisState): unknown;
+                toJSON(message: _35.GenesisState): {
+                    params: {
+                        unbondingTime: {
+                            seconds: string;
+                            nanos: number;
+                        };
+                        maxValidators: number;
+                        maxEntries: number;
+                        historicalEntries: number;
+                        bondDenom: string;
+                        minCommissionRate: string;
+                    };
+                    lastTotalPower: string;
+                    lastValidatorPowers: {
+                        address: string;
+                        power: string;
+                    }[];
+                    validators: {
+                        operatorAddress: string;
+                        consensusPubkey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        jailed: boolean;
+                        status: _37.BondStatus;
+                        tokens: string;
+                        delegatorShares: string;
+                        description: {
+                            moniker: string;
+                            identity: string;
+                            website: string;
+                            securityContact: string;
+                            details: string;
+                        };
+                        unbondingHeight: string;
+                        unbondingTime: string;
+                        commission: {
+                            commissionRates: {
+                                rate: string;
+                                maxRate: string;
+                                maxChangeRate: string;
+                            };
+                            updateTime: string;
+                        };
+                        minSelfDelegation: string;
+                    }[];
+                    delegations: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        shares: string;
+                    }[];
+                    unbondingDelegations: {
+                        delegatorAddress: string;
+                        validatorAddress: string;
+                        entries: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            balance: string;
+                        }[];
+                    }[];
+                    redelegations: {
+                        delegatorAddress: string;
+                        validatorSrcAddress: string;
+                        validatorDstAddress: string;
+                        entries: {
+                            creationHeight: string;
+                            completionTime: string;
+                            initialBalance: string;
+                            sharesDst: string;
+                        }[];
+                    }[];
+                    exported: boolean;
+                };
                 fromPartial(object: Partial<_35.GenesisState>): _35.GenesisState;
                 fromAmino(object: _35.GenesisStateAmino): _35.GenesisState;
                 toAmino(message: _35.GenesisState): _35.GenesisStateAmino;
@@ -5754,7 +10110,10 @@ export declare namespace cosmos {
                 encode(message: _35.LastValidatorPower, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _35.LastValidatorPower;
                 fromJSON(object: any): _35.LastValidatorPower;
-                toJSON(message: _35.LastValidatorPower): unknown;
+                toJSON(message: _35.LastValidatorPower): {
+                    address: string;
+                    power: string;
+                };
                 fromPartial(object: Partial<_35.LastValidatorPower>): _35.LastValidatorPower;
                 fromAmino(object: _35.LastValidatorPowerAmino): _35.LastValidatorPower;
                 toAmino(message: _35.LastValidatorPower): _35.LastValidatorPowerAmino;
@@ -5778,7 +10137,20 @@ export declare namespace cosmos {
                 encode(message: _34.StakeAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _34.StakeAuthorization;
                 fromJSON(object: any): _34.StakeAuthorization;
-                toJSON(message: _34.StakeAuthorization): unknown;
+                toJSON(message: _34.StakeAuthorization): {
+                    $typeUrl?: "/cosmos.staking.v1beta1.StakeAuthorization";
+                    maxTokens?: {
+                        denom: string;
+                        amount: string;
+                    };
+                    allowList?: {
+                        address: string[];
+                    };
+                    denyList?: {
+                        address: string[];
+                    };
+                    authorizationType: _34.AuthorizationType;
+                };
                 fromPartial(object: Partial<_34.StakeAuthorization>): _34.StakeAuthorization;
                 fromAmino(object: _34.StakeAuthorizationAmino): _34.StakeAuthorization;
                 toAmino(message: _34.StakeAuthorization): _34.StakeAuthorizationAmino;
@@ -5797,7 +10169,9 @@ export declare namespace cosmos {
                 encode(message: _34.StakeAuthorization_Validators, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _34.StakeAuthorization_Validators;
                 fromJSON(object: any): _34.StakeAuthorization_Validators;
-                toJSON(message: _34.StakeAuthorization_Validators): unknown;
+                toJSON(message: _34.StakeAuthorization_Validators): {
+                    address: string[];
+                };
                 fromPartial(object: Partial<_34.StakeAuthorization_Validators>): _34.StakeAuthorization_Validators;
                 fromAmino(object: _34.StakeAuthorization_ValidatorsAmino): _34.StakeAuthorization_Validators;
                 toAmino(message: _34.StakeAuthorization_Validators): _34.StakeAuthorization_ValidatorsAmino;
@@ -5826,7 +10200,29 @@ export declare namespace cosmos {
                     encode(message: _39.SignatureDescriptors, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.SignatureDescriptors;
                     fromJSON(object: any): _39.SignatureDescriptors;
-                    toJSON(message: _39.SignatureDescriptors): unknown;
+                    toJSON(message: _39.SignatureDescriptors): {
+                        signatures: {
+                            publicKey?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            data?: {
+                                single?: {
+                                    mode: _39.SignMode;
+                                    signature: string;
+                                };
+                                multi?: {
+                                    bitarray?: {
+                                        extraBitsStored: number;
+                                        elems: string;
+                                    };
+                                    signatures: any[];
+                                };
+                            };
+                            sequence: string;
+                        }[];
+                    };
                     fromPartial(object: Partial<_39.SignatureDescriptors>): _39.SignatureDescriptors;
                     fromAmino(object: _39.SignatureDescriptorsAmino): _39.SignatureDescriptors;
                     toAmino(message: _39.SignatureDescriptors): _39.SignatureDescriptorsAmino;
@@ -5845,7 +10241,27 @@ export declare namespace cosmos {
                     encode(message: _39.SignatureDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.SignatureDescriptor;
                     fromJSON(object: any): _39.SignatureDescriptor;
-                    toJSON(message: _39.SignatureDescriptor): unknown;
+                    toJSON(message: _39.SignatureDescriptor): {
+                        publicKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        data?: {
+                            single?: {
+                                mode: _39.SignMode;
+                                signature: string;
+                            };
+                            multi?: {
+                                bitarray?: {
+                                    extraBitsStored: number;
+                                    elems: string;
+                                };
+                                signatures: any[];
+                            };
+                        };
+                        sequence: string;
+                    };
                     fromPartial(object: Partial<_39.SignatureDescriptor>): _39.SignatureDescriptor;
                     fromAmino(object: _39.SignatureDescriptorAmino): _39.SignatureDescriptor;
                     toAmino(message: _39.SignatureDescriptor): _39.SignatureDescriptorAmino;
@@ -5864,7 +10280,19 @@ export declare namespace cosmos {
                     encode(message: _39.SignatureDescriptor_Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.SignatureDescriptor_Data;
                     fromJSON(object: any): _39.SignatureDescriptor_Data;
-                    toJSON(message: _39.SignatureDescriptor_Data): unknown;
+                    toJSON(message: _39.SignatureDescriptor_Data): {
+                        single?: {
+                            mode: _39.SignMode;
+                            signature: string;
+                        };
+                        multi?: {
+                            bitarray?: {
+                                extraBitsStored: number;
+                                elems: string;
+                            };
+                            signatures: any[];
+                        };
+                    };
                     fromPartial(object: Partial<_39.SignatureDescriptor_Data>): _39.SignatureDescriptor_Data;
                     fromAmino(object: _39.SignatureDescriptor_DataAmino): _39.SignatureDescriptor_Data;
                     toAmino(message: _39.SignatureDescriptor_Data): _39.SignatureDescriptor_DataAmino;
@@ -5883,7 +10311,10 @@ export declare namespace cosmos {
                     encode(message: _39.SignatureDescriptor_Data_Single, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.SignatureDescriptor_Data_Single;
                     fromJSON(object: any): _39.SignatureDescriptor_Data_Single;
-                    toJSON(message: _39.SignatureDescriptor_Data_Single): unknown;
+                    toJSON(message: _39.SignatureDescriptor_Data_Single): {
+                        mode: _39.SignMode;
+                        signature: string;
+                    };
                     fromPartial(object: Partial<_39.SignatureDescriptor_Data_Single>): _39.SignatureDescriptor_Data_Single;
                     fromAmino(object: _39.SignatureDescriptor_Data_SingleAmino): _39.SignatureDescriptor_Data_Single;
                     toAmino(message: _39.SignatureDescriptor_Data_Single): _39.SignatureDescriptor_Data_SingleAmino;
@@ -5902,7 +10333,19 @@ export declare namespace cosmos {
                     encode(message: _39.SignatureDescriptor_Data_Multi, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                     decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.SignatureDescriptor_Data_Multi;
                     fromJSON(object: any): _39.SignatureDescriptor_Data_Multi;
-                    toJSON(message: _39.SignatureDescriptor_Data_Multi): unknown;
+                    toJSON(message: _39.SignatureDescriptor_Data_Multi): {
+                        bitarray?: {
+                            extraBitsStored: number;
+                            elems: string;
+                        };
+                        signatures: {
+                            single?: {
+                                mode: _39.SignMode;
+                                signature: string;
+                            };
+                            multi?: any;
+                        }[];
+                    };
                     fromPartial(object: Partial<_39.SignatureDescriptor_Data_Multi>): _39.SignatureDescriptor_Data_Multi;
                     fromAmino(object: _39.SignatureDescriptor_Data_MultiAmino): _39.SignatureDescriptor_Data_Multi;
                     toAmino(message: _39.SignatureDescriptor_Data_Multi): _39.SignatureDescriptor_Data_MultiAmino;
@@ -5932,7 +10375,66 @@ export declare namespace cosmos {
                 encode(message: _41.Tx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.Tx;
                 fromJSON(object: any): _41.Tx;
-                toJSON(message: _41.Tx): unknown;
+                toJSON(message: _41.Tx): {
+                    body?: {
+                        messages: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        }[];
+                        memo: string;
+                        timeoutHeight: string;
+                        extensionOptions: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        }[];
+                        nonCriticalExtensionOptions: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        }[];
+                    };
+                    authInfo?: {
+                        signerInfos: {
+                            publicKey?: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            };
+                            modeInfo?: {
+                                single?: {
+                                    mode: _39.SignMode;
+                                };
+                                multi?: {
+                                    bitarray?: {
+                                        extraBitsStored: number;
+                                        elems: string;
+                                    };
+                                    modeInfos: any[];
+                                };
+                            };
+                            sequence: string;
+                        }[];
+                        fee?: {
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            gasLimit: string;
+                            payer: string;
+                            granter: string;
+                        };
+                        tip?: {
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            tipper: string;
+                        };
+                    };
+                    signatures: string[];
+                };
                 fromPartial(object: Partial<_41.Tx>): _41.Tx;
                 fromAmino(object: _41.TxAmino): _41.Tx;
                 toAmino(message: _41.Tx): _41.TxAmino;
@@ -5951,7 +10453,11 @@ export declare namespace cosmos {
                 encode(message: _41.TxRaw, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.TxRaw;
                 fromJSON(object: any): _41.TxRaw;
-                toJSON(message: _41.TxRaw): unknown;
+                toJSON(message: _41.TxRaw): {
+                    bodyBytes: string;
+                    authInfoBytes: string;
+                    signatures: string[];
+                };
                 fromPartial(object: Partial<_41.TxRaw>): _41.TxRaw;
                 fromAmino(object: _41.TxRawAmino): _41.TxRaw;
                 toAmino(message: _41.TxRaw): _41.TxRawAmino;
@@ -5970,7 +10476,12 @@ export declare namespace cosmos {
                 encode(message: _41.SignDoc, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.SignDoc;
                 fromJSON(object: any): _41.SignDoc;
-                toJSON(message: _41.SignDoc): unknown;
+                toJSON(message: _41.SignDoc): {
+                    bodyBytes: string;
+                    authInfoBytes: string;
+                    chainId: string;
+                    accountNumber: string;
+                };
                 fromPartial(object: Partial<_41.SignDoc>): _41.SignDoc;
                 fromAmino(object: _41.SignDocAmino): _41.SignDoc;
                 toAmino(message: _41.SignDoc): _41.SignDocAmino;
@@ -5989,7 +10500,24 @@ export declare namespace cosmos {
                 encode(message: _41.SignDocDirectAux, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.SignDocDirectAux;
                 fromJSON(object: any): _41.SignDocDirectAux;
-                toJSON(message: _41.SignDocDirectAux): unknown;
+                toJSON(message: _41.SignDocDirectAux): {
+                    bodyBytes: string;
+                    publicKey?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    };
+                    chainId: string;
+                    accountNumber: string;
+                    sequence: string;
+                    tip?: {
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        tipper: string;
+                    };
+                };
                 fromPartial(object: Partial<_41.SignDocDirectAux>): _41.SignDocDirectAux;
                 fromAmino(object: _41.SignDocDirectAuxAmino): _41.SignDocDirectAux;
                 toAmino(message: _41.SignDocDirectAux): _41.SignDocDirectAuxAmino;
@@ -6008,7 +10536,25 @@ export declare namespace cosmos {
                 encode(message: _41.TxBody, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.TxBody;
                 fromJSON(object: any): _41.TxBody;
-                toJSON(message: _41.TxBody): unknown;
+                toJSON(message: _41.TxBody): {
+                    messages: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[];
+                    memo: string;
+                    timeoutHeight: string;
+                    extensionOptions: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[];
+                    nonCriticalExtensionOptions: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_41.TxBody>): _41.TxBody;
                 fromAmino(object: _41.TxBodyAmino): _41.TxBody;
                 toAmino(message: _41.TxBody): _41.TxBodyAmino;
@@ -6027,7 +10573,44 @@ export declare namespace cosmos {
                 encode(message: _41.AuthInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.AuthInfo;
                 fromJSON(object: any): _41.AuthInfo;
-                toJSON(message: _41.AuthInfo): unknown;
+                toJSON(message: _41.AuthInfo): {
+                    signerInfos: {
+                        publicKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        modeInfo?: {
+                            single?: {
+                                mode: _39.SignMode;
+                            };
+                            multi?: {
+                                bitarray?: {
+                                    extraBitsStored: number;
+                                    elems: string;
+                                };
+                                modeInfos: any[];
+                            };
+                        };
+                        sequence: string;
+                    }[];
+                    fee?: {
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        gasLimit: string;
+                        payer: string;
+                        granter: string;
+                    };
+                    tip?: {
+                        amount: {
+                            denom: string;
+                            amount: string;
+                        }[];
+                        tipper: string;
+                    };
+                };
                 fromPartial(object: Partial<_41.AuthInfo>): _41.AuthInfo;
                 fromAmino(object: _41.AuthInfoAmino): _41.AuthInfo;
                 toAmino(message: _41.AuthInfo): _41.AuthInfoAmino;
@@ -6046,7 +10629,26 @@ export declare namespace cosmos {
                 encode(message: _41.SignerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.SignerInfo;
                 fromJSON(object: any): _41.SignerInfo;
-                toJSON(message: _41.SignerInfo): unknown;
+                toJSON(message: _41.SignerInfo): {
+                    publicKey?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    };
+                    modeInfo?: {
+                        single?: {
+                            mode: _39.SignMode;
+                        };
+                        multi?: {
+                            bitarray?: {
+                                extraBitsStored: number;
+                                elems: string;
+                            };
+                            modeInfos: any[];
+                        };
+                    };
+                    sequence: string;
+                };
                 fromPartial(object: Partial<_41.SignerInfo>): _41.SignerInfo;
                 fromAmino(object: _41.SignerInfoAmino): _41.SignerInfo;
                 toAmino(message: _41.SignerInfo): _41.SignerInfoAmino;
@@ -6065,7 +10667,18 @@ export declare namespace cosmos {
                 encode(message: _41.ModeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ModeInfo;
                 fromJSON(object: any): _41.ModeInfo;
-                toJSON(message: _41.ModeInfo): unknown;
+                toJSON(message: _41.ModeInfo): {
+                    single?: {
+                        mode: _39.SignMode;
+                    };
+                    multi?: {
+                        bitarray?: {
+                            extraBitsStored: number;
+                            elems: string;
+                        };
+                        modeInfos: any[];
+                    };
+                };
                 fromPartial(object: Partial<_41.ModeInfo>): _41.ModeInfo;
                 fromAmino(object: _41.ModeInfoAmino): _41.ModeInfo;
                 toAmino(message: _41.ModeInfo): _41.ModeInfoAmino;
@@ -6084,7 +10697,9 @@ export declare namespace cosmos {
                 encode(message: _41.ModeInfo_Single, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ModeInfo_Single;
                 fromJSON(object: any): _41.ModeInfo_Single;
-                toJSON(message: _41.ModeInfo_Single): unknown;
+                toJSON(message: _41.ModeInfo_Single): {
+                    mode: _39.SignMode;
+                };
                 fromPartial(object: Partial<_41.ModeInfo_Single>): _41.ModeInfo_Single;
                 fromAmino(object: _41.ModeInfo_SingleAmino): _41.ModeInfo_Single;
                 toAmino(message: _41.ModeInfo_Single): _41.ModeInfo_SingleAmino;
@@ -6103,7 +10718,18 @@ export declare namespace cosmos {
                 encode(message: _41.ModeInfo_Multi, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ModeInfo_Multi;
                 fromJSON(object: any): _41.ModeInfo_Multi;
-                toJSON(message: _41.ModeInfo_Multi): unknown;
+                toJSON(message: _41.ModeInfo_Multi): {
+                    bitarray?: {
+                        extraBitsStored: number;
+                        elems: string;
+                    };
+                    modeInfos: {
+                        single?: {
+                            mode: _39.SignMode;
+                        };
+                        multi?: any;
+                    }[];
+                };
                 fromPartial(object: Partial<_41.ModeInfo_Multi>): _41.ModeInfo_Multi;
                 fromAmino(object: _41.ModeInfo_MultiAmino): _41.ModeInfo_Multi;
                 toAmino(message: _41.ModeInfo_Multi): _41.ModeInfo_MultiAmino;
@@ -6122,7 +10748,15 @@ export declare namespace cosmos {
                 encode(message: _41.Fee, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.Fee;
                 fromJSON(object: any): _41.Fee;
-                toJSON(message: _41.Fee): unknown;
+                toJSON(message: _41.Fee): {
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    gasLimit: string;
+                    payer: string;
+                    granter: string;
+                };
                 fromPartial(object: Partial<_41.Fee>): _41.Fee;
                 fromAmino(object: _41.FeeAmino): _41.Fee;
                 toAmino(message: _41.Fee): _41.FeeAmino;
@@ -6141,7 +10775,13 @@ export declare namespace cosmos {
                 encode(message: _41.Tip, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.Tip;
                 fromJSON(object: any): _41.Tip;
-                toJSON(message: _41.Tip): unknown;
+                toJSON(message: _41.Tip): {
+                    amount: {
+                        denom: string;
+                        amount: string;
+                    }[];
+                    tipper: string;
+                };
                 fromPartial(object: Partial<_41.Tip>): _41.Tip;
                 fromAmino(object: _41.TipAmino): _41.Tip;
                 toAmino(message: _41.Tip): _41.TipAmino;
@@ -6160,7 +10800,29 @@ export declare namespace cosmos {
                 encode(message: _41.AuxSignerData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.AuxSignerData;
                 fromJSON(object: any): _41.AuxSignerData;
-                toJSON(message: _41.AuxSignerData): unknown;
+                toJSON(message: _41.AuxSignerData): {
+                    address: string;
+                    signDoc?: {
+                        bodyBytes: string;
+                        publicKey?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        chainId: string;
+                        accountNumber: string;
+                        sequence: string;
+                        tip?: {
+                            amount: {
+                                denom: string;
+                                amount: string;
+                            }[];
+                            tipper: string;
+                        };
+                    };
+                    mode: _39.SignMode;
+                    sig: string;
+                };
                 fromPartial(object: Partial<_41.AuxSignerData>): _41.AuxSignerData;
                 fromAmino(object: _41.AuxSignerDataAmino): _41.AuxSignerData;
                 toAmino(message: _41.AuxSignerData): _41.AuxSignerDataAmino;
@@ -6189,7 +10851,17 @@ export declare namespace cosmos {
                 encode(message: _40.GetTxsEventRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.GetTxsEventRequest;
                 fromJSON(object: any): _40.GetTxsEventRequest;
-                toJSON(message: _40.GetTxsEventRequest): unknown;
+                toJSON(message: _40.GetTxsEventRequest): {
+                    events: string[];
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                    orderBy: _40.OrderBy;
+                };
                 fromPartial(object: Partial<_40.GetTxsEventRequest>): _40.GetTxsEventRequest;
                 fromAmino(object: _40.GetTxsEventRequestAmino): _40.GetTxsEventRequest;
                 toAmino(message: _40.GetTxsEventRequest): _40.GetTxsEventRequestAmino;
@@ -6208,7 +10880,108 @@ export declare namespace cosmos {
                 encode(message: _40.GetTxsEventResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.GetTxsEventResponse;
                 fromJSON(object: any): _40.GetTxsEventResponse;
-                toJSON(message: _40.GetTxsEventResponse): unknown;
+                toJSON(message: _40.GetTxsEventResponse): {
+                    txs: {
+                        body?: {
+                            messages: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            memo: string;
+                            timeoutHeight: string;
+                            extensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            nonCriticalExtensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                        };
+                        authInfo?: {
+                            signerInfos: {
+                                publicKey?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                                modeInfo?: {
+                                    single?: {
+                                        mode: _39.SignMode;
+                                    };
+                                    multi?: {
+                                        bitarray?: {
+                                            extraBitsStored: number;
+                                            elems: string;
+                                        };
+                                        modeInfos: any[];
+                                    };
+                                };
+                                sequence: string;
+                            }[];
+                            fee?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                gasLimit: string;
+                                payer: string;
+                                granter: string;
+                            };
+                            tip?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                tipper: string;
+                            };
+                        };
+                        signatures: string[];
+                    }[];
+                    txResponses: {
+                        height: string;
+                        txhash: string;
+                        codespace: string;
+                        code: number;
+                        data: string;
+                        rawLog: string;
+                        logs: {
+                            msgIndex: number;
+                            log: string;
+                            events: {
+                                type: string;
+                                attributes: {
+                                    key: string;
+                                    value: string;
+                                }[];
+                            }[];
+                        }[];
+                        info: string;
+                        gasWanted: string;
+                        gasUsed: string;
+                        tx?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        timestamp: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                                index: boolean;
+                            }[];
+                        }[];
+                    }[];
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_40.GetTxsEventResponse>): _40.GetTxsEventResponse;
                 fromAmino(object: _40.GetTxsEventResponseAmino): _40.GetTxsEventResponse;
                 toAmino(message: _40.GetTxsEventResponse): _40.GetTxsEventResponseAmino;
@@ -6227,7 +11000,10 @@ export declare namespace cosmos {
                 encode(message: _40.BroadcastTxRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.BroadcastTxRequest;
                 fromJSON(object: any): _40.BroadcastTxRequest;
-                toJSON(message: _40.BroadcastTxRequest): unknown;
+                toJSON(message: _40.BroadcastTxRequest): {
+                    txBytes: string;
+                    mode: _40.BroadcastMode;
+                };
                 fromPartial(object: Partial<_40.BroadcastTxRequest>): _40.BroadcastTxRequest;
                 fromAmino(object: _40.BroadcastTxRequestAmino): _40.BroadcastTxRequest;
                 toAmino(message: _40.BroadcastTxRequest): _40.BroadcastTxRequestAmino;
@@ -6246,7 +11022,44 @@ export declare namespace cosmos {
                 encode(message: _40.BroadcastTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.BroadcastTxResponse;
                 fromJSON(object: any): _40.BroadcastTxResponse;
-                toJSON(message: _40.BroadcastTxResponse): unknown;
+                toJSON(message: _40.BroadcastTxResponse): {
+                    txResponse?: {
+                        height: string;
+                        txhash: string;
+                        codespace: string;
+                        code: number;
+                        data: string;
+                        rawLog: string;
+                        logs: {
+                            msgIndex: number;
+                            log: string;
+                            events: {
+                                type: string;
+                                attributes: {
+                                    key: string;
+                                    value: string;
+                                }[];
+                            }[];
+                        }[];
+                        info: string;
+                        gasWanted: string;
+                        gasUsed: string;
+                        tx?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        timestamp: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                                index: boolean;
+                            }[];
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_40.BroadcastTxResponse>): _40.BroadcastTxResponse;
                 fromAmino(object: _40.BroadcastTxResponseAmino): _40.BroadcastTxResponse;
                 toAmino(message: _40.BroadcastTxResponse): _40.BroadcastTxResponseAmino;
@@ -6265,7 +11078,69 @@ export declare namespace cosmos {
                 encode(message: _40.SimulateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.SimulateRequest;
                 fromJSON(object: any): _40.SimulateRequest;
-                toJSON(message: _40.SimulateRequest): unknown;
+                toJSON(message: _40.SimulateRequest): {
+                    tx?: {
+                        body?: {
+                            messages: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            memo: string;
+                            timeoutHeight: string;
+                            extensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            nonCriticalExtensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                        };
+                        authInfo?: {
+                            signerInfos: {
+                                publicKey?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                                modeInfo?: {
+                                    single?: {
+                                        mode: _39.SignMode;
+                                    };
+                                    multi?: {
+                                        bitarray?: {
+                                            extraBitsStored: number;
+                                            elems: string;
+                                        };
+                                        modeInfos: any[];
+                                    };
+                                };
+                                sequence: string;
+                            }[];
+                            fee?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                gasLimit: string;
+                                payer: string;
+                                granter: string;
+                            };
+                            tip?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                tipper: string;
+                            };
+                        };
+                        signatures: string[];
+                    };
+                    txBytes: string;
+                };
                 fromPartial(object: Partial<_40.SimulateRequest>): _40.SimulateRequest;
                 fromAmino(object: _40.SimulateRequestAmino): _40.SimulateRequest;
                 toAmino(message: _40.SimulateRequest): _40.SimulateRequestAmino;
@@ -6284,7 +11159,29 @@ export declare namespace cosmos {
                 encode(message: _40.SimulateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.SimulateResponse;
                 fromJSON(object: any): _40.SimulateResponse;
-                toJSON(message: _40.SimulateResponse): unknown;
+                toJSON(message: _40.SimulateResponse): {
+                    gasInfo?: {
+                        gasWanted: string;
+                        gasUsed: string;
+                    };
+                    result?: {
+                        data: string;
+                        log: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                                index: boolean;
+                            }[];
+                        }[];
+                        msgResponses: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_40.SimulateResponse>): _40.SimulateResponse;
                 fromAmino(object: _40.SimulateResponseAmino): _40.SimulateResponse;
                 toAmino(message: _40.SimulateResponse): _40.SimulateResponseAmino;
@@ -6303,7 +11200,9 @@ export declare namespace cosmos {
                 encode(message: _40.GetTxRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.GetTxRequest;
                 fromJSON(object: any): _40.GetTxRequest;
-                toJSON(message: _40.GetTxRequest): unknown;
+                toJSON(message: _40.GetTxRequest): {
+                    hash: string;
+                };
                 fromPartial(object: Partial<_40.GetTxRequest>): _40.GetTxRequest;
                 fromAmino(object: _40.GetTxRequestAmino): _40.GetTxRequest;
                 toAmino(message: _40.GetTxRequest): _40.GetTxRequestAmino;
@@ -6322,7 +11221,104 @@ export declare namespace cosmos {
                 encode(message: _40.GetTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.GetTxResponse;
                 fromJSON(object: any): _40.GetTxResponse;
-                toJSON(message: _40.GetTxResponse): unknown;
+                toJSON(message: _40.GetTxResponse): {
+                    tx?: {
+                        body?: {
+                            messages: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            memo: string;
+                            timeoutHeight: string;
+                            extensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            nonCriticalExtensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                        };
+                        authInfo?: {
+                            signerInfos: {
+                                publicKey?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                                modeInfo?: {
+                                    single?: {
+                                        mode: _39.SignMode;
+                                    };
+                                    multi?: {
+                                        bitarray?: {
+                                            extraBitsStored: number;
+                                            elems: string;
+                                        };
+                                        modeInfos: any[];
+                                    };
+                                };
+                                sequence: string;
+                            }[];
+                            fee?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                gasLimit: string;
+                                payer: string;
+                                granter: string;
+                            };
+                            tip?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                tipper: string;
+                            };
+                        };
+                        signatures: string[];
+                    };
+                    txResponse?: {
+                        height: string;
+                        txhash: string;
+                        codespace: string;
+                        code: number;
+                        data: string;
+                        rawLog: string;
+                        logs: {
+                            msgIndex: number;
+                            log: string;
+                            events: {
+                                type: string;
+                                attributes: {
+                                    key: string;
+                                    value: string;
+                                }[];
+                            }[];
+                        }[];
+                        info: string;
+                        gasWanted: string;
+                        gasUsed: string;
+                        tx?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        timestamp: string;
+                        events: {
+                            type: string;
+                            attributes: {
+                                key: string;
+                                value: string;
+                                index: boolean;
+                            }[];
+                        }[];
+                    };
+                };
                 fromPartial(object: Partial<_40.GetTxResponse>): _40.GetTxResponse;
                 fromAmino(object: _40.GetTxResponseAmino): _40.GetTxResponse;
                 toAmino(message: _40.GetTxResponse): _40.GetTxResponseAmino;
@@ -6341,7 +11337,16 @@ export declare namespace cosmos {
                 encode(message: _40.GetBlockWithTxsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.GetBlockWithTxsRequest;
                 fromJSON(object: any): _40.GetBlockWithTxsRequest;
-                toJSON(message: _40.GetBlockWithTxsRequest): unknown;
+                toJSON(message: _40.GetBlockWithTxsRequest): {
+                    height: string;
+                    pagination?: {
+                        key: string;
+                        offset: string;
+                        limit: string;
+                        countTotal: boolean;
+                        reverse: boolean;
+                    };
+                };
                 fromPartial(object: Partial<_40.GetBlockWithTxsRequest>): _40.GetBlockWithTxsRequest;
                 fromAmino(object: _40.GetBlockWithTxsRequestAmino): _40.GetBlockWithTxsRequest;
                 toAmino(message: _40.GetBlockWithTxsRequest): _40.GetBlockWithTxsRequestAmino;
@@ -6360,7 +11365,248 @@ export declare namespace cosmos {
                 encode(message: _40.GetBlockWithTxsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.GetBlockWithTxsResponse;
                 fromJSON(object: any): _40.GetBlockWithTxsResponse;
-                toJSON(message: _40.GetBlockWithTxsResponse): unknown;
+                toJSON(message: _40.GetBlockWithTxsResponse): {
+                    txs: {
+                        body?: {
+                            messages: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            memo: string;
+                            timeoutHeight: string;
+                            extensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                            nonCriticalExtensionOptions: {
+                                $typeUrl?: string;
+                                typeUrl: string;
+                                value: string;
+                            }[];
+                        };
+                        authInfo?: {
+                            signerInfos: {
+                                publicKey?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                                modeInfo?: {
+                                    single?: {
+                                        mode: _39.SignMode;
+                                    };
+                                    multi?: {
+                                        bitarray?: {
+                                            extraBitsStored: number;
+                                            elems: string;
+                                        };
+                                        modeInfos: any[];
+                                    };
+                                };
+                                sequence: string;
+                            }[];
+                            fee?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                gasLimit: string;
+                                payer: string;
+                                granter: string;
+                            };
+                            tip?: {
+                                amount: {
+                                    denom: string;
+                                    amount: string;
+                                }[];
+                                tipper: string;
+                            };
+                        };
+                        signatures: string[];
+                    }[];
+                    blockId?: {
+                        hash: string;
+                        partSetHeader: {
+                            total: number;
+                            hash: string;
+                        };
+                    };
+                    block?: {
+                        header: {
+                            version: {
+                                block: string;
+                                app: string;
+                            };
+                            chainId: string;
+                            height: string;
+                            time: string;
+                            lastBlockId: {
+                                hash: string;
+                                partSetHeader: {
+                                    total: number;
+                                    hash: string;
+                                };
+                            };
+                            lastCommitHash: string;
+                            dataHash: string;
+                            validatorsHash: string;
+                            nextValidatorsHash: string;
+                            consensusHash: string;
+                            appHash: string;
+                            lastResultsHash: string;
+                            evidenceHash: string;
+                            proposerAddress: string;
+                        };
+                        data: {
+                            txs: string[];
+                        };
+                        evidence: {
+                            evidence: {
+                                duplicateVoteEvidence?: {
+                                    voteA?: {
+                                        type: import("../tendermint/types/types").SignedMsgType;
+                                        height: string;
+                                        round: number;
+                                        blockId: {
+                                            hash: string;
+                                            partSetHeader: {
+                                                total: number;
+                                                hash: string;
+                                            };
+                                        };
+                                        timestamp: string;
+                                        validatorAddress: string;
+                                        validatorIndex: number;
+                                        signature: string;
+                                    };
+                                    voteB?: {
+                                        type: import("../tendermint/types/types").SignedMsgType;
+                                        height: string;
+                                        round: number;
+                                        blockId: {
+                                            hash: string;
+                                            partSetHeader: {
+                                                total: number;
+                                                hash: string;
+                                            };
+                                        };
+                                        timestamp: string;
+                                        validatorAddress: string;
+                                        validatorIndex: number;
+                                        signature: string;
+                                    };
+                                    totalVotingPower: string;
+                                    validatorPower: string;
+                                    timestamp: string;
+                                };
+                                lightClientAttackEvidence?: {
+                                    conflictingBlock?: {
+                                        signedHeader?: {
+                                            header?: {
+                                                version: {
+                                                    block: string;
+                                                    app: string;
+                                                };
+                                                chainId: string;
+                                                height: string;
+                                                time: string;
+                                                lastBlockId: {
+                                                    hash: string;
+                                                    partSetHeader: {
+                                                        total: number;
+                                                        hash: string;
+                                                    };
+                                                };
+                                                lastCommitHash: string;
+                                                dataHash: string;
+                                                validatorsHash: string;
+                                                nextValidatorsHash: string;
+                                                consensusHash: string;
+                                                appHash: string;
+                                                lastResultsHash: string;
+                                                evidenceHash: string;
+                                                proposerAddress: string;
+                                            };
+                                            commit?: {
+                                                height: string;
+                                                round: number;
+                                                blockId: {
+                                                    hash: string;
+                                                    partSetHeader: {
+                                                        total: number;
+                                                        hash: string;
+                                                    };
+                                                };
+                                                signatures: {
+                                                    blockIdFlag: import("../tendermint/types/types").BlockIDFlag;
+                                                    validatorAddress: string;
+                                                    timestamp: string;
+                                                    signature: string;
+                                                }[];
+                                            };
+                                        };
+                                        validatorSet?: {
+                                            validators: {
+                                                address: string;
+                                                pubKey: {
+                                                    ed25519?: string;
+                                                    secp256k1?: string;
+                                                };
+                                                votingPower: string;
+                                                proposerPriority: string;
+                                            }[];
+                                            proposer?: {
+                                                address: string;
+                                                pubKey: {
+                                                    ed25519?: string;
+                                                    secp256k1?: string;
+                                                };
+                                                votingPower: string;
+                                                proposerPriority: string;
+                                            };
+                                            totalVotingPower: string;
+                                        };
+                                    };
+                                    commonHeight: string;
+                                    byzantineValidators: {
+                                        address: string;
+                                        pubKey: {
+                                            ed25519?: string;
+                                            secp256k1?: string;
+                                        };
+                                        votingPower: string;
+                                        proposerPriority: string;
+                                    }[];
+                                    totalVotingPower: string;
+                                    timestamp: string;
+                                };
+                            }[];
+                        };
+                        lastCommit?: {
+                            height: string;
+                            round: number;
+                            blockId: {
+                                hash: string;
+                                partSetHeader: {
+                                    total: number;
+                                    hash: string;
+                                };
+                            };
+                            signatures: {
+                                blockIdFlag: import("../tendermint/types/types").BlockIDFlag;
+                                validatorAddress: string;
+                                timestamp: string;
+                                signature: string;
+                            }[];
+                        };
+                    };
+                    pagination?: {
+                        nextKey: string;
+                        total: string;
+                    };
+                };
                 fromPartial(object: Partial<_40.GetBlockWithTxsResponse>): _40.GetBlockWithTxsResponse;
                 fromAmino(object: _40.GetBlockWithTxsResponseAmino): _40.GetBlockWithTxsResponse;
                 toAmino(message: _40.GetBlockWithTxsResponse): _40.GetBlockWithTxsResponseAmino;
@@ -6409,11 +11655,26 @@ export declare namespace cosmos {
                 toJSON: {
                     softwareUpgrade(value: _43.MsgSoftwareUpgrade): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            authority: string;
+                            plan: {
+                                name: string;
+                                time: string;
+                                height: string;
+                                info: string;
+                                upgradedClientState?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                            };
+                        };
                     };
                     cancelUpgrade(value: _43.MsgCancelUpgrade): {
                         typeUrl: string;
-                        value: unknown;
+                        value: {
+                            authority: string;
+                        };
                     };
                 };
                 fromJSON: {
@@ -6458,7 +11719,17 @@ export declare namespace cosmos {
                 encode(message: _44.Plan, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.Plan;
                 fromJSON(object: any): _44.Plan;
-                toJSON(message: _44.Plan): unknown;
+                toJSON(message: _44.Plan): {
+                    name: string;
+                    time: string;
+                    height: string;
+                    info: string;
+                    upgradedClientState?: {
+                        $typeUrl?: string;
+                        typeUrl: string;
+                        value: string;
+                    };
+                };
                 fromPartial(object: Partial<_44.Plan>): _44.Plan;
                 fromAmino(object: _44.PlanAmino): _44.Plan;
                 toAmino(message: _44.Plan): _44.PlanAmino;
@@ -6477,7 +11748,22 @@ export declare namespace cosmos {
                 encode(message: _44.SoftwareUpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.SoftwareUpgradeProposal;
                 fromJSON(object: any): _44.SoftwareUpgradeProposal;
-                toJSON(message: _44.SoftwareUpgradeProposal): unknown;
+                toJSON(message: _44.SoftwareUpgradeProposal): {
+                    $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+                    title: string;
+                    description: string;
+                    plan: {
+                        name: string;
+                        time: string;
+                        height: string;
+                        info: string;
+                        upgradedClientState?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                    };
+                };
                 fromPartial(object: Partial<_44.SoftwareUpgradeProposal>): _44.SoftwareUpgradeProposal;
                 fromAmino(object: _44.SoftwareUpgradeProposalAmino): _44.SoftwareUpgradeProposal;
                 toAmino(message: _44.SoftwareUpgradeProposal): _44.SoftwareUpgradeProposalAmino;
@@ -6496,7 +11782,11 @@ export declare namespace cosmos {
                 encode(message: _44.CancelSoftwareUpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.CancelSoftwareUpgradeProposal;
                 fromJSON(object: any): _44.CancelSoftwareUpgradeProposal;
-                toJSON(message: _44.CancelSoftwareUpgradeProposal): unknown;
+                toJSON(message: _44.CancelSoftwareUpgradeProposal): {
+                    $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+                    title: string;
+                    description: string;
+                };
                 fromPartial(object: Partial<_44.CancelSoftwareUpgradeProposal>): _44.CancelSoftwareUpgradeProposal;
                 fromAmino(object: _44.CancelSoftwareUpgradeProposalAmino): _44.CancelSoftwareUpgradeProposal;
                 toAmino(message: _44.CancelSoftwareUpgradeProposal): _44.CancelSoftwareUpgradeProposalAmino;
@@ -6515,7 +11805,10 @@ export declare namespace cosmos {
                 encode(message: _44.ModuleVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.ModuleVersion;
                 fromJSON(object: any): _44.ModuleVersion;
-                toJSON(message: _44.ModuleVersion): unknown;
+                toJSON(message: _44.ModuleVersion): {
+                    name: string;
+                    version: string;
+                };
                 fromPartial(object: Partial<_44.ModuleVersion>): _44.ModuleVersion;
                 fromAmino(object: _44.ModuleVersionAmino): _44.ModuleVersion;
                 toAmino(message: _44.ModuleVersion): _44.ModuleVersionAmino;
@@ -6534,7 +11827,20 @@ export declare namespace cosmos {
                 encode(message: _43.MsgSoftwareUpgrade, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.MsgSoftwareUpgrade;
                 fromJSON(object: any): _43.MsgSoftwareUpgrade;
-                toJSON(message: _43.MsgSoftwareUpgrade): unknown;
+                toJSON(message: _43.MsgSoftwareUpgrade): {
+                    authority: string;
+                    plan: {
+                        name: string;
+                        time: string;
+                        height: string;
+                        info: string;
+                        upgradedClientState?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                    };
+                };
                 fromPartial(object: Partial<_43.MsgSoftwareUpgrade>): _43.MsgSoftwareUpgrade;
                 fromAmino(object: _43.MsgSoftwareUpgradeAmino): _43.MsgSoftwareUpgrade;
                 toAmino(message: _43.MsgSoftwareUpgrade): _43.MsgSoftwareUpgradeAmino;
@@ -6553,7 +11859,7 @@ export declare namespace cosmos {
                 encode(_: _43.MsgSoftwareUpgradeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.MsgSoftwareUpgradeResponse;
                 fromJSON(_: any): _43.MsgSoftwareUpgradeResponse;
-                toJSON(_: _43.MsgSoftwareUpgradeResponse): unknown;
+                toJSON(_: _43.MsgSoftwareUpgradeResponse): {};
                 fromPartial(_: Partial<_43.MsgSoftwareUpgradeResponse>): _43.MsgSoftwareUpgradeResponse;
                 fromAmino(_: _43.MsgSoftwareUpgradeResponseAmino): _43.MsgSoftwareUpgradeResponse;
                 toAmino(_: _43.MsgSoftwareUpgradeResponse): _43.MsgSoftwareUpgradeResponseAmino;
@@ -6572,7 +11878,9 @@ export declare namespace cosmos {
                 encode(message: _43.MsgCancelUpgrade, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.MsgCancelUpgrade;
                 fromJSON(object: any): _43.MsgCancelUpgrade;
-                toJSON(message: _43.MsgCancelUpgrade): unknown;
+                toJSON(message: _43.MsgCancelUpgrade): {
+                    authority: string;
+                };
                 fromPartial(object: Partial<_43.MsgCancelUpgrade>): _43.MsgCancelUpgrade;
                 fromAmino(object: _43.MsgCancelUpgradeAmino): _43.MsgCancelUpgrade;
                 toAmino(message: _43.MsgCancelUpgrade): _43.MsgCancelUpgradeAmino;
@@ -6591,7 +11899,7 @@ export declare namespace cosmos {
                 encode(_: _43.MsgCancelUpgradeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.MsgCancelUpgradeResponse;
                 fromJSON(_: any): _43.MsgCancelUpgradeResponse;
-                toJSON(_: _43.MsgCancelUpgradeResponse): unknown;
+                toJSON(_: _43.MsgCancelUpgradeResponse): {};
                 fromPartial(_: Partial<_43.MsgCancelUpgradeResponse>): _43.MsgCancelUpgradeResponse;
                 fromAmino(_: _43.MsgCancelUpgradeResponseAmino): _43.MsgCancelUpgradeResponse;
                 toAmino(_: _43.MsgCancelUpgradeResponse): _43.MsgCancelUpgradeResponseAmino;
@@ -6610,7 +11918,7 @@ export declare namespace cosmos {
                 encode(_: _42.QueryCurrentPlanRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryCurrentPlanRequest;
                 fromJSON(_: any): _42.QueryCurrentPlanRequest;
-                toJSON(_: _42.QueryCurrentPlanRequest): unknown;
+                toJSON(_: _42.QueryCurrentPlanRequest): {};
                 fromPartial(_: Partial<_42.QueryCurrentPlanRequest>): _42.QueryCurrentPlanRequest;
                 fromAmino(_: _42.QueryCurrentPlanRequestAmino): _42.QueryCurrentPlanRequest;
                 toAmino(_: _42.QueryCurrentPlanRequest): _42.QueryCurrentPlanRequestAmino;
@@ -6629,7 +11937,19 @@ export declare namespace cosmos {
                 encode(message: _42.QueryCurrentPlanResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryCurrentPlanResponse;
                 fromJSON(object: any): _42.QueryCurrentPlanResponse;
-                toJSON(message: _42.QueryCurrentPlanResponse): unknown;
+                toJSON(message: _42.QueryCurrentPlanResponse): {
+                    plan?: {
+                        name: string;
+                        time: string;
+                        height: string;
+                        info: string;
+                        upgradedClientState?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                    };
+                };
                 fromPartial(object: Partial<_42.QueryCurrentPlanResponse>): _42.QueryCurrentPlanResponse;
                 fromAmino(object: _42.QueryCurrentPlanResponseAmino): _42.QueryCurrentPlanResponse;
                 toAmino(message: _42.QueryCurrentPlanResponse): _42.QueryCurrentPlanResponseAmino;
@@ -6648,7 +11968,9 @@ export declare namespace cosmos {
                 encode(message: _42.QueryAppliedPlanRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryAppliedPlanRequest;
                 fromJSON(object: any): _42.QueryAppliedPlanRequest;
-                toJSON(message: _42.QueryAppliedPlanRequest): unknown;
+                toJSON(message: _42.QueryAppliedPlanRequest): {
+                    name: string;
+                };
                 fromPartial(object: Partial<_42.QueryAppliedPlanRequest>): _42.QueryAppliedPlanRequest;
                 fromAmino(object: _42.QueryAppliedPlanRequestAmino): _42.QueryAppliedPlanRequest;
                 toAmino(message: _42.QueryAppliedPlanRequest): _42.QueryAppliedPlanRequestAmino;
@@ -6667,7 +11989,9 @@ export declare namespace cosmos {
                 encode(message: _42.QueryAppliedPlanResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryAppliedPlanResponse;
                 fromJSON(object: any): _42.QueryAppliedPlanResponse;
-                toJSON(message: _42.QueryAppliedPlanResponse): unknown;
+                toJSON(message: _42.QueryAppliedPlanResponse): {
+                    height: string;
+                };
                 fromPartial(object: Partial<_42.QueryAppliedPlanResponse>): _42.QueryAppliedPlanResponse;
                 fromAmino(object: _42.QueryAppliedPlanResponseAmino): _42.QueryAppliedPlanResponse;
                 toAmino(message: _42.QueryAppliedPlanResponse): _42.QueryAppliedPlanResponseAmino;
@@ -6686,7 +12010,9 @@ export declare namespace cosmos {
                 encode(message: _42.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryUpgradedConsensusStateRequest;
                 fromJSON(object: any): _42.QueryUpgradedConsensusStateRequest;
-                toJSON(message: _42.QueryUpgradedConsensusStateRequest): unknown;
+                toJSON(message: _42.QueryUpgradedConsensusStateRequest): {
+                    lastHeight: string;
+                };
                 fromPartial(object: Partial<_42.QueryUpgradedConsensusStateRequest>): _42.QueryUpgradedConsensusStateRequest;
                 fromAmino(object: _42.QueryUpgradedConsensusStateRequestAmino): _42.QueryUpgradedConsensusStateRequest;
                 toAmino(message: _42.QueryUpgradedConsensusStateRequest): _42.QueryUpgradedConsensusStateRequestAmino;
@@ -6705,7 +12031,9 @@ export declare namespace cosmos {
                 encode(message: _42.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryUpgradedConsensusStateResponse;
                 fromJSON(object: any): _42.QueryUpgradedConsensusStateResponse;
-                toJSON(message: _42.QueryUpgradedConsensusStateResponse): unknown;
+                toJSON(message: _42.QueryUpgradedConsensusStateResponse): {
+                    upgradedConsensusState: string;
+                };
                 fromPartial(object: Partial<_42.QueryUpgradedConsensusStateResponse>): _42.QueryUpgradedConsensusStateResponse;
                 fromAmino(object: _42.QueryUpgradedConsensusStateResponseAmino): _42.QueryUpgradedConsensusStateResponse;
                 toAmino(message: _42.QueryUpgradedConsensusStateResponse): _42.QueryUpgradedConsensusStateResponseAmino;
@@ -6724,7 +12052,9 @@ export declare namespace cosmos {
                 encode(message: _42.QueryModuleVersionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryModuleVersionsRequest;
                 fromJSON(object: any): _42.QueryModuleVersionsRequest;
-                toJSON(message: _42.QueryModuleVersionsRequest): unknown;
+                toJSON(message: _42.QueryModuleVersionsRequest): {
+                    moduleName: string;
+                };
                 fromPartial(object: Partial<_42.QueryModuleVersionsRequest>): _42.QueryModuleVersionsRequest;
                 fromAmino(object: _42.QueryModuleVersionsRequestAmino): _42.QueryModuleVersionsRequest;
                 toAmino(message: _42.QueryModuleVersionsRequest): _42.QueryModuleVersionsRequestAmino;
@@ -6743,7 +12073,12 @@ export declare namespace cosmos {
                 encode(message: _42.QueryModuleVersionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryModuleVersionsResponse;
                 fromJSON(object: any): _42.QueryModuleVersionsResponse;
-                toJSON(message: _42.QueryModuleVersionsResponse): unknown;
+                toJSON(message: _42.QueryModuleVersionsResponse): {
+                    moduleVersions: {
+                        name: string;
+                        version: string;
+                    }[];
+                };
                 fromPartial(object: Partial<_42.QueryModuleVersionsResponse>): _42.QueryModuleVersionsResponse;
                 fromAmino(object: _42.QueryModuleVersionsResponseAmino): _42.QueryModuleVersionsResponse;
                 toAmino(message: _42.QueryModuleVersionsResponse): _42.QueryModuleVersionsResponseAmino;
@@ -6762,7 +12097,7 @@ export declare namespace cosmos {
                 encode(_: _42.QueryAuthorityRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryAuthorityRequest;
                 fromJSON(_: any): _42.QueryAuthorityRequest;
-                toJSON(_: _42.QueryAuthorityRequest): unknown;
+                toJSON(_: _42.QueryAuthorityRequest): {};
                 fromPartial(_: Partial<_42.QueryAuthorityRequest>): _42.QueryAuthorityRequest;
                 fromAmino(_: _42.QueryAuthorityRequestAmino): _42.QueryAuthorityRequest;
                 toAmino(_: _42.QueryAuthorityRequest): _42.QueryAuthorityRequestAmino;
@@ -6781,7 +12116,9 @@ export declare namespace cosmos {
                 encode(message: _42.QueryAuthorityResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
                 decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.QueryAuthorityResponse;
                 fromJSON(object: any): _42.QueryAuthorityResponse;
-                toJSON(message: _42.QueryAuthorityResponse): unknown;
+                toJSON(message: _42.QueryAuthorityResponse): {
+                    address: string;
+                };
                 fromPartial(object: Partial<_42.QueryAuthorityResponse>): _42.QueryAuthorityResponse;
                 fromAmino(object: _42.QueryAuthorityResponseAmino): _42.QueryAuthorityResponse;
                 toAmino(message: _42.QueryAuthorityResponse): _42.QueryAuthorityResponseAmino;

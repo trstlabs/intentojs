@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const connection_1 = require("./connection");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseGenesisState() {
     return {
         connections: [],
@@ -126,7 +126,7 @@ exports.GenesisState = {
         else {
             obj.client_connection_paths = message.clientConnectionPaths;
         }
-        obj.next_connection_sequence = message.nextConnectionSequence !== BigInt(0) ? message.nextConnectionSequence.toString() : undefined;
+        obj.next_connection_sequence = message.nextConnectionSequence !== BigInt(0) ? message.nextConnectionSequence?.toString() : undefined;
         obj.params = message.params ? connection_1.Params.toAmino(message.params) : undefined;
         return obj;
     },

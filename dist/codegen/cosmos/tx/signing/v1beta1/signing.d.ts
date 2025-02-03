@@ -1,6 +1,7 @@
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  *
@@ -213,7 +214,7 @@ export declare const SignatureDescriptors: {
     encode(message: SignatureDescriptors, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptors;
     fromJSON(object: any): SignatureDescriptors;
-    toJSON(message: SignatureDescriptors): unknown;
+    toJSON(message: SignatureDescriptors): JsonSafe<SignatureDescriptors>;
     fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors;
     fromAmino(object: SignatureDescriptorsAmino): SignatureDescriptors;
     toAmino(message: SignatureDescriptors): SignatureDescriptorsAmino;
@@ -232,7 +233,7 @@ export declare const SignatureDescriptor: {
     encode(message: SignatureDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor;
     fromJSON(object: any): SignatureDescriptor;
-    toJSON(message: SignatureDescriptor): unknown;
+    toJSON(message: SignatureDescriptor): JsonSafe<SignatureDescriptor>;
     fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor;
     fromAmino(object: SignatureDescriptorAmino): SignatureDescriptor;
     toAmino(message: SignatureDescriptor): SignatureDescriptorAmino;
@@ -251,7 +252,7 @@ export declare const SignatureDescriptor_Data: {
     encode(message: SignatureDescriptor_Data, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data;
     fromJSON(object: any): SignatureDescriptor_Data;
-    toJSON(message: SignatureDescriptor_Data): unknown;
+    toJSON(message: SignatureDescriptor_Data): JsonSafe<SignatureDescriptor_Data>;
     fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
     fromAmino(object: SignatureDescriptor_DataAmino): SignatureDescriptor_Data;
     toAmino(message: SignatureDescriptor_Data): SignatureDescriptor_DataAmino;
@@ -270,7 +271,7 @@ export declare const SignatureDescriptor_Data_Single: {
     encode(message: SignatureDescriptor_Data_Single, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
     fromJSON(object: any): SignatureDescriptor_Data_Single;
-    toJSON(message: SignatureDescriptor_Data_Single): unknown;
+    toJSON(message: SignatureDescriptor_Data_Single): JsonSafe<SignatureDescriptor_Data_Single>;
     fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
     fromAmino(object: SignatureDescriptor_Data_SingleAmino): SignatureDescriptor_Data_Single;
     toAmino(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleAmino;
@@ -289,7 +290,7 @@ export declare const SignatureDescriptor_Data_Multi: {
     encode(message: SignatureDescriptor_Data_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
     fromJSON(object: any): SignatureDescriptor_Data_Multi;
-    toJSON(message: SignatureDescriptor_Data_Multi): unknown;
+    toJSON(message: SignatureDescriptor_Data_Multi): JsonSafe<SignatureDescriptor_Data_Multi>;
     fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
     fromAmino(object: SignatureDescriptor_Data_MultiAmino): SignatureDescriptor_Data_Multi;
     toAmino(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiAmino;

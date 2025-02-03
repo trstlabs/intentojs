@@ -1,5 +1,6 @@
 import { DenomTrace, DenomTraceAmino, DenomTraceSDKType, Params, ParamsAmino, ParamsSDKType } from "./transfer";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisState {
     portId: string;
@@ -35,7 +36,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

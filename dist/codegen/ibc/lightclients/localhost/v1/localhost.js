@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientState = void 0;
 const client_1 = require("../../../core/client/v1/client");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseClientState() {
     return {
         chainId: "",

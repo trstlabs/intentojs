@@ -26,7 +26,7 @@ export interface MsgSubmitQueryResponseAmino {
   from_address?: string;
 }
 export interface MsgSubmitQueryResponseAminoMsg {
-  type: "icq/MsgSubmitQueryResponse";
+  type: "interchainquery/MsgSubmitQueryResponse";
   value: MsgSubmitQueryResponseAmino;
 }
 /** MsgSubmitQueryResponse represents a message type to fulfil a query request. */
@@ -73,7 +73,7 @@ function createBaseMsgSubmitQueryResponse(): MsgSubmitQueryResponse {
 }
 export const MsgSubmitQueryResponse = {
   typeUrl: "/stride.interchainquery.v1.MsgSubmitQueryResponse",
-  aminoType: "icq/MsgSubmitQueryResponse",
+  aminoType: "interchainquery/MsgSubmitQueryResponse",
   is(o: any): o is MsgSubmitQueryResponse {
     return o && (o.$typeUrl === MsgSubmitQueryResponse.typeUrl || typeof o.chainId === "string" && typeof o.queryId === "string" && (o.result instanceof Uint8Array || typeof o.result === "string") && typeof o.height === "bigint" && typeof o.fromAddress === "string");
   },
@@ -203,7 +203,7 @@ export const MsgSubmitQueryResponse = {
   },
   toAminoMsg(message: MsgSubmitQueryResponse): MsgSubmitQueryResponseAminoMsg {
     return {
-      type: "icq/MsgSubmitQueryResponse",
+      type: "interchainquery/MsgSubmitQueryResponse",
       value: MsgSubmitQueryResponse.toAmino(message)
     };
   },

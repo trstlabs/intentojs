@@ -4,8 +4,8 @@ exports.MsgAcknowledgementResponse = exports.MsgAcknowledgement = exports.MsgTim
 const channel_1 = require("./channel");
 const client_1 = require("../../client/v1/client");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseMsgChannelOpenInit() {
     return {
         portId: "",
@@ -1665,7 +1665,7 @@ exports.MsgTimeout = {
         obj.packet = message.packet ? channel_1.Packet.toAmino(message.packet) : undefined;
         obj.proof_unreceived = message.proofUnreceived ? (0, helpers_1.base64FromBytes)(message.proofUnreceived) : undefined;
         obj.proof_height = message.proofHeight ? client_1.Height.toAmino(message.proofHeight) : {};
-        obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? message.nextSequenceRecv.toString() : undefined;
+        obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? message.nextSequenceRecv?.toString() : undefined;
         obj.signer = message.signer === "" ? undefined : message.signer;
         return obj;
     },
@@ -1901,7 +1901,7 @@ exports.MsgTimeoutOnClose = {
         obj.proof_unreceived = message.proofUnreceived ? (0, helpers_1.base64FromBytes)(message.proofUnreceived) : undefined;
         obj.proof_close = message.proofClose ? (0, helpers_1.base64FromBytes)(message.proofClose) : undefined;
         obj.proof_height = message.proofHeight ? client_1.Height.toAmino(message.proofHeight) : {};
-        obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? message.nextSequenceRecv.toString() : undefined;
+        obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? message.nextSequenceRecv?.toString() : undefined;
         obj.signer = message.signer === "" ? undefined : message.signer;
         return obj;
     },

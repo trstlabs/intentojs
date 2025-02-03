@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /** PublicKey defines the keys available for use with Tendermint Validators */
 export interface PublicKey {
     ed25519?: Uint8Array;
@@ -30,7 +31,7 @@ export declare const PublicKey: {
     encode(message: PublicKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PublicKey;
     fromJSON(object: any): PublicKey;
-    toJSON(message: PublicKey): unknown;
+    toJSON(message: PublicKey): JsonSafe<PublicKey>;
     fromPartial(object: Partial<PublicKey>): PublicKey;
     fromAmino(object: PublicKeyAmino): PublicKey;
     toAmino(message: PublicKey): PublicKeyAmino;

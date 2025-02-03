@@ -1,5 +1,6 @@
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -371,7 +372,7 @@ export declare const Channel: {
     encode(message: Channel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Channel;
     fromJSON(object: any): Channel;
-    toJSON(message: Channel): unknown;
+    toJSON(message: Channel): JsonSafe<Channel>;
     fromPartial(object: Partial<Channel>): Channel;
     fromAmino(object: ChannelAmino): Channel;
     toAmino(message: Channel): ChannelAmino;
@@ -390,7 +391,7 @@ export declare const IdentifiedChannel: {
     encode(message: IdentifiedChannel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedChannel;
     fromJSON(object: any): IdentifiedChannel;
-    toJSON(message: IdentifiedChannel): unknown;
+    toJSON(message: IdentifiedChannel): JsonSafe<IdentifiedChannel>;
     fromPartial(object: Partial<IdentifiedChannel>): IdentifiedChannel;
     fromAmino(object: IdentifiedChannelAmino): IdentifiedChannel;
     toAmino(message: IdentifiedChannel): IdentifiedChannelAmino;
@@ -409,7 +410,7 @@ export declare const Counterparty: {
     encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
     fromJSON(object: any): Counterparty;
-    toJSON(message: Counterparty): unknown;
+    toJSON(message: Counterparty): JsonSafe<Counterparty>;
     fromPartial(object: Partial<Counterparty>): Counterparty;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
@@ -428,7 +429,7 @@ export declare const Packet: {
     encode(message: Packet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Packet;
     fromJSON(object: any): Packet;
-    toJSON(message: Packet): unknown;
+    toJSON(message: Packet): JsonSafe<Packet>;
     fromPartial(object: Partial<Packet>): Packet;
     fromAmino(object: PacketAmino): Packet;
     toAmino(message: Packet): PacketAmino;
@@ -447,7 +448,7 @@ export declare const PacketState: {
     encode(message: PacketState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketState;
     fromJSON(object: any): PacketState;
-    toJSON(message: PacketState): unknown;
+    toJSON(message: PacketState): JsonSafe<PacketState>;
     fromPartial(object: Partial<PacketState>): PacketState;
     fromAmino(object: PacketStateAmino): PacketState;
     toAmino(message: PacketState): PacketStateAmino;
@@ -466,7 +467,7 @@ export declare const Acknowledgement: {
     encode(message: Acknowledgement, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Acknowledgement;
     fromJSON(object: any): Acknowledgement;
-    toJSON(message: Acknowledgement): unknown;
+    toJSON(message: Acknowledgement): JsonSafe<Acknowledgement>;
     fromPartial(object: Partial<Acknowledgement>): Acknowledgement;
     fromAmino(object: AcknowledgementAmino): Acknowledgement;
     toAmino(message: Acknowledgement): AcknowledgementAmino;

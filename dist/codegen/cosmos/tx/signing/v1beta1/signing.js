@@ -285,7 +285,7 @@ exports.SignatureDescriptor = {
         const obj = {};
         obj.public_key = message.publicKey ? any_1.Any.toAmino(message.publicKey) : undefined;
         obj.data = message.data ? exports.SignatureDescriptor_Data.toAmino(message.data) : undefined;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

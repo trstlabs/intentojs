@@ -1,6 +1,7 @@
 import { Channel, ChannelAmino, ChannelSDKType, Packet, PacketAmino, PacketSDKType } from "./channel";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MsgChannelOpenInit defines an sdk.Msg to initialize a channel handshake. It
  * is called by a relayer on Chain A.
@@ -580,7 +581,7 @@ export declare const MsgChannelOpenInit: {
     encode(message: MsgChannelOpenInit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenInit;
     fromJSON(object: any): MsgChannelOpenInit;
-    toJSON(message: MsgChannelOpenInit): unknown;
+    toJSON(message: MsgChannelOpenInit): JsonSafe<MsgChannelOpenInit>;
     fromPartial(object: Partial<MsgChannelOpenInit>): MsgChannelOpenInit;
     fromAmino(object: MsgChannelOpenInitAmino): MsgChannelOpenInit;
     toAmino(message: MsgChannelOpenInit): MsgChannelOpenInitAmino;
@@ -599,7 +600,7 @@ export declare const MsgChannelOpenInitResponse: {
     encode(_: MsgChannelOpenInitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenInitResponse;
     fromJSON(_: any): MsgChannelOpenInitResponse;
-    toJSON(_: MsgChannelOpenInitResponse): unknown;
+    toJSON(_: MsgChannelOpenInitResponse): JsonSafe<MsgChannelOpenInitResponse>;
     fromPartial(_: Partial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse;
     fromAmino(_: MsgChannelOpenInitResponseAmino): MsgChannelOpenInitResponse;
     toAmino(_: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseAmino;
@@ -618,7 +619,7 @@ export declare const MsgChannelOpenTry: {
     encode(message: MsgChannelOpenTry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenTry;
     fromJSON(object: any): MsgChannelOpenTry;
-    toJSON(message: MsgChannelOpenTry): unknown;
+    toJSON(message: MsgChannelOpenTry): JsonSafe<MsgChannelOpenTry>;
     fromPartial(object: Partial<MsgChannelOpenTry>): MsgChannelOpenTry;
     fromAmino(object: MsgChannelOpenTryAmino): MsgChannelOpenTry;
     toAmino(message: MsgChannelOpenTry): MsgChannelOpenTryAmino;
@@ -637,7 +638,7 @@ export declare const MsgChannelOpenTryResponse: {
     encode(_: MsgChannelOpenTryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenTryResponse;
     fromJSON(_: any): MsgChannelOpenTryResponse;
-    toJSON(_: MsgChannelOpenTryResponse): unknown;
+    toJSON(_: MsgChannelOpenTryResponse): JsonSafe<MsgChannelOpenTryResponse>;
     fromPartial(_: Partial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse;
     fromAmino(_: MsgChannelOpenTryResponseAmino): MsgChannelOpenTryResponse;
     toAmino(_: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseAmino;
@@ -656,7 +657,7 @@ export declare const MsgChannelOpenAck: {
     encode(message: MsgChannelOpenAck, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenAck;
     fromJSON(object: any): MsgChannelOpenAck;
-    toJSON(message: MsgChannelOpenAck): unknown;
+    toJSON(message: MsgChannelOpenAck): JsonSafe<MsgChannelOpenAck>;
     fromPartial(object: Partial<MsgChannelOpenAck>): MsgChannelOpenAck;
     fromAmino(object: MsgChannelOpenAckAmino): MsgChannelOpenAck;
     toAmino(message: MsgChannelOpenAck): MsgChannelOpenAckAmino;
@@ -675,7 +676,7 @@ export declare const MsgChannelOpenAckResponse: {
     encode(_: MsgChannelOpenAckResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenAckResponse;
     fromJSON(_: any): MsgChannelOpenAckResponse;
-    toJSON(_: MsgChannelOpenAckResponse): unknown;
+    toJSON(_: MsgChannelOpenAckResponse): JsonSafe<MsgChannelOpenAckResponse>;
     fromPartial(_: Partial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse;
     fromAmino(_: MsgChannelOpenAckResponseAmino): MsgChannelOpenAckResponse;
     toAmino(_: MsgChannelOpenAckResponse): MsgChannelOpenAckResponseAmino;
@@ -694,7 +695,7 @@ export declare const MsgChannelOpenConfirm: {
     encode(message: MsgChannelOpenConfirm, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenConfirm;
     fromJSON(object: any): MsgChannelOpenConfirm;
-    toJSON(message: MsgChannelOpenConfirm): unknown;
+    toJSON(message: MsgChannelOpenConfirm): JsonSafe<MsgChannelOpenConfirm>;
     fromPartial(object: Partial<MsgChannelOpenConfirm>): MsgChannelOpenConfirm;
     fromAmino(object: MsgChannelOpenConfirmAmino): MsgChannelOpenConfirm;
     toAmino(message: MsgChannelOpenConfirm): MsgChannelOpenConfirmAmino;
@@ -713,7 +714,7 @@ export declare const MsgChannelOpenConfirmResponse: {
     encode(_: MsgChannelOpenConfirmResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenConfirmResponse;
     fromJSON(_: any): MsgChannelOpenConfirmResponse;
-    toJSON(_: MsgChannelOpenConfirmResponse): unknown;
+    toJSON(_: MsgChannelOpenConfirmResponse): JsonSafe<MsgChannelOpenConfirmResponse>;
     fromPartial(_: Partial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse;
     fromAmino(_: MsgChannelOpenConfirmResponseAmino): MsgChannelOpenConfirmResponse;
     toAmino(_: MsgChannelOpenConfirmResponse): MsgChannelOpenConfirmResponseAmino;
@@ -732,7 +733,7 @@ export declare const MsgChannelCloseInit: {
     encode(message: MsgChannelCloseInit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseInit;
     fromJSON(object: any): MsgChannelCloseInit;
-    toJSON(message: MsgChannelCloseInit): unknown;
+    toJSON(message: MsgChannelCloseInit): JsonSafe<MsgChannelCloseInit>;
     fromPartial(object: Partial<MsgChannelCloseInit>): MsgChannelCloseInit;
     fromAmino(object: MsgChannelCloseInitAmino): MsgChannelCloseInit;
     toAmino(message: MsgChannelCloseInit): MsgChannelCloseInitAmino;
@@ -751,7 +752,7 @@ export declare const MsgChannelCloseInitResponse: {
     encode(_: MsgChannelCloseInitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseInitResponse;
     fromJSON(_: any): MsgChannelCloseInitResponse;
-    toJSON(_: MsgChannelCloseInitResponse): unknown;
+    toJSON(_: MsgChannelCloseInitResponse): JsonSafe<MsgChannelCloseInitResponse>;
     fromPartial(_: Partial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse;
     fromAmino(_: MsgChannelCloseInitResponseAmino): MsgChannelCloseInitResponse;
     toAmino(_: MsgChannelCloseInitResponse): MsgChannelCloseInitResponseAmino;
@@ -770,7 +771,7 @@ export declare const MsgChannelCloseConfirm: {
     encode(message: MsgChannelCloseConfirm, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseConfirm;
     fromJSON(object: any): MsgChannelCloseConfirm;
-    toJSON(message: MsgChannelCloseConfirm): unknown;
+    toJSON(message: MsgChannelCloseConfirm): JsonSafe<MsgChannelCloseConfirm>;
     fromPartial(object: Partial<MsgChannelCloseConfirm>): MsgChannelCloseConfirm;
     fromAmino(object: MsgChannelCloseConfirmAmino): MsgChannelCloseConfirm;
     toAmino(message: MsgChannelCloseConfirm): MsgChannelCloseConfirmAmino;
@@ -789,7 +790,7 @@ export declare const MsgChannelCloseConfirmResponse: {
     encode(_: MsgChannelCloseConfirmResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseConfirmResponse;
     fromJSON(_: any): MsgChannelCloseConfirmResponse;
-    toJSON(_: MsgChannelCloseConfirmResponse): unknown;
+    toJSON(_: MsgChannelCloseConfirmResponse): JsonSafe<MsgChannelCloseConfirmResponse>;
     fromPartial(_: Partial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse;
     fromAmino(_: MsgChannelCloseConfirmResponseAmino): MsgChannelCloseConfirmResponse;
     toAmino(_: MsgChannelCloseConfirmResponse): MsgChannelCloseConfirmResponseAmino;
@@ -808,7 +809,7 @@ export declare const MsgRecvPacket: {
     encode(message: MsgRecvPacket, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRecvPacket;
     fromJSON(object: any): MsgRecvPacket;
-    toJSON(message: MsgRecvPacket): unknown;
+    toJSON(message: MsgRecvPacket): JsonSafe<MsgRecvPacket>;
     fromPartial(object: Partial<MsgRecvPacket>): MsgRecvPacket;
     fromAmino(object: MsgRecvPacketAmino): MsgRecvPacket;
     toAmino(message: MsgRecvPacket): MsgRecvPacketAmino;
@@ -827,7 +828,7 @@ export declare const MsgRecvPacketResponse: {
     encode(_: MsgRecvPacketResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRecvPacketResponse;
     fromJSON(_: any): MsgRecvPacketResponse;
-    toJSON(_: MsgRecvPacketResponse): unknown;
+    toJSON(_: MsgRecvPacketResponse): JsonSafe<MsgRecvPacketResponse>;
     fromPartial(_: Partial<MsgRecvPacketResponse>): MsgRecvPacketResponse;
     fromAmino(_: MsgRecvPacketResponseAmino): MsgRecvPacketResponse;
     toAmino(_: MsgRecvPacketResponse): MsgRecvPacketResponseAmino;
@@ -846,7 +847,7 @@ export declare const MsgTimeout: {
     encode(message: MsgTimeout, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeout;
     fromJSON(object: any): MsgTimeout;
-    toJSON(message: MsgTimeout): unknown;
+    toJSON(message: MsgTimeout): JsonSafe<MsgTimeout>;
     fromPartial(object: Partial<MsgTimeout>): MsgTimeout;
     fromAmino(object: MsgTimeoutAmino): MsgTimeout;
     toAmino(message: MsgTimeout): MsgTimeoutAmino;
@@ -865,7 +866,7 @@ export declare const MsgTimeoutResponse: {
     encode(_: MsgTimeoutResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeoutResponse;
     fromJSON(_: any): MsgTimeoutResponse;
-    toJSON(_: MsgTimeoutResponse): unknown;
+    toJSON(_: MsgTimeoutResponse): JsonSafe<MsgTimeoutResponse>;
     fromPartial(_: Partial<MsgTimeoutResponse>): MsgTimeoutResponse;
     fromAmino(_: MsgTimeoutResponseAmino): MsgTimeoutResponse;
     toAmino(_: MsgTimeoutResponse): MsgTimeoutResponseAmino;
@@ -884,7 +885,7 @@ export declare const MsgTimeoutOnClose: {
     encode(message: MsgTimeoutOnClose, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeoutOnClose;
     fromJSON(object: any): MsgTimeoutOnClose;
-    toJSON(message: MsgTimeoutOnClose): unknown;
+    toJSON(message: MsgTimeoutOnClose): JsonSafe<MsgTimeoutOnClose>;
     fromPartial(object: Partial<MsgTimeoutOnClose>): MsgTimeoutOnClose;
     fromAmino(object: MsgTimeoutOnCloseAmino): MsgTimeoutOnClose;
     toAmino(message: MsgTimeoutOnClose): MsgTimeoutOnCloseAmino;
@@ -903,7 +904,7 @@ export declare const MsgTimeoutOnCloseResponse: {
     encode(_: MsgTimeoutOnCloseResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeoutOnCloseResponse;
     fromJSON(_: any): MsgTimeoutOnCloseResponse;
-    toJSON(_: MsgTimeoutOnCloseResponse): unknown;
+    toJSON(_: MsgTimeoutOnCloseResponse): JsonSafe<MsgTimeoutOnCloseResponse>;
     fromPartial(_: Partial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse;
     fromAmino(_: MsgTimeoutOnCloseResponseAmino): MsgTimeoutOnCloseResponse;
     toAmino(_: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseAmino;
@@ -922,7 +923,7 @@ export declare const MsgAcknowledgement: {
     encode(message: MsgAcknowledgement, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgAcknowledgement;
     fromJSON(object: any): MsgAcknowledgement;
-    toJSON(message: MsgAcknowledgement): unknown;
+    toJSON(message: MsgAcknowledgement): JsonSafe<MsgAcknowledgement>;
     fromPartial(object: Partial<MsgAcknowledgement>): MsgAcknowledgement;
     fromAmino(object: MsgAcknowledgementAmino): MsgAcknowledgement;
     toAmino(message: MsgAcknowledgement): MsgAcknowledgementAmino;
@@ -941,7 +942,7 @@ export declare const MsgAcknowledgementResponse: {
     encode(_: MsgAcknowledgementResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgAcknowledgementResponse;
     fromJSON(_: any): MsgAcknowledgementResponse;
-    toJSON(_: MsgAcknowledgementResponse): unknown;
+    toJSON(_: MsgAcknowledgementResponse): JsonSafe<MsgAcknowledgementResponse>;
     fromPartial(_: Partial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse;
     fromAmino(_: MsgAcknowledgementResponseAmino): MsgAcknowledgementResponse;
     toAmino(_: MsgAcknowledgementResponse): MsgAcknowledgementResponseAmino;

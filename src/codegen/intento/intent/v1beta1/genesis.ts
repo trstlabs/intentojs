@@ -1,5 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { ActionInfo, ActionInfoAmino, ActionInfoSDKType } from "./action";
+import { FlowInfo, FlowInfoAmino, FlowInfoSDKType } from "./flow";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
@@ -8,7 +8,7 @@ import { JsonSafe } from "../../../json-safe";
 export interface GenesisState {
   params: Params;
   interchainAccountAddresses: string[];
-  actionInfos: ActionInfo[];
+  flowInfos: FlowInfo[];
   sequences: Sequence[];
 }
 export interface GenesisStateProtoMsg {
@@ -19,7 +19,7 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
   params?: ParamsAmino;
   interchain_account_addresses?: string[];
-  action_infos?: ActionInfoAmino[];
+  flow_infos?: FlowInfoAmino[];
   sequences?: SequenceAmino[];
 }
 export interface GenesisStateAminoMsg {
@@ -30,7 +30,7 @@ export interface GenesisStateAminoMsg {
 export interface GenesisStateSDKType {
   params: ParamsSDKType;
   interchain_account_addresses: string[];
-  action_infos: ActionInfoSDKType[];
+  flow_infos: FlowInfoSDKType[];
   sequences: SequenceSDKType[];
 }
 /** Sequence id and value of a counter */
@@ -60,20 +60,20 @@ function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
     interchainAccountAddresses: [],
-    actionInfos: [],
+    flowInfos: [],
     sequences: []
   };
 }
 export const GenesisState = {
   typeUrl: "/intento.intent.v1beta1.GenesisState",
   is(o: any): o is GenesisState {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.interchainAccountAddresses) && (!o.interchainAccountAddresses.length || typeof o.interchainAccountAddresses[0] === "string") && Array.isArray(o.actionInfos) && (!o.actionInfos.length || ActionInfo.is(o.actionInfos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.is(o.sequences[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.interchainAccountAddresses) && (!o.interchainAccountAddresses.length || typeof o.interchainAccountAddresses[0] === "string") && Array.isArray(o.flowInfos) && (!o.flowInfos.length || FlowInfo.is(o.flowInfos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.is(o.sequences[0])));
   },
   isSDK(o: any): o is GenesisStateSDKType {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.interchain_account_addresses) && (!o.interchain_account_addresses.length || typeof o.interchain_account_addresses[0] === "string") && Array.isArray(o.action_infos) && (!o.action_infos.length || ActionInfo.isSDK(o.action_infos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isSDK(o.sequences[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.interchain_account_addresses) && (!o.interchain_account_addresses.length || typeof o.interchain_account_addresses[0] === "string") && Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isSDK(o.flow_infos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isSDK(o.sequences[0])));
   },
   isAmino(o: any): o is GenesisStateAmino {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.interchain_account_addresses) && (!o.interchain_account_addresses.length || typeof o.interchain_account_addresses[0] === "string") && Array.isArray(o.action_infos) && (!o.action_infos.length || ActionInfo.isAmino(o.action_infos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isAmino(o.sequences[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.interchain_account_addresses) && (!o.interchain_account_addresses.length || typeof o.interchain_account_addresses[0] === "string") && Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isAmino(o.flow_infos[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isAmino(o.sequences[0])));
   },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
@@ -82,8 +82,8 @@ export const GenesisState = {
     for (const v of message.interchainAccountAddresses) {
       writer.uint32(18).string(v!);
     }
-    for (const v of message.actionInfos) {
-      ActionInfo.encode(v!, writer.uint32(26).fork()).ldelim();
+    for (const v of message.flowInfos) {
+      FlowInfo.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     for (const v of message.sequences) {
       Sequence.encode(v!, writer.uint32(34).fork()).ldelim();
@@ -104,7 +104,7 @@ export const GenesisState = {
           message.interchainAccountAddresses.push(reader.string());
           break;
         case 3:
-          message.actionInfos.push(ActionInfo.decode(reader, reader.uint32()));
+          message.flowInfos.push(FlowInfo.decode(reader, reader.uint32()));
           break;
         case 4:
           message.sequences.push(Sequence.decode(reader, reader.uint32()));
@@ -120,7 +120,7 @@ export const GenesisState = {
     return {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
       interchainAccountAddresses: Array.isArray(object?.interchainAccountAddresses) ? object.interchainAccountAddresses.map((e: any) => String(e)) : [],
-      actionInfos: Array.isArray(object?.actionInfos) ? object.actionInfos.map((e: any) => ActionInfo.fromJSON(e)) : [],
+      flowInfos: Array.isArray(object?.flowInfos) ? object.flowInfos.map((e: any) => FlowInfo.fromJSON(e)) : [],
       sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromJSON(e)) : []
     };
   },
@@ -132,10 +132,10 @@ export const GenesisState = {
     } else {
       obj.interchainAccountAddresses = [];
     }
-    if (message.actionInfos) {
-      obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
+    if (message.flowInfos) {
+      obj.flowInfos = message.flowInfos.map(e => e ? FlowInfo.toJSON(e) : undefined);
     } else {
-      obj.actionInfos = [];
+      obj.flowInfos = [];
     }
     if (message.sequences) {
       obj.sequences = message.sequences.map(e => e ? Sequence.toJSON(e) : undefined);
@@ -148,7 +148,7 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.interchainAccountAddresses = object.interchainAccountAddresses?.map(e => e) || [];
-    message.actionInfos = object.actionInfos?.map(e => ActionInfo.fromPartial(e)) || [];
+    message.flowInfos = object.flowInfos?.map(e => FlowInfo.fromPartial(e)) || [];
     message.sequences = object.sequences?.map(e => Sequence.fromPartial(e)) || [];
     return message;
   },
@@ -158,7 +158,7 @@ export const GenesisState = {
       message.params = Params.fromAmino(object.params);
     }
     message.interchainAccountAddresses = object.interchain_account_addresses?.map(e => e) || [];
-    message.actionInfos = object.action_infos?.map(e => ActionInfo.fromAmino(e)) || [];
+    message.flowInfos = object.flow_infos?.map(e => FlowInfo.fromAmino(e)) || [];
     message.sequences = object.sequences?.map(e => Sequence.fromAmino(e)) || [];
     return message;
   },
@@ -170,10 +170,10 @@ export const GenesisState = {
     } else {
       obj.interchain_account_addresses = message.interchainAccountAddresses;
     }
-    if (message.actionInfos) {
-      obj.action_infos = message.actionInfos.map(e => e ? ActionInfo.toAmino(e) : undefined);
+    if (message.flowInfos) {
+      obj.flow_infos = message.flowInfos.map(e => e ? FlowInfo.toAmino(e) : undefined);
     } else {
-      obj.action_infos = message.actionInfos;
+      obj.flow_infos = message.flowInfos;
     }
     if (message.sequences) {
       obj.sequences = message.sequences.map(e => e ? Sequence.toAmino(e) : undefined);

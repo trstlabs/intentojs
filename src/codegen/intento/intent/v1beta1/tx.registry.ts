@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgRegisterAccount, MsgSubmitTx, MsgSubmitAction, MsgRegisterAccountAndSubmitAction, MsgUpdateAction, MsgCreateHostedAccount, MsgUpdateHostedAccount } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/intento.intent.v1beta1.MsgRegisterAccount", MsgRegisterAccount], ["/intento.intent.v1beta1.MsgSubmitTx", MsgSubmitTx], ["/intento.intent.v1beta1.MsgSubmitAction", MsgSubmitAction], ["/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction", MsgRegisterAccountAndSubmitAction], ["/intento.intent.v1beta1.MsgUpdateAction", MsgUpdateAction], ["/intento.intent.v1beta1.MsgCreateHostedAccount", MsgCreateHostedAccount], ["/intento.intent.v1beta1.MsgUpdateHostedAccount", MsgUpdateHostedAccount]];
+import { MsgRegisterAccount, MsgSubmitTx, MsgSubmitFlow, MsgRegisterAccountAndSubmitFlow, MsgUpdateFlow, MsgCreateHostedAccount, MsgUpdateHostedAccount } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/intento.intent.v1beta1.MsgRegisterAccount", MsgRegisterAccount], ["/intento.intent.v1beta1.MsgSubmitTx", MsgSubmitTx], ["/intento.intent.v1beta1.MsgSubmitFlow", MsgSubmitFlow], ["/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow", MsgRegisterAccountAndSubmitFlow], ["/intento.intent.v1beta1.MsgUpdateFlow", MsgUpdateFlow], ["/intento.intent.v1beta1.MsgCreateHostedAccount", MsgCreateHostedAccount], ["/intento.intent.v1beta1.MsgUpdateHostedAccount", MsgUpdateHostedAccount]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -21,22 +21,22 @@ export const MessageComposer = {
         value: MsgSubmitTx.encode(value).finish()
       };
     },
-    submitAction(value: MsgSubmitAction) {
+    submitFlow(value: MsgSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
-        value: MsgSubmitAction.encode(value).finish()
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
+        value: MsgSubmitFlow.encode(value).finish()
       };
     },
-    registerAccountAndSubmitAction(value: MsgRegisterAccountAndSubmitAction) {
+    registerAccountAndSubmitFlow(value: MsgRegisterAccountAndSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
-        value: MsgRegisterAccountAndSubmitAction.encode(value).finish()
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
+        value: MsgRegisterAccountAndSubmitFlow.encode(value).finish()
       };
     },
-    updateAction(value: MsgUpdateAction) {
+    updateFlow(value: MsgUpdateFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
-        value: MsgUpdateAction.encode(value).finish()
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
+        value: MsgUpdateFlow.encode(value).finish()
       };
     },
     createHostedAccount(value: MsgCreateHostedAccount) {
@@ -65,21 +65,21 @@ export const MessageComposer = {
         value
       };
     },
-    submitAction(value: MsgSubmitAction) {
+    submitFlow(value: MsgSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
         value
       };
     },
-    registerAccountAndSubmitAction(value: MsgRegisterAccountAndSubmitAction) {
+    registerAccountAndSubmitFlow(value: MsgRegisterAccountAndSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
         value
       };
     },
-    updateAction(value: MsgUpdateAction) {
+    updateFlow(value: MsgUpdateFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
         value
       };
     },
@@ -109,22 +109,22 @@ export const MessageComposer = {
         value: MsgSubmitTx.toJSON(value)
       };
     },
-    submitAction(value: MsgSubmitAction) {
+    submitFlow(value: MsgSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
-        value: MsgSubmitAction.toJSON(value)
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
+        value: MsgSubmitFlow.toJSON(value)
       };
     },
-    registerAccountAndSubmitAction(value: MsgRegisterAccountAndSubmitAction) {
+    registerAccountAndSubmitFlow(value: MsgRegisterAccountAndSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
-        value: MsgRegisterAccountAndSubmitAction.toJSON(value)
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
+        value: MsgRegisterAccountAndSubmitFlow.toJSON(value)
       };
     },
-    updateAction(value: MsgUpdateAction) {
+    updateFlow(value: MsgUpdateFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
-        value: MsgUpdateAction.toJSON(value)
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
+        value: MsgUpdateFlow.toJSON(value)
       };
     },
     createHostedAccount(value: MsgCreateHostedAccount) {
@@ -153,22 +153,22 @@ export const MessageComposer = {
         value: MsgSubmitTx.fromJSON(value)
       };
     },
-    submitAction(value: any) {
+    submitFlow(value: any) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
-        value: MsgSubmitAction.fromJSON(value)
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
+        value: MsgSubmitFlow.fromJSON(value)
       };
     },
-    registerAccountAndSubmitAction(value: any) {
+    registerAccountAndSubmitFlow(value: any) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
-        value: MsgRegisterAccountAndSubmitAction.fromJSON(value)
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
+        value: MsgRegisterAccountAndSubmitFlow.fromJSON(value)
       };
     },
-    updateAction(value: any) {
+    updateFlow(value: any) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
-        value: MsgUpdateAction.fromJSON(value)
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
+        value: MsgUpdateFlow.fromJSON(value)
       };
     },
     createHostedAccount(value: any) {
@@ -197,22 +197,22 @@ export const MessageComposer = {
         value: MsgSubmitTx.fromPartial(value)
       };
     },
-    submitAction(value: MsgSubmitAction) {
+    submitFlow(value: MsgSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
-        value: MsgSubmitAction.fromPartial(value)
+        typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
+        value: MsgSubmitFlow.fromPartial(value)
       };
     },
-    registerAccountAndSubmitAction(value: MsgRegisterAccountAndSubmitAction) {
+    registerAccountAndSubmitFlow(value: MsgRegisterAccountAndSubmitFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
-        value: MsgRegisterAccountAndSubmitAction.fromPartial(value)
+        typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
+        value: MsgRegisterAccountAndSubmitFlow.fromPartial(value)
       };
     },
-    updateAction(value: MsgUpdateAction) {
+    updateFlow(value: MsgUpdateFlow) {
       return {
-        typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
-        value: MsgUpdateAction.fromPartial(value)
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
+        value: MsgUpdateFlow.fromPartial(value)
       };
     },
     createHostedAccount(value: MsgCreateHostedAccount) {

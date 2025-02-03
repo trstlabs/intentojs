@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -332,7 +333,7 @@ export declare const Any: {
     encode(message: Any, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Any;
     fromJSON(object: any): Any;
-    toJSON(message: Any): unknown;
+    toJSON(message: Any): JsonSafe<Any>;
     fromPartial(object: Partial<Any>): Any;
     fromAmino(object: AnyAmino): Any;
     toAmino(message: Any): AnyAmino;

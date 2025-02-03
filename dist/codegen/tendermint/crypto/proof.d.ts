@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 export interface Proof {
     total: bigint;
     index: bigint;
@@ -138,7 +139,7 @@ export declare const Proof: {
     encode(message: Proof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proof;
     fromJSON(object: any): Proof;
-    toJSON(message: Proof): unknown;
+    toJSON(message: Proof): JsonSafe<Proof>;
     fromPartial(object: Partial<Proof>): Proof;
     fromAmino(object: ProofAmino): Proof;
     toAmino(message: Proof): ProofAmino;
@@ -155,7 +156,7 @@ export declare const ValueOp: {
     encode(message: ValueOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValueOp;
     fromJSON(object: any): ValueOp;
-    toJSON(message: ValueOp): unknown;
+    toJSON(message: ValueOp): JsonSafe<ValueOp>;
     fromPartial(object: Partial<ValueOp>): ValueOp;
     fromAmino(object: ValueOpAmino): ValueOp;
     toAmino(message: ValueOp): ValueOpAmino;
@@ -172,7 +173,7 @@ export declare const DominoOp: {
     encode(message: DominoOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DominoOp;
     fromJSON(object: any): DominoOp;
-    toJSON(message: DominoOp): unknown;
+    toJSON(message: DominoOp): JsonSafe<DominoOp>;
     fromPartial(object: Partial<DominoOp>): DominoOp;
     fromAmino(object: DominoOpAmino): DominoOp;
     toAmino(message: DominoOp): DominoOpAmino;
@@ -189,7 +190,7 @@ export declare const ProofOp: {
     encode(message: ProofOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOp;
     fromJSON(object: any): ProofOp;
-    toJSON(message: ProofOp): unknown;
+    toJSON(message: ProofOp): JsonSafe<ProofOp>;
     fromPartial(object: Partial<ProofOp>): ProofOp;
     fromAmino(object: ProofOpAmino): ProofOp;
     toAmino(message: ProofOp): ProofOpAmino;
@@ -206,7 +207,7 @@ export declare const ProofOps: {
     encode(message: ProofOps, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOps;
     fromJSON(object: any): ProofOps;
-    toJSON(message: ProofOps): unknown;
+    toJSON(message: ProofOps): JsonSafe<ProofOps>;
     fromPartial(object: Partial<ProofOps>): ProofOps;
     fromAmino(object: ProofOpsAmino): ProofOps;
     toAmino(message: ProofOps): ProofOpsAmino;

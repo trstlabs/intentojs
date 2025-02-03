@@ -4,8 +4,8 @@ exports.QueryGranteeGrantsResponse = exports.QueryGranteeGrantsRequest = exports
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const authz_1 = require("./authz");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseQueryGrantsRequest() {
     return {
         granter: "",

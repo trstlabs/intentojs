@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** AppDescriptor describes a cosmos-sdk based application */
 export interface AppDescriptor {
     /**
@@ -726,7 +727,7 @@ export declare const AppDescriptor: {
     encode(message: AppDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AppDescriptor;
     fromJSON(object: any): AppDescriptor;
-    toJSON(message: AppDescriptor): unknown;
+    toJSON(message: AppDescriptor): JsonSafe<AppDescriptor>;
     fromPartial(object: Partial<AppDescriptor>): AppDescriptor;
     fromAmino(object: AppDescriptorAmino): AppDescriptor;
     toAmino(message: AppDescriptor): AppDescriptorAmino;
@@ -745,7 +746,7 @@ export declare const TxDescriptor: {
     encode(message: TxDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxDescriptor;
     fromJSON(object: any): TxDescriptor;
-    toJSON(message: TxDescriptor): unknown;
+    toJSON(message: TxDescriptor): JsonSafe<TxDescriptor>;
     fromPartial(object: Partial<TxDescriptor>): TxDescriptor;
     fromAmino(object: TxDescriptorAmino): TxDescriptor;
     toAmino(message: TxDescriptor): TxDescriptorAmino;
@@ -764,7 +765,7 @@ export declare const AuthnDescriptor: {
     encode(message: AuthnDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuthnDescriptor;
     fromJSON(object: any): AuthnDescriptor;
-    toJSON(message: AuthnDescriptor): unknown;
+    toJSON(message: AuthnDescriptor): JsonSafe<AuthnDescriptor>;
     fromPartial(object: Partial<AuthnDescriptor>): AuthnDescriptor;
     fromAmino(object: AuthnDescriptorAmino): AuthnDescriptor;
     toAmino(message: AuthnDescriptor): AuthnDescriptorAmino;
@@ -783,7 +784,7 @@ export declare const SigningModeDescriptor: {
     encode(message: SigningModeDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SigningModeDescriptor;
     fromJSON(object: any): SigningModeDescriptor;
-    toJSON(message: SigningModeDescriptor): unknown;
+    toJSON(message: SigningModeDescriptor): JsonSafe<SigningModeDescriptor>;
     fromPartial(object: Partial<SigningModeDescriptor>): SigningModeDescriptor;
     fromAmino(object: SigningModeDescriptorAmino): SigningModeDescriptor;
     toAmino(message: SigningModeDescriptor): SigningModeDescriptorAmino;
@@ -802,7 +803,7 @@ export declare const ChainDescriptor: {
     encode(message: ChainDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ChainDescriptor;
     fromJSON(object: any): ChainDescriptor;
-    toJSON(message: ChainDescriptor): unknown;
+    toJSON(message: ChainDescriptor): JsonSafe<ChainDescriptor>;
     fromPartial(object: Partial<ChainDescriptor>): ChainDescriptor;
     fromAmino(object: ChainDescriptorAmino): ChainDescriptor;
     toAmino(message: ChainDescriptor): ChainDescriptorAmino;
@@ -821,7 +822,7 @@ export declare const CodecDescriptor: {
     encode(message: CodecDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CodecDescriptor;
     fromJSON(object: any): CodecDescriptor;
-    toJSON(message: CodecDescriptor): unknown;
+    toJSON(message: CodecDescriptor): JsonSafe<CodecDescriptor>;
     fromPartial(object: Partial<CodecDescriptor>): CodecDescriptor;
     fromAmino(object: CodecDescriptorAmino): CodecDescriptor;
     toAmino(message: CodecDescriptor): CodecDescriptorAmino;
@@ -840,7 +841,7 @@ export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceDescriptor;
     fromJSON(object: any): InterfaceDescriptor;
-    toJSON(message: InterfaceDescriptor): unknown;
+    toJSON(message: InterfaceDescriptor): JsonSafe<InterfaceDescriptor>;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
     fromAmino(object: InterfaceDescriptorAmino): InterfaceDescriptor;
     toAmino(message: InterfaceDescriptor): InterfaceDescriptorAmino;
@@ -859,7 +860,7 @@ export declare const InterfaceImplementerDescriptor: {
     encode(message: InterfaceImplementerDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceImplementerDescriptor;
     fromJSON(object: any): InterfaceImplementerDescriptor;
-    toJSON(message: InterfaceImplementerDescriptor): unknown;
+    toJSON(message: InterfaceImplementerDescriptor): JsonSafe<InterfaceImplementerDescriptor>;
     fromPartial(object: Partial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor;
     fromAmino(object: InterfaceImplementerDescriptorAmino): InterfaceImplementerDescriptor;
     toAmino(message: InterfaceImplementerDescriptor): InterfaceImplementerDescriptorAmino;
@@ -878,7 +879,7 @@ export declare const InterfaceAcceptingMessageDescriptor: {
     encode(message: InterfaceAcceptingMessageDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceAcceptingMessageDescriptor;
     fromJSON(object: any): InterfaceAcceptingMessageDescriptor;
-    toJSON(message: InterfaceAcceptingMessageDescriptor): unknown;
+    toJSON(message: InterfaceAcceptingMessageDescriptor): JsonSafe<InterfaceAcceptingMessageDescriptor>;
     fromPartial(object: Partial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor;
     fromAmino(object: InterfaceAcceptingMessageDescriptorAmino): InterfaceAcceptingMessageDescriptor;
     toAmino(message: InterfaceAcceptingMessageDescriptor): InterfaceAcceptingMessageDescriptorAmino;
@@ -897,7 +898,7 @@ export declare const ConfigurationDescriptor: {
     encode(message: ConfigurationDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConfigurationDescriptor;
     fromJSON(object: any): ConfigurationDescriptor;
-    toJSON(message: ConfigurationDescriptor): unknown;
+    toJSON(message: ConfigurationDescriptor): JsonSafe<ConfigurationDescriptor>;
     fromPartial(object: Partial<ConfigurationDescriptor>): ConfigurationDescriptor;
     fromAmino(object: ConfigurationDescriptorAmino): ConfigurationDescriptor;
     toAmino(message: ConfigurationDescriptor): ConfigurationDescriptorAmino;
@@ -916,7 +917,7 @@ export declare const MsgDescriptor: {
     encode(message: MsgDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDescriptor;
     fromJSON(object: any): MsgDescriptor;
-    toJSON(message: MsgDescriptor): unknown;
+    toJSON(message: MsgDescriptor): JsonSafe<MsgDescriptor>;
     fromPartial(object: Partial<MsgDescriptor>): MsgDescriptor;
     fromAmino(object: MsgDescriptorAmino): MsgDescriptor;
     toAmino(message: MsgDescriptor): MsgDescriptorAmino;
@@ -935,7 +936,7 @@ export declare const GetAuthnDescriptorRequest: {
     encode(_: GetAuthnDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetAuthnDescriptorRequest;
     fromJSON(_: any): GetAuthnDescriptorRequest;
-    toJSON(_: GetAuthnDescriptorRequest): unknown;
+    toJSON(_: GetAuthnDescriptorRequest): JsonSafe<GetAuthnDescriptorRequest>;
     fromPartial(_: Partial<GetAuthnDescriptorRequest>): GetAuthnDescriptorRequest;
     fromAmino(_: GetAuthnDescriptorRequestAmino): GetAuthnDescriptorRequest;
     toAmino(_: GetAuthnDescriptorRequest): GetAuthnDescriptorRequestAmino;
@@ -954,7 +955,7 @@ export declare const GetAuthnDescriptorResponse: {
     encode(message: GetAuthnDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetAuthnDescriptorResponse;
     fromJSON(object: any): GetAuthnDescriptorResponse;
-    toJSON(message: GetAuthnDescriptorResponse): unknown;
+    toJSON(message: GetAuthnDescriptorResponse): JsonSafe<GetAuthnDescriptorResponse>;
     fromPartial(object: Partial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
     fromAmino(object: GetAuthnDescriptorResponseAmino): GetAuthnDescriptorResponse;
     toAmino(message: GetAuthnDescriptorResponse): GetAuthnDescriptorResponseAmino;
@@ -973,7 +974,7 @@ export declare const GetChainDescriptorRequest: {
     encode(_: GetChainDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetChainDescriptorRequest;
     fromJSON(_: any): GetChainDescriptorRequest;
-    toJSON(_: GetChainDescriptorRequest): unknown;
+    toJSON(_: GetChainDescriptorRequest): JsonSafe<GetChainDescriptorRequest>;
     fromPartial(_: Partial<GetChainDescriptorRequest>): GetChainDescriptorRequest;
     fromAmino(_: GetChainDescriptorRequestAmino): GetChainDescriptorRequest;
     toAmino(_: GetChainDescriptorRequest): GetChainDescriptorRequestAmino;
@@ -992,7 +993,7 @@ export declare const GetChainDescriptorResponse: {
     encode(message: GetChainDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetChainDescriptorResponse;
     fromJSON(object: any): GetChainDescriptorResponse;
-    toJSON(message: GetChainDescriptorResponse): unknown;
+    toJSON(message: GetChainDescriptorResponse): JsonSafe<GetChainDescriptorResponse>;
     fromPartial(object: Partial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
     fromAmino(object: GetChainDescriptorResponseAmino): GetChainDescriptorResponse;
     toAmino(message: GetChainDescriptorResponse): GetChainDescriptorResponseAmino;
@@ -1011,7 +1012,7 @@ export declare const GetCodecDescriptorRequest: {
     encode(_: GetCodecDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetCodecDescriptorRequest;
     fromJSON(_: any): GetCodecDescriptorRequest;
-    toJSON(_: GetCodecDescriptorRequest): unknown;
+    toJSON(_: GetCodecDescriptorRequest): JsonSafe<GetCodecDescriptorRequest>;
     fromPartial(_: Partial<GetCodecDescriptorRequest>): GetCodecDescriptorRequest;
     fromAmino(_: GetCodecDescriptorRequestAmino): GetCodecDescriptorRequest;
     toAmino(_: GetCodecDescriptorRequest): GetCodecDescriptorRequestAmino;
@@ -1030,7 +1031,7 @@ export declare const GetCodecDescriptorResponse: {
     encode(message: GetCodecDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetCodecDescriptorResponse;
     fromJSON(object: any): GetCodecDescriptorResponse;
-    toJSON(message: GetCodecDescriptorResponse): unknown;
+    toJSON(message: GetCodecDescriptorResponse): JsonSafe<GetCodecDescriptorResponse>;
     fromPartial(object: Partial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
     fromAmino(object: GetCodecDescriptorResponseAmino): GetCodecDescriptorResponse;
     toAmino(message: GetCodecDescriptorResponse): GetCodecDescriptorResponseAmino;
@@ -1049,7 +1050,7 @@ export declare const GetConfigurationDescriptorRequest: {
     encode(_: GetConfigurationDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetConfigurationDescriptorRequest;
     fromJSON(_: any): GetConfigurationDescriptorRequest;
-    toJSON(_: GetConfigurationDescriptorRequest): unknown;
+    toJSON(_: GetConfigurationDescriptorRequest): JsonSafe<GetConfigurationDescriptorRequest>;
     fromPartial(_: Partial<GetConfigurationDescriptorRequest>): GetConfigurationDescriptorRequest;
     fromAmino(_: GetConfigurationDescriptorRequestAmino): GetConfigurationDescriptorRequest;
     toAmino(_: GetConfigurationDescriptorRequest): GetConfigurationDescriptorRequestAmino;
@@ -1068,7 +1069,7 @@ export declare const GetConfigurationDescriptorResponse: {
     encode(message: GetConfigurationDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetConfigurationDescriptorResponse;
     fromJSON(object: any): GetConfigurationDescriptorResponse;
-    toJSON(message: GetConfigurationDescriptorResponse): unknown;
+    toJSON(message: GetConfigurationDescriptorResponse): JsonSafe<GetConfigurationDescriptorResponse>;
     fromPartial(object: Partial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
     fromAmino(object: GetConfigurationDescriptorResponseAmino): GetConfigurationDescriptorResponse;
     toAmino(message: GetConfigurationDescriptorResponse): GetConfigurationDescriptorResponseAmino;
@@ -1087,7 +1088,7 @@ export declare const GetQueryServicesDescriptorRequest: {
     encode(_: GetQueryServicesDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetQueryServicesDescriptorRequest;
     fromJSON(_: any): GetQueryServicesDescriptorRequest;
-    toJSON(_: GetQueryServicesDescriptorRequest): unknown;
+    toJSON(_: GetQueryServicesDescriptorRequest): JsonSafe<GetQueryServicesDescriptorRequest>;
     fromPartial(_: Partial<GetQueryServicesDescriptorRequest>): GetQueryServicesDescriptorRequest;
     fromAmino(_: GetQueryServicesDescriptorRequestAmino): GetQueryServicesDescriptorRequest;
     toAmino(_: GetQueryServicesDescriptorRequest): GetQueryServicesDescriptorRequestAmino;
@@ -1106,7 +1107,7 @@ export declare const GetQueryServicesDescriptorResponse: {
     encode(message: GetQueryServicesDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse;
     fromJSON(object: any): GetQueryServicesDescriptorResponse;
-    toJSON(message: GetQueryServicesDescriptorResponse): unknown;
+    toJSON(message: GetQueryServicesDescriptorResponse): JsonSafe<GetQueryServicesDescriptorResponse>;
     fromPartial(object: Partial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
     fromAmino(object: GetQueryServicesDescriptorResponseAmino): GetQueryServicesDescriptorResponse;
     toAmino(message: GetQueryServicesDescriptorResponse): GetQueryServicesDescriptorResponseAmino;
@@ -1125,7 +1126,7 @@ export declare const GetTxDescriptorRequest: {
     encode(_: GetTxDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxDescriptorRequest;
     fromJSON(_: any): GetTxDescriptorRequest;
-    toJSON(_: GetTxDescriptorRequest): unknown;
+    toJSON(_: GetTxDescriptorRequest): JsonSafe<GetTxDescriptorRequest>;
     fromPartial(_: Partial<GetTxDescriptorRequest>): GetTxDescriptorRequest;
     fromAmino(_: GetTxDescriptorRequestAmino): GetTxDescriptorRequest;
     toAmino(_: GetTxDescriptorRequest): GetTxDescriptorRequestAmino;
@@ -1144,7 +1145,7 @@ export declare const GetTxDescriptorResponse: {
     encode(message: GetTxDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxDescriptorResponse;
     fromJSON(object: any): GetTxDescriptorResponse;
-    toJSON(message: GetTxDescriptorResponse): unknown;
+    toJSON(message: GetTxDescriptorResponse): JsonSafe<GetTxDescriptorResponse>;
     fromPartial(object: Partial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
     fromAmino(object: GetTxDescriptorResponseAmino): GetTxDescriptorResponse;
     toAmino(message: GetTxDescriptorResponse): GetTxDescriptorResponseAmino;
@@ -1163,7 +1164,7 @@ export declare const QueryServicesDescriptor: {
     encode(message: QueryServicesDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryServicesDescriptor;
     fromJSON(object: any): QueryServicesDescriptor;
-    toJSON(message: QueryServicesDescriptor): unknown;
+    toJSON(message: QueryServicesDescriptor): JsonSafe<QueryServicesDescriptor>;
     fromPartial(object: Partial<QueryServicesDescriptor>): QueryServicesDescriptor;
     fromAmino(object: QueryServicesDescriptorAmino): QueryServicesDescriptor;
     toAmino(message: QueryServicesDescriptor): QueryServicesDescriptorAmino;
@@ -1182,7 +1183,7 @@ export declare const QueryServiceDescriptor: {
     encode(message: QueryServiceDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryServiceDescriptor;
     fromJSON(object: any): QueryServiceDescriptor;
-    toJSON(message: QueryServiceDescriptor): unknown;
+    toJSON(message: QueryServiceDescriptor): JsonSafe<QueryServiceDescriptor>;
     fromPartial(object: Partial<QueryServiceDescriptor>): QueryServiceDescriptor;
     fromAmino(object: QueryServiceDescriptorAmino): QueryServiceDescriptor;
     toAmino(message: QueryServiceDescriptor): QueryServiceDescriptorAmino;
@@ -1201,7 +1202,7 @@ export declare const QueryMethodDescriptor: {
     encode(message: QueryMethodDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryMethodDescriptor;
     fromJSON(object: any): QueryMethodDescriptor;
-    toJSON(message: QueryMethodDescriptor): unknown;
+    toJSON(message: QueryMethodDescriptor): JsonSafe<QueryMethodDescriptor>;
     fromPartial(object: Partial<QueryMethodDescriptor>): QueryMethodDescriptor;
     fromAmino(object: QueryMethodDescriptorAmino): QueryMethodDescriptor;
     toAmino(message: QueryMethodDescriptor): QueryMethodDescriptorAmino;

@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType, Validator, ValidatorAmino, ValidatorSDKType, Delegation, DelegationAmino, DelegationSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, Redelegation, RedelegationAmino, RedelegationSDKType } from "./staking";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of related to deposit. */
@@ -103,7 +104,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -122,7 +123,7 @@ export declare const LastValidatorPower: {
     encode(message: LastValidatorPower, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LastValidatorPower;
     fromJSON(object: any): LastValidatorPower;
-    toJSON(message: LastValidatorPower): unknown;
+    toJSON(message: LastValidatorPower): JsonSafe<LastValidatorPower>;
     fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower;
     fromAmino(object: LastValidatorPowerAmino): LastValidatorPower;
     toAmino(message: LastValidatorPower): LastValidatorPowerAmino;

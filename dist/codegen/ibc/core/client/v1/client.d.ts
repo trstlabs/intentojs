@@ -1,6 +1,7 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanAmino, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -316,7 +317,7 @@ export declare const IdentifiedClientState: {
     encode(message: IdentifiedClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedClientState;
     fromJSON(object: any): IdentifiedClientState;
-    toJSON(message: IdentifiedClientState): unknown;
+    toJSON(message: IdentifiedClientState): JsonSafe<IdentifiedClientState>;
     fromPartial(object: Partial<IdentifiedClientState>): IdentifiedClientState;
     fromAmino(object: IdentifiedClientStateAmino): IdentifiedClientState;
     toAmino(message: IdentifiedClientState): IdentifiedClientStateAmino;
@@ -335,7 +336,7 @@ export declare const ConsensusStateWithHeight: {
     encode(message: ConsensusStateWithHeight, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusStateWithHeight;
     fromJSON(object: any): ConsensusStateWithHeight;
-    toJSON(message: ConsensusStateWithHeight): unknown;
+    toJSON(message: ConsensusStateWithHeight): JsonSafe<ConsensusStateWithHeight>;
     fromPartial(object: Partial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
     fromAmino(object: ConsensusStateWithHeightAmino): ConsensusStateWithHeight;
     toAmino(message: ConsensusStateWithHeight): ConsensusStateWithHeightAmino;
@@ -354,7 +355,7 @@ export declare const ClientConsensusStates: {
     encode(message: ClientConsensusStates, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientConsensusStates;
     fromJSON(object: any): ClientConsensusStates;
-    toJSON(message: ClientConsensusStates): unknown;
+    toJSON(message: ClientConsensusStates): JsonSafe<ClientConsensusStates>;
     fromPartial(object: Partial<ClientConsensusStates>): ClientConsensusStates;
     fromAmino(object: ClientConsensusStatesAmino): ClientConsensusStates;
     toAmino(message: ClientConsensusStates): ClientConsensusStatesAmino;
@@ -373,7 +374,7 @@ export declare const ClientUpdateProposal: {
     encode(message: ClientUpdateProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientUpdateProposal;
     fromJSON(object: any): ClientUpdateProposal;
-    toJSON(message: ClientUpdateProposal): unknown;
+    toJSON(message: ClientUpdateProposal): JsonSafe<ClientUpdateProposal>;
     fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal;
     fromAmino(object: ClientUpdateProposalAmino): ClientUpdateProposal;
     toAmino(message: ClientUpdateProposal): ClientUpdateProposalAmino;
@@ -392,7 +393,7 @@ export declare const UpgradeProposal: {
     encode(message: UpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UpgradeProposal;
     fromJSON(object: any): UpgradeProposal;
-    toJSON(message: UpgradeProposal): unknown;
+    toJSON(message: UpgradeProposal): JsonSafe<UpgradeProposal>;
     fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal;
     fromAmino(object: UpgradeProposalAmino): UpgradeProposal;
     toAmino(message: UpgradeProposal): UpgradeProposalAmino;
@@ -411,7 +412,7 @@ export declare const Height: {
     encode(message: Height, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Height;
     fromJSON(object: any): Height;
-    toJSON(message: Height): unknown;
+    toJSON(message: Height): JsonSafe<Height>;
     fromPartial(object: Partial<Height>): Height;
     fromAmino(object: HeightAmino): Height;
     toAmino(message: Height): HeightAmino;
@@ -430,7 +431,7 @@ export declare const Params: {
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
+    toJSON(message: Params): JsonSafe<Params>;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

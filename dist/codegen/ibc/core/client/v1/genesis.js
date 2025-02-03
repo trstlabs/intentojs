@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentifiedGenesisMetadata = exports.GenesisMetadata = exports.GenesisState = void 0;
 const client_1 = require("./client");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseGenesisState() {
     return {
         clients: [],
@@ -163,7 +163,7 @@ exports.GenesisState = {
         }
         obj.params = message.params ? client_1.Params.toAmino(message.params) : undefined;
         obj.create_localhost = message.createLocalhost === false ? undefined : message.createLocalhost;
-        obj.next_client_sequence = message.nextClientSequence !== BigInt(0) ? message.nextClientSequence.toString() : undefined;
+        obj.next_client_sequence = message.nextClientSequence !== BigInt(0) ? message.nextClientSequence?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

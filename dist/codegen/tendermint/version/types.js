@@ -80,7 +80,7 @@ exports.App = {
     },
     toAmino(message) {
         const obj = {};
-        obj.protocol = message.protocol !== BigInt(0) ? message.protocol.toString() : undefined;
+        obj.protocol = message.protocol !== BigInt(0) ? message.protocol?.toString() : undefined;
         obj.software = message.software === "" ? undefined : message.software;
         return obj;
     },
@@ -177,8 +177,8 @@ exports.Consensus = {
     },
     toAmino(message) {
         const obj = {};
-        obj.block = message.block !== BigInt(0) ? message.block.toString() : undefined;
-        obj.app = message.app !== BigInt(0) ? message.app.toString() : undefined;
+        obj.block = message.block !== BigInt(0) ? message.block?.toString() : undefined;
+        obj.app = message.app !== BigInt(0) ? message.app?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

@@ -1056,7 +1056,7 @@ exports.GetBlockWithTxsRequest = {
     },
     toAmino(message) {
         const obj = {};
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
         obj.pagination = message.pagination ? pagination_1.PageRequest.toAmino(message.pagination) : undefined;
         return obj;
     },

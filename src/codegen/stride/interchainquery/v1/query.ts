@@ -4,12 +4,12 @@ import { JsonSafe } from "../../../json-safe";
 import { GlobalDecoderRegistry } from "../../../registry";
 export interface QueryPendingQueriesRequest {}
 export interface QueryPendingQueriesRequestProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.QueryPendingQueriesRequest";
+  typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesRequest";
   value: Uint8Array;
 }
 export interface QueryPendingQueriesRequestAmino {}
 export interface QueryPendingQueriesRequestAminoMsg {
-  type: "/intento.interchainquery.v1.QueryPendingQueriesRequest";
+  type: "/stride.interchainquery.v1.QueryPendingQueriesRequest";
   value: QueryPendingQueriesRequestAmino;
 }
 export interface QueryPendingQueriesRequestSDKType {}
@@ -17,14 +17,14 @@ export interface QueryPendingQueriesResponse {
   pendingQueries: Query[];
 }
 export interface QueryPendingQueriesResponseProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.QueryPendingQueriesResponse";
+  typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesResponse";
   value: Uint8Array;
 }
 export interface QueryPendingQueriesResponseAmino {
   pending_queries?: QueryAmino[];
 }
 export interface QueryPendingQueriesResponseAminoMsg {
-  type: "/intento.interchainquery.v1.QueryPendingQueriesResponse";
+  type: "/stride.interchainquery.v1.QueryPendingQueriesResponse";
   value: QueryPendingQueriesResponseAmino;
 }
 export interface QueryPendingQueriesResponseSDKType {
@@ -34,7 +34,7 @@ function createBaseQueryPendingQueriesRequest(): QueryPendingQueriesRequest {
   return {};
 }
 export const QueryPendingQueriesRequest = {
-  typeUrl: "/intento.interchainquery.v1.QueryPendingQueriesRequest",
+  typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesRequest",
   is(o: any): o is QueryPendingQueriesRequest {
     return o && o.$typeUrl === QueryPendingQueriesRequest.typeUrl;
   },
@@ -91,7 +91,7 @@ export const QueryPendingQueriesRequest = {
   },
   toProtoMsg(message: QueryPendingQueriesRequest): QueryPendingQueriesRequestProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.QueryPendingQueriesRequest",
+      typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesRequest",
       value: QueryPendingQueriesRequest.encode(message).finish()
     };
   }
@@ -103,7 +103,7 @@ function createBaseQueryPendingQueriesResponse(): QueryPendingQueriesResponse {
   };
 }
 export const QueryPendingQueriesResponse = {
-  typeUrl: "/intento.interchainquery.v1.QueryPendingQueriesResponse",
+  typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesResponse",
   is(o: any): o is QueryPendingQueriesResponse {
     return o && (o.$typeUrl === QueryPendingQueriesResponse.typeUrl || Array.isArray(o.pendingQueries) && (!o.pendingQueries.length || Query.is(o.pendingQueries[0])));
   },
@@ -180,7 +180,7 @@ export const QueryPendingQueriesResponse = {
   },
   toProtoMsg(message: QueryPendingQueriesResponse): QueryPendingQueriesResponseProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.QueryPendingQueriesResponse",
+      typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesResponse",
       value: QueryPendingQueriesResponse.encode(message).finish()
     };
   }

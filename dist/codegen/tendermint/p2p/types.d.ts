@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 export interface ProtocolVersion {
     p2p: bigint;
     block: bigint;
@@ -137,7 +138,7 @@ export declare const ProtocolVersion: {
     encode(message: ProtocolVersion, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProtocolVersion;
     fromJSON(object: any): ProtocolVersion;
-    toJSON(message: ProtocolVersion): unknown;
+    toJSON(message: ProtocolVersion): JsonSafe<ProtocolVersion>;
     fromPartial(object: Partial<ProtocolVersion>): ProtocolVersion;
     fromAmino(object: ProtocolVersionAmino): ProtocolVersion;
     toAmino(message: ProtocolVersion): ProtocolVersionAmino;
@@ -154,7 +155,7 @@ export declare const NodeInfo: {
     encode(message: NodeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NodeInfo;
     fromJSON(object: any): NodeInfo;
-    toJSON(message: NodeInfo): unknown;
+    toJSON(message: NodeInfo): JsonSafe<NodeInfo>;
     fromPartial(object: Partial<NodeInfo>): NodeInfo;
     fromAmino(object: NodeInfoAmino): NodeInfo;
     toAmino(message: NodeInfo): NodeInfoAmino;
@@ -171,7 +172,7 @@ export declare const NodeInfoOther: {
     encode(message: NodeInfoOther, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NodeInfoOther;
     fromJSON(object: any): NodeInfoOther;
-    toJSON(message: NodeInfoOther): unknown;
+    toJSON(message: NodeInfoOther): JsonSafe<NodeInfoOther>;
     fromPartial(object: Partial<NodeInfoOther>): NodeInfoOther;
     fromAmino(object: NodeInfoOtherAmino): NodeInfoOther;
     toAmino(message: NodeInfoOther): NodeInfoOtherAmino;
@@ -188,7 +189,7 @@ export declare const PeerInfo: {
     encode(message: PeerInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PeerInfo;
     fromJSON(object: any): PeerInfo;
-    toJSON(message: PeerInfo): unknown;
+    toJSON(message: PeerInfo): JsonSafe<PeerInfo>;
     fromPartial(object: Partial<PeerInfo>): PeerInfo;
     fromAmino(object: PeerInfoAmino): PeerInfo;
     toAmino(message: PeerInfo): PeerInfoAmino;
@@ -205,7 +206,7 @@ export declare const PeerAddressInfo: {
     encode(message: PeerAddressInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PeerAddressInfo;
     fromJSON(object: any): PeerAddressInfo;
-    toJSON(message: PeerAddressInfo): unknown;
+    toJSON(message: PeerAddressInfo): JsonSafe<PeerAddressInfo>;
     fromPartial(object: Partial<PeerAddressInfo>): PeerAddressInfo;
     fromAmino(object: PeerAddressInfoAmino): PeerAddressInfo;
     toAmino(message: PeerAddressInfo): PeerAddressInfoAmino;

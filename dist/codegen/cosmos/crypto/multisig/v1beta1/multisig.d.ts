@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -78,7 +79,7 @@ export declare const MultiSignature: {
     encode(message: MultiSignature, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MultiSignature;
     fromJSON(object: any): MultiSignature;
-    toJSON(message: MultiSignature): unknown;
+    toJSON(message: MultiSignature): JsonSafe<MultiSignature>;
     fromPartial(object: Partial<MultiSignature>): MultiSignature;
     fromAmino(object: MultiSignatureAmino): MultiSignature;
     toAmino(message: MultiSignature): MultiSignatureAmino;
@@ -97,7 +98,7 @@ export declare const CompactBitArray: {
     encode(message: CompactBitArray, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompactBitArray;
     fromJSON(object: any): CompactBitArray;
-    toJSON(message: CompactBitArray): unknown;
+    toJSON(message: CompactBitArray): JsonSafe<CompactBitArray>;
     fromPartial(object: Partial<CompactBitArray>): CompactBitArray;
     fromAmino(object: CompactBitArrayAmino): CompactBitArray;
     toAmino(message: CompactBitArray): CompactBitArrayAmino;

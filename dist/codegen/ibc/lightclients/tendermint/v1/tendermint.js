@@ -9,8 +9,8 @@ const commitment_1 = require("../../../core/commitment/v1/commitment");
 const types_1 = require("../../../../tendermint/types/types");
 const validator_1 = require("../../../../tendermint/types/validator");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseClientState() {
     return {
         chainId: "",
@@ -706,8 +706,8 @@ exports.Fraction = {
     },
     toAmino(message) {
         const obj = {};
-        obj.numerator = message.numerator !== BigInt(0) ? message.numerator.toString() : undefined;
-        obj.denominator = message.denominator !== BigInt(0) ? message.denominator.toString() : undefined;
+        obj.numerator = message.numerator !== BigInt(0) ? message.numerator?.toString() : undefined;
+        obj.denominator = message.denominator !== BigInt(0) ? message.denominator?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

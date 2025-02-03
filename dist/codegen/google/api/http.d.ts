@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /**
  * Defines the HTTP configuration for an API service. It contains a list of
  * [HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
@@ -1032,7 +1033,7 @@ export declare const Http: {
     encode(message: Http, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Http;
     fromJSON(object: any): Http;
-    toJSON(message: Http): unknown;
+    toJSON(message: Http): JsonSafe<Http>;
     fromPartial(object: Partial<Http>): Http;
     fromAmino(object: HttpAmino): Http;
     toAmino(message: Http): HttpAmino;
@@ -1049,7 +1050,7 @@ export declare const HttpRule: {
     encode(message: HttpRule, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HttpRule;
     fromJSON(object: any): HttpRule;
-    toJSON(message: HttpRule): unknown;
+    toJSON(message: HttpRule): JsonSafe<HttpRule>;
     fromPartial(object: Partial<HttpRule>): HttpRule;
     fromAmino(object: HttpRuleAmino): HttpRule;
     toAmino(message: HttpRule): HttpRuleAmino;
@@ -1066,7 +1067,7 @@ export declare const CustomHttpPattern: {
     encode(message: CustomHttpPattern, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CustomHttpPattern;
     fromJSON(object: any): CustomHttpPattern;
-    toJSON(message: CustomHttpPattern): unknown;
+    toJSON(message: CustomHttpPattern): JsonSafe<CustomHttpPattern>;
     fromPartial(object: Partial<CustomHttpPattern>): CustomHttpPattern;
     fromAmino(object: CustomHttpPatternAmino): CustomHttpPattern;
     toAmino(message: CustomHttpPattern): CustomHttpPatternAmino;

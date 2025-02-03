@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -77,7 +78,7 @@ export declare const App: {
     encode(message: App, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): App;
     fromJSON(object: any): App;
-    toJSON(message: App): unknown;
+    toJSON(message: App): JsonSafe<App>;
     fromPartial(object: Partial<App>): App;
     fromAmino(object: AppAmino): App;
     toAmino(message: App): AppAmino;
@@ -94,7 +95,7 @@ export declare const Consensus: {
     encode(message: Consensus, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Consensus;
     fromJSON(object: any): Consensus;
-    toJSON(message: Consensus): unknown;
+    toJSON(message: Consensus): JsonSafe<Consensus>;
     fromPartial(object: Partial<Consensus>): Consensus;
     fromAmino(object: ConsensusAmino): Consensus;
     toAmino(message: Consensus): ConsensusAmino;

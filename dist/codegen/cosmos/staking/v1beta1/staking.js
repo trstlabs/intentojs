@@ -7,8 +7,8 @@ const any_1 = require("../../../google/protobuf/any");
 const duration_1 = require("../../../google/protobuf/duration");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 const math_1 = require("@cosmjs/math");
 const proto_signing_1 = require("@cosmjs/proto-signing");
 /** BondStatus is the status of a validator. */
@@ -748,7 +748,7 @@ exports.Validator = {
         obj.tokens = message.tokens === "" ? undefined : message.tokens;
         obj.delegator_shares = message.delegatorShares === "" ? undefined : message.delegatorShares;
         obj.description = message.description ? exports.Description.toAmino(message.description) : undefined;
-        obj.unbonding_height = message.unbondingHeight !== BigInt(0) ? message.unbondingHeight.toString() : undefined;
+        obj.unbonding_height = message.unbondingHeight !== BigInt(0) ? message.unbondingHeight?.toString() : undefined;
         obj.unbonding_time = message.unbondingTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.unbondingTime)) : undefined;
         obj.commission = message.commission ? exports.Commission.toAmino(message.commission) : undefined;
         obj.min_self_delegation = message.minSelfDelegation === "" ? undefined : message.minSelfDelegation;
@@ -1648,7 +1648,7 @@ exports.UnbondingDelegationEntry = {
     },
     toAmino(message) {
         const obj = {};
-        obj.creation_height = message.creationHeight !== BigInt(0) ? message.creationHeight.toString() : undefined;
+        obj.creation_height = message.creationHeight !== BigInt(0) ? message.creationHeight?.toString() : undefined;
         obj.completion_time = message.completionTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.completionTime)) : undefined;
         obj.initial_balance = message.initialBalance === "" ? undefined : message.initialBalance;
         obj.balance = message.balance === "" ? undefined : message.balance;
@@ -1781,7 +1781,7 @@ exports.RedelegationEntry = {
     },
     toAmino(message) {
         const obj = {};
-        obj.creation_height = message.creationHeight !== BigInt(0) ? message.creationHeight.toString() : undefined;
+        obj.creation_height = message.creationHeight !== BigInt(0) ? message.creationHeight?.toString() : undefined;
         obj.completion_time = message.completionTime ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.completionTime)) : undefined;
         obj.initial_balance = message.initialBalance === "" ? undefined : message.initialBalance;
         obj.shares_dst = message.sharesDst === "" ? undefined : message.sharesDst;

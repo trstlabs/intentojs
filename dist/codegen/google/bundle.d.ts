@@ -14,7 +14,24 @@ export declare namespace google {
             encode(message: _54.Http, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.Http;
             fromJSON(object: any): _54.Http;
-            toJSON(message: _54.Http): unknown;
+            toJSON(message: _54.Http): {
+                rules: {
+                    selector: string;
+                    get?: string;
+                    put?: string;
+                    post?: string;
+                    delete?: string;
+                    patch?: string;
+                    custom?: {
+                        kind: string;
+                        path: string;
+                    };
+                    body: string;
+                    responseBody: string;
+                    additionalBindings: any[];
+                }[];
+                fullyDecodeReservedExpansion: boolean;
+            };
             fromPartial(object: Partial<_54.Http>): _54.Http;
             fromAmino(object: _54.HttpAmino): _54.Http;
             toAmino(message: _54.Http): _54.HttpAmino;
@@ -31,7 +48,21 @@ export declare namespace google {
             encode(message: _54.HttpRule, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.HttpRule;
             fromJSON(object: any): _54.HttpRule;
-            toJSON(message: _54.HttpRule): unknown;
+            toJSON(message: _54.HttpRule): {
+                selector: string;
+                get?: string;
+                put?: string;
+                post?: string;
+                delete?: string;
+                patch?: string;
+                custom?: {
+                    kind: string;
+                    path: string;
+                };
+                body: string;
+                responseBody: string;
+                additionalBindings: any[];
+            };
             fromPartial(object: Partial<_54.HttpRule>): _54.HttpRule;
             fromAmino(object: _54.HttpRuleAmino): _54.HttpRule;
             toAmino(message: _54.HttpRule): _54.HttpRuleAmino;
@@ -48,7 +79,10 @@ export declare namespace google {
             encode(message: _54.CustomHttpPattern, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.CustomHttpPattern;
             fromJSON(object: any): _54.CustomHttpPattern;
-            toJSON(message: _54.CustomHttpPattern): unknown;
+            toJSON(message: _54.CustomHttpPattern): {
+                kind: string;
+                path: string;
+            };
             fromPartial(object: Partial<_54.CustomHttpPattern>): _54.CustomHttpPattern;
             fromAmino(object: _54.CustomHttpPatternAmino): _54.CustomHttpPattern;
             toAmino(message: _54.CustomHttpPattern): _54.CustomHttpPatternAmino;
@@ -67,7 +101,10 @@ export declare namespace google {
             encode(message: _59.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Timestamp;
             fromJSON(object: any): _59.Timestamp;
-            toJSON(message: _59.Timestamp): unknown;
+            toJSON(message: _59.Timestamp): {
+                seconds: string;
+                nanos: number;
+            };
             fromPartial(object: Partial<_59.Timestamp>): _59.Timestamp;
             fromAmino(object: string): _59.Timestamp;
             toAmino(message: _59.Timestamp): string;
@@ -84,7 +121,7 @@ export declare namespace google {
             encode(_: _58.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.Empty;
             fromJSON(_: any): _58.Empty;
-            toJSON(_: _58.Empty): unknown;
+            toJSON(_: _58.Empty): {};
             fromPartial(_: Partial<_58.Empty>): _58.Empty;
             fromAmino(_: _58.EmptyAmino): _58.Empty;
             toAmino(_: _58.Empty): _58.EmptyAmino;
@@ -101,7 +138,10 @@ export declare namespace google {
             encode(message: _57.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Duration;
             fromJSON(object: any): _57.Duration;
-            toJSON(message: _57.Duration): unknown;
+            toJSON(message: _57.Duration): {
+                seconds: string;
+                nanos: number;
+            };
             fromPartial(object: Partial<_57.Duration>): _57.Duration;
             fromAmino(object: string): _57.Duration;
             toAmino(message: _57.Duration): string;
@@ -148,7 +188,341 @@ export declare namespace google {
             encode(message: _56.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FileDescriptorSet;
             fromJSON(object: any): _56.FileDescriptorSet;
-            toJSON(message: _56.FileDescriptorSet): unknown;
+            toJSON(message: _56.FileDescriptorSet): {
+                file: {
+                    name: string;
+                    package: string;
+                    dependency: string[];
+                    publicDependency: number[];
+                    weakDependency: number[];
+                    messageType: {
+                        name: string;
+                        field: {
+                            name: string;
+                            number: number;
+                            label: _56.FieldDescriptorProto_Label;
+                            type: _56.FieldDescriptorProto_Type;
+                            typeName: string;
+                            extendee: string;
+                            defaultValue: string;
+                            oneofIndex: number;
+                            jsonName: string;
+                            options?: {
+                                ctype: _56.FieldOptions_CType;
+                                packed: boolean;
+                                jstype: _56.FieldOptions_JSType;
+                                lazy: boolean;
+                                deprecated: boolean;
+                                weak: boolean;
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                        }[];
+                        extension: {
+                            name: string;
+                            number: number;
+                            label: _56.FieldDescriptorProto_Label;
+                            type: _56.FieldDescriptorProto_Type;
+                            typeName: string;
+                            extendee: string;
+                            defaultValue: string;
+                            oneofIndex: number;
+                            jsonName: string;
+                            options?: {
+                                ctype: _56.FieldOptions_CType;
+                                packed: boolean;
+                                jstype: _56.FieldOptions_JSType;
+                                lazy: boolean;
+                                deprecated: boolean;
+                                weak: boolean;
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                        }[];
+                        nestedType: any[];
+                        enumType: {
+                            name: string;
+                            value: {
+                                name: string;
+                                number: number;
+                                options?: {
+                                    deprecated: boolean;
+                                    uninterpretedOption: {
+                                        name: {
+                                            namePart: string;
+                                            isExtension: boolean;
+                                        }[];
+                                        identifierValue: string;
+                                        positiveIntValue: string;
+                                        negativeIntValue: string;
+                                        doubleValue: number;
+                                        stringValue: string;
+                                        aggregateValue: string;
+                                    }[];
+                                };
+                            }[];
+                            options?: {
+                                allowAlias: boolean;
+                                deprecated: boolean;
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                            reservedRange: {
+                                start: number;
+                                end: number;
+                            }[];
+                            reservedName: string[];
+                        }[];
+                        extensionRange: {
+                            start: number;
+                            end: number;
+                            options?: {
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                        }[];
+                        oneofDecl: {
+                            name: string;
+                            options?: {
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                        }[];
+                        options?: {
+                            messageSetWireFormat: boolean;
+                            noStandardDescriptorAccessor: boolean;
+                            deprecated: boolean;
+                            mapEntry: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                        reservedRange: {
+                            start: number;
+                            end: number;
+                        }[];
+                        reservedName: string[];
+                    }[];
+                    enumType: {
+                        name: string;
+                        value: {
+                            name: string;
+                            number: number;
+                            options?: {
+                                deprecated: boolean;
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                        }[];
+                        options?: {
+                            allowAlias: boolean;
+                            deprecated: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                        reservedRange: {
+                            start: number;
+                            end: number;
+                        }[];
+                        reservedName: string[];
+                    }[];
+                    service: {
+                        name: string;
+                        method: {
+                            name: string;
+                            inputType: string;
+                            outputType: string;
+                            options?: {
+                                deprecated: boolean;
+                                idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                            clientStreaming: boolean;
+                            serverStreaming: boolean;
+                        }[];
+                        options?: {
+                            deprecated: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    extension: {
+                        name: string;
+                        number: number;
+                        label: _56.FieldDescriptorProto_Label;
+                        type: _56.FieldDescriptorProto_Type;
+                        typeName: string;
+                        extendee: string;
+                        defaultValue: string;
+                        oneofIndex: number;
+                        jsonName: string;
+                        options?: {
+                            ctype: _56.FieldOptions_CType;
+                            packed: boolean;
+                            jstype: _56.FieldOptions_JSType;
+                            lazy: boolean;
+                            deprecated: boolean;
+                            weak: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    options?: {
+                        javaPackage: string;
+                        javaOuterClassname: string;
+                        javaMultipleFiles: boolean;
+                        javaGenerateEqualsAndHash: boolean;
+                        javaStringCheckUtf8: boolean;
+                        optimizeFor: _56.FileOptions_OptimizeMode;
+                        goPackage: string;
+                        ccGenericServices: boolean;
+                        javaGenericServices: boolean;
+                        pyGenericServices: boolean;
+                        phpGenericServices: boolean;
+                        deprecated: boolean;
+                        ccEnableArenas: boolean;
+                        objcClassPrefix: string;
+                        csharpNamespace: string;
+                        swiftPrefix: string;
+                        phpClassPrefix: string;
+                        phpNamespace: string;
+                        phpMetadataNamespace: string;
+                        rubyPackage: string;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                    sourceCodeInfo?: {
+                        location: {
+                            path: number[];
+                            span: number[];
+                            leadingComments: string;
+                            trailingComments: string;
+                            leadingDetachedComments: string[];
+                        }[];
+                    };
+                    syntax: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.FileDescriptorSet>): _56.FileDescriptorSet;
             fromAmino(object: _56.FileDescriptorSetAmino): _56.FileDescriptorSet;
             toAmino(message: _56.FileDescriptorSet): _56.FileDescriptorSetAmino;
@@ -165,7 +539,339 @@ export declare namespace google {
             encode(message: _56.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FileDescriptorProto;
             fromJSON(object: any): _56.FileDescriptorProto;
-            toJSON(message: _56.FileDescriptorProto): unknown;
+            toJSON(message: _56.FileDescriptorProto): {
+                name: string;
+                package: string;
+                dependency: string[];
+                publicDependency: number[];
+                weakDependency: number[];
+                messageType: {
+                    name: string;
+                    field: {
+                        name: string;
+                        number: number;
+                        label: _56.FieldDescriptorProto_Label;
+                        type: _56.FieldDescriptorProto_Type;
+                        typeName: string;
+                        extendee: string;
+                        defaultValue: string;
+                        oneofIndex: number;
+                        jsonName: string;
+                        options?: {
+                            ctype: _56.FieldOptions_CType;
+                            packed: boolean;
+                            jstype: _56.FieldOptions_JSType;
+                            lazy: boolean;
+                            deprecated: boolean;
+                            weak: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    extension: {
+                        name: string;
+                        number: number;
+                        label: _56.FieldDescriptorProto_Label;
+                        type: _56.FieldDescriptorProto_Type;
+                        typeName: string;
+                        extendee: string;
+                        defaultValue: string;
+                        oneofIndex: number;
+                        jsonName: string;
+                        options?: {
+                            ctype: _56.FieldOptions_CType;
+                            packed: boolean;
+                            jstype: _56.FieldOptions_JSType;
+                            lazy: boolean;
+                            deprecated: boolean;
+                            weak: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    nestedType: any[];
+                    enumType: {
+                        name: string;
+                        value: {
+                            name: string;
+                            number: number;
+                            options?: {
+                                deprecated: boolean;
+                                uninterpretedOption: {
+                                    name: {
+                                        namePart: string;
+                                        isExtension: boolean;
+                                    }[];
+                                    identifierValue: string;
+                                    positiveIntValue: string;
+                                    negativeIntValue: string;
+                                    doubleValue: number;
+                                    stringValue: string;
+                                    aggregateValue: string;
+                                }[];
+                            };
+                        }[];
+                        options?: {
+                            allowAlias: boolean;
+                            deprecated: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                        reservedRange: {
+                            start: number;
+                            end: number;
+                        }[];
+                        reservedName: string[];
+                    }[];
+                    extensionRange: {
+                        start: number;
+                        end: number;
+                        options?: {
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    oneofDecl: {
+                        name: string;
+                        options?: {
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    options?: {
+                        messageSetWireFormat: boolean;
+                        noStandardDescriptorAccessor: boolean;
+                        deprecated: boolean;
+                        mapEntry: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                    reservedRange: {
+                        start: number;
+                        end: number;
+                    }[];
+                    reservedName: string[];
+                }[];
+                enumType: {
+                    name: string;
+                    value: {
+                        name: string;
+                        number: number;
+                        options?: {
+                            deprecated: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    options?: {
+                        allowAlias: boolean;
+                        deprecated: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                    reservedRange: {
+                        start: number;
+                        end: number;
+                    }[];
+                    reservedName: string[];
+                }[];
+                service: {
+                    name: string;
+                    method: {
+                        name: string;
+                        inputType: string;
+                        outputType: string;
+                        options?: {
+                            deprecated: boolean;
+                            idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                        clientStreaming: boolean;
+                        serverStreaming: boolean;
+                    }[];
+                    options?: {
+                        deprecated: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                extension: {
+                    name: string;
+                    number: number;
+                    label: _56.FieldDescriptorProto_Label;
+                    type: _56.FieldDescriptorProto_Type;
+                    typeName: string;
+                    extendee: string;
+                    defaultValue: string;
+                    oneofIndex: number;
+                    jsonName: string;
+                    options?: {
+                        ctype: _56.FieldOptions_CType;
+                        packed: boolean;
+                        jstype: _56.FieldOptions_JSType;
+                        lazy: boolean;
+                        deprecated: boolean;
+                        weak: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                options?: {
+                    javaPackage: string;
+                    javaOuterClassname: string;
+                    javaMultipleFiles: boolean;
+                    javaGenerateEqualsAndHash: boolean;
+                    javaStringCheckUtf8: boolean;
+                    optimizeFor: _56.FileOptions_OptimizeMode;
+                    goPackage: string;
+                    ccGenericServices: boolean;
+                    javaGenericServices: boolean;
+                    pyGenericServices: boolean;
+                    phpGenericServices: boolean;
+                    deprecated: boolean;
+                    ccEnableArenas: boolean;
+                    objcClassPrefix: string;
+                    csharpNamespace: string;
+                    swiftPrefix: string;
+                    phpClassPrefix: string;
+                    phpNamespace: string;
+                    phpMetadataNamespace: string;
+                    rubyPackage: string;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+                sourceCodeInfo?: {
+                    location: {
+                        path: number[];
+                        span: number[];
+                        leadingComments: string;
+                        trailingComments: string;
+                        leadingDetachedComments: string[];
+                    }[];
+                };
+                syntax: string;
+            };
             fromPartial(object: Partial<_56.FileDescriptorProto>): _56.FileDescriptorProto;
             fromAmino(object: _56.FileDescriptorProtoAmino): _56.FileDescriptorProto;
             toAmino(message: _56.FileDescriptorProto): _56.FileDescriptorProtoAmino;
@@ -182,7 +888,173 @@ export declare namespace google {
             encode(message: _56.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DescriptorProto;
             fromJSON(object: any): _56.DescriptorProto;
-            toJSON(message: _56.DescriptorProto): unknown;
+            toJSON(message: _56.DescriptorProto): {
+                name: string;
+                field: {
+                    name: string;
+                    number: number;
+                    label: _56.FieldDescriptorProto_Label;
+                    type: _56.FieldDescriptorProto_Type;
+                    typeName: string;
+                    extendee: string;
+                    defaultValue: string;
+                    oneofIndex: number;
+                    jsonName: string;
+                    options?: {
+                        ctype: _56.FieldOptions_CType;
+                        packed: boolean;
+                        jstype: _56.FieldOptions_JSType;
+                        lazy: boolean;
+                        deprecated: boolean;
+                        weak: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                extension: {
+                    name: string;
+                    number: number;
+                    label: _56.FieldDescriptorProto_Label;
+                    type: _56.FieldDescriptorProto_Type;
+                    typeName: string;
+                    extendee: string;
+                    defaultValue: string;
+                    oneofIndex: number;
+                    jsonName: string;
+                    options?: {
+                        ctype: _56.FieldOptions_CType;
+                        packed: boolean;
+                        jstype: _56.FieldOptions_JSType;
+                        lazy: boolean;
+                        deprecated: boolean;
+                        weak: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                nestedType: any[];
+                enumType: {
+                    name: string;
+                    value: {
+                        name: string;
+                        number: number;
+                        options?: {
+                            deprecated: boolean;
+                            uninterpretedOption: {
+                                name: {
+                                    namePart: string;
+                                    isExtension: boolean;
+                                }[];
+                                identifierValue: string;
+                                positiveIntValue: string;
+                                negativeIntValue: string;
+                                doubleValue: number;
+                                stringValue: string;
+                                aggregateValue: string;
+                            }[];
+                        };
+                    }[];
+                    options?: {
+                        allowAlias: boolean;
+                        deprecated: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                    reservedRange: {
+                        start: number;
+                        end: number;
+                    }[];
+                    reservedName: string[];
+                }[];
+                extensionRange: {
+                    start: number;
+                    end: number;
+                    options?: {
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                oneofDecl: {
+                    name: string;
+                    options?: {
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                options?: {
+                    messageSetWireFormat: boolean;
+                    noStandardDescriptorAccessor: boolean;
+                    deprecated: boolean;
+                    mapEntry: boolean;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+                reservedRange: {
+                    start: number;
+                    end: number;
+                }[];
+                reservedName: string[];
+            };
             fromPartial(object: Partial<_56.DescriptorProto>): _56.DescriptorProto;
             fromAmino(object: _56.DescriptorProtoAmino): _56.DescriptorProto;
             toAmino(message: _56.DescriptorProto): _56.DescriptorProtoAmino;
@@ -199,7 +1071,24 @@ export declare namespace google {
             encode(message: _56.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DescriptorProto_ExtensionRange;
             fromJSON(object: any): _56.DescriptorProto_ExtensionRange;
-            toJSON(message: _56.DescriptorProto_ExtensionRange): unknown;
+            toJSON(message: _56.DescriptorProto_ExtensionRange): {
+                start: number;
+                end: number;
+                options?: {
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+            };
             fromPartial(object: Partial<_56.DescriptorProto_ExtensionRange>): _56.DescriptorProto_ExtensionRange;
             fromAmino(object: _56.DescriptorProto_ExtensionRangeAmino): _56.DescriptorProto_ExtensionRange;
             toAmino(message: _56.DescriptorProto_ExtensionRange): _56.DescriptorProto_ExtensionRangeAmino;
@@ -216,7 +1105,10 @@ export declare namespace google {
             encode(message: _56.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DescriptorProto_ReservedRange;
             fromJSON(object: any): _56.DescriptorProto_ReservedRange;
-            toJSON(message: _56.DescriptorProto_ReservedRange): unknown;
+            toJSON(message: _56.DescriptorProto_ReservedRange): {
+                start: number;
+                end: number;
+            };
             fromPartial(object: Partial<_56.DescriptorProto_ReservedRange>): _56.DescriptorProto_ReservedRange;
             fromAmino(object: _56.DescriptorProto_ReservedRangeAmino): _56.DescriptorProto_ReservedRange;
             toAmino(message: _56.DescriptorProto_ReservedRange): _56.DescriptorProto_ReservedRangeAmino;
@@ -233,7 +1125,20 @@ export declare namespace google {
             encode(message: _56.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.ExtensionRangeOptions;
             fromJSON(object: any): _56.ExtensionRangeOptions;
-            toJSON(message: _56.ExtensionRangeOptions): unknown;
+            toJSON(message: _56.ExtensionRangeOptions): {
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.ExtensionRangeOptions>): _56.ExtensionRangeOptions;
             fromAmino(object: _56.ExtensionRangeOptionsAmino): _56.ExtensionRangeOptions;
             toAmino(message: _56.ExtensionRangeOptions): _56.ExtensionRangeOptionsAmino;
@@ -250,7 +1155,37 @@ export declare namespace google {
             encode(message: _56.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FieldDescriptorProto;
             fromJSON(object: any): _56.FieldDescriptorProto;
-            toJSON(message: _56.FieldDescriptorProto): unknown;
+            toJSON(message: _56.FieldDescriptorProto): {
+                name: string;
+                number: number;
+                label: _56.FieldDescriptorProto_Label;
+                type: _56.FieldDescriptorProto_Type;
+                typeName: string;
+                extendee: string;
+                defaultValue: string;
+                oneofIndex: number;
+                jsonName: string;
+                options?: {
+                    ctype: _56.FieldOptions_CType;
+                    packed: boolean;
+                    jstype: _56.FieldOptions_JSType;
+                    lazy: boolean;
+                    deprecated: boolean;
+                    weak: boolean;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+            };
             fromPartial(object: Partial<_56.FieldDescriptorProto>): _56.FieldDescriptorProto;
             fromAmino(object: _56.FieldDescriptorProtoAmino): _56.FieldDescriptorProto;
             toAmino(message: _56.FieldDescriptorProto): _56.FieldDescriptorProtoAmino;
@@ -267,7 +1202,23 @@ export declare namespace google {
             encode(message: _56.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.OneofDescriptorProto;
             fromJSON(object: any): _56.OneofDescriptorProto;
-            toJSON(message: _56.OneofDescriptorProto): unknown;
+            toJSON(message: _56.OneofDescriptorProto): {
+                name: string;
+                options?: {
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+            };
             fromPartial(object: Partial<_56.OneofDescriptorProto>): _56.OneofDescriptorProto;
             fromAmino(object: _56.OneofDescriptorProtoAmino): _56.OneofDescriptorProto;
             toAmino(message: _56.OneofDescriptorProto): _56.OneofDescriptorProtoAmino;
@@ -284,7 +1235,49 @@ export declare namespace google {
             encode(message: _56.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumDescriptorProto;
             fromJSON(object: any): _56.EnumDescriptorProto;
-            toJSON(message: _56.EnumDescriptorProto): unknown;
+            toJSON(message: _56.EnumDescriptorProto): {
+                name: string;
+                value: {
+                    name: string;
+                    number: number;
+                    options?: {
+                        deprecated: boolean;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                }[];
+                options?: {
+                    allowAlias: boolean;
+                    deprecated: boolean;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+                reservedRange: {
+                    start: number;
+                    end: number;
+                }[];
+                reservedName: string[];
+            };
             fromPartial(object: Partial<_56.EnumDescriptorProto>): _56.EnumDescriptorProto;
             fromAmino(object: _56.EnumDescriptorProtoAmino): _56.EnumDescriptorProto;
             toAmino(message: _56.EnumDescriptorProto): _56.EnumDescriptorProtoAmino;
@@ -301,7 +1294,10 @@ export declare namespace google {
             encode(message: _56.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumDescriptorProto_EnumReservedRange;
             fromJSON(object: any): _56.EnumDescriptorProto_EnumReservedRange;
-            toJSON(message: _56.EnumDescriptorProto_EnumReservedRange): unknown;
+            toJSON(message: _56.EnumDescriptorProto_EnumReservedRange): {
+                start: number;
+                end: number;
+            };
             fromPartial(object: Partial<_56.EnumDescriptorProto_EnumReservedRange>): _56.EnumDescriptorProto_EnumReservedRange;
             fromAmino(object: _56.EnumDescriptorProto_EnumReservedRangeAmino): _56.EnumDescriptorProto_EnumReservedRange;
             toAmino(message: _56.EnumDescriptorProto_EnumReservedRange): _56.EnumDescriptorProto_EnumReservedRangeAmino;
@@ -318,7 +1314,25 @@ export declare namespace google {
             encode(message: _56.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumValueDescriptorProto;
             fromJSON(object: any): _56.EnumValueDescriptorProto;
-            toJSON(message: _56.EnumValueDescriptorProto): unknown;
+            toJSON(message: _56.EnumValueDescriptorProto): {
+                name: string;
+                number: number;
+                options?: {
+                    deprecated: boolean;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+            };
             fromPartial(object: Partial<_56.EnumValueDescriptorProto>): _56.EnumValueDescriptorProto;
             fromAmino(object: _56.EnumValueDescriptorProtoAmino): _56.EnumValueDescriptorProto;
             toAmino(message: _56.EnumValueDescriptorProto): _56.EnumValueDescriptorProtoAmino;
@@ -335,7 +1349,47 @@ export declare namespace google {
             encode(message: _56.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.ServiceDescriptorProto;
             fromJSON(object: any): _56.ServiceDescriptorProto;
-            toJSON(message: _56.ServiceDescriptorProto): unknown;
+            toJSON(message: _56.ServiceDescriptorProto): {
+                name: string;
+                method: {
+                    name: string;
+                    inputType: string;
+                    outputType: string;
+                    options?: {
+                        deprecated: boolean;
+                        idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                        uninterpretedOption: {
+                            name: {
+                                namePart: string;
+                                isExtension: boolean;
+                            }[];
+                            identifierValue: string;
+                            positiveIntValue: string;
+                            negativeIntValue: string;
+                            doubleValue: number;
+                            stringValue: string;
+                            aggregateValue: string;
+                        }[];
+                    };
+                    clientStreaming: boolean;
+                    serverStreaming: boolean;
+                }[];
+                options?: {
+                    deprecated: boolean;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+            };
             fromPartial(object: Partial<_56.ServiceDescriptorProto>): _56.ServiceDescriptorProto;
             fromAmino(object: _56.ServiceDescriptorProtoAmino): _56.ServiceDescriptorProto;
             toAmino(message: _56.ServiceDescriptorProto): _56.ServiceDescriptorProtoAmino;
@@ -352,7 +1406,29 @@ export declare namespace google {
             encode(message: _56.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MethodDescriptorProto;
             fromJSON(object: any): _56.MethodDescriptorProto;
-            toJSON(message: _56.MethodDescriptorProto): unknown;
+            toJSON(message: _56.MethodDescriptorProto): {
+                name: string;
+                inputType: string;
+                outputType: string;
+                options?: {
+                    deprecated: boolean;
+                    idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                    uninterpretedOption: {
+                        name: {
+                            namePart: string;
+                            isExtension: boolean;
+                        }[];
+                        identifierValue: string;
+                        positiveIntValue: string;
+                        negativeIntValue: string;
+                        doubleValue: number;
+                        stringValue: string;
+                        aggregateValue: string;
+                    }[];
+                };
+                clientStreaming: boolean;
+                serverStreaming: boolean;
+            };
             fromPartial(object: Partial<_56.MethodDescriptorProto>): _56.MethodDescriptorProto;
             fromAmino(object: _56.MethodDescriptorProtoAmino): _56.MethodDescriptorProto;
             toAmino(message: _56.MethodDescriptorProto): _56.MethodDescriptorProtoAmino;
@@ -369,7 +1445,40 @@ export declare namespace google {
             encode(message: _56.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FileOptions;
             fromJSON(object: any): _56.FileOptions;
-            toJSON(message: _56.FileOptions): unknown;
+            toJSON(message: _56.FileOptions): {
+                javaPackage: string;
+                javaOuterClassname: string;
+                javaMultipleFiles: boolean;
+                javaGenerateEqualsAndHash: boolean;
+                javaStringCheckUtf8: boolean;
+                optimizeFor: _56.FileOptions_OptimizeMode;
+                goPackage: string;
+                ccGenericServices: boolean;
+                javaGenericServices: boolean;
+                pyGenericServices: boolean;
+                phpGenericServices: boolean;
+                deprecated: boolean;
+                ccEnableArenas: boolean;
+                objcClassPrefix: string;
+                csharpNamespace: string;
+                swiftPrefix: string;
+                phpClassPrefix: string;
+                phpNamespace: string;
+                phpMetadataNamespace: string;
+                rubyPackage: string;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.FileOptions>): _56.FileOptions;
             fromAmino(object: _56.FileOptionsAmino): _56.FileOptions;
             toAmino(message: _56.FileOptions): _56.FileOptionsAmino;
@@ -386,7 +1495,24 @@ export declare namespace google {
             encode(message: _56.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MessageOptions;
             fromJSON(object: any): _56.MessageOptions;
-            toJSON(message: _56.MessageOptions): unknown;
+            toJSON(message: _56.MessageOptions): {
+                messageSetWireFormat: boolean;
+                noStandardDescriptorAccessor: boolean;
+                deprecated: boolean;
+                mapEntry: boolean;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.MessageOptions>): _56.MessageOptions;
             fromAmino(object: _56.MessageOptionsAmino): _56.MessageOptions;
             toAmino(message: _56.MessageOptions): _56.MessageOptionsAmino;
@@ -403,7 +1529,26 @@ export declare namespace google {
             encode(message: _56.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FieldOptions;
             fromJSON(object: any): _56.FieldOptions;
-            toJSON(message: _56.FieldOptions): unknown;
+            toJSON(message: _56.FieldOptions): {
+                ctype: _56.FieldOptions_CType;
+                packed: boolean;
+                jstype: _56.FieldOptions_JSType;
+                lazy: boolean;
+                deprecated: boolean;
+                weak: boolean;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.FieldOptions>): _56.FieldOptions;
             fromAmino(object: _56.FieldOptionsAmino): _56.FieldOptions;
             toAmino(message: _56.FieldOptions): _56.FieldOptionsAmino;
@@ -420,7 +1565,20 @@ export declare namespace google {
             encode(message: _56.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.OneofOptions;
             fromJSON(object: any): _56.OneofOptions;
-            toJSON(message: _56.OneofOptions): unknown;
+            toJSON(message: _56.OneofOptions): {
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.OneofOptions>): _56.OneofOptions;
             fromAmino(object: _56.OneofOptionsAmino): _56.OneofOptions;
             toAmino(message: _56.OneofOptions): _56.OneofOptionsAmino;
@@ -437,7 +1595,22 @@ export declare namespace google {
             encode(message: _56.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumOptions;
             fromJSON(object: any): _56.EnumOptions;
-            toJSON(message: _56.EnumOptions): unknown;
+            toJSON(message: _56.EnumOptions): {
+                allowAlias: boolean;
+                deprecated: boolean;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.EnumOptions>): _56.EnumOptions;
             fromAmino(object: _56.EnumOptionsAmino): _56.EnumOptions;
             toAmino(message: _56.EnumOptions): _56.EnumOptionsAmino;
@@ -454,7 +1627,21 @@ export declare namespace google {
             encode(message: _56.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumValueOptions;
             fromJSON(object: any): _56.EnumValueOptions;
-            toJSON(message: _56.EnumValueOptions): unknown;
+            toJSON(message: _56.EnumValueOptions): {
+                deprecated: boolean;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.EnumValueOptions>): _56.EnumValueOptions;
             fromAmino(object: _56.EnumValueOptionsAmino): _56.EnumValueOptions;
             toAmino(message: _56.EnumValueOptions): _56.EnumValueOptionsAmino;
@@ -471,7 +1658,21 @@ export declare namespace google {
             encode(message: _56.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.ServiceOptions;
             fromJSON(object: any): _56.ServiceOptions;
-            toJSON(message: _56.ServiceOptions): unknown;
+            toJSON(message: _56.ServiceOptions): {
+                deprecated: boolean;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.ServiceOptions>): _56.ServiceOptions;
             fromAmino(object: _56.ServiceOptionsAmino): _56.ServiceOptions;
             toAmino(message: _56.ServiceOptions): _56.ServiceOptionsAmino;
@@ -488,7 +1689,22 @@ export declare namespace google {
             encode(message: _56.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MethodOptions;
             fromJSON(object: any): _56.MethodOptions;
-            toJSON(message: _56.MethodOptions): unknown;
+            toJSON(message: _56.MethodOptions): {
+                deprecated: boolean;
+                idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                uninterpretedOption: {
+                    name: {
+                        namePart: string;
+                        isExtension: boolean;
+                    }[];
+                    identifierValue: string;
+                    positiveIntValue: string;
+                    negativeIntValue: string;
+                    doubleValue: number;
+                    stringValue: string;
+                    aggregateValue: string;
+                }[];
+            };
             fromPartial(object: Partial<_56.MethodOptions>): _56.MethodOptions;
             fromAmino(object: _56.MethodOptionsAmino): _56.MethodOptions;
             toAmino(message: _56.MethodOptions): _56.MethodOptionsAmino;
@@ -505,7 +1721,18 @@ export declare namespace google {
             encode(message: _56.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.UninterpretedOption;
             fromJSON(object: any): _56.UninterpretedOption;
-            toJSON(message: _56.UninterpretedOption): unknown;
+            toJSON(message: _56.UninterpretedOption): {
+                name: {
+                    namePart: string;
+                    isExtension: boolean;
+                }[];
+                identifierValue: string;
+                positiveIntValue: string;
+                negativeIntValue: string;
+                doubleValue: number;
+                stringValue: string;
+                aggregateValue: string;
+            };
             fromPartial(object: Partial<_56.UninterpretedOption>): _56.UninterpretedOption;
             fromAmino(object: _56.UninterpretedOptionAmino): _56.UninterpretedOption;
             toAmino(message: _56.UninterpretedOption): _56.UninterpretedOptionAmino;
@@ -522,7 +1749,10 @@ export declare namespace google {
             encode(message: _56.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.UninterpretedOption_NamePart;
             fromJSON(object: any): _56.UninterpretedOption_NamePart;
-            toJSON(message: _56.UninterpretedOption_NamePart): unknown;
+            toJSON(message: _56.UninterpretedOption_NamePart): {
+                namePart: string;
+                isExtension: boolean;
+            };
             fromPartial(object: Partial<_56.UninterpretedOption_NamePart>): _56.UninterpretedOption_NamePart;
             fromAmino(object: _56.UninterpretedOption_NamePartAmino): _56.UninterpretedOption_NamePart;
             toAmino(message: _56.UninterpretedOption_NamePart): _56.UninterpretedOption_NamePartAmino;
@@ -539,7 +1769,15 @@ export declare namespace google {
             encode(message: _56.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.SourceCodeInfo;
             fromJSON(object: any): _56.SourceCodeInfo;
-            toJSON(message: _56.SourceCodeInfo): unknown;
+            toJSON(message: _56.SourceCodeInfo): {
+                location: {
+                    path: number[];
+                    span: number[];
+                    leadingComments: string;
+                    trailingComments: string;
+                    leadingDetachedComments: string[];
+                }[];
+            };
             fromPartial(object: Partial<_56.SourceCodeInfo>): _56.SourceCodeInfo;
             fromAmino(object: _56.SourceCodeInfoAmino): _56.SourceCodeInfo;
             toAmino(message: _56.SourceCodeInfo): _56.SourceCodeInfoAmino;
@@ -556,7 +1794,13 @@ export declare namespace google {
             encode(message: _56.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.SourceCodeInfo_Location;
             fromJSON(object: any): _56.SourceCodeInfo_Location;
-            toJSON(message: _56.SourceCodeInfo_Location): unknown;
+            toJSON(message: _56.SourceCodeInfo_Location): {
+                path: number[];
+                span: number[];
+                leadingComments: string;
+                trailingComments: string;
+                leadingDetachedComments: string[];
+            };
             fromPartial(object: Partial<_56.SourceCodeInfo_Location>): _56.SourceCodeInfo_Location;
             fromAmino(object: _56.SourceCodeInfo_LocationAmino): _56.SourceCodeInfo_Location;
             toAmino(message: _56.SourceCodeInfo_Location): _56.SourceCodeInfo_LocationAmino;
@@ -573,7 +1817,14 @@ export declare namespace google {
             encode(message: _56.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.GeneratedCodeInfo;
             fromJSON(object: any): _56.GeneratedCodeInfo;
-            toJSON(message: _56.GeneratedCodeInfo): unknown;
+            toJSON(message: _56.GeneratedCodeInfo): {
+                annotation: {
+                    path: number[];
+                    sourceFile: string;
+                    begin: number;
+                    end: number;
+                }[];
+            };
             fromPartial(object: Partial<_56.GeneratedCodeInfo>): _56.GeneratedCodeInfo;
             fromAmino(object: _56.GeneratedCodeInfoAmino): _56.GeneratedCodeInfo;
             toAmino(message: _56.GeneratedCodeInfo): _56.GeneratedCodeInfoAmino;
@@ -590,7 +1841,12 @@ export declare namespace google {
             encode(message: _56.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.GeneratedCodeInfo_Annotation;
             fromJSON(object: any): _56.GeneratedCodeInfo_Annotation;
-            toJSON(message: _56.GeneratedCodeInfo_Annotation): unknown;
+            toJSON(message: _56.GeneratedCodeInfo_Annotation): {
+                path: number[];
+                sourceFile: string;
+                begin: number;
+                end: number;
+            };
             fromPartial(object: Partial<_56.GeneratedCodeInfo_Annotation>): _56.GeneratedCodeInfo_Annotation;
             fromAmino(object: _56.GeneratedCodeInfo_AnnotationAmino): _56.GeneratedCodeInfo_Annotation;
             toAmino(message: _56.GeneratedCodeInfo_Annotation): _56.GeneratedCodeInfo_AnnotationAmino;
@@ -607,7 +1863,11 @@ export declare namespace google {
             encode(message: _55.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.Any;
             fromJSON(object: any): _55.Any;
-            toJSON(message: _55.Any): unknown;
+            toJSON(message: _55.Any): {
+                $typeUrl?: string;
+                typeUrl: string;
+                value: string;
+            };
             fromPartial(object: Partial<_55.Any>): _55.Any;
             fromAmino(object: _55.AnyAmino): _55.Any;
             toAmino(message: _55.Any): _55.AnyAmino;

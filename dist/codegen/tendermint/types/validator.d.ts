@@ -1,5 +1,6 @@
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 export interface ValidatorSet {
     validators: Validator[];
     proposer?: Validator;
@@ -77,7 +78,7 @@ export declare const ValidatorSet: {
     encode(message: ValidatorSet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSet;
     fromJSON(object: any): ValidatorSet;
-    toJSON(message: ValidatorSet): unknown;
+    toJSON(message: ValidatorSet): JsonSafe<ValidatorSet>;
     fromPartial(object: Partial<ValidatorSet>): ValidatorSet;
     fromAmino(object: ValidatorSetAmino): ValidatorSet;
     toAmino(message: ValidatorSet): ValidatorSetAmino;
@@ -94,7 +95,7 @@ export declare const Validator: {
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromJSON(object: any): Validator;
-    toJSON(message: Validator): unknown;
+    toJSON(message: Validator): JsonSafe<Validator>;
     fromPartial(object: Partial<Validator>): Validator;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
@@ -111,7 +112,7 @@ export declare const SimpleValidator: {
     encode(message: SimpleValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimpleValidator;
     fromJSON(object: any): SimpleValidator;
-    toJSON(message: SimpleValidator): unknown;
+    toJSON(message: SimpleValidator): JsonSafe<SimpleValidator>;
     fromPartial(object: Partial<SimpleValidator>): SimpleValidator;
     fromAmino(object: SimpleValidatorAmino): SimpleValidator;
     toAmino(message: SimpleValidator): SimpleValidatorAmino;

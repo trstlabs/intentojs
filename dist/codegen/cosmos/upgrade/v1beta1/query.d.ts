@@ -1,5 +1,6 @@
 import { Plan, PlanAmino, PlanSDKType, ModuleVersion, ModuleVersionAmino, ModuleVersionSDKType } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
@@ -345,7 +346,7 @@ export declare const QueryCurrentPlanRequest: {
     encode(_: QueryCurrentPlanRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentPlanRequest;
     fromJSON(_: any): QueryCurrentPlanRequest;
-    toJSON(_: QueryCurrentPlanRequest): unknown;
+    toJSON(_: QueryCurrentPlanRequest): JsonSafe<QueryCurrentPlanRequest>;
     fromPartial(_: Partial<QueryCurrentPlanRequest>): QueryCurrentPlanRequest;
     fromAmino(_: QueryCurrentPlanRequestAmino): QueryCurrentPlanRequest;
     toAmino(_: QueryCurrentPlanRequest): QueryCurrentPlanRequestAmino;
@@ -364,7 +365,7 @@ export declare const QueryCurrentPlanResponse: {
     encode(message: QueryCurrentPlanResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentPlanResponse;
     fromJSON(object: any): QueryCurrentPlanResponse;
-    toJSON(message: QueryCurrentPlanResponse): unknown;
+    toJSON(message: QueryCurrentPlanResponse): JsonSafe<QueryCurrentPlanResponse>;
     fromPartial(object: Partial<QueryCurrentPlanResponse>): QueryCurrentPlanResponse;
     fromAmino(object: QueryCurrentPlanResponseAmino): QueryCurrentPlanResponse;
     toAmino(message: QueryCurrentPlanResponse): QueryCurrentPlanResponseAmino;
@@ -383,7 +384,7 @@ export declare const QueryAppliedPlanRequest: {
     encode(message: QueryAppliedPlanRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAppliedPlanRequest;
     fromJSON(object: any): QueryAppliedPlanRequest;
-    toJSON(message: QueryAppliedPlanRequest): unknown;
+    toJSON(message: QueryAppliedPlanRequest): JsonSafe<QueryAppliedPlanRequest>;
     fromPartial(object: Partial<QueryAppliedPlanRequest>): QueryAppliedPlanRequest;
     fromAmino(object: QueryAppliedPlanRequestAmino): QueryAppliedPlanRequest;
     toAmino(message: QueryAppliedPlanRequest): QueryAppliedPlanRequestAmino;
@@ -402,7 +403,7 @@ export declare const QueryAppliedPlanResponse: {
     encode(message: QueryAppliedPlanResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAppliedPlanResponse;
     fromJSON(object: any): QueryAppliedPlanResponse;
-    toJSON(message: QueryAppliedPlanResponse): unknown;
+    toJSON(message: QueryAppliedPlanResponse): JsonSafe<QueryAppliedPlanResponse>;
     fromPartial(object: Partial<QueryAppliedPlanResponse>): QueryAppliedPlanResponse;
     fromAmino(object: QueryAppliedPlanResponseAmino): QueryAppliedPlanResponse;
     toAmino(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseAmino;
@@ -421,7 +422,7 @@ export declare const QueryUpgradedConsensusStateRequest: {
     encode(message: QueryUpgradedConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
     fromJSON(object: any): QueryUpgradedConsensusStateRequest;
-    toJSON(message: QueryUpgradedConsensusStateRequest): unknown;
+    toJSON(message: QueryUpgradedConsensusStateRequest): JsonSafe<QueryUpgradedConsensusStateRequest>;
     fromPartial(object: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
     fromAmino(object: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest;
     toAmino(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAmino;
@@ -440,7 +441,7 @@ export declare const QueryUpgradedConsensusStateResponse: {
     encode(message: QueryUpgradedConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromJSON(object: any): QueryUpgradedConsensusStateResponse;
-    toJSON(message: QueryUpgradedConsensusStateResponse): unknown;
+    toJSON(message: QueryUpgradedConsensusStateResponse): JsonSafe<QueryUpgradedConsensusStateResponse>;
     fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
     fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse;
     toAmino(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAmino;
@@ -459,7 +460,7 @@ export declare const QueryModuleVersionsRequest: {
     encode(message: QueryModuleVersionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleVersionsRequest;
     fromJSON(object: any): QueryModuleVersionsRequest;
-    toJSON(message: QueryModuleVersionsRequest): unknown;
+    toJSON(message: QueryModuleVersionsRequest): JsonSafe<QueryModuleVersionsRequest>;
     fromPartial(object: Partial<QueryModuleVersionsRequest>): QueryModuleVersionsRequest;
     fromAmino(object: QueryModuleVersionsRequestAmino): QueryModuleVersionsRequest;
     toAmino(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestAmino;
@@ -478,7 +479,7 @@ export declare const QueryModuleVersionsResponse: {
     encode(message: QueryModuleVersionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleVersionsResponse;
     fromJSON(object: any): QueryModuleVersionsResponse;
-    toJSON(message: QueryModuleVersionsResponse): unknown;
+    toJSON(message: QueryModuleVersionsResponse): JsonSafe<QueryModuleVersionsResponse>;
     fromPartial(object: Partial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse;
     fromAmino(object: QueryModuleVersionsResponseAmino): QueryModuleVersionsResponse;
     toAmino(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseAmino;
@@ -497,7 +498,7 @@ export declare const QueryAuthorityRequest: {
     encode(_: QueryAuthorityRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAuthorityRequest;
     fromJSON(_: any): QueryAuthorityRequest;
-    toJSON(_: QueryAuthorityRequest): unknown;
+    toJSON(_: QueryAuthorityRequest): JsonSafe<QueryAuthorityRequest>;
     fromPartial(_: Partial<QueryAuthorityRequest>): QueryAuthorityRequest;
     fromAmino(_: QueryAuthorityRequestAmino): QueryAuthorityRequest;
     toAmino(_: QueryAuthorityRequest): QueryAuthorityRequestAmino;
@@ -516,7 +517,7 @@ export declare const QueryAuthorityResponse: {
     encode(message: QueryAuthorityResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAuthorityResponse;
     fromJSON(object: any): QueryAuthorityResponse;
-    toJSON(message: QueryAuthorityResponse): unknown;
+    toJSON(message: QueryAuthorityResponse): JsonSafe<QueryAuthorityResponse>;
     fromPartial(object: Partial<QueryAuthorityResponse>): QueryAuthorityResponse;
     fromAmino(object: QueryAuthorityResponseAmino): QueryAuthorityResponse;
     toAmino(message: QueryAuthorityResponse): QueryAuthorityResponseAmino;

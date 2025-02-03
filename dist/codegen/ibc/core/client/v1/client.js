@@ -4,8 +4,8 @@ exports.Params = exports.Height = exports.UpgradeProposal = exports.ClientUpdate
 const any_1 = require("../../../../google/protobuf/any");
 const upgrade_1 = require("../../../../cosmos/upgrade/v1beta1/upgrade");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseIdentifiedClientState() {
     return {
         clientId: "",
@@ -670,8 +670,8 @@ exports.Height = {
     },
     toAmino(message) {
         const obj = {};
-        obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber.toString() : undefined;
-        obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight.toString() : undefined;
+        obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber?.toString() : undefined;
+        obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

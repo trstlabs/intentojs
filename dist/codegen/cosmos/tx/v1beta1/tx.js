@@ -6,8 +6,8 @@ const signing_1 = require("../signing/v1beta1/signing");
 const multisig_1 = require("../../crypto/multisig/v1beta1/multisig");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseTx() {
     return {
         body: undefined,
@@ -368,7 +368,7 @@ exports.SignDoc = {
         obj.body_bytes = message.bodyBytes ? (0, helpers_1.base64FromBytes)(message.bodyBytes) : undefined;
         obj.auth_info_bytes = message.authInfoBytes ? (0, helpers_1.base64FromBytes)(message.authInfoBytes) : undefined;
         obj.chain_id = message.chainId === "" ? undefined : message.chainId;
-        obj.account_number = message.accountNumber !== BigInt(0) ? message.accountNumber.toString() : undefined;
+        obj.account_number = message.accountNumber !== BigInt(0) ? message.accountNumber?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -527,8 +527,8 @@ exports.SignDocDirectAux = {
         obj.body_bytes = message.bodyBytes ? (0, helpers_1.base64FromBytes)(message.bodyBytes) : undefined;
         obj.public_key = message.publicKey ? any_1.Any.toAmino(message.publicKey) : undefined;
         obj.chain_id = message.chainId === "" ? undefined : message.chainId;
-        obj.account_number = message.accountNumber !== BigInt(0) ? message.accountNumber.toString() : undefined;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.account_number = message.accountNumber !== BigInt(0) ? message.accountNumber?.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         obj.tip = message.tip ? exports.Tip.toAmino(message.tip) : undefined;
         return obj;
     },
@@ -688,7 +688,7 @@ exports.TxBody = {
             obj.messages = message.messages;
         }
         obj.memo = message.memo === "" ? undefined : message.memo;
-        obj.timeout_height = message.timeoutHeight !== BigInt(0) ? message.timeoutHeight.toString() : undefined;
+        obj.timeout_height = message.timeoutHeight !== BigInt(0) ? message.timeoutHeight?.toString() : undefined;
         if (message.extensionOptions) {
             obj.extension_options = message.extensionOptions.map(e => e ? any_1.Any.toAmino(e) : undefined);
         }
@@ -946,7 +946,7 @@ exports.SignerInfo = {
         const obj = {};
         obj.public_key = message.publicKey ? any_1.Any.toAmino(message.publicKey) : undefined;
         obj.mode_info = message.modeInfo ? exports.ModeInfo.toAmino(message.modeInfo) : undefined;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1394,7 +1394,7 @@ exports.Fee = {
         else {
             obj.amount = message.amount;
         }
-        obj.gas_limit = message.gasLimit !== BigInt(0) ? message.gasLimit.toString() : undefined;
+        obj.gas_limit = message.gasLimit !== BigInt(0) ? message.gasLimit?.toString() : undefined;
         obj.payer = message.payer === "" ? undefined : message.payer;
         obj.granter = message.granter === "" ? undefined : message.granter;
         return obj;

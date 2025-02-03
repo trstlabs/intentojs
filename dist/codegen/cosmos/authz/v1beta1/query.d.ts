@@ -1,6 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Grant, GrantAmino, GrantSDKType, GrantAuthorization, GrantAuthorizationAmino, GrantAuthorizationSDKType } from "./authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 export interface QueryGrantsRequest {
     granter: string;
@@ -174,7 +175,7 @@ export declare const QueryGrantsRequest: {
     encode(message: QueryGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGrantsRequest;
     fromJSON(object: any): QueryGrantsRequest;
-    toJSON(message: QueryGrantsRequest): unknown;
+    toJSON(message: QueryGrantsRequest): JsonSafe<QueryGrantsRequest>;
     fromPartial(object: Partial<QueryGrantsRequest>): QueryGrantsRequest;
     fromAmino(object: QueryGrantsRequestAmino): QueryGrantsRequest;
     toAmino(message: QueryGrantsRequest): QueryGrantsRequestAmino;
@@ -193,7 +194,7 @@ export declare const QueryGrantsResponse: {
     encode(message: QueryGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGrantsResponse;
     fromJSON(object: any): QueryGrantsResponse;
-    toJSON(message: QueryGrantsResponse): unknown;
+    toJSON(message: QueryGrantsResponse): JsonSafe<QueryGrantsResponse>;
     fromPartial(object: Partial<QueryGrantsResponse>): QueryGrantsResponse;
     fromAmino(object: QueryGrantsResponseAmino): QueryGrantsResponse;
     toAmino(message: QueryGrantsResponse): QueryGrantsResponseAmino;
@@ -212,7 +213,7 @@ export declare const QueryGranterGrantsRequest: {
     encode(message: QueryGranterGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranterGrantsRequest;
     fromJSON(object: any): QueryGranterGrantsRequest;
-    toJSON(message: QueryGranterGrantsRequest): unknown;
+    toJSON(message: QueryGranterGrantsRequest): JsonSafe<QueryGranterGrantsRequest>;
     fromPartial(object: Partial<QueryGranterGrantsRequest>): QueryGranterGrantsRequest;
     fromAmino(object: QueryGranterGrantsRequestAmino): QueryGranterGrantsRequest;
     toAmino(message: QueryGranterGrantsRequest): QueryGranterGrantsRequestAmino;
@@ -231,7 +232,7 @@ export declare const QueryGranterGrantsResponse: {
     encode(message: QueryGranterGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranterGrantsResponse;
     fromJSON(object: any): QueryGranterGrantsResponse;
-    toJSON(message: QueryGranterGrantsResponse): unknown;
+    toJSON(message: QueryGranterGrantsResponse): JsonSafe<QueryGranterGrantsResponse>;
     fromPartial(object: Partial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
     fromAmino(object: QueryGranterGrantsResponseAmino): QueryGranterGrantsResponse;
     toAmino(message: QueryGranterGrantsResponse): QueryGranterGrantsResponseAmino;
@@ -250,7 +251,7 @@ export declare const QueryGranteeGrantsRequest: {
     encode(message: QueryGranteeGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranteeGrantsRequest;
     fromJSON(object: any): QueryGranteeGrantsRequest;
-    toJSON(message: QueryGranteeGrantsRequest): unknown;
+    toJSON(message: QueryGranteeGrantsRequest): JsonSafe<QueryGranteeGrantsRequest>;
     fromPartial(object: Partial<QueryGranteeGrantsRequest>): QueryGranteeGrantsRequest;
     fromAmino(object: QueryGranteeGrantsRequestAmino): QueryGranteeGrantsRequest;
     toAmino(message: QueryGranteeGrantsRequest): QueryGranteeGrantsRequestAmino;
@@ -269,7 +270,7 @@ export declare const QueryGranteeGrantsResponse: {
     encode(message: QueryGranteeGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranteeGrantsResponse;
     fromJSON(object: any): QueryGranteeGrantsResponse;
-    toJSON(message: QueryGranteeGrantsResponse): unknown;
+    toJSON(message: QueryGranteeGrantsResponse): JsonSafe<QueryGranteeGrantsResponse>;
     fromPartial(object: Partial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;
     fromAmino(object: QueryGranteeGrantsResponseAmino): QueryGranteeGrantsResponse;
     toAmino(message: QueryGranteeGrantsResponse): QueryGranteeGrantsResponseAmino;

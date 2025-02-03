@@ -420,7 +420,7 @@ exports.ValidatorHistoricalRewardsRecord = {
     toAmino(message) {
         const obj = {};
         obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
-        obj.period = message.period !== BigInt(0) ? message.period.toString() : undefined;
+        obj.period = message.period !== BigInt(0) ? message.period?.toString() : undefined;
         obj.rewards = message.rewards ? distribution_1.ValidatorHistoricalRewards.toAmino(message.rewards) : undefined;
         return obj;
     },
@@ -776,8 +776,8 @@ exports.ValidatorSlashEventRecord = {
     toAmino(message) {
         const obj = {};
         obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
-        obj.period = message.period !== BigInt(0) ? message.period.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
+        obj.period = message.period !== BigInt(0) ? message.period?.toString() : undefined;
         obj.validator_slash_event = message.validatorSlashEvent ? distribution_1.ValidatorSlashEvent.toAmino(message.validatorSlashEvent) : undefined;
         return obj;
     },

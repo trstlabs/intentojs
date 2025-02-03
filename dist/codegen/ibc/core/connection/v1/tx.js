@@ -5,8 +5,8 @@ const connection_1 = require("./connection");
 const any_1 = require("../../../../google/protobuf/any");
 const client_1 = require("../../client/v1/client");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseMsgConnectionOpenInit() {
     return {
         clientId: "",
@@ -126,7 +126,7 @@ exports.MsgConnectionOpenInit = {
         obj.client_id = message.clientId === "" ? undefined : message.clientId;
         obj.counterparty = message.counterparty ? connection_1.Counterparty.toAmino(message.counterparty) : undefined;
         obj.version = message.version ? connection_1.Version.toAmino(message.version) : undefined;
-        obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+        obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod?.toString() : undefined;
         obj.signer = message.signer === "" ? undefined : message.signer;
         return obj;
     },
@@ -443,7 +443,7 @@ exports.MsgConnectionOpenTry = {
         obj.previous_connection_id = message.previousConnectionId === "" ? undefined : message.previousConnectionId;
         obj.client_state = message.clientState ? any_1.Any.toAmino(message.clientState) : undefined;
         obj.counterparty = message.counterparty ? connection_1.Counterparty.toAmino(message.counterparty) : undefined;
-        obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod.toString() : undefined;
+        obj.delay_period = message.delayPeriod !== BigInt(0) ? message.delayPeriod?.toString() : undefined;
         if (message.counterpartyVersions) {
             obj.counterparty_versions = message.counterpartyVersions.map(e => e ? connection_1.Version.toAmino(e) : undefined);
         }

@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
@@ -103,7 +104,7 @@ export declare const MsgTransfer: {
     encode(message: MsgTransfer, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTransfer;
     fromJSON(object: any): MsgTransfer;
-    toJSON(message: MsgTransfer): unknown;
+    toJSON(message: MsgTransfer): JsonSafe<MsgTransfer>;
     fromPartial(object: Partial<MsgTransfer>): MsgTransfer;
     fromAmino(object: MsgTransferAmino): MsgTransfer;
     toAmino(message: MsgTransfer): MsgTransferAmino;
@@ -122,7 +123,7 @@ export declare const MsgTransferResponse: {
     encode(_: MsgTransferResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTransferResponse;
     fromJSON(_: any): MsgTransferResponse;
-    toJSON(_: MsgTransferResponse): unknown;
+    toJSON(_: MsgTransferResponse): JsonSafe<MsgTransferResponse>;
     fromPartial(_: Partial<MsgTransferResponse>): MsgTransferResponse;
     fromAmino(_: MsgTransferResponseAmino): MsgTransferResponse;
     toAmino(_: MsgTransferResponse): MsgTransferResponseAmino;

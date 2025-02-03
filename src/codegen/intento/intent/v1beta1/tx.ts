@@ -1,6 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./action";
+import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./flow";
 import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hostedaccount";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
@@ -56,7 +56,7 @@ export interface MsgRegisterAccountResponseAminoMsg {
 /** MsgRegisterAccountResponse is the response type for Msg/RegisterAccount */
 export interface MsgRegisterAccountResponseSDKType {}
 /**
- * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
+ * MsgSubmitTx creates and submits an arbitrary msg to be executed
  * locally or using an interchain account
  */
 export interface MsgSubmitTx {
@@ -69,7 +69,7 @@ export interface MsgSubmitTxProtoMsg {
   value: Uint8Array;
 }
 /**
- * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
+ * MsgSubmitTx creates and submits an arbitrary msg to be executed
  * locally or using an interchain account
  */
 export interface MsgSubmitTxAmino {
@@ -82,7 +82,7 @@ export interface MsgSubmitTxAminoMsg {
   value: MsgSubmitTxAmino;
 }
 /**
- * MsgSubmitTx creates and submits an arbitrary transaction msg to be executed
+ * MsgSubmitTx creates and submits an arbitrary msg to be executed
  * locally or using an interchain account
  */
 export interface MsgSubmitTxSDKType {
@@ -105,10 +105,10 @@ export interface MsgSubmitTxResponseAminoMsg {
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitTxResponseSDKType {}
 /**
- * MsgSubmitAction creates, submits and schedules an arbitrary transaction msg
+ * MsgSubmitFlow creates, submits and schedules an arbitrary msg
  * to be executed locally or using an interchain account
  */
-export interface MsgSubmitAction {
+export interface MsgSubmitFlow {
   owner: string;
   label: string;
   msgs: (Any)[] | Any[];
@@ -135,18 +135,18 @@ export interface MsgSubmitAction {
   hostedConfig?: HostedConfig;
   conditions?: ExecutionConditions;
 }
-export interface MsgSubmitActionProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.MsgSubmitAction";
+export interface MsgSubmitFlowProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow";
   value: Uint8Array;
 }
-export type MsgSubmitActionEncoded = Omit<MsgSubmitAction, "msgs"> & {
+export type MsgSubmitFlowEncoded = Omit<MsgSubmitFlow, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
 /**
- * MsgSubmitAction creates, submits and schedules an arbitrary transaction msg
+ * MsgSubmitFlow creates, submits and schedules an arbitrary msg
  * to be executed locally or using an interchain account
  */
-export interface MsgSubmitActionAmino {
+export interface MsgSubmitFlowAmino {
   owner?: string;
   label?: string;
   msgs?: AnyAmino[];
@@ -173,15 +173,15 @@ export interface MsgSubmitActionAmino {
   hosted_config?: HostedConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
-export interface MsgSubmitActionAminoMsg {
-  type: "intent/MsgSubmitAction";
-  value: MsgSubmitActionAmino;
+export interface MsgSubmitFlowAminoMsg {
+  type: "intent/MsgSubmitFlow";
+  value: MsgSubmitFlowAmino;
 }
 /**
- * MsgSubmitAction creates, submits and schedules an arbitrary transaction msg
+ * MsgSubmitFlow creates, submits and schedules an arbitrary msg
  * to be executed locally or using an interchain account
  */
-export interface MsgSubmitActionSDKType {
+export interface MsgSubmitFlowSDKType {
   owner: string;
   label: string;
   msgs: (AnySDKType)[];
@@ -196,25 +196,25 @@ export interface MsgSubmitActionSDKType {
   conditions?: ExecutionConditionsSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
-export interface MsgSubmitActionResponse {}
-export interface MsgSubmitActionResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.MsgSubmitActionResponse";
+export interface MsgSubmitFlowResponse {}
+export interface MsgSubmitFlowResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgSubmitFlowResponse";
   value: Uint8Array;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
-export interface MsgSubmitActionResponseAmino {}
-export interface MsgSubmitActionResponseAminoMsg {
-  type: "/intento.intent.v1beta1.MsgSubmitActionResponse";
-  value: MsgSubmitActionResponseAmino;
+export interface MsgSubmitFlowResponseAmino {}
+export interface MsgSubmitFlowResponseAminoMsg {
+  type: "/intento.intent.v1beta1.MsgSubmitFlowResponse";
+  value: MsgSubmitFlowResponseAmino;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
-export interface MsgSubmitActionResponseSDKType {}
+export interface MsgSubmitFlowResponseSDKType {}
 /**
- * MsgRegisterAccountAndSubmitAction creates an interchain account, submits and
- * schedules an arbitrary transaction msg to be executed by this interchain
+ * MsgRegisterAccountAndSubmitFlow creates an interchain account, submits and
+ * schedules an arbitrary msg to be executed by this interchain
  * account
  */
-export interface MsgRegisterAccountAndSubmitAction {
+export interface MsgRegisterAccountAndSubmitFlow {
   owner: string;
   connectionId: string;
   label: string;
@@ -242,19 +242,19 @@ export interface MsgRegisterAccountAndSubmitAction {
   hostConnectionId: string;
   conditions?: ExecutionConditions;
 }
-export interface MsgRegisterAccountAndSubmitActionProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction";
+export interface MsgRegisterAccountAndSubmitFlowProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow";
   value: Uint8Array;
 }
-export type MsgRegisterAccountAndSubmitActionEncoded = Omit<MsgRegisterAccountAndSubmitAction, "msgs"> & {
+export type MsgRegisterAccountAndSubmitFlowEncoded = Omit<MsgRegisterAccountAndSubmitFlow, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
 /**
- * MsgRegisterAccountAndSubmitAction creates an interchain account, submits and
- * schedules an arbitrary transaction msg to be executed by this interchain
+ * MsgRegisterAccountAndSubmitFlow creates an interchain account, submits and
+ * schedules an arbitrary msg to be executed by this interchain
  * account
  */
-export interface MsgRegisterAccountAndSubmitActionAmino {
+export interface MsgRegisterAccountAndSubmitFlowAmino {
   owner?: string;
   connection_id?: string;
   label?: string;
@@ -282,16 +282,16 @@ export interface MsgRegisterAccountAndSubmitActionAmino {
   host_connection_id?: string;
   conditions?: ExecutionConditionsAmino;
 }
-export interface MsgRegisterAccountAndSubmitActionAminoMsg {
-  type: "intent/MsgRegisterAccountAndSubmitAction";
-  value: MsgRegisterAccountAndSubmitActionAmino;
+export interface MsgRegisterAccountAndSubmitFlowAminoMsg {
+  type: "intent/MsgRegisterAccountAndSubmitFlow";
+  value: MsgRegisterAccountAndSubmitFlowAmino;
 }
 /**
- * MsgRegisterAccountAndSubmitAction creates an interchain account, submits and
- * schedules an arbitrary transaction msg to be executed by this interchain
+ * MsgRegisterAccountAndSubmitFlow creates an interchain account, submits and
+ * schedules an arbitrary msg to be executed by this interchain
  * account
  */
-export interface MsgRegisterAccountAndSubmitActionSDKType {
+export interface MsgRegisterAccountAndSubmitFlowSDKType {
   owner: string;
   connection_id: string;
   label: string;
@@ -306,33 +306,33 @@ export interface MsgRegisterAccountAndSubmitActionSDKType {
   conditions?: ExecutionConditionsSDKType;
 }
 /**
- * MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response
+ * MsgRegisterAccountAndSubmitFlowResponse defines the MsgSubmitTx response
  * type
  */
-export interface MsgRegisterAccountAndSubmitActionResponse {}
-export interface MsgRegisterAccountAndSubmitActionResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitActionResponse";
+export interface MsgRegisterAccountAndSubmitFlowResponse {}
+export interface MsgRegisterAccountAndSubmitFlowResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlowResponse";
   value: Uint8Array;
 }
 /**
- * MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response
+ * MsgRegisterAccountAndSubmitFlowResponse defines the MsgSubmitTx response
  * type
  */
-export interface MsgRegisterAccountAndSubmitActionResponseAmino {}
-export interface MsgRegisterAccountAndSubmitActionResponseAminoMsg {
-  type: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitActionResponse";
-  value: MsgRegisterAccountAndSubmitActionResponseAmino;
+export interface MsgRegisterAccountAndSubmitFlowResponseAmino {}
+export interface MsgRegisterAccountAndSubmitFlowResponseAminoMsg {
+  type: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlowResponse";
+  value: MsgRegisterAccountAndSubmitFlowResponseAmino;
 }
 /**
- * MsgRegisterAccountAndSubmitActionResponse defines the MsgSubmitTx response
+ * MsgRegisterAccountAndSubmitFlowResponse defines the MsgSubmitTx response
  * type
  */
-export interface MsgRegisterAccountAndSubmitActionResponseSDKType {}
+export interface MsgRegisterAccountAndSubmitFlowResponseSDKType {}
 /**
- * MsgUpdateAction updates an arbitrary transaction msg to be executed locally
+ * MsgUpdateFlow updates an arbitrary msg to be executed locally
  * or using an interchain account
  */
-export interface MsgUpdateAction {
+export interface MsgUpdateFlow {
   owner: string;
   id: bigint;
   connectionId: string;
@@ -356,18 +356,18 @@ export interface MsgUpdateAction {
   hostedConfig?: HostedConfig;
   conditions?: ExecutionConditions;
 }
-export interface MsgUpdateActionProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.MsgUpdateAction";
+export interface MsgUpdateFlowProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow";
   value: Uint8Array;
 }
-export type MsgUpdateActionEncoded = Omit<MsgUpdateAction, "msgs"> & {
+export type MsgUpdateFlowEncoded = Omit<MsgUpdateFlow, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
 /**
- * MsgUpdateAction updates an arbitrary transaction msg to be executed locally
+ * MsgUpdateFlow updates an arbitrary msg to be executed locally
  * or using an interchain account
  */
-export interface MsgUpdateActionAmino {
+export interface MsgUpdateFlowAmino {
   owner?: string;
   id?: string;
   connection_id?: string;
@@ -391,15 +391,15 @@ export interface MsgUpdateActionAmino {
   hosted_config?: HostedConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
-export interface MsgUpdateActionAminoMsg {
-  type: "intent/MsgUpdateAction";
-  value: MsgUpdateActionAmino;
+export interface MsgUpdateFlowAminoMsg {
+  type: "intent/MsgUpdateFlow";
+  value: MsgUpdateFlowAmino;
 }
 /**
- * MsgUpdateAction updates an arbitrary transaction msg to be executed locally
+ * MsgUpdateFlow updates an arbitrary msg to be executed locally
  * or using an interchain account
  */
-export interface MsgUpdateActionSDKType {
+export interface MsgUpdateFlowSDKType {
   owner: string;
   id: bigint;
   connection_id: string;
@@ -414,19 +414,19 @@ export interface MsgUpdateActionSDKType {
   conditions?: ExecutionConditionsSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
-export interface MsgUpdateActionResponse {}
-export interface MsgUpdateActionResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.MsgUpdateActionResponse";
+export interface MsgUpdateFlowResponse {}
+export interface MsgUpdateFlowResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateFlowResponse";
   value: Uint8Array;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
-export interface MsgUpdateActionResponseAmino {}
-export interface MsgUpdateActionResponseAminoMsg {
-  type: "/intento.intent.v1beta1.MsgUpdateActionResponse";
-  value: MsgUpdateActionResponseAmino;
+export interface MsgUpdateFlowResponseAmino {}
+export interface MsgUpdateFlowResponseAminoMsg {
+  type: "/intento.intent.v1beta1.MsgUpdateFlowResponse";
+  value: MsgUpdateFlowResponseAmino;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
-export interface MsgUpdateActionResponseSDKType {}
+export interface MsgUpdateFlowResponseSDKType {}
 export interface MsgCreateHostedAccount {
   creator: string;
   connectionId: string;
@@ -885,7 +885,7 @@ export const MsgSubmitTxResponse = {
   }
 };
 GlobalDecoderRegistry.register(MsgSubmitTxResponse.typeUrl, MsgSubmitTxResponse);
-function createBaseMsgSubmitAction(): MsgSubmitAction {
+function createBaseMsgSubmitFlow(): MsgSubmitFlow {
   return {
     owner: "",
     label: "",
@@ -901,19 +901,19 @@ function createBaseMsgSubmitAction(): MsgSubmitAction {
     conditions: undefined
   };
 }
-export const MsgSubmitAction = {
-  typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
-  aminoType: "intent/MsgSubmitAction",
-  is(o: any): o is MsgSubmitAction {
-    return o && (o.$typeUrl === MsgSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
+export const MsgSubmitFlow = {
+  typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
+  aminoType: "intent/MsgSubmitFlow",
+  is(o: any): o is MsgSubmitFlow {
+    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
   },
-  isSDK(o: any): o is MsgSubmitActionSDKType {
-    return o && (o.$typeUrl === MsgSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+  isSDK(o: any): o is MsgSubmitFlowSDKType {
+    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
   },
-  isAmino(o: any): o is MsgSubmitActionAmino {
-    return o && (o.$typeUrl === MsgSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+  isAmino(o: any): o is MsgSubmitFlowAmino {
+    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
   },
-  encode(message: MsgSubmitAction, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: MsgSubmitFlow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -952,10 +952,10 @@ export const MsgSubmitAction = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitAction {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitFlow {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgSubmitAction();
+    const message = createBaseMsgSubmitFlow();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1002,7 +1002,7 @@ export const MsgSubmitAction = {
     }
     return message;
   },
-  fromJSON(object: any): MsgSubmitAction {
+  fromJSON(object: any): MsgSubmitFlow {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
       label: isSet(object.label) ? String(object.label) : "",
@@ -1018,7 +1018,7 @@ export const MsgSubmitAction = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: MsgSubmitAction): JsonSafe<MsgSubmitAction> {
+  toJSON(message: MsgSubmitFlow): JsonSafe<MsgSubmitFlow> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.label !== undefined && (obj.label = message.label);
@@ -1042,8 +1042,8 @@ export const MsgSubmitAction = {
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<MsgSubmitAction>): MsgSubmitAction {
-    const message = createBaseMsgSubmitAction();
+  fromPartial(object: Partial<MsgSubmitFlow>): MsgSubmitFlow {
+    const message = createBaseMsgSubmitFlow();
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
     message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
@@ -1058,8 +1058,8 @@ export const MsgSubmitAction = {
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
-  fromAmino(object: MsgSubmitActionAmino): MsgSubmitAction {
-    const message = createBaseMsgSubmitAction();
+  fromAmino(object: MsgSubmitFlowAmino): MsgSubmitFlow {
+    const message = createBaseMsgSubmitFlow();
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
@@ -1094,7 +1094,7 @@ export const MsgSubmitAction = {
     }
     return message;
   },
-  toAmino(message: MsgSubmitAction): MsgSubmitActionAmino {
+  toAmino(message: MsgSubmitFlow): MsgSubmitFlowAmino {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
     obj.label = message.label === "" ? undefined : message.label;
@@ -1118,51 +1118,51 @@ export const MsgSubmitAction = {
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
-  fromAminoMsg(object: MsgSubmitActionAminoMsg): MsgSubmitAction {
-    return MsgSubmitAction.fromAmino(object.value);
+  fromAminoMsg(object: MsgSubmitFlowAminoMsg): MsgSubmitFlow {
+    return MsgSubmitFlow.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgSubmitAction): MsgSubmitActionAminoMsg {
+  toAminoMsg(message: MsgSubmitFlow): MsgSubmitFlowAminoMsg {
     return {
-      type: "intent/MsgSubmitAction",
-      value: MsgSubmitAction.toAmino(message)
+      type: "intent/MsgSubmitFlow",
+      value: MsgSubmitFlow.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgSubmitActionProtoMsg): MsgSubmitAction {
-    return MsgSubmitAction.decode(message.value);
+  fromProtoMsg(message: MsgSubmitFlowProtoMsg): MsgSubmitFlow {
+    return MsgSubmitFlow.decode(message.value);
   },
-  toProto(message: MsgSubmitAction): Uint8Array {
-    return MsgSubmitAction.encode(message).finish();
+  toProto(message: MsgSubmitFlow): Uint8Array {
+    return MsgSubmitFlow.encode(message).finish();
   },
-  toProtoMsg(message: MsgSubmitAction): MsgSubmitActionProtoMsg {
+  toProtoMsg(message: MsgSubmitFlow): MsgSubmitFlowProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.MsgSubmitAction",
-      value: MsgSubmitAction.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
+      value: MsgSubmitFlow.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(MsgSubmitAction.typeUrl, MsgSubmitAction);
-GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitAction.aminoType, MsgSubmitAction.typeUrl);
-function createBaseMsgSubmitActionResponse(): MsgSubmitActionResponse {
+GlobalDecoderRegistry.register(MsgSubmitFlow.typeUrl, MsgSubmitFlow);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitFlow.aminoType, MsgSubmitFlow.typeUrl);
+function createBaseMsgSubmitFlowResponse(): MsgSubmitFlowResponse {
   return {};
 }
-export const MsgSubmitActionResponse = {
-  typeUrl: "/intento.intent.v1beta1.MsgSubmitActionResponse",
-  is(o: any): o is MsgSubmitActionResponse {
-    return o && o.$typeUrl === MsgSubmitActionResponse.typeUrl;
+export const MsgSubmitFlowResponse = {
+  typeUrl: "/intento.intent.v1beta1.MsgSubmitFlowResponse",
+  is(o: any): o is MsgSubmitFlowResponse {
+    return o && o.$typeUrl === MsgSubmitFlowResponse.typeUrl;
   },
-  isSDK(o: any): o is MsgSubmitActionResponseSDKType {
-    return o && o.$typeUrl === MsgSubmitActionResponse.typeUrl;
+  isSDK(o: any): o is MsgSubmitFlowResponseSDKType {
+    return o && o.$typeUrl === MsgSubmitFlowResponse.typeUrl;
   },
-  isAmino(o: any): o is MsgSubmitActionResponseAmino {
-    return o && o.$typeUrl === MsgSubmitActionResponse.typeUrl;
+  isAmino(o: any): o is MsgSubmitFlowResponseAmino {
+    return o && o.$typeUrl === MsgSubmitFlowResponse.typeUrl;
   },
-  encode(_: MsgSubmitActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(_: MsgSubmitFlowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitActionResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitFlowResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgSubmitActionResponse();
+    const message = createBaseMsgSubmitFlowResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1173,43 +1173,43 @@ export const MsgSubmitActionResponse = {
     }
     return message;
   },
-  fromJSON(_: any): MsgSubmitActionResponse {
+  fromJSON(_: any): MsgSubmitFlowResponse {
     return {};
   },
-  toJSON(_: MsgSubmitActionResponse): JsonSafe<MsgSubmitActionResponse> {
+  toJSON(_: MsgSubmitFlowResponse): JsonSafe<MsgSubmitFlowResponse> {
     const obj: any = {};
     return obj;
   },
-  fromPartial(_: Partial<MsgSubmitActionResponse>): MsgSubmitActionResponse {
-    const message = createBaseMsgSubmitActionResponse();
+  fromPartial(_: Partial<MsgSubmitFlowResponse>): MsgSubmitFlowResponse {
+    const message = createBaseMsgSubmitFlowResponse();
     return message;
   },
-  fromAmino(_: MsgSubmitActionResponseAmino): MsgSubmitActionResponse {
-    const message = createBaseMsgSubmitActionResponse();
+  fromAmino(_: MsgSubmitFlowResponseAmino): MsgSubmitFlowResponse {
+    const message = createBaseMsgSubmitFlowResponse();
     return message;
   },
-  toAmino(_: MsgSubmitActionResponse): MsgSubmitActionResponseAmino {
+  toAmino(_: MsgSubmitFlowResponse): MsgSubmitFlowResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgSubmitActionResponseAminoMsg): MsgSubmitActionResponse {
-    return MsgSubmitActionResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgSubmitFlowResponseAminoMsg): MsgSubmitFlowResponse {
+    return MsgSubmitFlowResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgSubmitActionResponseProtoMsg): MsgSubmitActionResponse {
-    return MsgSubmitActionResponse.decode(message.value);
+  fromProtoMsg(message: MsgSubmitFlowResponseProtoMsg): MsgSubmitFlowResponse {
+    return MsgSubmitFlowResponse.decode(message.value);
   },
-  toProto(message: MsgSubmitActionResponse): Uint8Array {
-    return MsgSubmitActionResponse.encode(message).finish();
+  toProto(message: MsgSubmitFlowResponse): Uint8Array {
+    return MsgSubmitFlowResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgSubmitActionResponse): MsgSubmitActionResponseProtoMsg {
+  toProtoMsg(message: MsgSubmitFlowResponse): MsgSubmitFlowResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.MsgSubmitActionResponse",
-      value: MsgSubmitActionResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.MsgSubmitFlowResponse",
+      value: MsgSubmitFlowResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(MsgSubmitActionResponse.typeUrl, MsgSubmitActionResponse);
-function createBaseMsgRegisterAccountAndSubmitAction(): MsgRegisterAccountAndSubmitAction {
+GlobalDecoderRegistry.register(MsgSubmitFlowResponse.typeUrl, MsgSubmitFlowResponse);
+function createBaseMsgRegisterAccountAndSubmitFlow(): MsgRegisterAccountAndSubmitFlow {
   return {
     owner: "",
     connectionId: "",
@@ -1225,19 +1225,19 @@ function createBaseMsgRegisterAccountAndSubmitAction(): MsgRegisterAccountAndSub
     conditions: undefined
   };
 }
-export const MsgRegisterAccountAndSubmitAction = {
-  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
-  aminoType: "intent/MsgRegisterAccountAndSubmitAction",
-  is(o: any): o is MsgRegisterAccountAndSubmitAction {
-    return o && (o.$typeUrl === MsgRegisterAccountAndSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.version === "string" && typeof o.hostConnectionId === "string");
+export const MsgRegisterAccountAndSubmitFlow = {
+  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
+  aminoType: "intent/MsgRegisterAccountAndSubmitFlow",
+  is(o: any): o is MsgRegisterAccountAndSubmitFlow {
+    return o && (o.$typeUrl === MsgRegisterAccountAndSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.version === "string" && typeof o.hostConnectionId === "string");
   },
-  isSDK(o: any): o is MsgRegisterAccountAndSubmitActionSDKType {
-    return o && (o.$typeUrl === MsgRegisterAccountAndSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.version === "string" && typeof o.host_connection_id === "string");
+  isSDK(o: any): o is MsgRegisterAccountAndSubmitFlowSDKType {
+    return o && (o.$typeUrl === MsgRegisterAccountAndSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.version === "string" && typeof o.host_connection_id === "string");
   },
-  isAmino(o: any): o is MsgRegisterAccountAndSubmitActionAmino {
-    return o && (o.$typeUrl === MsgRegisterAccountAndSubmitAction.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.version === "string" && typeof o.host_connection_id === "string");
+  isAmino(o: any): o is MsgRegisterAccountAndSubmitFlowAmino {
+    return o && (o.$typeUrl === MsgRegisterAccountAndSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.version === "string" && typeof o.host_connection_id === "string");
   },
-  encode(message: MsgRegisterAccountAndSubmitAction, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: MsgRegisterAccountAndSubmitFlow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -1276,10 +1276,10 @@ export const MsgRegisterAccountAndSubmitAction = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitAction {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitFlow {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgRegisterAccountAndSubmitAction();
+    const message = createBaseMsgRegisterAccountAndSubmitFlow();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1326,7 +1326,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     }
     return message;
   },
-  fromJSON(object: any): MsgRegisterAccountAndSubmitAction {
+  fromJSON(object: any): MsgRegisterAccountAndSubmitFlow {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
       connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
@@ -1342,7 +1342,7 @@ export const MsgRegisterAccountAndSubmitAction = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: MsgRegisterAccountAndSubmitAction): JsonSafe<MsgRegisterAccountAndSubmitAction> {
+  toJSON(message: MsgRegisterAccountAndSubmitFlow): JsonSafe<MsgRegisterAccountAndSubmitFlow> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
@@ -1366,8 +1366,8 @@ export const MsgRegisterAccountAndSubmitAction = {
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<MsgRegisterAccountAndSubmitAction>): MsgRegisterAccountAndSubmitAction {
-    const message = createBaseMsgRegisterAccountAndSubmitAction();
+  fromPartial(object: Partial<MsgRegisterAccountAndSubmitFlow>): MsgRegisterAccountAndSubmitFlow {
+    const message = createBaseMsgRegisterAccountAndSubmitFlow();
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
@@ -1382,8 +1382,8 @@ export const MsgRegisterAccountAndSubmitAction = {
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
-  fromAmino(object: MsgRegisterAccountAndSubmitActionAmino): MsgRegisterAccountAndSubmitAction {
-    const message = createBaseMsgRegisterAccountAndSubmitAction();
+  fromAmino(object: MsgRegisterAccountAndSubmitFlowAmino): MsgRegisterAccountAndSubmitFlow {
+    const message = createBaseMsgRegisterAccountAndSubmitFlow();
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
@@ -1418,7 +1418,7 @@ export const MsgRegisterAccountAndSubmitAction = {
     }
     return message;
   },
-  toAmino(message: MsgRegisterAccountAndSubmitAction): MsgRegisterAccountAndSubmitActionAmino {
+  toAmino(message: MsgRegisterAccountAndSubmitFlow): MsgRegisterAccountAndSubmitFlowAmino {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
@@ -1442,51 +1442,51 @@ export const MsgRegisterAccountAndSubmitAction = {
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
-  fromAminoMsg(object: MsgRegisterAccountAndSubmitActionAminoMsg): MsgRegisterAccountAndSubmitAction {
-    return MsgRegisterAccountAndSubmitAction.fromAmino(object.value);
+  fromAminoMsg(object: MsgRegisterAccountAndSubmitFlowAminoMsg): MsgRegisterAccountAndSubmitFlow {
+    return MsgRegisterAccountAndSubmitFlow.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgRegisterAccountAndSubmitAction): MsgRegisterAccountAndSubmitActionAminoMsg {
+  toAminoMsg(message: MsgRegisterAccountAndSubmitFlow): MsgRegisterAccountAndSubmitFlowAminoMsg {
     return {
-      type: "intent/MsgRegisterAccountAndSubmitAction",
-      value: MsgRegisterAccountAndSubmitAction.toAmino(message)
+      type: "intent/MsgRegisterAccountAndSubmitFlow",
+      value: MsgRegisterAccountAndSubmitFlow.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgRegisterAccountAndSubmitActionProtoMsg): MsgRegisterAccountAndSubmitAction {
-    return MsgRegisterAccountAndSubmitAction.decode(message.value);
+  fromProtoMsg(message: MsgRegisterAccountAndSubmitFlowProtoMsg): MsgRegisterAccountAndSubmitFlow {
+    return MsgRegisterAccountAndSubmitFlow.decode(message.value);
   },
-  toProto(message: MsgRegisterAccountAndSubmitAction): Uint8Array {
-    return MsgRegisterAccountAndSubmitAction.encode(message).finish();
+  toProto(message: MsgRegisterAccountAndSubmitFlow): Uint8Array {
+    return MsgRegisterAccountAndSubmitFlow.encode(message).finish();
   },
-  toProtoMsg(message: MsgRegisterAccountAndSubmitAction): MsgRegisterAccountAndSubmitActionProtoMsg {
+  toProtoMsg(message: MsgRegisterAccountAndSubmitFlow): MsgRegisterAccountAndSubmitFlowProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitAction",
-      value: MsgRegisterAccountAndSubmitAction.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow",
+      value: MsgRegisterAccountAndSubmitFlow.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(MsgRegisterAccountAndSubmitAction.typeUrl, MsgRegisterAccountAndSubmitAction);
-GlobalDecoderRegistry.registerAminoProtoMapping(MsgRegisterAccountAndSubmitAction.aminoType, MsgRegisterAccountAndSubmitAction.typeUrl);
-function createBaseMsgRegisterAccountAndSubmitActionResponse(): MsgRegisterAccountAndSubmitActionResponse {
+GlobalDecoderRegistry.register(MsgRegisterAccountAndSubmitFlow.typeUrl, MsgRegisterAccountAndSubmitFlow);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRegisterAccountAndSubmitFlow.aminoType, MsgRegisterAccountAndSubmitFlow.typeUrl);
+function createBaseMsgRegisterAccountAndSubmitFlowResponse(): MsgRegisterAccountAndSubmitFlowResponse {
   return {};
 }
-export const MsgRegisterAccountAndSubmitActionResponse = {
-  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitActionResponse",
-  is(o: any): o is MsgRegisterAccountAndSubmitActionResponse {
-    return o && o.$typeUrl === MsgRegisterAccountAndSubmitActionResponse.typeUrl;
+export const MsgRegisterAccountAndSubmitFlowResponse = {
+  typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlowResponse",
+  is(o: any): o is MsgRegisterAccountAndSubmitFlowResponse {
+    return o && o.$typeUrl === MsgRegisterAccountAndSubmitFlowResponse.typeUrl;
   },
-  isSDK(o: any): o is MsgRegisterAccountAndSubmitActionResponseSDKType {
-    return o && o.$typeUrl === MsgRegisterAccountAndSubmitActionResponse.typeUrl;
+  isSDK(o: any): o is MsgRegisterAccountAndSubmitFlowResponseSDKType {
+    return o && o.$typeUrl === MsgRegisterAccountAndSubmitFlowResponse.typeUrl;
   },
-  isAmino(o: any): o is MsgRegisterAccountAndSubmitActionResponseAmino {
-    return o && o.$typeUrl === MsgRegisterAccountAndSubmitActionResponse.typeUrl;
+  isAmino(o: any): o is MsgRegisterAccountAndSubmitFlowResponseAmino {
+    return o && o.$typeUrl === MsgRegisterAccountAndSubmitFlowResponse.typeUrl;
   },
-  encode(_: MsgRegisterAccountAndSubmitActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(_: MsgRegisterAccountAndSubmitFlowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitActionResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterAccountAndSubmitFlowResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgRegisterAccountAndSubmitActionResponse();
+    const message = createBaseMsgRegisterAccountAndSubmitFlowResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1497,43 +1497,43 @@ export const MsgRegisterAccountAndSubmitActionResponse = {
     }
     return message;
   },
-  fromJSON(_: any): MsgRegisterAccountAndSubmitActionResponse {
+  fromJSON(_: any): MsgRegisterAccountAndSubmitFlowResponse {
     return {};
   },
-  toJSON(_: MsgRegisterAccountAndSubmitActionResponse): JsonSafe<MsgRegisterAccountAndSubmitActionResponse> {
+  toJSON(_: MsgRegisterAccountAndSubmitFlowResponse): JsonSafe<MsgRegisterAccountAndSubmitFlowResponse> {
     const obj: any = {};
     return obj;
   },
-  fromPartial(_: Partial<MsgRegisterAccountAndSubmitActionResponse>): MsgRegisterAccountAndSubmitActionResponse {
-    const message = createBaseMsgRegisterAccountAndSubmitActionResponse();
+  fromPartial(_: Partial<MsgRegisterAccountAndSubmitFlowResponse>): MsgRegisterAccountAndSubmitFlowResponse {
+    const message = createBaseMsgRegisterAccountAndSubmitFlowResponse();
     return message;
   },
-  fromAmino(_: MsgRegisterAccountAndSubmitActionResponseAmino): MsgRegisterAccountAndSubmitActionResponse {
-    const message = createBaseMsgRegisterAccountAndSubmitActionResponse();
+  fromAmino(_: MsgRegisterAccountAndSubmitFlowResponseAmino): MsgRegisterAccountAndSubmitFlowResponse {
+    const message = createBaseMsgRegisterAccountAndSubmitFlowResponse();
     return message;
   },
-  toAmino(_: MsgRegisterAccountAndSubmitActionResponse): MsgRegisterAccountAndSubmitActionResponseAmino {
+  toAmino(_: MsgRegisterAccountAndSubmitFlowResponse): MsgRegisterAccountAndSubmitFlowResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgRegisterAccountAndSubmitActionResponseAminoMsg): MsgRegisterAccountAndSubmitActionResponse {
-    return MsgRegisterAccountAndSubmitActionResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgRegisterAccountAndSubmitFlowResponseAminoMsg): MsgRegisterAccountAndSubmitFlowResponse {
+    return MsgRegisterAccountAndSubmitFlowResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgRegisterAccountAndSubmitActionResponseProtoMsg): MsgRegisterAccountAndSubmitActionResponse {
-    return MsgRegisterAccountAndSubmitActionResponse.decode(message.value);
+  fromProtoMsg(message: MsgRegisterAccountAndSubmitFlowResponseProtoMsg): MsgRegisterAccountAndSubmitFlowResponse {
+    return MsgRegisterAccountAndSubmitFlowResponse.decode(message.value);
   },
-  toProto(message: MsgRegisterAccountAndSubmitActionResponse): Uint8Array {
-    return MsgRegisterAccountAndSubmitActionResponse.encode(message).finish();
+  toProto(message: MsgRegisterAccountAndSubmitFlowResponse): Uint8Array {
+    return MsgRegisterAccountAndSubmitFlowResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgRegisterAccountAndSubmitActionResponse): MsgRegisterAccountAndSubmitActionResponseProtoMsg {
+  toProtoMsg(message: MsgRegisterAccountAndSubmitFlowResponse): MsgRegisterAccountAndSubmitFlowResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitActionResponse",
-      value: MsgRegisterAccountAndSubmitActionResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlowResponse",
+      value: MsgRegisterAccountAndSubmitFlowResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(MsgRegisterAccountAndSubmitActionResponse.typeUrl, MsgRegisterAccountAndSubmitActionResponse);
-function createBaseMsgUpdateAction(): MsgUpdateAction {
+GlobalDecoderRegistry.register(MsgRegisterAccountAndSubmitFlowResponse.typeUrl, MsgRegisterAccountAndSubmitFlowResponse);
+function createBaseMsgUpdateFlow(): MsgUpdateFlow {
   return {
     owner: "",
     id: BigInt(0),
@@ -1549,19 +1549,19 @@ function createBaseMsgUpdateAction(): MsgUpdateAction {
     conditions: undefined
   };
 }
-export const MsgUpdateAction = {
-  typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
-  aminoType: "intent/MsgUpdateAction",
-  is(o: any): o is MsgUpdateAction {
-    return o && (o.$typeUrl === MsgUpdateAction.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.endTime === "bigint" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])));
+export const MsgUpdateFlow = {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
+  aminoType: "intent/MsgUpdateFlow",
+  is(o: any): o is MsgUpdateFlow {
+    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.endTime === "bigint" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])));
   },
-  isSDK(o: any): o is MsgUpdateActionSDKType {
-    return o && (o.$typeUrl === MsgUpdateAction.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])));
+  isSDK(o: any): o is MsgUpdateFlowSDKType {
+    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])));
   },
-  isAmino(o: any): o is MsgUpdateActionAmino {
-    return o && (o.$typeUrl === MsgUpdateAction.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])));
+  isAmino(o: any): o is MsgUpdateFlowAmino {
+    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])));
   },
-  encode(message: MsgUpdateAction, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: MsgUpdateFlow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -1600,10 +1600,10 @@ export const MsgUpdateAction = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAction {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateFlow {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgUpdateAction();
+    const message = createBaseMsgUpdateFlow();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1650,7 +1650,7 @@ export const MsgUpdateAction = {
     }
     return message;
   },
-  fromJSON(object: any): MsgUpdateAction {
+  fromJSON(object: any): MsgUpdateFlow {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
       id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
@@ -1666,7 +1666,7 @@ export const MsgUpdateAction = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: MsgUpdateAction): JsonSafe<MsgUpdateAction> {
+  toJSON(message: MsgUpdateFlow): JsonSafe<MsgUpdateFlow> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
@@ -1690,8 +1690,8 @@ export const MsgUpdateAction = {
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<MsgUpdateAction>): MsgUpdateAction {
-    const message = createBaseMsgUpdateAction();
+  fromPartial(object: Partial<MsgUpdateFlow>): MsgUpdateFlow {
+    const message = createBaseMsgUpdateFlow();
     message.owner = object.owner ?? "";
     message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
     message.connectionId = object.connectionId ?? "";
@@ -1706,8 +1706,8 @@ export const MsgUpdateAction = {
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
-  fromAmino(object: MsgUpdateActionAmino): MsgUpdateAction {
-    const message = createBaseMsgUpdateAction();
+  fromAmino(object: MsgUpdateFlowAmino): MsgUpdateFlow {
+    const message = createBaseMsgUpdateFlow();
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
@@ -1742,7 +1742,7 @@ export const MsgUpdateAction = {
     }
     return message;
   },
-  toAmino(message: MsgUpdateAction): MsgUpdateActionAmino {
+  toAmino(message: MsgUpdateFlow): MsgUpdateFlowAmino {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
     obj.id = message.id !== BigInt(0) ? message.id?.toString() : undefined;
@@ -1766,51 +1766,51 @@ export const MsgUpdateAction = {
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateActionAminoMsg): MsgUpdateAction {
-    return MsgUpdateAction.fromAmino(object.value);
+  fromAminoMsg(object: MsgUpdateFlowAminoMsg): MsgUpdateFlow {
+    return MsgUpdateFlow.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgUpdateAction): MsgUpdateActionAminoMsg {
+  toAminoMsg(message: MsgUpdateFlow): MsgUpdateFlowAminoMsg {
     return {
-      type: "intent/MsgUpdateAction",
-      value: MsgUpdateAction.toAmino(message)
+      type: "intent/MsgUpdateFlow",
+      value: MsgUpdateFlow.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgUpdateActionProtoMsg): MsgUpdateAction {
-    return MsgUpdateAction.decode(message.value);
+  fromProtoMsg(message: MsgUpdateFlowProtoMsg): MsgUpdateFlow {
+    return MsgUpdateFlow.decode(message.value);
   },
-  toProto(message: MsgUpdateAction): Uint8Array {
-    return MsgUpdateAction.encode(message).finish();
+  toProto(message: MsgUpdateFlow): Uint8Array {
+    return MsgUpdateFlow.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateAction): MsgUpdateActionProtoMsg {
+  toProtoMsg(message: MsgUpdateFlow): MsgUpdateFlowProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.MsgUpdateAction",
-      value: MsgUpdateAction.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
+      value: MsgUpdateFlow.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(MsgUpdateAction.typeUrl, MsgUpdateAction);
-GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateAction.aminoType, MsgUpdateAction.typeUrl);
-function createBaseMsgUpdateActionResponse(): MsgUpdateActionResponse {
+GlobalDecoderRegistry.register(MsgUpdateFlow.typeUrl, MsgUpdateFlow);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateFlow.aminoType, MsgUpdateFlow.typeUrl);
+function createBaseMsgUpdateFlowResponse(): MsgUpdateFlowResponse {
   return {};
 }
-export const MsgUpdateActionResponse = {
-  typeUrl: "/intento.intent.v1beta1.MsgUpdateActionResponse",
-  is(o: any): o is MsgUpdateActionResponse {
-    return o && o.$typeUrl === MsgUpdateActionResponse.typeUrl;
+export const MsgUpdateFlowResponse = {
+  typeUrl: "/intento.intent.v1beta1.MsgUpdateFlowResponse",
+  is(o: any): o is MsgUpdateFlowResponse {
+    return o && o.$typeUrl === MsgUpdateFlowResponse.typeUrl;
   },
-  isSDK(o: any): o is MsgUpdateActionResponseSDKType {
-    return o && o.$typeUrl === MsgUpdateActionResponse.typeUrl;
+  isSDK(o: any): o is MsgUpdateFlowResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateFlowResponse.typeUrl;
   },
-  isAmino(o: any): o is MsgUpdateActionResponseAmino {
-    return o && o.$typeUrl === MsgUpdateActionResponse.typeUrl;
+  isAmino(o: any): o is MsgUpdateFlowResponseAmino {
+    return o && o.$typeUrl === MsgUpdateFlowResponse.typeUrl;
   },
-  encode(_: MsgUpdateActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(_: MsgUpdateFlowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateActionResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateFlowResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgUpdateActionResponse();
+    const message = createBaseMsgUpdateFlowResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1821,42 +1821,42 @@ export const MsgUpdateActionResponse = {
     }
     return message;
   },
-  fromJSON(_: any): MsgUpdateActionResponse {
+  fromJSON(_: any): MsgUpdateFlowResponse {
     return {};
   },
-  toJSON(_: MsgUpdateActionResponse): JsonSafe<MsgUpdateActionResponse> {
+  toJSON(_: MsgUpdateFlowResponse): JsonSafe<MsgUpdateFlowResponse> {
     const obj: any = {};
     return obj;
   },
-  fromPartial(_: Partial<MsgUpdateActionResponse>): MsgUpdateActionResponse {
-    const message = createBaseMsgUpdateActionResponse();
+  fromPartial(_: Partial<MsgUpdateFlowResponse>): MsgUpdateFlowResponse {
+    const message = createBaseMsgUpdateFlowResponse();
     return message;
   },
-  fromAmino(_: MsgUpdateActionResponseAmino): MsgUpdateActionResponse {
-    const message = createBaseMsgUpdateActionResponse();
+  fromAmino(_: MsgUpdateFlowResponseAmino): MsgUpdateFlowResponse {
+    const message = createBaseMsgUpdateFlowResponse();
     return message;
   },
-  toAmino(_: MsgUpdateActionResponse): MsgUpdateActionResponseAmino {
+  toAmino(_: MsgUpdateFlowResponse): MsgUpdateFlowResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateActionResponseAminoMsg): MsgUpdateActionResponse {
-    return MsgUpdateActionResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgUpdateFlowResponseAminoMsg): MsgUpdateFlowResponse {
+    return MsgUpdateFlowResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateActionResponseProtoMsg): MsgUpdateActionResponse {
-    return MsgUpdateActionResponse.decode(message.value);
+  fromProtoMsg(message: MsgUpdateFlowResponseProtoMsg): MsgUpdateFlowResponse {
+    return MsgUpdateFlowResponse.decode(message.value);
   },
-  toProto(message: MsgUpdateActionResponse): Uint8Array {
-    return MsgUpdateActionResponse.encode(message).finish();
+  toProto(message: MsgUpdateFlowResponse): Uint8Array {
+    return MsgUpdateFlowResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateActionResponse): MsgUpdateActionResponseProtoMsg {
+  toProtoMsg(message: MsgUpdateFlowResponse): MsgUpdateFlowResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.MsgUpdateActionResponse",
-      value: MsgUpdateActionResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.MsgUpdateFlowResponse",
+      value: MsgUpdateFlowResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(MsgUpdateActionResponse.typeUrl, MsgUpdateActionResponse);
+GlobalDecoderRegistry.register(MsgUpdateFlowResponse.typeUrl, MsgUpdateFlowResponse);
 function createBaseMsgCreateHostedAccount(): MsgCreateHostedAccount {
   return {
     creator: "",

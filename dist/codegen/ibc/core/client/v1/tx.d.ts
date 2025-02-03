@@ -1,5 +1,6 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** MsgCreateClient defines a message to create an IBC client */
 export interface MsgCreateClient {
     /** light client state */
@@ -268,7 +269,7 @@ export declare const MsgCreateClient: {
     encode(message: MsgCreateClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateClient;
     fromJSON(object: any): MsgCreateClient;
-    toJSON(message: MsgCreateClient): unknown;
+    toJSON(message: MsgCreateClient): JsonSafe<MsgCreateClient>;
     fromPartial(object: Partial<MsgCreateClient>): MsgCreateClient;
     fromAmino(object: MsgCreateClientAmino): MsgCreateClient;
     toAmino(message: MsgCreateClient): MsgCreateClientAmino;
@@ -287,7 +288,7 @@ export declare const MsgCreateClientResponse: {
     encode(_: MsgCreateClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateClientResponse;
     fromJSON(_: any): MsgCreateClientResponse;
-    toJSON(_: MsgCreateClientResponse): unknown;
+    toJSON(_: MsgCreateClientResponse): JsonSafe<MsgCreateClientResponse>;
     fromPartial(_: Partial<MsgCreateClientResponse>): MsgCreateClientResponse;
     fromAmino(_: MsgCreateClientResponseAmino): MsgCreateClientResponse;
     toAmino(_: MsgCreateClientResponse): MsgCreateClientResponseAmino;
@@ -306,7 +307,7 @@ export declare const MsgUpdateClient: {
     encode(message: MsgUpdateClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateClient;
     fromJSON(object: any): MsgUpdateClient;
-    toJSON(message: MsgUpdateClient): unknown;
+    toJSON(message: MsgUpdateClient): JsonSafe<MsgUpdateClient>;
     fromPartial(object: Partial<MsgUpdateClient>): MsgUpdateClient;
     fromAmino(object: MsgUpdateClientAmino): MsgUpdateClient;
     toAmino(message: MsgUpdateClient): MsgUpdateClientAmino;
@@ -325,7 +326,7 @@ export declare const MsgUpdateClientResponse: {
     encode(_: MsgUpdateClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateClientResponse;
     fromJSON(_: any): MsgUpdateClientResponse;
-    toJSON(_: MsgUpdateClientResponse): unknown;
+    toJSON(_: MsgUpdateClientResponse): JsonSafe<MsgUpdateClientResponse>;
     fromPartial(_: Partial<MsgUpdateClientResponse>): MsgUpdateClientResponse;
     fromAmino(_: MsgUpdateClientResponseAmino): MsgUpdateClientResponse;
     toAmino(_: MsgUpdateClientResponse): MsgUpdateClientResponseAmino;
@@ -344,7 +345,7 @@ export declare const MsgUpgradeClient: {
     encode(message: MsgUpgradeClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpgradeClient;
     fromJSON(object: any): MsgUpgradeClient;
-    toJSON(message: MsgUpgradeClient): unknown;
+    toJSON(message: MsgUpgradeClient): JsonSafe<MsgUpgradeClient>;
     fromPartial(object: Partial<MsgUpgradeClient>): MsgUpgradeClient;
     fromAmino(object: MsgUpgradeClientAmino): MsgUpgradeClient;
     toAmino(message: MsgUpgradeClient): MsgUpgradeClientAmino;
@@ -363,7 +364,7 @@ export declare const MsgUpgradeClientResponse: {
     encode(_: MsgUpgradeClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpgradeClientResponse;
     fromJSON(_: any): MsgUpgradeClientResponse;
-    toJSON(_: MsgUpgradeClientResponse): unknown;
+    toJSON(_: MsgUpgradeClientResponse): JsonSafe<MsgUpgradeClientResponse>;
     fromPartial(_: Partial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse;
     fromAmino(_: MsgUpgradeClientResponseAmino): MsgUpgradeClientResponse;
     toAmino(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseAmino;
@@ -382,7 +383,7 @@ export declare const MsgSubmitMisbehaviour: {
     encode(message: MsgSubmitMisbehaviour, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviour;
     fromJSON(object: any): MsgSubmitMisbehaviour;
-    toJSON(message: MsgSubmitMisbehaviour): unknown;
+    toJSON(message: MsgSubmitMisbehaviour): JsonSafe<MsgSubmitMisbehaviour>;
     fromPartial(object: Partial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour;
     fromAmino(object: MsgSubmitMisbehaviourAmino): MsgSubmitMisbehaviour;
     toAmino(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourAmino;
@@ -401,7 +402,7 @@ export declare const MsgSubmitMisbehaviourResponse: {
     encode(_: MsgSubmitMisbehaviourResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse;
     fromJSON(_: any): MsgSubmitMisbehaviourResponse;
-    toJSON(_: MsgSubmitMisbehaviourResponse): unknown;
+    toJSON(_: MsgSubmitMisbehaviourResponse): JsonSafe<MsgSubmitMisbehaviourResponse>;
     fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse;
     fromAmino(_: MsgSubmitMisbehaviourResponseAmino): MsgSubmitMisbehaviourResponse;
     toAmino(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseAmino;

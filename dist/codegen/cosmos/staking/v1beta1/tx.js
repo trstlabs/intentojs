@@ -6,9 +6,9 @@ const any_1 = require("../../../google/protobuf/any");
 const coin_1 = require("../../base/v1beta1/coin");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 const helpers_1 = require("../../../helpers");
 const proto_signing_1 = require("@cosmjs/proto-signing");
-const registry_1 = require("../../../registry");
 const math_1 = require("@cosmjs/math");
 function createBaseMsgCreateValidator() {
     return {

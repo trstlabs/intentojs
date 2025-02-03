@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -179,7 +180,7 @@ export declare const PageRequest: {
     encode(message: PageRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PageRequest;
     fromJSON(object: any): PageRequest;
-    toJSON(message: PageRequest): unknown;
+    toJSON(message: PageRequest): JsonSafe<PageRequest>;
     fromPartial(object: Partial<PageRequest>): PageRequest;
     fromAmino(object: PageRequestAmino): PageRequest;
     toAmino(message: PageRequest): PageRequestAmino;
@@ -198,7 +199,7 @@ export declare const PageResponse: {
     encode(message: PageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PageResponse;
     fromJSON(object: any): PageResponse;
-    toJSON(message: PageResponse): unknown;
+    toJSON(message: PageResponse): JsonSafe<PageResponse>;
     fromPartial(object: Partial<PageResponse>): PageResponse;
     fromAmino(object: PageResponseAmino): PageResponse;
     toAmino(message: PageResponse): PageResponseAmino;

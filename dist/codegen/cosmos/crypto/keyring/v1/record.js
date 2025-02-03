@@ -4,8 +4,8 @@ exports.Record_Offline = exports.Record_Multi = exports.Record_Ledger = exports.
 const any_1 = require("../../../../google/protobuf/any");
 const hd_1 = require("../../hd/v1/hd");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseRecord() {
     return {
         name: "",

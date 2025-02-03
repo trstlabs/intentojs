@@ -5,8 +5,8 @@ const types_1 = require("./types");
 const timestamp_1 = require("../../google/protobuf/timestamp");
 const validator_1 = require("./validator");
 const binary_1 = require("../../binary");
-const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
+const helpers_1 = require("../../helpers");
 function createBaseEvidence() {
     return {
         duplicateVoteEvidence: undefined,
@@ -221,8 +221,8 @@ exports.DuplicateVoteEvidence = {
         const obj = {};
         obj.vote_a = message.voteA ? types_1.Vote.toAmino(message.voteA) : undefined;
         obj.vote_b = message.voteB ? types_1.Vote.toAmino(message.voteB) : undefined;
-        obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower.toString() : undefined;
-        obj.validator_power = message.validatorPower !== BigInt(0) ? message.validatorPower.toString() : undefined;
+        obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower?.toString() : undefined;
+        obj.validator_power = message.validatorPower !== BigInt(0) ? message.validatorPower?.toString() : undefined;
         obj.timestamp = message.timestamp ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.timestamp)) : undefined;
         return obj;
     },
@@ -362,14 +362,14 @@ exports.LightClientAttackEvidence = {
     toAmino(message) {
         const obj = {};
         obj.conflicting_block = message.conflictingBlock ? types_1.LightBlock.toAmino(message.conflictingBlock) : undefined;
-        obj.common_height = message.commonHeight !== BigInt(0) ? message.commonHeight.toString() : undefined;
+        obj.common_height = message.commonHeight !== BigInt(0) ? message.commonHeight?.toString() : undefined;
         if (message.byzantineValidators) {
             obj.byzantine_validators = message.byzantineValidators.map(e => e ? validator_1.Validator.toAmino(e) : undefined);
         }
         else {
             obj.byzantine_validators = message.byzantineValidators;
         }
-        obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower.toString() : undefined;
+        obj.total_voting_power = message.totalVotingPower !== BigInt(0) ? message.totalVotingPower?.toString() : undefined;
         obj.timestamp = message.timestamp ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.timestamp)) : undefined;
         return obj;
     },

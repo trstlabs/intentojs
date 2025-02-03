@@ -1,8 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
-import { ActionInfo, ActionInfoAmino, ActionInfoSDKType, ActionHistoryEntry, ActionHistoryEntryAmino, ActionHistoryEntrySDKType } from "./action";
+import { FlowInfo, FlowInfoAmino, FlowInfoSDKType, FlowHistoryEntry, FlowHistoryEntryAmino, FlowHistoryEntrySDKType } from "./flow";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { HostedAccount, HostedAccountAmino, HostedAccountSDKType } from "./hostedaccount";
-import { ActionIbcUsage, ActionIbcUsageAmino, ActionIbcUsageSDKType } from "./usage";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 import { JsonSafe } from "../../../json-safe";
@@ -68,229 +67,229 @@ export interface QueryInterchainAccountFromAddressResponseAminoMsg {
 export interface QueryInterchainAccountFromAddressResponseSDKType {
   interchain_account_address: string;
 }
-/** QueryActionRequest is the request type for the Query/ActionRequest RPC */
-export interface QueryActionRequest {
+/** QueryFlowRequest is the request type for the Query/FlowRequest RPC */
+export interface QueryFlowRequest {
   id: string;
 }
-export interface QueryActionRequestProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionRequest";
+export interface QueryFlowRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowRequest";
   value: Uint8Array;
 }
-/** QueryActionRequest is the request type for the Query/ActionRequest RPC */
-export interface QueryActionRequestAmino {
+/** QueryFlowRequest is the request type for the Query/FlowRequest RPC */
+export interface QueryFlowRequestAmino {
   id?: string;
 }
-export interface QueryActionRequestAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionRequest";
-  value: QueryActionRequestAmino;
+export interface QueryFlowRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowRequest";
+  value: QueryFlowRequestAmino;
 }
-/** QueryActionRequest is the request type for the Query/ActionRequest RPC */
-export interface QueryActionRequestSDKType {
+/** QueryFlowRequest is the request type for the Query/FlowRequest RPC */
+export interface QueryFlowRequestSDKType {
   id: string;
 }
-/** QueryActionResponse the response type for the Query/ActionRequest RPC */
-export interface QueryActionResponse {
-  actionInfo: ActionInfo;
+/** QueryFlowResponse the response type for the Query/FlowRequest RPC */
+export interface QueryFlowResponse {
+  flowInfo: FlowInfo;
 }
-export interface QueryActionResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionResponse";
+export interface QueryFlowResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowResponse";
   value: Uint8Array;
 }
-/** QueryActionResponse the response type for the Query/ActionRequest RPC */
-export interface QueryActionResponseAmino {
-  action_info?: ActionInfoAmino;
+/** QueryFlowResponse the response type for the Query/FlowRequest RPC */
+export interface QueryFlowResponseAmino {
+  flow_info?: FlowInfoAmino;
 }
-export interface QueryActionResponseAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionResponse";
-  value: QueryActionResponseAmino;
+export interface QueryFlowResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowResponse";
+  value: QueryFlowResponseAmino;
 }
-/** QueryActionResponse the response type for the Query/ActionRequest RPC */
-export interface QueryActionResponseSDKType {
-  action_info: ActionInfoSDKType;
+/** QueryFlowResponse the response type for the Query/FlowRequest RPC */
+export interface QueryFlowResponseSDKType {
+  flow_info: FlowInfoSDKType;
 }
 /**
- * QueryActionHistoryRequest is the request type for the
- * Query/QueryActionHistoryRequest RPC
+ * QueryFlowHistoryRequest is the request type for the
+ * Query/QueryFlowHistoryRequest RPC
  */
-export interface QueryActionHistoryRequest {
-  /** id of the action */
+export interface QueryFlowHistoryRequest {
+  /** id of the flow */
   id: string;
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
-export interface QueryActionHistoryRequestProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionHistoryRequest";
+export interface QueryFlowHistoryRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowHistoryRequest";
   value: Uint8Array;
 }
 /**
- * QueryActionHistoryRequest is the request type for the
- * Query/QueryActionHistoryRequest RPC
+ * QueryFlowHistoryRequest is the request type for the
+ * Query/QueryFlowHistoryRequest RPC
  */
-export interface QueryActionHistoryRequestAmino {
-  /** id of the action */
+export interface QueryFlowHistoryRequestAmino {
+  /** id of the flow */
   id?: string;
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequestAmino;
 }
-export interface QueryActionHistoryRequestAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionHistoryRequest";
-  value: QueryActionHistoryRequestAmino;
+export interface QueryFlowHistoryRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowHistoryRequest";
+  value: QueryFlowHistoryRequestAmino;
 }
 /**
- * QueryActionHistoryRequest is the request type for the
- * Query/QueryActionHistoryRequest RPC
+ * QueryFlowHistoryRequest is the request type for the
+ * Query/QueryFlowHistoryRequest RPC
  */
-export interface QueryActionHistoryRequestSDKType {
+export interface QueryFlowHistoryRequestSDKType {
   id: string;
   pagination?: PageRequestSDKType;
 }
 /**
- * QueryActionHistoryResponse the response type for the
- * Query/QueryActionHistoryResponse RPC
+ * QueryFlowHistoryResponse the response type for the
+ * Query/QueryFlowHistoryResponse RPC
  */
-export interface QueryActionHistoryResponse {
-  history: ActionHistoryEntry[];
+export interface QueryFlowHistoryResponse {
+  history: FlowHistoryEntry[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponse;
 }
-export interface QueryActionHistoryResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionHistoryResponse";
+export interface QueryFlowHistoryResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowHistoryResponse";
   value: Uint8Array;
 }
 /**
- * QueryActionHistoryResponse the response type for the
- * Query/QueryActionHistoryResponse RPC
+ * QueryFlowHistoryResponse the response type for the
+ * Query/QueryFlowHistoryResponse RPC
  */
-export interface QueryActionHistoryResponseAmino {
-  history?: ActionHistoryEntryAmino[];
+export interface QueryFlowHistoryResponseAmino {
+  history?: FlowHistoryEntryAmino[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
 }
-export interface QueryActionHistoryResponseAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionHistoryResponse";
-  value: QueryActionHistoryResponseAmino;
+export interface QueryFlowHistoryResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowHistoryResponse";
+  value: QueryFlowHistoryResponseAmino;
 }
 /**
- * QueryActionHistoryResponse the response type for the
- * Query/QueryActionHistoryResponse RPC
+ * QueryFlowHistoryResponse the response type for the
+ * Query/QueryFlowHistoryResponse RPC
  */
-export interface QueryActionHistoryResponseSDKType {
-  history: ActionHistoryEntrySDKType[];
+export interface QueryFlowHistoryResponseSDKType {
+  history: FlowHistoryEntrySDKType[];
   pagination?: PageResponseSDKType;
 }
-/** QueryActionsRequest is the request type for the Query/ActionsRequest RPC */
-export interface QueryActionsRequest {
+/** QueryFlowsRequest is the request type for the Query/FlowsRequest RPC */
+export interface QueryFlowsRequest {
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
-export interface QueryActionsRequestProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsRequest";
+export interface QueryFlowsRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsRequest";
   value: Uint8Array;
 }
-/** QueryActionsRequest is the request type for the Query/ActionsRequest RPC */
-export interface QueryActionsRequestAmino {
+/** QueryFlowsRequest is the request type for the Query/FlowsRequest RPC */
+export interface QueryFlowsRequestAmino {
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequestAmino;
 }
-export interface QueryActionsRequestAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionsRequest";
-  value: QueryActionsRequestAmino;
+export interface QueryFlowsRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowsRequest";
+  value: QueryFlowsRequestAmino;
 }
-/** QueryActionsRequest is the request type for the Query/ActionsRequest RPC */
-export interface QueryActionsRequestSDKType {
+/** QueryFlowsRequest is the request type for the Query/FlowsRequest RPC */
+export interface QueryFlowsRequestSDKType {
   pagination?: PageRequestSDKType;
 }
-/** QueryActionsResponse the response type for the Query/ActionsRequest RPCπ */
-export interface QueryActionsResponse {
-  actionInfos: ActionInfo[];
+/** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
+export interface QueryFlowsResponse {
+  flowInfos: FlowInfo[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponse;
 }
-export interface QueryActionsResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsResponse";
+export interface QueryFlowsResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsResponse";
   value: Uint8Array;
 }
-/** QueryActionsResponse the response type for the Query/ActionsRequest RPCπ */
-export interface QueryActionsResponseAmino {
-  action_infos?: ActionInfoAmino[];
+/** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
+export interface QueryFlowsResponseAmino {
+  flow_infos?: FlowInfoAmino[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
 }
-export interface QueryActionsResponseAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionsResponse";
-  value: QueryActionsResponseAmino;
+export interface QueryFlowsResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowsResponse";
+  value: QueryFlowsResponseAmino;
 }
-/** QueryActionsResponse the response type for the Query/ActionsRequest RPCπ */
-export interface QueryActionsResponseSDKType {
-  action_infos: ActionInfoSDKType[];
+/** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
+export interface QueryFlowsResponseSDKType {
+  flow_infos: FlowInfoSDKType[];
   pagination?: PageResponseSDKType;
 }
 /**
- * QueryActionsForOwnerRequest is the request type for the
- * Query/ActionsForOwnerRequest RPC
+ * QueryFlowsForOwnerRequest is the request type for the
+ * Query/FlowsForOwnerRequest RPC
  */
-export interface QueryActionsForOwnerRequest {
+export interface QueryFlowsForOwnerRequest {
   owner: string;
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
-export interface QueryActionsForOwnerRequestProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsForOwnerRequest";
+export interface QueryFlowsForOwnerRequestProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsForOwnerRequest";
   value: Uint8Array;
 }
 /**
- * QueryActionsForOwnerRequest is the request type for the
- * Query/ActionsForOwnerRequest RPC
+ * QueryFlowsForOwnerRequest is the request type for the
+ * Query/FlowsForOwnerRequest RPC
  */
-export interface QueryActionsForOwnerRequestAmino {
+export interface QueryFlowsForOwnerRequestAmino {
   owner?: string;
   /** Pagination defines an optional pagination for the request. */
   pagination?: PageRequestAmino;
 }
-export interface QueryActionsForOwnerRequestAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionsForOwnerRequest";
-  value: QueryActionsForOwnerRequestAmino;
+export interface QueryFlowsForOwnerRequestAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowsForOwnerRequest";
+  value: QueryFlowsForOwnerRequestAmino;
 }
 /**
- * QueryActionsForOwnerRequest is the request type for the
- * Query/ActionsForOwnerRequest RPC
+ * QueryFlowsForOwnerRequest is the request type for the
+ * Query/FlowsForOwnerRequest RPC
  */
-export interface QueryActionsForOwnerRequestSDKType {
+export interface QueryFlowsForOwnerRequestSDKType {
   owner: string;
   pagination?: PageRequestSDKType;
 }
 /**
- * QueryActionsForOwnerResponse the response type for the
- * Query/ActionsForOwnerRequest RPC
+ * QueryFlowsForOwnerResponse the response type for the
+ * Query/FlowsForOwnerRequest RPC
  */
-export interface QueryActionsForOwnerResponse {
-  actionInfos: ActionInfo[];
+export interface QueryFlowsForOwnerResponse {
+  flowInfos: FlowInfo[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponse;
 }
-export interface QueryActionsForOwnerResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsForOwnerResponse";
+export interface QueryFlowsForOwnerResponseProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsForOwnerResponse";
   value: Uint8Array;
 }
 /**
- * QueryActionsForOwnerResponse the response type for the
- * Query/ActionsForOwnerRequest RPC
+ * QueryFlowsForOwnerResponse the response type for the
+ * Query/FlowsForOwnerRequest RPC
  */
-export interface QueryActionsForOwnerResponseAmino {
-  action_infos?: ActionInfoAmino[];
+export interface QueryFlowsForOwnerResponseAmino {
+  flow_infos?: FlowInfoAmino[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
 }
-export interface QueryActionsForOwnerResponseAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionsForOwnerResponse";
-  value: QueryActionsForOwnerResponseAmino;
+export interface QueryFlowsForOwnerResponseAminoMsg {
+  type: "/intento.intent.v1beta1.QueryFlowsForOwnerResponse";
+  value: QueryFlowsForOwnerResponseAmino;
 }
 /**
- * QueryActionsForOwnerResponse the response type for the
- * Query/ActionsForOwnerRequest RPC
+ * QueryFlowsForOwnerResponse the response type for the
+ * Query/FlowsForOwnerRequest RPC
  */
-export interface QueryActionsForOwnerResponseSDKType {
-  action_infos: ActionInfoSDKType[];
+export interface QueryFlowsForOwnerResponseSDKType {
+  flow_infos: FlowInfoSDKType[];
   pagination?: PageResponseSDKType;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -508,71 +507,6 @@ export interface QueryHostedAccountsByAdminResponseSDKType {
   hosted_accounts: HostedAccountSDKType[];
   pagination?: PageResponseSDKType;
 }
-/**
- * QueryAutoIbcUsageRequest is the request type for the
- * Query/QueryAutoIbcUsageRequest RPC
- */
-export interface QueryActionIbcUsageRequest {
-  /** Pagination defines an optional pagination for the request. */
-  pagination?: PageRequest;
-}
-export interface QueryActionIbcUsageRequestProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionIbcUsageRequest";
-  value: Uint8Array;
-}
-/**
- * QueryAutoIbcUsageRequest is the request type for the
- * Query/QueryAutoIbcUsageRequest RPC
- */
-export interface QueryActionIbcUsageRequestAmino {
-  /** Pagination defines an optional pagination for the request. */
-  pagination?: PageRequestAmino;
-}
-export interface QueryActionIbcUsageRequestAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionIbcUsageRequest";
-  value: QueryActionIbcUsageRequestAmino;
-}
-/**
- * QueryAutoIbcUsageRequest is the request type for the
- * Query/QueryAutoIbcUsageRequest RPC
- */
-export interface QueryActionIbcUsageRequestSDKType {
-  pagination?: PageRequestSDKType;
-}
-/**
- * QueryAutoIbcUsageResponse the response type for the
- * Query/QueryAutoIbcUsageResponse RPC
- */
-export interface QueryActionIbcUsageResponse {
-  actionIbcUsage: ActionIbcUsage[];
-  /** Pagination defines the pagination in the response. */
-  pagination?: PageResponse;
-}
-export interface QueryActionIbcUsageResponseProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.QueryActionIbcUsageResponse";
-  value: Uint8Array;
-}
-/**
- * QueryAutoIbcUsageResponse the response type for the
- * Query/QueryAutoIbcUsageResponse RPC
- */
-export interface QueryActionIbcUsageResponseAmino {
-  action_ibc_usage?: ActionIbcUsageAmino[];
-  /** Pagination defines the pagination in the response. */
-  pagination?: PageResponseAmino;
-}
-export interface QueryActionIbcUsageResponseAminoMsg {
-  type: "/intento.intent.v1beta1.QueryActionIbcUsageResponse";
-  value: QueryActionIbcUsageResponseAmino;
-}
-/**
- * QueryAutoIbcUsageResponse the response type for the
- * Query/QueryAutoIbcUsageResponse RPC
- */
-export interface QueryActionIbcUsageResponseSDKType {
-  action_ibc_usage: ActionIbcUsageSDKType[];
-  pagination?: PageResponseSDKType;
-}
 function createBaseQueryInterchainAccountFromAddressRequest(): QueryInterchainAccountFromAddressRequest {
   return {
     owner: "",
@@ -753,32 +687,32 @@ export const QueryInterchainAccountFromAddressResponse = {
   }
 };
 GlobalDecoderRegistry.register(QueryInterchainAccountFromAddressResponse.typeUrl, QueryInterchainAccountFromAddressResponse);
-function createBaseQueryActionRequest(): QueryActionRequest {
+function createBaseQueryFlowRequest(): QueryFlowRequest {
   return {
     id: ""
   };
 }
-export const QueryActionRequest = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionRequest",
-  is(o: any): o is QueryActionRequest {
-    return o && (o.$typeUrl === QueryActionRequest.typeUrl || typeof o.id === "string");
+export const QueryFlowRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowRequest",
+  is(o: any): o is QueryFlowRequest {
+    return o && (o.$typeUrl === QueryFlowRequest.typeUrl || typeof o.id === "string");
   },
-  isSDK(o: any): o is QueryActionRequestSDKType {
-    return o && (o.$typeUrl === QueryActionRequest.typeUrl || typeof o.id === "string");
+  isSDK(o: any): o is QueryFlowRequestSDKType {
+    return o && (o.$typeUrl === QueryFlowRequest.typeUrl || typeof o.id === "string");
   },
-  isAmino(o: any): o is QueryActionRequestAmino {
-    return o && (o.$typeUrl === QueryActionRequest.typeUrl || typeof o.id === "string");
+  isAmino(o: any): o is QueryFlowRequestAmino {
+    return o && (o.$typeUrl === QueryFlowRequest.typeUrl || typeof o.id === "string");
   },
-  encode(message: QueryActionRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: QueryFlowRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionRequest();
+    const message = createBaseQueryFlowRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -792,81 +726,81 @@ export const QueryActionRequest = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionRequest {
+  fromJSON(object: any): QueryFlowRequest {
     return {
       id: isSet(object.id) ? String(object.id) : ""
     };
   },
-  toJSON(message: QueryActionRequest): JsonSafe<QueryActionRequest> {
+  toJSON(message: QueryFlowRequest): JsonSafe<QueryFlowRequest> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionRequest>): QueryActionRequest {
-    const message = createBaseQueryActionRequest();
+  fromPartial(object: Partial<QueryFlowRequest>): QueryFlowRequest {
+    const message = createBaseQueryFlowRequest();
     message.id = object.id ?? "";
     return message;
   },
-  fromAmino(object: QueryActionRequestAmino): QueryActionRequest {
-    const message = createBaseQueryActionRequest();
+  fromAmino(object: QueryFlowRequestAmino): QueryFlowRequest {
+    const message = createBaseQueryFlowRequest();
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     }
     return message;
   },
-  toAmino(message: QueryActionRequest): QueryActionRequestAmino {
+  toAmino(message: QueryFlowRequest): QueryFlowRequestAmino {
     const obj: any = {};
     obj.id = message.id === "" ? undefined : message.id;
     return obj;
   },
-  fromAminoMsg(object: QueryActionRequestAminoMsg): QueryActionRequest {
-    return QueryActionRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowRequestAminoMsg): QueryFlowRequest {
+    return QueryFlowRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionRequestProtoMsg): QueryActionRequest {
-    return QueryActionRequest.decode(message.value);
+  fromProtoMsg(message: QueryFlowRequestProtoMsg): QueryFlowRequest {
+    return QueryFlowRequest.decode(message.value);
   },
-  toProto(message: QueryActionRequest): Uint8Array {
-    return QueryActionRequest.encode(message).finish();
+  toProto(message: QueryFlowRequest): Uint8Array {
+    return QueryFlowRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionRequest): QueryActionRequestProtoMsg {
+  toProtoMsg(message: QueryFlowRequest): QueryFlowRequestProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionRequest",
-      value: QueryActionRequest.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowRequest",
+      value: QueryFlowRequest.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionRequest.typeUrl, QueryActionRequest);
-function createBaseQueryActionResponse(): QueryActionResponse {
+GlobalDecoderRegistry.register(QueryFlowRequest.typeUrl, QueryFlowRequest);
+function createBaseQueryFlowResponse(): QueryFlowResponse {
   return {
-    actionInfo: ActionInfo.fromPartial({})
+    flowInfo: FlowInfo.fromPartial({})
   };
 }
-export const QueryActionResponse = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionResponse",
-  is(o: any): o is QueryActionResponse {
-    return o && (o.$typeUrl === QueryActionResponse.typeUrl || ActionInfo.is(o.actionInfo));
+export const QueryFlowResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowResponse",
+  is(o: any): o is QueryFlowResponse {
+    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || FlowInfo.is(o.flowInfo));
   },
-  isSDK(o: any): o is QueryActionResponseSDKType {
-    return o && (o.$typeUrl === QueryActionResponse.typeUrl || ActionInfo.isSDK(o.action_info));
+  isSDK(o: any): o is QueryFlowResponseSDKType {
+    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || FlowInfo.isSDK(o.flow_info));
   },
-  isAmino(o: any): o is QueryActionResponseAmino {
-    return o && (o.$typeUrl === QueryActionResponse.typeUrl || ActionInfo.isAmino(o.action_info));
+  isAmino(o: any): o is QueryFlowResponseAmino {
+    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || FlowInfo.isAmino(o.flow_info));
   },
-  encode(message: QueryActionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.actionInfo !== undefined) {
-      ActionInfo.encode(message.actionInfo, writer.uint32(10).fork()).ldelim();
+  encode(message: QueryFlowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.flowInfo !== undefined) {
+      FlowInfo.encode(message.flowInfo, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionResponse();
+    const message = createBaseQueryFlowResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionInfo = ActionInfo.decode(reader, reader.uint32());
+          message.flowInfo = FlowInfo.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -875,68 +809,68 @@ export const QueryActionResponse = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionResponse {
+  fromJSON(object: any): QueryFlowResponse {
     return {
-      actionInfo: isSet(object.actionInfo) ? ActionInfo.fromJSON(object.actionInfo) : undefined
+      flowInfo: isSet(object.flowInfo) ? FlowInfo.fromJSON(object.flowInfo) : undefined
     };
   },
-  toJSON(message: QueryActionResponse): JsonSafe<QueryActionResponse> {
+  toJSON(message: QueryFlowResponse): JsonSafe<QueryFlowResponse> {
     const obj: any = {};
-    message.actionInfo !== undefined && (obj.actionInfo = message.actionInfo ? ActionInfo.toJSON(message.actionInfo) : undefined);
+    message.flowInfo !== undefined && (obj.flowInfo = message.flowInfo ? FlowInfo.toJSON(message.flowInfo) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionResponse>): QueryActionResponse {
-    const message = createBaseQueryActionResponse();
-    message.actionInfo = object.actionInfo !== undefined && object.actionInfo !== null ? ActionInfo.fromPartial(object.actionInfo) : undefined;
+  fromPartial(object: Partial<QueryFlowResponse>): QueryFlowResponse {
+    const message = createBaseQueryFlowResponse();
+    message.flowInfo = object.flowInfo !== undefined && object.flowInfo !== null ? FlowInfo.fromPartial(object.flowInfo) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionResponseAmino): QueryActionResponse {
-    const message = createBaseQueryActionResponse();
-    if (object.action_info !== undefined && object.action_info !== null) {
-      message.actionInfo = ActionInfo.fromAmino(object.action_info);
+  fromAmino(object: QueryFlowResponseAmino): QueryFlowResponse {
+    const message = createBaseQueryFlowResponse();
+    if (object.flow_info !== undefined && object.flow_info !== null) {
+      message.flowInfo = FlowInfo.fromAmino(object.flow_info);
     }
     return message;
   },
-  toAmino(message: QueryActionResponse): QueryActionResponseAmino {
+  toAmino(message: QueryFlowResponse): QueryFlowResponseAmino {
     const obj: any = {};
-    obj.action_info = message.actionInfo ? ActionInfo.toAmino(message.actionInfo) : undefined;
+    obj.flow_info = message.flowInfo ? FlowInfo.toAmino(message.flowInfo) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionResponseAminoMsg): QueryActionResponse {
-    return QueryActionResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowResponseAminoMsg): QueryFlowResponse {
+    return QueryFlowResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionResponseProtoMsg): QueryActionResponse {
-    return QueryActionResponse.decode(message.value);
+  fromProtoMsg(message: QueryFlowResponseProtoMsg): QueryFlowResponse {
+    return QueryFlowResponse.decode(message.value);
   },
-  toProto(message: QueryActionResponse): Uint8Array {
-    return QueryActionResponse.encode(message).finish();
+  toProto(message: QueryFlowResponse): Uint8Array {
+    return QueryFlowResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionResponse): QueryActionResponseProtoMsg {
+  toProtoMsg(message: QueryFlowResponse): QueryFlowResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionResponse",
-      value: QueryActionResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowResponse",
+      value: QueryFlowResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionResponse.typeUrl, QueryActionResponse);
-function createBaseQueryActionHistoryRequest(): QueryActionHistoryRequest {
+GlobalDecoderRegistry.register(QueryFlowResponse.typeUrl, QueryFlowResponse);
+function createBaseQueryFlowHistoryRequest(): QueryFlowHistoryRequest {
   return {
     id: "",
     pagination: undefined
   };
 }
-export const QueryActionHistoryRequest = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionHistoryRequest",
-  is(o: any): o is QueryActionHistoryRequest {
-    return o && (o.$typeUrl === QueryActionHistoryRequest.typeUrl || typeof o.id === "string");
+export const QueryFlowHistoryRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowHistoryRequest",
+  is(o: any): o is QueryFlowHistoryRequest {
+    return o && (o.$typeUrl === QueryFlowHistoryRequest.typeUrl || typeof o.id === "string");
   },
-  isSDK(o: any): o is QueryActionHistoryRequestSDKType {
-    return o && (o.$typeUrl === QueryActionHistoryRequest.typeUrl || typeof o.id === "string");
+  isSDK(o: any): o is QueryFlowHistoryRequestSDKType {
+    return o && (o.$typeUrl === QueryFlowHistoryRequest.typeUrl || typeof o.id === "string");
   },
-  isAmino(o: any): o is QueryActionHistoryRequestAmino {
-    return o && (o.$typeUrl === QueryActionHistoryRequest.typeUrl || typeof o.id === "string");
+  isAmino(o: any): o is QueryFlowHistoryRequestAmino {
+    return o && (o.$typeUrl === QueryFlowHistoryRequest.typeUrl || typeof o.id === "string");
   },
-  encode(message: QueryActionHistoryRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: QueryFlowHistoryRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -945,10 +879,10 @@ export const QueryActionHistoryRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionHistoryRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowHistoryRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionHistoryRequest();
+    const message = createBaseQueryFlowHistoryRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -965,26 +899,26 @@ export const QueryActionHistoryRequest = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionHistoryRequest {
+  fromJSON(object: any): QueryFlowHistoryRequest {
     return {
       id: isSet(object.id) ? String(object.id) : "",
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionHistoryRequest): JsonSafe<QueryActionHistoryRequest> {
+  toJSON(message: QueryFlowHistoryRequest): JsonSafe<QueryFlowHistoryRequest> {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionHistoryRequest>): QueryActionHistoryRequest {
-    const message = createBaseQueryActionHistoryRequest();
+  fromPartial(object: Partial<QueryFlowHistoryRequest>): QueryFlowHistoryRequest {
+    const message = createBaseQueryFlowHistoryRequest();
     message.id = object.id ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionHistoryRequestAmino): QueryActionHistoryRequest {
-    const message = createBaseQueryActionHistoryRequest();
+  fromAmino(object: QueryFlowHistoryRequestAmino): QueryFlowHistoryRequest {
+    const message = createBaseQueryFlowHistoryRequest();
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     }
@@ -993,64 +927,64 @@ export const QueryActionHistoryRequest = {
     }
     return message;
   },
-  toAmino(message: QueryActionHistoryRequest): QueryActionHistoryRequestAmino {
+  toAmino(message: QueryFlowHistoryRequest): QueryFlowHistoryRequestAmino {
     const obj: any = {};
     obj.id = message.id === "" ? undefined : message.id;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionHistoryRequestAminoMsg): QueryActionHistoryRequest {
-    return QueryActionHistoryRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowHistoryRequestAminoMsg): QueryFlowHistoryRequest {
+    return QueryFlowHistoryRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionHistoryRequestProtoMsg): QueryActionHistoryRequest {
-    return QueryActionHistoryRequest.decode(message.value);
+  fromProtoMsg(message: QueryFlowHistoryRequestProtoMsg): QueryFlowHistoryRequest {
+    return QueryFlowHistoryRequest.decode(message.value);
   },
-  toProto(message: QueryActionHistoryRequest): Uint8Array {
-    return QueryActionHistoryRequest.encode(message).finish();
+  toProto(message: QueryFlowHistoryRequest): Uint8Array {
+    return QueryFlowHistoryRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionHistoryRequest): QueryActionHistoryRequestProtoMsg {
+  toProtoMsg(message: QueryFlowHistoryRequest): QueryFlowHistoryRequestProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionHistoryRequest",
-      value: QueryActionHistoryRequest.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowHistoryRequest",
+      value: QueryFlowHistoryRequest.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionHistoryRequest.typeUrl, QueryActionHistoryRequest);
-function createBaseQueryActionHistoryResponse(): QueryActionHistoryResponse {
+GlobalDecoderRegistry.register(QueryFlowHistoryRequest.typeUrl, QueryFlowHistoryRequest);
+function createBaseQueryFlowHistoryResponse(): QueryFlowHistoryResponse {
   return {
     history: [],
     pagination: undefined
   };
 }
-export const QueryActionHistoryResponse = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionHistoryResponse",
-  is(o: any): o is QueryActionHistoryResponse {
-    return o && (o.$typeUrl === QueryActionHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || ActionHistoryEntry.is(o.history[0])));
+export const QueryFlowHistoryResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowHistoryResponse",
+  is(o: any): o is QueryFlowHistoryResponse {
+    return o && (o.$typeUrl === QueryFlowHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || FlowHistoryEntry.is(o.history[0])));
   },
-  isSDK(o: any): o is QueryActionHistoryResponseSDKType {
-    return o && (o.$typeUrl === QueryActionHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || ActionHistoryEntry.isSDK(o.history[0])));
+  isSDK(o: any): o is QueryFlowHistoryResponseSDKType {
+    return o && (o.$typeUrl === QueryFlowHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || FlowHistoryEntry.isSDK(o.history[0])));
   },
-  isAmino(o: any): o is QueryActionHistoryResponseAmino {
-    return o && (o.$typeUrl === QueryActionHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || ActionHistoryEntry.isAmino(o.history[0])));
+  isAmino(o: any): o is QueryFlowHistoryResponseAmino {
+    return o && (o.$typeUrl === QueryFlowHistoryResponse.typeUrl || Array.isArray(o.history) && (!o.history.length || FlowHistoryEntry.isAmino(o.history[0])));
   },
-  encode(message: QueryActionHistoryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: QueryFlowHistoryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.history) {
-      ActionHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
+      FlowHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionHistoryResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowHistoryResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionHistoryResponse();
+    const message = createBaseQueryFlowHistoryResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.history.push(ActionHistoryEntry.decode(reader, reader.uint32()));
+          message.history.push(FlowHistoryEntry.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1062,89 +996,89 @@ export const QueryActionHistoryResponse = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionHistoryResponse {
+  fromJSON(object: any): QueryFlowHistoryResponse {
     return {
-      history: Array.isArray(object?.history) ? object.history.map((e: any) => ActionHistoryEntry.fromJSON(e)) : [],
+      history: Array.isArray(object?.history) ? object.history.map((e: any) => FlowHistoryEntry.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionHistoryResponse): JsonSafe<QueryActionHistoryResponse> {
+  toJSON(message: QueryFlowHistoryResponse): JsonSafe<QueryFlowHistoryResponse> {
     const obj: any = {};
     if (message.history) {
-      obj.history = message.history.map(e => e ? ActionHistoryEntry.toJSON(e) : undefined);
+      obj.history = message.history.map(e => e ? FlowHistoryEntry.toJSON(e) : undefined);
     } else {
       obj.history = [];
     }
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionHistoryResponse>): QueryActionHistoryResponse {
-    const message = createBaseQueryActionHistoryResponse();
-    message.history = object.history?.map(e => ActionHistoryEntry.fromPartial(e)) || [];
+  fromPartial(object: Partial<QueryFlowHistoryResponse>): QueryFlowHistoryResponse {
+    const message = createBaseQueryFlowHistoryResponse();
+    message.history = object.history?.map(e => FlowHistoryEntry.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionHistoryResponseAmino): QueryActionHistoryResponse {
-    const message = createBaseQueryActionHistoryResponse();
-    message.history = object.history?.map(e => ActionHistoryEntry.fromAmino(e)) || [];
+  fromAmino(object: QueryFlowHistoryResponseAmino): QueryFlowHistoryResponse {
+    const message = createBaseQueryFlowHistoryResponse();
+    message.history = object.history?.map(e => FlowHistoryEntry.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryActionHistoryResponse): QueryActionHistoryResponseAmino {
+  toAmino(message: QueryFlowHistoryResponse): QueryFlowHistoryResponseAmino {
     const obj: any = {};
     if (message.history) {
-      obj.history = message.history.map(e => e ? ActionHistoryEntry.toAmino(e) : undefined);
+      obj.history = message.history.map(e => e ? FlowHistoryEntry.toAmino(e) : undefined);
     } else {
       obj.history = message.history;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionHistoryResponseAminoMsg): QueryActionHistoryResponse {
-    return QueryActionHistoryResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowHistoryResponseAminoMsg): QueryFlowHistoryResponse {
+    return QueryFlowHistoryResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionHistoryResponseProtoMsg): QueryActionHistoryResponse {
-    return QueryActionHistoryResponse.decode(message.value);
+  fromProtoMsg(message: QueryFlowHistoryResponseProtoMsg): QueryFlowHistoryResponse {
+    return QueryFlowHistoryResponse.decode(message.value);
   },
-  toProto(message: QueryActionHistoryResponse): Uint8Array {
-    return QueryActionHistoryResponse.encode(message).finish();
+  toProto(message: QueryFlowHistoryResponse): Uint8Array {
+    return QueryFlowHistoryResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionHistoryResponse): QueryActionHistoryResponseProtoMsg {
+  toProtoMsg(message: QueryFlowHistoryResponse): QueryFlowHistoryResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionHistoryResponse",
-      value: QueryActionHistoryResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowHistoryResponse",
+      value: QueryFlowHistoryResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionHistoryResponse.typeUrl, QueryActionHistoryResponse);
-function createBaseQueryActionsRequest(): QueryActionsRequest {
+GlobalDecoderRegistry.register(QueryFlowHistoryResponse.typeUrl, QueryFlowHistoryResponse);
+function createBaseQueryFlowsRequest(): QueryFlowsRequest {
   return {
     pagination: undefined
   };
 }
-export const QueryActionsRequest = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsRequest",
-  is(o: any): o is QueryActionsRequest {
-    return o && o.$typeUrl === QueryActionsRequest.typeUrl;
+export const QueryFlowsRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsRequest",
+  is(o: any): o is QueryFlowsRequest {
+    return o && o.$typeUrl === QueryFlowsRequest.typeUrl;
   },
-  isSDK(o: any): o is QueryActionsRequestSDKType {
-    return o && o.$typeUrl === QueryActionsRequest.typeUrl;
+  isSDK(o: any): o is QueryFlowsRequestSDKType {
+    return o && o.$typeUrl === QueryFlowsRequest.typeUrl;
   },
-  isAmino(o: any): o is QueryActionsRequestAmino {
-    return o && o.$typeUrl === QueryActionsRequest.typeUrl;
+  isAmino(o: any): o is QueryFlowsRequestAmino {
+    return o && o.$typeUrl === QueryFlowsRequest.typeUrl;
   },
-  encode(message: QueryActionsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: QueryFlowsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionsRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowsRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionsRequest();
+    const message = createBaseQueryFlowsRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1158,85 +1092,85 @@ export const QueryActionsRequest = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionsRequest {
+  fromJSON(object: any): QueryFlowsRequest {
     return {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsRequest): JsonSafe<QueryActionsRequest> {
+  toJSON(message: QueryFlowsRequest): JsonSafe<QueryFlowsRequest> {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionsRequest>): QueryActionsRequest {
-    const message = createBaseQueryActionsRequest();
+  fromPartial(object: Partial<QueryFlowsRequest>): QueryFlowsRequest {
+    const message = createBaseQueryFlowsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionsRequestAmino): QueryActionsRequest {
-    const message = createBaseQueryActionsRequest();
+  fromAmino(object: QueryFlowsRequestAmino): QueryFlowsRequest {
+    const message = createBaseQueryFlowsRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryActionsRequest): QueryActionsRequestAmino {
+  toAmino(message: QueryFlowsRequest): QueryFlowsRequestAmino {
     const obj: any = {};
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionsRequestAminoMsg): QueryActionsRequest {
-    return QueryActionsRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowsRequestAminoMsg): QueryFlowsRequest {
+    return QueryFlowsRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionsRequestProtoMsg): QueryActionsRequest {
-    return QueryActionsRequest.decode(message.value);
+  fromProtoMsg(message: QueryFlowsRequestProtoMsg): QueryFlowsRequest {
+    return QueryFlowsRequest.decode(message.value);
   },
-  toProto(message: QueryActionsRequest): Uint8Array {
-    return QueryActionsRequest.encode(message).finish();
+  toProto(message: QueryFlowsRequest): Uint8Array {
+    return QueryFlowsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionsRequest): QueryActionsRequestProtoMsg {
+  toProtoMsg(message: QueryFlowsRequest): QueryFlowsRequestProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionsRequest",
-      value: QueryActionsRequest.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowsRequest",
+      value: QueryFlowsRequest.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionsRequest.typeUrl, QueryActionsRequest);
-function createBaseQueryActionsResponse(): QueryActionsResponse {
+GlobalDecoderRegistry.register(QueryFlowsRequest.typeUrl, QueryFlowsRequest);
+function createBaseQueryFlowsResponse(): QueryFlowsResponse {
   return {
-    actionInfos: [],
+    flowInfos: [],
     pagination: undefined
   };
 }
-export const QueryActionsResponse = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsResponse",
-  is(o: any): o is QueryActionsResponse {
-    return o && (o.$typeUrl === QueryActionsResponse.typeUrl || Array.isArray(o.actionInfos) && (!o.actionInfos.length || ActionInfo.is(o.actionInfos[0])));
+export const QueryFlowsResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsResponse",
+  is(o: any): o is QueryFlowsResponse {
+    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flowInfos) && (!o.flowInfos.length || FlowInfo.is(o.flowInfos[0])));
   },
-  isSDK(o: any): o is QueryActionsResponseSDKType {
-    return o && (o.$typeUrl === QueryActionsResponse.typeUrl || Array.isArray(o.action_infos) && (!o.action_infos.length || ActionInfo.isSDK(o.action_infos[0])));
+  isSDK(o: any): o is QueryFlowsResponseSDKType {
+    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isSDK(o.flow_infos[0])));
   },
-  isAmino(o: any): o is QueryActionsResponseAmino {
-    return o && (o.$typeUrl === QueryActionsResponse.typeUrl || Array.isArray(o.action_infos) && (!o.action_infos.length || ActionInfo.isAmino(o.action_infos[0])));
+  isAmino(o: any): o is QueryFlowsResponseAmino {
+    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isAmino(o.flow_infos[0])));
   },
-  encode(message: QueryActionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.actionInfos) {
-      ActionInfo.encode(v!, writer.uint32(10).fork()).ldelim();
+  encode(message: QueryFlowsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.flowInfos) {
+      FlowInfo.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionsResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowsResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionsResponse();
+    const message = createBaseQueryFlowsResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionInfos.push(ActionInfo.decode(reader, reader.uint32()));
+          message.flowInfos.push(FlowInfo.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1248,81 +1182,81 @@ export const QueryActionsResponse = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionsResponse {
+  fromJSON(object: any): QueryFlowsResponse {
     return {
-      actionInfos: Array.isArray(object?.actionInfos) ? object.actionInfos.map((e: any) => ActionInfo.fromJSON(e)) : [],
+      flowInfos: Array.isArray(object?.flowInfos) ? object.flowInfos.map((e: any) => FlowInfo.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsResponse): JsonSafe<QueryActionsResponse> {
+  toJSON(message: QueryFlowsResponse): JsonSafe<QueryFlowsResponse> {
     const obj: any = {};
-    if (message.actionInfos) {
-      obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
+    if (message.flowInfos) {
+      obj.flowInfos = message.flowInfos.map(e => e ? FlowInfo.toJSON(e) : undefined);
     } else {
-      obj.actionInfos = [];
+      obj.flowInfos = [];
     }
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionsResponse>): QueryActionsResponse {
-    const message = createBaseQueryActionsResponse();
-    message.actionInfos = object.actionInfos?.map(e => ActionInfo.fromPartial(e)) || [];
+  fromPartial(object: Partial<QueryFlowsResponse>): QueryFlowsResponse {
+    const message = createBaseQueryFlowsResponse();
+    message.flowInfos = object.flowInfos?.map(e => FlowInfo.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionsResponseAmino): QueryActionsResponse {
-    const message = createBaseQueryActionsResponse();
-    message.actionInfos = object.action_infos?.map(e => ActionInfo.fromAmino(e)) || [];
+  fromAmino(object: QueryFlowsResponseAmino): QueryFlowsResponse {
+    const message = createBaseQueryFlowsResponse();
+    message.flowInfos = object.flow_infos?.map(e => FlowInfo.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryActionsResponse): QueryActionsResponseAmino {
+  toAmino(message: QueryFlowsResponse): QueryFlowsResponseAmino {
     const obj: any = {};
-    if (message.actionInfos) {
-      obj.action_infos = message.actionInfos.map(e => e ? ActionInfo.toAmino(e) : undefined);
+    if (message.flowInfos) {
+      obj.flow_infos = message.flowInfos.map(e => e ? FlowInfo.toAmino(e) : undefined);
     } else {
-      obj.action_infos = message.actionInfos;
+      obj.flow_infos = message.flowInfos;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionsResponseAminoMsg): QueryActionsResponse {
-    return QueryActionsResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowsResponseAminoMsg): QueryFlowsResponse {
+    return QueryFlowsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionsResponseProtoMsg): QueryActionsResponse {
-    return QueryActionsResponse.decode(message.value);
+  fromProtoMsg(message: QueryFlowsResponseProtoMsg): QueryFlowsResponse {
+    return QueryFlowsResponse.decode(message.value);
   },
-  toProto(message: QueryActionsResponse): Uint8Array {
-    return QueryActionsResponse.encode(message).finish();
+  toProto(message: QueryFlowsResponse): Uint8Array {
+    return QueryFlowsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionsResponse): QueryActionsResponseProtoMsg {
+  toProtoMsg(message: QueryFlowsResponse): QueryFlowsResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionsResponse",
-      value: QueryActionsResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowsResponse",
+      value: QueryFlowsResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionsResponse.typeUrl, QueryActionsResponse);
-function createBaseQueryActionsForOwnerRequest(): QueryActionsForOwnerRequest {
+GlobalDecoderRegistry.register(QueryFlowsResponse.typeUrl, QueryFlowsResponse);
+function createBaseQueryFlowsForOwnerRequest(): QueryFlowsForOwnerRequest {
   return {
     owner: "",
     pagination: undefined
   };
 }
-export const QueryActionsForOwnerRequest = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsForOwnerRequest",
-  is(o: any): o is QueryActionsForOwnerRequest {
-    return o && (o.$typeUrl === QueryActionsForOwnerRequest.typeUrl || typeof o.owner === "string");
+export const QueryFlowsForOwnerRequest = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsForOwnerRequest",
+  is(o: any): o is QueryFlowsForOwnerRequest {
+    return o && (o.$typeUrl === QueryFlowsForOwnerRequest.typeUrl || typeof o.owner === "string");
   },
-  isSDK(o: any): o is QueryActionsForOwnerRequestSDKType {
-    return o && (o.$typeUrl === QueryActionsForOwnerRequest.typeUrl || typeof o.owner === "string");
+  isSDK(o: any): o is QueryFlowsForOwnerRequestSDKType {
+    return o && (o.$typeUrl === QueryFlowsForOwnerRequest.typeUrl || typeof o.owner === "string");
   },
-  isAmino(o: any): o is QueryActionsForOwnerRequestAmino {
-    return o && (o.$typeUrl === QueryActionsForOwnerRequest.typeUrl || typeof o.owner === "string");
+  isAmino(o: any): o is QueryFlowsForOwnerRequestAmino {
+    return o && (o.$typeUrl === QueryFlowsForOwnerRequest.typeUrl || typeof o.owner === "string");
   },
-  encode(message: QueryActionsForOwnerRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: QueryFlowsForOwnerRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -1331,10 +1265,10 @@ export const QueryActionsForOwnerRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionsForOwnerRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowsForOwnerRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionsForOwnerRequest();
+    const message = createBaseQueryFlowsForOwnerRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1351,26 +1285,26 @@ export const QueryActionsForOwnerRequest = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionsForOwnerRequest {
+  fromJSON(object: any): QueryFlowsForOwnerRequest {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsForOwnerRequest): JsonSafe<QueryActionsForOwnerRequest> {
+  toJSON(message: QueryFlowsForOwnerRequest): JsonSafe<QueryFlowsForOwnerRequest> {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionsForOwnerRequest>): QueryActionsForOwnerRequest {
-    const message = createBaseQueryActionsForOwnerRequest();
+  fromPartial(object: Partial<QueryFlowsForOwnerRequest>): QueryFlowsForOwnerRequest {
+    const message = createBaseQueryFlowsForOwnerRequest();
     message.owner = object.owner ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionsForOwnerRequestAmino): QueryActionsForOwnerRequest {
-    const message = createBaseQueryActionsForOwnerRequest();
+  fromAmino(object: QueryFlowsForOwnerRequestAmino): QueryFlowsForOwnerRequest {
+    const message = createBaseQueryFlowsForOwnerRequest();
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
@@ -1379,64 +1313,64 @@ export const QueryActionsForOwnerRequest = {
     }
     return message;
   },
-  toAmino(message: QueryActionsForOwnerRequest): QueryActionsForOwnerRequestAmino {
+  toAmino(message: QueryFlowsForOwnerRequest): QueryFlowsForOwnerRequestAmino {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionsForOwnerRequestAminoMsg): QueryActionsForOwnerRequest {
-    return QueryActionsForOwnerRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowsForOwnerRequestAminoMsg): QueryFlowsForOwnerRequest {
+    return QueryFlowsForOwnerRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionsForOwnerRequestProtoMsg): QueryActionsForOwnerRequest {
-    return QueryActionsForOwnerRequest.decode(message.value);
+  fromProtoMsg(message: QueryFlowsForOwnerRequestProtoMsg): QueryFlowsForOwnerRequest {
+    return QueryFlowsForOwnerRequest.decode(message.value);
   },
-  toProto(message: QueryActionsForOwnerRequest): Uint8Array {
-    return QueryActionsForOwnerRequest.encode(message).finish();
+  toProto(message: QueryFlowsForOwnerRequest): Uint8Array {
+    return QueryFlowsForOwnerRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionsForOwnerRequest): QueryActionsForOwnerRequestProtoMsg {
+  toProtoMsg(message: QueryFlowsForOwnerRequest): QueryFlowsForOwnerRequestProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionsForOwnerRequest",
-      value: QueryActionsForOwnerRequest.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowsForOwnerRequest",
+      value: QueryFlowsForOwnerRequest.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionsForOwnerRequest.typeUrl, QueryActionsForOwnerRequest);
-function createBaseQueryActionsForOwnerResponse(): QueryActionsForOwnerResponse {
+GlobalDecoderRegistry.register(QueryFlowsForOwnerRequest.typeUrl, QueryFlowsForOwnerRequest);
+function createBaseQueryFlowsForOwnerResponse(): QueryFlowsForOwnerResponse {
   return {
-    actionInfos: [],
+    flowInfos: [],
     pagination: undefined
   };
 }
-export const QueryActionsForOwnerResponse = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionsForOwnerResponse",
-  is(o: any): o is QueryActionsForOwnerResponse {
-    return o && (o.$typeUrl === QueryActionsForOwnerResponse.typeUrl || Array.isArray(o.actionInfos) && (!o.actionInfos.length || ActionInfo.is(o.actionInfos[0])));
+export const QueryFlowsForOwnerResponse = {
+  typeUrl: "/intento.intent.v1beta1.QueryFlowsForOwnerResponse",
+  is(o: any): o is QueryFlowsForOwnerResponse {
+    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flowInfos) && (!o.flowInfos.length || FlowInfo.is(o.flowInfos[0])));
   },
-  isSDK(o: any): o is QueryActionsForOwnerResponseSDKType {
-    return o && (o.$typeUrl === QueryActionsForOwnerResponse.typeUrl || Array.isArray(o.action_infos) && (!o.action_infos.length || ActionInfo.isSDK(o.action_infos[0])));
+  isSDK(o: any): o is QueryFlowsForOwnerResponseSDKType {
+    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isSDK(o.flow_infos[0])));
   },
-  isAmino(o: any): o is QueryActionsForOwnerResponseAmino {
-    return o && (o.$typeUrl === QueryActionsForOwnerResponse.typeUrl || Array.isArray(o.action_infos) && (!o.action_infos.length || ActionInfo.isAmino(o.action_infos[0])));
+  isAmino(o: any): o is QueryFlowsForOwnerResponseAmino {
+    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isAmino(o.flow_infos[0])));
   },
-  encode(message: QueryActionsForOwnerResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.actionInfos) {
-      ActionInfo.encode(v!, writer.uint32(10).fork()).ldelim();
+  encode(message: QueryFlowsForOwnerResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.flowInfos) {
+      FlowInfo.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionsForOwnerResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFlowsForOwnerResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionsForOwnerResponse();
+    const message = createBaseQueryFlowsForOwnerResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionInfos.push(ActionInfo.decode(reader, reader.uint32()));
+          message.flowInfos.push(FlowInfo.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1448,63 +1382,63 @@ export const QueryActionsForOwnerResponse = {
     }
     return message;
   },
-  fromJSON(object: any): QueryActionsForOwnerResponse {
+  fromJSON(object: any): QueryFlowsForOwnerResponse {
     return {
-      actionInfos: Array.isArray(object?.actionInfos) ? object.actionInfos.map((e: any) => ActionInfo.fromJSON(e)) : [],
+      flowInfos: Array.isArray(object?.flowInfos) ? object.flowInfos.map((e: any) => FlowInfo.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryActionsForOwnerResponse): JsonSafe<QueryActionsForOwnerResponse> {
+  toJSON(message: QueryFlowsForOwnerResponse): JsonSafe<QueryFlowsForOwnerResponse> {
     const obj: any = {};
-    if (message.actionInfos) {
-      obj.actionInfos = message.actionInfos.map(e => e ? ActionInfo.toJSON(e) : undefined);
+    if (message.flowInfos) {
+      obj.flowInfos = message.flowInfos.map(e => e ? FlowInfo.toJSON(e) : undefined);
     } else {
-      obj.actionInfos = [];
+      obj.flowInfos = [];
     }
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryActionsForOwnerResponse>): QueryActionsForOwnerResponse {
-    const message = createBaseQueryActionsForOwnerResponse();
-    message.actionInfos = object.actionInfos?.map(e => ActionInfo.fromPartial(e)) || [];
+  fromPartial(object: Partial<QueryFlowsForOwnerResponse>): QueryFlowsForOwnerResponse {
+    const message = createBaseQueryFlowsForOwnerResponse();
+    message.flowInfos = object.flowInfos?.map(e => FlowInfo.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(object: QueryActionsForOwnerResponseAmino): QueryActionsForOwnerResponse {
-    const message = createBaseQueryActionsForOwnerResponse();
-    message.actionInfos = object.action_infos?.map(e => ActionInfo.fromAmino(e)) || [];
+  fromAmino(object: QueryFlowsForOwnerResponseAmino): QueryFlowsForOwnerResponse {
+    const message = createBaseQueryFlowsForOwnerResponse();
+    message.flowInfos = object.flow_infos?.map(e => FlowInfo.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryActionsForOwnerResponse): QueryActionsForOwnerResponseAmino {
+  toAmino(message: QueryFlowsForOwnerResponse): QueryFlowsForOwnerResponseAmino {
     const obj: any = {};
-    if (message.actionInfos) {
-      obj.action_infos = message.actionInfos.map(e => e ? ActionInfo.toAmino(e) : undefined);
+    if (message.flowInfos) {
+      obj.flow_infos = message.flowInfos.map(e => e ? FlowInfo.toAmino(e) : undefined);
     } else {
-      obj.action_infos = message.actionInfos;
+      obj.flow_infos = message.flowInfos;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryActionsForOwnerResponseAminoMsg): QueryActionsForOwnerResponse {
-    return QueryActionsForOwnerResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryFlowsForOwnerResponseAminoMsg): QueryFlowsForOwnerResponse {
+    return QueryFlowsForOwnerResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryActionsForOwnerResponseProtoMsg): QueryActionsForOwnerResponse {
-    return QueryActionsForOwnerResponse.decode(message.value);
+  fromProtoMsg(message: QueryFlowsForOwnerResponseProtoMsg): QueryFlowsForOwnerResponse {
+    return QueryFlowsForOwnerResponse.decode(message.value);
   },
-  toProto(message: QueryActionsForOwnerResponse): Uint8Array {
-    return QueryActionsForOwnerResponse.encode(message).finish();
+  toProto(message: QueryFlowsForOwnerResponse): Uint8Array {
+    return QueryFlowsForOwnerResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryActionsForOwnerResponse): QueryActionsForOwnerResponseProtoMsg {
+  toProtoMsg(message: QueryFlowsForOwnerResponse): QueryFlowsForOwnerResponseProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionsForOwnerResponse",
-      value: QueryActionsForOwnerResponse.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.QueryFlowsForOwnerResponse",
+      value: QueryFlowsForOwnerResponse.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(QueryActionsForOwnerResponse.typeUrl, QueryActionsForOwnerResponse);
+GlobalDecoderRegistry.register(QueryFlowsForOwnerResponse.typeUrl, QueryFlowsForOwnerResponse);
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
@@ -2207,189 +2141,3 @@ export const QueryHostedAccountsByAdminResponse = {
   }
 };
 GlobalDecoderRegistry.register(QueryHostedAccountsByAdminResponse.typeUrl, QueryHostedAccountsByAdminResponse);
-function createBaseQueryActionIbcUsageRequest(): QueryActionIbcUsageRequest {
-  return {
-    pagination: undefined
-  };
-}
-export const QueryActionIbcUsageRequest = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionIbcUsageRequest",
-  is(o: any): o is QueryActionIbcUsageRequest {
-    return o && o.$typeUrl === QueryActionIbcUsageRequest.typeUrl;
-  },
-  isSDK(o: any): o is QueryActionIbcUsageRequestSDKType {
-    return o && o.$typeUrl === QueryActionIbcUsageRequest.typeUrl;
-  },
-  isAmino(o: any): o is QueryActionIbcUsageRequestAmino {
-    return o && o.$typeUrl === QueryActionIbcUsageRequest.typeUrl;
-  },
-  encode(message: QueryActionIbcUsageRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.pagination !== undefined) {
-      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionIbcUsageRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionIbcUsageRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.pagination = PageRequest.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): QueryActionIbcUsageRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-  toJSON(message: QueryActionIbcUsageRequest): JsonSafe<QueryActionIbcUsageRequest> {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-  fromPartial(object: Partial<QueryActionIbcUsageRequest>): QueryActionIbcUsageRequest {
-    const message = createBaseQueryActionIbcUsageRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
-    return message;
-  },
-  fromAmino(object: QueryActionIbcUsageRequestAmino): QueryActionIbcUsageRequest {
-    const message = createBaseQueryActionIbcUsageRequest();
-    if (object.pagination !== undefined && object.pagination !== null) {
-      message.pagination = PageRequest.fromAmino(object.pagination);
-    }
-    return message;
-  },
-  toAmino(message: QueryActionIbcUsageRequest): QueryActionIbcUsageRequestAmino {
-    const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: QueryActionIbcUsageRequestAminoMsg): QueryActionIbcUsageRequest {
-    return QueryActionIbcUsageRequest.fromAmino(object.value);
-  },
-  fromProtoMsg(message: QueryActionIbcUsageRequestProtoMsg): QueryActionIbcUsageRequest {
-    return QueryActionIbcUsageRequest.decode(message.value);
-  },
-  toProto(message: QueryActionIbcUsageRequest): Uint8Array {
-    return QueryActionIbcUsageRequest.encode(message).finish();
-  },
-  toProtoMsg(message: QueryActionIbcUsageRequest): QueryActionIbcUsageRequestProtoMsg {
-    return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionIbcUsageRequest",
-      value: QueryActionIbcUsageRequest.encode(message).finish()
-    };
-  }
-};
-GlobalDecoderRegistry.register(QueryActionIbcUsageRequest.typeUrl, QueryActionIbcUsageRequest);
-function createBaseQueryActionIbcUsageResponse(): QueryActionIbcUsageResponse {
-  return {
-    actionIbcUsage: [],
-    pagination: undefined
-  };
-}
-export const QueryActionIbcUsageResponse = {
-  typeUrl: "/intento.intent.v1beta1.QueryActionIbcUsageResponse",
-  is(o: any): o is QueryActionIbcUsageResponse {
-    return o && (o.$typeUrl === QueryActionIbcUsageResponse.typeUrl || Array.isArray(o.actionIbcUsage) && (!o.actionIbcUsage.length || ActionIbcUsage.is(o.actionIbcUsage[0])));
-  },
-  isSDK(o: any): o is QueryActionIbcUsageResponseSDKType {
-    return o && (o.$typeUrl === QueryActionIbcUsageResponse.typeUrl || Array.isArray(o.action_ibc_usage) && (!o.action_ibc_usage.length || ActionIbcUsage.isSDK(o.action_ibc_usage[0])));
-  },
-  isAmino(o: any): o is QueryActionIbcUsageResponseAmino {
-    return o && (o.$typeUrl === QueryActionIbcUsageResponse.typeUrl || Array.isArray(o.action_ibc_usage) && (!o.action_ibc_usage.length || ActionIbcUsage.isAmino(o.action_ibc_usage[0])));
-  },
-  encode(message: QueryActionIbcUsageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.actionIbcUsage) {
-      ActionIbcUsage.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryActionIbcUsageResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryActionIbcUsageResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.actionIbcUsage.push(ActionIbcUsage.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.pagination = PageResponse.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): QueryActionIbcUsageResponse {
-    return {
-      actionIbcUsage: Array.isArray(object?.actionIbcUsage) ? object.actionIbcUsage.map((e: any) => ActionIbcUsage.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-  toJSON(message: QueryActionIbcUsageResponse): JsonSafe<QueryActionIbcUsageResponse> {
-    const obj: any = {};
-    if (message.actionIbcUsage) {
-      obj.actionIbcUsage = message.actionIbcUsage.map(e => e ? ActionIbcUsage.toJSON(e) : undefined);
-    } else {
-      obj.actionIbcUsage = [];
-    }
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-  fromPartial(object: Partial<QueryActionIbcUsageResponse>): QueryActionIbcUsageResponse {
-    const message = createBaseQueryActionIbcUsageResponse();
-    message.actionIbcUsage = object.actionIbcUsage?.map(e => ActionIbcUsage.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
-    return message;
-  },
-  fromAmino(object: QueryActionIbcUsageResponseAmino): QueryActionIbcUsageResponse {
-    const message = createBaseQueryActionIbcUsageResponse();
-    message.actionIbcUsage = object.action_ibc_usage?.map(e => ActionIbcUsage.fromAmino(e)) || [];
-    if (object.pagination !== undefined && object.pagination !== null) {
-      message.pagination = PageResponse.fromAmino(object.pagination);
-    }
-    return message;
-  },
-  toAmino(message: QueryActionIbcUsageResponse): QueryActionIbcUsageResponseAmino {
-    const obj: any = {};
-    if (message.actionIbcUsage) {
-      obj.action_ibc_usage = message.actionIbcUsage.map(e => e ? ActionIbcUsage.toAmino(e) : undefined);
-    } else {
-      obj.action_ibc_usage = message.actionIbcUsage;
-    }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: QueryActionIbcUsageResponseAminoMsg): QueryActionIbcUsageResponse {
-    return QueryActionIbcUsageResponse.fromAmino(object.value);
-  },
-  fromProtoMsg(message: QueryActionIbcUsageResponseProtoMsg): QueryActionIbcUsageResponse {
-    return QueryActionIbcUsageResponse.decode(message.value);
-  },
-  toProto(message: QueryActionIbcUsageResponse): Uint8Array {
-    return QueryActionIbcUsageResponse.encode(message).finish();
-  },
-  toProtoMsg(message: QueryActionIbcUsageResponse): QueryActionIbcUsageResponseProtoMsg {
-    return {
-      typeUrl: "/intento.intent.v1beta1.QueryActionIbcUsageResponse",
-      value: QueryActionIbcUsageResponse.encode(message).finish()
-    };
-  }
-};
-GlobalDecoderRegistry.register(QueryActionIbcUsageResponse.typeUrl, QueryActionIbcUsageResponse);

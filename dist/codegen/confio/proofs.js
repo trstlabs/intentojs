@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompressedNonExistenceProof = exports.CompressedExistenceProof = exports.CompressedBatchEntry = exports.CompressedBatchProof = exports.BatchEntry = exports.BatchProof = exports.InnerSpec = exports.ProofSpec = exports.InnerOp = exports.LeafOp = exports.CommitmentProof = exports.NonExistenceProof = exports.ExistenceProof = exports.lengthOpToJSON = exports.lengthOpFromJSON = exports.LengthOpAmino = exports.LengthOpSDKType = exports.LengthOp = exports.hashOpToJSON = exports.hashOpFromJSON = exports.HashOpAmino = exports.HashOpSDKType = exports.HashOp = void 0;
 const binary_1 = require("../binary");
-const helpers_1 = require("../helpers");
 const registry_1 = require("../registry");
+const helpers_1 = require("../helpers");
 var HashOp;
 (function (HashOp) {
     /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */

@@ -1,5 +1,6 @@
 import { IdentifiedChannel, IdentifiedChannelAmino, IdentifiedChannelSDKType, PacketState, PacketStateAmino, PacketStateSDKType } from "./channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc channel submodule's genesis state. */
 export interface GenesisState {
     channels: IdentifiedChannel[];
@@ -87,7 +88,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -106,7 +107,7 @@ export declare const PacketSequence: {
     encode(message: PacketSequence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketSequence;
     fromJSON(object: any): PacketSequence;
-    toJSON(message: PacketSequence): unknown;
+    toJSON(message: PacketSequence): JsonSafe<PacketSequence>;
     fromPartial(object: Partial<PacketSequence>): PacketSequence;
     fromAmino(object: PacketSequenceAmino): PacketSequence;
     toAmino(message: PacketSequence): PacketSequenceAmino;

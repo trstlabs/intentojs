@@ -1,5 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
     communityTax: string;
@@ -436,7 +437,7 @@ export declare const Params: {
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
+    toJSON(message: Params): JsonSafe<Params>;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -455,7 +456,7 @@ export declare const ValidatorHistoricalRewards: {
     encode(message: ValidatorHistoricalRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewards;
     fromJSON(object: any): ValidatorHistoricalRewards;
-    toJSON(message: ValidatorHistoricalRewards): unknown;
+    toJSON(message: ValidatorHistoricalRewards): JsonSafe<ValidatorHistoricalRewards>;
     fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
     fromAmino(object: ValidatorHistoricalRewardsAmino): ValidatorHistoricalRewards;
     toAmino(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsAmino;
@@ -474,7 +475,7 @@ export declare const ValidatorCurrentRewards: {
     encode(message: ValidatorCurrentRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewards;
     fromJSON(object: any): ValidatorCurrentRewards;
-    toJSON(message: ValidatorCurrentRewards): unknown;
+    toJSON(message: ValidatorCurrentRewards): JsonSafe<ValidatorCurrentRewards>;
     fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
     fromAmino(object: ValidatorCurrentRewardsAmino): ValidatorCurrentRewards;
     toAmino(message: ValidatorCurrentRewards): ValidatorCurrentRewardsAmino;
@@ -493,7 +494,7 @@ export declare const ValidatorAccumulatedCommission: {
     encode(message: ValidatorAccumulatedCommission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
     fromJSON(object: any): ValidatorAccumulatedCommission;
-    toJSON(message: ValidatorAccumulatedCommission): unknown;
+    toJSON(message: ValidatorAccumulatedCommission): JsonSafe<ValidatorAccumulatedCommission>;
     fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
     fromAmino(object: ValidatorAccumulatedCommissionAmino): ValidatorAccumulatedCommission;
     toAmino(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionAmino;
@@ -512,7 +513,7 @@ export declare const ValidatorOutstandingRewards: {
     encode(message: ValidatorOutstandingRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewards;
     fromJSON(object: any): ValidatorOutstandingRewards;
-    toJSON(message: ValidatorOutstandingRewards): unknown;
+    toJSON(message: ValidatorOutstandingRewards): JsonSafe<ValidatorOutstandingRewards>;
     fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
     fromAmino(object: ValidatorOutstandingRewardsAmino): ValidatorOutstandingRewards;
     toAmino(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsAmino;
@@ -531,7 +532,7 @@ export declare const ValidatorSlashEvent: {
     encode(message: ValidatorSlashEvent, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvent;
     fromJSON(object: any): ValidatorSlashEvent;
-    toJSON(message: ValidatorSlashEvent): unknown;
+    toJSON(message: ValidatorSlashEvent): JsonSafe<ValidatorSlashEvent>;
     fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent;
     fromAmino(object: ValidatorSlashEventAmino): ValidatorSlashEvent;
     toAmino(message: ValidatorSlashEvent): ValidatorSlashEventAmino;
@@ -550,7 +551,7 @@ export declare const ValidatorSlashEvents: {
     encode(message: ValidatorSlashEvents, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvents;
     fromJSON(object: any): ValidatorSlashEvents;
-    toJSON(message: ValidatorSlashEvents): unknown;
+    toJSON(message: ValidatorSlashEvents): JsonSafe<ValidatorSlashEvents>;
     fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents;
     fromAmino(object: ValidatorSlashEventsAmino): ValidatorSlashEvents;
     toAmino(message: ValidatorSlashEvents): ValidatorSlashEventsAmino;
@@ -569,7 +570,7 @@ export declare const FeePool: {
     encode(message: FeePool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FeePool;
     fromJSON(object: any): FeePool;
-    toJSON(message: FeePool): unknown;
+    toJSON(message: FeePool): JsonSafe<FeePool>;
     fromPartial(object: Partial<FeePool>): FeePool;
     fromAmino(object: FeePoolAmino): FeePool;
     toAmino(message: FeePool): FeePoolAmino;
@@ -588,7 +589,7 @@ export declare const CommunityPoolSpendProposal: {
     encode(message: CommunityPoolSpendProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposal;
     fromJSON(object: any): CommunityPoolSpendProposal;
-    toJSON(message: CommunityPoolSpendProposal): unknown;
+    toJSON(message: CommunityPoolSpendProposal): JsonSafe<CommunityPoolSpendProposal>;
     fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
     fromAmino(object: CommunityPoolSpendProposalAmino): CommunityPoolSpendProposal;
     toAmino(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalAmino;
@@ -607,7 +608,7 @@ export declare const DelegatorStartingInfo: {
     encode(message: DelegatorStartingInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfo;
     fromJSON(object: any): DelegatorStartingInfo;
-    toJSON(message: DelegatorStartingInfo): unknown;
+    toJSON(message: DelegatorStartingInfo): JsonSafe<DelegatorStartingInfo>;
     fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo;
     fromAmino(object: DelegatorStartingInfoAmino): DelegatorStartingInfo;
     toAmino(message: DelegatorStartingInfo): DelegatorStartingInfoAmino;
@@ -626,7 +627,7 @@ export declare const DelegationDelegatorReward: {
     encode(message: DelegationDelegatorReward, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegationDelegatorReward;
     fromJSON(object: any): DelegationDelegatorReward;
-    toJSON(message: DelegationDelegatorReward): unknown;
+    toJSON(message: DelegationDelegatorReward): JsonSafe<DelegationDelegatorReward>;
     fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward;
     fromAmino(object: DelegationDelegatorRewardAmino): DelegationDelegatorReward;
     toAmino(message: DelegationDelegatorReward): DelegationDelegatorRewardAmino;
@@ -645,7 +646,7 @@ export declare const CommunityPoolSpendProposalWithDeposit: {
     encode(message: CommunityPoolSpendProposalWithDeposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
     fromJSON(object: any): CommunityPoolSpendProposalWithDeposit;
-    toJSON(message: CommunityPoolSpendProposalWithDeposit): unknown;
+    toJSON(message: CommunityPoolSpendProposalWithDeposit): JsonSafe<CommunityPoolSpendProposalWithDeposit>;
     fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;
     fromAmino(object: CommunityPoolSpendProposalWithDepositAmino): CommunityPoolSpendProposalWithDeposit;
     toAmino(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositAmino;

@@ -4,8 +4,8 @@ exports.MsgTransferResponse = exports.MsgTransfer = void 0;
 const coin_1 = require("../../../../cosmos/base/v1beta1/coin");
 const client_1 = require("../../../core/client/v1/client");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 function createBaseMsgTransfer() {
     return {
         sourcePort: "",
@@ -154,7 +154,7 @@ exports.MsgTransfer = {
         obj.sender = message.sender === "" ? undefined : message.sender;
         obj.receiver = message.receiver === "" ? undefined : message.receiver;
         obj.timeout_height = message.timeoutHeight ? client_1.Height.toAmino(message.timeoutHeight) : {};
-        obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+        obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

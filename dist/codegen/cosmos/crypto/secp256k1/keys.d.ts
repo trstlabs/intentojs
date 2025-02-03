@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * PubKey defines a secp256k1 public key
  * Key is the compressed form of the pubkey. The first byte depends is a 0x02 byte
@@ -66,7 +67,7 @@ export declare const PubKey: {
     encode(message: PubKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PubKey;
     fromJSON(object: any): PubKey;
-    toJSON(message: PubKey): unknown;
+    toJSON(message: PubKey): JsonSafe<PubKey>;
     fromPartial(object: Partial<PubKey>): PubKey;
     fromAmino(object: PubKeyAmino): PubKey;
     toAmino(message: PubKey): PubKeyAmino;
@@ -85,7 +86,7 @@ export declare const PrivKey: {
     encode(message: PrivKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PrivKey;
     fromJSON(object: any): PrivKey;
-    toJSON(message: PrivKey): unknown;
+    toJSON(message: PrivKey): JsonSafe<PrivKey>;
     fromPartial(object: Partial<PrivKey>): PrivKey;
     fromAmino(object: PrivKeyAmino): PrivKey;
     toAmino(message: PrivKey): PrivKeyAmino;

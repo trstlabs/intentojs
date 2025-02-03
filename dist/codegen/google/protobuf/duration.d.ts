@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -217,7 +218,7 @@ export declare const Duration: {
     encode(message: Duration, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Duration;
     fromJSON(object: any): Duration;
-    toJSON(message: Duration): unknown;
+    toJSON(message: Duration): JsonSafe<Duration>;
     fromPartial(object: Partial<Duration>): Duration;
     fromAmino(object: DurationAmino): Duration;
     toAmino(message: Duration): DurationAmino;

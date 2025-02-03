@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LastValidatorPower = exports.GenesisState = void 0;
 const staking_1 = require("./staking");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseGenesisState() {
     return {
         params: staking_1.Params.fromPartial({}),
@@ -312,7 +312,7 @@ exports.LastValidatorPower = {
     toAmino(message) {
         const obj = {};
         obj.address = message.address === "" ? undefined : message.address;
-        obj.power = message.power !== BigInt(0) ? message.power.toString() : undefined;
+        obj.power = message.power !== BigInt(0) ? message.power?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

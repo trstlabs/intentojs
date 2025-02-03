@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * AuthorizationType defines the type of staking module authorization type
  *
@@ -112,7 +113,7 @@ export declare const StakeAuthorization: {
     encode(message: StakeAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization;
     fromJSON(object: any): StakeAuthorization;
-    toJSON(message: StakeAuthorization): unknown;
+    toJSON(message: StakeAuthorization): JsonSafe<StakeAuthorization>;
     fromPartial(object: Partial<StakeAuthorization>): StakeAuthorization;
     fromAmino(object: StakeAuthorizationAmino): StakeAuthorization;
     toAmino(message: StakeAuthorization): StakeAuthorizationAmino;
@@ -131,7 +132,7 @@ export declare const StakeAuthorization_Validators: {
     encode(message: StakeAuthorization_Validators, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization_Validators;
     fromJSON(object: any): StakeAuthorization_Validators;
-    toJSON(message: StakeAuthorization_Validators): unknown;
+    toJSON(message: StakeAuthorization_Validators): JsonSafe<StakeAuthorization_Validators>;
     fromPartial(object: Partial<StakeAuthorization_Validators>): StakeAuthorization_Validators;
     fromAmino(object: StakeAuthorization_ValidatorsAmino): StakeAuthorization_Validators;
     toAmino(message: StakeAuthorization_Validators): StakeAuthorization_ValidatorsAmino;

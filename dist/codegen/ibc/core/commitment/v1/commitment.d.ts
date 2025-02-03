@@ -1,5 +1,6 @@
 import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../confio/proofs";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
@@ -140,7 +141,7 @@ export declare const MerkleRoot: {
     encode(message: MerkleRoot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerkleRoot;
     fromJSON(object: any): MerkleRoot;
-    toJSON(message: MerkleRoot): unknown;
+    toJSON(message: MerkleRoot): JsonSafe<MerkleRoot>;
     fromPartial(object: Partial<MerkleRoot>): MerkleRoot;
     fromAmino(object: MerkleRootAmino): MerkleRoot;
     toAmino(message: MerkleRoot): MerkleRootAmino;
@@ -159,7 +160,7 @@ export declare const MerklePrefix: {
     encode(message: MerklePrefix, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerklePrefix;
     fromJSON(object: any): MerklePrefix;
-    toJSON(message: MerklePrefix): unknown;
+    toJSON(message: MerklePrefix): JsonSafe<MerklePrefix>;
     fromPartial(object: Partial<MerklePrefix>): MerklePrefix;
     fromAmino(object: MerklePrefixAmino): MerklePrefix;
     toAmino(message: MerklePrefix): MerklePrefixAmino;
@@ -178,7 +179,7 @@ export declare const MerklePath: {
     encode(message: MerklePath, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerklePath;
     fromJSON(object: any): MerklePath;
-    toJSON(message: MerklePath): unknown;
+    toJSON(message: MerklePath): JsonSafe<MerklePath>;
     fromPartial(object: Partial<MerklePath>): MerklePath;
     fromAmino(object: MerklePathAmino): MerklePath;
     toAmino(message: MerklePath): MerklePathAmino;
@@ -197,7 +198,7 @@ export declare const MerkleProof: {
     encode(message: MerkleProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerkleProof;
     fromJSON(object: any): MerkleProof;
-    toJSON(message: MerkleProof): unknown;
+    toJSON(message: MerkleProof): JsonSafe<MerkleProof>;
     fromPartial(object: Partial<MerkleProof>): MerkleProof;
     fromAmino(object: MerkleProofAmino): MerkleProof;
     toAmino(message: MerkleProof): MerkleProofAmino;

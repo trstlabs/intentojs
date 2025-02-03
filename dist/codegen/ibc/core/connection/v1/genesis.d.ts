@@ -1,5 +1,6 @@
 import { IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType, ConnectionPaths, ConnectionPathsAmino, ConnectionPathsSDKType, Params, ParamsAmino, ParamsSDKType } from "./connection";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc connection submodule's genesis state. */
 export interface GenesisState {
     connections: IdentifiedConnection[];
@@ -40,7 +41,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

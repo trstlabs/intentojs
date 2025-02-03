@@ -4,6 +4,7 @@ import { TxResponse, TxResponseAmino, TxResponseSDKType, GasInfo, GasInfoAmino, 
 import { BlockID, BlockIDAmino, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockAmino, BlockSDKType } from "../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** OrderBy defines the sorting order */
 export declare enum OrderBy {
     /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
@@ -431,7 +432,7 @@ export declare const GetTxsEventRequest: {
     encode(message: GetTxsEventRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventRequest;
     fromJSON(object: any): GetTxsEventRequest;
-    toJSON(message: GetTxsEventRequest): unknown;
+    toJSON(message: GetTxsEventRequest): JsonSafe<GetTxsEventRequest>;
     fromPartial(object: Partial<GetTxsEventRequest>): GetTxsEventRequest;
     fromAmino(object: GetTxsEventRequestAmino): GetTxsEventRequest;
     toAmino(message: GetTxsEventRequest): GetTxsEventRequestAmino;
@@ -450,7 +451,7 @@ export declare const GetTxsEventResponse: {
     encode(message: GetTxsEventResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventResponse;
     fromJSON(object: any): GetTxsEventResponse;
-    toJSON(message: GetTxsEventResponse): unknown;
+    toJSON(message: GetTxsEventResponse): JsonSafe<GetTxsEventResponse>;
     fromPartial(object: Partial<GetTxsEventResponse>): GetTxsEventResponse;
     fromAmino(object: GetTxsEventResponseAmino): GetTxsEventResponse;
     toAmino(message: GetTxsEventResponse): GetTxsEventResponseAmino;
@@ -469,7 +470,7 @@ export declare const BroadcastTxRequest: {
     encode(message: BroadcastTxRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxRequest;
     fromJSON(object: any): BroadcastTxRequest;
-    toJSON(message: BroadcastTxRequest): unknown;
+    toJSON(message: BroadcastTxRequest): JsonSafe<BroadcastTxRequest>;
     fromPartial(object: Partial<BroadcastTxRequest>): BroadcastTxRequest;
     fromAmino(object: BroadcastTxRequestAmino): BroadcastTxRequest;
     toAmino(message: BroadcastTxRequest): BroadcastTxRequestAmino;
@@ -488,7 +489,7 @@ export declare const BroadcastTxResponse: {
     encode(message: BroadcastTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxResponse;
     fromJSON(object: any): BroadcastTxResponse;
-    toJSON(message: BroadcastTxResponse): unknown;
+    toJSON(message: BroadcastTxResponse): JsonSafe<BroadcastTxResponse>;
     fromPartial(object: Partial<BroadcastTxResponse>): BroadcastTxResponse;
     fromAmino(object: BroadcastTxResponseAmino): BroadcastTxResponse;
     toAmino(message: BroadcastTxResponse): BroadcastTxResponseAmino;
@@ -507,7 +508,7 @@ export declare const SimulateRequest: {
     encode(message: SimulateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulateRequest;
     fromJSON(object: any): SimulateRequest;
-    toJSON(message: SimulateRequest): unknown;
+    toJSON(message: SimulateRequest): JsonSafe<SimulateRequest>;
     fromPartial(object: Partial<SimulateRequest>): SimulateRequest;
     fromAmino(object: SimulateRequestAmino): SimulateRequest;
     toAmino(message: SimulateRequest): SimulateRequestAmino;
@@ -526,7 +527,7 @@ export declare const SimulateResponse: {
     encode(message: SimulateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulateResponse;
     fromJSON(object: any): SimulateResponse;
-    toJSON(message: SimulateResponse): unknown;
+    toJSON(message: SimulateResponse): JsonSafe<SimulateResponse>;
     fromPartial(object: Partial<SimulateResponse>): SimulateResponse;
     fromAmino(object: SimulateResponseAmino): SimulateResponse;
     toAmino(message: SimulateResponse): SimulateResponseAmino;
@@ -545,7 +546,7 @@ export declare const GetTxRequest: {
     encode(message: GetTxRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxRequest;
     fromJSON(object: any): GetTxRequest;
-    toJSON(message: GetTxRequest): unknown;
+    toJSON(message: GetTxRequest): JsonSafe<GetTxRequest>;
     fromPartial(object: Partial<GetTxRequest>): GetTxRequest;
     fromAmino(object: GetTxRequestAmino): GetTxRequest;
     toAmino(message: GetTxRequest): GetTxRequestAmino;
@@ -564,7 +565,7 @@ export declare const GetTxResponse: {
     encode(message: GetTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxResponse;
     fromJSON(object: any): GetTxResponse;
-    toJSON(message: GetTxResponse): unknown;
+    toJSON(message: GetTxResponse): JsonSafe<GetTxResponse>;
     fromPartial(object: Partial<GetTxResponse>): GetTxResponse;
     fromAmino(object: GetTxResponseAmino): GetTxResponse;
     toAmino(message: GetTxResponse): GetTxResponseAmino;
@@ -583,7 +584,7 @@ export declare const GetBlockWithTxsRequest: {
     encode(message: GetBlockWithTxsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockWithTxsRequest;
     fromJSON(object: any): GetBlockWithTxsRequest;
-    toJSON(message: GetBlockWithTxsRequest): unknown;
+    toJSON(message: GetBlockWithTxsRequest): JsonSafe<GetBlockWithTxsRequest>;
     fromPartial(object: Partial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest;
     fromAmino(object: GetBlockWithTxsRequestAmino): GetBlockWithTxsRequest;
     toAmino(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestAmino;
@@ -602,7 +603,7 @@ export declare const GetBlockWithTxsResponse: {
     encode(message: GetBlockWithTxsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockWithTxsResponse;
     fromJSON(object: any): GetBlockWithTxsResponse;
-    toJSON(message: GetBlockWithTxsResponse): unknown;
+    toJSON(message: GetBlockWithTxsResponse): JsonSafe<GetBlockWithTxsResponse>;
     fromPartial(object: Partial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
     fromAmino(object: GetBlockWithTxsResponseAmino): GetBlockWithTxsResponse;
     toAmino(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseAmino;

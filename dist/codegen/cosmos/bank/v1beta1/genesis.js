@@ -4,8 +4,8 @@ exports.Balance = exports.GenesisState = void 0;
 const bank_1 = require("./bank");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseGenesisState() {
     return {
         params: bank_1.Params.fromPartial({}),

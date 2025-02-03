@@ -3,6 +3,7 @@ import { ProofOps, ProofOpsAmino, ProofOpsSDKType } from "../crypto/proof";
 import { EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType, VersionParams, VersionParamsAmino, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 export declare enum CheckTxType {
     NEW = 0,
     RECHECK = 1,
@@ -1097,12 +1098,9 @@ export interface TxResultSDKType {
 }
 /** Validator */
 export interface Validator {
-    /**
-     * The first 20 bytes of SHA256(public key)
-     * PubKey pub_key = 2 [(gogoproto.nullable)=false];
-     */
+    /** The first 20 bytes of SHA256(public key) */
     address: Uint8Array;
-    /** The voting power */
+    /** PubKey pub_key = 2 [(gogoproto.nullable)=false]; */
     power: bigint;
 }
 export interface ValidatorProtoMsg {
@@ -1111,12 +1109,9 @@ export interface ValidatorProtoMsg {
 }
 /** Validator */
 export interface ValidatorAmino {
-    /**
-     * The first 20 bytes of SHA256(public key)
-     * PubKey pub_key = 2 [(gogoproto.nullable)=false];
-     */
+    /** The first 20 bytes of SHA256(public key) */
     address?: string;
-    /** The voting power */
+    /** PubKey pub_key = 2 [(gogoproto.nullable)=false]; */
     power?: string;
 }
 export interface ValidatorAminoMsg {
@@ -1266,7 +1261,7 @@ export declare const Request: {
     encode(message: Request, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Request;
     fromJSON(object: any): Request;
-    toJSON(message: Request): unknown;
+    toJSON(message: Request): JsonSafe<Request>;
     fromPartial(object: Partial<Request>): Request;
     fromAmino(object: RequestAmino): Request;
     toAmino(message: Request): RequestAmino;
@@ -1283,7 +1278,7 @@ export declare const RequestEcho: {
     encode(message: RequestEcho, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestEcho;
     fromJSON(object: any): RequestEcho;
-    toJSON(message: RequestEcho): unknown;
+    toJSON(message: RequestEcho): JsonSafe<RequestEcho>;
     fromPartial(object: Partial<RequestEcho>): RequestEcho;
     fromAmino(object: RequestEchoAmino): RequestEcho;
     toAmino(message: RequestEcho): RequestEchoAmino;
@@ -1300,7 +1295,7 @@ export declare const RequestFlush: {
     encode(_: RequestFlush, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestFlush;
     fromJSON(_: any): RequestFlush;
-    toJSON(_: RequestFlush): unknown;
+    toJSON(_: RequestFlush): JsonSafe<RequestFlush>;
     fromPartial(_: Partial<RequestFlush>): RequestFlush;
     fromAmino(_: RequestFlushAmino): RequestFlush;
     toAmino(_: RequestFlush): RequestFlushAmino;
@@ -1317,7 +1312,7 @@ export declare const RequestInfo: {
     encode(message: RequestInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestInfo;
     fromJSON(object: any): RequestInfo;
-    toJSON(message: RequestInfo): unknown;
+    toJSON(message: RequestInfo): JsonSafe<RequestInfo>;
     fromPartial(object: Partial<RequestInfo>): RequestInfo;
     fromAmino(object: RequestInfoAmino): RequestInfo;
     toAmino(message: RequestInfo): RequestInfoAmino;
@@ -1334,7 +1329,7 @@ export declare const RequestSetOption: {
     encode(message: RequestSetOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestSetOption;
     fromJSON(object: any): RequestSetOption;
-    toJSON(message: RequestSetOption): unknown;
+    toJSON(message: RequestSetOption): JsonSafe<RequestSetOption>;
     fromPartial(object: Partial<RequestSetOption>): RequestSetOption;
     fromAmino(object: RequestSetOptionAmino): RequestSetOption;
     toAmino(message: RequestSetOption): RequestSetOptionAmino;
@@ -1351,7 +1346,7 @@ export declare const RequestInitChain: {
     encode(message: RequestInitChain, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestInitChain;
     fromJSON(object: any): RequestInitChain;
-    toJSON(message: RequestInitChain): unknown;
+    toJSON(message: RequestInitChain): JsonSafe<RequestInitChain>;
     fromPartial(object: Partial<RequestInitChain>): RequestInitChain;
     fromAmino(object: RequestInitChainAmino): RequestInitChain;
     toAmino(message: RequestInitChain): RequestInitChainAmino;
@@ -1368,7 +1363,7 @@ export declare const RequestQuery: {
     encode(message: RequestQuery, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestQuery;
     fromJSON(object: any): RequestQuery;
-    toJSON(message: RequestQuery): unknown;
+    toJSON(message: RequestQuery): JsonSafe<RequestQuery>;
     fromPartial(object: Partial<RequestQuery>): RequestQuery;
     fromAmino(object: RequestQueryAmino): RequestQuery;
     toAmino(message: RequestQuery): RequestQueryAmino;
@@ -1385,7 +1380,7 @@ export declare const RequestBeginBlock: {
     encode(message: RequestBeginBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestBeginBlock;
     fromJSON(object: any): RequestBeginBlock;
-    toJSON(message: RequestBeginBlock): unknown;
+    toJSON(message: RequestBeginBlock): JsonSafe<RequestBeginBlock>;
     fromPartial(object: Partial<RequestBeginBlock>): RequestBeginBlock;
     fromAmino(object: RequestBeginBlockAmino): RequestBeginBlock;
     toAmino(message: RequestBeginBlock): RequestBeginBlockAmino;
@@ -1402,7 +1397,7 @@ export declare const RequestCheckTx: {
     encode(message: RequestCheckTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestCheckTx;
     fromJSON(object: any): RequestCheckTx;
-    toJSON(message: RequestCheckTx): unknown;
+    toJSON(message: RequestCheckTx): JsonSafe<RequestCheckTx>;
     fromPartial(object: Partial<RequestCheckTx>): RequestCheckTx;
     fromAmino(object: RequestCheckTxAmino): RequestCheckTx;
     toAmino(message: RequestCheckTx): RequestCheckTxAmino;
@@ -1419,7 +1414,7 @@ export declare const RequestDeliverTx: {
     encode(message: RequestDeliverTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestDeliverTx;
     fromJSON(object: any): RequestDeliverTx;
-    toJSON(message: RequestDeliverTx): unknown;
+    toJSON(message: RequestDeliverTx): JsonSafe<RequestDeliverTx>;
     fromPartial(object: Partial<RequestDeliverTx>): RequestDeliverTx;
     fromAmino(object: RequestDeliverTxAmino): RequestDeliverTx;
     toAmino(message: RequestDeliverTx): RequestDeliverTxAmino;
@@ -1436,7 +1431,7 @@ export declare const RequestEndBlock: {
     encode(message: RequestEndBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestEndBlock;
     fromJSON(object: any): RequestEndBlock;
-    toJSON(message: RequestEndBlock): unknown;
+    toJSON(message: RequestEndBlock): JsonSafe<RequestEndBlock>;
     fromPartial(object: Partial<RequestEndBlock>): RequestEndBlock;
     fromAmino(object: RequestEndBlockAmino): RequestEndBlock;
     toAmino(message: RequestEndBlock): RequestEndBlockAmino;
@@ -1453,7 +1448,7 @@ export declare const RequestCommit: {
     encode(_: RequestCommit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestCommit;
     fromJSON(_: any): RequestCommit;
-    toJSON(_: RequestCommit): unknown;
+    toJSON(_: RequestCommit): JsonSafe<RequestCommit>;
     fromPartial(_: Partial<RequestCommit>): RequestCommit;
     fromAmino(_: RequestCommitAmino): RequestCommit;
     toAmino(_: RequestCommit): RequestCommitAmino;
@@ -1470,7 +1465,7 @@ export declare const RequestListSnapshots: {
     encode(_: RequestListSnapshots, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestListSnapshots;
     fromJSON(_: any): RequestListSnapshots;
-    toJSON(_: RequestListSnapshots): unknown;
+    toJSON(_: RequestListSnapshots): JsonSafe<RequestListSnapshots>;
     fromPartial(_: Partial<RequestListSnapshots>): RequestListSnapshots;
     fromAmino(_: RequestListSnapshotsAmino): RequestListSnapshots;
     toAmino(_: RequestListSnapshots): RequestListSnapshotsAmino;
@@ -1487,7 +1482,7 @@ export declare const RequestOfferSnapshot: {
     encode(message: RequestOfferSnapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestOfferSnapshot;
     fromJSON(object: any): RequestOfferSnapshot;
-    toJSON(message: RequestOfferSnapshot): unknown;
+    toJSON(message: RequestOfferSnapshot): JsonSafe<RequestOfferSnapshot>;
     fromPartial(object: Partial<RequestOfferSnapshot>): RequestOfferSnapshot;
     fromAmino(object: RequestOfferSnapshotAmino): RequestOfferSnapshot;
     toAmino(message: RequestOfferSnapshot): RequestOfferSnapshotAmino;
@@ -1504,7 +1499,7 @@ export declare const RequestLoadSnapshotChunk: {
     encode(message: RequestLoadSnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestLoadSnapshotChunk;
     fromJSON(object: any): RequestLoadSnapshotChunk;
-    toJSON(message: RequestLoadSnapshotChunk): unknown;
+    toJSON(message: RequestLoadSnapshotChunk): JsonSafe<RequestLoadSnapshotChunk>;
     fromPartial(object: Partial<RequestLoadSnapshotChunk>): RequestLoadSnapshotChunk;
     fromAmino(object: RequestLoadSnapshotChunkAmino): RequestLoadSnapshotChunk;
     toAmino(message: RequestLoadSnapshotChunk): RequestLoadSnapshotChunkAmino;
@@ -1521,7 +1516,7 @@ export declare const RequestApplySnapshotChunk: {
     encode(message: RequestApplySnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestApplySnapshotChunk;
     fromJSON(object: any): RequestApplySnapshotChunk;
-    toJSON(message: RequestApplySnapshotChunk): unknown;
+    toJSON(message: RequestApplySnapshotChunk): JsonSafe<RequestApplySnapshotChunk>;
     fromPartial(object: Partial<RequestApplySnapshotChunk>): RequestApplySnapshotChunk;
     fromAmino(object: RequestApplySnapshotChunkAmino): RequestApplySnapshotChunk;
     toAmino(message: RequestApplySnapshotChunk): RequestApplySnapshotChunkAmino;
@@ -1538,7 +1533,7 @@ export declare const Response: {
     encode(message: Response, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Response;
     fromJSON(object: any): Response;
-    toJSON(message: Response): unknown;
+    toJSON(message: Response): JsonSafe<Response>;
     fromPartial(object: Partial<Response>): Response;
     fromAmino(object: ResponseAmino): Response;
     toAmino(message: Response): ResponseAmino;
@@ -1555,7 +1550,7 @@ export declare const ResponseException: {
     encode(message: ResponseException, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseException;
     fromJSON(object: any): ResponseException;
-    toJSON(message: ResponseException): unknown;
+    toJSON(message: ResponseException): JsonSafe<ResponseException>;
     fromPartial(object: Partial<ResponseException>): ResponseException;
     fromAmino(object: ResponseExceptionAmino): ResponseException;
     toAmino(message: ResponseException): ResponseExceptionAmino;
@@ -1572,7 +1567,7 @@ export declare const ResponseEcho: {
     encode(message: ResponseEcho, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseEcho;
     fromJSON(object: any): ResponseEcho;
-    toJSON(message: ResponseEcho): unknown;
+    toJSON(message: ResponseEcho): JsonSafe<ResponseEcho>;
     fromPartial(object: Partial<ResponseEcho>): ResponseEcho;
     fromAmino(object: ResponseEchoAmino): ResponseEcho;
     toAmino(message: ResponseEcho): ResponseEchoAmino;
@@ -1589,7 +1584,7 @@ export declare const ResponseFlush: {
     encode(_: ResponseFlush, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseFlush;
     fromJSON(_: any): ResponseFlush;
-    toJSON(_: ResponseFlush): unknown;
+    toJSON(_: ResponseFlush): JsonSafe<ResponseFlush>;
     fromPartial(_: Partial<ResponseFlush>): ResponseFlush;
     fromAmino(_: ResponseFlushAmino): ResponseFlush;
     toAmino(_: ResponseFlush): ResponseFlushAmino;
@@ -1606,7 +1601,7 @@ export declare const ResponseInfo: {
     encode(message: ResponseInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseInfo;
     fromJSON(object: any): ResponseInfo;
-    toJSON(message: ResponseInfo): unknown;
+    toJSON(message: ResponseInfo): JsonSafe<ResponseInfo>;
     fromPartial(object: Partial<ResponseInfo>): ResponseInfo;
     fromAmino(object: ResponseInfoAmino): ResponseInfo;
     toAmino(message: ResponseInfo): ResponseInfoAmino;
@@ -1623,7 +1618,7 @@ export declare const ResponseSetOption: {
     encode(message: ResponseSetOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseSetOption;
     fromJSON(object: any): ResponseSetOption;
-    toJSON(message: ResponseSetOption): unknown;
+    toJSON(message: ResponseSetOption): JsonSafe<ResponseSetOption>;
     fromPartial(object: Partial<ResponseSetOption>): ResponseSetOption;
     fromAmino(object: ResponseSetOptionAmino): ResponseSetOption;
     toAmino(message: ResponseSetOption): ResponseSetOptionAmino;
@@ -1640,7 +1635,7 @@ export declare const ResponseInitChain: {
     encode(message: ResponseInitChain, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseInitChain;
     fromJSON(object: any): ResponseInitChain;
-    toJSON(message: ResponseInitChain): unknown;
+    toJSON(message: ResponseInitChain): JsonSafe<ResponseInitChain>;
     fromPartial(object: Partial<ResponseInitChain>): ResponseInitChain;
     fromAmino(object: ResponseInitChainAmino): ResponseInitChain;
     toAmino(message: ResponseInitChain): ResponseInitChainAmino;
@@ -1657,7 +1652,7 @@ export declare const ResponseQuery: {
     encode(message: ResponseQuery, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseQuery;
     fromJSON(object: any): ResponseQuery;
-    toJSON(message: ResponseQuery): unknown;
+    toJSON(message: ResponseQuery): JsonSafe<ResponseQuery>;
     fromPartial(object: Partial<ResponseQuery>): ResponseQuery;
     fromAmino(object: ResponseQueryAmino): ResponseQuery;
     toAmino(message: ResponseQuery): ResponseQueryAmino;
@@ -1674,7 +1669,7 @@ export declare const ResponseBeginBlock: {
     encode(message: ResponseBeginBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseBeginBlock;
     fromJSON(object: any): ResponseBeginBlock;
-    toJSON(message: ResponseBeginBlock): unknown;
+    toJSON(message: ResponseBeginBlock): JsonSafe<ResponseBeginBlock>;
     fromPartial(object: Partial<ResponseBeginBlock>): ResponseBeginBlock;
     fromAmino(object: ResponseBeginBlockAmino): ResponseBeginBlock;
     toAmino(message: ResponseBeginBlock): ResponseBeginBlockAmino;
@@ -1691,7 +1686,7 @@ export declare const ResponseCheckTx: {
     encode(message: ResponseCheckTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseCheckTx;
     fromJSON(object: any): ResponseCheckTx;
-    toJSON(message: ResponseCheckTx): unknown;
+    toJSON(message: ResponseCheckTx): JsonSafe<ResponseCheckTx>;
     fromPartial(object: Partial<ResponseCheckTx>): ResponseCheckTx;
     fromAmino(object: ResponseCheckTxAmino): ResponseCheckTx;
     toAmino(message: ResponseCheckTx): ResponseCheckTxAmino;
@@ -1708,7 +1703,7 @@ export declare const ResponseDeliverTx: {
     encode(message: ResponseDeliverTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseDeliverTx;
     fromJSON(object: any): ResponseDeliverTx;
-    toJSON(message: ResponseDeliverTx): unknown;
+    toJSON(message: ResponseDeliverTx): JsonSafe<ResponseDeliverTx>;
     fromPartial(object: Partial<ResponseDeliverTx>): ResponseDeliverTx;
     fromAmino(object: ResponseDeliverTxAmino): ResponseDeliverTx;
     toAmino(message: ResponseDeliverTx): ResponseDeliverTxAmino;
@@ -1725,7 +1720,7 @@ export declare const ResponseEndBlock: {
     encode(message: ResponseEndBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseEndBlock;
     fromJSON(object: any): ResponseEndBlock;
-    toJSON(message: ResponseEndBlock): unknown;
+    toJSON(message: ResponseEndBlock): JsonSafe<ResponseEndBlock>;
     fromPartial(object: Partial<ResponseEndBlock>): ResponseEndBlock;
     fromAmino(object: ResponseEndBlockAmino): ResponseEndBlock;
     toAmino(message: ResponseEndBlock): ResponseEndBlockAmino;
@@ -1742,7 +1737,7 @@ export declare const ResponseCommit: {
     encode(message: ResponseCommit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseCommit;
     fromJSON(object: any): ResponseCommit;
-    toJSON(message: ResponseCommit): unknown;
+    toJSON(message: ResponseCommit): JsonSafe<ResponseCommit>;
     fromPartial(object: Partial<ResponseCommit>): ResponseCommit;
     fromAmino(object: ResponseCommitAmino): ResponseCommit;
     toAmino(message: ResponseCommit): ResponseCommitAmino;
@@ -1759,7 +1754,7 @@ export declare const ResponseListSnapshots: {
     encode(message: ResponseListSnapshots, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseListSnapshots;
     fromJSON(object: any): ResponseListSnapshots;
-    toJSON(message: ResponseListSnapshots): unknown;
+    toJSON(message: ResponseListSnapshots): JsonSafe<ResponseListSnapshots>;
     fromPartial(object: Partial<ResponseListSnapshots>): ResponseListSnapshots;
     fromAmino(object: ResponseListSnapshotsAmino): ResponseListSnapshots;
     toAmino(message: ResponseListSnapshots): ResponseListSnapshotsAmino;
@@ -1776,7 +1771,7 @@ export declare const ResponseOfferSnapshot: {
     encode(message: ResponseOfferSnapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseOfferSnapshot;
     fromJSON(object: any): ResponseOfferSnapshot;
-    toJSON(message: ResponseOfferSnapshot): unknown;
+    toJSON(message: ResponseOfferSnapshot): JsonSafe<ResponseOfferSnapshot>;
     fromPartial(object: Partial<ResponseOfferSnapshot>): ResponseOfferSnapshot;
     fromAmino(object: ResponseOfferSnapshotAmino): ResponseOfferSnapshot;
     toAmino(message: ResponseOfferSnapshot): ResponseOfferSnapshotAmino;
@@ -1793,7 +1788,7 @@ export declare const ResponseLoadSnapshotChunk: {
     encode(message: ResponseLoadSnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseLoadSnapshotChunk;
     fromJSON(object: any): ResponseLoadSnapshotChunk;
-    toJSON(message: ResponseLoadSnapshotChunk): unknown;
+    toJSON(message: ResponseLoadSnapshotChunk): JsonSafe<ResponseLoadSnapshotChunk>;
     fromPartial(object: Partial<ResponseLoadSnapshotChunk>): ResponseLoadSnapshotChunk;
     fromAmino(object: ResponseLoadSnapshotChunkAmino): ResponseLoadSnapshotChunk;
     toAmino(message: ResponseLoadSnapshotChunk): ResponseLoadSnapshotChunkAmino;
@@ -1810,7 +1805,7 @@ export declare const ResponseApplySnapshotChunk: {
     encode(message: ResponseApplySnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseApplySnapshotChunk;
     fromJSON(object: any): ResponseApplySnapshotChunk;
-    toJSON(message: ResponseApplySnapshotChunk): unknown;
+    toJSON(message: ResponseApplySnapshotChunk): JsonSafe<ResponseApplySnapshotChunk>;
     fromPartial(object: Partial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk;
     fromAmino(object: ResponseApplySnapshotChunkAmino): ResponseApplySnapshotChunk;
     toAmino(message: ResponseApplySnapshotChunk): ResponseApplySnapshotChunkAmino;
@@ -1827,7 +1822,7 @@ export declare const ConsensusParams: {
     encode(message: ConsensusParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusParams;
     fromJSON(object: any): ConsensusParams;
-    toJSON(message: ConsensusParams): unknown;
+    toJSON(message: ConsensusParams): JsonSafe<ConsensusParams>;
     fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
     fromAmino(object: ConsensusParamsAmino): ConsensusParams;
     toAmino(message: ConsensusParams): ConsensusParamsAmino;
@@ -1844,7 +1839,7 @@ export declare const BlockParams: {
     encode(message: BlockParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockParams;
     fromJSON(object: any): BlockParams;
-    toJSON(message: BlockParams): unknown;
+    toJSON(message: BlockParams): JsonSafe<BlockParams>;
     fromPartial(object: Partial<BlockParams>): BlockParams;
     fromAmino(object: BlockParamsAmino): BlockParams;
     toAmino(message: BlockParams): BlockParamsAmino;
@@ -1861,7 +1856,7 @@ export declare const LastCommitInfo: {
     encode(message: LastCommitInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LastCommitInfo;
     fromJSON(object: any): LastCommitInfo;
-    toJSON(message: LastCommitInfo): unknown;
+    toJSON(message: LastCommitInfo): JsonSafe<LastCommitInfo>;
     fromPartial(object: Partial<LastCommitInfo>): LastCommitInfo;
     fromAmino(object: LastCommitInfoAmino): LastCommitInfo;
     toAmino(message: LastCommitInfo): LastCommitInfoAmino;
@@ -1878,7 +1873,7 @@ export declare const Event: {
     encode(message: Event, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Event;
     fromJSON(object: any): Event;
-    toJSON(message: Event): unknown;
+    toJSON(message: Event): JsonSafe<Event>;
     fromPartial(object: Partial<Event>): Event;
     fromAmino(object: EventAmino): Event;
     toAmino(message: Event): EventAmino;
@@ -1895,7 +1890,7 @@ export declare const EventAttribute: {
     encode(message: EventAttribute, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventAttribute;
     fromJSON(object: any): EventAttribute;
-    toJSON(message: EventAttribute): unknown;
+    toJSON(message: EventAttribute): JsonSafe<EventAttribute>;
     fromPartial(object: Partial<EventAttribute>): EventAttribute;
     fromAmino(object: EventAttributeAmino): EventAttribute;
     toAmino(message: EventAttribute): EventAttributeAmino;
@@ -1912,7 +1907,7 @@ export declare const TxResult: {
     encode(message: TxResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxResult;
     fromJSON(object: any): TxResult;
-    toJSON(message: TxResult): unknown;
+    toJSON(message: TxResult): JsonSafe<TxResult>;
     fromPartial(object: Partial<TxResult>): TxResult;
     fromAmino(object: TxResultAmino): TxResult;
     toAmino(message: TxResult): TxResultAmino;
@@ -1929,7 +1924,7 @@ export declare const Validator: {
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromJSON(object: any): Validator;
-    toJSON(message: Validator): unknown;
+    toJSON(message: Validator): JsonSafe<Validator>;
     fromPartial(object: Partial<Validator>): Validator;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
@@ -1946,7 +1941,7 @@ export declare const ValidatorUpdate: {
     encode(message: ValidatorUpdate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorUpdate;
     fromJSON(object: any): ValidatorUpdate;
-    toJSON(message: ValidatorUpdate): unknown;
+    toJSON(message: ValidatorUpdate): JsonSafe<ValidatorUpdate>;
     fromPartial(object: Partial<ValidatorUpdate>): ValidatorUpdate;
     fromAmino(object: ValidatorUpdateAmino): ValidatorUpdate;
     toAmino(message: ValidatorUpdate): ValidatorUpdateAmino;
@@ -1963,7 +1958,7 @@ export declare const VoteInfo: {
     encode(message: VoteInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VoteInfo;
     fromJSON(object: any): VoteInfo;
-    toJSON(message: VoteInfo): unknown;
+    toJSON(message: VoteInfo): JsonSafe<VoteInfo>;
     fromPartial(object: Partial<VoteInfo>): VoteInfo;
     fromAmino(object: VoteInfoAmino): VoteInfo;
     toAmino(message: VoteInfo): VoteInfoAmino;
@@ -1980,7 +1975,7 @@ export declare const Evidence: {
     encode(message: Evidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Evidence;
     fromJSON(object: any): Evidence;
-    toJSON(message: Evidence): unknown;
+    toJSON(message: Evidence): JsonSafe<Evidence>;
     fromPartial(object: Partial<Evidence>): Evidence;
     fromAmino(object: EvidenceAmino): Evidence;
     toAmino(message: Evidence): EvidenceAmino;
@@ -1997,7 +1992,7 @@ export declare const Snapshot: {
     encode(message: Snapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Snapshot;
     fromJSON(object: any): Snapshot;
-    toJSON(message: Snapshot): unknown;
+    toJSON(message: Snapshot): JsonSafe<Snapshot>;
     fromPartial(object: Partial<Snapshot>): Snapshot;
     fromAmino(object: SnapshotAmino): Snapshot;
     toAmino(message: Snapshot): SnapshotAmino;

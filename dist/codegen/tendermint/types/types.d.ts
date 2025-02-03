@@ -2,6 +2,7 @@ import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 export declare enum BlockIDFlag {
     BLOCK_ID_FLAG_UNKNOWN = 0,
@@ -108,6 +109,7 @@ export interface Header {
     lastBlockId: BlockID;
     /** hashes of block data */
     lastCommitHash: Uint8Array;
+    /** transactions */
     dataHash: Uint8Array;
     /** hashes from the app output from the prev block */
     validatorsHash: Uint8Array;
@@ -117,6 +119,7 @@ export interface Header {
     consensusHash: Uint8Array;
     /** state after txs from the previous block */
     appHash: Uint8Array;
+    /** root hash of all results from the txs from the previous block */
     lastResultsHash: Uint8Array;
     /** consensus info */
     evidenceHash: Uint8Array;
@@ -138,6 +141,7 @@ export interface HeaderAmino {
     last_block_id?: BlockIDAmino;
     /** hashes of block data */
     last_commit_hash?: string;
+    /** transactions */
     data_hash?: string;
     /** hashes from the app output from the prev block */
     validators_hash?: string;
@@ -147,6 +151,7 @@ export interface HeaderAmino {
     consensus_hash?: string;
     /** state after txs from the previous block */
     app_hash?: string;
+    /** root hash of all results from the txs from the previous block */
     last_results_hash?: string;
     /** consensus info */
     evidence_hash?: string;
@@ -449,7 +454,7 @@ export declare const PartSetHeader: {
     encode(message: PartSetHeader, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PartSetHeader;
     fromJSON(object: any): PartSetHeader;
-    toJSON(message: PartSetHeader): unknown;
+    toJSON(message: PartSetHeader): JsonSafe<PartSetHeader>;
     fromPartial(object: Partial<PartSetHeader>): PartSetHeader;
     fromAmino(object: PartSetHeaderAmino): PartSetHeader;
     toAmino(message: PartSetHeader): PartSetHeaderAmino;
@@ -466,7 +471,7 @@ export declare const Part: {
     encode(message: Part, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Part;
     fromJSON(object: any): Part;
-    toJSON(message: Part): unknown;
+    toJSON(message: Part): JsonSafe<Part>;
     fromPartial(object: Partial<Part>): Part;
     fromAmino(object: PartAmino): Part;
     toAmino(message: Part): PartAmino;
@@ -483,7 +488,7 @@ export declare const BlockID: {
     encode(message: BlockID, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockID;
     fromJSON(object: any): BlockID;
-    toJSON(message: BlockID): unknown;
+    toJSON(message: BlockID): JsonSafe<BlockID>;
     fromPartial(object: Partial<BlockID>): BlockID;
     fromAmino(object: BlockIDAmino): BlockID;
     toAmino(message: BlockID): BlockIDAmino;
@@ -500,7 +505,7 @@ export declare const Header: {
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromJSON(object: any): Header;
-    toJSON(message: Header): unknown;
+    toJSON(message: Header): JsonSafe<Header>;
     fromPartial(object: Partial<Header>): Header;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
@@ -517,7 +522,7 @@ export declare const Data: {
     encode(message: Data, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Data;
     fromJSON(object: any): Data;
-    toJSON(message: Data): unknown;
+    toJSON(message: Data): JsonSafe<Data>;
     fromPartial(object: Partial<Data>): Data;
     fromAmino(object: DataAmino): Data;
     toAmino(message: Data): DataAmino;
@@ -534,7 +539,7 @@ export declare const Vote: {
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromJSON(object: any): Vote;
-    toJSON(message: Vote): unknown;
+    toJSON(message: Vote): JsonSafe<Vote>;
     fromPartial(object: Partial<Vote>): Vote;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
@@ -551,7 +556,7 @@ export declare const Commit: {
     encode(message: Commit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Commit;
     fromJSON(object: any): Commit;
-    toJSON(message: Commit): unknown;
+    toJSON(message: Commit): JsonSafe<Commit>;
     fromPartial(object: Partial<Commit>): Commit;
     fromAmino(object: CommitAmino): Commit;
     toAmino(message: Commit): CommitAmino;
@@ -568,7 +573,7 @@ export declare const CommitSig: {
     encode(message: CommitSig, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitSig;
     fromJSON(object: any): CommitSig;
-    toJSON(message: CommitSig): unknown;
+    toJSON(message: CommitSig): JsonSafe<CommitSig>;
     fromPartial(object: Partial<CommitSig>): CommitSig;
     fromAmino(object: CommitSigAmino): CommitSig;
     toAmino(message: CommitSig): CommitSigAmino;
@@ -585,7 +590,7 @@ export declare const Proposal: {
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromJSON(object: any): Proposal;
-    toJSON(message: Proposal): unknown;
+    toJSON(message: Proposal): JsonSafe<Proposal>;
     fromPartial(object: Partial<Proposal>): Proposal;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
@@ -602,7 +607,7 @@ export declare const SignedHeader: {
     encode(message: SignedHeader, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignedHeader;
     fromJSON(object: any): SignedHeader;
-    toJSON(message: SignedHeader): unknown;
+    toJSON(message: SignedHeader): JsonSafe<SignedHeader>;
     fromPartial(object: Partial<SignedHeader>): SignedHeader;
     fromAmino(object: SignedHeaderAmino): SignedHeader;
     toAmino(message: SignedHeader): SignedHeaderAmino;
@@ -619,7 +624,7 @@ export declare const LightBlock: {
     encode(message: LightBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LightBlock;
     fromJSON(object: any): LightBlock;
-    toJSON(message: LightBlock): unknown;
+    toJSON(message: LightBlock): JsonSafe<LightBlock>;
     fromPartial(object: Partial<LightBlock>): LightBlock;
     fromAmino(object: LightBlockAmino): LightBlock;
     toAmino(message: LightBlock): LightBlockAmino;
@@ -636,7 +641,7 @@ export declare const BlockMeta: {
     encode(message: BlockMeta, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockMeta;
     fromJSON(object: any): BlockMeta;
-    toJSON(message: BlockMeta): unknown;
+    toJSON(message: BlockMeta): JsonSafe<BlockMeta>;
     fromPartial(object: Partial<BlockMeta>): BlockMeta;
     fromAmino(object: BlockMetaAmino): BlockMeta;
     toAmino(message: BlockMeta): BlockMetaAmino;
@@ -653,7 +658,7 @@ export declare const TxProof: {
     encode(message: TxProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxProof;
     fromJSON(object: any): TxProof;
-    toJSON(message: TxProof): unknown;
+    toJSON(message: TxProof): JsonSafe<TxProof>;
     fromPartial(object: Partial<TxProof>): TxProof;
     fromAmino(object: TxProofAmino): TxProof;
     toAmino(message: TxProof): TxProofAmino;

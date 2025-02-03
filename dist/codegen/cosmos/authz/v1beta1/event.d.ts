@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** EventGrant is emitted on Msg/Grant */
 export interface EventGrant {
     /** Msg type URL for which an autorization is granted */
@@ -72,7 +73,7 @@ export declare const EventGrant: {
     encode(message: EventGrant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventGrant;
     fromJSON(object: any): EventGrant;
-    toJSON(message: EventGrant): unknown;
+    toJSON(message: EventGrant): JsonSafe<EventGrant>;
     fromPartial(object: Partial<EventGrant>): EventGrant;
     fromAmino(object: EventGrantAmino): EventGrant;
     toAmino(message: EventGrant): EventGrantAmino;
@@ -91,7 +92,7 @@ export declare const EventRevoke: {
     encode(message: EventRevoke, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventRevoke;
     fromJSON(object: any): EventRevoke;
-    toJSON(message: EventRevoke): unknown;
+    toJSON(message: EventRevoke): JsonSafe<EventRevoke>;
     fromPartial(object: Partial<EventRevoke>): EventRevoke;
     fromAmino(object: EventRevokeAmino): EventRevoke;
     toAmino(message: EventRevoke): EventRevokeAmino;

@@ -3,6 +3,7 @@ import { SignMode } from "../signing/v1beta1/signing";
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../crypto/multisig/v1beta1/multisig";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** Tx is the standard type used for broadcasting transactions. */
 export interface Tx {
     /** body is the processable content of the transaction */
@@ -765,7 +766,7 @@ export declare const Tx: {
     encode(message: Tx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Tx;
     fromJSON(object: any): Tx;
-    toJSON(message: Tx): unknown;
+    toJSON(message: Tx): JsonSafe<Tx>;
     fromPartial(object: Partial<Tx>): Tx;
     fromAmino(object: TxAmino): Tx;
     toAmino(message: Tx): TxAmino;
@@ -784,7 +785,7 @@ export declare const TxRaw: {
     encode(message: TxRaw, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxRaw;
     fromJSON(object: any): TxRaw;
-    toJSON(message: TxRaw): unknown;
+    toJSON(message: TxRaw): JsonSafe<TxRaw>;
     fromPartial(object: Partial<TxRaw>): TxRaw;
     fromAmino(object: TxRawAmino): TxRaw;
     toAmino(message: TxRaw): TxRawAmino;
@@ -803,7 +804,7 @@ export declare const SignDoc: {
     encode(message: SignDoc, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignDoc;
     fromJSON(object: any): SignDoc;
-    toJSON(message: SignDoc): unknown;
+    toJSON(message: SignDoc): JsonSafe<SignDoc>;
     fromPartial(object: Partial<SignDoc>): SignDoc;
     fromAmino(object: SignDocAmino): SignDoc;
     toAmino(message: SignDoc): SignDocAmino;
@@ -822,7 +823,7 @@ export declare const SignDocDirectAux: {
     encode(message: SignDocDirectAux, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignDocDirectAux;
     fromJSON(object: any): SignDocDirectAux;
-    toJSON(message: SignDocDirectAux): unknown;
+    toJSON(message: SignDocDirectAux): JsonSafe<SignDocDirectAux>;
     fromPartial(object: Partial<SignDocDirectAux>): SignDocDirectAux;
     fromAmino(object: SignDocDirectAuxAmino): SignDocDirectAux;
     toAmino(message: SignDocDirectAux): SignDocDirectAuxAmino;
@@ -841,7 +842,7 @@ export declare const TxBody: {
     encode(message: TxBody, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxBody;
     fromJSON(object: any): TxBody;
-    toJSON(message: TxBody): unknown;
+    toJSON(message: TxBody): JsonSafe<TxBody>;
     fromPartial(object: Partial<TxBody>): TxBody;
     fromAmino(object: TxBodyAmino): TxBody;
     toAmino(message: TxBody): TxBodyAmino;
@@ -860,7 +861,7 @@ export declare const AuthInfo: {
     encode(message: AuthInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuthInfo;
     fromJSON(object: any): AuthInfo;
-    toJSON(message: AuthInfo): unknown;
+    toJSON(message: AuthInfo): JsonSafe<AuthInfo>;
     fromPartial(object: Partial<AuthInfo>): AuthInfo;
     fromAmino(object: AuthInfoAmino): AuthInfo;
     toAmino(message: AuthInfo): AuthInfoAmino;
@@ -879,7 +880,7 @@ export declare const SignerInfo: {
     encode(message: SignerInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignerInfo;
     fromJSON(object: any): SignerInfo;
-    toJSON(message: SignerInfo): unknown;
+    toJSON(message: SignerInfo): JsonSafe<SignerInfo>;
     fromPartial(object: Partial<SignerInfo>): SignerInfo;
     fromAmino(object: SignerInfoAmino): SignerInfo;
     toAmino(message: SignerInfo): SignerInfoAmino;
@@ -898,7 +899,7 @@ export declare const ModeInfo: {
     encode(message: ModeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo;
     fromJSON(object: any): ModeInfo;
-    toJSON(message: ModeInfo): unknown;
+    toJSON(message: ModeInfo): JsonSafe<ModeInfo>;
     fromPartial(object: Partial<ModeInfo>): ModeInfo;
     fromAmino(object: ModeInfoAmino): ModeInfo;
     toAmino(message: ModeInfo): ModeInfoAmino;
@@ -917,7 +918,7 @@ export declare const ModeInfo_Single: {
     encode(message: ModeInfo_Single, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Single;
     fromJSON(object: any): ModeInfo_Single;
-    toJSON(message: ModeInfo_Single): unknown;
+    toJSON(message: ModeInfo_Single): JsonSafe<ModeInfo_Single>;
     fromPartial(object: Partial<ModeInfo_Single>): ModeInfo_Single;
     fromAmino(object: ModeInfo_SingleAmino): ModeInfo_Single;
     toAmino(message: ModeInfo_Single): ModeInfo_SingleAmino;
@@ -936,7 +937,7 @@ export declare const ModeInfo_Multi: {
     encode(message: ModeInfo_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Multi;
     fromJSON(object: any): ModeInfo_Multi;
-    toJSON(message: ModeInfo_Multi): unknown;
+    toJSON(message: ModeInfo_Multi): JsonSafe<ModeInfo_Multi>;
     fromPartial(object: Partial<ModeInfo_Multi>): ModeInfo_Multi;
     fromAmino(object: ModeInfo_MultiAmino): ModeInfo_Multi;
     toAmino(message: ModeInfo_Multi): ModeInfo_MultiAmino;
@@ -955,7 +956,7 @@ export declare const Fee: {
     encode(message: Fee, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Fee;
     fromJSON(object: any): Fee;
-    toJSON(message: Fee): unknown;
+    toJSON(message: Fee): JsonSafe<Fee>;
     fromPartial(object: Partial<Fee>): Fee;
     fromAmino(object: FeeAmino): Fee;
     toAmino(message: Fee): FeeAmino;
@@ -974,7 +975,7 @@ export declare const Tip: {
     encode(message: Tip, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Tip;
     fromJSON(object: any): Tip;
-    toJSON(message: Tip): unknown;
+    toJSON(message: Tip): JsonSafe<Tip>;
     fromPartial(object: Partial<Tip>): Tip;
     fromAmino(object: TipAmino): Tip;
     toAmino(message: Tip): TipAmino;
@@ -993,7 +994,7 @@ export declare const AuxSignerData: {
     encode(message: AuxSignerData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuxSignerData;
     fromJSON(object: any): AuxSignerData;
-    toJSON(message: AuxSignerData): unknown;
+    toJSON(message: AuxSignerData): JsonSafe<AuxSignerData>;
     fromPartial(object: Partial<AuxSignerData>): AuxSignerData;
     fromAmino(object: AuxSignerDataAmino): AuxSignerData;
     toAmino(message: AuxSignerData): AuxSignerDataAmino;

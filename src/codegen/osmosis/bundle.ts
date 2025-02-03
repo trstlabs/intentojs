@@ -1,14 +1,14 @@
-import * as _114 from "./gamm/v1beta1/gamm";
-import * as _115 from "./poolmanager/v1beta1/swap_route";
+import * as _111 from "./gamm/v1beta1/gamm";
+import * as _112 from "./poolmanager/v1beta1/swap_route";
 export namespace osmosis {
   export namespace gamm {
     export const v1beta1 = {
-      ..._114
+      ..._111
     };
   }
   export namespace poolmanager {
     export const v1beta1 = {
-      ..._115
+      ..._112
     };
   }
 }

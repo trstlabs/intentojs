@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * Coin defines a token with a denomination and an amount.
  *
@@ -124,7 +125,7 @@ export declare const Coin: {
     encode(message: Coin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Coin;
     fromJSON(object: any): Coin;
-    toJSON(message: Coin): unknown;
+    toJSON(message: Coin): JsonSafe<Coin>;
     fromPartial(object: Partial<Coin>): Coin;
     fromAmino(object: CoinAmino): Coin;
     toAmino(message: Coin): CoinAmino;
@@ -143,7 +144,7 @@ export declare const DecCoin: {
     encode(message: DecCoin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecCoin;
     fromJSON(object: any): DecCoin;
-    toJSON(message: DecCoin): unknown;
+    toJSON(message: DecCoin): JsonSafe<DecCoin>;
     fromPartial(object: Partial<DecCoin>): DecCoin;
     fromAmino(object: DecCoinAmino): DecCoin;
     toAmino(message: DecCoin): DecCoinAmino;
@@ -162,7 +163,7 @@ export declare const IntProto: {
     encode(message: IntProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IntProto;
     fromJSON(object: any): IntProto;
-    toJSON(message: IntProto): unknown;
+    toJSON(message: IntProto): JsonSafe<IntProto>;
     fromPartial(object: Partial<IntProto>): IntProto;
     fromAmino(object: IntProtoAmino): IntProto;
     toAmino(message: IntProto): IntProtoAmino;
@@ -181,7 +182,7 @@ export declare const DecProto: {
     encode(message: DecProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecProto;
     fromJSON(object: any): DecProto;
-    toJSON(message: DecProto): unknown;
+    toJSON(message: DecProto): JsonSafe<DecProto>;
     fromPartial(object: Partial<DecProto>): DecProto;
     fromAmino(object: DecProtoAmino): DecProto;
     toAmino(message: DecProto): DecProtoAmino;

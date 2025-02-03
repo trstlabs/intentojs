@@ -1,5 +1,6 @@
 import { IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, ClientConsensusStates, ClientConsensusStatesAmino, ClientConsensusStatesSDKType, Params, ParamsAmino, ParamsSDKType } from "./client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** GenesisState defines the ibc client submodule's genesis state. */
 export interface GenesisState {
     /** client states with their corresponding identifiers */
@@ -122,7 +123,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -141,7 +142,7 @@ export declare const GenesisMetadata: {
     encode(message: GenesisMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisMetadata;
     fromJSON(object: any): GenesisMetadata;
-    toJSON(message: GenesisMetadata): unknown;
+    toJSON(message: GenesisMetadata): JsonSafe<GenesisMetadata>;
     fromPartial(object: Partial<GenesisMetadata>): GenesisMetadata;
     fromAmino(object: GenesisMetadataAmino): GenesisMetadata;
     toAmino(message: GenesisMetadata): GenesisMetadataAmino;
@@ -160,7 +161,7 @@ export declare const IdentifiedGenesisMetadata: {
     encode(message: IdentifiedGenesisMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
     fromJSON(object: any): IdentifiedGenesisMetadata;
-    toJSON(message: IdentifiedGenesisMetadata): unknown;
+    toJSON(message: IdentifiedGenesisMetadata): JsonSafe<IdentifiedGenesisMetadata>;
     fromPartial(object: Partial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
     fromAmino(object: IdentifiedGenesisMetadataAmino): IdentifiedGenesisMetadata;
     toAmino(message: IdentifiedGenesisMetadata): IdentifiedGenesisMetadataAmino;

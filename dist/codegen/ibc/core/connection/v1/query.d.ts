@@ -3,6 +3,7 @@ import { ConnectionEnd, ConnectionEndAmino, ConnectionEndSDKType, IdentifiedConn
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
  * method
@@ -384,7 +385,7 @@ export declare const QueryConnectionRequest: {
     encode(message: QueryConnectionRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionRequest;
     fromJSON(object: any): QueryConnectionRequest;
-    toJSON(message: QueryConnectionRequest): unknown;
+    toJSON(message: QueryConnectionRequest): JsonSafe<QueryConnectionRequest>;
     fromPartial(object: Partial<QueryConnectionRequest>): QueryConnectionRequest;
     fromAmino(object: QueryConnectionRequestAmino): QueryConnectionRequest;
     toAmino(message: QueryConnectionRequest): QueryConnectionRequestAmino;
@@ -403,7 +404,7 @@ export declare const QueryConnectionResponse: {
     encode(message: QueryConnectionResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionResponse;
     fromJSON(object: any): QueryConnectionResponse;
-    toJSON(message: QueryConnectionResponse): unknown;
+    toJSON(message: QueryConnectionResponse): JsonSafe<QueryConnectionResponse>;
     fromPartial(object: Partial<QueryConnectionResponse>): QueryConnectionResponse;
     fromAmino(object: QueryConnectionResponseAmino): QueryConnectionResponse;
     toAmino(message: QueryConnectionResponse): QueryConnectionResponseAmino;
@@ -422,7 +423,7 @@ export declare const QueryConnectionsRequest: {
     encode(message: QueryConnectionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionsRequest;
     fromJSON(object: any): QueryConnectionsRequest;
-    toJSON(message: QueryConnectionsRequest): unknown;
+    toJSON(message: QueryConnectionsRequest): JsonSafe<QueryConnectionsRequest>;
     fromPartial(object: Partial<QueryConnectionsRequest>): QueryConnectionsRequest;
     fromAmino(object: QueryConnectionsRequestAmino): QueryConnectionsRequest;
     toAmino(message: QueryConnectionsRequest): QueryConnectionsRequestAmino;
@@ -441,7 +442,7 @@ export declare const QueryConnectionsResponse: {
     encode(message: QueryConnectionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionsResponse;
     fromJSON(object: any): QueryConnectionsResponse;
-    toJSON(message: QueryConnectionsResponse): unknown;
+    toJSON(message: QueryConnectionsResponse): JsonSafe<QueryConnectionsResponse>;
     fromPartial(object: Partial<QueryConnectionsResponse>): QueryConnectionsResponse;
     fromAmino(object: QueryConnectionsResponseAmino): QueryConnectionsResponse;
     toAmino(message: QueryConnectionsResponse): QueryConnectionsResponseAmino;
@@ -460,7 +461,7 @@ export declare const QueryClientConnectionsRequest: {
     encode(message: QueryClientConnectionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientConnectionsRequest;
     fromJSON(object: any): QueryClientConnectionsRequest;
-    toJSON(message: QueryClientConnectionsRequest): unknown;
+    toJSON(message: QueryClientConnectionsRequest): JsonSafe<QueryClientConnectionsRequest>;
     fromPartial(object: Partial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest;
     fromAmino(object: QueryClientConnectionsRequestAmino): QueryClientConnectionsRequest;
     toAmino(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestAmino;
@@ -479,7 +480,7 @@ export declare const QueryClientConnectionsResponse: {
     encode(message: QueryClientConnectionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientConnectionsResponse;
     fromJSON(object: any): QueryClientConnectionsResponse;
-    toJSON(message: QueryClientConnectionsResponse): unknown;
+    toJSON(message: QueryClientConnectionsResponse): JsonSafe<QueryClientConnectionsResponse>;
     fromPartial(object: Partial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
     fromAmino(object: QueryClientConnectionsResponseAmino): QueryClientConnectionsResponse;
     toAmino(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseAmino;
@@ -498,7 +499,7 @@ export declare const QueryConnectionClientStateRequest: {
     encode(message: QueryConnectionClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionClientStateRequest;
     fromJSON(object: any): QueryConnectionClientStateRequest;
-    toJSON(message: QueryConnectionClientStateRequest): unknown;
+    toJSON(message: QueryConnectionClientStateRequest): JsonSafe<QueryConnectionClientStateRequest>;
     fromPartial(object: Partial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest;
     fromAmino(object: QueryConnectionClientStateRequestAmino): QueryConnectionClientStateRequest;
     toAmino(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestAmino;
@@ -517,7 +518,7 @@ export declare const QueryConnectionClientStateResponse: {
     encode(message: QueryConnectionClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionClientStateResponse;
     fromJSON(object: any): QueryConnectionClientStateResponse;
-    toJSON(message: QueryConnectionClientStateResponse): unknown;
+    toJSON(message: QueryConnectionClientStateResponse): JsonSafe<QueryConnectionClientStateResponse>;
     fromPartial(object: Partial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
     fromAmino(object: QueryConnectionClientStateResponseAmino): QueryConnectionClientStateResponse;
     toAmino(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseAmino;
@@ -536,7 +537,7 @@ export declare const QueryConnectionConsensusStateRequest: {
     encode(message: QueryConnectionConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionConsensusStateRequest;
     fromJSON(object: any): QueryConnectionConsensusStateRequest;
-    toJSON(message: QueryConnectionConsensusStateRequest): unknown;
+    toJSON(message: QueryConnectionConsensusStateRequest): JsonSafe<QueryConnectionConsensusStateRequest>;
     fromPartial(object: Partial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest;
     fromAmino(object: QueryConnectionConsensusStateRequestAmino): QueryConnectionConsensusStateRequest;
     toAmino(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestAmino;
@@ -555,7 +556,7 @@ export declare const QueryConnectionConsensusStateResponse: {
     encode(message: QueryConnectionConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse;
     fromJSON(object: any): QueryConnectionConsensusStateResponse;
-    toJSON(message: QueryConnectionConsensusStateResponse): unknown;
+    toJSON(message: QueryConnectionConsensusStateResponse): JsonSafe<QueryConnectionConsensusStateResponse>;
     fromPartial(object: Partial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
     fromAmino(object: QueryConnectionConsensusStateResponseAmino): QueryConnectionConsensusStateResponse;
     toAmino(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseAmino;

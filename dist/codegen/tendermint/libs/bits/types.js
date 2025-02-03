@@ -93,7 +93,7 @@ exports.BitArray = {
     },
     toAmino(message) {
         const obj = {};
-        obj.bits = message.bits !== BigInt(0) ? message.bits.toString() : undefined;
+        obj.bits = message.bits !== BigInt(0) ? message.bits?.toString() : undefined;
         if (message.elems) {
             obj.elems = message.elems.map(e => e.toString());
         }

@@ -1,6 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Validator, ValidatorAmino, ValidatorSDKType, DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, RedelegationResponse, RedelegationResponseAmino, RedelegationResponseSDKType, HistoricalInfo, HistoricalInfoAmino, HistoricalInfoSDKType, Pool, PoolAmino, PoolSDKType, Params, ParamsAmino, ParamsSDKType } from "./staking";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 export interface QueryValidatorsRequest {
     /** status enables to query for validators matching a given status. */
@@ -865,7 +866,7 @@ export declare const QueryValidatorsRequest: {
     encode(message: QueryValidatorsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorsRequest;
     fromJSON(object: any): QueryValidatorsRequest;
-    toJSON(message: QueryValidatorsRequest): unknown;
+    toJSON(message: QueryValidatorsRequest): JsonSafe<QueryValidatorsRequest>;
     fromPartial(object: Partial<QueryValidatorsRequest>): QueryValidatorsRequest;
     fromAmino(object: QueryValidatorsRequestAmino): QueryValidatorsRequest;
     toAmino(message: QueryValidatorsRequest): QueryValidatorsRequestAmino;
@@ -884,7 +885,7 @@ export declare const QueryValidatorsResponse: {
     encode(message: QueryValidatorsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorsResponse;
     fromJSON(object: any): QueryValidatorsResponse;
-    toJSON(message: QueryValidatorsResponse): unknown;
+    toJSON(message: QueryValidatorsResponse): JsonSafe<QueryValidatorsResponse>;
     fromPartial(object: Partial<QueryValidatorsResponse>): QueryValidatorsResponse;
     fromAmino(object: QueryValidatorsResponseAmino): QueryValidatorsResponse;
     toAmino(message: QueryValidatorsResponse): QueryValidatorsResponseAmino;
@@ -903,7 +904,7 @@ export declare const QueryValidatorRequest: {
     encode(message: QueryValidatorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorRequest;
     fromJSON(object: any): QueryValidatorRequest;
-    toJSON(message: QueryValidatorRequest): unknown;
+    toJSON(message: QueryValidatorRequest): JsonSafe<QueryValidatorRequest>;
     fromPartial(object: Partial<QueryValidatorRequest>): QueryValidatorRequest;
     fromAmino(object: QueryValidatorRequestAmino): QueryValidatorRequest;
     toAmino(message: QueryValidatorRequest): QueryValidatorRequestAmino;
@@ -922,7 +923,7 @@ export declare const QueryValidatorResponse: {
     encode(message: QueryValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorResponse;
     fromJSON(object: any): QueryValidatorResponse;
-    toJSON(message: QueryValidatorResponse): unknown;
+    toJSON(message: QueryValidatorResponse): JsonSafe<QueryValidatorResponse>;
     fromPartial(object: Partial<QueryValidatorResponse>): QueryValidatorResponse;
     fromAmino(object: QueryValidatorResponseAmino): QueryValidatorResponse;
     toAmino(message: QueryValidatorResponse): QueryValidatorResponseAmino;
@@ -941,7 +942,7 @@ export declare const QueryValidatorDelegationsRequest: {
     encode(message: QueryValidatorDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDelegationsRequest;
     fromJSON(object: any): QueryValidatorDelegationsRequest;
-    toJSON(message: QueryValidatorDelegationsRequest): unknown;
+    toJSON(message: QueryValidatorDelegationsRequest): JsonSafe<QueryValidatorDelegationsRequest>;
     fromPartial(object: Partial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest;
     fromAmino(object: QueryValidatorDelegationsRequestAmino): QueryValidatorDelegationsRequest;
     toAmino(message: QueryValidatorDelegationsRequest): QueryValidatorDelegationsRequestAmino;
@@ -960,7 +961,7 @@ export declare const QueryValidatorDelegationsResponse: {
     encode(message: QueryValidatorDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDelegationsResponse;
     fromJSON(object: any): QueryValidatorDelegationsResponse;
-    toJSON(message: QueryValidatorDelegationsResponse): unknown;
+    toJSON(message: QueryValidatorDelegationsResponse): JsonSafe<QueryValidatorDelegationsResponse>;
     fromPartial(object: Partial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse;
     fromAmino(object: QueryValidatorDelegationsResponseAmino): QueryValidatorDelegationsResponse;
     toAmino(message: QueryValidatorDelegationsResponse): QueryValidatorDelegationsResponseAmino;
@@ -979,7 +980,7 @@ export declare const QueryValidatorUnbondingDelegationsRequest: {
     encode(message: QueryValidatorUnbondingDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsRequest;
     fromJSON(object: any): QueryValidatorUnbondingDelegationsRequest;
-    toJSON(message: QueryValidatorUnbondingDelegationsRequest): unknown;
+    toJSON(message: QueryValidatorUnbondingDelegationsRequest): JsonSafe<QueryValidatorUnbondingDelegationsRequest>;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest;
     fromAmino(object: QueryValidatorUnbondingDelegationsRequestAmino): QueryValidatorUnbondingDelegationsRequest;
     toAmino(message: QueryValidatorUnbondingDelegationsRequest): QueryValidatorUnbondingDelegationsRequestAmino;
@@ -998,7 +999,7 @@ export declare const QueryValidatorUnbondingDelegationsResponse: {
     encode(message: QueryValidatorUnbondingDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsResponse;
     fromJSON(object: any): QueryValidatorUnbondingDelegationsResponse;
-    toJSON(message: QueryValidatorUnbondingDelegationsResponse): unknown;
+    toJSON(message: QueryValidatorUnbondingDelegationsResponse): JsonSafe<QueryValidatorUnbondingDelegationsResponse>;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse;
     fromAmino(object: QueryValidatorUnbondingDelegationsResponseAmino): QueryValidatorUnbondingDelegationsResponse;
     toAmino(message: QueryValidatorUnbondingDelegationsResponse): QueryValidatorUnbondingDelegationsResponseAmino;
@@ -1017,7 +1018,7 @@ export declare const QueryDelegationRequest: {
     encode(message: QueryDelegationRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegationRequest;
     fromJSON(object: any): QueryDelegationRequest;
-    toJSON(message: QueryDelegationRequest): unknown;
+    toJSON(message: QueryDelegationRequest): JsonSafe<QueryDelegationRequest>;
     fromPartial(object: Partial<QueryDelegationRequest>): QueryDelegationRequest;
     fromAmino(object: QueryDelegationRequestAmino): QueryDelegationRequest;
     toAmino(message: QueryDelegationRequest): QueryDelegationRequestAmino;
@@ -1036,7 +1037,7 @@ export declare const QueryDelegationResponse: {
     encode(message: QueryDelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegationResponse;
     fromJSON(object: any): QueryDelegationResponse;
-    toJSON(message: QueryDelegationResponse): unknown;
+    toJSON(message: QueryDelegationResponse): JsonSafe<QueryDelegationResponse>;
     fromPartial(object: Partial<QueryDelegationResponse>): QueryDelegationResponse;
     fromAmino(object: QueryDelegationResponseAmino): QueryDelegationResponse;
     toAmino(message: QueryDelegationResponse): QueryDelegationResponseAmino;
@@ -1055,7 +1056,7 @@ export declare const QueryUnbondingDelegationRequest: {
     encode(message: QueryUnbondingDelegationRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnbondingDelegationRequest;
     fromJSON(object: any): QueryUnbondingDelegationRequest;
-    toJSON(message: QueryUnbondingDelegationRequest): unknown;
+    toJSON(message: QueryUnbondingDelegationRequest): JsonSafe<QueryUnbondingDelegationRequest>;
     fromPartial(object: Partial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest;
     fromAmino(object: QueryUnbondingDelegationRequestAmino): QueryUnbondingDelegationRequest;
     toAmino(message: QueryUnbondingDelegationRequest): QueryUnbondingDelegationRequestAmino;
@@ -1074,7 +1075,7 @@ export declare const QueryUnbondingDelegationResponse: {
     encode(message: QueryUnbondingDelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnbondingDelegationResponse;
     fromJSON(object: any): QueryUnbondingDelegationResponse;
-    toJSON(message: QueryUnbondingDelegationResponse): unknown;
+    toJSON(message: QueryUnbondingDelegationResponse): JsonSafe<QueryUnbondingDelegationResponse>;
     fromPartial(object: Partial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse;
     fromAmino(object: QueryUnbondingDelegationResponseAmino): QueryUnbondingDelegationResponse;
     toAmino(message: QueryUnbondingDelegationResponse): QueryUnbondingDelegationResponseAmino;
@@ -1093,7 +1094,7 @@ export declare const QueryDelegatorDelegationsRequest: {
     encode(message: QueryDelegatorDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorDelegationsRequest;
     fromJSON(object: any): QueryDelegatorDelegationsRequest;
-    toJSON(message: QueryDelegatorDelegationsRequest): unknown;
+    toJSON(message: QueryDelegatorDelegationsRequest): JsonSafe<QueryDelegatorDelegationsRequest>;
     fromPartial(object: Partial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest;
     fromAmino(object: QueryDelegatorDelegationsRequestAmino): QueryDelegatorDelegationsRequest;
     toAmino(message: QueryDelegatorDelegationsRequest): QueryDelegatorDelegationsRequestAmino;
@@ -1112,7 +1113,7 @@ export declare const QueryDelegatorDelegationsResponse: {
     encode(message: QueryDelegatorDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorDelegationsResponse;
     fromJSON(object: any): QueryDelegatorDelegationsResponse;
-    toJSON(message: QueryDelegatorDelegationsResponse): unknown;
+    toJSON(message: QueryDelegatorDelegationsResponse): JsonSafe<QueryDelegatorDelegationsResponse>;
     fromPartial(object: Partial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse;
     fromAmino(object: QueryDelegatorDelegationsResponseAmino): QueryDelegatorDelegationsResponse;
     toAmino(message: QueryDelegatorDelegationsResponse): QueryDelegatorDelegationsResponseAmino;
@@ -1131,7 +1132,7 @@ export declare const QueryDelegatorUnbondingDelegationsRequest: {
     encode(message: QueryDelegatorUnbondingDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsRequest;
     fromJSON(object: any): QueryDelegatorUnbondingDelegationsRequest;
-    toJSON(message: QueryDelegatorUnbondingDelegationsRequest): unknown;
+    toJSON(message: QueryDelegatorUnbondingDelegationsRequest): JsonSafe<QueryDelegatorUnbondingDelegationsRequest>;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest;
     fromAmino(object: QueryDelegatorUnbondingDelegationsRequestAmino): QueryDelegatorUnbondingDelegationsRequest;
     toAmino(message: QueryDelegatorUnbondingDelegationsRequest): QueryDelegatorUnbondingDelegationsRequestAmino;
@@ -1150,7 +1151,7 @@ export declare const QueryDelegatorUnbondingDelegationsResponse: {
     encode(message: QueryDelegatorUnbondingDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsResponse;
     fromJSON(object: any): QueryDelegatorUnbondingDelegationsResponse;
-    toJSON(message: QueryDelegatorUnbondingDelegationsResponse): unknown;
+    toJSON(message: QueryDelegatorUnbondingDelegationsResponse): JsonSafe<QueryDelegatorUnbondingDelegationsResponse>;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse;
     fromAmino(object: QueryDelegatorUnbondingDelegationsResponseAmino): QueryDelegatorUnbondingDelegationsResponse;
     toAmino(message: QueryDelegatorUnbondingDelegationsResponse): QueryDelegatorUnbondingDelegationsResponseAmino;
@@ -1169,7 +1170,7 @@ export declare const QueryRedelegationsRequest: {
     encode(message: QueryRedelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryRedelegationsRequest;
     fromJSON(object: any): QueryRedelegationsRequest;
-    toJSON(message: QueryRedelegationsRequest): unknown;
+    toJSON(message: QueryRedelegationsRequest): JsonSafe<QueryRedelegationsRequest>;
     fromPartial(object: Partial<QueryRedelegationsRequest>): QueryRedelegationsRequest;
     fromAmino(object: QueryRedelegationsRequestAmino): QueryRedelegationsRequest;
     toAmino(message: QueryRedelegationsRequest): QueryRedelegationsRequestAmino;
@@ -1188,7 +1189,7 @@ export declare const QueryRedelegationsResponse: {
     encode(message: QueryRedelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryRedelegationsResponse;
     fromJSON(object: any): QueryRedelegationsResponse;
-    toJSON(message: QueryRedelegationsResponse): unknown;
+    toJSON(message: QueryRedelegationsResponse): JsonSafe<QueryRedelegationsResponse>;
     fromPartial(object: Partial<QueryRedelegationsResponse>): QueryRedelegationsResponse;
     fromAmino(object: QueryRedelegationsResponseAmino): QueryRedelegationsResponse;
     toAmino(message: QueryRedelegationsResponse): QueryRedelegationsResponseAmino;
@@ -1207,7 +1208,7 @@ export declare const QueryDelegatorValidatorsRequest: {
     encode(message: QueryDelegatorValidatorsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
     fromJSON(object: any): QueryDelegatorValidatorsRequest;
-    toJSON(message: QueryDelegatorValidatorsRequest): unknown;
+    toJSON(message: QueryDelegatorValidatorsRequest): JsonSafe<QueryDelegatorValidatorsRequest>;
     fromPartial(object: Partial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
     fromAmino(object: QueryDelegatorValidatorsRequestAmino): QueryDelegatorValidatorsRequest;
     toAmino(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestAmino;
@@ -1226,7 +1227,7 @@ export declare const QueryDelegatorValidatorsResponse: {
     encode(message: QueryDelegatorValidatorsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
     fromJSON(object: any): QueryDelegatorValidatorsResponse;
-    toJSON(message: QueryDelegatorValidatorsResponse): unknown;
+    toJSON(message: QueryDelegatorValidatorsResponse): JsonSafe<QueryDelegatorValidatorsResponse>;
     fromPartial(object: Partial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
     fromAmino(object: QueryDelegatorValidatorsResponseAmino): QueryDelegatorValidatorsResponse;
     toAmino(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseAmino;
@@ -1245,7 +1246,7 @@ export declare const QueryDelegatorValidatorRequest: {
     encode(message: QueryDelegatorValidatorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorRequest;
     fromJSON(object: any): QueryDelegatorValidatorRequest;
-    toJSON(message: QueryDelegatorValidatorRequest): unknown;
+    toJSON(message: QueryDelegatorValidatorRequest): JsonSafe<QueryDelegatorValidatorRequest>;
     fromPartial(object: Partial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest;
     fromAmino(object: QueryDelegatorValidatorRequestAmino): QueryDelegatorValidatorRequest;
     toAmino(message: QueryDelegatorValidatorRequest): QueryDelegatorValidatorRequestAmino;
@@ -1264,7 +1265,7 @@ export declare const QueryDelegatorValidatorResponse: {
     encode(message: QueryDelegatorValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorResponse;
     fromJSON(object: any): QueryDelegatorValidatorResponse;
-    toJSON(message: QueryDelegatorValidatorResponse): unknown;
+    toJSON(message: QueryDelegatorValidatorResponse): JsonSafe<QueryDelegatorValidatorResponse>;
     fromPartial(object: Partial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse;
     fromAmino(object: QueryDelegatorValidatorResponseAmino): QueryDelegatorValidatorResponse;
     toAmino(message: QueryDelegatorValidatorResponse): QueryDelegatorValidatorResponseAmino;
@@ -1283,7 +1284,7 @@ export declare const QueryHistoricalInfoRequest: {
     encode(message: QueryHistoricalInfoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryHistoricalInfoRequest;
     fromJSON(object: any): QueryHistoricalInfoRequest;
-    toJSON(message: QueryHistoricalInfoRequest): unknown;
+    toJSON(message: QueryHistoricalInfoRequest): JsonSafe<QueryHistoricalInfoRequest>;
     fromPartial(object: Partial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest;
     fromAmino(object: QueryHistoricalInfoRequestAmino): QueryHistoricalInfoRequest;
     toAmino(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestAmino;
@@ -1302,7 +1303,7 @@ export declare const QueryHistoricalInfoResponse: {
     encode(message: QueryHistoricalInfoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryHistoricalInfoResponse;
     fromJSON(object: any): QueryHistoricalInfoResponse;
-    toJSON(message: QueryHistoricalInfoResponse): unknown;
+    toJSON(message: QueryHistoricalInfoResponse): JsonSafe<QueryHistoricalInfoResponse>;
     fromPartial(object: Partial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse;
     fromAmino(object: QueryHistoricalInfoResponseAmino): QueryHistoricalInfoResponse;
     toAmino(message: QueryHistoricalInfoResponse): QueryHistoricalInfoResponseAmino;
@@ -1321,7 +1322,7 @@ export declare const QueryPoolRequest: {
     encode(_: QueryPoolRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolRequest;
     fromJSON(_: any): QueryPoolRequest;
-    toJSON(_: QueryPoolRequest): unknown;
+    toJSON(_: QueryPoolRequest): JsonSafe<QueryPoolRequest>;
     fromPartial(_: Partial<QueryPoolRequest>): QueryPoolRequest;
     fromAmino(_: QueryPoolRequestAmino): QueryPoolRequest;
     toAmino(_: QueryPoolRequest): QueryPoolRequestAmino;
@@ -1340,7 +1341,7 @@ export declare const QueryPoolResponse: {
     encode(message: QueryPoolResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolResponse;
     fromJSON(object: any): QueryPoolResponse;
-    toJSON(message: QueryPoolResponse): unknown;
+    toJSON(message: QueryPoolResponse): JsonSafe<QueryPoolResponse>;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
     fromAmino(object: QueryPoolResponseAmino): QueryPoolResponse;
     toAmino(message: QueryPoolResponse): QueryPoolResponseAmino;
@@ -1359,7 +1360,7 @@ export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
+    toJSON(_: QueryParamsRequest): JsonSafe<QueryParamsRequest>;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -1378,7 +1379,7 @@ export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
+    toJSON(message: QueryParamsResponse): JsonSafe<QueryParamsResponse>;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;

@@ -94,9 +94,9 @@ exports.ProtocolVersion = {
     },
     toAmino(message) {
         const obj = {};
-        obj.p2p = message.p2p !== BigInt(0) ? message.p2p.toString() : undefined;
-        obj.block = message.block !== BigInt(0) ? message.block.toString() : undefined;
-        obj.app = message.app !== BigInt(0) ? message.app.toString() : undefined;
+        obj.p2p = message.p2p !== BigInt(0) ? message.p2p?.toString() : undefined;
+        obj.block = message.block !== BigInt(0) ? message.block?.toString() : undefined;
+        obj.app = message.app !== BigInt(0) ? message.app?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

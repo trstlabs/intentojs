@@ -5,8 +5,8 @@ const any_1 = require("../../../google/protobuf/any");
 const coin_1 = require("../../base/v1beta1/coin");
 const gov_1 = require("./gov");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseMsgSubmitProposal() {
     return {
         content: undefined,
@@ -198,7 +198,7 @@ exports.MsgSubmitProposalResponse = {
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+        obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
         return obj;
     },
     fromAminoMsg(object) {
@@ -315,7 +315,7 @@ exports.MsgVote = {
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+        obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
         obj.voter = message.voter === "" ? undefined : message.voter;
         obj.option = message.option === 0 ? undefined : message.option;
         return obj;
@@ -512,7 +512,7 @@ exports.MsgVoteWeighted = {
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+        obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
         obj.voter = message.voter === "" ? undefined : message.voter;
         if (message.options) {
             obj.options = message.options.map(e => e ? gov_1.WeightedVoteOption.toAmino(e) : undefined);
@@ -714,7 +714,7 @@ exports.MsgDeposit = {
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+        obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
         obj.depositor = message.depositor === "" ? undefined : message.depositor;
         if (message.amount) {
             obj.amount = message.amount.map(e => e ? coin_1.Coin.toAmino(e) : undefined);

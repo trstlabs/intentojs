@@ -1,5 +1,6 @@
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * LegacyAminoPubKey specifies a public key type
  * which nests multiple public keys and a threshold,
@@ -44,7 +45,7 @@ export declare const LegacyAminoPubKey: {
     encode(message: LegacyAminoPubKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LegacyAminoPubKey;
     fromJSON(object: any): LegacyAminoPubKey;
-    toJSON(message: LegacyAminoPubKey): unknown;
+    toJSON(message: LegacyAminoPubKey): JsonSafe<LegacyAminoPubKey>;
     fromPartial(object: Partial<LegacyAminoPubKey>): LegacyAminoPubKey;
     fromAmino(object: LegacyAminoPubKeyAmino): LegacyAminoPubKey;
     toAmino(message: LegacyAminoPubKey): LegacyAminoPubKeyAmino;

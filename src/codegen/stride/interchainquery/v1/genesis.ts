@@ -57,7 +57,7 @@ export interface Query {
   submissionHeight: bigint;
 }
 export interface QueryProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.Query";
+  typeUrl: "/stride.interchainquery.v1.Query";
   value: Uint8Array;
 }
 export interface QueryAmino {
@@ -76,7 +76,7 @@ export interface QueryAmino {
   submission_height?: string;
 }
 export interface QueryAminoMsg {
-  type: "/intento.interchainquery.v1.Query";
+  type: "/stride.interchainquery.v1.Query";
   value: QueryAmino;
 }
 export interface QuerySDKType {
@@ -101,7 +101,7 @@ export interface DataPoint {
   value: Uint8Array;
 }
 export interface DataPointProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.DataPoint";
+  typeUrl: "/stride.interchainquery.v1.DataPoint";
   value: Uint8Array;
 }
 export interface DataPointAmino {
@@ -111,7 +111,7 @@ export interface DataPointAmino {
   value?: string;
 }
 export interface DataPointAminoMsg {
-  type: "/intento.interchainquery.v1.DataPoint";
+  type: "/stride.interchainquery.v1.DataPoint";
   value: DataPointAmino;
 }
 export interface DataPointSDKType {
@@ -125,7 +125,7 @@ export interface GenesisState {
   queries: Query[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/intento.interchainquery.v1.GenesisState";
+  typeUrl: "/stride.interchainquery.v1.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the epochs module's genesis state. */
@@ -133,7 +133,7 @@ export interface GenesisStateAmino {
   queries?: QueryAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "/intento.interchainquery.v1.GenesisState";
+  type: "/stride.interchainquery.v1.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the epochs module's genesis state. */
@@ -158,7 +158,7 @@ function createBaseQuery(): Query {
   };
 }
 export const Query = {
-  typeUrl: "/intento.interchainquery.v1.Query",
+  typeUrl: "/stride.interchainquery.v1.Query",
   is(o: any): o is Query {
     return o && (o.$typeUrl === Query.typeUrl || typeof o.id === "string" && typeof o.connectionId === "string" && typeof o.chainId === "string" && typeof o.queryType === "string" && (o.requestData instanceof Uint8Array || typeof o.requestData === "string") && typeof o.callbackModule === "string" && typeof o.callbackId === "string" && (o.callbackData instanceof Uint8Array || typeof o.callbackData === "string") && isSet(o.timeoutPolicy) && Duration.is(o.timeoutDuration) && typeof o.timeoutTimestamp === "bigint" && typeof o.requestSent === "boolean" && typeof o.submissionHeight === "bigint");
   },
@@ -385,7 +385,7 @@ export const Query = {
   },
   toProtoMsg(message: Query): QueryProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.Query",
+      typeUrl: "/stride.interchainquery.v1.Query",
       value: Query.encode(message).finish()
     };
   }
@@ -400,7 +400,7 @@ function createBaseDataPoint(): DataPoint {
   };
 }
 export const DataPoint = {
-  typeUrl: "/intento.interchainquery.v1.DataPoint",
+  typeUrl: "/stride.interchainquery.v1.DataPoint",
   is(o: any): o is DataPoint {
     return o && (o.$typeUrl === DataPoint.typeUrl || typeof o.id === "string" && typeof o.remoteHeight === "string" && typeof o.localHeight === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
   },
@@ -510,7 +510,7 @@ export const DataPoint = {
   },
   toProtoMsg(message: DataPoint): DataPointProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.DataPoint",
+      typeUrl: "/stride.interchainquery.v1.DataPoint",
       value: DataPoint.encode(message).finish()
     };
   }
@@ -522,7 +522,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/intento.interchainquery.v1.GenesisState",
+  typeUrl: "/stride.interchainquery.v1.GenesisState",
   is(o: any): o is GenesisState {
     return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.queries) && (!o.queries.length || Query.is(o.queries[0])));
   },
@@ -599,7 +599,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/intento.interchainquery.v1.GenesisState",
+      typeUrl: "/stride.interchainquery.v1.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

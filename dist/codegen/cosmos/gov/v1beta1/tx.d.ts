@@ -6,6 +6,7 @@ import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgra
 import { StoreCodeProposal, StoreCodeProposalProtoMsg, StoreCodeProposalSDKType, InstantiateContractProposal, InstantiateContractProposalProtoMsg, InstantiateContractProposalSDKType, InstantiateContract2Proposal, InstantiateContract2ProposalProtoMsg, InstantiateContract2ProposalSDKType, MigrateContractProposal, MigrateContractProposalProtoMsg, MigrateContractProposalSDKType, SudoContractProposal, SudoContractProposalProtoMsg, SudoContractProposalSDKType, ExecuteContractProposal, ExecuteContractProposalProtoMsg, ExecuteContractProposalSDKType, UpdateAdminProposal, UpdateAdminProposalProtoMsg, UpdateAdminProposalSDKType, ClearAdminProposal, ClearAdminProposalProtoMsg, ClearAdminProposalSDKType, PinCodesProposal, PinCodesProposalProtoMsg, PinCodesProposalSDKType, UnpinCodesProposal, UnpinCodesProposalProtoMsg, UnpinCodesProposalSDKType, UpdateInstantiateConfigProposal, UpdateInstantiateConfigProposalProtoMsg, UpdateInstantiateConfigProposalSDKType, StoreAndInstantiateContractProposal, StoreAndInstantiateContractProposalProtoMsg, StoreAndInstantiateContractProposalSDKType } from "../../../cosmwasm/wasm/v1/proposal";
 import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposalSDKType, UpgradeProposal, UpgradeProposalProtoMsg, UpgradeProposalSDKType } from "../../../ibc/core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -226,7 +227,7 @@ export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal;
     fromJSON(object: any): MsgSubmitProposal;
-    toJSON(message: MsgSubmitProposal): unknown;
+    toJSON(message: MsgSubmitProposal): JsonSafe<MsgSubmitProposal>;
     fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
     fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal;
     toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino;
@@ -245,7 +246,7 @@ export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposalResponse;
     fromJSON(object: any): MsgSubmitProposalResponse;
-    toJSON(message: MsgSubmitProposalResponse): unknown;
+    toJSON(message: MsgSubmitProposalResponse): JsonSafe<MsgSubmitProposalResponse>;
     fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
     fromAmino(object: MsgSubmitProposalResponseAmino): MsgSubmitProposalResponse;
     toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino;
@@ -264,7 +265,7 @@ export declare const MsgVote: {
     encode(message: MsgVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVote;
     fromJSON(object: any): MsgVote;
-    toJSON(message: MsgVote): unknown;
+    toJSON(message: MsgVote): JsonSafe<MsgVote>;
     fromPartial(object: Partial<MsgVote>): MsgVote;
     fromAmino(object: MsgVoteAmino): MsgVote;
     toAmino(message: MsgVote): MsgVoteAmino;
@@ -283,7 +284,7 @@ export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteResponse;
     fromJSON(_: any): MsgVoteResponse;
-    toJSON(_: MsgVoteResponse): unknown;
+    toJSON(_: MsgVoteResponse): JsonSafe<MsgVoteResponse>;
     fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
     fromAmino(_: MsgVoteResponseAmino): MsgVoteResponse;
     toAmino(_: MsgVoteResponse): MsgVoteResponseAmino;
@@ -302,7 +303,7 @@ export declare const MsgVoteWeighted: {
     encode(message: MsgVoteWeighted, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeighted;
     fromJSON(object: any): MsgVoteWeighted;
-    toJSON(message: MsgVoteWeighted): unknown;
+    toJSON(message: MsgVoteWeighted): JsonSafe<MsgVoteWeighted>;
     fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted;
     fromAmino(object: MsgVoteWeightedAmino): MsgVoteWeighted;
     toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino;
@@ -321,7 +322,7 @@ export declare const MsgVoteWeightedResponse: {
     encode(_: MsgVoteWeightedResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeightedResponse;
     fromJSON(_: any): MsgVoteWeightedResponse;
-    toJSON(_: MsgVoteWeightedResponse): unknown;
+    toJSON(_: MsgVoteWeightedResponse): JsonSafe<MsgVoteWeightedResponse>;
     fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
     fromAmino(_: MsgVoteWeightedResponseAmino): MsgVoteWeightedResponse;
     toAmino(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseAmino;
@@ -340,7 +341,7 @@ export declare const MsgDeposit: {
     encode(message: MsgDeposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeposit;
     fromJSON(object: any): MsgDeposit;
-    toJSON(message: MsgDeposit): unknown;
+    toJSON(message: MsgDeposit): JsonSafe<MsgDeposit>;
     fromPartial(object: Partial<MsgDeposit>): MsgDeposit;
     fromAmino(object: MsgDepositAmino): MsgDeposit;
     toAmino(message: MsgDeposit): MsgDepositAmino;
@@ -359,7 +360,7 @@ export declare const MsgDepositResponse: {
     encode(_: MsgDepositResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositResponse;
     fromJSON(_: any): MsgDepositResponse;
-    toJSON(_: MsgDepositResponse): unknown;
+    toJSON(_: MsgDepositResponse): JsonSafe<MsgDepositResponse>;
     fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse;
     fromAmino(_: MsgDepositResponseAmino): MsgDepositResponse;
     toAmino(_: MsgDepositResponse): MsgDepositResponseAmino;

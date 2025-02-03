@@ -1,6 +1,7 @@
 import { Grant, GrantAmino, GrantSDKType } from "./authz";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.
@@ -187,7 +188,7 @@ export declare const MsgGrant: {
     encode(message: MsgGrant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrant;
     fromJSON(object: any): MsgGrant;
-    toJSON(message: MsgGrant): unknown;
+    toJSON(message: MsgGrant): JsonSafe<MsgGrant>;
     fromPartial(object: Partial<MsgGrant>): MsgGrant;
     fromAmino(object: MsgGrantAmino): MsgGrant;
     toAmino(message: MsgGrant): MsgGrantAmino;
@@ -206,7 +207,7 @@ export declare const MsgExecResponse: {
     encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
     fromJSON(object: any): MsgExecResponse;
-    toJSON(message: MsgExecResponse): unknown;
+    toJSON(message: MsgExecResponse): JsonSafe<MsgExecResponse>;
     fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
     fromAmino(object: MsgExecResponseAmino): MsgExecResponse;
     toAmino(message: MsgExecResponse): MsgExecResponseAmino;
@@ -225,7 +226,7 @@ export declare const MsgExec: {
     encode(message: MsgExec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExec;
     fromJSON(object: any): MsgExec;
-    toJSON(message: MsgExec): unknown;
+    toJSON(message: MsgExec): JsonSafe<MsgExec>;
     fromPartial(object: Partial<MsgExec>): MsgExec;
     fromAmino(object: MsgExecAmino): MsgExec;
     toAmino(message: MsgExec): MsgExecAmino;
@@ -244,7 +245,7 @@ export declare const MsgGrantResponse: {
     encode(_: MsgGrantResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantResponse;
     fromJSON(_: any): MsgGrantResponse;
-    toJSON(_: MsgGrantResponse): unknown;
+    toJSON(_: MsgGrantResponse): JsonSafe<MsgGrantResponse>;
     fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
     fromAmino(_: MsgGrantResponseAmino): MsgGrantResponse;
     toAmino(_: MsgGrantResponse): MsgGrantResponseAmino;
@@ -263,7 +264,7 @@ export declare const MsgRevoke: {
     encode(message: MsgRevoke, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevoke;
     fromJSON(object: any): MsgRevoke;
-    toJSON(message: MsgRevoke): unknown;
+    toJSON(message: MsgRevoke): JsonSafe<MsgRevoke>;
     fromPartial(object: Partial<MsgRevoke>): MsgRevoke;
     fromAmino(object: MsgRevokeAmino): MsgRevoke;
     toAmino(message: MsgRevoke): MsgRevokeAmino;
@@ -282,7 +283,7 @@ export declare const MsgRevokeResponse: {
     encode(_: MsgRevokeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevokeResponse;
     fromJSON(_: any): MsgRevokeResponse;
-    toJSON(_: MsgRevokeResponse): unknown;
+    toJSON(_: MsgRevokeResponse): JsonSafe<MsgRevokeResponse>;
     fromPartial(_: Partial<MsgRevokeResponse>): MsgRevokeResponse;
     fromAmino(_: MsgRevokeResponseAmino): MsgRevokeResponse;
     toAmino(_: MsgRevokeResponse): MsgRevokeResponseAmino;

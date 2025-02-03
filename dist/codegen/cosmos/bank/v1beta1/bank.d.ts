@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** Params defines the parameters for the bank module. */
 export interface Params {
     sendEnabled: SendEnabled[];
@@ -306,7 +307,7 @@ export declare const Params: {
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
+    toJSON(message: Params): JsonSafe<Params>;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -325,7 +326,7 @@ export declare const SendEnabled: {
     encode(message: SendEnabled, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SendEnabled;
     fromJSON(object: any): SendEnabled;
-    toJSON(message: SendEnabled): unknown;
+    toJSON(message: SendEnabled): JsonSafe<SendEnabled>;
     fromPartial(object: Partial<SendEnabled>): SendEnabled;
     fromAmino(object: SendEnabledAmino): SendEnabled;
     toAmino(message: SendEnabled): SendEnabledAmino;
@@ -344,7 +345,7 @@ export declare const Input: {
     encode(message: Input, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Input;
     fromJSON(object: any): Input;
-    toJSON(message: Input): unknown;
+    toJSON(message: Input): JsonSafe<Input>;
     fromPartial(object: Partial<Input>): Input;
     fromAmino(object: InputAmino): Input;
     toAmino(message: Input): InputAmino;
@@ -363,7 +364,7 @@ export declare const Output: {
     encode(message: Output, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Output;
     fromJSON(object: any): Output;
-    toJSON(message: Output): unknown;
+    toJSON(message: Output): JsonSafe<Output>;
     fromPartial(object: Partial<Output>): Output;
     fromAmino(object: OutputAmino): Output;
     toAmino(message: Output): OutputAmino;
@@ -382,7 +383,7 @@ export declare const Supply: {
     encode(message: Supply, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Supply;
     fromJSON(object: any): Supply;
-    toJSON(message: Supply): unknown;
+    toJSON(message: Supply): JsonSafe<Supply>;
     fromPartial(object: Partial<Supply>): Supply;
     fromAmino(object: SupplyAmino): Supply;
     toAmino(message: Supply): SupplyAmino;
@@ -401,7 +402,7 @@ export declare const DenomUnit: {
     encode(message: DenomUnit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DenomUnit;
     fromJSON(object: any): DenomUnit;
-    toJSON(message: DenomUnit): unknown;
+    toJSON(message: DenomUnit): JsonSafe<DenomUnit>;
     fromPartial(object: Partial<DenomUnit>): DenomUnit;
     fromAmino(object: DenomUnitAmino): DenomUnit;
     toAmino(message: DenomUnit): DenomUnitAmino;
@@ -420,7 +421,7 @@ export declare const Metadata: {
     encode(message: Metadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Metadata;
     fromJSON(object: any): Metadata;
-    toJSON(message: Metadata): unknown;
+    toJSON(message: Metadata): JsonSafe<Metadata>;
     fromPartial(object: Partial<Metadata>): Metadata;
     fromAmino(object: MetadataAmino): Metadata;
     toAmino(message: Metadata): MetadataAmino;

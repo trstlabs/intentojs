@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 export interface BitArray {
     bits: bigint;
     elems: bigint[];
@@ -27,7 +28,7 @@ export declare const BitArray: {
     encode(message: BitArray, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BitArray;
     fromJSON(object: any): BitArray;
-    toJSON(message: BitArray): unknown;
+    toJSON(message: BitArray): JsonSafe<BitArray>;
     fromPartial(object: Partial<BitArray>): BitArray;
     fromAmino(object: BitArrayAmino): BitArray;
     toAmino(message: BitArray): BitArrayAmino;

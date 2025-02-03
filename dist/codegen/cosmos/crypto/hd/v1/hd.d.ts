@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44Params {
     /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
@@ -56,7 +57,7 @@ export declare const BIP44Params: {
     encode(message: BIP44Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BIP44Params;
     fromJSON(object: any): BIP44Params;
-    toJSON(message: BIP44Params): unknown;
+    toJSON(message: BIP44Params): JsonSafe<BIP44Params>;
     fromPartial(object: Partial<BIP44Params>): BIP44Params;
     fromAmino(object: BIP44ParamsAmino): BIP44Params;
     toAmino(message: BIP44Params): BIP44ParamsAmino;

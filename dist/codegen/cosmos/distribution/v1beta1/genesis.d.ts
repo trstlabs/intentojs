@@ -1,6 +1,7 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../base/v1beta1/coin";
 import { ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionAmino, ValidatorAccumulatedCommissionSDKType, ValidatorHistoricalRewards, ValidatorHistoricalRewardsAmino, ValidatorHistoricalRewardsSDKType, ValidatorCurrentRewards, ValidatorCurrentRewardsAmino, ValidatorCurrentRewardsSDKType, DelegatorStartingInfo, DelegatorStartingInfoAmino, DelegatorStartingInfoSDKType, ValidatorSlashEvent, ValidatorSlashEventAmino, ValidatorSlashEventSDKType, Params, ParamsAmino, ParamsSDKType, FeePool, FeePoolAmino, FeePoolSDKType } from "./distribution";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
  * withdrawn to by default this struct is only used at genesis to feed in
@@ -316,7 +317,7 @@ export declare const DelegatorWithdrawInfo: {
     encode(message: DelegatorWithdrawInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorWithdrawInfo;
     fromJSON(object: any): DelegatorWithdrawInfo;
-    toJSON(message: DelegatorWithdrawInfo): unknown;
+    toJSON(message: DelegatorWithdrawInfo): JsonSafe<DelegatorWithdrawInfo>;
     fromPartial(object: Partial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo;
     fromAmino(object: DelegatorWithdrawInfoAmino): DelegatorWithdrawInfo;
     toAmino(message: DelegatorWithdrawInfo): DelegatorWithdrawInfoAmino;
@@ -335,7 +336,7 @@ export declare const ValidatorOutstandingRewardsRecord: {
     encode(message: ValidatorOutstandingRewardsRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewardsRecord;
     fromJSON(object: any): ValidatorOutstandingRewardsRecord;
-    toJSON(message: ValidatorOutstandingRewardsRecord): unknown;
+    toJSON(message: ValidatorOutstandingRewardsRecord): JsonSafe<ValidatorOutstandingRewardsRecord>;
     fromPartial(object: Partial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord;
     fromAmino(object: ValidatorOutstandingRewardsRecordAmino): ValidatorOutstandingRewardsRecord;
     toAmino(message: ValidatorOutstandingRewardsRecord): ValidatorOutstandingRewardsRecordAmino;
@@ -354,7 +355,7 @@ export declare const ValidatorAccumulatedCommissionRecord: {
     encode(message: ValidatorAccumulatedCommissionRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommissionRecord;
     fromJSON(object: any): ValidatorAccumulatedCommissionRecord;
-    toJSON(message: ValidatorAccumulatedCommissionRecord): unknown;
+    toJSON(message: ValidatorAccumulatedCommissionRecord): JsonSafe<ValidatorAccumulatedCommissionRecord>;
     fromPartial(object: Partial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord;
     fromAmino(object: ValidatorAccumulatedCommissionRecordAmino): ValidatorAccumulatedCommissionRecord;
     toAmino(message: ValidatorAccumulatedCommissionRecord): ValidatorAccumulatedCommissionRecordAmino;
@@ -373,7 +374,7 @@ export declare const ValidatorHistoricalRewardsRecord: {
     encode(message: ValidatorHistoricalRewardsRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewardsRecord;
     fromJSON(object: any): ValidatorHistoricalRewardsRecord;
-    toJSON(message: ValidatorHistoricalRewardsRecord): unknown;
+    toJSON(message: ValidatorHistoricalRewardsRecord): JsonSafe<ValidatorHistoricalRewardsRecord>;
     fromPartial(object: Partial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord;
     fromAmino(object: ValidatorHistoricalRewardsRecordAmino): ValidatorHistoricalRewardsRecord;
     toAmino(message: ValidatorHistoricalRewardsRecord): ValidatorHistoricalRewardsRecordAmino;
@@ -392,7 +393,7 @@ export declare const ValidatorCurrentRewardsRecord: {
     encode(message: ValidatorCurrentRewardsRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewardsRecord;
     fromJSON(object: any): ValidatorCurrentRewardsRecord;
-    toJSON(message: ValidatorCurrentRewardsRecord): unknown;
+    toJSON(message: ValidatorCurrentRewardsRecord): JsonSafe<ValidatorCurrentRewardsRecord>;
     fromPartial(object: Partial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord;
     fromAmino(object: ValidatorCurrentRewardsRecordAmino): ValidatorCurrentRewardsRecord;
     toAmino(message: ValidatorCurrentRewardsRecord): ValidatorCurrentRewardsRecordAmino;
@@ -411,7 +412,7 @@ export declare const DelegatorStartingInfoRecord: {
     encode(message: DelegatorStartingInfoRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfoRecord;
     fromJSON(object: any): DelegatorStartingInfoRecord;
-    toJSON(message: DelegatorStartingInfoRecord): unknown;
+    toJSON(message: DelegatorStartingInfoRecord): JsonSafe<DelegatorStartingInfoRecord>;
     fromPartial(object: Partial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord;
     fromAmino(object: DelegatorStartingInfoRecordAmino): DelegatorStartingInfoRecord;
     toAmino(message: DelegatorStartingInfoRecord): DelegatorStartingInfoRecordAmino;
@@ -430,7 +431,7 @@ export declare const ValidatorSlashEventRecord: {
     encode(message: ValidatorSlashEventRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEventRecord;
     fromJSON(object: any): ValidatorSlashEventRecord;
-    toJSON(message: ValidatorSlashEventRecord): unknown;
+    toJSON(message: ValidatorSlashEventRecord): JsonSafe<ValidatorSlashEventRecord>;
     fromPartial(object: Partial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord;
     fromAmino(object: ValidatorSlashEventRecordAmino): ValidatorSlashEventRecord;
     toAmino(message: ValidatorSlashEventRecord): ValidatorSlashEventRecordAmino;
@@ -449,7 +450,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

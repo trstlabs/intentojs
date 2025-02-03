@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * FungibleTokenPacketData defines a struct for the packet payload
  * See FungibleTokenPacketData spec:
@@ -57,7 +58,7 @@ export declare const FungibleTokenPacketData: {
     encode(message: FungibleTokenPacketData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FungibleTokenPacketData;
     fromJSON(object: any): FungibleTokenPacketData;
-    toJSON(message: FungibleTokenPacketData): unknown;
+    toJSON(message: FungibleTokenPacketData): JsonSafe<FungibleTokenPacketData>;
     fromPartial(object: Partial<FungibleTokenPacketData>): FungibleTokenPacketData;
     fromAmino(object: FungibleTokenPacketDataAmino): FungibleTokenPacketData;
     toAmino(message: FungibleTokenPacketData): FungibleTokenPacketDataAmino;

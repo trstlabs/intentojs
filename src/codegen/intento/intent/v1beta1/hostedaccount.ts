@@ -1,4 +1,4 @@
-import { ICAConfig, ICAConfigAmino, ICAConfigSDKType } from "./action";
+import { ICAConfig, ICAConfigAmino, ICAConfigSDKType } from "./flow";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { GlobalDecoderRegistry } from "../../../registry";

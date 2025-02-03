@@ -1,5 +1,6 @@
 import { Plan, PlanAmino, PlanSDKType } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
  *
@@ -140,7 +141,7 @@ export declare const MsgSoftwareUpgrade: {
     encode(message: MsgSoftwareUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSoftwareUpgrade;
     fromJSON(object: any): MsgSoftwareUpgrade;
-    toJSON(message: MsgSoftwareUpgrade): unknown;
+    toJSON(message: MsgSoftwareUpgrade): JsonSafe<MsgSoftwareUpgrade>;
     fromPartial(object: Partial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade;
     fromAmino(object: MsgSoftwareUpgradeAmino): MsgSoftwareUpgrade;
     toAmino(message: MsgSoftwareUpgrade): MsgSoftwareUpgradeAmino;
@@ -159,7 +160,7 @@ export declare const MsgSoftwareUpgradeResponse: {
     encode(_: MsgSoftwareUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSoftwareUpgradeResponse;
     fromJSON(_: any): MsgSoftwareUpgradeResponse;
-    toJSON(_: MsgSoftwareUpgradeResponse): unknown;
+    toJSON(_: MsgSoftwareUpgradeResponse): JsonSafe<MsgSoftwareUpgradeResponse>;
     fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse;
     fromAmino(_: MsgSoftwareUpgradeResponseAmino): MsgSoftwareUpgradeResponse;
     toAmino(_: MsgSoftwareUpgradeResponse): MsgSoftwareUpgradeResponseAmino;
@@ -178,7 +179,7 @@ export declare const MsgCancelUpgrade: {
     encode(message: MsgCancelUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUpgrade;
     fromJSON(object: any): MsgCancelUpgrade;
-    toJSON(message: MsgCancelUpgrade): unknown;
+    toJSON(message: MsgCancelUpgrade): JsonSafe<MsgCancelUpgrade>;
     fromPartial(object: Partial<MsgCancelUpgrade>): MsgCancelUpgrade;
     fromAmino(object: MsgCancelUpgradeAmino): MsgCancelUpgrade;
     toAmino(message: MsgCancelUpgrade): MsgCancelUpgradeAmino;
@@ -197,7 +198,7 @@ export declare const MsgCancelUpgradeResponse: {
     encode(_: MsgCancelUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUpgradeResponse;
     fromJSON(_: any): MsgCancelUpgradeResponse;
-    toJSON(_: MsgCancelUpgradeResponse): unknown;
+    toJSON(_: MsgCancelUpgradeResponse): JsonSafe<MsgCancelUpgradeResponse>;
     fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse;
     fromAmino(_: MsgCancelUpgradeResponseAmino): MsgCancelUpgradeResponse;
     toAmino(_: MsgCancelUpgradeResponse): MsgCancelUpgradeResponseAmino;

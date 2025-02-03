@@ -1,6 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { DenomTrace, DenomTraceAmino, DenomTraceSDKType, Params, ParamsAmino, ParamsSDKType } from "./transfer";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * QueryDenomTraceRequest is the request type for the Query/DenomTrace RPC
  * method
@@ -178,7 +179,7 @@ export declare const QueryDenomTraceRequest: {
     encode(message: QueryDenomTraceRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTraceRequest;
     fromJSON(object: any): QueryDenomTraceRequest;
-    toJSON(message: QueryDenomTraceRequest): unknown;
+    toJSON(message: QueryDenomTraceRequest): JsonSafe<QueryDenomTraceRequest>;
     fromPartial(object: Partial<QueryDenomTraceRequest>): QueryDenomTraceRequest;
     fromAmino(object: QueryDenomTraceRequestAmino): QueryDenomTraceRequest;
     toAmino(message: QueryDenomTraceRequest): QueryDenomTraceRequestAmino;
@@ -197,7 +198,7 @@ export declare const QueryDenomTraceResponse: {
     encode(message: QueryDenomTraceResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTraceResponse;
     fromJSON(object: any): QueryDenomTraceResponse;
-    toJSON(message: QueryDenomTraceResponse): unknown;
+    toJSON(message: QueryDenomTraceResponse): JsonSafe<QueryDenomTraceResponse>;
     fromPartial(object: Partial<QueryDenomTraceResponse>): QueryDenomTraceResponse;
     fromAmino(object: QueryDenomTraceResponseAmino): QueryDenomTraceResponse;
     toAmino(message: QueryDenomTraceResponse): QueryDenomTraceResponseAmino;
@@ -216,7 +217,7 @@ export declare const QueryDenomTracesRequest: {
     encode(message: QueryDenomTracesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTracesRequest;
     fromJSON(object: any): QueryDenomTracesRequest;
-    toJSON(message: QueryDenomTracesRequest): unknown;
+    toJSON(message: QueryDenomTracesRequest): JsonSafe<QueryDenomTracesRequest>;
     fromPartial(object: Partial<QueryDenomTracesRequest>): QueryDenomTracesRequest;
     fromAmino(object: QueryDenomTracesRequestAmino): QueryDenomTracesRequest;
     toAmino(message: QueryDenomTracesRequest): QueryDenomTracesRequestAmino;
@@ -235,7 +236,7 @@ export declare const QueryDenomTracesResponse: {
     encode(message: QueryDenomTracesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTracesResponse;
     fromJSON(object: any): QueryDenomTracesResponse;
-    toJSON(message: QueryDenomTracesResponse): unknown;
+    toJSON(message: QueryDenomTracesResponse): JsonSafe<QueryDenomTracesResponse>;
     fromPartial(object: Partial<QueryDenomTracesResponse>): QueryDenomTracesResponse;
     fromAmino(object: QueryDenomTracesResponseAmino): QueryDenomTracesResponse;
     toAmino(message: QueryDenomTracesResponse): QueryDenomTracesResponseAmino;
@@ -254,7 +255,7 @@ export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
+    toJSON(_: QueryParamsRequest): JsonSafe<QueryParamsRequest>;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -273,7 +274,7 @@ export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
+    toJSON(message: QueryParamsResponse): JsonSafe<QueryParamsResponse>;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;

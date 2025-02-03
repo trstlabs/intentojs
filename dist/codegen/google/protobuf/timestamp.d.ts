@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /**
  * A Timestamp represents a point in time independent of any time zone or local
  * calendar, encoded as a count of seconds and fractions of seconds at
@@ -287,7 +288,7 @@ export declare const Timestamp: {
     encode(message: Timestamp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Timestamp;
     fromJSON(object: any): Timestamp;
-    toJSON(message: Timestamp): unknown;
+    toJSON(message: Timestamp): JsonSafe<Timestamp>;
     fromPartial(object: Partial<Timestamp>): Timestamp;
     fromAmino(object: TimestampAmino): Timestamp;
     toAmino(message: Timestamp): TimestampAmino;

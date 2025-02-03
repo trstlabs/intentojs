@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Input, InputAmino, InputSDKType, Output, OutputAmino, OutputSDKType } from "./bank";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** MsgSend represents a message to send coins from one account to another. */
 export interface MsgSend {
     fromAddress: string;
@@ -93,7 +94,7 @@ export declare const MsgSend: {
     encode(message: MsgSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSend;
     fromJSON(object: any): MsgSend;
-    toJSON(message: MsgSend): unknown;
+    toJSON(message: MsgSend): JsonSafe<MsgSend>;
     fromPartial(object: Partial<MsgSend>): MsgSend;
     fromAmino(object: MsgSendAmino): MsgSend;
     toAmino(message: MsgSend): MsgSendAmino;
@@ -112,7 +113,7 @@ export declare const MsgSendResponse: {
     encode(_: MsgSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSendResponse;
     fromJSON(_: any): MsgSendResponse;
-    toJSON(_: MsgSendResponse): unknown;
+    toJSON(_: MsgSendResponse): JsonSafe<MsgSendResponse>;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
     fromAmino(_: MsgSendResponseAmino): MsgSendResponse;
     toAmino(_: MsgSendResponse): MsgSendResponseAmino;
@@ -131,7 +132,7 @@ export declare const MsgMultiSend: {
     encode(message: MsgMultiSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSend;
     fromJSON(object: any): MsgMultiSend;
-    toJSON(message: MsgMultiSend): unknown;
+    toJSON(message: MsgMultiSend): JsonSafe<MsgMultiSend>;
     fromPartial(object: Partial<MsgMultiSend>): MsgMultiSend;
     fromAmino(object: MsgMultiSendAmino): MsgMultiSend;
     toAmino(message: MsgMultiSend): MsgMultiSendAmino;
@@ -150,7 +151,7 @@ export declare const MsgMultiSendResponse: {
     encode(_: MsgMultiSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSendResponse;
     fromJSON(_: any): MsgMultiSendResponse;
-    toJSON(_: MsgMultiSendResponse): unknown;
+    toJSON(_: MsgMultiSendResponse): JsonSafe<MsgMultiSendResponse>;
     fromPartial(_: Partial<MsgMultiSendResponse>): MsgMultiSendResponse;
     fromAmino(_: MsgMultiSendResponseAmino): MsgMultiSendResponse;
     toAmino(_: MsgMultiSendResponse): MsgMultiSendResponseAmino;

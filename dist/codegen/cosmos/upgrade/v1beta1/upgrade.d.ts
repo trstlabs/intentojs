@@ -1,5 +1,6 @@
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
     /**
@@ -229,7 +230,7 @@ export declare const Plan: {
     encode(message: Plan, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Plan;
     fromJSON(object: any): Plan;
-    toJSON(message: Plan): unknown;
+    toJSON(message: Plan): JsonSafe<Plan>;
     fromPartial(object: Partial<Plan>): Plan;
     fromAmino(object: PlanAmino): Plan;
     toAmino(message: Plan): PlanAmino;
@@ -248,7 +249,7 @@ export declare const SoftwareUpgradeProposal: {
     encode(message: SoftwareUpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SoftwareUpgradeProposal;
     fromJSON(object: any): SoftwareUpgradeProposal;
-    toJSON(message: SoftwareUpgradeProposal): unknown;
+    toJSON(message: SoftwareUpgradeProposal): JsonSafe<SoftwareUpgradeProposal>;
     fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
     fromAmino(object: SoftwareUpgradeProposalAmino): SoftwareUpgradeProposal;
     toAmino(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalAmino;
@@ -267,7 +268,7 @@ export declare const CancelSoftwareUpgradeProposal: {
     encode(message: CancelSoftwareUpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
     fromJSON(object: any): CancelSoftwareUpgradeProposal;
-    toJSON(message: CancelSoftwareUpgradeProposal): unknown;
+    toJSON(message: CancelSoftwareUpgradeProposal): JsonSafe<CancelSoftwareUpgradeProposal>;
     fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
     fromAmino(object: CancelSoftwareUpgradeProposalAmino): CancelSoftwareUpgradeProposal;
     toAmino(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalAmino;
@@ -286,7 +287,7 @@ export declare const ModuleVersion: {
     encode(message: ModuleVersion, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModuleVersion;
     fromJSON(object: any): ModuleVersion;
-    toJSON(message: ModuleVersion): unknown;
+    toJSON(message: ModuleVersion): JsonSafe<ModuleVersion>;
     fromPartial(object: Partial<ModuleVersion>): ModuleVersion;
     fromAmino(object: ModuleVersionAmino): ModuleVersion;
     toAmino(message: ModuleVersion): ModuleVersionAmino;

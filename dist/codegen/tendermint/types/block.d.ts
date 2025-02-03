@@ -1,6 +1,7 @@
 import { Header, HeaderAmino, HeaderSDKType, Data, DataAmino, DataSDKType, Commit, CommitAmino, CommitSDKType } from "./types";
 import { EvidenceList, EvidenceListAmino, EvidenceListSDKType } from "./evidence";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 export interface Block {
     header: Header;
     data: Data;
@@ -35,7 +36,7 @@ export declare const Block: {
     encode(message: Block, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Block;
     fromJSON(object: any): Block;
-    toJSON(message: Block): unknown;
+    toJSON(message: Block): JsonSafe<Block>;
     fromPartial(object: Partial<Block>): Block;
     fromAmino(object: BlockAmino): Block;
     toAmino(message: Block): BlockAmino;

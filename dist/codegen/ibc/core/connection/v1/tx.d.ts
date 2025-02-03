@@ -2,6 +2,7 @@ import { Counterparty, CounterpartyAmino, CounterpartySDKType, Version, VersionA
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * MsgConnectionOpenInit defines the msg sent by an account on Chain A to
  * initialize a connection with Chain B.
@@ -328,7 +329,7 @@ export declare const MsgConnectionOpenInit: {
     encode(message: MsgConnectionOpenInit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInit;
     fromJSON(object: any): MsgConnectionOpenInit;
-    toJSON(message: MsgConnectionOpenInit): unknown;
+    toJSON(message: MsgConnectionOpenInit): JsonSafe<MsgConnectionOpenInit>;
     fromPartial(object: Partial<MsgConnectionOpenInit>): MsgConnectionOpenInit;
     fromAmino(object: MsgConnectionOpenInitAmino): MsgConnectionOpenInit;
     toAmino(message: MsgConnectionOpenInit): MsgConnectionOpenInitAmino;
@@ -347,7 +348,7 @@ export declare const MsgConnectionOpenInitResponse: {
     encode(_: MsgConnectionOpenInitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
     fromJSON(_: any): MsgConnectionOpenInitResponse;
-    toJSON(_: MsgConnectionOpenInitResponse): unknown;
+    toJSON(_: MsgConnectionOpenInitResponse): JsonSafe<MsgConnectionOpenInitResponse>;
     fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
     fromAmino(_: MsgConnectionOpenInitResponseAmino): MsgConnectionOpenInitResponse;
     toAmino(_: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseAmino;
@@ -366,7 +367,7 @@ export declare const MsgConnectionOpenTry: {
     encode(message: MsgConnectionOpenTry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTry;
     fromJSON(object: any): MsgConnectionOpenTry;
-    toJSON(message: MsgConnectionOpenTry): unknown;
+    toJSON(message: MsgConnectionOpenTry): JsonSafe<MsgConnectionOpenTry>;
     fromPartial(object: Partial<MsgConnectionOpenTry>): MsgConnectionOpenTry;
     fromAmino(object: MsgConnectionOpenTryAmino): MsgConnectionOpenTry;
     toAmino(message: MsgConnectionOpenTry): MsgConnectionOpenTryAmino;
@@ -385,7 +386,7 @@ export declare const MsgConnectionOpenTryResponse: {
     encode(_: MsgConnectionOpenTryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
     fromJSON(_: any): MsgConnectionOpenTryResponse;
-    toJSON(_: MsgConnectionOpenTryResponse): unknown;
+    toJSON(_: MsgConnectionOpenTryResponse): JsonSafe<MsgConnectionOpenTryResponse>;
     fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
     fromAmino(_: MsgConnectionOpenTryResponseAmino): MsgConnectionOpenTryResponse;
     toAmino(_: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseAmino;
@@ -404,7 +405,7 @@ export declare const MsgConnectionOpenAck: {
     encode(message: MsgConnectionOpenAck, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAck;
     fromJSON(object: any): MsgConnectionOpenAck;
-    toJSON(message: MsgConnectionOpenAck): unknown;
+    toJSON(message: MsgConnectionOpenAck): JsonSafe<MsgConnectionOpenAck>;
     fromPartial(object: Partial<MsgConnectionOpenAck>): MsgConnectionOpenAck;
     fromAmino(object: MsgConnectionOpenAckAmino): MsgConnectionOpenAck;
     toAmino(message: MsgConnectionOpenAck): MsgConnectionOpenAckAmino;
@@ -423,7 +424,7 @@ export declare const MsgConnectionOpenAckResponse: {
     encode(_: MsgConnectionOpenAckResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
     fromJSON(_: any): MsgConnectionOpenAckResponse;
-    toJSON(_: MsgConnectionOpenAckResponse): unknown;
+    toJSON(_: MsgConnectionOpenAckResponse): JsonSafe<MsgConnectionOpenAckResponse>;
     fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
     fromAmino(_: MsgConnectionOpenAckResponseAmino): MsgConnectionOpenAckResponse;
     toAmino(_: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseAmino;
@@ -442,7 +443,7 @@ export declare const MsgConnectionOpenConfirm: {
     encode(message: MsgConnectionOpenConfirm, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirm;
     fromJSON(object: any): MsgConnectionOpenConfirm;
-    toJSON(message: MsgConnectionOpenConfirm): unknown;
+    toJSON(message: MsgConnectionOpenConfirm): JsonSafe<MsgConnectionOpenConfirm>;
     fromPartial(object: Partial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm;
     fromAmino(object: MsgConnectionOpenConfirmAmino): MsgConnectionOpenConfirm;
     toAmino(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmAmino;
@@ -461,7 +462,7 @@ export declare const MsgConnectionOpenConfirmResponse: {
     encode(_: MsgConnectionOpenConfirmResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
     fromJSON(_: any): MsgConnectionOpenConfirmResponse;
-    toJSON(_: MsgConnectionOpenConfirmResponse): unknown;
+    toJSON(_: MsgConnectionOpenConfirmResponse): JsonSafe<MsgConnectionOpenConfirmResponse>;
     fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;
     fromAmino(_: MsgConnectionOpenConfirmResponseAmino): MsgConnectionOpenConfirmResponse;
     toAmino(_: MsgConnectionOpenConfirmResponse): MsgConnectionOpenConfirmResponseAmino;

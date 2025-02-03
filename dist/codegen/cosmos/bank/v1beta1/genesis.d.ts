@@ -1,6 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "./bank";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of the module. */
@@ -89,7 +90,7 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
+    toJSON(message: GenesisState): JsonSafe<GenesisState>;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -108,7 +109,7 @@ export declare const Balance: {
     encode(message: Balance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Balance;
     fromJSON(object: any): Balance;
-    toJSON(message: Balance): unknown;
+    toJSON(message: Balance): JsonSafe<Balance>;
     fromPartial(object: Partial<Balance>): Balance;
     fromAmino(object: BalanceAmino): Balance;
     toAmino(message: Balance): BalanceAmino;

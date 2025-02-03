@@ -645,7 +645,7 @@ exports.Header = {
         const obj = {};
         obj.version = message.version ? types_1.Consensus.toAmino(message.version) : undefined;
         obj.chain_id = message.chainId === "" ? undefined : message.chainId;
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
         obj.time = message.time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.time)) : undefined;
         obj.last_block_id = message.lastBlockId ? exports.BlockID.toAmino(message.lastBlockId) : undefined;
         obj.last_commit_hash = message.lastCommitHash ? (0, helpers_1.base64FromBytes)(message.lastCommitHash) : undefined;
@@ -922,7 +922,7 @@ exports.Vote = {
     toAmino(message) {
         const obj = {};
         obj.type = message.type === 0 ? undefined : message.type;
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
         obj.round = message.round === 0 ? undefined : message.round;
         obj.block_id = message.blockId ? exports.BlockID.toAmino(message.blockId) : undefined;
         obj.timestamp = message.timestamp ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.timestamp)) : undefined;
@@ -1053,7 +1053,7 @@ exports.Commit = {
     },
     toAmino(message) {
         const obj = {};
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
         obj.round = message.round === 0 ? undefined : message.round;
         obj.block_id = message.blockId ? exports.BlockID.toAmino(message.blockId) : undefined;
         if (message.signatures) {
@@ -1348,7 +1348,7 @@ exports.Proposal = {
     toAmino(message) {
         const obj = {};
         obj.type = message.type === 0 ? undefined : message.type;
-        obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+        obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
         obj.round = message.round === 0 ? undefined : message.round;
         obj.pol_round = message.polRound === 0 ? undefined : message.polRound;
         obj.block_id = message.blockId ? exports.BlockID.toAmino(message.blockId) : undefined;
@@ -1670,9 +1670,9 @@ exports.BlockMeta = {
     toAmino(message) {
         const obj = {};
         obj.block_id = message.blockId ? exports.BlockID.toAmino(message.blockId) : undefined;
-        obj.block_size = message.blockSize !== BigInt(0) ? message.blockSize.toString() : undefined;
+        obj.block_size = message.blockSize !== BigInt(0) ? message.blockSize?.toString() : undefined;
         obj.header = message.header ? exports.Header.toAmino(message.header) : undefined;
-        obj.num_txs = message.numTxs !== BigInt(0) ? message.numTxs.toString() : undefined;
+        obj.num_txs = message.numTxs !== BigInt(0) ? message.numTxs?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

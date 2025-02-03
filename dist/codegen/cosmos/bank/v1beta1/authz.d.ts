@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * SendAuthorization allows the grantee to spend up to spend_limit coins from
  * the granter's account.
@@ -46,7 +47,7 @@ export declare const SendAuthorization: {
     encode(message: SendAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SendAuthorization;
     fromJSON(object: any): SendAuthorization;
-    toJSON(message: SendAuthorization): unknown;
+    toJSON(message: SendAuthorization): JsonSafe<SendAuthorization>;
     fromPartial(object: Partial<SendAuthorization>): SendAuthorization;
     fromAmino(object: SendAuthorizationAmino): SendAuthorization;
     toAmino(message: SendAuthorization): SendAuthorizationAmino;

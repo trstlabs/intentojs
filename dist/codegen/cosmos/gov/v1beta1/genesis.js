@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = void 0;
 const gov_1 = require("./gov");
 const binary_1 = require("../../../binary");
-const helpers_1 = require("../../../helpers");
 const registry_1 = require("../../../registry");
+const helpers_1 = require("../../../helpers");
 function createBaseGenesisState() {
     return {
         startingProposalId: BigInt(0),
@@ -156,7 +156,7 @@ exports.GenesisState = {
     },
     toAmino(message) {
         const obj = {};
-        obj.starting_proposal_id = message.startingProposalId !== BigInt(0) ? message.startingProposalId.toString() : undefined;
+        obj.starting_proposal_id = message.startingProposalId !== BigInt(0) ? message.startingProposalId?.toString() : undefined;
         if (message.deposits) {
             obj.deposits = message.deposits.map(e => e ? gov_1.Deposit.toAmino(e) : undefined);
         }

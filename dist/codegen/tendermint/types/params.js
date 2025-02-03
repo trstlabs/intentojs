@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.HashedParams = exports.VersionParams = exports.ValidatorParams = exports.EvidenceParams = exports.BlockParams = exports.ConsensusParams = void 0;
 const duration_1 = require("../../google/protobuf/duration");
 const binary_1 = require("../../binary");
-const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
+const helpers_1 = require("../../helpers");
 function createBaseConsensusParams() {
     return {
         block: exports.BlockParams.fromPartial({}),
@@ -219,9 +219,9 @@ exports.BlockParams = {
     },
     toAmino(message) {
         const obj = {};
-        obj.max_bytes = message.maxBytes !== BigInt(0) ? message.maxBytes.toString() : undefined;
-        obj.max_gas = message.maxGas !== BigInt(0) ? message.maxGas.toString() : undefined;
-        obj.time_iota_ms = message.timeIotaMs !== BigInt(0) ? message.timeIotaMs.toString() : undefined;
+        obj.max_bytes = message.maxBytes !== BigInt(0) ? message.maxBytes?.toString() : undefined;
+        obj.max_gas = message.maxGas !== BigInt(0) ? message.maxGas?.toString() : undefined;
+        obj.time_iota_ms = message.timeIotaMs !== BigInt(0) ? message.timeIotaMs?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -330,9 +330,9 @@ exports.EvidenceParams = {
     },
     toAmino(message) {
         const obj = {};
-        obj.max_age_num_blocks = message.maxAgeNumBlocks !== BigInt(0) ? message.maxAgeNumBlocks.toString() : undefined;
+        obj.max_age_num_blocks = message.maxAgeNumBlocks !== BigInt(0) ? message.maxAgeNumBlocks?.toString() : undefined;
         obj.max_age_duration = message.maxAgeDuration ? duration_1.Duration.toAmino(message.maxAgeDuration) : undefined;
-        obj.max_bytes = message.maxBytes !== BigInt(0) ? message.maxBytes.toString() : undefined;
+        obj.max_bytes = message.maxBytes !== BigInt(0) ? message.maxBytes?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -506,7 +506,7 @@ exports.VersionParams = {
     },
     toAmino(message) {
         const obj = {};
-        obj.app_version = message.appVersion !== BigInt(0) ? message.appVersion.toString() : undefined;
+        obj.app_version = message.appVersion !== BigInt(0) ? message.appVersion?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -602,8 +602,8 @@ exports.HashedParams = {
     },
     toAmino(message) {
         const obj = {};
-        obj.block_max_bytes = message.blockMaxBytes !== BigInt(0) ? message.blockMaxBytes.toString() : undefined;
-        obj.block_max_gas = message.blockMaxGas !== BigInt(0) ? message.blockMaxGas.toString() : undefined;
+        obj.block_max_bytes = message.blockMaxBytes !== BigInt(0) ? message.blockMaxBytes?.toString() : undefined;
+        obj.block_max_gas = message.blockMaxGas !== BigInt(0) ? message.blockMaxGas?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

@@ -5,8 +5,8 @@ const any_1 = require("../../../../google/protobuf/any");
 const connection_1 = require("../../../core/connection/v1/connection");
 const channel_1 = require("../../../core/channel/v1/channel");
 const binary_1 = require("../../../../binary");
-const helpers_1 = require("../../../../helpers");
 const registry_1 = require("../../../../registry");
+const helpers_1 = require("../../../../helpers");
 /**
  * DataType defines the type of solo machine proof being created. This is done
  * to preserve uniqueness of different data sign byte encodings.
@@ -207,7 +207,7 @@ exports.ClientState = {
     },
     toAmino(message) {
         const obj = {};
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         obj.is_frozen = message.isFrozen === false ? undefined : message.isFrozen;
         obj.consensus_state = message.consensusState ? exports.ConsensusState.toAmino(message.consensusState) : undefined;
         obj.allow_update_after_proposal = message.allowUpdateAfterProposal === false ? undefined : message.allowUpdateAfterProposal;
@@ -329,7 +329,7 @@ exports.ConsensusState = {
         const obj = {};
         obj.public_key = message.publicKey ? any_1.Any.toAmino(message.publicKey) : undefined;
         obj.diversifier = message.diversifier === "" ? undefined : message.diversifier;
-        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp.toString() : undefined;
+        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -472,8 +472,8 @@ exports.Header = {
     },
     toAmino(message) {
         const obj = {};
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
-        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
+        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
         obj.signature = message.signature ? (0, helpers_1.base64FromBytes)(message.signature) : undefined;
         obj.new_public_key = message.newPublicKey ? any_1.Any.toAmino(message.newPublicKey) : undefined;
         obj.new_diversifier = message.newDiversifier === "" ? undefined : message.newDiversifier;
@@ -607,7 +607,7 @@ exports.Misbehaviour = {
     toAmino(message) {
         const obj = {};
         obj.client_id = message.clientId === "" ? undefined : message.clientId;
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
         obj.signature_one = message.signatureOne ? exports.SignatureAndData.toAmino(message.signatureOne) : undefined;
         obj.signature_two = message.signatureTwo ? exports.SignatureAndData.toAmino(message.signatureTwo) : undefined;
         return obj;
@@ -742,7 +742,7 @@ exports.SignatureAndData = {
         obj.signature = message.signature ? (0, helpers_1.base64FromBytes)(message.signature) : undefined;
         obj.data_type = message.dataType === 0 ? undefined : message.dataType;
         obj.data = message.data ? (0, helpers_1.base64FromBytes)(message.data) : undefined;
-        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp.toString() : undefined;
+        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -847,7 +847,7 @@ exports.TimestampedSignatureData = {
     toAmino(message) {
         const obj = {};
         obj.signature_data = message.signatureData ? (0, helpers_1.base64FromBytes)(message.signatureData) : undefined;
-        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp.toString() : undefined;
+        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -990,8 +990,8 @@ exports.SignBytes = {
     },
     toAmino(message) {
         const obj = {};
-        obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
-        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp.toString() : undefined;
+        obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
+        obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
         obj.diversifier = message.diversifier === "" ? undefined : message.diversifier;
         obj.data_type = message.dataType === 0 ? undefined : message.dataType;
         obj.data = message.data ? (0, helpers_1.base64FromBytes)(message.data) : undefined;
@@ -1925,7 +1925,7 @@ exports.NextSequenceRecvData = {
     toAmino(message) {
         const obj = {};
         obj.path = message.path ? (0, helpers_1.base64FromBytes)(message.path) : undefined;
-        obj.next_seq_recv = message.nextSeqRecv !== BigInt(0) ? message.nextSeqRecv.toString() : undefined;
+        obj.next_seq_recv = message.nextSeqRecv !== BigInt(0) ? message.nextSeqRecv?.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

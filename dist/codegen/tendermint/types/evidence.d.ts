@@ -1,6 +1,7 @@
 import { Vote, VoteAmino, VoteSDKType, LightBlock, LightBlockAmino, LightBlockSDKType } from "./types";
 import { Validator, ValidatorAmino, ValidatorSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 export interface Evidence {
     duplicateVoteEvidence?: DuplicateVoteEvidence;
     lightClientAttackEvidence?: LightClientAttackEvidence;
@@ -110,7 +111,7 @@ export declare const Evidence: {
     encode(message: Evidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Evidence;
     fromJSON(object: any): Evidence;
-    toJSON(message: Evidence): unknown;
+    toJSON(message: Evidence): JsonSafe<Evidence>;
     fromPartial(object: Partial<Evidence>): Evidence;
     fromAmino(object: EvidenceAmino): Evidence;
     toAmino(message: Evidence): EvidenceAmino;
@@ -127,7 +128,7 @@ export declare const DuplicateVoteEvidence: {
     encode(message: DuplicateVoteEvidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DuplicateVoteEvidence;
     fromJSON(object: any): DuplicateVoteEvidence;
-    toJSON(message: DuplicateVoteEvidence): unknown;
+    toJSON(message: DuplicateVoteEvidence): JsonSafe<DuplicateVoteEvidence>;
     fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
     fromAmino(object: DuplicateVoteEvidenceAmino): DuplicateVoteEvidence;
     toAmino(message: DuplicateVoteEvidence): DuplicateVoteEvidenceAmino;
@@ -144,7 +145,7 @@ export declare const LightClientAttackEvidence: {
     encode(message: LightClientAttackEvidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LightClientAttackEvidence;
     fromJSON(object: any): LightClientAttackEvidence;
-    toJSON(message: LightClientAttackEvidence): unknown;
+    toJSON(message: LightClientAttackEvidence): JsonSafe<LightClientAttackEvidence>;
     fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence;
     fromAmino(object: LightClientAttackEvidenceAmino): LightClientAttackEvidence;
     toAmino(message: LightClientAttackEvidence): LightClientAttackEvidenceAmino;
@@ -161,7 +162,7 @@ export declare const EvidenceList: {
     encode(message: EvidenceList, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EvidenceList;
     fromJSON(object: any): EvidenceList;
-    toJSON(message: EvidenceList): unknown;
+    toJSON(message: EvidenceList): JsonSafe<EvidenceList>;
     fromPartial(object: Partial<EvidenceList>): EvidenceList;
     fromAmino(object: EvidenceListAmino): EvidenceList;
     toAmino(message: EvidenceList): EvidenceListAmino;

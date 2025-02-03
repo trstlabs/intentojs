@@ -4,8 +4,8 @@ exports.Block = void 0;
 const types_1 = require("./types");
 const evidence_1 = require("./evidence");
 const binary_1 = require("../../binary");
-const helpers_1 = require("../../helpers");
 const registry_1 = require("../../registry");
+const helpers_1 = require("../../helpers");
 function createBaseBlock() {
     return {
         header: types_1.Header.fromPartial({}),

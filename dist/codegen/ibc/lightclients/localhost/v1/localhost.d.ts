@@ -1,5 +1,6 @@
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * ClientState defines a loopback (localhost) client. It requires (read-only)
  * access to keys outside the client prefix.
@@ -45,7 +46,7 @@ export declare const ClientState: {
     encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromJSON(object: any): ClientState;
-    toJSON(message: ClientState): unknown;
+    toJSON(message: ClientState): JsonSafe<ClientState>;
     fromPartial(object: Partial<ClientState>): ClientState;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;

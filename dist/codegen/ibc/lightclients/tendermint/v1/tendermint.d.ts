@@ -5,6 +5,7 @@ import { MerkleRoot, MerkleRootAmino, MerkleRootSDKType } from "../../../core/co
 import { SignedHeader, SignedHeaderAmino, SignedHeaderSDKType } from "../../../../tendermint/types/types";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "../../../../tendermint/types/validator";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
  * and a possible frozen height.
@@ -296,7 +297,7 @@ export declare const ClientState: {
     encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromJSON(object: any): ClientState;
-    toJSON(message: ClientState): unknown;
+    toJSON(message: ClientState): JsonSafe<ClientState>;
     fromPartial(object: Partial<ClientState>): ClientState;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;
@@ -315,7 +316,7 @@ export declare const ConsensusState: {
     encode(message: ConsensusState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusState;
     fromJSON(object: any): ConsensusState;
-    toJSON(message: ConsensusState): unknown;
+    toJSON(message: ConsensusState): JsonSafe<ConsensusState>;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
     fromAmino(object: ConsensusStateAmino): ConsensusState;
     toAmino(message: ConsensusState): ConsensusStateAmino;
@@ -334,7 +335,7 @@ export declare const Misbehaviour: {
     encode(message: Misbehaviour, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Misbehaviour;
     fromJSON(object: any): Misbehaviour;
-    toJSON(message: Misbehaviour): unknown;
+    toJSON(message: Misbehaviour): JsonSafe<Misbehaviour>;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
     fromAmino(object: MisbehaviourAmino): Misbehaviour;
     toAmino(message: Misbehaviour): MisbehaviourAmino;
@@ -353,7 +354,7 @@ export declare const Header: {
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromJSON(object: any): Header;
-    toJSON(message: Header): unknown;
+    toJSON(message: Header): JsonSafe<Header>;
     fromPartial(object: Partial<Header>): Header;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
@@ -372,7 +373,7 @@ export declare const Fraction: {
     encode(message: Fraction, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Fraction;
     fromJSON(object: any): Fraction;
-    toJSON(message: Fraction): unknown;
+    toJSON(message: Fraction): JsonSafe<Fraction>;
     fromPartial(object: Partial<Fraction>): Fraction;
     fromAmino(object: FractionAmino): Fraction;
     toAmino(message: Fraction): FractionAmino;

@@ -3,6 +3,7 @@ import { SendAuthorization, SendAuthorizationProtoMsg, SendAuthorizationSDKType 
 import { StakeAuthorization, StakeAuthorizationProtoMsg, StakeAuthorizationSDKType } from "../../staking/v1beta1/authz";
 import { ContractExecutionAuthorization, ContractExecutionAuthorizationProtoMsg, ContractExecutionAuthorizationSDKType, ContractMigrationAuthorization, ContractMigrationAuthorizationProtoMsg, ContractMigrationAuthorizationSDKType } from "../../../cosmwasm/wasm/v1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -153,7 +154,7 @@ export declare const GenericAuthorization: {
     encode(message: GenericAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenericAuthorization;
     fromJSON(object: any): GenericAuthorization;
-    toJSON(message: GenericAuthorization): unknown;
+    toJSON(message: GenericAuthorization): JsonSafe<GenericAuthorization>;
     fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization;
     fromAmino(object: GenericAuthorizationAmino): GenericAuthorization;
     toAmino(message: GenericAuthorization): GenericAuthorizationAmino;
@@ -172,7 +173,7 @@ export declare const Grant: {
     encode(message: Grant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Grant;
     fromJSON(object: any): Grant;
-    toJSON(message: Grant): unknown;
+    toJSON(message: Grant): JsonSafe<Grant>;
     fromPartial(object: Partial<Grant>): Grant;
     fromAmino(object: GrantAmino): Grant;
     toAmino(message: Grant): GrantAmino;
@@ -191,7 +192,7 @@ export declare const GrantAuthorization: {
     encode(message: GrantAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GrantAuthorization;
     fromJSON(object: any): GrantAuthorization;
-    toJSON(message: GrantAuthorization): unknown;
+    toJSON(message: GrantAuthorization): JsonSafe<GrantAuthorization>;
     fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization;
     fromAmino(object: GrantAuthorizationAmino): GrantAuthorization;
     toAmino(message: GrantAuthorization): GrantAuthorizationAmino;
@@ -210,7 +211,7 @@ export declare const GrantQueueItem: {
     encode(message: GrantQueueItem, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GrantQueueItem;
     fromJSON(object: any): GrantQueueItem;
-    toJSON(message: GrantQueueItem): unknown;
+    toJSON(message: GrantQueueItem): JsonSafe<GrantQueueItem>;
     fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem;
     fromAmino(object: GrantQueueItemAmino): GrantQueueItem;
     toAmino(message: GrantQueueItem): GrantQueueItemAmino;

@@ -6,6 +6,7 @@ import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgra
 import { StoreCodeProposal, StoreCodeProposalProtoMsg, StoreCodeProposalSDKType, InstantiateContractProposal, InstantiateContractProposalProtoMsg, InstantiateContractProposalSDKType, InstantiateContract2Proposal, InstantiateContract2ProposalProtoMsg, InstantiateContract2ProposalSDKType, MigrateContractProposal, MigrateContractProposalProtoMsg, MigrateContractProposalSDKType, SudoContractProposal, SudoContractProposalProtoMsg, SudoContractProposalSDKType, ExecuteContractProposal, ExecuteContractProposalProtoMsg, ExecuteContractProposalSDKType, UpdateAdminProposal, UpdateAdminProposalProtoMsg, UpdateAdminProposalSDKType, ClearAdminProposal, ClearAdminProposalProtoMsg, ClearAdminProposalSDKType, PinCodesProposal, PinCodesProposalProtoMsg, PinCodesProposalSDKType, UnpinCodesProposal, UnpinCodesProposalProtoMsg, UnpinCodesProposalSDKType, UpdateInstantiateConfigProposal, UpdateInstantiateConfigProposalProtoMsg, UpdateInstantiateConfigProposalSDKType, StoreAndInstantiateContractProposal, StoreAndInstantiateContractProposalProtoMsg, StoreAndInstantiateContractProposalSDKType } from "../../../cosmwasm/wasm/v1/proposal";
 import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposalSDKType, UpgradeProposal, UpgradeProposalProtoMsg, UpgradeProposalSDKType } from "../../../ibc/core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -410,7 +411,7 @@ export declare const WeightedVoteOption: {
     encode(message: WeightedVoteOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): WeightedVoteOption;
     fromJSON(object: any): WeightedVoteOption;
-    toJSON(message: WeightedVoteOption): unknown;
+    toJSON(message: WeightedVoteOption): JsonSafe<WeightedVoteOption>;
     fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption;
     fromAmino(object: WeightedVoteOptionAmino): WeightedVoteOption;
     toAmino(message: WeightedVoteOption): WeightedVoteOptionAmino;
@@ -429,7 +430,7 @@ export declare const TextProposal: {
     encode(message: TextProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TextProposal;
     fromJSON(object: any): TextProposal;
-    toJSON(message: TextProposal): unknown;
+    toJSON(message: TextProposal): JsonSafe<TextProposal>;
     fromPartial(object: Partial<TextProposal>): TextProposal;
     fromAmino(object: TextProposalAmino): TextProposal;
     toAmino(message: TextProposal): TextProposalAmino;
@@ -448,7 +449,7 @@ export declare const Deposit: {
     encode(message: Deposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Deposit;
     fromJSON(object: any): Deposit;
-    toJSON(message: Deposit): unknown;
+    toJSON(message: Deposit): JsonSafe<Deposit>;
     fromPartial(object: Partial<Deposit>): Deposit;
     fromAmino(object: DepositAmino): Deposit;
     toAmino(message: Deposit): DepositAmino;
@@ -467,7 +468,7 @@ export declare const Proposal: {
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromJSON(object: any): Proposal;
-    toJSON(message: Proposal): unknown;
+    toJSON(message: Proposal): JsonSafe<Proposal>;
     fromPartial(object: Partial<Proposal>): Proposal;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
@@ -486,7 +487,7 @@ export declare const TallyResult: {
     encode(message: TallyResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyResult;
     fromJSON(object: any): TallyResult;
-    toJSON(message: TallyResult): unknown;
+    toJSON(message: TallyResult): JsonSafe<TallyResult>;
     fromPartial(object: Partial<TallyResult>): TallyResult;
     fromAmino(object: TallyResultAmino): TallyResult;
     toAmino(message: TallyResult): TallyResultAmino;
@@ -505,7 +506,7 @@ export declare const Vote: {
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromJSON(object: any): Vote;
-    toJSON(message: Vote): unknown;
+    toJSON(message: Vote): JsonSafe<Vote>;
     fromPartial(object: Partial<Vote>): Vote;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
@@ -524,7 +525,7 @@ export declare const DepositParams: {
     encode(message: DepositParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DepositParams;
     fromJSON(object: any): DepositParams;
-    toJSON(message: DepositParams): unknown;
+    toJSON(message: DepositParams): JsonSafe<DepositParams>;
     fromPartial(object: Partial<DepositParams>): DepositParams;
     fromAmino(object: DepositParamsAmino): DepositParams;
     toAmino(message: DepositParams): DepositParamsAmino;
@@ -543,7 +544,7 @@ export declare const VotingParams: {
     encode(message: VotingParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VotingParams;
     fromJSON(object: any): VotingParams;
-    toJSON(message: VotingParams): unknown;
+    toJSON(message: VotingParams): JsonSafe<VotingParams>;
     fromPartial(object: Partial<VotingParams>): VotingParams;
     fromAmino(object: VotingParamsAmino): VotingParams;
     toAmino(message: VotingParams): VotingParamsAmino;
@@ -562,7 +563,7 @@ export declare const TallyParams: {
     encode(message: TallyParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyParams;
     fromJSON(object: any): TallyParams;
-    toJSON(message: TallyParams): unknown;
+    toJSON(message: TallyParams): JsonSafe<TallyParams>;
     fromPartial(object: Partial<TallyParams>): TallyParams;
     fromAmino(object: TallyParamsAmino): TallyParams;
     toAmino(message: TallyParams): TallyParamsAmino;

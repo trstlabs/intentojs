@@ -35,6 +35,7 @@ var FieldDescriptorProto_Type;
      * treat group fields as unknown fields.
      */
     FieldDescriptorProto_Type[FieldDescriptorProto_Type["TYPE_GROUP"] = 10] = "TYPE_GROUP";
+    /** TYPE_MESSAGE - Length-delimited aggregate. */
     FieldDescriptorProto_Type[FieldDescriptorProto_Type["TYPE_MESSAGE"] = 11] = "TYPE_MESSAGE";
     /** TYPE_BYTES - New in version 2. */
     FieldDescriptorProto_Type[FieldDescriptorProto_Type["TYPE_BYTES"] = 12] = "TYPE_BYTES";
@@ -202,12 +203,9 @@ exports.fieldDescriptorProto_LabelToJSON = fieldDescriptorProto_LabelToJSON;
 /** Generated classes can be optimized for speed or code size. */
 var FileOptions_OptimizeMode;
 (function (FileOptions_OptimizeMode) {
-    /**
-     * SPEED - Generate complete code for parsing, serialization,
-     * etc.
-     */
+    /** SPEED - Generate complete code for parsing, serialization, */
     FileOptions_OptimizeMode[FileOptions_OptimizeMode["SPEED"] = 1] = "SPEED";
-    /** CODE_SIZE - Use ReflectionOps to implement these methods. */
+    /** CODE_SIZE - etc. */
     FileOptions_OptimizeMode[FileOptions_OptimizeMode["CODE_SIZE"] = 2] = "CODE_SIZE";
     /** LITE_RUNTIME - Generate code using MessageLite and the lite runtime. */
     FileOptions_OptimizeMode[FileOptions_OptimizeMode["LITE_RUNTIME"] = 3] = "LITE_RUNTIME";
@@ -3689,8 +3687,8 @@ exports.UninterpretedOption = {
             obj.name = message.name;
         }
         obj.identifier_value = message.identifierValue === "" ? undefined : message.identifierValue;
-        obj.positive_int_value = message.positiveIntValue !== BigInt(0) ? message.positiveIntValue.toString() : undefined;
-        obj.negative_int_value = message.negativeIntValue !== BigInt(0) ? message.negativeIntValue.toString() : undefined;
+        obj.positive_int_value = message.positiveIntValue !== BigInt(0) ? message.positiveIntValue?.toString() : undefined;
+        obj.negative_int_value = message.negativeIntValue !== BigInt(0) ? message.negativeIntValue?.toString() : undefined;
         obj.double_value = message.doubleValue === 0 ? undefined : message.doubleValue;
         obj.string_value = message.stringValue ? (0, helpers_1.base64FromBytes)(message.stringValue) : undefined;
         obj.aggregate_value = message.aggregateValue === "" ? undefined : message.aggregateValue;

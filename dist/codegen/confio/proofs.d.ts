@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../binary";
+import { JsonSafe } from "../json-safe";
 export declare enum HashOp {
     /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
     NO_HASH = 0,
@@ -659,7 +660,7 @@ export declare const ExistenceProof: {
     encode(message: ExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExistenceProof;
     fromJSON(object: any): ExistenceProof;
-    toJSON(message: ExistenceProof): unknown;
+    toJSON(message: ExistenceProof): JsonSafe<ExistenceProof>;
     fromPartial(object: Partial<ExistenceProof>): ExistenceProof;
     fromAmino(object: ExistenceProofAmino): ExistenceProof;
     toAmino(message: ExistenceProof): ExistenceProofAmino;
@@ -676,7 +677,7 @@ export declare const NonExistenceProof: {
     encode(message: NonExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NonExistenceProof;
     fromJSON(object: any): NonExistenceProof;
-    toJSON(message: NonExistenceProof): unknown;
+    toJSON(message: NonExistenceProof): JsonSafe<NonExistenceProof>;
     fromPartial(object: Partial<NonExistenceProof>): NonExistenceProof;
     fromAmino(object: NonExistenceProofAmino): NonExistenceProof;
     toAmino(message: NonExistenceProof): NonExistenceProofAmino;
@@ -693,7 +694,7 @@ export declare const CommitmentProof: {
     encode(message: CommitmentProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitmentProof;
     fromJSON(object: any): CommitmentProof;
-    toJSON(message: CommitmentProof): unknown;
+    toJSON(message: CommitmentProof): JsonSafe<CommitmentProof>;
     fromPartial(object: Partial<CommitmentProof>): CommitmentProof;
     fromAmino(object: CommitmentProofAmino): CommitmentProof;
     toAmino(message: CommitmentProof): CommitmentProofAmino;
@@ -710,7 +711,7 @@ export declare const LeafOp: {
     encode(message: LeafOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LeafOp;
     fromJSON(object: any): LeafOp;
-    toJSON(message: LeafOp): unknown;
+    toJSON(message: LeafOp): JsonSafe<LeafOp>;
     fromPartial(object: Partial<LeafOp>): LeafOp;
     fromAmino(object: LeafOpAmino): LeafOp;
     toAmino(message: LeafOp): LeafOpAmino;
@@ -727,7 +728,7 @@ export declare const InnerOp: {
     encode(message: InnerOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InnerOp;
     fromJSON(object: any): InnerOp;
-    toJSON(message: InnerOp): unknown;
+    toJSON(message: InnerOp): JsonSafe<InnerOp>;
     fromPartial(object: Partial<InnerOp>): InnerOp;
     fromAmino(object: InnerOpAmino): InnerOp;
     toAmino(message: InnerOp): InnerOpAmino;
@@ -744,7 +745,7 @@ export declare const ProofSpec: {
     encode(message: ProofSpec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofSpec;
     fromJSON(object: any): ProofSpec;
-    toJSON(message: ProofSpec): unknown;
+    toJSON(message: ProofSpec): JsonSafe<ProofSpec>;
     fromPartial(object: Partial<ProofSpec>): ProofSpec;
     fromAmino(object: ProofSpecAmino): ProofSpec;
     toAmino(message: ProofSpec): ProofSpecAmino;
@@ -761,7 +762,7 @@ export declare const InnerSpec: {
     encode(message: InnerSpec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InnerSpec;
     fromJSON(object: any): InnerSpec;
-    toJSON(message: InnerSpec): unknown;
+    toJSON(message: InnerSpec): JsonSafe<InnerSpec>;
     fromPartial(object: Partial<InnerSpec>): InnerSpec;
     fromAmino(object: InnerSpecAmino): InnerSpec;
     toAmino(message: InnerSpec): InnerSpecAmino;
@@ -778,7 +779,7 @@ export declare const BatchProof: {
     encode(message: BatchProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BatchProof;
     fromJSON(object: any): BatchProof;
-    toJSON(message: BatchProof): unknown;
+    toJSON(message: BatchProof): JsonSafe<BatchProof>;
     fromPartial(object: Partial<BatchProof>): BatchProof;
     fromAmino(object: BatchProofAmino): BatchProof;
     toAmino(message: BatchProof): BatchProofAmino;
@@ -795,7 +796,7 @@ export declare const BatchEntry: {
     encode(message: BatchEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BatchEntry;
     fromJSON(object: any): BatchEntry;
-    toJSON(message: BatchEntry): unknown;
+    toJSON(message: BatchEntry): JsonSafe<BatchEntry>;
     fromPartial(object: Partial<BatchEntry>): BatchEntry;
     fromAmino(object: BatchEntryAmino): BatchEntry;
     toAmino(message: BatchEntry): BatchEntryAmino;
@@ -812,7 +813,7 @@ export declare const CompressedBatchProof: {
     encode(message: CompressedBatchProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedBatchProof;
     fromJSON(object: any): CompressedBatchProof;
-    toJSON(message: CompressedBatchProof): unknown;
+    toJSON(message: CompressedBatchProof): JsonSafe<CompressedBatchProof>;
     fromPartial(object: Partial<CompressedBatchProof>): CompressedBatchProof;
     fromAmino(object: CompressedBatchProofAmino): CompressedBatchProof;
     toAmino(message: CompressedBatchProof): CompressedBatchProofAmino;
@@ -829,7 +830,7 @@ export declare const CompressedBatchEntry: {
     encode(message: CompressedBatchEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedBatchEntry;
     fromJSON(object: any): CompressedBatchEntry;
-    toJSON(message: CompressedBatchEntry): unknown;
+    toJSON(message: CompressedBatchEntry): JsonSafe<CompressedBatchEntry>;
     fromPartial(object: Partial<CompressedBatchEntry>): CompressedBatchEntry;
     fromAmino(object: CompressedBatchEntryAmino): CompressedBatchEntry;
     toAmino(message: CompressedBatchEntry): CompressedBatchEntryAmino;
@@ -846,7 +847,7 @@ export declare const CompressedExistenceProof: {
     encode(message: CompressedExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedExistenceProof;
     fromJSON(object: any): CompressedExistenceProof;
-    toJSON(message: CompressedExistenceProof): unknown;
+    toJSON(message: CompressedExistenceProof): JsonSafe<CompressedExistenceProof>;
     fromPartial(object: Partial<CompressedExistenceProof>): CompressedExistenceProof;
     fromAmino(object: CompressedExistenceProofAmino): CompressedExistenceProof;
     toAmino(message: CompressedExistenceProof): CompressedExistenceProofAmino;
@@ -863,7 +864,7 @@ export declare const CompressedNonExistenceProof: {
     encode(message: CompressedNonExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedNonExistenceProof;
     fromJSON(object: any): CompressedNonExistenceProof;
-    toJSON(message: CompressedNonExistenceProof): unknown;
+    toJSON(message: CompressedNonExistenceProof): JsonSafe<CompressedNonExistenceProof>;
     fromPartial(object: Partial<CompressedNonExistenceProof>): CompressedNonExistenceProof;
     fromAmino(object: CompressedNonExistenceProofAmino): CompressedNonExistenceProof;
     toAmino(message: CompressedNonExistenceProof): CompressedNonExistenceProofAmino;

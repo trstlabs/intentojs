@@ -1,5 +1,6 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { JsonSafe } from "../../json-safe";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -246,7 +247,7 @@ export declare const ConsensusParams: {
     encode(message: ConsensusParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusParams;
     fromJSON(object: any): ConsensusParams;
-    toJSON(message: ConsensusParams): unknown;
+    toJSON(message: ConsensusParams): JsonSafe<ConsensusParams>;
     fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
     fromAmino(object: ConsensusParamsAmino): ConsensusParams;
     toAmino(message: ConsensusParams): ConsensusParamsAmino;
@@ -263,7 +264,7 @@ export declare const BlockParams: {
     encode(message: BlockParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockParams;
     fromJSON(object: any): BlockParams;
-    toJSON(message: BlockParams): unknown;
+    toJSON(message: BlockParams): JsonSafe<BlockParams>;
     fromPartial(object: Partial<BlockParams>): BlockParams;
     fromAmino(object: BlockParamsAmino): BlockParams;
     toAmino(message: BlockParams): BlockParamsAmino;
@@ -280,7 +281,7 @@ export declare const EvidenceParams: {
     encode(message: EvidenceParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EvidenceParams;
     fromJSON(object: any): EvidenceParams;
-    toJSON(message: EvidenceParams): unknown;
+    toJSON(message: EvidenceParams): JsonSafe<EvidenceParams>;
     fromPartial(object: Partial<EvidenceParams>): EvidenceParams;
     fromAmino(object: EvidenceParamsAmino): EvidenceParams;
     toAmino(message: EvidenceParams): EvidenceParamsAmino;
@@ -297,7 +298,7 @@ export declare const ValidatorParams: {
     encode(message: ValidatorParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorParams;
     fromJSON(object: any): ValidatorParams;
-    toJSON(message: ValidatorParams): unknown;
+    toJSON(message: ValidatorParams): JsonSafe<ValidatorParams>;
     fromPartial(object: Partial<ValidatorParams>): ValidatorParams;
     fromAmino(object: ValidatorParamsAmino): ValidatorParams;
     toAmino(message: ValidatorParams): ValidatorParamsAmino;
@@ -314,7 +315,7 @@ export declare const VersionParams: {
     encode(message: VersionParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VersionParams;
     fromJSON(object: any): VersionParams;
-    toJSON(message: VersionParams): unknown;
+    toJSON(message: VersionParams): JsonSafe<VersionParams>;
     fromPartial(object: Partial<VersionParams>): VersionParams;
     fromAmino(object: VersionParamsAmino): VersionParams;
     toAmino(message: VersionParams): VersionParamsAmino;
@@ -331,7 +332,7 @@ export declare const HashedParams: {
     encode(message: HashedParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HashedParams;
     fromJSON(object: any): HashedParams;
-    toJSON(message: HashedParams): unknown;
+    toJSON(message: HashedParams): JsonSafe<HashedParams>;
     fromPartial(object: Partial<HashedParams>): HashedParams;
     fromAmino(object: HashedParamsAmino): HashedParams;
     toAmino(message: HashedParams): HashedParamsAmino;

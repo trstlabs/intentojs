@@ -2,7 +2,7 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { TimeoutPolicy, timeoutPolicyFromJSON, timeoutPolicyToJSON } from "../../interchainquery/v1/genesis";
+import { TimeoutPolicy, timeoutPolicyFromJSON, timeoutPolicyToJSON } from "../../../stride/interchainquery/v1/genesis";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { GlobalDecoderRegistry } from "../../../registry";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
@@ -98,8 +98,8 @@ export function comparisonOperatorToJSON(object: ComparisonOperator): string {
       return "UNRECOGNIZED";
   }
 }
-/** ActionInfo stores the info for the action */
-export interface ActionInfo {
+/** FlowInfo stores the info for the flow */
+export interface FlowInfo {
   id: bigint;
   owner: string;
   label: string;
@@ -115,15 +115,15 @@ export interface ActionInfo {
   hostedConfig?: HostedConfig;
   conditions?: ExecutionConditions;
 }
-export interface ActionInfoProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.ActionInfo";
+export interface FlowInfoProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.FlowInfo";
   value: Uint8Array;
 }
-export type ActionInfoEncoded = Omit<ActionInfo, "msgs"> & {
+export type FlowInfoEncoded = Omit<FlowInfo, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** ActionInfo stores the info for the action */
-export interface ActionInfoAmino {
+/** FlowInfo stores the info for the flow */
+export interface FlowInfoAmino {
   id?: string;
   owner?: string;
   label?: string;
@@ -139,12 +139,12 @@ export interface ActionInfoAmino {
   hosted_config?: HostedConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
-export interface ActionInfoAminoMsg {
-  type: "/intento.intent.v1beta1.ActionInfo";
-  value: ActionInfoAmino;
+export interface FlowInfoAminoMsg {
+  type: "/intento.intent.v1beta1.FlowInfo";
+  value: FlowInfoAmino;
 }
-/** ActionInfo stores the info for the action */
-export interface ActionInfoSDKType {
+/** FlowInfo stores the info for the flow */
+export interface FlowInfoSDKType {
   id: bigint;
   owner: string;
   label: string;
@@ -211,26 +211,26 @@ export interface HostedConfigSDKType {
 }
 /**
  * ExecutionConfiguration provides the execution-related configuration of the
- * action
+ * flow
  */
 export interface ExecutionConfiguration {
-  /** if true, the action response outputs are saved and can be used in logic */
+  /** if true, the flow response outputs are saved and can be used in logic */
   saveResponses: boolean;
-  /** if true, the action is not updatable */
+  /** if true, the flow is not updatable */
   updatingDisabled: boolean;
   /**
-   * If true, will execute until we get a successful Action, if false/unset will
+   * If true, will execute until we get a successful Flow, if false/unset will
    * always execute
    */
   stopOnSuccess: boolean;
   /**
-   * If true, will execute until successful Action, if false/unset will always
+   * If true, will execute until successful Flow, if false/unset will always
    * execute
    */
   stopOnFailure: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallbackToOwnerBalance: boolean;
-  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
+  /** If true, allows the flow to continue execution after an ibc channel times out (recommended) */
   reregisterIcaAfterTimeout: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
@@ -239,26 +239,26 @@ export interface ExecutionConfigurationProtoMsg {
 }
 /**
  * ExecutionConfiguration provides the execution-related configuration of the
- * action
+ * flow
  */
 export interface ExecutionConfigurationAmino {
-  /** if true, the action response outputs are saved and can be used in logic */
+  /** if true, the flow response outputs are saved and can be used in logic */
   save_responses?: boolean;
-  /** if true, the action is not updatable */
+  /** if true, the flow is not updatable */
   updating_disabled?: boolean;
   /**
-   * If true, will execute until we get a successful Action, if false/unset will
+   * If true, will execute until we get a successful Flow, if false/unset will
    * always execute
    */
   stop_on_success?: boolean;
   /**
-   * If true, will execute until successful Action, if false/unset will always
+   * If true, will execute until successful Flow, if false/unset will always
    * execute
    */
   stop_on_failure?: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallback_to_owner_balance?: boolean;
-  /** If true, allows the action to continue execution after an ibc channel times out (recommended) */
+  /** If true, allows the flow to continue execution after an ibc channel times out (recommended) */
   reregister_ica_after_timeout?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
@@ -267,7 +267,7 @@ export interface ExecutionConfigurationAminoMsg {
 }
 /**
  * ExecutionConfiguration provides the execution-related configuration of the
- * action
+ * flow
  */
 export interface ExecutionConfigurationSDKType {
   save_responses: boolean;
@@ -277,28 +277,28 @@ export interface ExecutionConfigurationSDKType {
   fallback_to_owner_balance: boolean;
   reregister_ica_after_timeout: boolean;
 }
-/** ActionHistory execution history */
-export interface ActionHistory {
-  history: ActionHistoryEntry[];
+/** FlowHistory execution history */
+export interface FlowHistory {
+  history: FlowHistoryEntry[];
 }
-export interface ActionHistoryProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.ActionHistory";
+export interface FlowHistoryProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.FlowHistory";
   value: Uint8Array;
 }
-/** ActionHistory execution history */
-export interface ActionHistoryAmino {
-  history?: ActionHistoryEntryAmino[];
+/** FlowHistory execution history */
+export interface FlowHistoryAmino {
+  history?: FlowHistoryEntryAmino[];
 }
-export interface ActionHistoryAminoMsg {
-  type: "/intento.intent.v1beta1.ActionHistory";
-  value: ActionHistoryAmino;
+export interface FlowHistoryAminoMsg {
+  type: "/intento.intent.v1beta1.FlowHistory";
+  value: FlowHistoryAmino;
 }
-/** ActionHistory execution history */
-export interface ActionHistorySDKType {
-  history: ActionHistoryEntrySDKType[];
+/** FlowHistory execution history */
+export interface FlowHistorySDKType {
+  history: FlowHistoryEntrySDKType[];
 }
-/** ActionHistoryEntry provides a the history of action interchain tx call */
-export interface ActionHistoryEntry {
+/** FlowHistoryEntry provides a the history of flow interchain tx call */
+export interface FlowHistoryEntry {
   scheduledExecTime: Date;
   actualExecTime: Date;
   execFee: Coin;
@@ -316,12 +316,12 @@ export interface ActionHistoryEntry {
   /** will be empty when save_responses is false */
   queryResponses: string[];
 }
-export interface ActionHistoryEntryProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry";
+export interface FlowHistoryEntryProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.FlowHistoryEntry";
   value: Uint8Array;
 }
-/** ActionHistoryEntry provides a the history of action interchain tx call */
-export interface ActionHistoryEntryAmino {
+/** FlowHistoryEntry provides a the history of flow interchain tx call */
+export interface FlowHistoryEntryAmino {
   scheduled_exec_time?: string;
   actual_exec_time?: string;
   exec_fee?: CoinAmino;
@@ -339,12 +339,12 @@ export interface ActionHistoryEntryAmino {
   /** will be empty when save_responses is false */
   query_responses?: string[];
 }
-export interface ActionHistoryEntryAminoMsg {
-  type: "/intento.intent.v1beta1.ActionHistoryEntry";
-  value: ActionHistoryEntryAmino;
+export interface FlowHistoryEntryAminoMsg {
+  type: "/intento.intent.v1beta1.FlowHistoryEntry";
+  value: FlowHistoryEntryAmino;
 }
-/** ActionHistoryEntry provides a the history of action interchain tx call */
-export interface ActionHistoryEntrySDKType {
+/** FlowHistoryEntry provides a the history of flow interchain tx call */
+export interface FlowHistoryEntrySDKType {
   scheduled_exec_time: Date;
   actual_exec_time: Date;
   exec_fee: CoinSDKType;
@@ -354,10 +354,10 @@ export interface ActionHistoryEntrySDKType {
   msg_responses: AnySDKType[];
   query_responses: string[];
 }
-/** ExecutionConditions provides execution conditions for the action */
+/** ExecutionConditions provides execution conditions for the flow */
 export interface ExecutionConditions {
   /**
-   * Replace value with value from message or response from another action’s
+   * Replace value with value from message or response from another flow’s
    * latest output
    */
   feedbackLoops: FeedbackLoop[];
@@ -390,10 +390,10 @@ export interface ExecutionConditionsProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConditions";
   value: Uint8Array;
 }
-/** ExecutionConditions provides execution conditions for the action */
+/** ExecutionConditions provides execution conditions for the flow */
 export interface ExecutionConditionsAmino {
   /**
-   * Replace value with value from message or response from another action’s
+   * Replace value with value from message or response from another flow’s
    * latest output
    */
   feedback_loops?: FeedbackLoopAmino[];
@@ -426,7 +426,7 @@ export interface ExecutionConditionsAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConditions";
   value: ExecutionConditionsAmino;
 }
-/** ExecutionConditions provides execution conditions for the action */
+/** ExecutionConditions provides execution conditions for the flow */
 export interface ExecutionConditionsSDKType {
   feedback_loops: FeedbackLoopSDKType[];
   comparisons: ComparisonSDKType[];
@@ -437,12 +437,12 @@ export interface ExecutionConditionsSDKType {
   use_and_for_comparisons: boolean;
 }
 /**
- * Replace value with value from message or response from another action’s
+ * Replace value with value from message or response from another flow’s
  * latest output before execution
  */
 export interface FeedbackLoop {
-  /** action to get the latest response value from, optional */
-  actionId: bigint;
+  /** flow to get the latest response value from, optional */
+  flowId: bigint;
   /** index of the responses */
   responseIndex: number;
   /** for example "Amount" */
@@ -461,12 +461,12 @@ export interface FeedbackLoopProtoMsg {
   value: Uint8Array;
 }
 /**
- * Replace value with value from message or response from another action’s
+ * Replace value with value from message or response from another flow’s
  * latest output before execution
  */
 export interface FeedbackLoopAmino {
-  /** action to get the latest response value from, optional */
-  action_id?: string;
+  /** flow to get the latest response value from, optional */
+  flow_id?: string;
   /** index of the responses */
   response_index?: number;
   /** for example "Amount" */
@@ -485,11 +485,11 @@ export interface FeedbackLoopAminoMsg {
   value: FeedbackLoopAmino;
 }
 /**
- * Replace value with value from message or response from another action’s
+ * Replace value with value from message or response from another flow’s
  * latest output before execution
  */
 export interface FeedbackLoopSDKType {
-  action_id: bigint;
+  flow_id: bigint;
   response_index: number;
   response_key: string;
   msgs_index: number;
@@ -499,11 +499,11 @@ export interface FeedbackLoopSDKType {
 }
 /**
  * Comparison is checked on the response in JSON before execution of
- * action and outputs true or false
+ * flow and outputs true or false
  */
 export interface Comparison {
-  /** get the latest response value from other action, optional */
-  actionId: bigint;
+  /** get the latest response value from other flow, optional */
+  flowId: bigint;
   /** index of the message response, optional */
   responseIndex: number;
   /** e.g. Amount[0].Amount, FromAddress, optional */
@@ -521,11 +521,11 @@ export interface ComparisonProtoMsg {
 }
 /**
  * Comparison is checked on the response in JSON before execution of
- * action and outputs true or false
+ * flow and outputs true or false
  */
 export interface ComparisonAmino {
-  /** get the latest response value from other action, optional */
-  action_id?: string;
+  /** get the latest response value from other flow, optional */
+  flow_id?: string;
   /** index of the message response, optional */
   response_index?: number;
   /** e.g. Amount[0].Amount, FromAddress, optional */
@@ -543,10 +543,10 @@ export interface ComparisonAminoMsg {
 }
 /**
  * Comparison is checked on the response in JSON before execution of
- * action and outputs true or false
+ * flow and outputs true or false
  */
 export interface ComparisonSDKType {
-  action_id: bigint;
+  flow_id: bigint;
   response_index: number;
   response_key: string;
   value_type: string;
@@ -598,7 +598,7 @@ export interface ICQConfigSDKType {
   query_key: string;
   response: Uint8Array;
 }
-function createBaseActionInfo(): ActionInfo {
+function createBaseFlowInfo(): FlowInfo {
   return {
     id: BigInt(0),
     owner: "",
@@ -616,18 +616,18 @@ function createBaseActionInfo(): ActionInfo {
     conditions: undefined
   };
 }
-export const ActionInfo = {
-  typeUrl: "/intento.intent.v1beta1.ActionInfo",
-  is(o: any): o is ActionInfo {
-    return o && (o.$typeUrl === ActionInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.feeAddress === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && Duration.is(o.interval) && Timestamp.is(o.startTime) && Timestamp.is(o.execTime) && Timestamp.is(o.endTime) && Array.isArray(o.updateHistory) && (!o.updateHistory.length || Timestamp.is(o.updateHistory[0])));
+export const FlowInfo = {
+  typeUrl: "/intento.intent.v1beta1.FlowInfo",
+  is(o: any): o is FlowInfo {
+    return o && (o.$typeUrl === FlowInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.feeAddress === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && Duration.is(o.interval) && Timestamp.is(o.startTime) && Timestamp.is(o.execTime) && Timestamp.is(o.endTime) && Array.isArray(o.updateHistory) && (!o.updateHistory.length || Timestamp.is(o.updateHistory[0])));
   },
-  isSDK(o: any): o is ActionInfoSDKType {
-    return o && (o.$typeUrl === ActionInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && Duration.isSDK(o.interval) && Timestamp.isSDK(o.start_time) && Timestamp.isSDK(o.exec_time) && Timestamp.isSDK(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isSDK(o.update_history[0])));
+  isSDK(o: any): o is FlowInfoSDKType {
+    return o && (o.$typeUrl === FlowInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && Duration.isSDK(o.interval) && Timestamp.isSDK(o.start_time) && Timestamp.isSDK(o.exec_time) && Timestamp.isSDK(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isSDK(o.update_history[0])));
   },
-  isAmino(o: any): o is ActionInfoAmino {
-    return o && (o.$typeUrl === ActionInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && Duration.isAmino(o.interval) && Timestamp.isAmino(o.start_time) && Timestamp.isAmino(o.exec_time) && Timestamp.isAmino(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isAmino(o.update_history[0])));
+  isAmino(o: any): o is FlowInfoAmino {
+    return o && (o.$typeUrl === FlowInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && Duration.isAmino(o.interval) && Timestamp.isAmino(o.start_time) && Timestamp.isAmino(o.exec_time) && Timestamp.isAmino(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isAmino(o.update_history[0])));
   },
-  encode(message: ActionInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: FlowInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== BigInt(0)) {
       writer.uint32(8).uint64(message.id);
     }
@@ -672,10 +672,10 @@ export const ActionInfo = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ActionInfo {
+  decode(input: BinaryReader | Uint8Array, length?: number): FlowInfo {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseActionInfo();
+    const message = createBaseFlowInfo();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -728,7 +728,7 @@ export const ActionInfo = {
     }
     return message;
   },
-  fromJSON(object: any): ActionInfo {
+  fromJSON(object: any): FlowInfo {
     return {
       id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
       owner: isSet(object.owner) ? String(object.owner) : "",
@@ -746,7 +746,7 @@ export const ActionInfo = {
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: ActionInfo): JsonSafe<ActionInfo> {
+  toJSON(message: FlowInfo): JsonSafe<FlowInfo> {
     const obj: any = {};
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
     message.owner !== undefined && (obj.owner = message.owner);
@@ -772,8 +772,8 @@ export const ActionInfo = {
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<ActionInfo>): ActionInfo {
-    const message = createBaseActionInfo();
+  fromPartial(object: Partial<FlowInfo>): FlowInfo {
+    const message = createBaseFlowInfo();
     message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
@@ -790,8 +790,8 @@ export const ActionInfo = {
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
-  fromAmino(object: ActionInfoAmino): ActionInfo {
-    const message = createBaseActionInfo();
+  fromAmino(object: FlowInfoAmino): FlowInfo {
+    const message = createBaseFlowInfo();
     if (object.id !== undefined && object.id !== null) {
       message.id = BigInt(object.id);
     }
@@ -832,7 +832,7 @@ export const ActionInfo = {
     }
     return message;
   },
-  toAmino(message: ActionInfo): ActionInfoAmino {
+  toAmino(message: FlowInfo): FlowInfoAmino {
     const obj: any = {};
     obj.id = message.id !== BigInt(0) ? message.id?.toString() : undefined;
     obj.owner = message.owner === "" ? undefined : message.owner;
@@ -858,23 +858,23 @@ export const ActionInfo = {
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
-  fromAminoMsg(object: ActionInfoAminoMsg): ActionInfo {
-    return ActionInfo.fromAmino(object.value);
+  fromAminoMsg(object: FlowInfoAminoMsg): FlowInfo {
+    return FlowInfo.fromAmino(object.value);
   },
-  fromProtoMsg(message: ActionInfoProtoMsg): ActionInfo {
-    return ActionInfo.decode(message.value);
+  fromProtoMsg(message: FlowInfoProtoMsg): FlowInfo {
+    return FlowInfo.decode(message.value);
   },
-  toProto(message: ActionInfo): Uint8Array {
-    return ActionInfo.encode(message).finish();
+  toProto(message: FlowInfo): Uint8Array {
+    return FlowInfo.encode(message).finish();
   },
-  toProtoMsg(message: ActionInfo): ActionInfoProtoMsg {
+  toProtoMsg(message: FlowInfo): FlowInfoProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.ActionInfo",
-      value: ActionInfo.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.FlowInfo",
+      value: FlowInfo.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(ActionInfo.typeUrl, ActionInfo);
+GlobalDecoderRegistry.register(FlowInfo.typeUrl, FlowInfo);
 function createBaseICAConfig(): ICAConfig {
   return {
     portId: "",
@@ -1236,37 +1236,37 @@ export const ExecutionConfiguration = {
   }
 };
 GlobalDecoderRegistry.register(ExecutionConfiguration.typeUrl, ExecutionConfiguration);
-function createBaseActionHistory(): ActionHistory {
+function createBaseFlowHistory(): FlowHistory {
   return {
     history: []
   };
 }
-export const ActionHistory = {
-  typeUrl: "/intento.intent.v1beta1.ActionHistory",
-  is(o: any): o is ActionHistory {
-    return o && (o.$typeUrl === ActionHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || ActionHistoryEntry.is(o.history[0])));
+export const FlowHistory = {
+  typeUrl: "/intento.intent.v1beta1.FlowHistory",
+  is(o: any): o is FlowHistory {
+    return o && (o.$typeUrl === FlowHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || FlowHistoryEntry.is(o.history[0])));
   },
-  isSDK(o: any): o is ActionHistorySDKType {
-    return o && (o.$typeUrl === ActionHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || ActionHistoryEntry.isSDK(o.history[0])));
+  isSDK(o: any): o is FlowHistorySDKType {
+    return o && (o.$typeUrl === FlowHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || FlowHistoryEntry.isSDK(o.history[0])));
   },
-  isAmino(o: any): o is ActionHistoryAmino {
-    return o && (o.$typeUrl === ActionHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || ActionHistoryEntry.isAmino(o.history[0])));
+  isAmino(o: any): o is FlowHistoryAmino {
+    return o && (o.$typeUrl === FlowHistory.typeUrl || Array.isArray(o.history) && (!o.history.length || FlowHistoryEntry.isAmino(o.history[0])));
   },
-  encode(message: ActionHistory, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: FlowHistory, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.history) {
-      ActionHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
+      FlowHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ActionHistory {
+  decode(input: BinaryReader | Uint8Array, length?: number): FlowHistory {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseActionHistory();
+    const message = createBaseFlowHistory();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.history.push(ActionHistoryEntry.decode(reader, reader.uint32()));
+          message.history.push(FlowHistoryEntry.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1275,57 +1275,57 @@ export const ActionHistory = {
     }
     return message;
   },
-  fromJSON(object: any): ActionHistory {
+  fromJSON(object: any): FlowHistory {
     return {
-      history: Array.isArray(object?.history) ? object.history.map((e: any) => ActionHistoryEntry.fromJSON(e)) : []
+      history: Array.isArray(object?.history) ? object.history.map((e: any) => FlowHistoryEntry.fromJSON(e)) : []
     };
   },
-  toJSON(message: ActionHistory): JsonSafe<ActionHistory> {
+  toJSON(message: FlowHistory): JsonSafe<FlowHistory> {
     const obj: any = {};
     if (message.history) {
-      obj.history = message.history.map(e => e ? ActionHistoryEntry.toJSON(e) : undefined);
+      obj.history = message.history.map(e => e ? FlowHistoryEntry.toJSON(e) : undefined);
     } else {
       obj.history = [];
     }
     return obj;
   },
-  fromPartial(object: Partial<ActionHistory>): ActionHistory {
-    const message = createBaseActionHistory();
-    message.history = object.history?.map(e => ActionHistoryEntry.fromPartial(e)) || [];
+  fromPartial(object: Partial<FlowHistory>): FlowHistory {
+    const message = createBaseFlowHistory();
+    message.history = object.history?.map(e => FlowHistoryEntry.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: ActionHistoryAmino): ActionHistory {
-    const message = createBaseActionHistory();
-    message.history = object.history?.map(e => ActionHistoryEntry.fromAmino(e)) || [];
+  fromAmino(object: FlowHistoryAmino): FlowHistory {
+    const message = createBaseFlowHistory();
+    message.history = object.history?.map(e => FlowHistoryEntry.fromAmino(e)) || [];
     return message;
   },
-  toAmino(message: ActionHistory): ActionHistoryAmino {
+  toAmino(message: FlowHistory): FlowHistoryAmino {
     const obj: any = {};
     if (message.history) {
-      obj.history = message.history.map(e => e ? ActionHistoryEntry.toAmino(e) : undefined);
+      obj.history = message.history.map(e => e ? FlowHistoryEntry.toAmino(e) : undefined);
     } else {
       obj.history = message.history;
     }
     return obj;
   },
-  fromAminoMsg(object: ActionHistoryAminoMsg): ActionHistory {
-    return ActionHistory.fromAmino(object.value);
+  fromAminoMsg(object: FlowHistoryAminoMsg): FlowHistory {
+    return FlowHistory.fromAmino(object.value);
   },
-  fromProtoMsg(message: ActionHistoryProtoMsg): ActionHistory {
-    return ActionHistory.decode(message.value);
+  fromProtoMsg(message: FlowHistoryProtoMsg): FlowHistory {
+    return FlowHistory.decode(message.value);
   },
-  toProto(message: ActionHistory): Uint8Array {
-    return ActionHistory.encode(message).finish();
+  toProto(message: FlowHistory): Uint8Array {
+    return FlowHistory.encode(message).finish();
   },
-  toProtoMsg(message: ActionHistory): ActionHistoryProtoMsg {
+  toProtoMsg(message: FlowHistory): FlowHistoryProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.ActionHistory",
-      value: ActionHistory.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.FlowHistory",
+      value: FlowHistory.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(ActionHistory.typeUrl, ActionHistory);
-function createBaseActionHistoryEntry(): ActionHistoryEntry {
+GlobalDecoderRegistry.register(FlowHistory.typeUrl, FlowHistory);
+function createBaseFlowHistoryEntry(): FlowHistoryEntry {
   return {
     scheduledExecTime: new Date(),
     actualExecTime: new Date(),
@@ -1337,18 +1337,18 @@ function createBaseActionHistoryEntry(): ActionHistoryEntry {
     queryResponses: []
   };
 }
-export const ActionHistoryEntry = {
-  typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry",
-  is(o: any): o is ActionHistoryEntry {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && Array.isArray(o.queryResponses) && (!o.queryResponses.length || typeof o.queryResponses[0] === "string"));
+export const FlowHistoryEntry = {
+  typeUrl: "/intento.intent.v1beta1.FlowHistoryEntry",
+  is(o: any): o is FlowHistoryEntry {
+    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Coin.is(o.execFee) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && Array.isArray(o.queryResponses) && (!o.queryResponses.length || typeof o.queryResponses[0] === "string"));
   },
-  isSDK(o: any): o is ActionHistoryEntrySDKType {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string"));
+  isSDK(o: any): o is FlowHistoryEntrySDKType {
+    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Coin.isSDK(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string"));
   },
-  isAmino(o: any): o is ActionHistoryEntryAmino {
-    return o && (o.$typeUrl === ActionHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string"));
+  isAmino(o: any): o is FlowHistoryEntryAmino {
+    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Coin.isAmino(o.exec_fee) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string"));
   },
-  encode(message: ActionHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: FlowHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
       Timestamp.encode(toTimestamp(message.scheduledExecTime), writer.uint32(10).fork()).ldelim();
     }
@@ -1375,10 +1375,10 @@ export const ActionHistoryEntry = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ActionHistoryEntry {
+  decode(input: BinaryReader | Uint8Array, length?: number): FlowHistoryEntry {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseActionHistoryEntry();
+    const message = createBaseFlowHistoryEntry();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1413,7 +1413,7 @@ export const ActionHistoryEntry = {
     }
     return message;
   },
-  fromJSON(object: any): ActionHistoryEntry {
+  fromJSON(object: any): FlowHistoryEntry {
     return {
       scheduledExecTime: isSet(object.scheduledExecTime) ? fromJsonTimestamp(object.scheduledExecTime) : undefined,
       actualExecTime: isSet(object.actualExecTime) ? fromJsonTimestamp(object.actualExecTime) : undefined,
@@ -1425,7 +1425,7 @@ export const ActionHistoryEntry = {
       queryResponses: Array.isArray(object?.queryResponses) ? object.queryResponses.map((e: any) => String(e)) : []
     };
   },
-  toJSON(message: ActionHistoryEntry): JsonSafe<ActionHistoryEntry> {
+  toJSON(message: FlowHistoryEntry): JsonSafe<FlowHistoryEntry> {
     const obj: any = {};
     message.scheduledExecTime !== undefined && (obj.scheduledExecTime = message.scheduledExecTime.toISOString());
     message.actualExecTime !== undefined && (obj.actualExecTime = message.actualExecTime.toISOString());
@@ -1449,8 +1449,8 @@ export const ActionHistoryEntry = {
     }
     return obj;
   },
-  fromPartial(object: Partial<ActionHistoryEntry>): ActionHistoryEntry {
-    const message = createBaseActionHistoryEntry();
+  fromPartial(object: Partial<FlowHistoryEntry>): FlowHistoryEntry {
+    const message = createBaseFlowHistoryEntry();
     message.scheduledExecTime = object.scheduledExecTime ?? undefined;
     message.actualExecTime = object.actualExecTime ?? undefined;
     message.execFee = object.execFee !== undefined && object.execFee !== null ? Coin.fromPartial(object.execFee) : undefined;
@@ -1461,8 +1461,8 @@ export const ActionHistoryEntry = {
     message.queryResponses = object.queryResponses?.map(e => e) || [];
     return message;
   },
-  fromAmino(object: ActionHistoryEntryAmino): ActionHistoryEntry {
-    const message = createBaseActionHistoryEntry();
+  fromAmino(object: FlowHistoryEntryAmino): FlowHistoryEntry {
+    const message = createBaseFlowHistoryEntry();
     if (object.scheduled_exec_time !== undefined && object.scheduled_exec_time !== null) {
       message.scheduledExecTime = fromTimestamp(Timestamp.fromAmino(object.scheduled_exec_time));
     }
@@ -1483,7 +1483,7 @@ export const ActionHistoryEntry = {
     message.queryResponses = object.query_responses?.map(e => e) || [];
     return message;
   },
-  toAmino(message: ActionHistoryEntry): ActionHistoryEntryAmino {
+  toAmino(message: FlowHistoryEntry): FlowHistoryEntryAmino {
     const obj: any = {};
     obj.scheduled_exec_time = message.scheduledExecTime ? Timestamp.toAmino(toTimestamp(message.scheduledExecTime)) : undefined;
     obj.actual_exec_time = message.actualExecTime ? Timestamp.toAmino(toTimestamp(message.actualExecTime)) : undefined;
@@ -1507,23 +1507,23 @@ export const ActionHistoryEntry = {
     }
     return obj;
   },
-  fromAminoMsg(object: ActionHistoryEntryAminoMsg): ActionHistoryEntry {
-    return ActionHistoryEntry.fromAmino(object.value);
+  fromAminoMsg(object: FlowHistoryEntryAminoMsg): FlowHistoryEntry {
+    return FlowHistoryEntry.fromAmino(object.value);
   },
-  fromProtoMsg(message: ActionHistoryEntryProtoMsg): ActionHistoryEntry {
-    return ActionHistoryEntry.decode(message.value);
+  fromProtoMsg(message: FlowHistoryEntryProtoMsg): FlowHistoryEntry {
+    return FlowHistoryEntry.decode(message.value);
   },
-  toProto(message: ActionHistoryEntry): Uint8Array {
-    return ActionHistoryEntry.encode(message).finish();
+  toProto(message: FlowHistoryEntry): Uint8Array {
+    return FlowHistoryEntry.encode(message).finish();
   },
-  toProtoMsg(message: ActionHistoryEntry): ActionHistoryEntryProtoMsg {
+  toProtoMsg(message: FlowHistoryEntry): FlowHistoryEntryProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.ActionHistoryEntry",
-      value: ActionHistoryEntry.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.FlowHistoryEntry",
+      value: FlowHistoryEntry.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(ActionHistoryEntry.typeUrl, ActionHistoryEntry);
+GlobalDecoderRegistry.register(FlowHistoryEntry.typeUrl, FlowHistoryEntry);
 function createBaseExecutionConditions(): ExecutionConditions {
   return {
     feedbackLoops: [],
@@ -1765,7 +1765,7 @@ export const ExecutionConditions = {
 GlobalDecoderRegistry.register(ExecutionConditions.typeUrl, ExecutionConditions);
 function createBaseFeedbackLoop(): FeedbackLoop {
   return {
-    actionId: BigInt(0),
+    flowId: BigInt(0),
     responseIndex: 0,
     responseKey: "",
     msgsIndex: 0,
@@ -1777,17 +1777,17 @@ function createBaseFeedbackLoop(): FeedbackLoop {
 export const FeedbackLoop = {
   typeUrl: "/intento.intent.v1beta1.FeedbackLoop",
   is(o: any): o is FeedbackLoop {
-    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string");
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flowId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string");
   },
   isSDK(o: any): o is FeedbackLoopSDKType {
-    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
   },
   isAmino(o: any): o is FeedbackLoopAmino {
-    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
   },
   encode(message: FeedbackLoop, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.actionId !== BigInt(0)) {
-      writer.uint32(8).uint64(message.actionId);
+    if (message.flowId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.flowId);
     }
     if (message.responseIndex !== 0) {
       writer.uint32(24).uint32(message.responseIndex);
@@ -1817,7 +1817,7 @@ export const FeedbackLoop = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionId = reader.uint64();
+          message.flowId = reader.uint64();
           break;
         case 3:
           message.responseIndex = reader.uint32();
@@ -1846,7 +1846,7 @@ export const FeedbackLoop = {
   },
   fromJSON(object: any): FeedbackLoop {
     return {
-      actionId: isSet(object.actionId) ? BigInt(object.actionId.toString()) : BigInt(0),
+      flowId: isSet(object.flowId) ? BigInt(object.flowId.toString()) : BigInt(0),
       responseIndex: isSet(object.responseIndex) ? Number(object.responseIndex) : 0,
       responseKey: isSet(object.responseKey) ? String(object.responseKey) : "",
       msgsIndex: isSet(object.msgsIndex) ? Number(object.msgsIndex) : 0,
@@ -1857,7 +1857,7 @@ export const FeedbackLoop = {
   },
   toJSON(message: FeedbackLoop): JsonSafe<FeedbackLoop> {
     const obj: any = {};
-    message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
+    message.flowId !== undefined && (obj.flowId = (message.flowId || BigInt(0)).toString());
     message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
     message.responseKey !== undefined && (obj.responseKey = message.responseKey);
     message.msgsIndex !== undefined && (obj.msgsIndex = Math.round(message.msgsIndex));
@@ -1868,7 +1868,7 @@ export const FeedbackLoop = {
   },
   fromPartial(object: Partial<FeedbackLoop>): FeedbackLoop {
     const message = createBaseFeedbackLoop();
-    message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
+    message.flowId = object.flowId !== undefined && object.flowId !== null ? BigInt(object.flowId.toString()) : BigInt(0);
     message.responseIndex = object.responseIndex ?? 0;
     message.responseKey = object.responseKey ?? "";
     message.msgsIndex = object.msgsIndex ?? 0;
@@ -1879,8 +1879,8 @@ export const FeedbackLoop = {
   },
   fromAmino(object: FeedbackLoopAmino): FeedbackLoop {
     const message = createBaseFeedbackLoop();
-    if (object.action_id !== undefined && object.action_id !== null) {
-      message.actionId = BigInt(object.action_id);
+    if (object.flow_id !== undefined && object.flow_id !== null) {
+      message.flowId = BigInt(object.flow_id);
     }
     if (object.response_index !== undefined && object.response_index !== null) {
       message.responseIndex = object.response_index;
@@ -1904,7 +1904,7 @@ export const FeedbackLoop = {
   },
   toAmino(message: FeedbackLoop): FeedbackLoopAmino {
     const obj: any = {};
-    obj.action_id = message.actionId !== BigInt(0) ? message.actionId?.toString() : undefined;
+    obj.flow_id = message.flowId !== BigInt(0) ? message.flowId?.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
     obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
     obj.msgs_index = message.msgsIndex === 0 ? undefined : message.msgsIndex;
@@ -1932,7 +1932,7 @@ export const FeedbackLoop = {
 GlobalDecoderRegistry.register(FeedbackLoop.typeUrl, FeedbackLoop);
 function createBaseComparison(): Comparison {
   return {
-    actionId: BigInt(0),
+    flowId: BigInt(0),
     responseIndex: 0,
     responseKey: "",
     valueType: "",
@@ -1944,17 +1944,17 @@ function createBaseComparison(): Comparison {
 export const Comparison = {
   typeUrl: "/intento.intent.v1beta1.Comparison",
   is(o: any): o is Comparison {
-    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.actionId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.operator) && typeof o.operand === "string");
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flowId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.operator) && typeof o.operand === "string");
   },
   isSDK(o: any): o is ComparisonSDKType {
-    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string");
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string");
   },
   isAmino(o: any): o is ComparisonAmino {
-    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.action_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string");
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string");
   },
   encode(message: Comparison, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.actionId !== BigInt(0)) {
-      writer.uint32(8).uint64(message.actionId);
+    if (message.flowId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.flowId);
     }
     if (message.responseIndex !== 0) {
       writer.uint32(16).uint32(message.responseIndex);
@@ -1984,7 +1984,7 @@ export const Comparison = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionId = reader.uint64();
+          message.flowId = reader.uint64();
           break;
         case 2:
           message.responseIndex = reader.uint32();
@@ -2013,7 +2013,7 @@ export const Comparison = {
   },
   fromJSON(object: any): Comparison {
     return {
-      actionId: isSet(object.actionId) ? BigInt(object.actionId.toString()) : BigInt(0),
+      flowId: isSet(object.flowId) ? BigInt(object.flowId.toString()) : BigInt(0),
       responseIndex: isSet(object.responseIndex) ? Number(object.responseIndex) : 0,
       responseKey: isSet(object.responseKey) ? String(object.responseKey) : "",
       valueType: isSet(object.valueType) ? String(object.valueType) : "",
@@ -2024,7 +2024,7 @@ export const Comparison = {
   },
   toJSON(message: Comparison): JsonSafe<Comparison> {
     const obj: any = {};
-    message.actionId !== undefined && (obj.actionId = (message.actionId || BigInt(0)).toString());
+    message.flowId !== undefined && (obj.flowId = (message.flowId || BigInt(0)).toString());
     message.responseIndex !== undefined && (obj.responseIndex = Math.round(message.responseIndex));
     message.responseKey !== undefined && (obj.responseKey = message.responseKey);
     message.valueType !== undefined && (obj.valueType = message.valueType);
@@ -2035,7 +2035,7 @@ export const Comparison = {
   },
   fromPartial(object: Partial<Comparison>): Comparison {
     const message = createBaseComparison();
-    message.actionId = object.actionId !== undefined && object.actionId !== null ? BigInt(object.actionId.toString()) : BigInt(0);
+    message.flowId = object.flowId !== undefined && object.flowId !== null ? BigInt(object.flowId.toString()) : BigInt(0);
     message.responseIndex = object.responseIndex ?? 0;
     message.responseKey = object.responseKey ?? "";
     message.valueType = object.valueType ?? "";
@@ -2046,8 +2046,8 @@ export const Comparison = {
   },
   fromAmino(object: ComparisonAmino): Comparison {
     const message = createBaseComparison();
-    if (object.action_id !== undefined && object.action_id !== null) {
-      message.actionId = BigInt(object.action_id);
+    if (object.flow_id !== undefined && object.flow_id !== null) {
+      message.flowId = BigInt(object.flow_id);
     }
     if (object.response_index !== undefined && object.response_index !== null) {
       message.responseIndex = object.response_index;
@@ -2071,7 +2071,7 @@ export const Comparison = {
   },
   toAmino(message: Comparison): ComparisonAmino {
     const obj: any = {};
-    obj.action_id = message.actionId !== BigInt(0) ? message.actionId?.toString() : undefined;
+    obj.flow_id = message.flowId !== BigInt(0) ? message.flowId?.toString() : undefined;
     obj.response_index = message.responseIndex === 0 ? undefined : message.responseIndex;
     obj.response_key = message.responseKey === "" ? undefined : message.responseKey;
     obj.value_type = message.valueType === "" ? undefined : message.valueType;

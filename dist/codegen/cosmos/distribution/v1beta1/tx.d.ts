@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { JsonSafe } from "../../../json-safe";
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).
@@ -208,7 +209,7 @@ export declare const MsgSetWithdrawAddress: {
     encode(message: MsgSetWithdrawAddress, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetWithdrawAddress;
     fromJSON(object: any): MsgSetWithdrawAddress;
-    toJSON(message: MsgSetWithdrawAddress): unknown;
+    toJSON(message: MsgSetWithdrawAddress): JsonSafe<MsgSetWithdrawAddress>;
     fromPartial(object: Partial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress;
     fromAmino(object: MsgSetWithdrawAddressAmino): MsgSetWithdrawAddress;
     toAmino(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressAmino;
@@ -227,7 +228,7 @@ export declare const MsgSetWithdrawAddressResponse: {
     encode(_: MsgSetWithdrawAddressResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse;
     fromJSON(_: any): MsgSetWithdrawAddressResponse;
-    toJSON(_: MsgSetWithdrawAddressResponse): unknown;
+    toJSON(_: MsgSetWithdrawAddressResponse): JsonSafe<MsgSetWithdrawAddressResponse>;
     fromPartial(_: Partial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse;
     fromAmino(_: MsgSetWithdrawAddressResponseAmino): MsgSetWithdrawAddressResponse;
     toAmino(_: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseAmino;
@@ -246,7 +247,7 @@ export declare const MsgWithdrawDelegatorReward: {
     encode(message: MsgWithdrawDelegatorReward, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegatorReward;
     fromJSON(object: any): MsgWithdrawDelegatorReward;
-    toJSON(message: MsgWithdrawDelegatorReward): unknown;
+    toJSON(message: MsgWithdrawDelegatorReward): JsonSafe<MsgWithdrawDelegatorReward>;
     fromPartial(object: Partial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward;
     fromAmino(object: MsgWithdrawDelegatorRewardAmino): MsgWithdrawDelegatorReward;
     toAmino(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardAmino;
@@ -265,7 +266,7 @@ export declare const MsgWithdrawDelegatorRewardResponse: {
     encode(message: MsgWithdrawDelegatorRewardResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse;
     fromJSON(object: any): MsgWithdrawDelegatorRewardResponse;
-    toJSON(message: MsgWithdrawDelegatorRewardResponse): unknown;
+    toJSON(message: MsgWithdrawDelegatorRewardResponse): JsonSafe<MsgWithdrawDelegatorRewardResponse>;
     fromPartial(object: Partial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
     fromAmino(object: MsgWithdrawDelegatorRewardResponseAmino): MsgWithdrawDelegatorRewardResponse;
     toAmino(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAmino;
@@ -284,7 +285,7 @@ export declare const MsgWithdrawValidatorCommission: {
     encode(message: MsgWithdrawValidatorCommission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawValidatorCommission;
     fromJSON(object: any): MsgWithdrawValidatorCommission;
-    toJSON(message: MsgWithdrawValidatorCommission): unknown;
+    toJSON(message: MsgWithdrawValidatorCommission): JsonSafe<MsgWithdrawValidatorCommission>;
     fromPartial(object: Partial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission;
     fromAmino(object: MsgWithdrawValidatorCommissionAmino): MsgWithdrawValidatorCommission;
     toAmino(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionAmino;
@@ -303,7 +304,7 @@ export declare const MsgWithdrawValidatorCommissionResponse: {
     encode(message: MsgWithdrawValidatorCommissionResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse;
     fromJSON(object: any): MsgWithdrawValidatorCommissionResponse;
-    toJSON(message: MsgWithdrawValidatorCommissionResponse): unknown;
+    toJSON(message: MsgWithdrawValidatorCommissionResponse): JsonSafe<MsgWithdrawValidatorCommissionResponse>;
     fromPartial(object: Partial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
     fromAmino(object: MsgWithdrawValidatorCommissionResponseAmino): MsgWithdrawValidatorCommissionResponse;
     toAmino(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAmino;
@@ -322,7 +323,7 @@ export declare const MsgFundCommunityPool: {
     encode(message: MsgFundCommunityPool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgFundCommunityPool;
     fromJSON(object: any): MsgFundCommunityPool;
-    toJSON(message: MsgFundCommunityPool): unknown;
+    toJSON(message: MsgFundCommunityPool): JsonSafe<MsgFundCommunityPool>;
     fromPartial(object: Partial<MsgFundCommunityPool>): MsgFundCommunityPool;
     fromAmino(object: MsgFundCommunityPoolAmino): MsgFundCommunityPool;
     toAmino(message: MsgFundCommunityPool): MsgFundCommunityPoolAmino;
@@ -341,7 +342,7 @@ export declare const MsgFundCommunityPoolResponse: {
     encode(_: MsgFundCommunityPoolResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgFundCommunityPoolResponse;
     fromJSON(_: any): MsgFundCommunityPoolResponse;
-    toJSON(_: MsgFundCommunityPoolResponse): unknown;
+    toJSON(_: MsgFundCommunityPoolResponse): JsonSafe<MsgFundCommunityPoolResponse>;
     fromPartial(_: Partial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse;
     fromAmino(_: MsgFundCommunityPoolResponseAmino): MsgFundCommunityPoolResponse;
     toAmino(_: MsgFundCommunityPoolResponse): MsgFundCommunityPoolResponseAmino;

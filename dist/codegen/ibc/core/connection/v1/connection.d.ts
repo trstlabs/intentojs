@@ -1,5 +1,6 @@
 import { MerklePrefix, MerklePrefixAmino, MerklePrefixSDKType } from "../../commitment/v1/commitment";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { JsonSafe } from "../../../../json-safe";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -323,7 +324,7 @@ export declare const ConnectionEnd: {
     encode(message: ConnectionEnd, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionEnd;
     fromJSON(object: any): ConnectionEnd;
-    toJSON(message: ConnectionEnd): unknown;
+    toJSON(message: ConnectionEnd): JsonSafe<ConnectionEnd>;
     fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd;
     fromAmino(object: ConnectionEndAmino): ConnectionEnd;
     toAmino(message: ConnectionEnd): ConnectionEndAmino;
@@ -342,7 +343,7 @@ export declare const IdentifiedConnection: {
     encode(message: IdentifiedConnection, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedConnection;
     fromJSON(object: any): IdentifiedConnection;
-    toJSON(message: IdentifiedConnection): unknown;
+    toJSON(message: IdentifiedConnection): JsonSafe<IdentifiedConnection>;
     fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection;
     fromAmino(object: IdentifiedConnectionAmino): IdentifiedConnection;
     toAmino(message: IdentifiedConnection): IdentifiedConnectionAmino;
@@ -361,7 +362,7 @@ export declare const Counterparty: {
     encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
     fromJSON(object: any): Counterparty;
-    toJSON(message: Counterparty): unknown;
+    toJSON(message: Counterparty): JsonSafe<Counterparty>;
     fromPartial(object: Partial<Counterparty>): Counterparty;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
@@ -380,7 +381,7 @@ export declare const ClientPaths: {
     encode(message: ClientPaths, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientPaths;
     fromJSON(object: any): ClientPaths;
-    toJSON(message: ClientPaths): unknown;
+    toJSON(message: ClientPaths): JsonSafe<ClientPaths>;
     fromPartial(object: Partial<ClientPaths>): ClientPaths;
     fromAmino(object: ClientPathsAmino): ClientPaths;
     toAmino(message: ClientPaths): ClientPathsAmino;
@@ -399,7 +400,7 @@ export declare const ConnectionPaths: {
     encode(message: ConnectionPaths, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionPaths;
     fromJSON(object: any): ConnectionPaths;
-    toJSON(message: ConnectionPaths): unknown;
+    toJSON(message: ConnectionPaths): JsonSafe<ConnectionPaths>;
     fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths;
     fromAmino(object: ConnectionPathsAmino): ConnectionPaths;
     toAmino(message: ConnectionPaths): ConnectionPathsAmino;
@@ -418,7 +419,7 @@ export declare const Version: {
     encode(message: Version, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Version;
     fromJSON(object: any): Version;
-    toJSON(message: Version): unknown;
+    toJSON(message: Version): JsonSafe<Version>;
     fromPartial(object: Partial<Version>): Version;
     fromAmino(object: VersionAmino): Version;
     toAmino(message: Version): VersionAmino;
@@ -437,7 +438,7 @@ export declare const Params: {
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
+    toJSON(message: Params): JsonSafe<Params>;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
