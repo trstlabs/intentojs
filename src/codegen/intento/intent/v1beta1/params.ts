@@ -6,9 +6,13 @@ import { isSet } from "../../../helpers";
 import { JsonSafe } from "../../../json-safe";
 /** Params defines the params for activeness of Flows on governance proposals. */
 export interface Params {
+  /** Commision rate to retun remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
   flowFundsCommission: bigint;
+  /** Multiplier to the flexible flow gas fee, e.g. 100 = 1X, 250 = 250 */
   flowFlexFeeMul: bigint;
-  flowConstantFee: bigint;
+  /** Fixed burn fee per message execution to burn native denom */
+  burnFeePerMsg: bigint;
+  /** Array of denoms that can be used for fee payment together with an amount */
   gasFeeCoins: Coin[];
   /** Maximum period for self-executing Flow */
   maxFlowDuration: Duration;
@@ -28,16 +32,20 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the params for activeness of Flows on governance proposals. */
 export interface ParamsAmino {
-  FlowFundsCommission?: string;
-  FlowFlexFeeMul?: string;
-  FlowConstantFee?: string;
+  /** Commision rate to retun remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
+  flow_funds_commission?: string;
+  /** Multiplier to the flexible flow gas fee, e.g. 100 = 1X, 250 = 250 */
+  flow_flex_fee_mul?: string;
+  /** Fixed burn fee per message execution to burn native denom */
+  burn_fee_per_msg?: string;
+  /** Array of denoms that can be used for fee payment together with an amount */
   gas_fee_coins?: CoinAmino[];
   /** Maximum period for self-executing Flow */
-  MaxFlowDuration?: DurationAmino;
+  max_flow_duration?: DurationAmino;
   /** Minimum period for self-executing Flow */
-  MinFlowDuration?: DurationAmino;
+  min_flow_duration?: DurationAmino;
   /** Minimum period for self-executing Flow */
-  MinFlowInterval?: DurationAmino;
+  min_flow_interval?: DurationAmino;
   /**
    * relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo.
    * Rewards are in uinto and topped up in the module account by alloc module.
@@ -50,20 +58,20 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the params for activeness of Flows on governance proposals. */
 export interface ParamsSDKType {
-  FlowFundsCommission: bigint;
-  FlowFlexFeeMul: bigint;
-  FlowConstantFee: bigint;
+  flow_funds_commission: bigint;
+  flow_flex_fee_mul: bigint;
+  burn_fee_per_msg: bigint;
   gas_fee_coins: CoinSDKType[];
-  MaxFlowDuration: DurationSDKType;
-  MinFlowDuration: DurationSDKType;
-  MinFlowInterval: DurationSDKType;
+  max_flow_duration: DurationSDKType;
+  min_flow_duration: DurationSDKType;
+  min_flow_interval: DurationSDKType;
   relayer_rewards: bigint[];
 }
 function createBaseParams(): Params {
   return {
     flowFundsCommission: BigInt(0),
     flowFlexFeeMul: BigInt(0),
-    flowConstantFee: BigInt(0),
+    burnFeePerMsg: BigInt(0),
     gasFeeCoins: [],
     maxFlowDuration: Duration.fromPartial({}),
     minFlowDuration: Duration.fromPartial({}),
@@ -74,13 +82,13 @@ function createBaseParams(): Params {
 export const Params = {
   typeUrl: "/intento.intent.v1beta1.Params",
   is(o: any): o is Params {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.flowFundsCommission === "bigint" && typeof o.flowFlexFeeMul === "bigint" && typeof o.flowConstantFee === "bigint" && Array.isArray(o.gasFeeCoins) && (!o.gasFeeCoins.length || Coin.is(o.gasFeeCoins[0])) && Duration.is(o.maxFlowDuration) && Duration.is(o.minFlowDuration) && Duration.is(o.minFlowInterval) && Array.isArray(o.relayerRewards) && (!o.relayerRewards.length || typeof o.relayerRewards[0] === "bigint"));
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.flowFundsCommission === "bigint" && typeof o.flowFlexFeeMul === "bigint" && typeof o.burnFeePerMsg === "bigint" && Array.isArray(o.gasFeeCoins) && (!o.gasFeeCoins.length || Coin.is(o.gasFeeCoins[0])) && Duration.is(o.maxFlowDuration) && Duration.is(o.minFlowDuration) && Duration.is(o.minFlowInterval) && Array.isArray(o.relayerRewards) && (!o.relayerRewards.length || typeof o.relayerRewards[0] === "bigint"));
   },
   isSDK(o: any): o is ParamsSDKType {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.FlowFundsCommission === "bigint" && typeof o.FlowFlexFeeMul === "bigint" && typeof o.FlowConstantFee === "bigint" && Array.isArray(o.gas_fee_coins) && (!o.gas_fee_coins.length || Coin.isSDK(o.gas_fee_coins[0])) && Duration.isSDK(o.MaxFlowDuration) && Duration.isSDK(o.MinFlowDuration) && Duration.isSDK(o.MinFlowInterval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.flow_funds_commission === "bigint" && typeof o.flow_flex_fee_mul === "bigint" && typeof o.burn_fee_per_msg === "bigint" && Array.isArray(o.gas_fee_coins) && (!o.gas_fee_coins.length || Coin.isSDK(o.gas_fee_coins[0])) && Duration.isSDK(o.max_flow_duration) && Duration.isSDK(o.min_flow_duration) && Duration.isSDK(o.min_flow_interval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
   },
   isAmino(o: any): o is ParamsAmino {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.FlowFundsCommission === "bigint" && typeof o.FlowFlexFeeMul === "bigint" && typeof o.FlowConstantFee === "bigint" && Array.isArray(o.gas_fee_coins) && (!o.gas_fee_coins.length || Coin.isAmino(o.gas_fee_coins[0])) && Duration.isAmino(o.MaxFlowDuration) && Duration.isAmino(o.MinFlowDuration) && Duration.isAmino(o.MinFlowInterval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.flow_funds_commission === "bigint" && typeof o.flow_flex_fee_mul === "bigint" && typeof o.burn_fee_per_msg === "bigint" && Array.isArray(o.gas_fee_coins) && (!o.gas_fee_coins.length || Coin.isAmino(o.gas_fee_coins[0])) && Duration.isAmino(o.max_flow_duration) && Duration.isAmino(o.min_flow_duration) && Duration.isAmino(o.min_flow_interval) && Array.isArray(o.relayer_rewards) && (!o.relayer_rewards.length || typeof o.relayer_rewards[0] === "bigint"));
   },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.flowFundsCommission !== BigInt(0)) {
@@ -89,8 +97,8 @@ export const Params = {
     if (message.flowFlexFeeMul !== BigInt(0)) {
       writer.uint32(16).int64(message.flowFlexFeeMul);
     }
-    if (message.flowConstantFee !== BigInt(0)) {
-      writer.uint32(24).int64(message.flowConstantFee);
+    if (message.burnFeePerMsg !== BigInt(0)) {
+      writer.uint32(24).int64(message.burnFeePerMsg);
     }
     for (const v of message.gasFeeCoins) {
       Coin.encode(v!, writer.uint32(34).fork()).ldelim();
@@ -125,7 +133,7 @@ export const Params = {
           message.flowFlexFeeMul = reader.int64();
           break;
         case 3:
-          message.flowConstantFee = reader.int64();
+          message.burnFeePerMsg = reader.int64();
           break;
         case 4:
           message.gasFeeCoins.push(Coin.decode(reader, reader.uint32()));
@@ -160,7 +168,7 @@ export const Params = {
     return {
       flowFundsCommission: isSet(object.flowFundsCommission) ? BigInt(object.flowFundsCommission.toString()) : BigInt(0),
       flowFlexFeeMul: isSet(object.flowFlexFeeMul) ? BigInt(object.flowFlexFeeMul.toString()) : BigInt(0),
-      flowConstantFee: isSet(object.flowConstantFee) ? BigInt(object.flowConstantFee.toString()) : BigInt(0),
+      burnFeePerMsg: isSet(object.burnFeePerMsg) ? BigInt(object.burnFeePerMsg.toString()) : BigInt(0),
       gasFeeCoins: Array.isArray(object?.gasFeeCoins) ? object.gasFeeCoins.map((e: any) => Coin.fromJSON(e)) : [],
       maxFlowDuration: isSet(object.maxFlowDuration) ? Duration.fromJSON(object.maxFlowDuration) : undefined,
       minFlowDuration: isSet(object.minFlowDuration) ? Duration.fromJSON(object.minFlowDuration) : undefined,
@@ -172,7 +180,7 @@ export const Params = {
     const obj: any = {};
     message.flowFundsCommission !== undefined && (obj.flowFundsCommission = (message.flowFundsCommission || BigInt(0)).toString());
     message.flowFlexFeeMul !== undefined && (obj.flowFlexFeeMul = (message.flowFlexFeeMul || BigInt(0)).toString());
-    message.flowConstantFee !== undefined && (obj.flowConstantFee = (message.flowConstantFee || BigInt(0)).toString());
+    message.burnFeePerMsg !== undefined && (obj.burnFeePerMsg = (message.burnFeePerMsg || BigInt(0)).toString());
     if (message.gasFeeCoins) {
       obj.gasFeeCoins = message.gasFeeCoins.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
@@ -192,7 +200,7 @@ export const Params = {
     const message = createBaseParams();
     message.flowFundsCommission = object.flowFundsCommission !== undefined && object.flowFundsCommission !== null ? BigInt(object.flowFundsCommission.toString()) : BigInt(0);
     message.flowFlexFeeMul = object.flowFlexFeeMul !== undefined && object.flowFlexFeeMul !== null ? BigInt(object.flowFlexFeeMul.toString()) : BigInt(0);
-    message.flowConstantFee = object.flowConstantFee !== undefined && object.flowConstantFee !== null ? BigInt(object.flowConstantFee.toString()) : BigInt(0);
+    message.burnFeePerMsg = object.burnFeePerMsg !== undefined && object.burnFeePerMsg !== null ? BigInt(object.burnFeePerMsg.toString()) : BigInt(0);
     message.gasFeeCoins = object.gasFeeCoins?.map(e => Coin.fromPartial(e)) || [];
     message.maxFlowDuration = object.maxFlowDuration !== undefined && object.maxFlowDuration !== null ? Duration.fromPartial(object.maxFlowDuration) : undefined;
     message.minFlowDuration = object.minFlowDuration !== undefined && object.minFlowDuration !== null ? Duration.fromPartial(object.minFlowDuration) : undefined;
@@ -202,41 +210,41 @@ export const Params = {
   },
   fromAmino(object: ParamsAmino): Params {
     const message = createBaseParams();
-    if (object.FlowFundsCommission !== undefined && object.FlowFundsCommission !== null) {
-      message.flowFundsCommission = BigInt(object.FlowFundsCommission);
+    if (object.flow_funds_commission !== undefined && object.flow_funds_commission !== null) {
+      message.flowFundsCommission = BigInt(object.flow_funds_commission);
     }
-    if (object.FlowFlexFeeMul !== undefined && object.FlowFlexFeeMul !== null) {
-      message.flowFlexFeeMul = BigInt(object.FlowFlexFeeMul);
+    if (object.flow_flex_fee_mul !== undefined && object.flow_flex_fee_mul !== null) {
+      message.flowFlexFeeMul = BigInt(object.flow_flex_fee_mul);
     }
-    if (object.FlowConstantFee !== undefined && object.FlowConstantFee !== null) {
-      message.flowConstantFee = BigInt(object.FlowConstantFee);
+    if (object.burn_fee_per_msg !== undefined && object.burn_fee_per_msg !== null) {
+      message.burnFeePerMsg = BigInt(object.burn_fee_per_msg);
     }
     message.gasFeeCoins = object.gas_fee_coins?.map(e => Coin.fromAmino(e)) || [];
-    if (object.MaxFlowDuration !== undefined && object.MaxFlowDuration !== null) {
-      message.maxFlowDuration = Duration.fromAmino(object.MaxFlowDuration);
+    if (object.max_flow_duration !== undefined && object.max_flow_duration !== null) {
+      message.maxFlowDuration = Duration.fromAmino(object.max_flow_duration);
     }
-    if (object.MinFlowDuration !== undefined && object.MinFlowDuration !== null) {
-      message.minFlowDuration = Duration.fromAmino(object.MinFlowDuration);
+    if (object.min_flow_duration !== undefined && object.min_flow_duration !== null) {
+      message.minFlowDuration = Duration.fromAmino(object.min_flow_duration);
     }
-    if (object.MinFlowInterval !== undefined && object.MinFlowInterval !== null) {
-      message.minFlowInterval = Duration.fromAmino(object.MinFlowInterval);
+    if (object.min_flow_interval !== undefined && object.min_flow_interval !== null) {
+      message.minFlowInterval = Duration.fromAmino(object.min_flow_interval);
     }
     message.relayerRewards = object.relayer_rewards?.map(e => BigInt(e)) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.FlowFundsCommission = message.flowFundsCommission !== BigInt(0) ? message.flowFundsCommission?.toString() : undefined;
-    obj.FlowFlexFeeMul = message.flowFlexFeeMul !== BigInt(0) ? message.flowFlexFeeMul?.toString() : undefined;
-    obj.FlowConstantFee = message.flowConstantFee !== BigInt(0) ? message.flowConstantFee?.toString() : undefined;
+    obj.flow_funds_commission = message.flowFundsCommission !== BigInt(0) ? message.flowFundsCommission?.toString() : undefined;
+    obj.flow_flex_fee_mul = message.flowFlexFeeMul !== BigInt(0) ? message.flowFlexFeeMul?.toString() : undefined;
+    obj.burn_fee_per_msg = message.burnFeePerMsg !== BigInt(0) ? message.burnFeePerMsg?.toString() : undefined;
     if (message.gasFeeCoins) {
       obj.gas_fee_coins = message.gasFeeCoins.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.gas_fee_coins = message.gasFeeCoins;
     }
-    obj.MaxFlowDuration = message.maxFlowDuration ? Duration.toAmino(message.maxFlowDuration) : undefined;
-    obj.MinFlowDuration = message.minFlowDuration ? Duration.toAmino(message.minFlowDuration) : undefined;
-    obj.MinFlowInterval = message.minFlowInterval ? Duration.toAmino(message.minFlowInterval) : undefined;
+    obj.max_flow_duration = message.maxFlowDuration ? Duration.toAmino(message.maxFlowDuration) : undefined;
+    obj.min_flow_duration = message.minFlowDuration ? Duration.toAmino(message.minFlowDuration) : undefined;
+    obj.min_flow_interval = message.minFlowInterval ? Duration.toAmino(message.minFlowInterval) : undefined;
     if (message.relayerRewards) {
       obj.relayer_rewards = message.relayerRewards.map(e => e.toString());
     } else {
