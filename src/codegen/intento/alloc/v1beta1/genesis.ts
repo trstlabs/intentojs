@@ -5,7 +5,6 @@ import { isSet } from "../../../helpers";
 import { JsonSafe } from "../../../json-safe";
 /** GenesisState defines the alloc module's genesis state. */
 export interface GenesisState {
-  /** this line is used by starport scaffolding # genesis/proto/state */
   params: Params;
 }
 export interface GenesisStateProtoMsg {
@@ -14,7 +13,6 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the alloc module's genesis state. */
 export interface GenesisStateAmino {
-  /** this line is used by starport scaffolding # genesis/proto/state */
   params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {

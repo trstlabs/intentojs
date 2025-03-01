@@ -11,7 +11,7 @@ export interface Query {
   interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse>;
   /** Flow returns the auto-executing interchain account tx */
   flow(request: QueryFlowRequest): Promise<QueryFlowResponse>;
-  /** FlowHistory returns the auto tx history */
+  /** FlowHistory returns the flow history */
   flowHistory(request: QueryFlowHistoryRequest): Promise<QueryFlowHistoryResponse>;
   /** Flows returns the all auto-executing interchain account messages */
   flows(request?: QueryFlowsRequest): Promise<QueryFlowsResponse>;

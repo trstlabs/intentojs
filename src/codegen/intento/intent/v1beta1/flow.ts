@@ -111,8 +111,8 @@ export interface FlowInfo {
   endTime: Date;
   updateHistory: Date[];
   icaConfig?: ICAConfig;
+  hostedIcaConfig?: HostedICAConfig;
   configuration?: ExecutionConfiguration;
-  hostedConfig?: HostedConfig;
   conditions?: ExecutionConditions;
 }
 export interface FlowInfoProtoMsg {
@@ -135,8 +135,8 @@ export interface FlowInfoAmino {
   end_time?: string;
   update_history?: string[];
   ica_config?: ICAConfigAmino;
+  hosted_ica_config?: HostedICAConfigAmino;
   configuration?: ExecutionConfigurationAmino;
-  hosted_config?: HostedConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
 export interface FlowInfoAminoMsg {
@@ -156,15 +156,14 @@ export interface FlowInfoSDKType {
   end_time: Date;
   update_history: Date[];
   ica_config?: ICAConfigSDKType;
+  hosted_ica_config?: HostedICAConfigSDKType;
   configuration?: ExecutionConfigurationSDKType;
-  hosted_config?: HostedConfigSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
 /** config for self-hosted ICA */
 export interface ICAConfig {
   portId: string;
   connectionId: string;
-  hostConnectionId: string;
 }
 export interface ICAConfigProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ICAConfig";
@@ -174,7 +173,6 @@ export interface ICAConfigProtoMsg {
 export interface ICAConfigAmino {
   port_id?: string;
   connection_id?: string;
-  host_connection_id?: string;
 }
 export interface ICAConfigAminoMsg {
   type: "/intento.intent.v1beta1.ICAConfig";
@@ -184,28 +182,27 @@ export interface ICAConfigAminoMsg {
 export interface ICAConfigSDKType {
   port_id: string;
   connection_id: string;
-  host_connection_id: string;
 }
 /** config for hosted account */
-export interface HostedConfig {
+export interface HostedICAConfig {
   hostedAddress: string;
   feeCoinLimit: Coin;
 }
-export interface HostedConfigProtoMsg {
-  typeUrl: "/intento.intent.v1beta1.HostedConfig";
+export interface HostedICAConfigProtoMsg {
+  typeUrl: "/intento.intent.v1beta1.HostedICAConfig";
   value: Uint8Array;
 }
 /** config for hosted account */
-export interface HostedConfigAmino {
+export interface HostedICAConfigAmino {
   hosted_address?: string;
   fee_coin_limit?: CoinAmino;
 }
-export interface HostedConfigAminoMsg {
-  type: "/intento.intent.v1beta1.HostedConfig";
-  value: HostedConfigAmino;
+export interface HostedICAConfigAminoMsg {
+  type: "/intento.intent.v1beta1.HostedICAConfig";
+  value: HostedICAConfigAmino;
 }
 /** config for hosted account */
-export interface HostedConfigSDKType {
+export interface HostedICAConfigSDKType {
   hosted_address: string;
   fee_coin_limit: CoinSDKType;
 }
@@ -228,10 +225,10 @@ export interface ExecutionConfiguration {
    * execute
    */
   stopOnFailure: boolean;
+  /** If true, will stop if message times oiut */
+  stopOnTimeout: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallbackToOwnerBalance: boolean;
-  /** If true, allows the flow to continue execution after an ibc channel times out (recommended) */
-  reregisterIcaAfterTimeout: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
   typeUrl: "/intento.intent.v1beta1.ExecutionConfiguration";
@@ -256,10 +253,10 @@ export interface ExecutionConfigurationAmino {
    * execute
    */
   stop_on_failure?: boolean;
+  /** If true, will stop if message times oiut */
+  stop_on_timeout?: boolean;
   /** If true, owner account balance is used when trigger account funds run out */
   fallback_to_owner_balance?: boolean;
-  /** If true, allows the flow to continue execution after an ibc channel times out (recommended) */
-  reregister_ica_after_timeout?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/intento.intent.v1beta1.ExecutionConfiguration";
@@ -274,8 +271,8 @@ export interface ExecutionConfigurationSDKType {
   updating_disabled: boolean;
   stop_on_success: boolean;
   stop_on_failure: boolean;
+  stop_on_timeout: boolean;
   fallback_to_owner_balance: boolean;
-  reregister_ica_after_timeout: boolean;
 }
 /** FlowHistory execution history */
 export interface FlowHistory {
@@ -611,8 +608,8 @@ function createBaseFlowInfo(): FlowInfo {
     endTime: new Date(),
     updateHistory: [],
     icaConfig: undefined,
+    hostedIcaConfig: undefined,
     configuration: undefined,
-    hostedConfig: undefined,
     conditions: undefined
   };
 }
@@ -661,11 +658,11 @@ export const FlowInfo = {
     if (message.icaConfig !== undefined) {
       ICAConfig.encode(message.icaConfig, writer.uint32(90).fork()).ldelim();
     }
-    if (message.configuration !== undefined) {
-      ExecutionConfiguration.encode(message.configuration, writer.uint32(98).fork()).ldelim();
+    if (message.hostedIcaConfig !== undefined) {
+      HostedICAConfig.encode(message.hostedIcaConfig, writer.uint32(98).fork()).ldelim();
     }
-    if (message.hostedConfig !== undefined) {
-      HostedConfig.encode(message.hostedConfig, writer.uint32(114).fork()).ldelim();
+    if (message.configuration !== undefined) {
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(114).fork()).ldelim();
     }
     if (message.conditions !== undefined) {
       ExecutionConditions.encode(message.conditions, writer.uint32(122).fork()).ldelim();
@@ -713,10 +710,10 @@ export const FlowInfo = {
           message.icaConfig = ICAConfig.decode(reader, reader.uint32());
           break;
         case 12:
-          message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
+          message.hostedIcaConfig = HostedICAConfig.decode(reader, reader.uint32());
           break;
         case 14:
-          message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
+          message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
         case 15:
           message.conditions = ExecutionConditions.decode(reader, reader.uint32());
@@ -741,8 +738,8 @@ export const FlowInfo = {
       endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
       updateHistory: Array.isArray(object?.updateHistory) ? object.updateHistory.map((e: any) => Timestamp.fromJSON(e)) : [],
       icaConfig: isSet(object.icaConfig) ? ICAConfig.fromJSON(object.icaConfig) : undefined,
+      hostedIcaConfig: isSet(object.hostedIcaConfig) ? HostedICAConfig.fromJSON(object.hostedIcaConfig) : undefined,
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
-      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
@@ -767,8 +764,8 @@ export const FlowInfo = {
       obj.updateHistory = [];
     }
     message.icaConfig !== undefined && (obj.icaConfig = message.icaConfig ? ICAConfig.toJSON(message.icaConfig) : undefined);
+    message.hostedIcaConfig !== undefined && (obj.hostedIcaConfig = message.hostedIcaConfig ? HostedICAConfig.toJSON(message.hostedIcaConfig) : undefined);
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
-    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
@@ -785,8 +782,8 @@ export const FlowInfo = {
     message.endTime = object.endTime ?? undefined;
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
     message.icaConfig = object.icaConfig !== undefined && object.icaConfig !== null ? ICAConfig.fromPartial(object.icaConfig) : undefined;
+    message.hostedIcaConfig = object.hostedIcaConfig !== undefined && object.hostedIcaConfig !== null ? HostedICAConfig.fromPartial(object.hostedIcaConfig) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
-    message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
@@ -821,11 +818,11 @@ export const FlowInfo = {
     if (object.ica_config !== undefined && object.ica_config !== null) {
       message.icaConfig = ICAConfig.fromAmino(object.ica_config);
     }
+    if (object.hosted_ica_config !== undefined && object.hosted_ica_config !== null) {
+      message.hostedIcaConfig = HostedICAConfig.fromAmino(object.hosted_ica_config);
+    }
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
-    }
-    if (object.hosted_config !== undefined && object.hosted_config !== null) {
-      message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
     }
     if (object.conditions !== undefined && object.conditions !== null) {
       message.conditions = ExecutionConditions.fromAmino(object.conditions);
@@ -853,8 +850,8 @@ export const FlowInfo = {
       obj.update_history = message.updateHistory;
     }
     obj.ica_config = message.icaConfig ? ICAConfig.toAmino(message.icaConfig) : undefined;
+    obj.hosted_ica_config = message.hostedIcaConfig ? HostedICAConfig.toAmino(message.hostedIcaConfig) : undefined;
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
-    obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
@@ -878,20 +875,19 @@ GlobalDecoderRegistry.register(FlowInfo.typeUrl, FlowInfo);
 function createBaseICAConfig(): ICAConfig {
   return {
     portId: "",
-    connectionId: "",
-    hostConnectionId: ""
+    connectionId: ""
   };
 }
 export const ICAConfig = {
   typeUrl: "/intento.intent.v1beta1.ICAConfig",
   is(o: any): o is ICAConfig {
-    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.portId === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
+    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.portId === "string" && typeof o.connectionId === "string");
   },
   isSDK(o: any): o is ICAConfigSDKType {
-    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.port_id === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.port_id === "string" && typeof o.connection_id === "string");
   },
   isAmino(o: any): o is ICAConfigAmino {
-    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.port_id === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+    return o && (o.$typeUrl === ICAConfig.typeUrl || typeof o.port_id === "string" && typeof o.connection_id === "string");
   },
   encode(message: ICAConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
@@ -899,9 +895,6 @@ export const ICAConfig = {
     }
     if (message.connectionId !== "") {
       writer.uint32(18).string(message.connectionId);
-    }
-    if (message.hostConnectionId !== "") {
-      writer.uint32(26).string(message.hostConnectionId);
     }
     return writer;
   },
@@ -918,9 +911,6 @@ export const ICAConfig = {
         case 2:
           message.connectionId = reader.string();
           break;
-        case 3:
-          message.hostConnectionId = reader.string();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -931,22 +921,19 @@ export const ICAConfig = {
   fromJSON(object: any): ICAConfig {
     return {
       portId: isSet(object.portId) ? String(object.portId) : "",
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : ""
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
     };
   },
   toJSON(message: ICAConfig): JsonSafe<ICAConfig> {
     const obj: any = {};
     message.portId !== undefined && (obj.portId = message.portId);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
     return obj;
   },
   fromPartial(object: Partial<ICAConfig>): ICAConfig {
     const message = createBaseICAConfig();
     message.portId = object.portId ?? "";
     message.connectionId = object.connectionId ?? "";
-    message.hostConnectionId = object.hostConnectionId ?? "";
     return message;
   },
   fromAmino(object: ICAConfigAmino): ICAConfig {
@@ -957,16 +944,12 @@ export const ICAConfig = {
     if (object.connection_id !== undefined && object.connection_id !== null) {
       message.connectionId = object.connection_id;
     }
-    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
-      message.hostConnectionId = object.host_connection_id;
-    }
     return message;
   },
   toAmino(message: ICAConfig): ICAConfigAmino {
     const obj: any = {};
     obj.port_id = message.portId === "" ? undefined : message.portId;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
     return obj;
   },
   fromAminoMsg(object: ICAConfigAminoMsg): ICAConfig {
@@ -986,24 +969,24 @@ export const ICAConfig = {
   }
 };
 GlobalDecoderRegistry.register(ICAConfig.typeUrl, ICAConfig);
-function createBaseHostedConfig(): HostedConfig {
+function createBaseHostedICAConfig(): HostedICAConfig {
   return {
     hostedAddress: "",
     feeCoinLimit: Coin.fromPartial({})
   };
 }
-export const HostedConfig = {
-  typeUrl: "/intento.intent.v1beta1.HostedConfig",
-  is(o: any): o is HostedConfig {
-    return o && (o.$typeUrl === HostedConfig.typeUrl || typeof o.hostedAddress === "string" && Coin.is(o.feeCoinLimit));
+export const HostedICAConfig = {
+  typeUrl: "/intento.intent.v1beta1.HostedICAConfig",
+  is(o: any): o is HostedICAConfig {
+    return o && (o.$typeUrl === HostedICAConfig.typeUrl || typeof o.hostedAddress === "string" && Coin.is(o.feeCoinLimit));
   },
-  isSDK(o: any): o is HostedConfigSDKType {
-    return o && (o.$typeUrl === HostedConfig.typeUrl || typeof o.hosted_address === "string" && Coin.isSDK(o.fee_coin_limit));
+  isSDK(o: any): o is HostedICAConfigSDKType {
+    return o && (o.$typeUrl === HostedICAConfig.typeUrl || typeof o.hosted_address === "string" && Coin.isSDK(o.fee_coin_limit));
   },
-  isAmino(o: any): o is HostedConfigAmino {
-    return o && (o.$typeUrl === HostedConfig.typeUrl || typeof o.hosted_address === "string" && Coin.isAmino(o.fee_coin_limit));
+  isAmino(o: any): o is HostedICAConfigAmino {
+    return o && (o.$typeUrl === HostedICAConfig.typeUrl || typeof o.hosted_address === "string" && Coin.isAmino(o.fee_coin_limit));
   },
-  encode(message: HostedConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: HostedICAConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.hostedAddress !== "") {
       writer.uint32(10).string(message.hostedAddress);
     }
@@ -1012,10 +995,10 @@ export const HostedConfig = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): HostedConfig {
+  decode(input: BinaryReader | Uint8Array, length?: number): HostedICAConfig {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseHostedConfig();
+    const message = createBaseHostedICAConfig();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1032,26 +1015,26 @@ export const HostedConfig = {
     }
     return message;
   },
-  fromJSON(object: any): HostedConfig {
+  fromJSON(object: any): HostedICAConfig {
     return {
       hostedAddress: isSet(object.hostedAddress) ? String(object.hostedAddress) : "",
       feeCoinLimit: isSet(object.feeCoinLimit) ? Coin.fromJSON(object.feeCoinLimit) : undefined
     };
   },
-  toJSON(message: HostedConfig): JsonSafe<HostedConfig> {
+  toJSON(message: HostedICAConfig): JsonSafe<HostedICAConfig> {
     const obj: any = {};
     message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
     message.feeCoinLimit !== undefined && (obj.feeCoinLimit = message.feeCoinLimit ? Coin.toJSON(message.feeCoinLimit) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<HostedConfig>): HostedConfig {
-    const message = createBaseHostedConfig();
+  fromPartial(object: Partial<HostedICAConfig>): HostedICAConfig {
+    const message = createBaseHostedICAConfig();
     message.hostedAddress = object.hostedAddress ?? "";
     message.feeCoinLimit = object.feeCoinLimit !== undefined && object.feeCoinLimit !== null ? Coin.fromPartial(object.feeCoinLimit) : undefined;
     return message;
   },
-  fromAmino(object: HostedConfigAmino): HostedConfig {
-    const message = createBaseHostedConfig();
+  fromAmino(object: HostedICAConfigAmino): HostedICAConfig {
+    const message = createBaseHostedICAConfig();
     if (object.hosted_address !== undefined && object.hosted_address !== null) {
       message.hostedAddress = object.hosted_address;
     }
@@ -1060,49 +1043,49 @@ export const HostedConfig = {
     }
     return message;
   },
-  toAmino(message: HostedConfig): HostedConfigAmino {
+  toAmino(message: HostedICAConfig): HostedICAConfigAmino {
     const obj: any = {};
     obj.hosted_address = message.hostedAddress === "" ? undefined : message.hostedAddress;
     obj.fee_coin_limit = message.feeCoinLimit ? Coin.toAmino(message.feeCoinLimit) : undefined;
     return obj;
   },
-  fromAminoMsg(object: HostedConfigAminoMsg): HostedConfig {
-    return HostedConfig.fromAmino(object.value);
+  fromAminoMsg(object: HostedICAConfigAminoMsg): HostedICAConfig {
+    return HostedICAConfig.fromAmino(object.value);
   },
-  fromProtoMsg(message: HostedConfigProtoMsg): HostedConfig {
-    return HostedConfig.decode(message.value);
+  fromProtoMsg(message: HostedICAConfigProtoMsg): HostedICAConfig {
+    return HostedICAConfig.decode(message.value);
   },
-  toProto(message: HostedConfig): Uint8Array {
-    return HostedConfig.encode(message).finish();
+  toProto(message: HostedICAConfig): Uint8Array {
+    return HostedICAConfig.encode(message).finish();
   },
-  toProtoMsg(message: HostedConfig): HostedConfigProtoMsg {
+  toProtoMsg(message: HostedICAConfig): HostedICAConfigProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1beta1.HostedConfig",
-      value: HostedConfig.encode(message).finish()
+      typeUrl: "/intento.intent.v1beta1.HostedICAConfig",
+      value: HostedICAConfig.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(HostedConfig.typeUrl, HostedConfig);
+GlobalDecoderRegistry.register(HostedICAConfig.typeUrl, HostedICAConfig);
 function createBaseExecutionConfiguration(): ExecutionConfiguration {
   return {
     saveResponses: false,
     updatingDisabled: false,
     stopOnSuccess: false,
     stopOnFailure: false,
-    fallbackToOwnerBalance: false,
-    reregisterIcaAfterTimeout: false
+    stopOnTimeout: false,
+    fallbackToOwnerBalance: false
   };
 }
 export const ExecutionConfiguration = {
   typeUrl: "/intento.intent.v1beta1.ExecutionConfiguration",
   is(o: any): o is ExecutionConfiguration {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.fallbackToOwnerBalance === "boolean" && typeof o.reregisterIcaAfterTimeout === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.stopOnTimeout === "boolean" && typeof o.fallbackToOwnerBalance === "boolean");
   },
   isSDK(o: any): o is ExecutionConfigurationSDKType {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.stop_on_timeout === "boolean" && typeof o.fallback_to_owner_balance === "boolean");
   },
   isAmino(o: any): o is ExecutionConfigurationAmino {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.fallback_to_owner_balance === "boolean" && typeof o.reregister_ica_after_timeout === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.stop_on_timeout === "boolean" && typeof o.fallback_to_owner_balance === "boolean");
   },
   encode(message: ExecutionConfiguration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.saveResponses === true) {
@@ -1117,11 +1100,11 @@ export const ExecutionConfiguration = {
     if (message.stopOnFailure === true) {
       writer.uint32(32).bool(message.stopOnFailure);
     }
-    if (message.fallbackToOwnerBalance === true) {
-      writer.uint32(40).bool(message.fallbackToOwnerBalance);
+    if (message.stopOnTimeout === true) {
+      writer.uint32(40).bool(message.stopOnTimeout);
     }
-    if (message.reregisterIcaAfterTimeout === true) {
-      writer.uint32(48).bool(message.reregisterIcaAfterTimeout);
+    if (message.fallbackToOwnerBalance === true) {
+      writer.uint32(48).bool(message.fallbackToOwnerBalance);
     }
     return writer;
   },
@@ -1145,10 +1128,10 @@ export const ExecutionConfiguration = {
           message.stopOnFailure = reader.bool();
           break;
         case 5:
-          message.fallbackToOwnerBalance = reader.bool();
+          message.stopOnTimeout = reader.bool();
           break;
         case 6:
-          message.reregisterIcaAfterTimeout = reader.bool();
+          message.fallbackToOwnerBalance = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1163,8 +1146,8 @@ export const ExecutionConfiguration = {
       updatingDisabled: isSet(object.updatingDisabled) ? Boolean(object.updatingDisabled) : false,
       stopOnSuccess: isSet(object.stopOnSuccess) ? Boolean(object.stopOnSuccess) : false,
       stopOnFailure: isSet(object.stopOnFailure) ? Boolean(object.stopOnFailure) : false,
-      fallbackToOwnerBalance: isSet(object.fallbackToOwnerBalance) ? Boolean(object.fallbackToOwnerBalance) : false,
-      reregisterIcaAfterTimeout: isSet(object.reregisterIcaAfterTimeout) ? Boolean(object.reregisterIcaAfterTimeout) : false
+      stopOnTimeout: isSet(object.stopOnTimeout) ? Boolean(object.stopOnTimeout) : false,
+      fallbackToOwnerBalance: isSet(object.fallbackToOwnerBalance) ? Boolean(object.fallbackToOwnerBalance) : false
     };
   },
   toJSON(message: ExecutionConfiguration): JsonSafe<ExecutionConfiguration> {
@@ -1173,8 +1156,8 @@ export const ExecutionConfiguration = {
     message.updatingDisabled !== undefined && (obj.updatingDisabled = message.updatingDisabled);
     message.stopOnSuccess !== undefined && (obj.stopOnSuccess = message.stopOnSuccess);
     message.stopOnFailure !== undefined && (obj.stopOnFailure = message.stopOnFailure);
+    message.stopOnTimeout !== undefined && (obj.stopOnTimeout = message.stopOnTimeout);
     message.fallbackToOwnerBalance !== undefined && (obj.fallbackToOwnerBalance = message.fallbackToOwnerBalance);
-    message.reregisterIcaAfterTimeout !== undefined && (obj.reregisterIcaAfterTimeout = message.reregisterIcaAfterTimeout);
     return obj;
   },
   fromPartial(object: Partial<ExecutionConfiguration>): ExecutionConfiguration {
@@ -1183,8 +1166,8 @@ export const ExecutionConfiguration = {
     message.updatingDisabled = object.updatingDisabled ?? false;
     message.stopOnSuccess = object.stopOnSuccess ?? false;
     message.stopOnFailure = object.stopOnFailure ?? false;
+    message.stopOnTimeout = object.stopOnTimeout ?? false;
     message.fallbackToOwnerBalance = object.fallbackToOwnerBalance ?? false;
-    message.reregisterIcaAfterTimeout = object.reregisterIcaAfterTimeout ?? false;
     return message;
   },
   fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
@@ -1201,11 +1184,11 @@ export const ExecutionConfiguration = {
     if (object.stop_on_failure !== undefined && object.stop_on_failure !== null) {
       message.stopOnFailure = object.stop_on_failure;
     }
+    if (object.stop_on_timeout !== undefined && object.stop_on_timeout !== null) {
+      message.stopOnTimeout = object.stop_on_timeout;
+    }
     if (object.fallback_to_owner_balance !== undefined && object.fallback_to_owner_balance !== null) {
       message.fallbackToOwnerBalance = object.fallback_to_owner_balance;
-    }
-    if (object.reregister_ica_after_timeout !== undefined && object.reregister_ica_after_timeout !== null) {
-      message.reregisterIcaAfterTimeout = object.reregister_ica_after_timeout;
     }
     return message;
   },
@@ -1215,8 +1198,8 @@ export const ExecutionConfiguration = {
     obj.updating_disabled = message.updatingDisabled === false ? undefined : message.updatingDisabled;
     obj.stop_on_success = message.stopOnSuccess === false ? undefined : message.stopOnSuccess;
     obj.stop_on_failure = message.stopOnFailure === false ? undefined : message.stopOnFailure;
+    obj.stop_on_timeout = message.stopOnTimeout === false ? undefined : message.stopOnTimeout;
     obj.fallback_to_owner_balance = message.fallbackToOwnerBalance === false ? undefined : message.fallbackToOwnerBalance;
-    obj.reregister_ica_after_timeout = message.reregisterIcaAfterTimeout === false ? undefined : message.reregisterIcaAfterTimeout;
     return obj;
   },
   fromAminoMsg(object: ExecutionConfigurationAminoMsg): ExecutionConfiguration {

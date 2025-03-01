@@ -1,6 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedConfig, HostedConfigAmino, HostedConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./flow";
+import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, HostedICAConfig, HostedICAConfigAmino, HostedICAConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./flow";
 import { HostFeeConfig, HostFeeConfigAmino, HostFeeConfigSDKType } from "./hostedaccount";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
@@ -105,8 +105,8 @@ export interface MsgSubmitTxResponseAminoMsg {
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
 export interface MsgSubmitTxResponseSDKType {}
 /**
- * MsgSubmitFlow creates, submits and schedules an arbitrary msg
- * to be executed locally or using an interchain account
+ * MsgSubmitFlow creates, submits and schedules msgs
+ * to be executed locally or over IBC with conditions
  */
 export interface MsgSubmitFlow {
   owner: string;
@@ -122,17 +122,16 @@ export interface MsgSubmitFlow {
   /** interval defines the interval between auto_msg calls */
   interval: string;
   /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
+   * optional fees to be used for flow execution limiting the amount of fees
    * incurred
    */
   feeFunds: Coin[];
   /** optional configuration parameters */
   configuration?: ExecutionConfiguration;
-  /** optional for interchain account */
+  /** optional connection ID interchain account */
   connectionId: string;
-  hostConnectionId: string;
   /** optional use of a hosted account */
-  hostedConfig?: HostedConfig;
+  hostedIcaConfig?: HostedICAConfig;
   conditions?: ExecutionConditions;
 }
 export interface MsgSubmitFlowProtoMsg {
@@ -143,8 +142,8 @@ export type MsgSubmitFlowEncoded = Omit<MsgSubmitFlow, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
 /**
- * MsgSubmitFlow creates, submits and schedules an arbitrary msg
- * to be executed locally or using an interchain account
+ * MsgSubmitFlow creates, submits and schedules msgs
+ * to be executed locally or over IBC with conditions
  */
 export interface MsgSubmitFlowAmino {
   owner?: string;
@@ -160,17 +159,16 @@ export interface MsgSubmitFlowAmino {
   /** interval defines the interval between auto_msg calls */
   interval?: string;
   /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
+   * optional fees to be used for flow execution limiting the amount of fees
    * incurred
    */
   fee_funds?: CoinAmino[];
   /** optional configuration parameters */
   configuration?: ExecutionConfigurationAmino;
-  /** optional for interchain account */
+  /** optional connection ID interchain account */
   connection_id?: string;
-  host_connection_id?: string;
   /** optional use of a hosted account */
-  hosted_config?: HostedConfigAmino;
+  hosted_ica_config?: HostedICAConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgSubmitFlowAminoMsg {
@@ -178,8 +176,8 @@ export interface MsgSubmitFlowAminoMsg {
   value: MsgSubmitFlowAmino;
 }
 /**
- * MsgSubmitFlow creates, submits and schedules an arbitrary msg
- * to be executed locally or using an interchain account
+ * MsgSubmitFlow creates, submits and schedules msgs
+ * to be executed locally or over IBC with conditions
  */
 export interface MsgSubmitFlowSDKType {
   owner: string;
@@ -191,8 +189,7 @@ export interface MsgSubmitFlowSDKType {
   fee_funds: CoinSDKType[];
   configuration?: ExecutionConfigurationSDKType;
   connection_id: string;
-  host_connection_id: string;
-  hosted_config?: HostedConfigSDKType;
+  hosted_ica_config?: HostedICAConfigSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
@@ -229,7 +226,7 @@ export interface MsgRegisterAccountAndSubmitFlow {
   /** interval defines the interval between auto_msg calls */
   interval: string;
   /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
+   * optional fees to be used for flow execution limiting the amount of fees
    * incurred
    */
   feeFunds: Coin[];
@@ -269,7 +266,7 @@ export interface MsgRegisterAccountAndSubmitFlowAmino {
   /** interval defines the interval between auto_msg calls */
   interval?: string;
   /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
+   * optional fees to be used for flow execution limiting the amount of fees
    * incurred
    */
   fee_funds?: CoinAmino[];
@@ -335,7 +332,6 @@ export interface MsgRegisterAccountAndSubmitFlowResponseSDKType {}
 export interface MsgUpdateFlow {
   owner: string;
   id: bigint;
-  connectionId: string;
   label: string;
   msgs: (Any)[] | Any[];
   /** end_time when set defines the time that the code should run for */
@@ -347,13 +343,11 @@ export interface MsgUpdateFlow {
   startAt: bigint;
   /** interval defines the interval between auto_msg calls */
   interval: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** add fees for flow execution, optional */
   feeFunds: Coin[];
   configuration?: ExecutionConfiguration;
-  hostedConfig?: HostedConfig;
+  connectionId: string;
+  hostedIcaConfig?: HostedICAConfig;
   conditions?: ExecutionConditions;
 }
 export interface MsgUpdateFlowProtoMsg {
@@ -370,7 +364,6 @@ export type MsgUpdateFlowEncoded = Omit<MsgUpdateFlow, "msgs"> & {
 export interface MsgUpdateFlowAmino {
   owner?: string;
   id?: string;
-  connection_id?: string;
   label?: string;
   msgs?: AnyAmino[];
   /** end_time when set defines the time that the code should run for */
@@ -382,13 +375,11 @@ export interface MsgUpdateFlowAmino {
   start_at?: string;
   /** interval defines the interval between auto_msg calls */
   interval?: string;
-  /**
-   * optional fees to be used for auto tx execution limiting the amount of fees
-   * incurred
-   */
+  /** add fees for flow execution, optional */
   fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
-  hosted_config?: HostedConfigAmino;
+  connection_id?: string;
+  hosted_ica_config?: HostedICAConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgUpdateFlowAminoMsg {
@@ -402,7 +393,6 @@ export interface MsgUpdateFlowAminoMsg {
 export interface MsgUpdateFlowSDKType {
   owner: string;
   id: bigint;
-  connection_id: string;
   label: string;
   msgs: (AnySDKType)[];
   end_time: bigint;
@@ -410,7 +400,8 @@ export interface MsgUpdateFlowSDKType {
   interval: string;
   fee_funds: CoinSDKType[];
   configuration?: ExecutionConfigurationSDKType;
-  hosted_config?: HostedConfigSDKType;
+  connection_id: string;
+  hosted_ica_config?: HostedICAConfigSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
@@ -476,8 +467,7 @@ export interface MsgCreateHostedAccountResponseSDKType {
 export interface MsgUpdateHostedAccount {
   admin: string;
   hostedAddress: string;
-  connectionId: string;
-  hostConnectionId: string;
+  /** string connection_id = 3 [(gogoproto.customname) = "ConnectionID"]; */
   hostFeeConfig?: HostFeeConfig;
 }
 export interface MsgUpdateHostedAccountProtoMsg {
@@ -487,8 +477,7 @@ export interface MsgUpdateHostedAccountProtoMsg {
 export interface MsgUpdateHostedAccountAmino {
   admin?: string;
   hosted_address?: string;
-  connection_id?: string;
-  host_connection_id?: string;
+  /** string connection_id = 3 [(gogoproto.customname) = "ConnectionID"]; */
   host_fee_config?: HostFeeConfigAmino;
 }
 export interface MsgUpdateHostedAccountAminoMsg {
@@ -498,8 +487,6 @@ export interface MsgUpdateHostedAccountAminoMsg {
 export interface MsgUpdateHostedAccountSDKType {
   admin: string;
   hosted_address: string;
-  connection_id: string;
-  host_connection_id: string;
   host_fee_config?: HostFeeConfigSDKType;
 }
 export interface MsgUpdateHostedAccountResponse {}
@@ -896,8 +883,7 @@ function createBaseMsgSubmitFlow(): MsgSubmitFlow {
     feeFunds: [],
     configuration: undefined,
     connectionId: "",
-    hostConnectionId: "",
-    hostedConfig: undefined,
+    hostedIcaConfig: undefined,
     conditions: undefined
   };
 }
@@ -905,50 +891,47 @@ export const MsgSubmitFlow = {
   typeUrl: "/intento.intent.v1beta1.MsgSubmitFlow",
   aminoType: "intent/MsgSubmitFlow",
   is(o: any): o is MsgSubmitFlow {
-    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
+    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.duration === "string" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.connectionId === "string");
   },
   isSDK(o: any): o is MsgSubmitFlowSDKType {
-    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.connection_id === "string");
   },
   isAmino(o: any): o is MsgSubmitFlowAmino {
-    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+    return o && (o.$typeUrl === MsgSubmitFlow.typeUrl || typeof o.owner === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.duration === "string" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.connection_id === "string");
   },
   encode(message: MsgSubmitFlow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
     if (message.label !== "") {
-      writer.uint32(26).string(message.label);
+      writer.uint32(18).string(message.label);
     }
     for (const v of message.msgs) {
-      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(34).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(26).fork()).ldelim();
     }
     if (message.duration !== "") {
-      writer.uint32(42).string(message.duration);
+      writer.uint32(34).string(message.duration);
     }
     if (message.startAt !== BigInt(0)) {
-      writer.uint32(48).uint64(message.startAt);
+      writer.uint32(40).uint64(message.startAt);
     }
     if (message.interval !== "") {
-      writer.uint32(58).string(message.interval);
+      writer.uint32(50).string(message.interval);
     }
     for (const v of message.feeFunds) {
-      Coin.encode(v!, writer.uint32(66).fork()).ldelim();
+      Coin.encode(v!, writer.uint32(58).fork()).ldelim();
     }
     if (message.configuration !== undefined) {
-      ExecutionConfiguration.encode(message.configuration, writer.uint32(74).fork()).ldelim();
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(66).fork()).ldelim();
     }
     if (message.connectionId !== "") {
-      writer.uint32(82).string(message.connectionId);
+      writer.uint32(74).string(message.connectionId);
     }
-    if (message.hostConnectionId !== "") {
-      writer.uint32(90).string(message.hostConnectionId);
-    }
-    if (message.hostedConfig !== undefined) {
-      HostedConfig.encode(message.hostedConfig, writer.uint32(98).fork()).ldelim();
+    if (message.hostedIcaConfig !== undefined) {
+      HostedICAConfig.encode(message.hostedIcaConfig, writer.uint32(82).fork()).ldelim();
     }
     if (message.conditions !== undefined) {
-      ExecutionConditions.encode(message.conditions, writer.uint32(114).fork()).ldelim();
+      ExecutionConditions.encode(message.conditions, writer.uint32(90).fork()).ldelim();
     }
     return writer;
   },
@@ -962,37 +945,34 @@ export const MsgSubmitFlow = {
         case 1:
           message.owner = reader.string();
           break;
-        case 3:
+        case 2:
           message.label = reader.string();
           break;
-        case 4:
+        case 3:
           message.msgs.push(GlobalDecoderRegistry.unwrapAny(reader));
           break;
-        case 5:
+        case 4:
           message.duration = reader.string();
           break;
-        case 6:
+        case 5:
           message.startAt = reader.uint64();
           break;
-        case 7:
+        case 6:
           message.interval = reader.string();
           break;
-        case 8:
+        case 7:
           message.feeFunds.push(Coin.decode(reader, reader.uint32()));
           break;
-        case 9:
+        case 8:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
-        case 10:
+        case 9:
           message.connectionId = reader.string();
           break;
+        case 10:
+          message.hostedIcaConfig = HostedICAConfig.decode(reader, reader.uint32());
+          break;
         case 11:
-          message.hostConnectionId = reader.string();
-          break;
-        case 12:
-          message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
-          break;
-        case 14:
           message.conditions = ExecutionConditions.decode(reader, reader.uint32());
           break;
         default:
@@ -1013,8 +993,7 @@ export const MsgSubmitFlow = {
       feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
       connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
-      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      hostedIcaConfig: isSet(object.hostedIcaConfig) ? HostedICAConfig.fromJSON(object.hostedIcaConfig) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
@@ -1037,8 +1016,7 @@ export const MsgSubmitFlow = {
     }
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
-    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.hostedIcaConfig !== undefined && (obj.hostedIcaConfig = message.hostedIcaConfig ? HostedICAConfig.toJSON(message.hostedIcaConfig) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
@@ -1053,8 +1031,7 @@ export const MsgSubmitFlow = {
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.connectionId = object.connectionId ?? "";
-    message.hostConnectionId = object.hostConnectionId ?? "";
-    message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.hostedIcaConfig = object.hostedIcaConfig !== undefined && object.hostedIcaConfig !== null ? HostedICAConfig.fromPartial(object.hostedIcaConfig) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
@@ -1083,11 +1060,8 @@ export const MsgSubmitFlow = {
     if (object.connection_id !== undefined && object.connection_id !== null) {
       message.connectionId = object.connection_id;
     }
-    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
-      message.hostConnectionId = object.host_connection_id;
-    }
-    if (object.hosted_config !== undefined && object.hosted_config !== null) {
-      message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
+    if (object.hosted_ica_config !== undefined && object.hosted_ica_config !== null) {
+      message.hostedIcaConfig = HostedICAConfig.fromAmino(object.hosted_ica_config);
     }
     if (object.conditions !== undefined && object.conditions !== null) {
       message.conditions = ExecutionConditions.fromAmino(object.conditions);
@@ -1113,8 +1087,7 @@ export const MsgSubmitFlow = {
     }
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
-    obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.hosted_ica_config = message.hostedIcaConfig ? HostedICAConfig.toAmino(message.hostedIcaConfig) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
@@ -1537,7 +1510,6 @@ function createBaseMsgUpdateFlow(): MsgUpdateFlow {
   return {
     owner: "",
     id: BigInt(0),
-    connectionId: "",
     label: "",
     msgs: [],
     endTime: BigInt(0),
@@ -1545,7 +1517,8 @@ function createBaseMsgUpdateFlow(): MsgUpdateFlow {
     interval: "",
     feeFunds: [],
     configuration: undefined,
-    hostedConfig: undefined,
+    connectionId: "",
+    hostedIcaConfig: undefined,
     conditions: undefined
   };
 }
@@ -1553,13 +1526,13 @@ export const MsgUpdateFlow = {
   typeUrl: "/intento.intent.v1beta1.MsgUpdateFlow",
   aminoType: "intent/MsgUpdateFlow",
   is(o: any): o is MsgUpdateFlow {
-    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connectionId === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.endTime === "bigint" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])));
+    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && typeof o.endTime === "bigint" && typeof o.startAt === "bigint" && typeof o.interval === "string" && Array.isArray(o.feeFunds) && (!o.feeFunds.length || Coin.is(o.feeFunds[0])) && typeof o.connectionId === "string");
   },
   isSDK(o: any): o is MsgUpdateFlowSDKType {
-    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])));
+    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isSDK(o.fee_funds[0])) && typeof o.connection_id === "string");
   },
   isAmino(o: any): o is MsgUpdateFlowAmino {
-    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.connection_id === "string" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])));
+    return o && (o.$typeUrl === MsgUpdateFlow.typeUrl || typeof o.owner === "string" && typeof o.id === "bigint" && typeof o.label === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && typeof o.end_time === "bigint" && typeof o.start_at === "bigint" && typeof o.interval === "string" && Array.isArray(o.fee_funds) && (!o.fee_funds.length || Coin.isAmino(o.fee_funds[0])) && typeof o.connection_id === "string");
   },
   encode(message: MsgUpdateFlow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
@@ -1568,32 +1541,32 @@ export const MsgUpdateFlow = {
     if (message.id !== BigInt(0)) {
       writer.uint32(16).uint64(message.id);
     }
-    if (message.connectionId !== "") {
-      writer.uint32(26).string(message.connectionId);
-    }
     if (message.label !== "") {
-      writer.uint32(34).string(message.label);
+      writer.uint32(26).string(message.label);
     }
     for (const v of message.msgs) {
-      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(42).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(34).fork()).ldelim();
     }
     if (message.endTime !== BigInt(0)) {
-      writer.uint32(48).uint64(message.endTime);
+      writer.uint32(40).uint64(message.endTime);
     }
     if (message.startAt !== BigInt(0)) {
-      writer.uint32(56).uint64(message.startAt);
+      writer.uint32(48).uint64(message.startAt);
     }
     if (message.interval !== "") {
-      writer.uint32(66).string(message.interval);
+      writer.uint32(58).string(message.interval);
     }
     for (const v of message.feeFunds) {
-      Coin.encode(v!, writer.uint32(74).fork()).ldelim();
+      Coin.encode(v!, writer.uint32(66).fork()).ldelim();
     }
     if (message.configuration !== undefined) {
-      ExecutionConfiguration.encode(message.configuration, writer.uint32(82).fork()).ldelim();
+      ExecutionConfiguration.encode(message.configuration, writer.uint32(74).fork()).ldelim();
     }
-    if (message.hostedConfig !== undefined) {
-      HostedConfig.encode(message.hostedConfig, writer.uint32(90).fork()).ldelim();
+    if (message.connectionId !== "") {
+      writer.uint32(82).string(message.connectionId);
+    }
+    if (message.hostedIcaConfig !== undefined) {
+      HostedICAConfig.encode(message.hostedIcaConfig, writer.uint32(90).fork()).ldelim();
     }
     if (message.conditions !== undefined) {
       ExecutionConditions.encode(message.conditions, writer.uint32(98).fork()).ldelim();
@@ -1614,31 +1587,31 @@ export const MsgUpdateFlow = {
           message.id = reader.uint64();
           break;
         case 3:
-          message.connectionId = reader.string();
-          break;
-        case 4:
           message.label = reader.string();
           break;
-        case 5:
+        case 4:
           message.msgs.push(GlobalDecoderRegistry.unwrapAny(reader));
           break;
-        case 6:
+        case 5:
           message.endTime = reader.uint64();
           break;
-        case 7:
+        case 6:
           message.startAt = reader.uint64();
           break;
-        case 8:
+        case 7:
           message.interval = reader.string();
           break;
-        case 9:
+        case 8:
           message.feeFunds.push(Coin.decode(reader, reader.uint32()));
           break;
-        case 10:
+        case 9:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
           break;
+        case 10:
+          message.connectionId = reader.string();
+          break;
         case 11:
-          message.hostedConfig = HostedConfig.decode(reader, reader.uint32());
+          message.hostedIcaConfig = HostedICAConfig.decode(reader, reader.uint32());
           break;
         case 12:
           message.conditions = ExecutionConditions.decode(reader, reader.uint32());
@@ -1654,7 +1627,6 @@ export const MsgUpdateFlow = {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
       id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
       label: isSet(object.label) ? String(object.label) : "",
       msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : [],
       endTime: isSet(object.endTime) ? BigInt(object.endTime.toString()) : BigInt(0),
@@ -1662,7 +1634,8 @@ export const MsgUpdateFlow = {
       interval: isSet(object.interval) ? String(object.interval) : "",
       feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
-      hostedConfig: isSet(object.hostedConfig) ? HostedConfig.fromJSON(object.hostedConfig) : undefined,
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
+      hostedIcaConfig: isSet(object.hostedIcaConfig) ? HostedICAConfig.fromJSON(object.hostedIcaConfig) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
@@ -1670,7 +1643,6 @@ export const MsgUpdateFlow = {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
-    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
     message.label !== undefined && (obj.label = message.label);
     if (message.msgs) {
       obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
@@ -1686,7 +1658,8 @@ export const MsgUpdateFlow = {
       obj.feeFunds = [];
     }
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
-    message.hostedConfig !== undefined && (obj.hostedConfig = message.hostedConfig ? HostedConfig.toJSON(message.hostedConfig) : undefined);
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
+    message.hostedIcaConfig !== undefined && (obj.hostedIcaConfig = message.hostedIcaConfig ? HostedICAConfig.toJSON(message.hostedIcaConfig) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
@@ -1694,7 +1667,6 @@ export const MsgUpdateFlow = {
     const message = createBaseMsgUpdateFlow();
     message.owner = object.owner ?? "";
     message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
-    message.connectionId = object.connectionId ?? "";
     message.label = object.label ?? "";
     message.msgs = object.msgs?.map(e => GlobalDecoderRegistry.fromPartial(e) as any) || [];
     message.endTime = object.endTime !== undefined && object.endTime !== null ? BigInt(object.endTime.toString()) : BigInt(0);
@@ -1702,7 +1674,8 @@ export const MsgUpdateFlow = {
     message.interval = object.interval ?? "";
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
-    message.hostedConfig = object.hostedConfig !== undefined && object.hostedConfig !== null ? HostedConfig.fromPartial(object.hostedConfig) : undefined;
+    message.connectionId = object.connectionId ?? "";
+    message.hostedIcaConfig = object.hostedIcaConfig !== undefined && object.hostedIcaConfig !== null ? HostedICAConfig.fromPartial(object.hostedIcaConfig) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
@@ -1713,9 +1686,6 @@ export const MsgUpdateFlow = {
     }
     if (object.id !== undefined && object.id !== null) {
       message.id = BigInt(object.id);
-    }
-    if (object.connection_id !== undefined && object.connection_id !== null) {
-      message.connectionId = object.connection_id;
     }
     if (object.label !== undefined && object.label !== null) {
       message.label = object.label;
@@ -1734,8 +1704,11 @@ export const MsgUpdateFlow = {
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
     }
-    if (object.hosted_config !== undefined && object.hosted_config !== null) {
-      message.hostedConfig = HostedConfig.fromAmino(object.hosted_config);
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    if (object.hosted_ica_config !== undefined && object.hosted_ica_config !== null) {
+      message.hostedIcaConfig = HostedICAConfig.fromAmino(object.hosted_ica_config);
     }
     if (object.conditions !== undefined && object.conditions !== null) {
       message.conditions = ExecutionConditions.fromAmino(object.conditions);
@@ -1746,7 +1719,6 @@ export const MsgUpdateFlow = {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
     obj.id = message.id !== BigInt(0) ? message.id?.toString() : undefined;
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
     obj.label = message.label === "" ? undefined : message.label;
     if (message.msgs) {
       obj.msgs = message.msgs.map(e => e ? GlobalDecoderRegistry.toAminoMsg(e) : undefined);
@@ -1762,7 +1734,8 @@ export const MsgUpdateFlow = {
       obj.fee_funds = message.feeFunds;
     }
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
-    obj.hosted_config = message.hostedConfig ? HostedConfig.toAmino(message.hostedConfig) : undefined;
+    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.hosted_ica_config = message.hostedIcaConfig ? HostedICAConfig.toAmino(message.hostedIcaConfig) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
@@ -2097,8 +2070,6 @@ function createBaseMsgUpdateHostedAccount(): MsgUpdateHostedAccount {
   return {
     admin: "",
     hostedAddress: "",
-    connectionId: "",
-    hostConnectionId: "",
     hostFeeConfig: undefined
   };
 }
@@ -2106,13 +2077,13 @@ export const MsgUpdateHostedAccount = {
   typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
   aminoType: "intent/MsgUpdateHostedAccount",
   is(o: any): o is MsgUpdateHostedAccount {
-    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hostedAddress === "string" && typeof o.connectionId === "string" && typeof o.hostConnectionId === "string");
+    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hostedAddress === "string");
   },
   isSDK(o: any): o is MsgUpdateHostedAccountSDKType {
-    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hosted_address === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hosted_address === "string");
   },
   isAmino(o: any): o is MsgUpdateHostedAccountAmino {
-    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hosted_address === "string" && typeof o.connection_id === "string" && typeof o.host_connection_id === "string");
+    return o && (o.$typeUrl === MsgUpdateHostedAccount.typeUrl || typeof o.admin === "string" && typeof o.hosted_address === "string");
   },
   encode(message: MsgUpdateHostedAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
@@ -2121,14 +2092,8 @@ export const MsgUpdateHostedAccount = {
     if (message.hostedAddress !== "") {
       writer.uint32(18).string(message.hostedAddress);
     }
-    if (message.connectionId !== "") {
-      writer.uint32(26).string(message.connectionId);
-    }
-    if (message.hostConnectionId !== "") {
-      writer.uint32(34).string(message.hostConnectionId);
-    }
     if (message.hostFeeConfig !== undefined) {
-      HostFeeConfig.encode(message.hostFeeConfig, writer.uint32(42).fork()).ldelim();
+      HostFeeConfig.encode(message.hostFeeConfig, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -2145,13 +2110,7 @@ export const MsgUpdateHostedAccount = {
         case 2:
           message.hostedAddress = reader.string();
           break;
-        case 3:
-          message.connectionId = reader.string();
-          break;
         case 4:
-          message.hostConnectionId = reader.string();
-          break;
-        case 5:
           message.hostFeeConfig = HostFeeConfig.decode(reader, reader.uint32());
           break;
         default:
@@ -2165,8 +2124,6 @@ export const MsgUpdateHostedAccount = {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
       hostedAddress: isSet(object.hostedAddress) ? String(object.hostedAddress) : "",
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      hostConnectionId: isSet(object.hostConnectionId) ? String(object.hostConnectionId) : "",
       hostFeeConfig: isSet(object.hostFeeConfig) ? HostFeeConfig.fromJSON(object.hostFeeConfig) : undefined
     };
   },
@@ -2174,8 +2131,6 @@ export const MsgUpdateHostedAccount = {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
     message.hostedAddress !== undefined && (obj.hostedAddress = message.hostedAddress);
-    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.hostConnectionId !== undefined && (obj.hostConnectionId = message.hostConnectionId);
     message.hostFeeConfig !== undefined && (obj.hostFeeConfig = message.hostFeeConfig ? HostFeeConfig.toJSON(message.hostFeeConfig) : undefined);
     return obj;
   },
@@ -2183,8 +2138,6 @@ export const MsgUpdateHostedAccount = {
     const message = createBaseMsgUpdateHostedAccount();
     message.admin = object.admin ?? "";
     message.hostedAddress = object.hostedAddress ?? "";
-    message.connectionId = object.connectionId ?? "";
-    message.hostConnectionId = object.hostConnectionId ?? "";
     message.hostFeeConfig = object.hostFeeConfig !== undefined && object.hostFeeConfig !== null ? HostFeeConfig.fromPartial(object.hostFeeConfig) : undefined;
     return message;
   },
@@ -2196,12 +2149,6 @@ export const MsgUpdateHostedAccount = {
     if (object.hosted_address !== undefined && object.hosted_address !== null) {
       message.hostedAddress = object.hosted_address;
     }
-    if (object.connection_id !== undefined && object.connection_id !== null) {
-      message.connectionId = object.connection_id;
-    }
-    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
-      message.hostConnectionId = object.host_connection_id;
-    }
     if (object.host_fee_config !== undefined && object.host_fee_config !== null) {
       message.hostFeeConfig = HostFeeConfig.fromAmino(object.host_fee_config);
     }
@@ -2211,8 +2158,6 @@ export const MsgUpdateHostedAccount = {
     const obj: any = {};
     obj.admin = message.admin === "" ? undefined : message.admin;
     obj.hosted_address = message.hostedAddress === "" ? undefined : message.hostedAddress;
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
     obj.host_fee_config = message.hostFeeConfig ? HostFeeConfig.toAmino(message.hostFeeConfig) : undefined;
     return obj;
   },
