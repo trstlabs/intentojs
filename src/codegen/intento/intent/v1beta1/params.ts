@@ -6,19 +6,19 @@ import { isSet } from "../../../helpers";
 import { JsonSafe } from "../../../json-safe";
 /** Params defines the params for activeness of Flows on governance proposals. */
 export interface Params {
-  /** Commision rate to retun remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
+  /** Commision rate percentage for returning remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
   flowFundsCommission: bigint;
-  /** Multiplier to the flexible flow gas fee, e.g. 100 = 1X, 250 = 250 */
+  /** Multiplier to the flexible flow gas fee in promille, e.g. 1000 = 1X, 2500 = 2,5x */
   flowFlexFeeMul: bigint;
   /** Fixed burn fee per message execution to burn native denom */
   burnFeePerMsg: bigint;
   /** Array of denoms that can be used for fee payment together with an amount */
   gasFeeCoins: Coin[];
-  /** Maximum period for self-executing Flow */
+  /** Maximum period for a flow */
   maxFlowDuration: Duration;
-  /** Minimum period for self-executing Flow */
+  /** Minimum period for a flow */
   minFlowDuration: Duration;
-  /** Minimum period for self-executing Flow */
+  /** Minimum period for a flow */
   minFlowInterval: Duration;
   /**
    * relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo.
@@ -32,19 +32,19 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the params for activeness of Flows on governance proposals. */
 export interface ParamsAmino {
-  /** Commision rate to retun remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
+  /** Commision rate percentage for returning remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
   flow_funds_commission?: string;
-  /** Multiplier to the flexible flow gas fee, e.g. 100 = 1X, 250 = 250 */
+  /** Multiplier to the flexible flow gas fee in promille, e.g. 1000 = 1X, 2500 = 2,5x */
   flow_flex_fee_mul?: string;
   /** Fixed burn fee per message execution to burn native denom */
   burn_fee_per_msg?: string;
   /** Array of denoms that can be used for fee payment together with an amount */
   gas_fee_coins?: CoinAmino[];
-  /** Maximum period for self-executing Flow */
+  /** Maximum period for a flow */
   max_flow_duration?: DurationAmino;
-  /** Minimum period for self-executing Flow */
+  /** Minimum period for a flow */
   min_flow_duration?: DurationAmino;
-  /** Minimum period for self-executing Flow */
+  /** Minimum period for a flow */
   min_flow_interval?: DurationAmino;
   /**
    * relayer rewards in uinto for each message type 0=SDK,1=Wasm, 2=Osmo.

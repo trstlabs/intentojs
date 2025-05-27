@@ -31,6 +31,8 @@ __exportStar(require("./google/bundle"), exports);
 __exportStar(require("./ibc/bundle"), exports);
 __exportStar(require("./ibc/client"), exports);
 __exportStar(require("./tendermint/bundle"), exports);
+__exportStar(require("./elys/bundle"), exports);
+__exportStar(require("./elys/client"), exports);
 __exportStar(require("./intento/bundle"), exports);
 __exportStar(require("./intento/client"), exports);
 __exportStar(require("./osmosis/bundle"), exports);

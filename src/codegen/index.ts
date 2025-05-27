@@ -16,6 +16,8 @@ export * from "./google/bundle";
 export * from "./ibc/bundle";
 export * from "./ibc/client";
 export * from "./tendermint/bundle";
+export * from "./elys/bundle";
+export * from "./elys/client";
 export * from "./intento/bundle";
 export * from "./intento/client";
 export * from "./osmosis/bundle";

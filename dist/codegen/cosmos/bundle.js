@@ -66,34 +66,34 @@ const _41 = __importStar(require("./tx/v1beta1/tx"));
 const _42 = __importStar(require("./upgrade/v1beta1/query"));
 const _43 = __importStar(require("./upgrade/v1beta1/tx"));
 const _44 = __importStar(require("./upgrade/v1beta1/upgrade"));
-const _116 = __importStar(require("./authz/v1beta1/tx.amino"));
-const _117 = __importStar(require("./bank/v1beta1/tx.amino"));
-const _118 = __importStar(require("./distribution/v1beta1/tx.amino"));
-const _119 = __importStar(require("./gov/v1beta1/tx.amino"));
-const _120 = __importStar(require("./staking/v1beta1/tx.amino"));
-const _121 = __importStar(require("./upgrade/v1beta1/tx.amino"));
-const _122 = __importStar(require("./authz/v1beta1/tx.registry"));
-const _123 = __importStar(require("./bank/v1beta1/tx.registry"));
-const _124 = __importStar(require("./distribution/v1beta1/tx.registry"));
-const _125 = __importStar(require("./gov/v1beta1/tx.registry"));
-const _126 = __importStar(require("./staking/v1beta1/tx.registry"));
-const _127 = __importStar(require("./upgrade/v1beta1/tx.registry"));
-const _128 = __importStar(require("./auth/v1beta1/query.rpc.Query"));
-const _129 = __importStar(require("./authz/v1beta1/query.rpc.Query"));
-const _130 = __importStar(require("./bank/v1beta1/query.rpc.Query"));
-const _131 = __importStar(require("./distribution/v1beta1/query.rpc.Query"));
-const _132 = __importStar(require("./gov/v1beta1/query.rpc.Query"));
-const _133 = __importStar(require("./staking/v1beta1/query.rpc.Query"));
-const _134 = __importStar(require("./tx/v1beta1/service.rpc.Service"));
-const _135 = __importStar(require("./upgrade/v1beta1/query.rpc.Query"));
-const _136 = __importStar(require("./authz/v1beta1/tx.rpc.msg"));
-const _137 = __importStar(require("./bank/v1beta1/tx.rpc.msg"));
-const _138 = __importStar(require("./distribution/v1beta1/tx.rpc.msg"));
-const _139 = __importStar(require("./gov/v1beta1/tx.rpc.msg"));
-const _140 = __importStar(require("./staking/v1beta1/tx.rpc.msg"));
-const _141 = __importStar(require("./upgrade/v1beta1/tx.rpc.msg"));
-const _181 = __importStar(require("./rpc.query"));
-const _182 = __importStar(require("./rpc.tx"));
+const _155 = __importStar(require("./authz/v1beta1/tx.amino"));
+const _156 = __importStar(require("./bank/v1beta1/tx.amino"));
+const _157 = __importStar(require("./distribution/v1beta1/tx.amino"));
+const _158 = __importStar(require("./gov/v1beta1/tx.amino"));
+const _159 = __importStar(require("./staking/v1beta1/tx.amino"));
+const _160 = __importStar(require("./upgrade/v1beta1/tx.amino"));
+const _161 = __importStar(require("./authz/v1beta1/tx.registry"));
+const _162 = __importStar(require("./bank/v1beta1/tx.registry"));
+const _163 = __importStar(require("./distribution/v1beta1/tx.registry"));
+const _164 = __importStar(require("./gov/v1beta1/tx.registry"));
+const _165 = __importStar(require("./staking/v1beta1/tx.registry"));
+const _166 = __importStar(require("./upgrade/v1beta1/tx.registry"));
+const _167 = __importStar(require("./auth/v1beta1/query.rpc.Query"));
+const _168 = __importStar(require("./authz/v1beta1/query.rpc.Query"));
+const _169 = __importStar(require("./bank/v1beta1/query.rpc.Query"));
+const _170 = __importStar(require("./distribution/v1beta1/query.rpc.Query"));
+const _171 = __importStar(require("./gov/v1beta1/query.rpc.Query"));
+const _172 = __importStar(require("./staking/v1beta1/query.rpc.Query"));
+const _173 = __importStar(require("./tx/v1beta1/service.rpc.Service"));
+const _174 = __importStar(require("./upgrade/v1beta1/query.rpc.Query"));
+const _175 = __importStar(require("./authz/v1beta1/tx.rpc.msg"));
+const _176 = __importStar(require("./bank/v1beta1/tx.rpc.msg"));
+const _177 = __importStar(require("./distribution/v1beta1/tx.rpc.msg"));
+const _178 = __importStar(require("./gov/v1beta1/tx.rpc.msg"));
+const _179 = __importStar(require("./staking/v1beta1/tx.rpc.msg"));
+const _180 = __importStar(require("./upgrade/v1beta1/tx.rpc.msg"));
+const _242 = __importStar(require("./rpc.query"));
+const _243 = __importStar(require("./rpc.tx"));
 var cosmos;
 (function (cosmos) {
     let auth;
@@ -102,7 +102,7 @@ var cosmos;
             ..._3,
             ..._4,
             ..._5,
-            ..._128
+            ..._167
         };
     })(auth = cosmos.auth || (cosmos.auth = {}));
     let authz;
@@ -113,10 +113,10 @@ var cosmos;
             ..._8,
             ..._9,
             ..._10,
-            ..._116,
-            ..._122,
-            ..._129,
-            ..._136
+            ..._155,
+            ..._161,
+            ..._168,
+            ..._175
         };
     })(authz = cosmos.authz || (cosmos.authz = {}));
     let bank;
@@ -127,10 +127,10 @@ var cosmos;
             ..._13,
             ..._14,
             ..._15,
-            ..._117,
-            ..._123,
-            ..._130,
-            ..._137
+            ..._156,
+            ..._162,
+            ..._169,
+            ..._176
         };
     })(bank = cosmos.bank || (cosmos.bank = {}));
     let base;
@@ -191,10 +191,10 @@ var cosmos;
             ..._27,
             ..._28,
             ..._29,
-            ..._118,
-            ..._124,
-            ..._131,
-            ..._138
+            ..._157,
+            ..._163,
+            ..._170,
+            ..._177
         };
     })(distribution = cosmos.distribution || (cosmos.distribution = {}));
     let gov;
@@ -204,10 +204,10 @@ var cosmos;
             ..._31,
             ..._32,
             ..._33,
-            ..._119,
-            ..._125,
-            ..._132,
-            ..._139
+            ..._158,
+            ..._164,
+            ..._171,
+            ..._178
         };
     })(gov = cosmos.gov || (cosmos.gov = {}));
     let staking;
@@ -218,10 +218,10 @@ var cosmos;
             ..._36,
             ..._37,
             ..._38,
-            ..._120,
-            ..._126,
-            ..._133,
-            ..._140
+            ..._159,
+            ..._165,
+            ..._172,
+            ..._179
         };
     })(staking = cosmos.staking || (cosmos.staking = {}));
     let tx;
@@ -235,7 +235,7 @@ var cosmos;
         tx.v1beta1 = {
             ..._40,
             ..._41,
-            ..._134
+            ..._173
         };
     })(tx = cosmos.tx || (cosmos.tx = {}));
     let upgrade;
@@ -244,15 +244,15 @@ var cosmos;
             ..._42,
             ..._43,
             ..._44,
-            ..._121,
-            ..._127,
-            ..._135,
-            ..._141
+            ..._160,
+            ..._166,
+            ..._174,
+            ..._180
         };
     })(upgrade = cosmos.upgrade || (cosmos.upgrade = {}));
     cosmos.ClientFactory = {
-        ..._181,
-        ..._182
+        ..._242,
+        ..._243
     };
 })(cosmos || (exports.cosmos = cosmos = {}));
 //# sourceMappingURL=bundle.js.map

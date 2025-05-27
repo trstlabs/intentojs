@@ -134,7 +134,7 @@ npm login
 Afterwards, update package.json version.
 
 ```bash
-# Example: <version> = v0.4.1
+# Example: <version> = 0.9.0-beta.3
 git push origin main
 git tag <version>
 git push origin <version>
