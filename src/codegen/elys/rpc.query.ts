@@ -35,7 +35,8 @@ export const createRPCQueryClient = async ({
       }
     },
     elys: {
-      amm: (await import("./amm/query.rpc.Query")).createRpcQueryExtension(client)
+      amm: (await import("./amm/query.rpc.Query")).createRpcQueryExtension(client),
+      commitment: (await import("./commitment/query.rpc.Query")).createRpcQueryExtension(client)
     }
   };
 };

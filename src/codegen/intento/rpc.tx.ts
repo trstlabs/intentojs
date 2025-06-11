@@ -22,6 +22,11 @@ export const createRPCMsgClient = async ({
     },
     upgrade: {
       v1beta1: new (await import("../cosmos/upgrade/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    evm: {
+      vm: {
+        v1: new (await import("../cosmos/evm/vm/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+      }
     }
   },
   intento: {

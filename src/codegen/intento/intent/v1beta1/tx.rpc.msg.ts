@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgRegisterAccount, MsgRegisterAccountResponse, MsgSubmitTx, MsgSubmitTxResponse, MsgSubmitFlow, MsgSubmitFlowResponse, MsgRegisterAccountAndSubmitFlow, MsgRegisterAccountAndSubmitFlowResponse, MsgUpdateFlow, MsgUpdateFlowResponse, MsgCreateHostedAccount, MsgCreateHostedAccountResponse, MsgUpdateHostedAccount, MsgUpdateHostedAccountResponse } from "./tx";
+import { MsgRegisterAccount, MsgRegisterAccountResponse, MsgSubmitTx, MsgSubmitTxResponse, MsgSubmitFlow, MsgSubmitFlowResponse, MsgRegisterAccountAndSubmitFlow, MsgRegisterAccountAndSubmitFlowResponse, MsgUpdateFlow, MsgUpdateFlowResponse, MsgCreateHostedAccount, MsgCreateHostedAccountResponse, MsgUpdateHostedAccount, MsgUpdateHostedAccountResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 /** Msg defines the ica-authentication Msg service. */
 export interface Msg {
   /** Register defines a rpc handler for MsgRegisterAccount */
@@ -11,6 +11,11 @@ export interface Msg {
   updateFlow(request: MsgUpdateFlow): Promise<MsgUpdateFlowResponse>;
   createHostedAccount(request: MsgCreateHostedAccount): Promise<MsgCreateHostedAccountResponse>;
   updateHostedAccount(request: MsgUpdateHostedAccount): Promise<MsgUpdateHostedAccountResponse>;
+  /**
+   * UpdateParams defines a governance operation for updating the x/intent module
+   * parameters. The authority is hard-coded to the x/gov module account.
+   */
+  updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -23,6 +28,7 @@ export class MsgClientImpl implements Msg {
     this.updateFlow = this.updateFlow.bind(this);
     this.createHostedAccount = this.createHostedAccount.bind(this);
     this.updateHostedAccount = this.updateHostedAccount.bind(this);
+    this.updateParams = this.updateParams.bind(this);
   }
   registerAccount(request: MsgRegisterAccount): Promise<MsgRegisterAccountResponse> {
     const data = MsgRegisterAccount.encode(request).finish();
@@ -58,5 +64,10 @@ export class MsgClientImpl implements Msg {
     const data = MsgUpdateHostedAccount.encode(request).finish();
     const promise = this.rpc.request("intento.intent.v1beta1.Msg", "UpdateHostedAccount", data);
     return promise.then(data => MsgUpdateHostedAccountResponse.decode(new BinaryReader(data)));
+  }
+  updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse> {
+    const data = MsgUpdateParams.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1beta1.Msg", "UpdateParams", data);
+    return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
   }
 }

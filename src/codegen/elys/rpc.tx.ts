@@ -22,10 +22,16 @@ export const createRPCMsgClient = async ({
     },
     upgrade: {
       v1beta1: new (await import("../cosmos/upgrade/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    evm: {
+      vm: {
+        v1: new (await import("../cosmos/evm/vm/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+      }
     }
   },
   elys: {
     amm: new (await import("./amm/tx.rpc.msg")).MsgClientImpl(rpc),
+    commitment: new (await import("./commitment/tx.rpc.msg")).MsgClientImpl(rpc),
     estaking: new (await import("./estaking/tx.rpc.msg")).MsgClientImpl(rpc),
     leveragelp: new (await import("./leveragelp/tx.rpc.msg")).MsgClientImpl(rpc),
     masterchef: new (await import("./masterchef/tx.rpc.msg")).MsgClientImpl(rpc),

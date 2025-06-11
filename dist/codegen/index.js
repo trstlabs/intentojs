@@ -36,6 +36,7 @@ __exportStar(require("./elys/client"), exports);
 __exportStar(require("./intento/bundle"), exports);
 __exportStar(require("./intento/client"), exports);
 __exportStar(require("./osmosis/bundle"), exports);
+__exportStar(require("./osmosis/client"), exports);
 __exportStar(require("./stride/bundle"), exports);
 __exportStar(require("./stride/client"), exports);
 __exportStar(require("./json-safe"), exports);

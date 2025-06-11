@@ -1,20 +1,20 @@
-import * as _54 from "./api/http";
-import * as _55 from "./protobuf/any";
-import * as _56 from "./protobuf/descriptor";
-import * as _57 from "./protobuf/duration";
-import * as _58 from "./protobuf/empty";
-import * as _59 from "./protobuf/timestamp";
+import * as _56 from "./api/http";
+import * as _57 from "./protobuf/any";
+import * as _58 from "./protobuf/descriptor";
+import * as _59 from "./protobuf/duration";
+import * as _60 from "./protobuf/empty";
+import * as _61 from "./protobuf/timestamp";
 export declare namespace google {
     const api: {
         Http: {
             typeUrl: string;
-            is(o: any): o is _54.Http;
-            isSDK(o: any): o is _54.HttpSDKType;
-            isAmino(o: any): o is _54.HttpAmino;
-            encode(message: _54.Http, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.Http;
-            fromJSON(object: any): _54.Http;
-            toJSON(message: _54.Http): {
+            is(o: any): o is _56.Http;
+            isSDK(o: any): o is _56.HttpSDKType;
+            isAmino(o: any): o is _56.HttpAmino;
+            encode(message: _56.Http, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.Http;
+            fromJSON(object: any): _56.Http;
+            toJSON(message: _56.Http): {
                 rules: {
                     selector: string;
                     get?: string;
@@ -32,23 +32,23 @@ export declare namespace google {
                 }[];
                 fullyDecodeReservedExpansion: boolean;
             };
-            fromPartial(object: Partial<_54.Http>): _54.Http;
-            fromAmino(object: _54.HttpAmino): _54.Http;
-            toAmino(message: _54.Http): _54.HttpAmino;
-            fromAminoMsg(object: _54.HttpAminoMsg): _54.Http;
-            fromProtoMsg(message: _54.HttpProtoMsg): _54.Http;
-            toProto(message: _54.Http): Uint8Array;
-            toProtoMsg(message: _54.Http): _54.HttpProtoMsg;
+            fromPartial(object: Partial<_56.Http>): _56.Http;
+            fromAmino(object: _56.HttpAmino): _56.Http;
+            toAmino(message: _56.Http): _56.HttpAmino;
+            fromAminoMsg(object: _56.HttpAminoMsg): _56.Http;
+            fromProtoMsg(message: _56.HttpProtoMsg): _56.Http;
+            toProto(message: _56.Http): Uint8Array;
+            toProtoMsg(message: _56.Http): _56.HttpProtoMsg;
         };
         HttpRule: {
             typeUrl: string;
-            is(o: any): o is _54.HttpRule;
-            isSDK(o: any): o is _54.HttpRuleSDKType;
-            isAmino(o: any): o is _54.HttpRuleAmino;
-            encode(message: _54.HttpRule, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.HttpRule;
-            fromJSON(object: any): _54.HttpRule;
-            toJSON(message: _54.HttpRule): {
+            is(o: any): o is _56.HttpRule;
+            isSDK(o: any): o is _56.HttpRuleSDKType;
+            isAmino(o: any): o is _56.HttpRuleAmino;
+            encode(message: _56.HttpRule, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.HttpRule;
+            fromJSON(object: any): _56.HttpRule;
+            toJSON(message: _56.HttpRule): {
                 selector: string;
                 get?: string;
                 put?: string;
@@ -63,132 +63,132 @@ export declare namespace google {
                 responseBody: string;
                 additionalBindings: any[];
             };
-            fromPartial(object: Partial<_54.HttpRule>): _54.HttpRule;
-            fromAmino(object: _54.HttpRuleAmino): _54.HttpRule;
-            toAmino(message: _54.HttpRule): _54.HttpRuleAmino;
-            fromAminoMsg(object: _54.HttpRuleAminoMsg): _54.HttpRule;
-            fromProtoMsg(message: _54.HttpRuleProtoMsg): _54.HttpRule;
-            toProto(message: _54.HttpRule): Uint8Array;
-            toProtoMsg(message: _54.HttpRule): _54.HttpRuleProtoMsg;
+            fromPartial(object: Partial<_56.HttpRule>): _56.HttpRule;
+            fromAmino(object: _56.HttpRuleAmino): _56.HttpRule;
+            toAmino(message: _56.HttpRule): _56.HttpRuleAmino;
+            fromAminoMsg(object: _56.HttpRuleAminoMsg): _56.HttpRule;
+            fromProtoMsg(message: _56.HttpRuleProtoMsg): _56.HttpRule;
+            toProto(message: _56.HttpRule): Uint8Array;
+            toProtoMsg(message: _56.HttpRule): _56.HttpRuleProtoMsg;
         };
         CustomHttpPattern: {
             typeUrl: string;
-            is(o: any): o is _54.CustomHttpPattern;
-            isSDK(o: any): o is _54.CustomHttpPatternSDKType;
-            isAmino(o: any): o is _54.CustomHttpPatternAmino;
-            encode(message: _54.CustomHttpPattern, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.CustomHttpPattern;
-            fromJSON(object: any): _54.CustomHttpPattern;
-            toJSON(message: _54.CustomHttpPattern): {
+            is(o: any): o is _56.CustomHttpPattern;
+            isSDK(o: any): o is _56.CustomHttpPatternSDKType;
+            isAmino(o: any): o is _56.CustomHttpPatternAmino;
+            encode(message: _56.CustomHttpPattern, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.CustomHttpPattern;
+            fromJSON(object: any): _56.CustomHttpPattern;
+            toJSON(message: _56.CustomHttpPattern): {
                 kind: string;
                 path: string;
             };
-            fromPartial(object: Partial<_54.CustomHttpPattern>): _54.CustomHttpPattern;
-            fromAmino(object: _54.CustomHttpPatternAmino): _54.CustomHttpPattern;
-            toAmino(message: _54.CustomHttpPattern): _54.CustomHttpPatternAmino;
-            fromAminoMsg(object: _54.CustomHttpPatternAminoMsg): _54.CustomHttpPattern;
-            fromProtoMsg(message: _54.CustomHttpPatternProtoMsg): _54.CustomHttpPattern;
-            toProto(message: _54.CustomHttpPattern): Uint8Array;
-            toProtoMsg(message: _54.CustomHttpPattern): _54.CustomHttpPatternProtoMsg;
+            fromPartial(object: Partial<_56.CustomHttpPattern>): _56.CustomHttpPattern;
+            fromAmino(object: _56.CustomHttpPatternAmino): _56.CustomHttpPattern;
+            toAmino(message: _56.CustomHttpPattern): _56.CustomHttpPatternAmino;
+            fromAminoMsg(object: _56.CustomHttpPatternAminoMsg): _56.CustomHttpPattern;
+            fromProtoMsg(message: _56.CustomHttpPatternProtoMsg): _56.CustomHttpPattern;
+            toProto(message: _56.CustomHttpPattern): Uint8Array;
+            toProtoMsg(message: _56.CustomHttpPattern): _56.CustomHttpPatternProtoMsg;
         };
     };
     const protobuf: {
         Timestamp: {
             typeUrl: string;
-            is(o: any): o is _59.Timestamp;
-            isSDK(o: any): o is _59.TimestampSDKType;
+            is(o: any): o is _61.Timestamp;
+            isSDK(o: any): o is _61.TimestampSDKType;
             isAmino(o: any): o is string;
-            encode(message: _59.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Timestamp;
-            fromJSON(object: any): _59.Timestamp;
-            toJSON(message: _59.Timestamp): {
+            encode(message: _61.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Timestamp;
+            fromJSON(object: any): _61.Timestamp;
+            toJSON(message: _61.Timestamp): {
                 seconds: string;
                 nanos: number;
             };
-            fromPartial(object: Partial<_59.Timestamp>): _59.Timestamp;
-            fromAmino(object: string): _59.Timestamp;
-            toAmino(message: _59.Timestamp): string;
-            fromAminoMsg(object: _59.TimestampAminoMsg): _59.Timestamp;
-            fromProtoMsg(message: _59.TimestampProtoMsg): _59.Timestamp;
-            toProto(message: _59.Timestamp): Uint8Array;
-            toProtoMsg(message: _59.Timestamp): _59.TimestampProtoMsg;
+            fromPartial(object: Partial<_61.Timestamp>): _61.Timestamp;
+            fromAmino(object: string): _61.Timestamp;
+            toAmino(message: _61.Timestamp): string;
+            fromAminoMsg(object: _61.TimestampAminoMsg): _61.Timestamp;
+            fromProtoMsg(message: _61.TimestampProtoMsg): _61.Timestamp;
+            toProto(message: _61.Timestamp): Uint8Array;
+            toProtoMsg(message: _61.Timestamp): _61.TimestampProtoMsg;
         };
         Empty: {
             typeUrl: string;
-            is(o: any): o is _58.Empty;
-            isSDK(o: any): o is _58.EmptySDKType;
-            isAmino(o: any): o is _58.EmptyAmino;
-            encode(_: _58.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.Empty;
-            fromJSON(_: any): _58.Empty;
-            toJSON(_: _58.Empty): {};
-            fromPartial(_: Partial<_58.Empty>): _58.Empty;
-            fromAmino(_: _58.EmptyAmino): _58.Empty;
-            toAmino(_: _58.Empty): _58.EmptyAmino;
-            fromAminoMsg(object: _58.EmptyAminoMsg): _58.Empty;
-            fromProtoMsg(message: _58.EmptyProtoMsg): _58.Empty;
-            toProto(message: _58.Empty): Uint8Array;
-            toProtoMsg(message: _58.Empty): _58.EmptyProtoMsg;
+            is(o: any): o is _60.Empty;
+            isSDK(o: any): o is _60.EmptySDKType;
+            isAmino(o: any): o is _60.EmptyAmino;
+            encode(_: _60.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.Empty;
+            fromJSON(_: any): _60.Empty;
+            toJSON(_: _60.Empty): {};
+            fromPartial(_: Partial<_60.Empty>): _60.Empty;
+            fromAmino(_: _60.EmptyAmino): _60.Empty;
+            toAmino(_: _60.Empty): _60.EmptyAmino;
+            fromAminoMsg(object: _60.EmptyAminoMsg): _60.Empty;
+            fromProtoMsg(message: _60.EmptyProtoMsg): _60.Empty;
+            toProto(message: _60.Empty): Uint8Array;
+            toProtoMsg(message: _60.Empty): _60.EmptyProtoMsg;
         };
         Duration: {
             typeUrl: string;
-            is(o: any): o is _57.Duration;
-            isSDK(o: any): o is _57.DurationSDKType;
+            is(o: any): o is _59.Duration;
+            isSDK(o: any): o is _59.DurationSDKType;
             isAmino(o: any): o is string;
-            encode(message: _57.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Duration;
-            fromJSON(object: any): _57.Duration;
-            toJSON(message: _57.Duration): {
+            encode(message: _59.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.Duration;
+            fromJSON(object: any): _59.Duration;
+            toJSON(message: _59.Duration): {
                 seconds: string;
                 nanos: number;
             };
-            fromPartial(object: Partial<_57.Duration>): _57.Duration;
-            fromAmino(object: string): _57.Duration;
-            toAmino(message: _57.Duration): string;
-            fromAminoMsg(object: _57.DurationAminoMsg): _57.Duration;
-            fromProtoMsg(message: _57.DurationProtoMsg): _57.Duration;
-            toProto(message: _57.Duration): Uint8Array;
-            toProtoMsg(message: _57.Duration): _57.DurationProtoMsg;
+            fromPartial(object: Partial<_59.Duration>): _59.Duration;
+            fromAmino(object: string): _59.Duration;
+            toAmino(message: _59.Duration): string;
+            fromAminoMsg(object: _59.DurationAminoMsg): _59.Duration;
+            fromProtoMsg(message: _59.DurationProtoMsg): _59.Duration;
+            toProto(message: _59.Duration): Uint8Array;
+            toProtoMsg(message: _59.Duration): _59.DurationProtoMsg;
         };
-        fieldDescriptorProto_TypeFromJSON(object: any): _56.FieldDescriptorProto_Type;
-        fieldDescriptorProto_TypeToJSON(object: _56.FieldDescriptorProto_Type): string;
-        fieldDescriptorProto_LabelFromJSON(object: any): _56.FieldDescriptorProto_Label;
-        fieldDescriptorProto_LabelToJSON(object: _56.FieldDescriptorProto_Label): string;
-        fileOptions_OptimizeModeFromJSON(object: any): _56.FileOptions_OptimizeMode;
-        fileOptions_OptimizeModeToJSON(object: _56.FileOptions_OptimizeMode): string;
-        fieldOptions_CTypeFromJSON(object: any): _56.FieldOptions_CType;
-        fieldOptions_CTypeToJSON(object: _56.FieldOptions_CType): string;
-        fieldOptions_JSTypeFromJSON(object: any): _56.FieldOptions_JSType;
-        fieldOptions_JSTypeToJSON(object: _56.FieldOptions_JSType): string;
-        methodOptions_IdempotencyLevelFromJSON(object: any): _56.MethodOptions_IdempotencyLevel;
-        methodOptions_IdempotencyLevelToJSON(object: _56.MethodOptions_IdempotencyLevel): string;
-        FieldDescriptorProto_Type: typeof _56.FieldDescriptorProto_Type;
-        FieldDescriptorProto_TypeSDKType: typeof _56.FieldDescriptorProto_Type;
-        FieldDescriptorProto_TypeAmino: typeof _56.FieldDescriptorProto_Type;
-        FieldDescriptorProto_Label: typeof _56.FieldDescriptorProto_Label;
-        FieldDescriptorProto_LabelSDKType: typeof _56.FieldDescriptorProto_Label;
-        FieldDescriptorProto_LabelAmino: typeof _56.FieldDescriptorProto_Label;
-        FileOptions_OptimizeMode: typeof _56.FileOptions_OptimizeMode;
-        FileOptions_OptimizeModeSDKType: typeof _56.FileOptions_OptimizeMode;
-        FileOptions_OptimizeModeAmino: typeof _56.FileOptions_OptimizeMode;
-        FieldOptions_CType: typeof _56.FieldOptions_CType;
-        FieldOptions_CTypeSDKType: typeof _56.FieldOptions_CType;
-        FieldOptions_CTypeAmino: typeof _56.FieldOptions_CType;
-        FieldOptions_JSType: typeof _56.FieldOptions_JSType;
-        FieldOptions_JSTypeSDKType: typeof _56.FieldOptions_JSType;
-        FieldOptions_JSTypeAmino: typeof _56.FieldOptions_JSType;
-        MethodOptions_IdempotencyLevel: typeof _56.MethodOptions_IdempotencyLevel;
-        MethodOptions_IdempotencyLevelSDKType: typeof _56.MethodOptions_IdempotencyLevel;
-        MethodOptions_IdempotencyLevelAmino: typeof _56.MethodOptions_IdempotencyLevel;
+        fieldDescriptorProto_TypeFromJSON(object: any): _58.FieldDescriptorProto_Type;
+        fieldDescriptorProto_TypeToJSON(object: _58.FieldDescriptorProto_Type): string;
+        fieldDescriptorProto_LabelFromJSON(object: any): _58.FieldDescriptorProto_Label;
+        fieldDescriptorProto_LabelToJSON(object: _58.FieldDescriptorProto_Label): string;
+        fileOptions_OptimizeModeFromJSON(object: any): _58.FileOptions_OptimizeMode;
+        fileOptions_OptimizeModeToJSON(object: _58.FileOptions_OptimizeMode): string;
+        fieldOptions_CTypeFromJSON(object: any): _58.FieldOptions_CType;
+        fieldOptions_CTypeToJSON(object: _58.FieldOptions_CType): string;
+        fieldOptions_JSTypeFromJSON(object: any): _58.FieldOptions_JSType;
+        fieldOptions_JSTypeToJSON(object: _58.FieldOptions_JSType): string;
+        methodOptions_IdempotencyLevelFromJSON(object: any): _58.MethodOptions_IdempotencyLevel;
+        methodOptions_IdempotencyLevelToJSON(object: _58.MethodOptions_IdempotencyLevel): string;
+        FieldDescriptorProto_Type: typeof _58.FieldDescriptorProto_Type;
+        FieldDescriptorProto_TypeSDKType: typeof _58.FieldDescriptorProto_Type;
+        FieldDescriptorProto_TypeAmino: typeof _58.FieldDescriptorProto_Type;
+        FieldDescriptorProto_Label: typeof _58.FieldDescriptorProto_Label;
+        FieldDescriptorProto_LabelSDKType: typeof _58.FieldDescriptorProto_Label;
+        FieldDescriptorProto_LabelAmino: typeof _58.FieldDescriptorProto_Label;
+        FileOptions_OptimizeMode: typeof _58.FileOptions_OptimizeMode;
+        FileOptions_OptimizeModeSDKType: typeof _58.FileOptions_OptimizeMode;
+        FileOptions_OptimizeModeAmino: typeof _58.FileOptions_OptimizeMode;
+        FieldOptions_CType: typeof _58.FieldOptions_CType;
+        FieldOptions_CTypeSDKType: typeof _58.FieldOptions_CType;
+        FieldOptions_CTypeAmino: typeof _58.FieldOptions_CType;
+        FieldOptions_JSType: typeof _58.FieldOptions_JSType;
+        FieldOptions_JSTypeSDKType: typeof _58.FieldOptions_JSType;
+        FieldOptions_JSTypeAmino: typeof _58.FieldOptions_JSType;
+        MethodOptions_IdempotencyLevel: typeof _58.MethodOptions_IdempotencyLevel;
+        MethodOptions_IdempotencyLevelSDKType: typeof _58.MethodOptions_IdempotencyLevel;
+        MethodOptions_IdempotencyLevelAmino: typeof _58.MethodOptions_IdempotencyLevel;
         FileDescriptorSet: {
             typeUrl: string;
-            is(o: any): o is _56.FileDescriptorSet;
-            isSDK(o: any): o is _56.FileDescriptorSetSDKType;
-            isAmino(o: any): o is _56.FileDescriptorSetAmino;
-            encode(message: _56.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FileDescriptorSet;
-            fromJSON(object: any): _56.FileDescriptorSet;
-            toJSON(message: _56.FileDescriptorSet): {
+            is(o: any): o is _58.FileDescriptorSet;
+            isSDK(o: any): o is _58.FileDescriptorSetSDKType;
+            isAmino(o: any): o is _58.FileDescriptorSetAmino;
+            encode(message: _58.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.FileDescriptorSet;
+            fromJSON(object: any): _58.FileDescriptorSet;
+            toJSON(message: _58.FileDescriptorSet): {
                 file: {
                     name: string;
                     package: string;
@@ -200,17 +200,17 @@ export declare namespace google {
                         field: {
                             name: string;
                             number: number;
-                            label: _56.FieldDescriptorProto_Label;
-                            type: _56.FieldDescriptorProto_Type;
+                            label: _58.FieldDescriptorProto_Label;
+                            type: _58.FieldDescriptorProto_Type;
                             typeName: string;
                             extendee: string;
                             defaultValue: string;
                             oneofIndex: number;
                             jsonName: string;
                             options?: {
-                                ctype: _56.FieldOptions_CType;
+                                ctype: _58.FieldOptions_CType;
                                 packed: boolean;
-                                jstype: _56.FieldOptions_JSType;
+                                jstype: _58.FieldOptions_JSType;
                                 lazy: boolean;
                                 deprecated: boolean;
                                 weak: boolean;
@@ -231,17 +231,17 @@ export declare namespace google {
                         extension: {
                             name: string;
                             number: number;
-                            label: _56.FieldDescriptorProto_Label;
-                            type: _56.FieldDescriptorProto_Type;
+                            label: _58.FieldDescriptorProto_Label;
+                            type: _58.FieldDescriptorProto_Type;
                             typeName: string;
                             extendee: string;
                             defaultValue: string;
                             oneofIndex: number;
                             jsonName: string;
                             options?: {
-                                ctype: _56.FieldOptions_CType;
+                                ctype: _58.FieldOptions_CType;
                                 packed: boolean;
-                                jstype: _56.FieldOptions_JSType;
+                                jstype: _58.FieldOptions_JSType;
                                 lazy: boolean;
                                 deprecated: boolean;
                                 weak: boolean;
@@ -413,7 +413,7 @@ export declare namespace google {
                             outputType: string;
                             options?: {
                                 deprecated: boolean;
-                                idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                                idempotencyLevel: _58.MethodOptions_IdempotencyLevel;
                                 uninterpretedOption: {
                                     name: {
                                         namePart: string;
@@ -449,17 +449,17 @@ export declare namespace google {
                     extension: {
                         name: string;
                         number: number;
-                        label: _56.FieldDescriptorProto_Label;
-                        type: _56.FieldDescriptorProto_Type;
+                        label: _58.FieldDescriptorProto_Label;
+                        type: _58.FieldDescriptorProto_Type;
                         typeName: string;
                         extendee: string;
                         defaultValue: string;
                         oneofIndex: number;
                         jsonName: string;
                         options?: {
-                            ctype: _56.FieldOptions_CType;
+                            ctype: _58.FieldOptions_CType;
                             packed: boolean;
-                            jstype: _56.FieldOptions_JSType;
+                            jstype: _58.FieldOptions_JSType;
                             lazy: boolean;
                             deprecated: boolean;
                             weak: boolean;
@@ -483,7 +483,7 @@ export declare namespace google {
                         javaMultipleFiles: boolean;
                         javaGenerateEqualsAndHash: boolean;
                         javaStringCheckUtf8: boolean;
-                        optimizeFor: _56.FileOptions_OptimizeMode;
+                        optimizeFor: _58.FileOptions_OptimizeMode;
                         goPackage: string;
                         ccGenericServices: boolean;
                         javaGenericServices: boolean;
@@ -523,23 +523,23 @@ export declare namespace google {
                     syntax: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.FileDescriptorSet>): _56.FileDescriptorSet;
-            fromAmino(object: _56.FileDescriptorSetAmino): _56.FileDescriptorSet;
-            toAmino(message: _56.FileDescriptorSet): _56.FileDescriptorSetAmino;
-            fromAminoMsg(object: _56.FileDescriptorSetAminoMsg): _56.FileDescriptorSet;
-            fromProtoMsg(message: _56.FileDescriptorSetProtoMsg): _56.FileDescriptorSet;
-            toProto(message: _56.FileDescriptorSet): Uint8Array;
-            toProtoMsg(message: _56.FileDescriptorSet): _56.FileDescriptorSetProtoMsg;
+            fromPartial(object: Partial<_58.FileDescriptorSet>): _58.FileDescriptorSet;
+            fromAmino(object: _58.FileDescriptorSetAmino): _58.FileDescriptorSet;
+            toAmino(message: _58.FileDescriptorSet): _58.FileDescriptorSetAmino;
+            fromAminoMsg(object: _58.FileDescriptorSetAminoMsg): _58.FileDescriptorSet;
+            fromProtoMsg(message: _58.FileDescriptorSetProtoMsg): _58.FileDescriptorSet;
+            toProto(message: _58.FileDescriptorSet): Uint8Array;
+            toProtoMsg(message: _58.FileDescriptorSet): _58.FileDescriptorSetProtoMsg;
         };
         FileDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.FileDescriptorProto;
-            isSDK(o: any): o is _56.FileDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.FileDescriptorProtoAmino;
-            encode(message: _56.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FileDescriptorProto;
-            fromJSON(object: any): _56.FileDescriptorProto;
-            toJSON(message: _56.FileDescriptorProto): {
+            is(o: any): o is _58.FileDescriptorProto;
+            isSDK(o: any): o is _58.FileDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.FileDescriptorProtoAmino;
+            encode(message: _58.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.FileDescriptorProto;
+            fromJSON(object: any): _58.FileDescriptorProto;
+            toJSON(message: _58.FileDescriptorProto): {
                 name: string;
                 package: string;
                 dependency: string[];
@@ -550,17 +550,17 @@ export declare namespace google {
                     field: {
                         name: string;
                         number: number;
-                        label: _56.FieldDescriptorProto_Label;
-                        type: _56.FieldDescriptorProto_Type;
+                        label: _58.FieldDescriptorProto_Label;
+                        type: _58.FieldDescriptorProto_Type;
                         typeName: string;
                         extendee: string;
                         defaultValue: string;
                         oneofIndex: number;
                         jsonName: string;
                         options?: {
-                            ctype: _56.FieldOptions_CType;
+                            ctype: _58.FieldOptions_CType;
                             packed: boolean;
-                            jstype: _56.FieldOptions_JSType;
+                            jstype: _58.FieldOptions_JSType;
                             lazy: boolean;
                             deprecated: boolean;
                             weak: boolean;
@@ -581,17 +581,17 @@ export declare namespace google {
                     extension: {
                         name: string;
                         number: number;
-                        label: _56.FieldDescriptorProto_Label;
-                        type: _56.FieldDescriptorProto_Type;
+                        label: _58.FieldDescriptorProto_Label;
+                        type: _58.FieldDescriptorProto_Type;
                         typeName: string;
                         extendee: string;
                         defaultValue: string;
                         oneofIndex: number;
                         jsonName: string;
                         options?: {
-                            ctype: _56.FieldOptions_CType;
+                            ctype: _58.FieldOptions_CType;
                             packed: boolean;
-                            jstype: _56.FieldOptions_JSType;
+                            jstype: _58.FieldOptions_JSType;
                             lazy: boolean;
                             deprecated: boolean;
                             weak: boolean;
@@ -763,7 +763,7 @@ export declare namespace google {
                         outputType: string;
                         options?: {
                             deprecated: boolean;
-                            idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                            idempotencyLevel: _58.MethodOptions_IdempotencyLevel;
                             uninterpretedOption: {
                                 name: {
                                     namePart: string;
@@ -799,17 +799,17 @@ export declare namespace google {
                 extension: {
                     name: string;
                     number: number;
-                    label: _56.FieldDescriptorProto_Label;
-                    type: _56.FieldDescriptorProto_Type;
+                    label: _58.FieldDescriptorProto_Label;
+                    type: _58.FieldDescriptorProto_Type;
                     typeName: string;
                     extendee: string;
                     defaultValue: string;
                     oneofIndex: number;
                     jsonName: string;
                     options?: {
-                        ctype: _56.FieldOptions_CType;
+                        ctype: _58.FieldOptions_CType;
                         packed: boolean;
-                        jstype: _56.FieldOptions_JSType;
+                        jstype: _58.FieldOptions_JSType;
                         lazy: boolean;
                         deprecated: boolean;
                         weak: boolean;
@@ -833,7 +833,7 @@ export declare namespace google {
                     javaMultipleFiles: boolean;
                     javaGenerateEqualsAndHash: boolean;
                     javaStringCheckUtf8: boolean;
-                    optimizeFor: _56.FileOptions_OptimizeMode;
+                    optimizeFor: _58.FileOptions_OptimizeMode;
                     goPackage: string;
                     ccGenericServices: boolean;
                     javaGenericServices: boolean;
@@ -872,38 +872,38 @@ export declare namespace google {
                 };
                 syntax: string;
             };
-            fromPartial(object: Partial<_56.FileDescriptorProto>): _56.FileDescriptorProto;
-            fromAmino(object: _56.FileDescriptorProtoAmino): _56.FileDescriptorProto;
-            toAmino(message: _56.FileDescriptorProto): _56.FileDescriptorProtoAmino;
-            fromAminoMsg(object: _56.FileDescriptorProtoAminoMsg): _56.FileDescriptorProto;
-            fromProtoMsg(message: _56.FileDescriptorProtoProtoMsg): _56.FileDescriptorProto;
-            toProto(message: _56.FileDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.FileDescriptorProto): _56.FileDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.FileDescriptorProto>): _58.FileDescriptorProto;
+            fromAmino(object: _58.FileDescriptorProtoAmino): _58.FileDescriptorProto;
+            toAmino(message: _58.FileDescriptorProto): _58.FileDescriptorProtoAmino;
+            fromAminoMsg(object: _58.FileDescriptorProtoAminoMsg): _58.FileDescriptorProto;
+            fromProtoMsg(message: _58.FileDescriptorProtoProtoMsg): _58.FileDescriptorProto;
+            toProto(message: _58.FileDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.FileDescriptorProto): _58.FileDescriptorProtoProtoMsg;
         };
         DescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.DescriptorProto;
-            isSDK(o: any): o is _56.DescriptorProtoSDKType;
-            isAmino(o: any): o is _56.DescriptorProtoAmino;
-            encode(message: _56.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DescriptorProto;
-            fromJSON(object: any): _56.DescriptorProto;
-            toJSON(message: _56.DescriptorProto): {
+            is(o: any): o is _58.DescriptorProto;
+            isSDK(o: any): o is _58.DescriptorProtoSDKType;
+            isAmino(o: any): o is _58.DescriptorProtoAmino;
+            encode(message: _58.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.DescriptorProto;
+            fromJSON(object: any): _58.DescriptorProto;
+            toJSON(message: _58.DescriptorProto): {
                 name: string;
                 field: {
                     name: string;
                     number: number;
-                    label: _56.FieldDescriptorProto_Label;
-                    type: _56.FieldDescriptorProto_Type;
+                    label: _58.FieldDescriptorProto_Label;
+                    type: _58.FieldDescriptorProto_Type;
                     typeName: string;
                     extendee: string;
                     defaultValue: string;
                     oneofIndex: number;
                     jsonName: string;
                     options?: {
-                        ctype: _56.FieldOptions_CType;
+                        ctype: _58.FieldOptions_CType;
                         packed: boolean;
-                        jstype: _56.FieldOptions_JSType;
+                        jstype: _58.FieldOptions_JSType;
                         lazy: boolean;
                         deprecated: boolean;
                         weak: boolean;
@@ -924,17 +924,17 @@ export declare namespace google {
                 extension: {
                     name: string;
                     number: number;
-                    label: _56.FieldDescriptorProto_Label;
-                    type: _56.FieldDescriptorProto_Type;
+                    label: _58.FieldDescriptorProto_Label;
+                    type: _58.FieldDescriptorProto_Type;
                     typeName: string;
                     extendee: string;
                     defaultValue: string;
                     oneofIndex: number;
                     jsonName: string;
                     options?: {
-                        ctype: _56.FieldOptions_CType;
+                        ctype: _58.FieldOptions_CType;
                         packed: boolean;
-                        jstype: _56.FieldOptions_JSType;
+                        jstype: _58.FieldOptions_JSType;
                         lazy: boolean;
                         deprecated: boolean;
                         weak: boolean;
@@ -1055,23 +1055,23 @@ export declare namespace google {
                 }[];
                 reservedName: string[];
             };
-            fromPartial(object: Partial<_56.DescriptorProto>): _56.DescriptorProto;
-            fromAmino(object: _56.DescriptorProtoAmino): _56.DescriptorProto;
-            toAmino(message: _56.DescriptorProto): _56.DescriptorProtoAmino;
-            fromAminoMsg(object: _56.DescriptorProtoAminoMsg): _56.DescriptorProto;
-            fromProtoMsg(message: _56.DescriptorProtoProtoMsg): _56.DescriptorProto;
-            toProto(message: _56.DescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.DescriptorProto): _56.DescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.DescriptorProto>): _58.DescriptorProto;
+            fromAmino(object: _58.DescriptorProtoAmino): _58.DescriptorProto;
+            toAmino(message: _58.DescriptorProto): _58.DescriptorProtoAmino;
+            fromAminoMsg(object: _58.DescriptorProtoAminoMsg): _58.DescriptorProto;
+            fromProtoMsg(message: _58.DescriptorProtoProtoMsg): _58.DescriptorProto;
+            toProto(message: _58.DescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.DescriptorProto): _58.DescriptorProtoProtoMsg;
         };
         DescriptorProto_ExtensionRange: {
             typeUrl: string;
-            is(o: any): o is _56.DescriptorProto_ExtensionRange;
-            isSDK(o: any): o is _56.DescriptorProto_ExtensionRangeSDKType;
-            isAmino(o: any): o is _56.DescriptorProto_ExtensionRangeAmino;
-            encode(message: _56.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DescriptorProto_ExtensionRange;
-            fromJSON(object: any): _56.DescriptorProto_ExtensionRange;
-            toJSON(message: _56.DescriptorProto_ExtensionRange): {
+            is(o: any): o is _58.DescriptorProto_ExtensionRange;
+            isSDK(o: any): o is _58.DescriptorProto_ExtensionRangeSDKType;
+            isAmino(o: any): o is _58.DescriptorProto_ExtensionRangeAmino;
+            encode(message: _58.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.DescriptorProto_ExtensionRange;
+            fromJSON(object: any): _58.DescriptorProto_ExtensionRange;
+            toJSON(message: _58.DescriptorProto_ExtensionRange): {
                 start: number;
                 end: number;
                 options?: {
@@ -1089,43 +1089,43 @@ export declare namespace google {
                     }[];
                 };
             };
-            fromPartial(object: Partial<_56.DescriptorProto_ExtensionRange>): _56.DescriptorProto_ExtensionRange;
-            fromAmino(object: _56.DescriptorProto_ExtensionRangeAmino): _56.DescriptorProto_ExtensionRange;
-            toAmino(message: _56.DescriptorProto_ExtensionRange): _56.DescriptorProto_ExtensionRangeAmino;
-            fromAminoMsg(object: _56.DescriptorProto_ExtensionRangeAminoMsg): _56.DescriptorProto_ExtensionRange;
-            fromProtoMsg(message: _56.DescriptorProto_ExtensionRangeProtoMsg): _56.DescriptorProto_ExtensionRange;
-            toProto(message: _56.DescriptorProto_ExtensionRange): Uint8Array;
-            toProtoMsg(message: _56.DescriptorProto_ExtensionRange): _56.DescriptorProto_ExtensionRangeProtoMsg;
+            fromPartial(object: Partial<_58.DescriptorProto_ExtensionRange>): _58.DescriptorProto_ExtensionRange;
+            fromAmino(object: _58.DescriptorProto_ExtensionRangeAmino): _58.DescriptorProto_ExtensionRange;
+            toAmino(message: _58.DescriptorProto_ExtensionRange): _58.DescriptorProto_ExtensionRangeAmino;
+            fromAminoMsg(object: _58.DescriptorProto_ExtensionRangeAminoMsg): _58.DescriptorProto_ExtensionRange;
+            fromProtoMsg(message: _58.DescriptorProto_ExtensionRangeProtoMsg): _58.DescriptorProto_ExtensionRange;
+            toProto(message: _58.DescriptorProto_ExtensionRange): Uint8Array;
+            toProtoMsg(message: _58.DescriptorProto_ExtensionRange): _58.DescriptorProto_ExtensionRangeProtoMsg;
         };
         DescriptorProto_ReservedRange: {
             typeUrl: string;
-            is(o: any): o is _56.DescriptorProto_ReservedRange;
-            isSDK(o: any): o is _56.DescriptorProto_ReservedRangeSDKType;
-            isAmino(o: any): o is _56.DescriptorProto_ReservedRangeAmino;
-            encode(message: _56.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.DescriptorProto_ReservedRange;
-            fromJSON(object: any): _56.DescriptorProto_ReservedRange;
-            toJSON(message: _56.DescriptorProto_ReservedRange): {
+            is(o: any): o is _58.DescriptorProto_ReservedRange;
+            isSDK(o: any): o is _58.DescriptorProto_ReservedRangeSDKType;
+            isAmino(o: any): o is _58.DescriptorProto_ReservedRangeAmino;
+            encode(message: _58.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.DescriptorProto_ReservedRange;
+            fromJSON(object: any): _58.DescriptorProto_ReservedRange;
+            toJSON(message: _58.DescriptorProto_ReservedRange): {
                 start: number;
                 end: number;
             };
-            fromPartial(object: Partial<_56.DescriptorProto_ReservedRange>): _56.DescriptorProto_ReservedRange;
-            fromAmino(object: _56.DescriptorProto_ReservedRangeAmino): _56.DescriptorProto_ReservedRange;
-            toAmino(message: _56.DescriptorProto_ReservedRange): _56.DescriptorProto_ReservedRangeAmino;
-            fromAminoMsg(object: _56.DescriptorProto_ReservedRangeAminoMsg): _56.DescriptorProto_ReservedRange;
-            fromProtoMsg(message: _56.DescriptorProto_ReservedRangeProtoMsg): _56.DescriptorProto_ReservedRange;
-            toProto(message: _56.DescriptorProto_ReservedRange): Uint8Array;
-            toProtoMsg(message: _56.DescriptorProto_ReservedRange): _56.DescriptorProto_ReservedRangeProtoMsg;
+            fromPartial(object: Partial<_58.DescriptorProto_ReservedRange>): _58.DescriptorProto_ReservedRange;
+            fromAmino(object: _58.DescriptorProto_ReservedRangeAmino): _58.DescriptorProto_ReservedRange;
+            toAmino(message: _58.DescriptorProto_ReservedRange): _58.DescriptorProto_ReservedRangeAmino;
+            fromAminoMsg(object: _58.DescriptorProto_ReservedRangeAminoMsg): _58.DescriptorProto_ReservedRange;
+            fromProtoMsg(message: _58.DescriptorProto_ReservedRangeProtoMsg): _58.DescriptorProto_ReservedRange;
+            toProto(message: _58.DescriptorProto_ReservedRange): Uint8Array;
+            toProtoMsg(message: _58.DescriptorProto_ReservedRange): _58.DescriptorProto_ReservedRangeProtoMsg;
         };
         ExtensionRangeOptions: {
             typeUrl: string;
-            is(o: any): o is _56.ExtensionRangeOptions;
-            isSDK(o: any): o is _56.ExtensionRangeOptionsSDKType;
-            isAmino(o: any): o is _56.ExtensionRangeOptionsAmino;
-            encode(message: _56.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.ExtensionRangeOptions;
-            fromJSON(object: any): _56.ExtensionRangeOptions;
-            toJSON(message: _56.ExtensionRangeOptions): {
+            is(o: any): o is _58.ExtensionRangeOptions;
+            isSDK(o: any): o is _58.ExtensionRangeOptionsSDKType;
+            isAmino(o: any): o is _58.ExtensionRangeOptionsAmino;
+            encode(message: _58.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.ExtensionRangeOptions;
+            fromJSON(object: any): _58.ExtensionRangeOptions;
+            toJSON(message: _58.ExtensionRangeOptions): {
                 uninterpretedOption: {
                     name: {
                         namePart: string;
@@ -1139,36 +1139,36 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.ExtensionRangeOptions>): _56.ExtensionRangeOptions;
-            fromAmino(object: _56.ExtensionRangeOptionsAmino): _56.ExtensionRangeOptions;
-            toAmino(message: _56.ExtensionRangeOptions): _56.ExtensionRangeOptionsAmino;
-            fromAminoMsg(object: _56.ExtensionRangeOptionsAminoMsg): _56.ExtensionRangeOptions;
-            fromProtoMsg(message: _56.ExtensionRangeOptionsProtoMsg): _56.ExtensionRangeOptions;
-            toProto(message: _56.ExtensionRangeOptions): Uint8Array;
-            toProtoMsg(message: _56.ExtensionRangeOptions): _56.ExtensionRangeOptionsProtoMsg;
+            fromPartial(object: Partial<_58.ExtensionRangeOptions>): _58.ExtensionRangeOptions;
+            fromAmino(object: _58.ExtensionRangeOptionsAmino): _58.ExtensionRangeOptions;
+            toAmino(message: _58.ExtensionRangeOptions): _58.ExtensionRangeOptionsAmino;
+            fromAminoMsg(object: _58.ExtensionRangeOptionsAminoMsg): _58.ExtensionRangeOptions;
+            fromProtoMsg(message: _58.ExtensionRangeOptionsProtoMsg): _58.ExtensionRangeOptions;
+            toProto(message: _58.ExtensionRangeOptions): Uint8Array;
+            toProtoMsg(message: _58.ExtensionRangeOptions): _58.ExtensionRangeOptionsProtoMsg;
         };
         FieldDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.FieldDescriptorProto;
-            isSDK(o: any): o is _56.FieldDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.FieldDescriptorProtoAmino;
-            encode(message: _56.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FieldDescriptorProto;
-            fromJSON(object: any): _56.FieldDescriptorProto;
-            toJSON(message: _56.FieldDescriptorProto): {
+            is(o: any): o is _58.FieldDescriptorProto;
+            isSDK(o: any): o is _58.FieldDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.FieldDescriptorProtoAmino;
+            encode(message: _58.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.FieldDescriptorProto;
+            fromJSON(object: any): _58.FieldDescriptorProto;
+            toJSON(message: _58.FieldDescriptorProto): {
                 name: string;
                 number: number;
-                label: _56.FieldDescriptorProto_Label;
-                type: _56.FieldDescriptorProto_Type;
+                label: _58.FieldDescriptorProto_Label;
+                type: _58.FieldDescriptorProto_Type;
                 typeName: string;
                 extendee: string;
                 defaultValue: string;
                 oneofIndex: number;
                 jsonName: string;
                 options?: {
-                    ctype: _56.FieldOptions_CType;
+                    ctype: _58.FieldOptions_CType;
                     packed: boolean;
-                    jstype: _56.FieldOptions_JSType;
+                    jstype: _58.FieldOptions_JSType;
                     lazy: boolean;
                     deprecated: boolean;
                     weak: boolean;
@@ -1186,23 +1186,23 @@ export declare namespace google {
                     }[];
                 };
             };
-            fromPartial(object: Partial<_56.FieldDescriptorProto>): _56.FieldDescriptorProto;
-            fromAmino(object: _56.FieldDescriptorProtoAmino): _56.FieldDescriptorProto;
-            toAmino(message: _56.FieldDescriptorProto): _56.FieldDescriptorProtoAmino;
-            fromAminoMsg(object: _56.FieldDescriptorProtoAminoMsg): _56.FieldDescriptorProto;
-            fromProtoMsg(message: _56.FieldDescriptorProtoProtoMsg): _56.FieldDescriptorProto;
-            toProto(message: _56.FieldDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.FieldDescriptorProto): _56.FieldDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.FieldDescriptorProto>): _58.FieldDescriptorProto;
+            fromAmino(object: _58.FieldDescriptorProtoAmino): _58.FieldDescriptorProto;
+            toAmino(message: _58.FieldDescriptorProto): _58.FieldDescriptorProtoAmino;
+            fromAminoMsg(object: _58.FieldDescriptorProtoAminoMsg): _58.FieldDescriptorProto;
+            fromProtoMsg(message: _58.FieldDescriptorProtoProtoMsg): _58.FieldDescriptorProto;
+            toProto(message: _58.FieldDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.FieldDescriptorProto): _58.FieldDescriptorProtoProtoMsg;
         };
         OneofDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.OneofDescriptorProto;
-            isSDK(o: any): o is _56.OneofDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.OneofDescriptorProtoAmino;
-            encode(message: _56.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.OneofDescriptorProto;
-            fromJSON(object: any): _56.OneofDescriptorProto;
-            toJSON(message: _56.OneofDescriptorProto): {
+            is(o: any): o is _58.OneofDescriptorProto;
+            isSDK(o: any): o is _58.OneofDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.OneofDescriptorProtoAmino;
+            encode(message: _58.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.OneofDescriptorProto;
+            fromJSON(object: any): _58.OneofDescriptorProto;
+            toJSON(message: _58.OneofDescriptorProto): {
                 name: string;
                 options?: {
                     uninterpretedOption: {
@@ -1219,23 +1219,23 @@ export declare namespace google {
                     }[];
                 };
             };
-            fromPartial(object: Partial<_56.OneofDescriptorProto>): _56.OneofDescriptorProto;
-            fromAmino(object: _56.OneofDescriptorProtoAmino): _56.OneofDescriptorProto;
-            toAmino(message: _56.OneofDescriptorProto): _56.OneofDescriptorProtoAmino;
-            fromAminoMsg(object: _56.OneofDescriptorProtoAminoMsg): _56.OneofDescriptorProto;
-            fromProtoMsg(message: _56.OneofDescriptorProtoProtoMsg): _56.OneofDescriptorProto;
-            toProto(message: _56.OneofDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.OneofDescriptorProto): _56.OneofDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.OneofDescriptorProto>): _58.OneofDescriptorProto;
+            fromAmino(object: _58.OneofDescriptorProtoAmino): _58.OneofDescriptorProto;
+            toAmino(message: _58.OneofDescriptorProto): _58.OneofDescriptorProtoAmino;
+            fromAminoMsg(object: _58.OneofDescriptorProtoAminoMsg): _58.OneofDescriptorProto;
+            fromProtoMsg(message: _58.OneofDescriptorProtoProtoMsg): _58.OneofDescriptorProto;
+            toProto(message: _58.OneofDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.OneofDescriptorProto): _58.OneofDescriptorProtoProtoMsg;
         };
         EnumDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.EnumDescriptorProto;
-            isSDK(o: any): o is _56.EnumDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.EnumDescriptorProtoAmino;
-            encode(message: _56.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumDescriptorProto;
-            fromJSON(object: any): _56.EnumDescriptorProto;
-            toJSON(message: _56.EnumDescriptorProto): {
+            is(o: any): o is _58.EnumDescriptorProto;
+            isSDK(o: any): o is _58.EnumDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.EnumDescriptorProtoAmino;
+            encode(message: _58.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.EnumDescriptorProto;
+            fromJSON(object: any): _58.EnumDescriptorProto;
+            toJSON(message: _58.EnumDescriptorProto): {
                 name: string;
                 value: {
                     name: string;
@@ -1278,43 +1278,43 @@ export declare namespace google {
                 }[];
                 reservedName: string[];
             };
-            fromPartial(object: Partial<_56.EnumDescriptorProto>): _56.EnumDescriptorProto;
-            fromAmino(object: _56.EnumDescriptorProtoAmino): _56.EnumDescriptorProto;
-            toAmino(message: _56.EnumDescriptorProto): _56.EnumDescriptorProtoAmino;
-            fromAminoMsg(object: _56.EnumDescriptorProtoAminoMsg): _56.EnumDescriptorProto;
-            fromProtoMsg(message: _56.EnumDescriptorProtoProtoMsg): _56.EnumDescriptorProto;
-            toProto(message: _56.EnumDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.EnumDescriptorProto): _56.EnumDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.EnumDescriptorProto>): _58.EnumDescriptorProto;
+            fromAmino(object: _58.EnumDescriptorProtoAmino): _58.EnumDescriptorProto;
+            toAmino(message: _58.EnumDescriptorProto): _58.EnumDescriptorProtoAmino;
+            fromAminoMsg(object: _58.EnumDescriptorProtoAminoMsg): _58.EnumDescriptorProto;
+            fromProtoMsg(message: _58.EnumDescriptorProtoProtoMsg): _58.EnumDescriptorProto;
+            toProto(message: _58.EnumDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.EnumDescriptorProto): _58.EnumDescriptorProtoProtoMsg;
         };
         EnumDescriptorProto_EnumReservedRange: {
             typeUrl: string;
-            is(o: any): o is _56.EnumDescriptorProto_EnumReservedRange;
-            isSDK(o: any): o is _56.EnumDescriptorProto_EnumReservedRangeSDKType;
-            isAmino(o: any): o is _56.EnumDescriptorProto_EnumReservedRangeAmino;
-            encode(message: _56.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumDescriptorProto_EnumReservedRange;
-            fromJSON(object: any): _56.EnumDescriptorProto_EnumReservedRange;
-            toJSON(message: _56.EnumDescriptorProto_EnumReservedRange): {
+            is(o: any): o is _58.EnumDescriptorProto_EnumReservedRange;
+            isSDK(o: any): o is _58.EnumDescriptorProto_EnumReservedRangeSDKType;
+            isAmino(o: any): o is _58.EnumDescriptorProto_EnumReservedRangeAmino;
+            encode(message: _58.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.EnumDescriptorProto_EnumReservedRange;
+            fromJSON(object: any): _58.EnumDescriptorProto_EnumReservedRange;
+            toJSON(message: _58.EnumDescriptorProto_EnumReservedRange): {
                 start: number;
                 end: number;
             };
-            fromPartial(object: Partial<_56.EnumDescriptorProto_EnumReservedRange>): _56.EnumDescriptorProto_EnumReservedRange;
-            fromAmino(object: _56.EnumDescriptorProto_EnumReservedRangeAmino): _56.EnumDescriptorProto_EnumReservedRange;
-            toAmino(message: _56.EnumDescriptorProto_EnumReservedRange): _56.EnumDescriptorProto_EnumReservedRangeAmino;
-            fromAminoMsg(object: _56.EnumDescriptorProto_EnumReservedRangeAminoMsg): _56.EnumDescriptorProto_EnumReservedRange;
-            fromProtoMsg(message: _56.EnumDescriptorProto_EnumReservedRangeProtoMsg): _56.EnumDescriptorProto_EnumReservedRange;
-            toProto(message: _56.EnumDescriptorProto_EnumReservedRange): Uint8Array;
-            toProtoMsg(message: _56.EnumDescriptorProto_EnumReservedRange): _56.EnumDescriptorProto_EnumReservedRangeProtoMsg;
+            fromPartial(object: Partial<_58.EnumDescriptorProto_EnumReservedRange>): _58.EnumDescriptorProto_EnumReservedRange;
+            fromAmino(object: _58.EnumDescriptorProto_EnumReservedRangeAmino): _58.EnumDescriptorProto_EnumReservedRange;
+            toAmino(message: _58.EnumDescriptorProto_EnumReservedRange): _58.EnumDescriptorProto_EnumReservedRangeAmino;
+            fromAminoMsg(object: _58.EnumDescriptorProto_EnumReservedRangeAminoMsg): _58.EnumDescriptorProto_EnumReservedRange;
+            fromProtoMsg(message: _58.EnumDescriptorProto_EnumReservedRangeProtoMsg): _58.EnumDescriptorProto_EnumReservedRange;
+            toProto(message: _58.EnumDescriptorProto_EnumReservedRange): Uint8Array;
+            toProtoMsg(message: _58.EnumDescriptorProto_EnumReservedRange): _58.EnumDescriptorProto_EnumReservedRangeProtoMsg;
         };
         EnumValueDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.EnumValueDescriptorProto;
-            isSDK(o: any): o is _56.EnumValueDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.EnumValueDescriptorProtoAmino;
-            encode(message: _56.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumValueDescriptorProto;
-            fromJSON(object: any): _56.EnumValueDescriptorProto;
-            toJSON(message: _56.EnumValueDescriptorProto): {
+            is(o: any): o is _58.EnumValueDescriptorProto;
+            isSDK(o: any): o is _58.EnumValueDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.EnumValueDescriptorProtoAmino;
+            encode(message: _58.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.EnumValueDescriptorProto;
+            fromJSON(object: any): _58.EnumValueDescriptorProto;
+            toJSON(message: _58.EnumValueDescriptorProto): {
                 name: string;
                 number: number;
                 options?: {
@@ -1333,23 +1333,23 @@ export declare namespace google {
                     }[];
                 };
             };
-            fromPartial(object: Partial<_56.EnumValueDescriptorProto>): _56.EnumValueDescriptorProto;
-            fromAmino(object: _56.EnumValueDescriptorProtoAmino): _56.EnumValueDescriptorProto;
-            toAmino(message: _56.EnumValueDescriptorProto): _56.EnumValueDescriptorProtoAmino;
-            fromAminoMsg(object: _56.EnumValueDescriptorProtoAminoMsg): _56.EnumValueDescriptorProto;
-            fromProtoMsg(message: _56.EnumValueDescriptorProtoProtoMsg): _56.EnumValueDescriptorProto;
-            toProto(message: _56.EnumValueDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.EnumValueDescriptorProto): _56.EnumValueDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.EnumValueDescriptorProto>): _58.EnumValueDescriptorProto;
+            fromAmino(object: _58.EnumValueDescriptorProtoAmino): _58.EnumValueDescriptorProto;
+            toAmino(message: _58.EnumValueDescriptorProto): _58.EnumValueDescriptorProtoAmino;
+            fromAminoMsg(object: _58.EnumValueDescriptorProtoAminoMsg): _58.EnumValueDescriptorProto;
+            fromProtoMsg(message: _58.EnumValueDescriptorProtoProtoMsg): _58.EnumValueDescriptorProto;
+            toProto(message: _58.EnumValueDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.EnumValueDescriptorProto): _58.EnumValueDescriptorProtoProtoMsg;
         };
         ServiceDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.ServiceDescriptorProto;
-            isSDK(o: any): o is _56.ServiceDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.ServiceDescriptorProtoAmino;
-            encode(message: _56.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.ServiceDescriptorProto;
-            fromJSON(object: any): _56.ServiceDescriptorProto;
-            toJSON(message: _56.ServiceDescriptorProto): {
+            is(o: any): o is _58.ServiceDescriptorProto;
+            isSDK(o: any): o is _58.ServiceDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.ServiceDescriptorProtoAmino;
+            encode(message: _58.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.ServiceDescriptorProto;
+            fromJSON(object: any): _58.ServiceDescriptorProto;
+            toJSON(message: _58.ServiceDescriptorProto): {
                 name: string;
                 method: {
                     name: string;
@@ -1357,7 +1357,7 @@ export declare namespace google {
                     outputType: string;
                     options?: {
                         deprecated: boolean;
-                        idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                        idempotencyLevel: _58.MethodOptions_IdempotencyLevel;
                         uninterpretedOption: {
                             name: {
                                 namePart: string;
@@ -1390,29 +1390,29 @@ export declare namespace google {
                     }[];
                 };
             };
-            fromPartial(object: Partial<_56.ServiceDescriptorProto>): _56.ServiceDescriptorProto;
-            fromAmino(object: _56.ServiceDescriptorProtoAmino): _56.ServiceDescriptorProto;
-            toAmino(message: _56.ServiceDescriptorProto): _56.ServiceDescriptorProtoAmino;
-            fromAminoMsg(object: _56.ServiceDescriptorProtoAminoMsg): _56.ServiceDescriptorProto;
-            fromProtoMsg(message: _56.ServiceDescriptorProtoProtoMsg): _56.ServiceDescriptorProto;
-            toProto(message: _56.ServiceDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.ServiceDescriptorProto): _56.ServiceDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.ServiceDescriptorProto>): _58.ServiceDescriptorProto;
+            fromAmino(object: _58.ServiceDescriptorProtoAmino): _58.ServiceDescriptorProto;
+            toAmino(message: _58.ServiceDescriptorProto): _58.ServiceDescriptorProtoAmino;
+            fromAminoMsg(object: _58.ServiceDescriptorProtoAminoMsg): _58.ServiceDescriptorProto;
+            fromProtoMsg(message: _58.ServiceDescriptorProtoProtoMsg): _58.ServiceDescriptorProto;
+            toProto(message: _58.ServiceDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.ServiceDescriptorProto): _58.ServiceDescriptorProtoProtoMsg;
         };
         MethodDescriptorProto: {
             typeUrl: string;
-            is(o: any): o is _56.MethodDescriptorProto;
-            isSDK(o: any): o is _56.MethodDescriptorProtoSDKType;
-            isAmino(o: any): o is _56.MethodDescriptorProtoAmino;
-            encode(message: _56.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MethodDescriptorProto;
-            fromJSON(object: any): _56.MethodDescriptorProto;
-            toJSON(message: _56.MethodDescriptorProto): {
+            is(o: any): o is _58.MethodDescriptorProto;
+            isSDK(o: any): o is _58.MethodDescriptorProtoSDKType;
+            isAmino(o: any): o is _58.MethodDescriptorProtoAmino;
+            encode(message: _58.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.MethodDescriptorProto;
+            fromJSON(object: any): _58.MethodDescriptorProto;
+            toJSON(message: _58.MethodDescriptorProto): {
                 name: string;
                 inputType: string;
                 outputType: string;
                 options?: {
                     deprecated: boolean;
-                    idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                    idempotencyLevel: _58.MethodOptions_IdempotencyLevel;
                     uninterpretedOption: {
                         name: {
                             namePart: string;
@@ -1429,29 +1429,29 @@ export declare namespace google {
                 clientStreaming: boolean;
                 serverStreaming: boolean;
             };
-            fromPartial(object: Partial<_56.MethodDescriptorProto>): _56.MethodDescriptorProto;
-            fromAmino(object: _56.MethodDescriptorProtoAmino): _56.MethodDescriptorProto;
-            toAmino(message: _56.MethodDescriptorProto): _56.MethodDescriptorProtoAmino;
-            fromAminoMsg(object: _56.MethodDescriptorProtoAminoMsg): _56.MethodDescriptorProto;
-            fromProtoMsg(message: _56.MethodDescriptorProtoProtoMsg): _56.MethodDescriptorProto;
-            toProto(message: _56.MethodDescriptorProto): Uint8Array;
-            toProtoMsg(message: _56.MethodDescriptorProto): _56.MethodDescriptorProtoProtoMsg;
+            fromPartial(object: Partial<_58.MethodDescriptorProto>): _58.MethodDescriptorProto;
+            fromAmino(object: _58.MethodDescriptorProtoAmino): _58.MethodDescriptorProto;
+            toAmino(message: _58.MethodDescriptorProto): _58.MethodDescriptorProtoAmino;
+            fromAminoMsg(object: _58.MethodDescriptorProtoAminoMsg): _58.MethodDescriptorProto;
+            fromProtoMsg(message: _58.MethodDescriptorProtoProtoMsg): _58.MethodDescriptorProto;
+            toProto(message: _58.MethodDescriptorProto): Uint8Array;
+            toProtoMsg(message: _58.MethodDescriptorProto): _58.MethodDescriptorProtoProtoMsg;
         };
         FileOptions: {
             typeUrl: string;
-            is(o: any): o is _56.FileOptions;
-            isSDK(o: any): o is _56.FileOptionsSDKType;
-            isAmino(o: any): o is _56.FileOptionsAmino;
-            encode(message: _56.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FileOptions;
-            fromJSON(object: any): _56.FileOptions;
-            toJSON(message: _56.FileOptions): {
+            is(o: any): o is _58.FileOptions;
+            isSDK(o: any): o is _58.FileOptionsSDKType;
+            isAmino(o: any): o is _58.FileOptionsAmino;
+            encode(message: _58.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.FileOptions;
+            fromJSON(object: any): _58.FileOptions;
+            toJSON(message: _58.FileOptions): {
                 javaPackage: string;
                 javaOuterClassname: string;
                 javaMultipleFiles: boolean;
                 javaGenerateEqualsAndHash: boolean;
                 javaStringCheckUtf8: boolean;
-                optimizeFor: _56.FileOptions_OptimizeMode;
+                optimizeFor: _58.FileOptions_OptimizeMode;
                 goPackage: string;
                 ccGenericServices: boolean;
                 javaGenericServices: boolean;
@@ -1479,23 +1479,23 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.FileOptions>): _56.FileOptions;
-            fromAmino(object: _56.FileOptionsAmino): _56.FileOptions;
-            toAmino(message: _56.FileOptions): _56.FileOptionsAmino;
-            fromAminoMsg(object: _56.FileOptionsAminoMsg): _56.FileOptions;
-            fromProtoMsg(message: _56.FileOptionsProtoMsg): _56.FileOptions;
-            toProto(message: _56.FileOptions): Uint8Array;
-            toProtoMsg(message: _56.FileOptions): _56.FileOptionsProtoMsg;
+            fromPartial(object: Partial<_58.FileOptions>): _58.FileOptions;
+            fromAmino(object: _58.FileOptionsAmino): _58.FileOptions;
+            toAmino(message: _58.FileOptions): _58.FileOptionsAmino;
+            fromAminoMsg(object: _58.FileOptionsAminoMsg): _58.FileOptions;
+            fromProtoMsg(message: _58.FileOptionsProtoMsg): _58.FileOptions;
+            toProto(message: _58.FileOptions): Uint8Array;
+            toProtoMsg(message: _58.FileOptions): _58.FileOptionsProtoMsg;
         };
         MessageOptions: {
             typeUrl: string;
-            is(o: any): o is _56.MessageOptions;
-            isSDK(o: any): o is _56.MessageOptionsSDKType;
-            isAmino(o: any): o is _56.MessageOptionsAmino;
-            encode(message: _56.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MessageOptions;
-            fromJSON(object: any): _56.MessageOptions;
-            toJSON(message: _56.MessageOptions): {
+            is(o: any): o is _58.MessageOptions;
+            isSDK(o: any): o is _58.MessageOptionsSDKType;
+            isAmino(o: any): o is _58.MessageOptionsAmino;
+            encode(message: _58.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.MessageOptions;
+            fromJSON(object: any): _58.MessageOptions;
+            toJSON(message: _58.MessageOptions): {
                 messageSetWireFormat: boolean;
                 noStandardDescriptorAccessor: boolean;
                 deprecated: boolean;
@@ -1513,26 +1513,26 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.MessageOptions>): _56.MessageOptions;
-            fromAmino(object: _56.MessageOptionsAmino): _56.MessageOptions;
-            toAmino(message: _56.MessageOptions): _56.MessageOptionsAmino;
-            fromAminoMsg(object: _56.MessageOptionsAminoMsg): _56.MessageOptions;
-            fromProtoMsg(message: _56.MessageOptionsProtoMsg): _56.MessageOptions;
-            toProto(message: _56.MessageOptions): Uint8Array;
-            toProtoMsg(message: _56.MessageOptions): _56.MessageOptionsProtoMsg;
+            fromPartial(object: Partial<_58.MessageOptions>): _58.MessageOptions;
+            fromAmino(object: _58.MessageOptionsAmino): _58.MessageOptions;
+            toAmino(message: _58.MessageOptions): _58.MessageOptionsAmino;
+            fromAminoMsg(object: _58.MessageOptionsAminoMsg): _58.MessageOptions;
+            fromProtoMsg(message: _58.MessageOptionsProtoMsg): _58.MessageOptions;
+            toProto(message: _58.MessageOptions): Uint8Array;
+            toProtoMsg(message: _58.MessageOptions): _58.MessageOptionsProtoMsg;
         };
         FieldOptions: {
             typeUrl: string;
-            is(o: any): o is _56.FieldOptions;
-            isSDK(o: any): o is _56.FieldOptionsSDKType;
-            isAmino(o: any): o is _56.FieldOptionsAmino;
-            encode(message: _56.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.FieldOptions;
-            fromJSON(object: any): _56.FieldOptions;
-            toJSON(message: _56.FieldOptions): {
-                ctype: _56.FieldOptions_CType;
+            is(o: any): o is _58.FieldOptions;
+            isSDK(o: any): o is _58.FieldOptionsSDKType;
+            isAmino(o: any): o is _58.FieldOptionsAmino;
+            encode(message: _58.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.FieldOptions;
+            fromJSON(object: any): _58.FieldOptions;
+            toJSON(message: _58.FieldOptions): {
+                ctype: _58.FieldOptions_CType;
                 packed: boolean;
-                jstype: _56.FieldOptions_JSType;
+                jstype: _58.FieldOptions_JSType;
                 lazy: boolean;
                 deprecated: boolean;
                 weak: boolean;
@@ -1549,23 +1549,23 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.FieldOptions>): _56.FieldOptions;
-            fromAmino(object: _56.FieldOptionsAmino): _56.FieldOptions;
-            toAmino(message: _56.FieldOptions): _56.FieldOptionsAmino;
-            fromAminoMsg(object: _56.FieldOptionsAminoMsg): _56.FieldOptions;
-            fromProtoMsg(message: _56.FieldOptionsProtoMsg): _56.FieldOptions;
-            toProto(message: _56.FieldOptions): Uint8Array;
-            toProtoMsg(message: _56.FieldOptions): _56.FieldOptionsProtoMsg;
+            fromPartial(object: Partial<_58.FieldOptions>): _58.FieldOptions;
+            fromAmino(object: _58.FieldOptionsAmino): _58.FieldOptions;
+            toAmino(message: _58.FieldOptions): _58.FieldOptionsAmino;
+            fromAminoMsg(object: _58.FieldOptionsAminoMsg): _58.FieldOptions;
+            fromProtoMsg(message: _58.FieldOptionsProtoMsg): _58.FieldOptions;
+            toProto(message: _58.FieldOptions): Uint8Array;
+            toProtoMsg(message: _58.FieldOptions): _58.FieldOptionsProtoMsg;
         };
         OneofOptions: {
             typeUrl: string;
-            is(o: any): o is _56.OneofOptions;
-            isSDK(o: any): o is _56.OneofOptionsSDKType;
-            isAmino(o: any): o is _56.OneofOptionsAmino;
-            encode(message: _56.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.OneofOptions;
-            fromJSON(object: any): _56.OneofOptions;
-            toJSON(message: _56.OneofOptions): {
+            is(o: any): o is _58.OneofOptions;
+            isSDK(o: any): o is _58.OneofOptionsSDKType;
+            isAmino(o: any): o is _58.OneofOptionsAmino;
+            encode(message: _58.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.OneofOptions;
+            fromJSON(object: any): _58.OneofOptions;
+            toJSON(message: _58.OneofOptions): {
                 uninterpretedOption: {
                     name: {
                         namePart: string;
@@ -1579,23 +1579,23 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.OneofOptions>): _56.OneofOptions;
-            fromAmino(object: _56.OneofOptionsAmino): _56.OneofOptions;
-            toAmino(message: _56.OneofOptions): _56.OneofOptionsAmino;
-            fromAminoMsg(object: _56.OneofOptionsAminoMsg): _56.OneofOptions;
-            fromProtoMsg(message: _56.OneofOptionsProtoMsg): _56.OneofOptions;
-            toProto(message: _56.OneofOptions): Uint8Array;
-            toProtoMsg(message: _56.OneofOptions): _56.OneofOptionsProtoMsg;
+            fromPartial(object: Partial<_58.OneofOptions>): _58.OneofOptions;
+            fromAmino(object: _58.OneofOptionsAmino): _58.OneofOptions;
+            toAmino(message: _58.OneofOptions): _58.OneofOptionsAmino;
+            fromAminoMsg(object: _58.OneofOptionsAminoMsg): _58.OneofOptions;
+            fromProtoMsg(message: _58.OneofOptionsProtoMsg): _58.OneofOptions;
+            toProto(message: _58.OneofOptions): Uint8Array;
+            toProtoMsg(message: _58.OneofOptions): _58.OneofOptionsProtoMsg;
         };
         EnumOptions: {
             typeUrl: string;
-            is(o: any): o is _56.EnumOptions;
-            isSDK(o: any): o is _56.EnumOptionsSDKType;
-            isAmino(o: any): o is _56.EnumOptionsAmino;
-            encode(message: _56.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumOptions;
-            fromJSON(object: any): _56.EnumOptions;
-            toJSON(message: _56.EnumOptions): {
+            is(o: any): o is _58.EnumOptions;
+            isSDK(o: any): o is _58.EnumOptionsSDKType;
+            isAmino(o: any): o is _58.EnumOptionsAmino;
+            encode(message: _58.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.EnumOptions;
+            fromJSON(object: any): _58.EnumOptions;
+            toJSON(message: _58.EnumOptions): {
                 allowAlias: boolean;
                 deprecated: boolean;
                 uninterpretedOption: {
@@ -1611,23 +1611,23 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.EnumOptions>): _56.EnumOptions;
-            fromAmino(object: _56.EnumOptionsAmino): _56.EnumOptions;
-            toAmino(message: _56.EnumOptions): _56.EnumOptionsAmino;
-            fromAminoMsg(object: _56.EnumOptionsAminoMsg): _56.EnumOptions;
-            fromProtoMsg(message: _56.EnumOptionsProtoMsg): _56.EnumOptions;
-            toProto(message: _56.EnumOptions): Uint8Array;
-            toProtoMsg(message: _56.EnumOptions): _56.EnumOptionsProtoMsg;
+            fromPartial(object: Partial<_58.EnumOptions>): _58.EnumOptions;
+            fromAmino(object: _58.EnumOptionsAmino): _58.EnumOptions;
+            toAmino(message: _58.EnumOptions): _58.EnumOptionsAmino;
+            fromAminoMsg(object: _58.EnumOptionsAminoMsg): _58.EnumOptions;
+            fromProtoMsg(message: _58.EnumOptionsProtoMsg): _58.EnumOptions;
+            toProto(message: _58.EnumOptions): Uint8Array;
+            toProtoMsg(message: _58.EnumOptions): _58.EnumOptionsProtoMsg;
         };
         EnumValueOptions: {
             typeUrl: string;
-            is(o: any): o is _56.EnumValueOptions;
-            isSDK(o: any): o is _56.EnumValueOptionsSDKType;
-            isAmino(o: any): o is _56.EnumValueOptionsAmino;
-            encode(message: _56.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.EnumValueOptions;
-            fromJSON(object: any): _56.EnumValueOptions;
-            toJSON(message: _56.EnumValueOptions): {
+            is(o: any): o is _58.EnumValueOptions;
+            isSDK(o: any): o is _58.EnumValueOptionsSDKType;
+            isAmino(o: any): o is _58.EnumValueOptionsAmino;
+            encode(message: _58.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.EnumValueOptions;
+            fromJSON(object: any): _58.EnumValueOptions;
+            toJSON(message: _58.EnumValueOptions): {
                 deprecated: boolean;
                 uninterpretedOption: {
                     name: {
@@ -1642,23 +1642,23 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.EnumValueOptions>): _56.EnumValueOptions;
-            fromAmino(object: _56.EnumValueOptionsAmino): _56.EnumValueOptions;
-            toAmino(message: _56.EnumValueOptions): _56.EnumValueOptionsAmino;
-            fromAminoMsg(object: _56.EnumValueOptionsAminoMsg): _56.EnumValueOptions;
-            fromProtoMsg(message: _56.EnumValueOptionsProtoMsg): _56.EnumValueOptions;
-            toProto(message: _56.EnumValueOptions): Uint8Array;
-            toProtoMsg(message: _56.EnumValueOptions): _56.EnumValueOptionsProtoMsg;
+            fromPartial(object: Partial<_58.EnumValueOptions>): _58.EnumValueOptions;
+            fromAmino(object: _58.EnumValueOptionsAmino): _58.EnumValueOptions;
+            toAmino(message: _58.EnumValueOptions): _58.EnumValueOptionsAmino;
+            fromAminoMsg(object: _58.EnumValueOptionsAminoMsg): _58.EnumValueOptions;
+            fromProtoMsg(message: _58.EnumValueOptionsProtoMsg): _58.EnumValueOptions;
+            toProto(message: _58.EnumValueOptions): Uint8Array;
+            toProtoMsg(message: _58.EnumValueOptions): _58.EnumValueOptionsProtoMsg;
         };
         ServiceOptions: {
             typeUrl: string;
-            is(o: any): o is _56.ServiceOptions;
-            isSDK(o: any): o is _56.ServiceOptionsSDKType;
-            isAmino(o: any): o is _56.ServiceOptionsAmino;
-            encode(message: _56.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.ServiceOptions;
-            fromJSON(object: any): _56.ServiceOptions;
-            toJSON(message: _56.ServiceOptions): {
+            is(o: any): o is _58.ServiceOptions;
+            isSDK(o: any): o is _58.ServiceOptionsSDKType;
+            isAmino(o: any): o is _58.ServiceOptionsAmino;
+            encode(message: _58.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.ServiceOptions;
+            fromJSON(object: any): _58.ServiceOptions;
+            toJSON(message: _58.ServiceOptions): {
                 deprecated: boolean;
                 uninterpretedOption: {
                     name: {
@@ -1673,25 +1673,25 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.ServiceOptions>): _56.ServiceOptions;
-            fromAmino(object: _56.ServiceOptionsAmino): _56.ServiceOptions;
-            toAmino(message: _56.ServiceOptions): _56.ServiceOptionsAmino;
-            fromAminoMsg(object: _56.ServiceOptionsAminoMsg): _56.ServiceOptions;
-            fromProtoMsg(message: _56.ServiceOptionsProtoMsg): _56.ServiceOptions;
-            toProto(message: _56.ServiceOptions): Uint8Array;
-            toProtoMsg(message: _56.ServiceOptions): _56.ServiceOptionsProtoMsg;
+            fromPartial(object: Partial<_58.ServiceOptions>): _58.ServiceOptions;
+            fromAmino(object: _58.ServiceOptionsAmino): _58.ServiceOptions;
+            toAmino(message: _58.ServiceOptions): _58.ServiceOptionsAmino;
+            fromAminoMsg(object: _58.ServiceOptionsAminoMsg): _58.ServiceOptions;
+            fromProtoMsg(message: _58.ServiceOptionsProtoMsg): _58.ServiceOptions;
+            toProto(message: _58.ServiceOptions): Uint8Array;
+            toProtoMsg(message: _58.ServiceOptions): _58.ServiceOptionsProtoMsg;
         };
         MethodOptions: {
             typeUrl: string;
-            is(o: any): o is _56.MethodOptions;
-            isSDK(o: any): o is _56.MethodOptionsSDKType;
-            isAmino(o: any): o is _56.MethodOptionsAmino;
-            encode(message: _56.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MethodOptions;
-            fromJSON(object: any): _56.MethodOptions;
-            toJSON(message: _56.MethodOptions): {
+            is(o: any): o is _58.MethodOptions;
+            isSDK(o: any): o is _58.MethodOptionsSDKType;
+            isAmino(o: any): o is _58.MethodOptionsAmino;
+            encode(message: _58.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.MethodOptions;
+            fromJSON(object: any): _58.MethodOptions;
+            toJSON(message: _58.MethodOptions): {
                 deprecated: boolean;
-                idempotencyLevel: _56.MethodOptions_IdempotencyLevel;
+                idempotencyLevel: _58.MethodOptions_IdempotencyLevel;
                 uninterpretedOption: {
                     name: {
                         namePart: string;
@@ -1705,23 +1705,23 @@ export declare namespace google {
                     aggregateValue: string;
                 }[];
             };
-            fromPartial(object: Partial<_56.MethodOptions>): _56.MethodOptions;
-            fromAmino(object: _56.MethodOptionsAmino): _56.MethodOptions;
-            toAmino(message: _56.MethodOptions): _56.MethodOptionsAmino;
-            fromAminoMsg(object: _56.MethodOptionsAminoMsg): _56.MethodOptions;
-            fromProtoMsg(message: _56.MethodOptionsProtoMsg): _56.MethodOptions;
-            toProto(message: _56.MethodOptions): Uint8Array;
-            toProtoMsg(message: _56.MethodOptions): _56.MethodOptionsProtoMsg;
+            fromPartial(object: Partial<_58.MethodOptions>): _58.MethodOptions;
+            fromAmino(object: _58.MethodOptionsAmino): _58.MethodOptions;
+            toAmino(message: _58.MethodOptions): _58.MethodOptionsAmino;
+            fromAminoMsg(object: _58.MethodOptionsAminoMsg): _58.MethodOptions;
+            fromProtoMsg(message: _58.MethodOptionsProtoMsg): _58.MethodOptions;
+            toProto(message: _58.MethodOptions): Uint8Array;
+            toProtoMsg(message: _58.MethodOptions): _58.MethodOptionsProtoMsg;
         };
         UninterpretedOption: {
             typeUrl: string;
-            is(o: any): o is _56.UninterpretedOption;
-            isSDK(o: any): o is _56.UninterpretedOptionSDKType;
-            isAmino(o: any): o is _56.UninterpretedOptionAmino;
-            encode(message: _56.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.UninterpretedOption;
-            fromJSON(object: any): _56.UninterpretedOption;
-            toJSON(message: _56.UninterpretedOption): {
+            is(o: any): o is _58.UninterpretedOption;
+            isSDK(o: any): o is _58.UninterpretedOptionSDKType;
+            isAmino(o: any): o is _58.UninterpretedOptionAmino;
+            encode(message: _58.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.UninterpretedOption;
+            fromJSON(object: any): _58.UninterpretedOption;
+            toJSON(message: _58.UninterpretedOption): {
                 name: {
                     namePart: string;
                     isExtension: boolean;
@@ -1733,43 +1733,43 @@ export declare namespace google {
                 stringValue: string;
                 aggregateValue: string;
             };
-            fromPartial(object: Partial<_56.UninterpretedOption>): _56.UninterpretedOption;
-            fromAmino(object: _56.UninterpretedOptionAmino): _56.UninterpretedOption;
-            toAmino(message: _56.UninterpretedOption): _56.UninterpretedOptionAmino;
-            fromAminoMsg(object: _56.UninterpretedOptionAminoMsg): _56.UninterpretedOption;
-            fromProtoMsg(message: _56.UninterpretedOptionProtoMsg): _56.UninterpretedOption;
-            toProto(message: _56.UninterpretedOption): Uint8Array;
-            toProtoMsg(message: _56.UninterpretedOption): _56.UninterpretedOptionProtoMsg;
+            fromPartial(object: Partial<_58.UninterpretedOption>): _58.UninterpretedOption;
+            fromAmino(object: _58.UninterpretedOptionAmino): _58.UninterpretedOption;
+            toAmino(message: _58.UninterpretedOption): _58.UninterpretedOptionAmino;
+            fromAminoMsg(object: _58.UninterpretedOptionAminoMsg): _58.UninterpretedOption;
+            fromProtoMsg(message: _58.UninterpretedOptionProtoMsg): _58.UninterpretedOption;
+            toProto(message: _58.UninterpretedOption): Uint8Array;
+            toProtoMsg(message: _58.UninterpretedOption): _58.UninterpretedOptionProtoMsg;
         };
         UninterpretedOption_NamePart: {
             typeUrl: string;
-            is(o: any): o is _56.UninterpretedOption_NamePart;
-            isSDK(o: any): o is _56.UninterpretedOption_NamePartSDKType;
-            isAmino(o: any): o is _56.UninterpretedOption_NamePartAmino;
-            encode(message: _56.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.UninterpretedOption_NamePart;
-            fromJSON(object: any): _56.UninterpretedOption_NamePart;
-            toJSON(message: _56.UninterpretedOption_NamePart): {
+            is(o: any): o is _58.UninterpretedOption_NamePart;
+            isSDK(o: any): o is _58.UninterpretedOption_NamePartSDKType;
+            isAmino(o: any): o is _58.UninterpretedOption_NamePartAmino;
+            encode(message: _58.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.UninterpretedOption_NamePart;
+            fromJSON(object: any): _58.UninterpretedOption_NamePart;
+            toJSON(message: _58.UninterpretedOption_NamePart): {
                 namePart: string;
                 isExtension: boolean;
             };
-            fromPartial(object: Partial<_56.UninterpretedOption_NamePart>): _56.UninterpretedOption_NamePart;
-            fromAmino(object: _56.UninterpretedOption_NamePartAmino): _56.UninterpretedOption_NamePart;
-            toAmino(message: _56.UninterpretedOption_NamePart): _56.UninterpretedOption_NamePartAmino;
-            fromAminoMsg(object: _56.UninterpretedOption_NamePartAminoMsg): _56.UninterpretedOption_NamePart;
-            fromProtoMsg(message: _56.UninterpretedOption_NamePartProtoMsg): _56.UninterpretedOption_NamePart;
-            toProto(message: _56.UninterpretedOption_NamePart): Uint8Array;
-            toProtoMsg(message: _56.UninterpretedOption_NamePart): _56.UninterpretedOption_NamePartProtoMsg;
+            fromPartial(object: Partial<_58.UninterpretedOption_NamePart>): _58.UninterpretedOption_NamePart;
+            fromAmino(object: _58.UninterpretedOption_NamePartAmino): _58.UninterpretedOption_NamePart;
+            toAmino(message: _58.UninterpretedOption_NamePart): _58.UninterpretedOption_NamePartAmino;
+            fromAminoMsg(object: _58.UninterpretedOption_NamePartAminoMsg): _58.UninterpretedOption_NamePart;
+            fromProtoMsg(message: _58.UninterpretedOption_NamePartProtoMsg): _58.UninterpretedOption_NamePart;
+            toProto(message: _58.UninterpretedOption_NamePart): Uint8Array;
+            toProtoMsg(message: _58.UninterpretedOption_NamePart): _58.UninterpretedOption_NamePartProtoMsg;
         };
         SourceCodeInfo: {
             typeUrl: string;
-            is(o: any): o is _56.SourceCodeInfo;
-            isSDK(o: any): o is _56.SourceCodeInfoSDKType;
-            isAmino(o: any): o is _56.SourceCodeInfoAmino;
-            encode(message: _56.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.SourceCodeInfo;
-            fromJSON(object: any): _56.SourceCodeInfo;
-            toJSON(message: _56.SourceCodeInfo): {
+            is(o: any): o is _58.SourceCodeInfo;
+            isSDK(o: any): o is _58.SourceCodeInfoSDKType;
+            isAmino(o: any): o is _58.SourceCodeInfoAmino;
+            encode(message: _58.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.SourceCodeInfo;
+            fromJSON(object: any): _58.SourceCodeInfo;
+            toJSON(message: _58.SourceCodeInfo): {
                 location: {
                     path: number[];
                     span: number[];
@@ -1778,46 +1778,46 @@ export declare namespace google {
                     leadingDetachedComments: string[];
                 }[];
             };
-            fromPartial(object: Partial<_56.SourceCodeInfo>): _56.SourceCodeInfo;
-            fromAmino(object: _56.SourceCodeInfoAmino): _56.SourceCodeInfo;
-            toAmino(message: _56.SourceCodeInfo): _56.SourceCodeInfoAmino;
-            fromAminoMsg(object: _56.SourceCodeInfoAminoMsg): _56.SourceCodeInfo;
-            fromProtoMsg(message: _56.SourceCodeInfoProtoMsg): _56.SourceCodeInfo;
-            toProto(message: _56.SourceCodeInfo): Uint8Array;
-            toProtoMsg(message: _56.SourceCodeInfo): _56.SourceCodeInfoProtoMsg;
+            fromPartial(object: Partial<_58.SourceCodeInfo>): _58.SourceCodeInfo;
+            fromAmino(object: _58.SourceCodeInfoAmino): _58.SourceCodeInfo;
+            toAmino(message: _58.SourceCodeInfo): _58.SourceCodeInfoAmino;
+            fromAminoMsg(object: _58.SourceCodeInfoAminoMsg): _58.SourceCodeInfo;
+            fromProtoMsg(message: _58.SourceCodeInfoProtoMsg): _58.SourceCodeInfo;
+            toProto(message: _58.SourceCodeInfo): Uint8Array;
+            toProtoMsg(message: _58.SourceCodeInfo): _58.SourceCodeInfoProtoMsg;
         };
         SourceCodeInfo_Location: {
             typeUrl: string;
-            is(o: any): o is _56.SourceCodeInfo_Location;
-            isSDK(o: any): o is _56.SourceCodeInfo_LocationSDKType;
-            isAmino(o: any): o is _56.SourceCodeInfo_LocationAmino;
-            encode(message: _56.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.SourceCodeInfo_Location;
-            fromJSON(object: any): _56.SourceCodeInfo_Location;
-            toJSON(message: _56.SourceCodeInfo_Location): {
+            is(o: any): o is _58.SourceCodeInfo_Location;
+            isSDK(o: any): o is _58.SourceCodeInfo_LocationSDKType;
+            isAmino(o: any): o is _58.SourceCodeInfo_LocationAmino;
+            encode(message: _58.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.SourceCodeInfo_Location;
+            fromJSON(object: any): _58.SourceCodeInfo_Location;
+            toJSON(message: _58.SourceCodeInfo_Location): {
                 path: number[];
                 span: number[];
                 leadingComments: string;
                 trailingComments: string;
                 leadingDetachedComments: string[];
             };
-            fromPartial(object: Partial<_56.SourceCodeInfo_Location>): _56.SourceCodeInfo_Location;
-            fromAmino(object: _56.SourceCodeInfo_LocationAmino): _56.SourceCodeInfo_Location;
-            toAmino(message: _56.SourceCodeInfo_Location): _56.SourceCodeInfo_LocationAmino;
-            fromAminoMsg(object: _56.SourceCodeInfo_LocationAminoMsg): _56.SourceCodeInfo_Location;
-            fromProtoMsg(message: _56.SourceCodeInfo_LocationProtoMsg): _56.SourceCodeInfo_Location;
-            toProto(message: _56.SourceCodeInfo_Location): Uint8Array;
-            toProtoMsg(message: _56.SourceCodeInfo_Location): _56.SourceCodeInfo_LocationProtoMsg;
+            fromPartial(object: Partial<_58.SourceCodeInfo_Location>): _58.SourceCodeInfo_Location;
+            fromAmino(object: _58.SourceCodeInfo_LocationAmino): _58.SourceCodeInfo_Location;
+            toAmino(message: _58.SourceCodeInfo_Location): _58.SourceCodeInfo_LocationAmino;
+            fromAminoMsg(object: _58.SourceCodeInfo_LocationAminoMsg): _58.SourceCodeInfo_Location;
+            fromProtoMsg(message: _58.SourceCodeInfo_LocationProtoMsg): _58.SourceCodeInfo_Location;
+            toProto(message: _58.SourceCodeInfo_Location): Uint8Array;
+            toProtoMsg(message: _58.SourceCodeInfo_Location): _58.SourceCodeInfo_LocationProtoMsg;
         };
         GeneratedCodeInfo: {
             typeUrl: string;
-            is(o: any): o is _56.GeneratedCodeInfo;
-            isSDK(o: any): o is _56.GeneratedCodeInfoSDKType;
-            isAmino(o: any): o is _56.GeneratedCodeInfoAmino;
-            encode(message: _56.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.GeneratedCodeInfo;
-            fromJSON(object: any): _56.GeneratedCodeInfo;
-            toJSON(message: _56.GeneratedCodeInfo): {
+            is(o: any): o is _58.GeneratedCodeInfo;
+            isSDK(o: any): o is _58.GeneratedCodeInfoSDKType;
+            isAmino(o: any): o is _58.GeneratedCodeInfoAmino;
+            encode(message: _58.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.GeneratedCodeInfo;
+            fromJSON(object: any): _58.GeneratedCodeInfo;
+            toJSON(message: _58.GeneratedCodeInfo): {
                 annotation: {
                     path: number[];
                     sourceFile: string;
@@ -1825,56 +1825,56 @@ export declare namespace google {
                     end: number;
                 }[];
             };
-            fromPartial(object: Partial<_56.GeneratedCodeInfo>): _56.GeneratedCodeInfo;
-            fromAmino(object: _56.GeneratedCodeInfoAmino): _56.GeneratedCodeInfo;
-            toAmino(message: _56.GeneratedCodeInfo): _56.GeneratedCodeInfoAmino;
-            fromAminoMsg(object: _56.GeneratedCodeInfoAminoMsg): _56.GeneratedCodeInfo;
-            fromProtoMsg(message: _56.GeneratedCodeInfoProtoMsg): _56.GeneratedCodeInfo;
-            toProto(message: _56.GeneratedCodeInfo): Uint8Array;
-            toProtoMsg(message: _56.GeneratedCodeInfo): _56.GeneratedCodeInfoProtoMsg;
+            fromPartial(object: Partial<_58.GeneratedCodeInfo>): _58.GeneratedCodeInfo;
+            fromAmino(object: _58.GeneratedCodeInfoAmino): _58.GeneratedCodeInfo;
+            toAmino(message: _58.GeneratedCodeInfo): _58.GeneratedCodeInfoAmino;
+            fromAminoMsg(object: _58.GeneratedCodeInfoAminoMsg): _58.GeneratedCodeInfo;
+            fromProtoMsg(message: _58.GeneratedCodeInfoProtoMsg): _58.GeneratedCodeInfo;
+            toProto(message: _58.GeneratedCodeInfo): Uint8Array;
+            toProtoMsg(message: _58.GeneratedCodeInfo): _58.GeneratedCodeInfoProtoMsg;
         };
         GeneratedCodeInfo_Annotation: {
             typeUrl: string;
-            is(o: any): o is _56.GeneratedCodeInfo_Annotation;
-            isSDK(o: any): o is _56.GeneratedCodeInfo_AnnotationSDKType;
-            isAmino(o: any): o is _56.GeneratedCodeInfo_AnnotationAmino;
-            encode(message: _56.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.GeneratedCodeInfo_Annotation;
-            fromJSON(object: any): _56.GeneratedCodeInfo_Annotation;
-            toJSON(message: _56.GeneratedCodeInfo_Annotation): {
+            is(o: any): o is _58.GeneratedCodeInfo_Annotation;
+            isSDK(o: any): o is _58.GeneratedCodeInfo_AnnotationSDKType;
+            isAmino(o: any): o is _58.GeneratedCodeInfo_AnnotationAmino;
+            encode(message: _58.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.GeneratedCodeInfo_Annotation;
+            fromJSON(object: any): _58.GeneratedCodeInfo_Annotation;
+            toJSON(message: _58.GeneratedCodeInfo_Annotation): {
                 path: number[];
                 sourceFile: string;
                 begin: number;
                 end: number;
             };
-            fromPartial(object: Partial<_56.GeneratedCodeInfo_Annotation>): _56.GeneratedCodeInfo_Annotation;
-            fromAmino(object: _56.GeneratedCodeInfo_AnnotationAmino): _56.GeneratedCodeInfo_Annotation;
-            toAmino(message: _56.GeneratedCodeInfo_Annotation): _56.GeneratedCodeInfo_AnnotationAmino;
-            fromAminoMsg(object: _56.GeneratedCodeInfo_AnnotationAminoMsg): _56.GeneratedCodeInfo_Annotation;
-            fromProtoMsg(message: _56.GeneratedCodeInfo_AnnotationProtoMsg): _56.GeneratedCodeInfo_Annotation;
-            toProto(message: _56.GeneratedCodeInfo_Annotation): Uint8Array;
-            toProtoMsg(message: _56.GeneratedCodeInfo_Annotation): _56.GeneratedCodeInfo_AnnotationProtoMsg;
+            fromPartial(object: Partial<_58.GeneratedCodeInfo_Annotation>): _58.GeneratedCodeInfo_Annotation;
+            fromAmino(object: _58.GeneratedCodeInfo_AnnotationAmino): _58.GeneratedCodeInfo_Annotation;
+            toAmino(message: _58.GeneratedCodeInfo_Annotation): _58.GeneratedCodeInfo_AnnotationAmino;
+            fromAminoMsg(object: _58.GeneratedCodeInfo_AnnotationAminoMsg): _58.GeneratedCodeInfo_Annotation;
+            fromProtoMsg(message: _58.GeneratedCodeInfo_AnnotationProtoMsg): _58.GeneratedCodeInfo_Annotation;
+            toProto(message: _58.GeneratedCodeInfo_Annotation): Uint8Array;
+            toProtoMsg(message: _58.GeneratedCodeInfo_Annotation): _58.GeneratedCodeInfo_AnnotationProtoMsg;
         };
         Any: {
             typeUrl: string;
-            is(o: any): o is _55.Any;
-            isSDK(o: any): o is _55.AnySDKType;
-            isAmino(o: any): o is _55.AnyAmino;
-            encode(message: _55.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.Any;
-            fromJSON(object: any): _55.Any;
-            toJSON(message: _55.Any): {
+            is(o: any): o is _57.Any;
+            isSDK(o: any): o is _57.AnySDKType;
+            isAmino(o: any): o is _57.AnyAmino;
+            encode(message: _57.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.Any;
+            fromJSON(object: any): _57.Any;
+            toJSON(message: _57.Any): {
                 $typeUrl?: string;
                 typeUrl: string;
                 value: string;
             };
-            fromPartial(object: Partial<_55.Any>): _55.Any;
-            fromAmino(object: _55.AnyAmino): _55.Any;
-            toAmino(message: _55.Any): _55.AnyAmino;
-            fromAminoMsg(object: _55.AnyAminoMsg): _55.Any;
-            fromProtoMsg(message: _55.AnyProtoMsg): _55.Any;
-            toProto(message: _55.Any): Uint8Array;
-            toProtoMsg(message: _55.Any): _55.AnyProtoMsg;
+            fromPartial(object: Partial<_57.Any>): _57.Any;
+            fromAmino(object: _57.AnyAmino): _57.Any;
+            toAmino(message: _57.Any): _57.AnyAmino;
+            fromAminoMsg(object: _57.AnyAminoMsg): _57.Any;
+            fromProtoMsg(message: _57.AnyProtoMsg): _57.Any;
+            toProto(message: _57.Any): Uint8Array;
+            toProtoMsg(message: _57.Any): _57.AnyProtoMsg;
         };
     };
 }

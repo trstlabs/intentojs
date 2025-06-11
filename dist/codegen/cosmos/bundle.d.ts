@@ -40,24 +40,27 @@ import * as _41 from "./tx/v1beta1/tx";
 import * as _42 from "./upgrade/v1beta1/query";
 import * as _43 from "./upgrade/v1beta1/tx";
 import * as _44 from "./upgrade/v1beta1/upgrade";
-import * as _167 from "./auth/v1beta1/query.rpc.Query";
-import * as _168 from "./authz/v1beta1/query.rpc.Query";
-import * as _169 from "./bank/v1beta1/query.rpc.Query";
-import * as _170 from "./distribution/v1beta1/query.rpc.Query";
-import * as _171 from "./gov/v1beta1/query.rpc.Query";
-import * as _172 from "./staking/v1beta1/query.rpc.Query";
-import * as _173 from "./tx/v1beta1/service.rpc.Service";
-import * as _174 from "./upgrade/v1beta1/query.rpc.Query";
-import * as _175 from "./authz/v1beta1/tx.rpc.msg";
-import * as _176 from "./bank/v1beta1/tx.rpc.msg";
-import * as _177 from "./distribution/v1beta1/tx.rpc.msg";
-import * as _178 from "./gov/v1beta1/tx.rpc.msg";
-import * as _179 from "./staking/v1beta1/tx.rpc.msg";
-import * as _180 from "./upgrade/v1beta1/tx.rpc.msg";
+import * as _45 from "./evm/vm/v1/evm";
+import * as _46 from "./evm/vm/v1/tx";
+import * as _177 from "./auth/v1beta1/query.rpc.Query";
+import * as _178 from "./authz/v1beta1/query.rpc.Query";
+import * as _179 from "./bank/v1beta1/query.rpc.Query";
+import * as _180 from "./distribution/v1beta1/query.rpc.Query";
+import * as _181 from "./gov/v1beta1/query.rpc.Query";
+import * as _182 from "./staking/v1beta1/query.rpc.Query";
+import * as _183 from "./tx/v1beta1/service.rpc.Service";
+import * as _184 from "./upgrade/v1beta1/query.rpc.Query";
+import * as _185 from "./authz/v1beta1/tx.rpc.msg";
+import * as _186 from "./bank/v1beta1/tx.rpc.msg";
+import * as _187 from "./distribution/v1beta1/tx.rpc.msg";
+import * as _188 from "./gov/v1beta1/tx.rpc.msg";
+import * as _189 from "./staking/v1beta1/tx.rpc.msg";
+import * as _190 from "./upgrade/v1beta1/tx.rpc.msg";
+import * as _191 from "./evm/vm/v1/tx.rpc.msg";
 export declare namespace cosmos {
     namespace auth {
         const v1beta1: {
-            QueryClientImpl: typeof _167.QueryClientImpl;
+            QueryClientImpl: typeof _177.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 accounts(request?: _5.QueryAccountsRequest): Promise<_5.QueryAccountsResponse>;
                 account(request: _5.QueryAccountRequest): Promise<_5.QueryAccountResponse>;
@@ -550,8 +553,8 @@ export declare namespace cosmos {
     }
     namespace authz {
         const v1beta1: {
-            MsgClientImpl: typeof _175.MsgClientImpl;
-            QueryClientImpl: typeof _168.QueryClientImpl;
+            MsgClientImpl: typeof _185.MsgClientImpl;
+            QueryClientImpl: typeof _178.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 grants(request: _9.QueryGrantsRequest): Promise<_9.QueryGrantsResponse>;
                 granterGrants(request: _9.QueryGranterGrantsRequest): Promise<_9.QueryGranterGrantsResponse>;
@@ -1971,8 +1974,8 @@ export declare namespace cosmos {
     }
     namespace bank {
         const v1beta1: {
-            MsgClientImpl: typeof _176.MsgClientImpl;
-            QueryClientImpl: typeof _169.QueryClientImpl;
+            MsgClientImpl: typeof _186.MsgClientImpl;
+            QueryClientImpl: typeof _179.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 balance(request: _14.QueryBalanceRequest): Promise<_14.QueryBalanceResponse>;
                 allBalances(request: _14.QueryAllBalancesRequest): Promise<_14.QueryAllBalancesResponse>;
@@ -4434,8 +4437,8 @@ export declare namespace cosmos {
     }
     namespace distribution {
         const v1beta1: {
-            MsgClientImpl: typeof _177.MsgClientImpl;
-            QueryClientImpl: typeof _170.QueryClientImpl;
+            MsgClientImpl: typeof _187.MsgClientImpl;
+            QueryClientImpl: typeof _180.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 params(request?: _28.QueryParamsRequest): Promise<_28.QueryParamsResponse>;
                 validatorOutstandingRewards(request: _28.QueryValidatorOutstandingRewardsRequest): Promise<_28.QueryValidatorOutstandingRewardsResponse>;
@@ -5750,8 +5753,8 @@ export declare namespace cosmos {
     }
     namespace gov {
         const v1beta1: {
-            MsgClientImpl: typeof _178.MsgClientImpl;
-            QueryClientImpl: typeof _171.QueryClientImpl;
+            MsgClientImpl: typeof _188.MsgClientImpl;
+            QueryClientImpl: typeof _181.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 proposal(request: _32.QueryProposalRequest): Promise<_32.QueryProposalResponse>;
                 proposals(request: _32.QueryProposalsRequest): Promise<_32.QueryProposalsResponse>;
@@ -8018,8 +8021,8 @@ export declare namespace cosmos {
     }
     namespace staking {
         const v1beta1: {
-            MsgClientImpl: typeof _179.MsgClientImpl;
-            QueryClientImpl: typeof _172.QueryClientImpl;
+            MsgClientImpl: typeof _189.MsgClientImpl;
+            QueryClientImpl: typeof _182.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 validators(request: _36.QueryValidatorsRequest): Promise<_36.QueryValidatorsResponse>;
                 validator(request: _36.QueryValidatorRequest): Promise<_36.QueryValidatorResponse>;
@@ -10358,7 +10361,7 @@ export declare namespace cosmos {
             };
         }
         const v1beta1: {
-            ServiceClientImpl: typeof _173.ServiceClientImpl;
+            ServiceClientImpl: typeof _183.ServiceClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 simulate(request: _40.SimulateRequest): Promise<_40.SimulateResponse>;
                 getTx(request: _40.GetTxRequest): Promise<_40.GetTxResponse>;
@@ -11620,8 +11623,8 @@ export declare namespace cosmos {
     }
     namespace upgrade {
         const v1beta1: {
-            MsgClientImpl: typeof _180.MsgClientImpl;
-            QueryClientImpl: typeof _174.QueryClientImpl;
+            MsgClientImpl: typeof _190.MsgClientImpl;
+            QueryClientImpl: typeof _184.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 currentPlan(request?: _42.QueryCurrentPlanRequest): Promise<_42.QueryCurrentPlanResponse>;
                 appliedPlan(request: _42.QueryAppliedPlanRequest): Promise<_42.QueryAppliedPlanResponse>;
@@ -12130,28 +12133,708 @@ export declare namespace cosmos {
             };
         };
     }
+    namespace evm {
+        namespace vm {
+            const v1: {
+                MsgClientImpl: typeof _191.MsgClientImpl;
+                registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
+                load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
+                MessageComposer: {
+                    encoded: {
+                        ethereumTx(value: _46.MsgEthereumTx): {
+                            typeUrl: string;
+                            value: Uint8Array;
+                        };
+                        updateParams(value: _46.MsgUpdateParams): {
+                            typeUrl: string;
+                            value: Uint8Array;
+                        };
+                    };
+                    withTypeUrl: {
+                        ethereumTx(value: _46.MsgEthereumTx): {
+                            typeUrl: string;
+                            value: _46.MsgEthereumTx;
+                        };
+                        updateParams(value: _46.MsgUpdateParams): {
+                            typeUrl: string;
+                            value: _46.MsgUpdateParams;
+                        };
+                    };
+                    toJSON: {
+                        ethereumTx(value: _46.MsgEthereumTx): {
+                            typeUrl: string;
+                            value: {
+                                data?: {
+                                    $typeUrl?: string;
+                                    typeUrl: string;
+                                    value: string;
+                                };
+                                size: number;
+                                hash: string;
+                                from: string;
+                            };
+                        };
+                        updateParams(value: _46.MsgUpdateParams): {
+                            typeUrl: string;
+                            value: {
+                                authority: string;
+                                params: {
+                                    evmDenom: string;
+                                    extraEips: string[];
+                                    allowUnprotectedTxs: boolean;
+                                    evmChannels: string[];
+                                    accessControl: {
+                                        create: {
+                                            accessType: _45.AccessType;
+                                            accessControlList: string[];
+                                        };
+                                        call: {
+                                            accessType: _45.AccessType;
+                                            accessControlList: string[];
+                                        };
+                                    };
+                                    activeStaticPrecompiles: string[];
+                                };
+                            };
+                        };
+                    };
+                    fromJSON: {
+                        ethereumTx(value: any): {
+                            typeUrl: string;
+                            value: _46.MsgEthereumTx;
+                        };
+                        updateParams(value: any): {
+                            typeUrl: string;
+                            value: _46.MsgUpdateParams;
+                        };
+                    };
+                    fromPartial: {
+                        ethereumTx(value: _46.MsgEthereumTx): {
+                            typeUrl: string;
+                            value: _46.MsgEthereumTx;
+                        };
+                        updateParams(value: _46.MsgUpdateParams): {
+                            typeUrl: string;
+                            value: _46.MsgUpdateParams;
+                        };
+                    };
+                };
+                AminoConverter: {
+                    "/cosmos.evm.vm.v1.MsgEthereumTx": {
+                        aminoType: string;
+                        toAmino: (message: _46.MsgEthereumTx) => _46.MsgEthereumTxAmino;
+                        fromAmino: (object: _46.MsgEthereumTxAmino) => _46.MsgEthereumTx;
+                    };
+                    "/cosmos.evm.vm.v1.MsgUpdateParams": {
+                        aminoType: string;
+                        toAmino: (message: _46.MsgUpdateParams) => _46.MsgUpdateParamsAmino;
+                        fromAmino: (object: _46.MsgUpdateParamsAmino) => _46.MsgUpdateParams;
+                    };
+                };
+                MsgEthereumTx: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.MsgEthereumTx;
+                    isSDK(o: any): o is _46.MsgEthereumTxSDKType;
+                    isAmino(o: any): o is _46.MsgEthereumTxAmino;
+                    encode(message: _46.MsgEthereumTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.MsgEthereumTx;
+                    fromJSON(object: any): _46.MsgEthereumTx;
+                    toJSON(message: _46.MsgEthereumTx): {
+                        data?: {
+                            $typeUrl?: string;
+                            typeUrl: string;
+                            value: string;
+                        };
+                        size: number;
+                        hash: string;
+                        from: string;
+                    };
+                    fromPartial(object: Partial<_46.MsgEthereumTx>): _46.MsgEthereumTx;
+                    fromAmino(object: _46.MsgEthereumTxAmino): _46.MsgEthereumTx;
+                    toAmino(message: _46.MsgEthereumTx): _46.MsgEthereumTxAmino;
+                    fromAminoMsg(object: _46.MsgEthereumTxAminoMsg): _46.MsgEthereumTx;
+                    toAminoMsg(message: _46.MsgEthereumTx): _46.MsgEthereumTxAminoMsg;
+                    fromProtoMsg(message: _46.MsgEthereumTxProtoMsg): _46.MsgEthereumTx;
+                    toProto(message: _46.MsgEthereumTx): Uint8Array;
+                    toProtoMsg(message: _46.MsgEthereumTx): _46.MsgEthereumTxProtoMsg;
+                };
+                LegacyTx: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.LegacyTx;
+                    isSDK(o: any): o is _46.LegacyTxSDKType;
+                    isAmino(o: any): o is _46.LegacyTxAmino;
+                    encode(message: _46.LegacyTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.LegacyTx;
+                    fromJSON(object: any): _46.LegacyTx;
+                    toJSON(message: _46.LegacyTx): {
+                        $typeUrl?: "/cosmos.evm.vm.v1.LegacyTx";
+                        nonce: string;
+                        gasPrice: string;
+                        gas: string;
+                        to: string;
+                        value: string;
+                        data: string;
+                        v: string;
+                        r: string;
+                        s: string;
+                    };
+                    fromPartial(object: Partial<_46.LegacyTx>): _46.LegacyTx;
+                    fromAmino(object: _46.LegacyTxAmino): _46.LegacyTx;
+                    toAmino(message: _46.LegacyTx): _46.LegacyTxAmino;
+                    fromAminoMsg(object: _46.LegacyTxAminoMsg): _46.LegacyTx;
+                    toAminoMsg(message: _46.LegacyTx): _46.LegacyTxAminoMsg;
+                    fromProtoMsg(message: _46.LegacyTxProtoMsg): _46.LegacyTx;
+                    toProto(message: _46.LegacyTx): Uint8Array;
+                    toProtoMsg(message: _46.LegacyTx): _46.LegacyTxProtoMsg;
+                };
+                AccessListTx: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.AccessListTx;
+                    isSDK(o: any): o is _46.AccessListTxSDKType;
+                    isAmino(o: any): o is _46.AccessListTxAmino;
+                    encode(message: _46.AccessListTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.AccessListTx;
+                    fromJSON(object: any): _46.AccessListTx;
+                    toJSON(message: _46.AccessListTx): {
+                        $typeUrl?: "/cosmos.evm.vm.v1.AccessListTx";
+                        chainId: string;
+                        nonce: string;
+                        gasPrice: string;
+                        gas: string;
+                        to: string;
+                        value: string;
+                        data: string;
+                        accesses: {
+                            address: string;
+                            storageKeys: string[];
+                        }[];
+                        v: string;
+                        r: string;
+                        s: string;
+                    };
+                    fromPartial(object: Partial<_46.AccessListTx>): _46.AccessListTx;
+                    fromAmino(object: _46.AccessListTxAmino): _46.AccessListTx;
+                    toAmino(message: _46.AccessListTx): _46.AccessListTxAmino;
+                    fromAminoMsg(object: _46.AccessListTxAminoMsg): _46.AccessListTx;
+                    toAminoMsg(message: _46.AccessListTx): _46.AccessListTxAminoMsg;
+                    fromProtoMsg(message: _46.AccessListTxProtoMsg): _46.AccessListTx;
+                    toProto(message: _46.AccessListTx): Uint8Array;
+                    toProtoMsg(message: _46.AccessListTx): _46.AccessListTxProtoMsg;
+                };
+                DynamicFeeTx: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.DynamicFeeTx;
+                    isSDK(o: any): o is _46.DynamicFeeTxSDKType;
+                    isAmino(o: any): o is _46.DynamicFeeTxAmino;
+                    encode(message: _46.DynamicFeeTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.DynamicFeeTx;
+                    fromJSON(object: any): _46.DynamicFeeTx;
+                    toJSON(message: _46.DynamicFeeTx): {
+                        $typeUrl?: "/cosmos.evm.vm.v1.DynamicFeeTx";
+                        chainId: string;
+                        nonce: string;
+                        gasTipCap: string;
+                        gasFeeCap: string;
+                        gas: string;
+                        to: string;
+                        value: string;
+                        data: string;
+                        accesses: {
+                            address: string;
+                            storageKeys: string[];
+                        }[];
+                        v: string;
+                        r: string;
+                        s: string;
+                    };
+                    fromPartial(object: Partial<_46.DynamicFeeTx>): _46.DynamicFeeTx;
+                    fromAmino(object: _46.DynamicFeeTxAmino): _46.DynamicFeeTx;
+                    toAmino(message: _46.DynamicFeeTx): _46.DynamicFeeTxAmino;
+                    fromAminoMsg(object: _46.DynamicFeeTxAminoMsg): _46.DynamicFeeTx;
+                    toAminoMsg(message: _46.DynamicFeeTx): _46.DynamicFeeTxAminoMsg;
+                    fromProtoMsg(message: _46.DynamicFeeTxProtoMsg): _46.DynamicFeeTx;
+                    toProto(message: _46.DynamicFeeTx): Uint8Array;
+                    toProtoMsg(message: _46.DynamicFeeTx): _46.DynamicFeeTxProtoMsg;
+                };
+                ExtensionOptionsEthereumTx: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.ExtensionOptionsEthereumTx;
+                    isSDK(o: any): o is _46.ExtensionOptionsEthereumTxSDKType;
+                    isAmino(o: any): o is _46.ExtensionOptionsEthereumTxAmino;
+                    encode(_: _46.ExtensionOptionsEthereumTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.ExtensionOptionsEthereumTx;
+                    fromJSON(_: any): _46.ExtensionOptionsEthereumTx;
+                    toJSON(_: _46.ExtensionOptionsEthereumTx): {};
+                    fromPartial(_: Partial<_46.ExtensionOptionsEthereumTx>): _46.ExtensionOptionsEthereumTx;
+                    fromAmino(_: _46.ExtensionOptionsEthereumTxAmino): _46.ExtensionOptionsEthereumTx;
+                    toAmino(_: _46.ExtensionOptionsEthereumTx): _46.ExtensionOptionsEthereumTxAmino;
+                    fromAminoMsg(object: _46.ExtensionOptionsEthereumTxAminoMsg): _46.ExtensionOptionsEthereumTx;
+                    toAminoMsg(message: _46.ExtensionOptionsEthereumTx): _46.ExtensionOptionsEthereumTxAminoMsg;
+                    fromProtoMsg(message: _46.ExtensionOptionsEthereumTxProtoMsg): _46.ExtensionOptionsEthereumTx;
+                    toProto(message: _46.ExtensionOptionsEthereumTx): Uint8Array;
+                    toProtoMsg(message: _46.ExtensionOptionsEthereumTx): _46.ExtensionOptionsEthereumTxProtoMsg;
+                };
+                MsgEthereumTxResponse: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.MsgEthereumTxResponse;
+                    isSDK(o: any): o is _46.MsgEthereumTxResponseSDKType;
+                    isAmino(o: any): o is _46.MsgEthereumTxResponseAmino;
+                    encode(message: _46.MsgEthereumTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.MsgEthereumTxResponse;
+                    fromJSON(object: any): _46.MsgEthereumTxResponse;
+                    toJSON(message: _46.MsgEthereumTxResponse): {
+                        hash: string;
+                        logs: {
+                            address: string;
+                            topics: string[];
+                            data: string;
+                            blockNumber: string;
+                            txHash: string;
+                            txIndex: string;
+                            blockHash: string;
+                            index: string;
+                            removed: boolean;
+                        }[];
+                        ret: string;
+                        vmError: string;
+                        gasUsed: string;
+                    };
+                    fromPartial(object: Partial<_46.MsgEthereumTxResponse>): _46.MsgEthereumTxResponse;
+                    fromAmino(object: _46.MsgEthereumTxResponseAmino): _46.MsgEthereumTxResponse;
+                    toAmino(message: _46.MsgEthereumTxResponse): _46.MsgEthereumTxResponseAmino;
+                    fromAminoMsg(object: _46.MsgEthereumTxResponseAminoMsg): _46.MsgEthereumTxResponse;
+                    toAminoMsg(message: _46.MsgEthereumTxResponse): _46.MsgEthereumTxResponseAminoMsg;
+                    fromProtoMsg(message: _46.MsgEthereumTxResponseProtoMsg): _46.MsgEthereumTxResponse;
+                    toProto(message: _46.MsgEthereumTxResponse): Uint8Array;
+                    toProtoMsg(message: _46.MsgEthereumTxResponse): _46.MsgEthereumTxResponseProtoMsg;
+                };
+                MsgUpdateParams: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.MsgUpdateParams;
+                    isSDK(o: any): o is _46.MsgUpdateParamsSDKType;
+                    isAmino(o: any): o is _46.MsgUpdateParamsAmino;
+                    encode(message: _46.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.MsgUpdateParams;
+                    fromJSON(object: any): _46.MsgUpdateParams;
+                    toJSON(message: _46.MsgUpdateParams): {
+                        authority: string;
+                        params: {
+                            evmDenom: string;
+                            extraEips: string[];
+                            allowUnprotectedTxs: boolean;
+                            evmChannels: string[];
+                            accessControl: {
+                                create: {
+                                    accessType: _45.AccessType;
+                                    accessControlList: string[];
+                                };
+                                call: {
+                                    accessType: _45.AccessType;
+                                    accessControlList: string[];
+                                };
+                            };
+                            activeStaticPrecompiles: string[];
+                        };
+                    };
+                    fromPartial(object: Partial<_46.MsgUpdateParams>): _46.MsgUpdateParams;
+                    fromAmino(object: _46.MsgUpdateParamsAmino): _46.MsgUpdateParams;
+                    toAmino(message: _46.MsgUpdateParams): _46.MsgUpdateParamsAmino;
+                    fromAminoMsg(object: _46.MsgUpdateParamsAminoMsg): _46.MsgUpdateParams;
+                    toAminoMsg(message: _46.MsgUpdateParams): _46.MsgUpdateParamsAminoMsg;
+                    fromProtoMsg(message: _46.MsgUpdateParamsProtoMsg): _46.MsgUpdateParams;
+                    toProto(message: _46.MsgUpdateParams): Uint8Array;
+                    toProtoMsg(message: _46.MsgUpdateParams): _46.MsgUpdateParamsProtoMsg;
+                };
+                MsgUpdateParamsResponse: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _46.MsgUpdateParamsResponse;
+                    isSDK(o: any): o is _46.MsgUpdateParamsResponseSDKType;
+                    isAmino(o: any): o is _46.MsgUpdateParamsResponseAmino;
+                    encode(_: _46.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.MsgUpdateParamsResponse;
+                    fromJSON(_: any): _46.MsgUpdateParamsResponse;
+                    toJSON(_: _46.MsgUpdateParamsResponse): {};
+                    fromPartial(_: Partial<_46.MsgUpdateParamsResponse>): _46.MsgUpdateParamsResponse;
+                    fromAmino(_: _46.MsgUpdateParamsResponseAmino): _46.MsgUpdateParamsResponse;
+                    toAmino(_: _46.MsgUpdateParamsResponse): _46.MsgUpdateParamsResponseAmino;
+                    fromAminoMsg(object: _46.MsgUpdateParamsResponseAminoMsg): _46.MsgUpdateParamsResponse;
+                    toAminoMsg(message: _46.MsgUpdateParamsResponse): _46.MsgUpdateParamsResponseAminoMsg;
+                    fromProtoMsg(message: _46.MsgUpdateParamsResponseProtoMsg): _46.MsgUpdateParamsResponse;
+                    toProto(message: _46.MsgUpdateParamsResponse): Uint8Array;
+                    toProtoMsg(message: _46.MsgUpdateParamsResponse): _46.MsgUpdateParamsResponseProtoMsg;
+                };
+                accessTypeFromJSON(object: any): _45.AccessType;
+                accessTypeToJSON(object: _45.AccessType): string;
+                AccessType: typeof _45.AccessType;
+                AccessTypeSDKType: typeof _45.AccessType;
+                AccessTypeAmino: typeof _45.AccessType;
+                Params: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.Params;
+                    isSDK(o: any): o is _45.ParamsSDKType;
+                    isAmino(o: any): o is _45.ParamsAmino;
+                    encode(message: _45.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.Params;
+                    fromJSON(object: any): _45.Params;
+                    toJSON(message: _45.Params): {
+                        evmDenom: string;
+                        extraEips: string[];
+                        allowUnprotectedTxs: boolean;
+                        evmChannels: string[];
+                        accessControl: {
+                            create: {
+                                accessType: _45.AccessType;
+                                accessControlList: string[];
+                            };
+                            call: {
+                                accessType: _45.AccessType;
+                                accessControlList: string[];
+                            };
+                        };
+                        activeStaticPrecompiles: string[];
+                    };
+                    fromPartial(object: Partial<_45.Params>): _45.Params;
+                    fromAmino(object: _45.ParamsAmino): _45.Params;
+                    toAmino(message: _45.Params): _45.ParamsAmino;
+                    fromAminoMsg(object: _45.ParamsAminoMsg): _45.Params;
+                    toAminoMsg(message: _45.Params): _45.ParamsAminoMsg;
+                    fromProtoMsg(message: _45.ParamsProtoMsg): _45.Params;
+                    toProto(message: _45.Params): Uint8Array;
+                    toProtoMsg(message: _45.Params): _45.ParamsProtoMsg;
+                };
+                AccessControl: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.AccessControl;
+                    isSDK(o: any): o is _45.AccessControlSDKType;
+                    isAmino(o: any): o is _45.AccessControlAmino;
+                    encode(message: _45.AccessControl, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.AccessControl;
+                    fromJSON(object: any): _45.AccessControl;
+                    toJSON(message: _45.AccessControl): {
+                        create: {
+                            accessType: _45.AccessType;
+                            accessControlList: string[];
+                        };
+                        call: {
+                            accessType: _45.AccessType;
+                            accessControlList: string[];
+                        };
+                    };
+                    fromPartial(object: Partial<_45.AccessControl>): _45.AccessControl;
+                    fromAmino(object: _45.AccessControlAmino): _45.AccessControl;
+                    toAmino(message: _45.AccessControl): _45.AccessControlAmino;
+                    fromAminoMsg(object: _45.AccessControlAminoMsg): _45.AccessControl;
+                    toAminoMsg(message: _45.AccessControl): _45.AccessControlAminoMsg;
+                    fromProtoMsg(message: _45.AccessControlProtoMsg): _45.AccessControl;
+                    toProto(message: _45.AccessControl): Uint8Array;
+                    toProtoMsg(message: _45.AccessControl): _45.AccessControlProtoMsg;
+                };
+                AccessControlType: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.AccessControlType;
+                    isSDK(o: any): o is _45.AccessControlTypeSDKType;
+                    isAmino(o: any): o is _45.AccessControlTypeAmino;
+                    encode(message: _45.AccessControlType, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.AccessControlType;
+                    fromJSON(object: any): _45.AccessControlType;
+                    toJSON(message: _45.AccessControlType): {
+                        accessType: _45.AccessType;
+                        accessControlList: string[];
+                    };
+                    fromPartial(object: Partial<_45.AccessControlType>): _45.AccessControlType;
+                    fromAmino(object: _45.AccessControlTypeAmino): _45.AccessControlType;
+                    toAmino(message: _45.AccessControlType): _45.AccessControlTypeAmino;
+                    fromAminoMsg(object: _45.AccessControlTypeAminoMsg): _45.AccessControlType;
+                    toAminoMsg(message: _45.AccessControlType): _45.AccessControlTypeAminoMsg;
+                    fromProtoMsg(message: _45.AccessControlTypeProtoMsg): _45.AccessControlType;
+                    toProto(message: _45.AccessControlType): Uint8Array;
+                    toProtoMsg(message: _45.AccessControlType): _45.AccessControlTypeProtoMsg;
+                };
+                ChainConfig: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.ChainConfig;
+                    isSDK(o: any): o is _45.ChainConfigSDKType;
+                    isAmino(o: any): o is _45.ChainConfigAmino;
+                    encode(message: _45.ChainConfig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.ChainConfig;
+                    fromJSON(object: any): _45.ChainConfig;
+                    toJSON(message: _45.ChainConfig): {
+                        homesteadBlock: string;
+                        daoForkBlock: string;
+                        daoForkSupport: boolean;
+                        eip150Block: string;
+                        eip155Block: string;
+                        eip158Block: string;
+                        byzantiumBlock: string;
+                        constantinopleBlock: string;
+                        petersburgBlock: string;
+                        istanbulBlock: string;
+                        muirGlacierBlock: string;
+                        berlinBlock: string;
+                        londonBlock: string;
+                        arrowGlacierBlock: string;
+                        grayGlacierBlock: string;
+                        mergeNetsplitBlock: string;
+                        chainId: string;
+                        denom: string;
+                        decimals: string;
+                        shanghaiTime: string;
+                        cancunTime: string;
+                        pragueTime: string;
+                        verkleTime: string;
+                        osakaTime: string;
+                    };
+                    fromPartial(object: Partial<_45.ChainConfig>): _45.ChainConfig;
+                    fromAmino(object: _45.ChainConfigAmino): _45.ChainConfig;
+                    toAmino(message: _45.ChainConfig): _45.ChainConfigAmino;
+                    fromAminoMsg(object: _45.ChainConfigAminoMsg): _45.ChainConfig;
+                    toAminoMsg(message: _45.ChainConfig): _45.ChainConfigAminoMsg;
+                    fromProtoMsg(message: _45.ChainConfigProtoMsg): _45.ChainConfig;
+                    toProto(message: _45.ChainConfig): Uint8Array;
+                    toProtoMsg(message: _45.ChainConfig): _45.ChainConfigProtoMsg;
+                };
+                State: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.State;
+                    isSDK(o: any): o is _45.StateSDKType;
+                    isAmino(o: any): o is _45.StateAmino;
+                    encode(message: _45.State, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.State;
+                    fromJSON(object: any): _45.State;
+                    toJSON(message: _45.State): {
+                        key: string;
+                        value: string;
+                    };
+                    fromPartial(object: Partial<_45.State>): _45.State;
+                    fromAmino(object: _45.StateAmino): _45.State;
+                    toAmino(message: _45.State): _45.StateAmino;
+                    fromAminoMsg(object: _45.StateAminoMsg): _45.State;
+                    toAminoMsg(message: _45.State): _45.StateAminoMsg;
+                    fromProtoMsg(message: _45.StateProtoMsg): _45.State;
+                    toProto(message: _45.State): Uint8Array;
+                    toProtoMsg(message: _45.State): _45.StateProtoMsg;
+                };
+                TransactionLogs: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.TransactionLogs;
+                    isSDK(o: any): o is _45.TransactionLogsSDKType;
+                    isAmino(o: any): o is _45.TransactionLogsAmino;
+                    encode(message: _45.TransactionLogs, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.TransactionLogs;
+                    fromJSON(object: any): _45.TransactionLogs;
+                    toJSON(message: _45.TransactionLogs): {
+                        hash: string;
+                        logs: {
+                            address: string;
+                            topics: string[];
+                            data: string;
+                            blockNumber: string;
+                            txHash: string;
+                            txIndex: string;
+                            blockHash: string;
+                            index: string;
+                            removed: boolean;
+                        }[];
+                    };
+                    fromPartial(object: Partial<_45.TransactionLogs>): _45.TransactionLogs;
+                    fromAmino(object: _45.TransactionLogsAmino): _45.TransactionLogs;
+                    toAmino(message: _45.TransactionLogs): _45.TransactionLogsAmino;
+                    fromAminoMsg(object: _45.TransactionLogsAminoMsg): _45.TransactionLogs;
+                    toAminoMsg(message: _45.TransactionLogs): _45.TransactionLogsAminoMsg;
+                    fromProtoMsg(message: _45.TransactionLogsProtoMsg): _45.TransactionLogs;
+                    toProto(message: _45.TransactionLogs): Uint8Array;
+                    toProtoMsg(message: _45.TransactionLogs): _45.TransactionLogsProtoMsg;
+                };
+                Log: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.Log;
+                    isSDK(o: any): o is _45.LogSDKType;
+                    isAmino(o: any): o is _45.LogAmino;
+                    encode(message: _45.Log, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.Log;
+                    fromJSON(object: any): _45.Log;
+                    toJSON(message: _45.Log): {
+                        address: string;
+                        topics: string[];
+                        data: string;
+                        blockNumber: string;
+                        txHash: string;
+                        txIndex: string;
+                        blockHash: string;
+                        index: string;
+                        removed: boolean;
+                    };
+                    fromPartial(object: Partial<_45.Log>): _45.Log;
+                    fromAmino(object: _45.LogAmino): _45.Log;
+                    toAmino(message: _45.Log): _45.LogAmino;
+                    fromAminoMsg(object: _45.LogAminoMsg): _45.Log;
+                    toAminoMsg(message: _45.Log): _45.LogAminoMsg;
+                    fromProtoMsg(message: _45.LogProtoMsg): _45.Log;
+                    toProto(message: _45.Log): Uint8Array;
+                    toProtoMsg(message: _45.Log): _45.LogProtoMsg;
+                };
+                TxResult: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.TxResult;
+                    isSDK(o: any): o is _45.TxResultSDKType;
+                    isAmino(o: any): o is _45.TxResultAmino;
+                    encode(message: _45.TxResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.TxResult;
+                    fromJSON(object: any): _45.TxResult;
+                    toJSON(message: _45.TxResult): {
+                        contractAddress: string;
+                        bloom: string;
+                        txLogs: {
+                            hash: string;
+                            logs: {
+                                address: string;
+                                topics: string[];
+                                data: string;
+                                blockNumber: string;
+                                txHash: string;
+                                txIndex: string;
+                                blockHash: string;
+                                index: string;
+                                removed: boolean;
+                            }[];
+                        };
+                        ret: string;
+                        reverted: boolean;
+                        gasUsed: string;
+                    };
+                    fromPartial(object: Partial<_45.TxResult>): _45.TxResult;
+                    fromAmino(object: _45.TxResultAmino): _45.TxResult;
+                    toAmino(message: _45.TxResult): _45.TxResultAmino;
+                    fromAminoMsg(object: _45.TxResultAminoMsg): _45.TxResult;
+                    toAminoMsg(message: _45.TxResult): _45.TxResultAminoMsg;
+                    fromProtoMsg(message: _45.TxResultProtoMsg): _45.TxResult;
+                    toProto(message: _45.TxResult): Uint8Array;
+                    toProtoMsg(message: _45.TxResult): _45.TxResultProtoMsg;
+                };
+                AccessTuple: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.AccessTuple;
+                    isSDK(o: any): o is _45.AccessTupleSDKType;
+                    isAmino(o: any): o is _45.AccessTupleAmino;
+                    encode(message: _45.AccessTuple, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.AccessTuple;
+                    fromJSON(object: any): _45.AccessTuple;
+                    toJSON(message: _45.AccessTuple): {
+                        address: string;
+                        storageKeys: string[];
+                    };
+                    fromPartial(object: Partial<_45.AccessTuple>): _45.AccessTuple;
+                    fromAmino(object: _45.AccessTupleAmino): _45.AccessTuple;
+                    toAmino(message: _45.AccessTuple): _45.AccessTupleAmino;
+                    fromAminoMsg(object: _45.AccessTupleAminoMsg): _45.AccessTuple;
+                    toAminoMsg(message: _45.AccessTuple): _45.AccessTupleAminoMsg;
+                    fromProtoMsg(message: _45.AccessTupleProtoMsg): _45.AccessTuple;
+                    toProto(message: _45.AccessTuple): Uint8Array;
+                    toProtoMsg(message: _45.AccessTuple): _45.AccessTupleProtoMsg;
+                };
+                TraceConfig: {
+                    typeUrl: string;
+                    aminoType: string;
+                    is(o: any): o is _45.TraceConfig;
+                    isSDK(o: any): o is _45.TraceConfigSDKType;
+                    isAmino(o: any): o is _45.TraceConfigAmino;
+                    encode(message: _45.TraceConfig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.TraceConfig;
+                    fromJSON(object: any): _45.TraceConfig;
+                    toJSON(message: _45.TraceConfig): {
+                        tracer: string;
+                        timeout: string;
+                        reexec: string;
+                        disableStack: boolean;
+                        disableStorage: boolean;
+                        debug: boolean;
+                        limit: number;
+                        overrides?: {
+                            homesteadBlock: string;
+                            daoForkBlock: string;
+                            daoForkSupport: boolean;
+                            eip150Block: string;
+                            eip155Block: string;
+                            eip158Block: string;
+                            byzantiumBlock: string;
+                            constantinopleBlock: string;
+                            petersburgBlock: string;
+                            istanbulBlock: string;
+                            muirGlacierBlock: string;
+                            berlinBlock: string;
+                            londonBlock: string;
+                            arrowGlacierBlock: string;
+                            grayGlacierBlock: string;
+                            mergeNetsplitBlock: string;
+                            chainId: string;
+                            denom: string;
+                            decimals: string;
+                            shanghaiTime: string;
+                            cancunTime: string;
+                            pragueTime: string;
+                            verkleTime: string;
+                            osakaTime: string;
+                        };
+                        enableMemory: boolean;
+                        enableReturnData: boolean;
+                        tracerJsonConfig: string;
+                    };
+                    fromPartial(object: Partial<_45.TraceConfig>): _45.TraceConfig;
+                    fromAmino(object: _45.TraceConfigAmino): _45.TraceConfig;
+                    toAmino(message: _45.TraceConfig): _45.TraceConfigAmino;
+                    fromAminoMsg(object: _45.TraceConfigAminoMsg): _45.TraceConfig;
+                    toAminoMsg(message: _45.TraceConfig): _45.TraceConfigAminoMsg;
+                    fromProtoMsg(message: _45.TraceConfigProtoMsg): _45.TraceConfig;
+                    toProto(message: _45.TraceConfig): Uint8Array;
+                    toProtoMsg(message: _45.TraceConfig): _45.TraceConfigProtoMsg;
+                };
+            };
+        }
+    }
     const ClientFactory: {
         createRPCMsgClient: ({ rpc }: {
             rpc: import("../helpers").Rpc;
         }) => Promise<{
             cosmos: {
                 authz: {
-                    v1beta1: _175.MsgClientImpl;
+                    v1beta1: _185.MsgClientImpl;
                 };
                 bank: {
-                    v1beta1: _176.MsgClientImpl;
+                    v1beta1: _186.MsgClientImpl;
                 };
                 distribution: {
-                    v1beta1: _177.MsgClientImpl;
+                    v1beta1: _187.MsgClientImpl;
                 };
                 gov: {
-                    v1beta1: _178.MsgClientImpl;
+                    v1beta1: _188.MsgClientImpl;
                 };
                 staking: {
-                    v1beta1: _179.MsgClientImpl;
+                    v1beta1: _189.MsgClientImpl;
                 };
                 upgrade: {
-                    v1beta1: _180.MsgClientImpl;
+                    v1beta1: _190.MsgClientImpl;
+                };
+                evm: {
+                    vm: {
+                        v1: _191.MsgClientImpl;
+                    };
                 };
             };
         }>;

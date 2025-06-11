@@ -29,22 +29,9 @@ export const createRPCMsgClient = async ({
       }
     }
   },
-  ibc: {
-    applications: {
-      transfer: {
-        v1: new (await import("./applications/transfer/v1/tx.rpc.msg")).MsgClientImpl(rpc)
-      }
-    },
-    core: {
-      channel: {
-        v1: new (await import("./core/channel/v1/tx.rpc.msg")).MsgClientImpl(rpc)
-      },
-      client: {
-        v1: new (await import("./core/client/v1/tx.rpc.msg")).MsgClientImpl(rpc)
-      },
-      connection: {
-        v1: new (await import("./core/connection/v1/tx.rpc.msg")).MsgClientImpl(rpc)
-      }
+  osmosis: {
+    gamm: {
+      v1beta1: new (await import("./gamm/v1beta1/gamm.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });

@@ -20,6 +20,7 @@ export * from "./elys/client";
 export * from "./intento/bundle";
 export * from "./intento/client";
 export * from "./osmosis/bundle";
+export * from "./osmosis/client";
 export * from "./stride/bundle";
 export * from "./stride/client";
 export * from "./json-safe";

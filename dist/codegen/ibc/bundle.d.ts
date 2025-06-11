@@ -1,61 +1,61 @@
-import * as _60 from "./applications/transfer/v1/genesis";
-import * as _61 from "./applications/transfer/v1/query";
-import * as _62 from "./applications/transfer/v1/transfer";
-import * as _63 from "./applications/transfer/v1/tx";
-import * as _64 from "./applications/transfer/v2/packet";
-import * as _65 from "./core/channel/v1/channel";
-import * as _66 from "./core/channel/v1/genesis";
-import * as _67 from "./core/channel/v1/query";
-import * as _68 from "./core/channel/v1/tx";
-import * as _69 from "./core/client/v1/client";
-import * as _70 from "./core/client/v1/genesis";
-import * as _71 from "./core/client/v1/query";
-import * as _72 from "./core/client/v1/tx";
-import * as _73 from "./core/commitment/v1/commitment";
-import * as _74 from "./core/connection/v1/connection";
-import * as _75 from "./core/connection/v1/genesis";
-import * as _76 from "./core/connection/v1/query";
-import * as _77 from "./core/connection/v1/tx";
-import * as _78 from "./lightclients/localhost/v1/localhost";
-import * as _79 from "./lightclients/solomachine/v1/solomachine";
-import * as _80 from "./lightclients/solomachine/v2/solomachine";
-import * as _81 from "./lightclients/tendermint/v1/tendermint";
-import * as _193 from "./applications/transfer/v1/query.rpc.Query";
-import * as _194 from "./core/channel/v1/query.rpc.Query";
-import * as _195 from "./core/client/v1/query.rpc.Query";
-import * as _196 from "./core/connection/v1/query.rpc.Query";
-import * as _197 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _198 from "./core/channel/v1/tx.rpc.msg";
-import * as _199 from "./core/client/v1/tx.rpc.msg";
-import * as _200 from "./core/connection/v1/tx.rpc.msg";
+import * as _62 from "./applications/transfer/v1/genesis";
+import * as _63 from "./applications/transfer/v1/query";
+import * as _64 from "./applications/transfer/v1/transfer";
+import * as _65 from "./applications/transfer/v1/tx";
+import * as _66 from "./applications/transfer/v2/packet";
+import * as _67 from "./core/channel/v1/channel";
+import * as _68 from "./core/channel/v1/genesis";
+import * as _69 from "./core/channel/v1/query";
+import * as _70 from "./core/channel/v1/tx";
+import * as _71 from "./core/client/v1/client";
+import * as _72 from "./core/client/v1/genesis";
+import * as _73 from "./core/client/v1/query";
+import * as _74 from "./core/client/v1/tx";
+import * as _75 from "./core/commitment/v1/commitment";
+import * as _76 from "./core/connection/v1/connection";
+import * as _77 from "./core/connection/v1/genesis";
+import * as _78 from "./core/connection/v1/query";
+import * as _79 from "./core/connection/v1/tx";
+import * as _80 from "./lightclients/localhost/v1/localhost";
+import * as _81 from "./lightclients/solomachine/v1/solomachine";
+import * as _82 from "./lightclients/solomachine/v2/solomachine";
+import * as _83 from "./lightclients/tendermint/v1/tendermint";
+import * as _204 from "./applications/transfer/v1/query.rpc.Query";
+import * as _205 from "./core/channel/v1/query.rpc.Query";
+import * as _206 from "./core/client/v1/query.rpc.Query";
+import * as _207 from "./core/connection/v1/query.rpc.Query";
+import * as _208 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _209 from "./core/channel/v1/tx.rpc.msg";
+import * as _210 from "./core/client/v1/tx.rpc.msg";
+import * as _211 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _197.MsgClientImpl;
-                QueryClientImpl: typeof _193.QueryClientImpl;
+                MsgClientImpl: typeof _208.MsgClientImpl;
+                QueryClientImpl: typeof _204.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    denomTrace(request: _61.QueryDenomTraceRequest): Promise<_61.QueryDenomTraceResponse>;
-                    denomTraces(request?: _61.QueryDenomTracesRequest): Promise<_61.QueryDenomTracesResponse>;
-                    params(request?: _61.QueryParamsRequest): Promise<_61.QueryParamsResponse>;
+                    denomTrace(request: _63.QueryDenomTraceRequest): Promise<_63.QueryDenomTraceResponse>;
+                    denomTraces(request?: _63.QueryDenomTracesRequest): Promise<_63.QueryDenomTracesResponse>;
+                    params(request?: _63.QueryParamsRequest): Promise<_63.QueryParamsResponse>;
                 };
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        transfer(value: _63.MsgTransfer): {
+                        transfer(value: _65.MsgTransfer): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        transfer(value: _63.MsgTransfer): {
+                        transfer(value: _65.MsgTransfer): {
                             typeUrl: string;
-                            value: _63.MsgTransfer;
+                            value: _65.MsgTransfer;
                         };
                     };
                     toJSON: {
-                        transfer(value: _63.MsgTransfer): {
+                        transfer(value: _65.MsgTransfer): {
                             typeUrl: string;
                             value: {
                                 sourcePort: string;
@@ -77,33 +77,33 @@ export declare namespace ibc {
                     fromJSON: {
                         transfer(value: any): {
                             typeUrl: string;
-                            value: _63.MsgTransfer;
+                            value: _65.MsgTransfer;
                         };
                     };
                     fromPartial: {
-                        transfer(value: _63.MsgTransfer): {
+                        transfer(value: _65.MsgTransfer): {
                             typeUrl: string;
-                            value: _63.MsgTransfer;
+                            value: _65.MsgTransfer;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.applications.transfer.v1.MsgTransfer": {
                         aminoType: string;
-                        toAmino: (message: _63.MsgTransfer) => _63.MsgTransferAmino;
-                        fromAmino: (object: _63.MsgTransferAmino) => _63.MsgTransfer;
+                        toAmino: (message: _65.MsgTransfer) => _65.MsgTransferAmino;
+                        fromAmino: (object: _65.MsgTransferAmino) => _65.MsgTransfer;
                     };
                 };
                 MsgTransfer: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _63.MsgTransfer;
-                    isSDK(o: any): o is _63.MsgTransferSDKType;
-                    isAmino(o: any): o is _63.MsgTransferAmino;
-                    encode(message: _63.MsgTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.MsgTransfer;
-                    fromJSON(object: any): _63.MsgTransfer;
-                    toJSON(message: _63.MsgTransfer): {
+                    is(o: any): o is _65.MsgTransfer;
+                    isSDK(o: any): o is _65.MsgTransferSDKType;
+                    isAmino(o: any): o is _65.MsgTransferAmino;
+                    encode(message: _65.MsgTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgTransfer;
+                    fromJSON(object: any): _65.MsgTransfer;
+                    toJSON(message: _65.MsgTransfer): {
                         sourcePort: string;
                         sourceChannel: string;
                         token: {
@@ -118,133 +118,133 @@ export declare namespace ibc {
                         };
                         timeoutTimestamp: string;
                     };
-                    fromPartial(object: Partial<_63.MsgTransfer>): _63.MsgTransfer;
-                    fromAmino(object: _63.MsgTransferAmino): _63.MsgTransfer;
-                    toAmino(message: _63.MsgTransfer): _63.MsgTransferAmino;
-                    fromAminoMsg(object: _63.MsgTransferAminoMsg): _63.MsgTransfer;
-                    toAminoMsg(message: _63.MsgTransfer): _63.MsgTransferAminoMsg;
-                    fromProtoMsg(message: _63.MsgTransferProtoMsg): _63.MsgTransfer;
-                    toProto(message: _63.MsgTransfer): Uint8Array;
-                    toProtoMsg(message: _63.MsgTransfer): _63.MsgTransferProtoMsg;
+                    fromPartial(object: Partial<_65.MsgTransfer>): _65.MsgTransfer;
+                    fromAmino(object: _65.MsgTransferAmino): _65.MsgTransfer;
+                    toAmino(message: _65.MsgTransfer): _65.MsgTransferAmino;
+                    fromAminoMsg(object: _65.MsgTransferAminoMsg): _65.MsgTransfer;
+                    toAminoMsg(message: _65.MsgTransfer): _65.MsgTransferAminoMsg;
+                    fromProtoMsg(message: _65.MsgTransferProtoMsg): _65.MsgTransfer;
+                    toProto(message: _65.MsgTransfer): Uint8Array;
+                    toProtoMsg(message: _65.MsgTransfer): _65.MsgTransferProtoMsg;
                 };
                 MsgTransferResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _63.MsgTransferResponse;
-                    isSDK(o: any): o is _63.MsgTransferResponseSDKType;
-                    isAmino(o: any): o is _63.MsgTransferResponseAmino;
-                    encode(_: _63.MsgTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.MsgTransferResponse;
-                    fromJSON(_: any): _63.MsgTransferResponse;
-                    toJSON(_: _63.MsgTransferResponse): {};
-                    fromPartial(_: Partial<_63.MsgTransferResponse>): _63.MsgTransferResponse;
-                    fromAmino(_: _63.MsgTransferResponseAmino): _63.MsgTransferResponse;
-                    toAmino(_: _63.MsgTransferResponse): _63.MsgTransferResponseAmino;
-                    fromAminoMsg(object: _63.MsgTransferResponseAminoMsg): _63.MsgTransferResponse;
-                    toAminoMsg(message: _63.MsgTransferResponse): _63.MsgTransferResponseAminoMsg;
-                    fromProtoMsg(message: _63.MsgTransferResponseProtoMsg): _63.MsgTransferResponse;
-                    toProto(message: _63.MsgTransferResponse): Uint8Array;
-                    toProtoMsg(message: _63.MsgTransferResponse): _63.MsgTransferResponseProtoMsg;
+                    is(o: any): o is _65.MsgTransferResponse;
+                    isSDK(o: any): o is _65.MsgTransferResponseSDKType;
+                    isAmino(o: any): o is _65.MsgTransferResponseAmino;
+                    encode(_: _65.MsgTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.MsgTransferResponse;
+                    fromJSON(_: any): _65.MsgTransferResponse;
+                    toJSON(_: _65.MsgTransferResponse): {};
+                    fromPartial(_: Partial<_65.MsgTransferResponse>): _65.MsgTransferResponse;
+                    fromAmino(_: _65.MsgTransferResponseAmino): _65.MsgTransferResponse;
+                    toAmino(_: _65.MsgTransferResponse): _65.MsgTransferResponseAmino;
+                    fromAminoMsg(object: _65.MsgTransferResponseAminoMsg): _65.MsgTransferResponse;
+                    toAminoMsg(message: _65.MsgTransferResponse): _65.MsgTransferResponseAminoMsg;
+                    fromProtoMsg(message: _65.MsgTransferResponseProtoMsg): _65.MsgTransferResponse;
+                    toProto(message: _65.MsgTransferResponse): Uint8Array;
+                    toProtoMsg(message: _65.MsgTransferResponse): _65.MsgTransferResponseProtoMsg;
                 };
                 DenomTrace: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _62.DenomTrace;
-                    isSDK(o: any): o is _62.DenomTraceSDKType;
-                    isAmino(o: any): o is _62.DenomTraceAmino;
-                    encode(message: _62.DenomTrace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.DenomTrace;
-                    fromJSON(object: any): _62.DenomTrace;
-                    toJSON(message: _62.DenomTrace): {
+                    is(o: any): o is _64.DenomTrace;
+                    isSDK(o: any): o is _64.DenomTraceSDKType;
+                    isAmino(o: any): o is _64.DenomTraceAmino;
+                    encode(message: _64.DenomTrace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.DenomTrace;
+                    fromJSON(object: any): _64.DenomTrace;
+                    toJSON(message: _64.DenomTrace): {
                         path: string;
                         baseDenom: string;
                     };
-                    fromPartial(object: Partial<_62.DenomTrace>): _62.DenomTrace;
-                    fromAmino(object: _62.DenomTraceAmino): _62.DenomTrace;
-                    toAmino(message: _62.DenomTrace): _62.DenomTraceAmino;
-                    fromAminoMsg(object: _62.DenomTraceAminoMsg): _62.DenomTrace;
-                    toAminoMsg(message: _62.DenomTrace): _62.DenomTraceAminoMsg;
-                    fromProtoMsg(message: _62.DenomTraceProtoMsg): _62.DenomTrace;
-                    toProto(message: _62.DenomTrace): Uint8Array;
-                    toProtoMsg(message: _62.DenomTrace): _62.DenomTraceProtoMsg;
+                    fromPartial(object: Partial<_64.DenomTrace>): _64.DenomTrace;
+                    fromAmino(object: _64.DenomTraceAmino): _64.DenomTrace;
+                    toAmino(message: _64.DenomTrace): _64.DenomTraceAmino;
+                    fromAminoMsg(object: _64.DenomTraceAminoMsg): _64.DenomTrace;
+                    toAminoMsg(message: _64.DenomTrace): _64.DenomTraceAminoMsg;
+                    fromProtoMsg(message: _64.DenomTraceProtoMsg): _64.DenomTrace;
+                    toProto(message: _64.DenomTrace): Uint8Array;
+                    toProtoMsg(message: _64.DenomTrace): _64.DenomTraceProtoMsg;
                 };
                 Params: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _62.Params;
-                    isSDK(o: any): o is _62.ParamsSDKType;
-                    isAmino(o: any): o is _62.ParamsAmino;
-                    encode(message: _62.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.Params;
-                    fromJSON(object: any): _62.Params;
-                    toJSON(message: _62.Params): {
+                    is(o: any): o is _64.Params;
+                    isSDK(o: any): o is _64.ParamsSDKType;
+                    isAmino(o: any): o is _64.ParamsAmino;
+                    encode(message: _64.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.Params;
+                    fromJSON(object: any): _64.Params;
+                    toJSON(message: _64.Params): {
                         sendEnabled: boolean;
                         receiveEnabled: boolean;
                     };
-                    fromPartial(object: Partial<_62.Params>): _62.Params;
-                    fromAmino(object: _62.ParamsAmino): _62.Params;
-                    toAmino(message: _62.Params): _62.ParamsAmino;
-                    fromAminoMsg(object: _62.ParamsAminoMsg): _62.Params;
-                    toAminoMsg(message: _62.Params): _62.ParamsAminoMsg;
-                    fromProtoMsg(message: _62.ParamsProtoMsg): _62.Params;
-                    toProto(message: _62.Params): Uint8Array;
-                    toProtoMsg(message: _62.Params): _62.ParamsProtoMsg;
+                    fromPartial(object: Partial<_64.Params>): _64.Params;
+                    fromAmino(object: _64.ParamsAmino): _64.Params;
+                    toAmino(message: _64.Params): _64.ParamsAmino;
+                    fromAminoMsg(object: _64.ParamsAminoMsg): _64.Params;
+                    toAminoMsg(message: _64.Params): _64.ParamsAminoMsg;
+                    fromProtoMsg(message: _64.ParamsProtoMsg): _64.Params;
+                    toProto(message: _64.Params): Uint8Array;
+                    toProtoMsg(message: _64.Params): _64.ParamsProtoMsg;
                 };
                 QueryDenomTraceRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _61.QueryDenomTraceRequest;
-                    isSDK(o: any): o is _61.QueryDenomTraceRequestSDKType;
-                    isAmino(o: any): o is _61.QueryDenomTraceRequestAmino;
-                    encode(message: _61.QueryDenomTraceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryDenomTraceRequest;
-                    fromJSON(object: any): _61.QueryDenomTraceRequest;
-                    toJSON(message: _61.QueryDenomTraceRequest): {
+                    is(o: any): o is _63.QueryDenomTraceRequest;
+                    isSDK(o: any): o is _63.QueryDenomTraceRequestSDKType;
+                    isAmino(o: any): o is _63.QueryDenomTraceRequestAmino;
+                    encode(message: _63.QueryDenomTraceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryDenomTraceRequest;
+                    fromJSON(object: any): _63.QueryDenomTraceRequest;
+                    toJSON(message: _63.QueryDenomTraceRequest): {
                         hash: string;
                     };
-                    fromPartial(object: Partial<_61.QueryDenomTraceRequest>): _61.QueryDenomTraceRequest;
-                    fromAmino(object: _61.QueryDenomTraceRequestAmino): _61.QueryDenomTraceRequest;
-                    toAmino(message: _61.QueryDenomTraceRequest): _61.QueryDenomTraceRequestAmino;
-                    fromAminoMsg(object: _61.QueryDenomTraceRequestAminoMsg): _61.QueryDenomTraceRequest;
-                    toAminoMsg(message: _61.QueryDenomTraceRequest): _61.QueryDenomTraceRequestAminoMsg;
-                    fromProtoMsg(message: _61.QueryDenomTraceRequestProtoMsg): _61.QueryDenomTraceRequest;
-                    toProto(message: _61.QueryDenomTraceRequest): Uint8Array;
-                    toProtoMsg(message: _61.QueryDenomTraceRequest): _61.QueryDenomTraceRequestProtoMsg;
+                    fromPartial(object: Partial<_63.QueryDenomTraceRequest>): _63.QueryDenomTraceRequest;
+                    fromAmino(object: _63.QueryDenomTraceRequestAmino): _63.QueryDenomTraceRequest;
+                    toAmino(message: _63.QueryDenomTraceRequest): _63.QueryDenomTraceRequestAmino;
+                    fromAminoMsg(object: _63.QueryDenomTraceRequestAminoMsg): _63.QueryDenomTraceRequest;
+                    toAminoMsg(message: _63.QueryDenomTraceRequest): _63.QueryDenomTraceRequestAminoMsg;
+                    fromProtoMsg(message: _63.QueryDenomTraceRequestProtoMsg): _63.QueryDenomTraceRequest;
+                    toProto(message: _63.QueryDenomTraceRequest): Uint8Array;
+                    toProtoMsg(message: _63.QueryDenomTraceRequest): _63.QueryDenomTraceRequestProtoMsg;
                 };
                 QueryDenomTraceResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _61.QueryDenomTraceResponse;
-                    isSDK(o: any): o is _61.QueryDenomTraceResponseSDKType;
-                    isAmino(o: any): o is _61.QueryDenomTraceResponseAmino;
-                    encode(message: _61.QueryDenomTraceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryDenomTraceResponse;
-                    fromJSON(object: any): _61.QueryDenomTraceResponse;
-                    toJSON(message: _61.QueryDenomTraceResponse): {
+                    is(o: any): o is _63.QueryDenomTraceResponse;
+                    isSDK(o: any): o is _63.QueryDenomTraceResponseSDKType;
+                    isAmino(o: any): o is _63.QueryDenomTraceResponseAmino;
+                    encode(message: _63.QueryDenomTraceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryDenomTraceResponse;
+                    fromJSON(object: any): _63.QueryDenomTraceResponse;
+                    toJSON(message: _63.QueryDenomTraceResponse): {
                         denomTrace?: {
                             path: string;
                             baseDenom: string;
                         };
                     };
-                    fromPartial(object: Partial<_61.QueryDenomTraceResponse>): _61.QueryDenomTraceResponse;
-                    fromAmino(object: _61.QueryDenomTraceResponseAmino): _61.QueryDenomTraceResponse;
-                    toAmino(message: _61.QueryDenomTraceResponse): _61.QueryDenomTraceResponseAmino;
-                    fromAminoMsg(object: _61.QueryDenomTraceResponseAminoMsg): _61.QueryDenomTraceResponse;
-                    toAminoMsg(message: _61.QueryDenomTraceResponse): _61.QueryDenomTraceResponseAminoMsg;
-                    fromProtoMsg(message: _61.QueryDenomTraceResponseProtoMsg): _61.QueryDenomTraceResponse;
-                    toProto(message: _61.QueryDenomTraceResponse): Uint8Array;
-                    toProtoMsg(message: _61.QueryDenomTraceResponse): _61.QueryDenomTraceResponseProtoMsg;
+                    fromPartial(object: Partial<_63.QueryDenomTraceResponse>): _63.QueryDenomTraceResponse;
+                    fromAmino(object: _63.QueryDenomTraceResponseAmino): _63.QueryDenomTraceResponse;
+                    toAmino(message: _63.QueryDenomTraceResponse): _63.QueryDenomTraceResponseAmino;
+                    fromAminoMsg(object: _63.QueryDenomTraceResponseAminoMsg): _63.QueryDenomTraceResponse;
+                    toAminoMsg(message: _63.QueryDenomTraceResponse): _63.QueryDenomTraceResponseAminoMsg;
+                    fromProtoMsg(message: _63.QueryDenomTraceResponseProtoMsg): _63.QueryDenomTraceResponse;
+                    toProto(message: _63.QueryDenomTraceResponse): Uint8Array;
+                    toProtoMsg(message: _63.QueryDenomTraceResponse): _63.QueryDenomTraceResponseProtoMsg;
                 };
                 QueryDenomTracesRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _61.QueryDenomTracesRequest;
-                    isSDK(o: any): o is _61.QueryDenomTracesRequestSDKType;
-                    isAmino(o: any): o is _61.QueryDenomTracesRequestAmino;
-                    encode(message: _61.QueryDenomTracesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryDenomTracesRequest;
-                    fromJSON(object: any): _61.QueryDenomTracesRequest;
-                    toJSON(message: _61.QueryDenomTracesRequest): {
+                    is(o: any): o is _63.QueryDenomTracesRequest;
+                    isSDK(o: any): o is _63.QueryDenomTracesRequestSDKType;
+                    isAmino(o: any): o is _63.QueryDenomTracesRequestAmino;
+                    encode(message: _63.QueryDenomTracesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryDenomTracesRequest;
+                    fromJSON(object: any): _63.QueryDenomTracesRequest;
+                    toJSON(message: _63.QueryDenomTracesRequest): {
                         pagination?: {
                             key: string;
                             offset: string;
@@ -253,25 +253,25 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_61.QueryDenomTracesRequest>): _61.QueryDenomTracesRequest;
-                    fromAmino(object: _61.QueryDenomTracesRequestAmino): _61.QueryDenomTracesRequest;
-                    toAmino(message: _61.QueryDenomTracesRequest): _61.QueryDenomTracesRequestAmino;
-                    fromAminoMsg(object: _61.QueryDenomTracesRequestAminoMsg): _61.QueryDenomTracesRequest;
-                    toAminoMsg(message: _61.QueryDenomTracesRequest): _61.QueryDenomTracesRequestAminoMsg;
-                    fromProtoMsg(message: _61.QueryDenomTracesRequestProtoMsg): _61.QueryDenomTracesRequest;
-                    toProto(message: _61.QueryDenomTracesRequest): Uint8Array;
-                    toProtoMsg(message: _61.QueryDenomTracesRequest): _61.QueryDenomTracesRequestProtoMsg;
+                    fromPartial(object: Partial<_63.QueryDenomTracesRequest>): _63.QueryDenomTracesRequest;
+                    fromAmino(object: _63.QueryDenomTracesRequestAmino): _63.QueryDenomTracesRequest;
+                    toAmino(message: _63.QueryDenomTracesRequest): _63.QueryDenomTracesRequestAmino;
+                    fromAminoMsg(object: _63.QueryDenomTracesRequestAminoMsg): _63.QueryDenomTracesRequest;
+                    toAminoMsg(message: _63.QueryDenomTracesRequest): _63.QueryDenomTracesRequestAminoMsg;
+                    fromProtoMsg(message: _63.QueryDenomTracesRequestProtoMsg): _63.QueryDenomTracesRequest;
+                    toProto(message: _63.QueryDenomTracesRequest): Uint8Array;
+                    toProtoMsg(message: _63.QueryDenomTracesRequest): _63.QueryDenomTracesRequestProtoMsg;
                 };
                 QueryDenomTracesResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _61.QueryDenomTracesResponse;
-                    isSDK(o: any): o is _61.QueryDenomTracesResponseSDKType;
-                    isAmino(o: any): o is _61.QueryDenomTracesResponseAmino;
-                    encode(message: _61.QueryDenomTracesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryDenomTracesResponse;
-                    fromJSON(object: any): _61.QueryDenomTracesResponse;
-                    toJSON(message: _61.QueryDenomTracesResponse): {
+                    is(o: any): o is _63.QueryDenomTracesResponse;
+                    isSDK(o: any): o is _63.QueryDenomTracesResponseSDKType;
+                    isAmino(o: any): o is _63.QueryDenomTracesResponseAmino;
+                    encode(message: _63.QueryDenomTracesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryDenomTracesResponse;
+                    fromJSON(object: any): _63.QueryDenomTracesResponse;
+                    toJSON(message: _63.QueryDenomTracesResponse): {
                         denomTraces: {
                             path: string;
                             baseDenom: string;
@@ -281,68 +281,68 @@ export declare namespace ibc {
                             total: string;
                         };
                     };
-                    fromPartial(object: Partial<_61.QueryDenomTracesResponse>): _61.QueryDenomTracesResponse;
-                    fromAmino(object: _61.QueryDenomTracesResponseAmino): _61.QueryDenomTracesResponse;
-                    toAmino(message: _61.QueryDenomTracesResponse): _61.QueryDenomTracesResponseAmino;
-                    fromAminoMsg(object: _61.QueryDenomTracesResponseAminoMsg): _61.QueryDenomTracesResponse;
-                    toAminoMsg(message: _61.QueryDenomTracesResponse): _61.QueryDenomTracesResponseAminoMsg;
-                    fromProtoMsg(message: _61.QueryDenomTracesResponseProtoMsg): _61.QueryDenomTracesResponse;
-                    toProto(message: _61.QueryDenomTracesResponse): Uint8Array;
-                    toProtoMsg(message: _61.QueryDenomTracesResponse): _61.QueryDenomTracesResponseProtoMsg;
+                    fromPartial(object: Partial<_63.QueryDenomTracesResponse>): _63.QueryDenomTracesResponse;
+                    fromAmino(object: _63.QueryDenomTracesResponseAmino): _63.QueryDenomTracesResponse;
+                    toAmino(message: _63.QueryDenomTracesResponse): _63.QueryDenomTracesResponseAmino;
+                    fromAminoMsg(object: _63.QueryDenomTracesResponseAminoMsg): _63.QueryDenomTracesResponse;
+                    toAminoMsg(message: _63.QueryDenomTracesResponse): _63.QueryDenomTracesResponseAminoMsg;
+                    fromProtoMsg(message: _63.QueryDenomTracesResponseProtoMsg): _63.QueryDenomTracesResponse;
+                    toProto(message: _63.QueryDenomTracesResponse): Uint8Array;
+                    toProtoMsg(message: _63.QueryDenomTracesResponse): _63.QueryDenomTracesResponseProtoMsg;
                 };
                 QueryParamsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _61.QueryParamsRequest;
-                    isSDK(o: any): o is _61.QueryParamsRequestSDKType;
-                    isAmino(o: any): o is _61.QueryParamsRequestAmino;
-                    encode(_: _61.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryParamsRequest;
-                    fromJSON(_: any): _61.QueryParamsRequest;
-                    toJSON(_: _61.QueryParamsRequest): {};
-                    fromPartial(_: Partial<_61.QueryParamsRequest>): _61.QueryParamsRequest;
-                    fromAmino(_: _61.QueryParamsRequestAmino): _61.QueryParamsRequest;
-                    toAmino(_: _61.QueryParamsRequest): _61.QueryParamsRequestAmino;
-                    fromAminoMsg(object: _61.QueryParamsRequestAminoMsg): _61.QueryParamsRequest;
-                    toAminoMsg(message: _61.QueryParamsRequest): _61.QueryParamsRequestAminoMsg;
-                    fromProtoMsg(message: _61.QueryParamsRequestProtoMsg): _61.QueryParamsRequest;
-                    toProto(message: _61.QueryParamsRequest): Uint8Array;
-                    toProtoMsg(message: _61.QueryParamsRequest): _61.QueryParamsRequestProtoMsg;
+                    is(o: any): o is _63.QueryParamsRequest;
+                    isSDK(o: any): o is _63.QueryParamsRequestSDKType;
+                    isAmino(o: any): o is _63.QueryParamsRequestAmino;
+                    encode(_: _63.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryParamsRequest;
+                    fromJSON(_: any): _63.QueryParamsRequest;
+                    toJSON(_: _63.QueryParamsRequest): {};
+                    fromPartial(_: Partial<_63.QueryParamsRequest>): _63.QueryParamsRequest;
+                    fromAmino(_: _63.QueryParamsRequestAmino): _63.QueryParamsRequest;
+                    toAmino(_: _63.QueryParamsRequest): _63.QueryParamsRequestAmino;
+                    fromAminoMsg(object: _63.QueryParamsRequestAminoMsg): _63.QueryParamsRequest;
+                    toAminoMsg(message: _63.QueryParamsRequest): _63.QueryParamsRequestAminoMsg;
+                    fromProtoMsg(message: _63.QueryParamsRequestProtoMsg): _63.QueryParamsRequest;
+                    toProto(message: _63.QueryParamsRequest): Uint8Array;
+                    toProtoMsg(message: _63.QueryParamsRequest): _63.QueryParamsRequestProtoMsg;
                 };
                 QueryParamsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _61.QueryParamsResponse;
-                    isSDK(o: any): o is _61.QueryParamsResponseSDKType;
-                    isAmino(o: any): o is _61.QueryParamsResponseAmino;
-                    encode(message: _61.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.QueryParamsResponse;
-                    fromJSON(object: any): _61.QueryParamsResponse;
-                    toJSON(message: _61.QueryParamsResponse): {
+                    is(o: any): o is _63.QueryParamsResponse;
+                    isSDK(o: any): o is _63.QueryParamsResponseSDKType;
+                    isAmino(o: any): o is _63.QueryParamsResponseAmino;
+                    encode(message: _63.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.QueryParamsResponse;
+                    fromJSON(object: any): _63.QueryParamsResponse;
+                    toJSON(message: _63.QueryParamsResponse): {
                         params?: {
                             sendEnabled: boolean;
                             receiveEnabled: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_61.QueryParamsResponse>): _61.QueryParamsResponse;
-                    fromAmino(object: _61.QueryParamsResponseAmino): _61.QueryParamsResponse;
-                    toAmino(message: _61.QueryParamsResponse): _61.QueryParamsResponseAmino;
-                    fromAminoMsg(object: _61.QueryParamsResponseAminoMsg): _61.QueryParamsResponse;
-                    toAminoMsg(message: _61.QueryParamsResponse): _61.QueryParamsResponseAminoMsg;
-                    fromProtoMsg(message: _61.QueryParamsResponseProtoMsg): _61.QueryParamsResponse;
-                    toProto(message: _61.QueryParamsResponse): Uint8Array;
-                    toProtoMsg(message: _61.QueryParamsResponse): _61.QueryParamsResponseProtoMsg;
+                    fromPartial(object: Partial<_63.QueryParamsResponse>): _63.QueryParamsResponse;
+                    fromAmino(object: _63.QueryParamsResponseAmino): _63.QueryParamsResponse;
+                    toAmino(message: _63.QueryParamsResponse): _63.QueryParamsResponseAmino;
+                    fromAminoMsg(object: _63.QueryParamsResponseAminoMsg): _63.QueryParamsResponse;
+                    toAminoMsg(message: _63.QueryParamsResponse): _63.QueryParamsResponseAminoMsg;
+                    fromProtoMsg(message: _63.QueryParamsResponseProtoMsg): _63.QueryParamsResponse;
+                    toProto(message: _63.QueryParamsResponse): Uint8Array;
+                    toProtoMsg(message: _63.QueryParamsResponse): _63.QueryParamsResponseProtoMsg;
                 };
                 GenesisState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _60.GenesisState;
-                    isSDK(o: any): o is _60.GenesisStateSDKType;
-                    isAmino(o: any): o is _60.GenesisStateAmino;
-                    encode(message: _60.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.GenesisState;
-                    fromJSON(object: any): _60.GenesisState;
-                    toJSON(message: _60.GenesisState): {
+                    is(o: any): o is _62.GenesisState;
+                    isSDK(o: any): o is _62.GenesisStateSDKType;
+                    isAmino(o: any): o is _62.GenesisStateAmino;
+                    encode(message: _62.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.GenesisState;
+                    fromJSON(object: any): _62.GenesisState;
+                    toJSON(message: _62.GenesisState): {
                         portId: string;
                         denomTraces: {
                             path: string;
@@ -353,40 +353,40 @@ export declare namespace ibc {
                             receiveEnabled: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_60.GenesisState>): _60.GenesisState;
-                    fromAmino(object: _60.GenesisStateAmino): _60.GenesisState;
-                    toAmino(message: _60.GenesisState): _60.GenesisStateAmino;
-                    fromAminoMsg(object: _60.GenesisStateAminoMsg): _60.GenesisState;
-                    toAminoMsg(message: _60.GenesisState): _60.GenesisStateAminoMsg;
-                    fromProtoMsg(message: _60.GenesisStateProtoMsg): _60.GenesisState;
-                    toProto(message: _60.GenesisState): Uint8Array;
-                    toProtoMsg(message: _60.GenesisState): _60.GenesisStateProtoMsg;
+                    fromPartial(object: Partial<_62.GenesisState>): _62.GenesisState;
+                    fromAmino(object: _62.GenesisStateAmino): _62.GenesisState;
+                    toAmino(message: _62.GenesisState): _62.GenesisStateAmino;
+                    fromAminoMsg(object: _62.GenesisStateAminoMsg): _62.GenesisState;
+                    toAminoMsg(message: _62.GenesisState): _62.GenesisStateAminoMsg;
+                    fromProtoMsg(message: _62.GenesisStateProtoMsg): _62.GenesisState;
+                    toProto(message: _62.GenesisState): Uint8Array;
+                    toProtoMsg(message: _62.GenesisState): _62.GenesisStateProtoMsg;
                 };
             };
             const v2: {
                 FungibleTokenPacketData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _64.FungibleTokenPacketData;
-                    isSDK(o: any): o is _64.FungibleTokenPacketDataSDKType;
-                    isAmino(o: any): o is _64.FungibleTokenPacketDataAmino;
-                    encode(message: _64.FungibleTokenPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.FungibleTokenPacketData;
-                    fromJSON(object: any): _64.FungibleTokenPacketData;
-                    toJSON(message: _64.FungibleTokenPacketData): {
+                    is(o: any): o is _66.FungibleTokenPacketData;
+                    isSDK(o: any): o is _66.FungibleTokenPacketDataSDKType;
+                    isAmino(o: any): o is _66.FungibleTokenPacketDataAmino;
+                    encode(message: _66.FungibleTokenPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.FungibleTokenPacketData;
+                    fromJSON(object: any): _66.FungibleTokenPacketData;
+                    toJSON(message: _66.FungibleTokenPacketData): {
                         denom: string;
                         amount: string;
                         sender: string;
                         receiver: string;
                     };
-                    fromPartial(object: Partial<_64.FungibleTokenPacketData>): _64.FungibleTokenPacketData;
-                    fromAmino(object: _64.FungibleTokenPacketDataAmino): _64.FungibleTokenPacketData;
-                    toAmino(message: _64.FungibleTokenPacketData): _64.FungibleTokenPacketDataAmino;
-                    fromAminoMsg(object: _64.FungibleTokenPacketDataAminoMsg): _64.FungibleTokenPacketData;
-                    toAminoMsg(message: _64.FungibleTokenPacketData): _64.FungibleTokenPacketDataAminoMsg;
-                    fromProtoMsg(message: _64.FungibleTokenPacketDataProtoMsg): _64.FungibleTokenPacketData;
-                    toProto(message: _64.FungibleTokenPacketData): Uint8Array;
-                    toProtoMsg(message: _64.FungibleTokenPacketData): _64.FungibleTokenPacketDataProtoMsg;
+                    fromPartial(object: Partial<_66.FungibleTokenPacketData>): _66.FungibleTokenPacketData;
+                    fromAmino(object: _66.FungibleTokenPacketDataAmino): _66.FungibleTokenPacketData;
+                    toAmino(message: _66.FungibleTokenPacketData): _66.FungibleTokenPacketDataAmino;
+                    fromAminoMsg(object: _66.FungibleTokenPacketDataAminoMsg): _66.FungibleTokenPacketData;
+                    toAminoMsg(message: _66.FungibleTokenPacketData): _66.FungibleTokenPacketDataAminoMsg;
+                    fromProtoMsg(message: _66.FungibleTokenPacketDataProtoMsg): _66.FungibleTokenPacketData;
+                    toProto(message: _66.FungibleTokenPacketData): Uint8Array;
+                    toProtoMsg(message: _66.FungibleTokenPacketData): _66.FungibleTokenPacketDataProtoMsg;
                 };
             };
         }
@@ -394,118 +394,118 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _198.MsgClientImpl;
-                QueryClientImpl: typeof _194.QueryClientImpl;
+                MsgClientImpl: typeof _209.MsgClientImpl;
+                QueryClientImpl: typeof _205.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    channel(request: _67.QueryChannelRequest): Promise<_67.QueryChannelResponse>;
-                    channels(request?: _67.QueryChannelsRequest): Promise<_67.QueryChannelsResponse>;
-                    connectionChannels(request: _67.QueryConnectionChannelsRequest): Promise<_67.QueryConnectionChannelsResponse>;
-                    channelClientState(request: _67.QueryChannelClientStateRequest): Promise<_67.QueryChannelClientStateResponse>;
-                    channelConsensusState(request: _67.QueryChannelConsensusStateRequest): Promise<_67.QueryChannelConsensusStateResponse>;
-                    packetCommitment(request: _67.QueryPacketCommitmentRequest): Promise<_67.QueryPacketCommitmentResponse>;
-                    packetCommitments(request: _67.QueryPacketCommitmentsRequest): Promise<_67.QueryPacketCommitmentsResponse>;
-                    packetReceipt(request: _67.QueryPacketReceiptRequest): Promise<_67.QueryPacketReceiptResponse>;
-                    packetAcknowledgement(request: _67.QueryPacketAcknowledgementRequest): Promise<_67.QueryPacketAcknowledgementResponse>;
-                    packetAcknowledgements(request: _67.QueryPacketAcknowledgementsRequest): Promise<_67.QueryPacketAcknowledgementsResponse>;
-                    unreceivedPackets(request: _67.QueryUnreceivedPacketsRequest): Promise<_67.QueryUnreceivedPacketsResponse>;
-                    unreceivedAcks(request: _67.QueryUnreceivedAcksRequest): Promise<_67.QueryUnreceivedAcksResponse>;
-                    nextSequenceReceive(request: _67.QueryNextSequenceReceiveRequest): Promise<_67.QueryNextSequenceReceiveResponse>;
+                    channel(request: _69.QueryChannelRequest): Promise<_69.QueryChannelResponse>;
+                    channels(request?: _69.QueryChannelsRequest): Promise<_69.QueryChannelsResponse>;
+                    connectionChannels(request: _69.QueryConnectionChannelsRequest): Promise<_69.QueryConnectionChannelsResponse>;
+                    channelClientState(request: _69.QueryChannelClientStateRequest): Promise<_69.QueryChannelClientStateResponse>;
+                    channelConsensusState(request: _69.QueryChannelConsensusStateRequest): Promise<_69.QueryChannelConsensusStateResponse>;
+                    packetCommitment(request: _69.QueryPacketCommitmentRequest): Promise<_69.QueryPacketCommitmentResponse>;
+                    packetCommitments(request: _69.QueryPacketCommitmentsRequest): Promise<_69.QueryPacketCommitmentsResponse>;
+                    packetReceipt(request: _69.QueryPacketReceiptRequest): Promise<_69.QueryPacketReceiptResponse>;
+                    packetAcknowledgement(request: _69.QueryPacketAcknowledgementRequest): Promise<_69.QueryPacketAcknowledgementResponse>;
+                    packetAcknowledgements(request: _69.QueryPacketAcknowledgementsRequest): Promise<_69.QueryPacketAcknowledgementsResponse>;
+                    unreceivedPackets(request: _69.QueryUnreceivedPacketsRequest): Promise<_69.QueryUnreceivedPacketsResponse>;
+                    unreceivedAcks(request: _69.QueryUnreceivedAcksRequest): Promise<_69.QueryUnreceivedAcksResponse>;
+                    nextSequenceReceive(request: _69.QueryNextSequenceReceiveRequest): Promise<_69.QueryNextSequenceReceiveResponse>;
                 };
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        channelOpenInit(value: _68.MsgChannelOpenInit): {
+                        channelOpenInit(value: _70.MsgChannelOpenInit): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelOpenTry(value: _68.MsgChannelOpenTry): {
+                        channelOpenTry(value: _70.MsgChannelOpenTry): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelOpenAck(value: _68.MsgChannelOpenAck): {
+                        channelOpenAck(value: _70.MsgChannelOpenAck): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelOpenConfirm(value: _68.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _70.MsgChannelOpenConfirm): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelCloseInit(value: _68.MsgChannelCloseInit): {
+                        channelCloseInit(value: _70.MsgChannelCloseInit): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelCloseConfirm(value: _68.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _70.MsgChannelCloseConfirm): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        recvPacket(value: _68.MsgRecvPacket): {
+                        recvPacket(value: _70.MsgRecvPacket): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        timeout(value: _68.MsgTimeout): {
+                        timeout(value: _70.MsgTimeout): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        timeoutOnClose(value: _68.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _70.MsgTimeoutOnClose): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        acknowledgement(value: _68.MsgAcknowledgement): {
+                        acknowledgement(value: _70.MsgAcknowledgement): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        channelOpenInit(value: _68.MsgChannelOpenInit): {
+                        channelOpenInit(value: _70.MsgChannelOpenInit): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenInit;
+                            value: _70.MsgChannelOpenInit;
                         };
-                        channelOpenTry(value: _68.MsgChannelOpenTry): {
+                        channelOpenTry(value: _70.MsgChannelOpenTry): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenTry;
+                            value: _70.MsgChannelOpenTry;
                         };
-                        channelOpenAck(value: _68.MsgChannelOpenAck): {
+                        channelOpenAck(value: _70.MsgChannelOpenAck): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenAck;
+                            value: _70.MsgChannelOpenAck;
                         };
-                        channelOpenConfirm(value: _68.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _70.MsgChannelOpenConfirm): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenConfirm;
+                            value: _70.MsgChannelOpenConfirm;
                         };
-                        channelCloseInit(value: _68.MsgChannelCloseInit): {
+                        channelCloseInit(value: _70.MsgChannelCloseInit): {
                             typeUrl: string;
-                            value: _68.MsgChannelCloseInit;
+                            value: _70.MsgChannelCloseInit;
                         };
-                        channelCloseConfirm(value: _68.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _70.MsgChannelCloseConfirm): {
                             typeUrl: string;
-                            value: _68.MsgChannelCloseConfirm;
+                            value: _70.MsgChannelCloseConfirm;
                         };
-                        recvPacket(value: _68.MsgRecvPacket): {
+                        recvPacket(value: _70.MsgRecvPacket): {
                             typeUrl: string;
-                            value: _68.MsgRecvPacket;
+                            value: _70.MsgRecvPacket;
                         };
-                        timeout(value: _68.MsgTimeout): {
+                        timeout(value: _70.MsgTimeout): {
                             typeUrl: string;
-                            value: _68.MsgTimeout;
+                            value: _70.MsgTimeout;
                         };
-                        timeoutOnClose(value: _68.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _70.MsgTimeoutOnClose): {
                             typeUrl: string;
-                            value: _68.MsgTimeoutOnClose;
+                            value: _70.MsgTimeoutOnClose;
                         };
-                        acknowledgement(value: _68.MsgAcknowledgement): {
+                        acknowledgement(value: _70.MsgAcknowledgement): {
                             typeUrl: string;
-                            value: _68.MsgAcknowledgement;
+                            value: _70.MsgAcknowledgement;
                         };
                     };
                     toJSON: {
-                        channelOpenInit(value: _68.MsgChannelOpenInit): {
+                        channelOpenInit(value: _70.MsgChannelOpenInit): {
                             typeUrl: string;
                             value: {
                                 portId: string;
                                 channel: {
-                                    state: _65.State;
-                                    ordering: _65.Order;
+                                    state: _67.State;
+                                    ordering: _67.Order;
                                     counterparty: {
                                         portId: string;
                                         channelId: string;
@@ -516,14 +516,14 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        channelOpenTry(value: _68.MsgChannelOpenTry): {
+                        channelOpenTry(value: _70.MsgChannelOpenTry): {
                             typeUrl: string;
                             value: {
                                 portId: string;
                                 previousChannelId: string;
                                 channel: {
-                                    state: _65.State;
-                                    ordering: _65.Order;
+                                    state: _67.State;
+                                    ordering: _67.Order;
                                     counterparty: {
                                         portId: string;
                                         channelId: string;
@@ -540,7 +540,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        channelOpenAck(value: _68.MsgChannelOpenAck): {
+                        channelOpenAck(value: _70.MsgChannelOpenAck): {
                             typeUrl: string;
                             value: {
                                 portId: string;
@@ -555,7 +555,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        channelOpenConfirm(value: _68.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _70.MsgChannelOpenConfirm): {
                             typeUrl: string;
                             value: {
                                 portId: string;
@@ -568,7 +568,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        channelCloseInit(value: _68.MsgChannelCloseInit): {
+                        channelCloseInit(value: _70.MsgChannelCloseInit): {
                             typeUrl: string;
                             value: {
                                 portId: string;
@@ -576,7 +576,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        channelCloseConfirm(value: _68.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _70.MsgChannelCloseConfirm): {
                             typeUrl: string;
                             value: {
                                 portId: string;
@@ -589,7 +589,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        recvPacket(value: _68.MsgRecvPacket): {
+                        recvPacket(value: _70.MsgRecvPacket): {
                             typeUrl: string;
                             value: {
                                 packet: {
@@ -613,7 +613,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        timeout(value: _68.MsgTimeout): {
+                        timeout(value: _70.MsgTimeout): {
                             typeUrl: string;
                             value: {
                                 packet: {
@@ -638,7 +638,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        timeoutOnClose(value: _68.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _70.MsgTimeoutOnClose): {
                             typeUrl: string;
                             value: {
                                 packet: {
@@ -664,7 +664,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        acknowledgement(value: _68.MsgAcknowledgement): {
+                        acknowledgement(value: _70.MsgAcknowledgement): {
                             typeUrl: string;
                             value: {
                                 packet: {
@@ -693,154 +693,154 @@ export declare namespace ibc {
                     fromJSON: {
                         channelOpenInit(value: any): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenInit;
+                            value: _70.MsgChannelOpenInit;
                         };
                         channelOpenTry(value: any): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenTry;
+                            value: _70.MsgChannelOpenTry;
                         };
                         channelOpenAck(value: any): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenAck;
+                            value: _70.MsgChannelOpenAck;
                         };
                         channelOpenConfirm(value: any): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenConfirm;
+                            value: _70.MsgChannelOpenConfirm;
                         };
                         channelCloseInit(value: any): {
                             typeUrl: string;
-                            value: _68.MsgChannelCloseInit;
+                            value: _70.MsgChannelCloseInit;
                         };
                         channelCloseConfirm(value: any): {
                             typeUrl: string;
-                            value: _68.MsgChannelCloseConfirm;
+                            value: _70.MsgChannelCloseConfirm;
                         };
                         recvPacket(value: any): {
                             typeUrl: string;
-                            value: _68.MsgRecvPacket;
+                            value: _70.MsgRecvPacket;
                         };
                         timeout(value: any): {
                             typeUrl: string;
-                            value: _68.MsgTimeout;
+                            value: _70.MsgTimeout;
                         };
                         timeoutOnClose(value: any): {
                             typeUrl: string;
-                            value: _68.MsgTimeoutOnClose;
+                            value: _70.MsgTimeoutOnClose;
                         };
                         acknowledgement(value: any): {
                             typeUrl: string;
-                            value: _68.MsgAcknowledgement;
+                            value: _70.MsgAcknowledgement;
                         };
                     };
                     fromPartial: {
-                        channelOpenInit(value: _68.MsgChannelOpenInit): {
+                        channelOpenInit(value: _70.MsgChannelOpenInit): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenInit;
+                            value: _70.MsgChannelOpenInit;
                         };
-                        channelOpenTry(value: _68.MsgChannelOpenTry): {
+                        channelOpenTry(value: _70.MsgChannelOpenTry): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenTry;
+                            value: _70.MsgChannelOpenTry;
                         };
-                        channelOpenAck(value: _68.MsgChannelOpenAck): {
+                        channelOpenAck(value: _70.MsgChannelOpenAck): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenAck;
+                            value: _70.MsgChannelOpenAck;
                         };
-                        channelOpenConfirm(value: _68.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _70.MsgChannelOpenConfirm): {
                             typeUrl: string;
-                            value: _68.MsgChannelOpenConfirm;
+                            value: _70.MsgChannelOpenConfirm;
                         };
-                        channelCloseInit(value: _68.MsgChannelCloseInit): {
+                        channelCloseInit(value: _70.MsgChannelCloseInit): {
                             typeUrl: string;
-                            value: _68.MsgChannelCloseInit;
+                            value: _70.MsgChannelCloseInit;
                         };
-                        channelCloseConfirm(value: _68.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _70.MsgChannelCloseConfirm): {
                             typeUrl: string;
-                            value: _68.MsgChannelCloseConfirm;
+                            value: _70.MsgChannelCloseConfirm;
                         };
-                        recvPacket(value: _68.MsgRecvPacket): {
+                        recvPacket(value: _70.MsgRecvPacket): {
                             typeUrl: string;
-                            value: _68.MsgRecvPacket;
+                            value: _70.MsgRecvPacket;
                         };
-                        timeout(value: _68.MsgTimeout): {
+                        timeout(value: _70.MsgTimeout): {
                             typeUrl: string;
-                            value: _68.MsgTimeout;
+                            value: _70.MsgTimeout;
                         };
-                        timeoutOnClose(value: _68.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _70.MsgTimeoutOnClose): {
                             typeUrl: string;
-                            value: _68.MsgTimeoutOnClose;
+                            value: _70.MsgTimeoutOnClose;
                         };
-                        acknowledgement(value: _68.MsgAcknowledgement): {
+                        acknowledgement(value: _70.MsgAcknowledgement): {
                             typeUrl: string;
-                            value: _68.MsgAcknowledgement;
+                            value: _70.MsgAcknowledgement;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.core.channel.v1.MsgChannelOpenInit": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgChannelOpenInit) => _68.MsgChannelOpenInitAmino;
-                        fromAmino: (object: _68.MsgChannelOpenInitAmino) => _68.MsgChannelOpenInit;
+                        toAmino: (message: _70.MsgChannelOpenInit) => _70.MsgChannelOpenInitAmino;
+                        fromAmino: (object: _70.MsgChannelOpenInitAmino) => _70.MsgChannelOpenInit;
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenTry": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgChannelOpenTry) => _68.MsgChannelOpenTryAmino;
-                        fromAmino: (object: _68.MsgChannelOpenTryAmino) => _68.MsgChannelOpenTry;
+                        toAmino: (message: _70.MsgChannelOpenTry) => _70.MsgChannelOpenTryAmino;
+                        fromAmino: (object: _70.MsgChannelOpenTryAmino) => _70.MsgChannelOpenTry;
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenAck": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgChannelOpenAck) => _68.MsgChannelOpenAckAmino;
-                        fromAmino: (object: _68.MsgChannelOpenAckAmino) => _68.MsgChannelOpenAck;
+                        toAmino: (message: _70.MsgChannelOpenAck) => _70.MsgChannelOpenAckAmino;
+                        fromAmino: (object: _70.MsgChannelOpenAckAmino) => _70.MsgChannelOpenAck;
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenConfirm": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgChannelOpenConfirm) => _68.MsgChannelOpenConfirmAmino;
-                        fromAmino: (object: _68.MsgChannelOpenConfirmAmino) => _68.MsgChannelOpenConfirm;
+                        toAmino: (message: _70.MsgChannelOpenConfirm) => _70.MsgChannelOpenConfirmAmino;
+                        fromAmino: (object: _70.MsgChannelOpenConfirmAmino) => _70.MsgChannelOpenConfirm;
                     };
                     "/ibc.core.channel.v1.MsgChannelCloseInit": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgChannelCloseInit) => _68.MsgChannelCloseInitAmino;
-                        fromAmino: (object: _68.MsgChannelCloseInitAmino) => _68.MsgChannelCloseInit;
+                        toAmino: (message: _70.MsgChannelCloseInit) => _70.MsgChannelCloseInitAmino;
+                        fromAmino: (object: _70.MsgChannelCloseInitAmino) => _70.MsgChannelCloseInit;
                     };
                     "/ibc.core.channel.v1.MsgChannelCloseConfirm": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgChannelCloseConfirm) => _68.MsgChannelCloseConfirmAmino;
-                        fromAmino: (object: _68.MsgChannelCloseConfirmAmino) => _68.MsgChannelCloseConfirm;
+                        toAmino: (message: _70.MsgChannelCloseConfirm) => _70.MsgChannelCloseConfirmAmino;
+                        fromAmino: (object: _70.MsgChannelCloseConfirmAmino) => _70.MsgChannelCloseConfirm;
                     };
                     "/ibc.core.channel.v1.MsgRecvPacket": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgRecvPacket) => _68.MsgRecvPacketAmino;
-                        fromAmino: (object: _68.MsgRecvPacketAmino) => _68.MsgRecvPacket;
+                        toAmino: (message: _70.MsgRecvPacket) => _70.MsgRecvPacketAmino;
+                        fromAmino: (object: _70.MsgRecvPacketAmino) => _70.MsgRecvPacket;
                     };
                     "/ibc.core.channel.v1.MsgTimeout": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgTimeout) => _68.MsgTimeoutAmino;
-                        fromAmino: (object: _68.MsgTimeoutAmino) => _68.MsgTimeout;
+                        toAmino: (message: _70.MsgTimeout) => _70.MsgTimeoutAmino;
+                        fromAmino: (object: _70.MsgTimeoutAmino) => _70.MsgTimeout;
                     };
                     "/ibc.core.channel.v1.MsgTimeoutOnClose": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgTimeoutOnClose) => _68.MsgTimeoutOnCloseAmino;
-                        fromAmino: (object: _68.MsgTimeoutOnCloseAmino) => _68.MsgTimeoutOnClose;
+                        toAmino: (message: _70.MsgTimeoutOnClose) => _70.MsgTimeoutOnCloseAmino;
+                        fromAmino: (object: _70.MsgTimeoutOnCloseAmino) => _70.MsgTimeoutOnClose;
                     };
                     "/ibc.core.channel.v1.MsgAcknowledgement": {
                         aminoType: string;
-                        toAmino: (message: _68.MsgAcknowledgement) => _68.MsgAcknowledgementAmino;
-                        fromAmino: (object: _68.MsgAcknowledgementAmino) => _68.MsgAcknowledgement;
+                        toAmino: (message: _70.MsgAcknowledgement) => _70.MsgAcknowledgementAmino;
+                        fromAmino: (object: _70.MsgAcknowledgementAmino) => _70.MsgAcknowledgement;
                     };
                 };
                 MsgChannelOpenInit: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenInit;
-                    isSDK(o: any): o is _68.MsgChannelOpenInitSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenInitAmino;
-                    encode(message: _68.MsgChannelOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenInit;
-                    fromJSON(object: any): _68.MsgChannelOpenInit;
-                    toJSON(message: _68.MsgChannelOpenInit): {
+                    is(o: any): o is _70.MsgChannelOpenInit;
+                    isSDK(o: any): o is _70.MsgChannelOpenInitSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenInitAmino;
+                    encode(message: _70.MsgChannelOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenInit;
+                    fromJSON(object: any): _70.MsgChannelOpenInit;
+                    toJSON(message: _70.MsgChannelOpenInit): {
                         portId: string;
                         channel: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -850,49 +850,49 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgChannelOpenInit>): _68.MsgChannelOpenInit;
-                    fromAmino(object: _68.MsgChannelOpenInitAmino): _68.MsgChannelOpenInit;
-                    toAmino(message: _68.MsgChannelOpenInit): _68.MsgChannelOpenInitAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenInitAminoMsg): _68.MsgChannelOpenInit;
-                    toAminoMsg(message: _68.MsgChannelOpenInit): _68.MsgChannelOpenInitAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenInitProtoMsg): _68.MsgChannelOpenInit;
-                    toProto(message: _68.MsgChannelOpenInit): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenInit): _68.MsgChannelOpenInitProtoMsg;
+                    fromPartial(object: Partial<_70.MsgChannelOpenInit>): _70.MsgChannelOpenInit;
+                    fromAmino(object: _70.MsgChannelOpenInitAmino): _70.MsgChannelOpenInit;
+                    toAmino(message: _70.MsgChannelOpenInit): _70.MsgChannelOpenInitAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenInitAminoMsg): _70.MsgChannelOpenInit;
+                    toAminoMsg(message: _70.MsgChannelOpenInit): _70.MsgChannelOpenInitAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenInitProtoMsg): _70.MsgChannelOpenInit;
+                    toProto(message: _70.MsgChannelOpenInit): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenInit): _70.MsgChannelOpenInitProtoMsg;
                 };
                 MsgChannelOpenInitResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenInitResponse;
-                    isSDK(o: any): o is _68.MsgChannelOpenInitResponseSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenInitResponseAmino;
-                    encode(_: _68.MsgChannelOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenInitResponse;
-                    fromJSON(_: any): _68.MsgChannelOpenInitResponse;
-                    toJSON(_: _68.MsgChannelOpenInitResponse): {};
-                    fromPartial(_: Partial<_68.MsgChannelOpenInitResponse>): _68.MsgChannelOpenInitResponse;
-                    fromAmino(_: _68.MsgChannelOpenInitResponseAmino): _68.MsgChannelOpenInitResponse;
-                    toAmino(_: _68.MsgChannelOpenInitResponse): _68.MsgChannelOpenInitResponseAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenInitResponseAminoMsg): _68.MsgChannelOpenInitResponse;
-                    toAminoMsg(message: _68.MsgChannelOpenInitResponse): _68.MsgChannelOpenInitResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenInitResponseProtoMsg): _68.MsgChannelOpenInitResponse;
-                    toProto(message: _68.MsgChannelOpenInitResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenInitResponse): _68.MsgChannelOpenInitResponseProtoMsg;
+                    is(o: any): o is _70.MsgChannelOpenInitResponse;
+                    isSDK(o: any): o is _70.MsgChannelOpenInitResponseSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenInitResponseAmino;
+                    encode(_: _70.MsgChannelOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenInitResponse;
+                    fromJSON(_: any): _70.MsgChannelOpenInitResponse;
+                    toJSON(_: _70.MsgChannelOpenInitResponse): {};
+                    fromPartial(_: Partial<_70.MsgChannelOpenInitResponse>): _70.MsgChannelOpenInitResponse;
+                    fromAmino(_: _70.MsgChannelOpenInitResponseAmino): _70.MsgChannelOpenInitResponse;
+                    toAmino(_: _70.MsgChannelOpenInitResponse): _70.MsgChannelOpenInitResponseAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenInitResponseAminoMsg): _70.MsgChannelOpenInitResponse;
+                    toAminoMsg(message: _70.MsgChannelOpenInitResponse): _70.MsgChannelOpenInitResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenInitResponseProtoMsg): _70.MsgChannelOpenInitResponse;
+                    toProto(message: _70.MsgChannelOpenInitResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenInitResponse): _70.MsgChannelOpenInitResponseProtoMsg;
                 };
                 MsgChannelOpenTry: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenTry;
-                    isSDK(o: any): o is _68.MsgChannelOpenTrySDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenTryAmino;
-                    encode(message: _68.MsgChannelOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenTry;
-                    fromJSON(object: any): _68.MsgChannelOpenTry;
-                    toJSON(message: _68.MsgChannelOpenTry): {
+                    is(o: any): o is _70.MsgChannelOpenTry;
+                    isSDK(o: any): o is _70.MsgChannelOpenTrySDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenTryAmino;
+                    encode(message: _70.MsgChannelOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenTry;
+                    fromJSON(object: any): _70.MsgChannelOpenTry;
+                    toJSON(message: _70.MsgChannelOpenTry): {
                         portId: string;
                         previousChannelId: string;
                         channel: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -908,44 +908,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgChannelOpenTry>): _68.MsgChannelOpenTry;
-                    fromAmino(object: _68.MsgChannelOpenTryAmino): _68.MsgChannelOpenTry;
-                    toAmino(message: _68.MsgChannelOpenTry): _68.MsgChannelOpenTryAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenTryAminoMsg): _68.MsgChannelOpenTry;
-                    toAminoMsg(message: _68.MsgChannelOpenTry): _68.MsgChannelOpenTryAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenTryProtoMsg): _68.MsgChannelOpenTry;
-                    toProto(message: _68.MsgChannelOpenTry): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenTry): _68.MsgChannelOpenTryProtoMsg;
+                    fromPartial(object: Partial<_70.MsgChannelOpenTry>): _70.MsgChannelOpenTry;
+                    fromAmino(object: _70.MsgChannelOpenTryAmino): _70.MsgChannelOpenTry;
+                    toAmino(message: _70.MsgChannelOpenTry): _70.MsgChannelOpenTryAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenTryAminoMsg): _70.MsgChannelOpenTry;
+                    toAminoMsg(message: _70.MsgChannelOpenTry): _70.MsgChannelOpenTryAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenTryProtoMsg): _70.MsgChannelOpenTry;
+                    toProto(message: _70.MsgChannelOpenTry): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenTry): _70.MsgChannelOpenTryProtoMsg;
                 };
                 MsgChannelOpenTryResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenTryResponse;
-                    isSDK(o: any): o is _68.MsgChannelOpenTryResponseSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenTryResponseAmino;
-                    encode(_: _68.MsgChannelOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenTryResponse;
-                    fromJSON(_: any): _68.MsgChannelOpenTryResponse;
-                    toJSON(_: _68.MsgChannelOpenTryResponse): {};
-                    fromPartial(_: Partial<_68.MsgChannelOpenTryResponse>): _68.MsgChannelOpenTryResponse;
-                    fromAmino(_: _68.MsgChannelOpenTryResponseAmino): _68.MsgChannelOpenTryResponse;
-                    toAmino(_: _68.MsgChannelOpenTryResponse): _68.MsgChannelOpenTryResponseAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenTryResponseAminoMsg): _68.MsgChannelOpenTryResponse;
-                    toAminoMsg(message: _68.MsgChannelOpenTryResponse): _68.MsgChannelOpenTryResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenTryResponseProtoMsg): _68.MsgChannelOpenTryResponse;
-                    toProto(message: _68.MsgChannelOpenTryResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenTryResponse): _68.MsgChannelOpenTryResponseProtoMsg;
+                    is(o: any): o is _70.MsgChannelOpenTryResponse;
+                    isSDK(o: any): o is _70.MsgChannelOpenTryResponseSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenTryResponseAmino;
+                    encode(_: _70.MsgChannelOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenTryResponse;
+                    fromJSON(_: any): _70.MsgChannelOpenTryResponse;
+                    toJSON(_: _70.MsgChannelOpenTryResponse): {};
+                    fromPartial(_: Partial<_70.MsgChannelOpenTryResponse>): _70.MsgChannelOpenTryResponse;
+                    fromAmino(_: _70.MsgChannelOpenTryResponseAmino): _70.MsgChannelOpenTryResponse;
+                    toAmino(_: _70.MsgChannelOpenTryResponse): _70.MsgChannelOpenTryResponseAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenTryResponseAminoMsg): _70.MsgChannelOpenTryResponse;
+                    toAminoMsg(message: _70.MsgChannelOpenTryResponse): _70.MsgChannelOpenTryResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenTryResponseProtoMsg): _70.MsgChannelOpenTryResponse;
+                    toProto(message: _70.MsgChannelOpenTryResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenTryResponse): _70.MsgChannelOpenTryResponseProtoMsg;
                 };
                 MsgChannelOpenAck: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenAck;
-                    isSDK(o: any): o is _68.MsgChannelOpenAckSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenAckAmino;
-                    encode(message: _68.MsgChannelOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenAck;
-                    fromJSON(object: any): _68.MsgChannelOpenAck;
-                    toJSON(message: _68.MsgChannelOpenAck): {
+                    is(o: any): o is _70.MsgChannelOpenAck;
+                    isSDK(o: any): o is _70.MsgChannelOpenAckSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenAckAmino;
+                    encode(message: _70.MsgChannelOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenAck;
+                    fromJSON(object: any): _70.MsgChannelOpenAck;
+                    toJSON(message: _70.MsgChannelOpenAck): {
                         portId: string;
                         channelId: string;
                         counterpartyChannelId: string;
@@ -957,44 +957,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgChannelOpenAck>): _68.MsgChannelOpenAck;
-                    fromAmino(object: _68.MsgChannelOpenAckAmino): _68.MsgChannelOpenAck;
-                    toAmino(message: _68.MsgChannelOpenAck): _68.MsgChannelOpenAckAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenAckAminoMsg): _68.MsgChannelOpenAck;
-                    toAminoMsg(message: _68.MsgChannelOpenAck): _68.MsgChannelOpenAckAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenAckProtoMsg): _68.MsgChannelOpenAck;
-                    toProto(message: _68.MsgChannelOpenAck): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenAck): _68.MsgChannelOpenAckProtoMsg;
+                    fromPartial(object: Partial<_70.MsgChannelOpenAck>): _70.MsgChannelOpenAck;
+                    fromAmino(object: _70.MsgChannelOpenAckAmino): _70.MsgChannelOpenAck;
+                    toAmino(message: _70.MsgChannelOpenAck): _70.MsgChannelOpenAckAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenAckAminoMsg): _70.MsgChannelOpenAck;
+                    toAminoMsg(message: _70.MsgChannelOpenAck): _70.MsgChannelOpenAckAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenAckProtoMsg): _70.MsgChannelOpenAck;
+                    toProto(message: _70.MsgChannelOpenAck): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenAck): _70.MsgChannelOpenAckProtoMsg;
                 };
                 MsgChannelOpenAckResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenAckResponse;
-                    isSDK(o: any): o is _68.MsgChannelOpenAckResponseSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenAckResponseAmino;
-                    encode(_: _68.MsgChannelOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenAckResponse;
-                    fromJSON(_: any): _68.MsgChannelOpenAckResponse;
-                    toJSON(_: _68.MsgChannelOpenAckResponse): {};
-                    fromPartial(_: Partial<_68.MsgChannelOpenAckResponse>): _68.MsgChannelOpenAckResponse;
-                    fromAmino(_: _68.MsgChannelOpenAckResponseAmino): _68.MsgChannelOpenAckResponse;
-                    toAmino(_: _68.MsgChannelOpenAckResponse): _68.MsgChannelOpenAckResponseAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenAckResponseAminoMsg): _68.MsgChannelOpenAckResponse;
-                    toAminoMsg(message: _68.MsgChannelOpenAckResponse): _68.MsgChannelOpenAckResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenAckResponseProtoMsg): _68.MsgChannelOpenAckResponse;
-                    toProto(message: _68.MsgChannelOpenAckResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenAckResponse): _68.MsgChannelOpenAckResponseProtoMsg;
+                    is(o: any): o is _70.MsgChannelOpenAckResponse;
+                    isSDK(o: any): o is _70.MsgChannelOpenAckResponseSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenAckResponseAmino;
+                    encode(_: _70.MsgChannelOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenAckResponse;
+                    fromJSON(_: any): _70.MsgChannelOpenAckResponse;
+                    toJSON(_: _70.MsgChannelOpenAckResponse): {};
+                    fromPartial(_: Partial<_70.MsgChannelOpenAckResponse>): _70.MsgChannelOpenAckResponse;
+                    fromAmino(_: _70.MsgChannelOpenAckResponseAmino): _70.MsgChannelOpenAckResponse;
+                    toAmino(_: _70.MsgChannelOpenAckResponse): _70.MsgChannelOpenAckResponseAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenAckResponseAminoMsg): _70.MsgChannelOpenAckResponse;
+                    toAminoMsg(message: _70.MsgChannelOpenAckResponse): _70.MsgChannelOpenAckResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenAckResponseProtoMsg): _70.MsgChannelOpenAckResponse;
+                    toProto(message: _70.MsgChannelOpenAckResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenAckResponse): _70.MsgChannelOpenAckResponseProtoMsg;
                 };
                 MsgChannelOpenConfirm: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenConfirm;
-                    isSDK(o: any): o is _68.MsgChannelOpenConfirmSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenConfirmAmino;
-                    encode(message: _68.MsgChannelOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenConfirm;
-                    fromJSON(object: any): _68.MsgChannelOpenConfirm;
-                    toJSON(message: _68.MsgChannelOpenConfirm): {
+                    is(o: any): o is _70.MsgChannelOpenConfirm;
+                    isSDK(o: any): o is _70.MsgChannelOpenConfirmSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenConfirmAmino;
+                    encode(message: _70.MsgChannelOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenConfirm;
+                    fromJSON(object: any): _70.MsgChannelOpenConfirm;
+                    toJSON(message: _70.MsgChannelOpenConfirm): {
                         portId: string;
                         channelId: string;
                         proofAck: string;
@@ -1004,86 +1004,86 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgChannelOpenConfirm>): _68.MsgChannelOpenConfirm;
-                    fromAmino(object: _68.MsgChannelOpenConfirmAmino): _68.MsgChannelOpenConfirm;
-                    toAmino(message: _68.MsgChannelOpenConfirm): _68.MsgChannelOpenConfirmAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenConfirmAminoMsg): _68.MsgChannelOpenConfirm;
-                    toAminoMsg(message: _68.MsgChannelOpenConfirm): _68.MsgChannelOpenConfirmAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenConfirmProtoMsg): _68.MsgChannelOpenConfirm;
-                    toProto(message: _68.MsgChannelOpenConfirm): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenConfirm): _68.MsgChannelOpenConfirmProtoMsg;
+                    fromPartial(object: Partial<_70.MsgChannelOpenConfirm>): _70.MsgChannelOpenConfirm;
+                    fromAmino(object: _70.MsgChannelOpenConfirmAmino): _70.MsgChannelOpenConfirm;
+                    toAmino(message: _70.MsgChannelOpenConfirm): _70.MsgChannelOpenConfirmAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenConfirmAminoMsg): _70.MsgChannelOpenConfirm;
+                    toAminoMsg(message: _70.MsgChannelOpenConfirm): _70.MsgChannelOpenConfirmAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenConfirmProtoMsg): _70.MsgChannelOpenConfirm;
+                    toProto(message: _70.MsgChannelOpenConfirm): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenConfirm): _70.MsgChannelOpenConfirmProtoMsg;
                 };
                 MsgChannelOpenConfirmResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelOpenConfirmResponse;
-                    isSDK(o: any): o is _68.MsgChannelOpenConfirmResponseSDKType;
-                    isAmino(o: any): o is _68.MsgChannelOpenConfirmResponseAmino;
-                    encode(_: _68.MsgChannelOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelOpenConfirmResponse;
-                    fromJSON(_: any): _68.MsgChannelOpenConfirmResponse;
-                    toJSON(_: _68.MsgChannelOpenConfirmResponse): {};
-                    fromPartial(_: Partial<_68.MsgChannelOpenConfirmResponse>): _68.MsgChannelOpenConfirmResponse;
-                    fromAmino(_: _68.MsgChannelOpenConfirmResponseAmino): _68.MsgChannelOpenConfirmResponse;
-                    toAmino(_: _68.MsgChannelOpenConfirmResponse): _68.MsgChannelOpenConfirmResponseAmino;
-                    fromAminoMsg(object: _68.MsgChannelOpenConfirmResponseAminoMsg): _68.MsgChannelOpenConfirmResponse;
-                    toAminoMsg(message: _68.MsgChannelOpenConfirmResponse): _68.MsgChannelOpenConfirmResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelOpenConfirmResponseProtoMsg): _68.MsgChannelOpenConfirmResponse;
-                    toProto(message: _68.MsgChannelOpenConfirmResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelOpenConfirmResponse): _68.MsgChannelOpenConfirmResponseProtoMsg;
+                    is(o: any): o is _70.MsgChannelOpenConfirmResponse;
+                    isSDK(o: any): o is _70.MsgChannelOpenConfirmResponseSDKType;
+                    isAmino(o: any): o is _70.MsgChannelOpenConfirmResponseAmino;
+                    encode(_: _70.MsgChannelOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelOpenConfirmResponse;
+                    fromJSON(_: any): _70.MsgChannelOpenConfirmResponse;
+                    toJSON(_: _70.MsgChannelOpenConfirmResponse): {};
+                    fromPartial(_: Partial<_70.MsgChannelOpenConfirmResponse>): _70.MsgChannelOpenConfirmResponse;
+                    fromAmino(_: _70.MsgChannelOpenConfirmResponseAmino): _70.MsgChannelOpenConfirmResponse;
+                    toAmino(_: _70.MsgChannelOpenConfirmResponse): _70.MsgChannelOpenConfirmResponseAmino;
+                    fromAminoMsg(object: _70.MsgChannelOpenConfirmResponseAminoMsg): _70.MsgChannelOpenConfirmResponse;
+                    toAminoMsg(message: _70.MsgChannelOpenConfirmResponse): _70.MsgChannelOpenConfirmResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelOpenConfirmResponseProtoMsg): _70.MsgChannelOpenConfirmResponse;
+                    toProto(message: _70.MsgChannelOpenConfirmResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelOpenConfirmResponse): _70.MsgChannelOpenConfirmResponseProtoMsg;
                 };
                 MsgChannelCloseInit: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelCloseInit;
-                    isSDK(o: any): o is _68.MsgChannelCloseInitSDKType;
-                    isAmino(o: any): o is _68.MsgChannelCloseInitAmino;
-                    encode(message: _68.MsgChannelCloseInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelCloseInit;
-                    fromJSON(object: any): _68.MsgChannelCloseInit;
-                    toJSON(message: _68.MsgChannelCloseInit): {
+                    is(o: any): o is _70.MsgChannelCloseInit;
+                    isSDK(o: any): o is _70.MsgChannelCloseInitSDKType;
+                    isAmino(o: any): o is _70.MsgChannelCloseInitAmino;
+                    encode(message: _70.MsgChannelCloseInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelCloseInit;
+                    fromJSON(object: any): _70.MsgChannelCloseInit;
+                    toJSON(message: _70.MsgChannelCloseInit): {
                         portId: string;
                         channelId: string;
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgChannelCloseInit>): _68.MsgChannelCloseInit;
-                    fromAmino(object: _68.MsgChannelCloseInitAmino): _68.MsgChannelCloseInit;
-                    toAmino(message: _68.MsgChannelCloseInit): _68.MsgChannelCloseInitAmino;
-                    fromAminoMsg(object: _68.MsgChannelCloseInitAminoMsg): _68.MsgChannelCloseInit;
-                    toAminoMsg(message: _68.MsgChannelCloseInit): _68.MsgChannelCloseInitAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelCloseInitProtoMsg): _68.MsgChannelCloseInit;
-                    toProto(message: _68.MsgChannelCloseInit): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelCloseInit): _68.MsgChannelCloseInitProtoMsg;
+                    fromPartial(object: Partial<_70.MsgChannelCloseInit>): _70.MsgChannelCloseInit;
+                    fromAmino(object: _70.MsgChannelCloseInitAmino): _70.MsgChannelCloseInit;
+                    toAmino(message: _70.MsgChannelCloseInit): _70.MsgChannelCloseInitAmino;
+                    fromAminoMsg(object: _70.MsgChannelCloseInitAminoMsg): _70.MsgChannelCloseInit;
+                    toAminoMsg(message: _70.MsgChannelCloseInit): _70.MsgChannelCloseInitAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelCloseInitProtoMsg): _70.MsgChannelCloseInit;
+                    toProto(message: _70.MsgChannelCloseInit): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelCloseInit): _70.MsgChannelCloseInitProtoMsg;
                 };
                 MsgChannelCloseInitResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelCloseInitResponse;
-                    isSDK(o: any): o is _68.MsgChannelCloseInitResponseSDKType;
-                    isAmino(o: any): o is _68.MsgChannelCloseInitResponseAmino;
-                    encode(_: _68.MsgChannelCloseInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelCloseInitResponse;
-                    fromJSON(_: any): _68.MsgChannelCloseInitResponse;
-                    toJSON(_: _68.MsgChannelCloseInitResponse): {};
-                    fromPartial(_: Partial<_68.MsgChannelCloseInitResponse>): _68.MsgChannelCloseInitResponse;
-                    fromAmino(_: _68.MsgChannelCloseInitResponseAmino): _68.MsgChannelCloseInitResponse;
-                    toAmino(_: _68.MsgChannelCloseInitResponse): _68.MsgChannelCloseInitResponseAmino;
-                    fromAminoMsg(object: _68.MsgChannelCloseInitResponseAminoMsg): _68.MsgChannelCloseInitResponse;
-                    toAminoMsg(message: _68.MsgChannelCloseInitResponse): _68.MsgChannelCloseInitResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelCloseInitResponseProtoMsg): _68.MsgChannelCloseInitResponse;
-                    toProto(message: _68.MsgChannelCloseInitResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelCloseInitResponse): _68.MsgChannelCloseInitResponseProtoMsg;
+                    is(o: any): o is _70.MsgChannelCloseInitResponse;
+                    isSDK(o: any): o is _70.MsgChannelCloseInitResponseSDKType;
+                    isAmino(o: any): o is _70.MsgChannelCloseInitResponseAmino;
+                    encode(_: _70.MsgChannelCloseInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelCloseInitResponse;
+                    fromJSON(_: any): _70.MsgChannelCloseInitResponse;
+                    toJSON(_: _70.MsgChannelCloseInitResponse): {};
+                    fromPartial(_: Partial<_70.MsgChannelCloseInitResponse>): _70.MsgChannelCloseInitResponse;
+                    fromAmino(_: _70.MsgChannelCloseInitResponseAmino): _70.MsgChannelCloseInitResponse;
+                    toAmino(_: _70.MsgChannelCloseInitResponse): _70.MsgChannelCloseInitResponseAmino;
+                    fromAminoMsg(object: _70.MsgChannelCloseInitResponseAminoMsg): _70.MsgChannelCloseInitResponse;
+                    toAminoMsg(message: _70.MsgChannelCloseInitResponse): _70.MsgChannelCloseInitResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelCloseInitResponseProtoMsg): _70.MsgChannelCloseInitResponse;
+                    toProto(message: _70.MsgChannelCloseInitResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelCloseInitResponse): _70.MsgChannelCloseInitResponseProtoMsg;
                 };
                 MsgChannelCloseConfirm: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelCloseConfirm;
-                    isSDK(o: any): o is _68.MsgChannelCloseConfirmSDKType;
-                    isAmino(o: any): o is _68.MsgChannelCloseConfirmAmino;
-                    encode(message: _68.MsgChannelCloseConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelCloseConfirm;
-                    fromJSON(object: any): _68.MsgChannelCloseConfirm;
-                    toJSON(message: _68.MsgChannelCloseConfirm): {
+                    is(o: any): o is _70.MsgChannelCloseConfirm;
+                    isSDK(o: any): o is _70.MsgChannelCloseConfirmSDKType;
+                    isAmino(o: any): o is _70.MsgChannelCloseConfirmAmino;
+                    encode(message: _70.MsgChannelCloseConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelCloseConfirm;
+                    fromJSON(object: any): _70.MsgChannelCloseConfirm;
+                    toJSON(message: _70.MsgChannelCloseConfirm): {
                         portId: string;
                         channelId: string;
                         proofInit: string;
@@ -1093,44 +1093,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgChannelCloseConfirm>): _68.MsgChannelCloseConfirm;
-                    fromAmino(object: _68.MsgChannelCloseConfirmAmino): _68.MsgChannelCloseConfirm;
-                    toAmino(message: _68.MsgChannelCloseConfirm): _68.MsgChannelCloseConfirmAmino;
-                    fromAminoMsg(object: _68.MsgChannelCloseConfirmAminoMsg): _68.MsgChannelCloseConfirm;
-                    toAminoMsg(message: _68.MsgChannelCloseConfirm): _68.MsgChannelCloseConfirmAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelCloseConfirmProtoMsg): _68.MsgChannelCloseConfirm;
-                    toProto(message: _68.MsgChannelCloseConfirm): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelCloseConfirm): _68.MsgChannelCloseConfirmProtoMsg;
+                    fromPartial(object: Partial<_70.MsgChannelCloseConfirm>): _70.MsgChannelCloseConfirm;
+                    fromAmino(object: _70.MsgChannelCloseConfirmAmino): _70.MsgChannelCloseConfirm;
+                    toAmino(message: _70.MsgChannelCloseConfirm): _70.MsgChannelCloseConfirmAmino;
+                    fromAminoMsg(object: _70.MsgChannelCloseConfirmAminoMsg): _70.MsgChannelCloseConfirm;
+                    toAminoMsg(message: _70.MsgChannelCloseConfirm): _70.MsgChannelCloseConfirmAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelCloseConfirmProtoMsg): _70.MsgChannelCloseConfirm;
+                    toProto(message: _70.MsgChannelCloseConfirm): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelCloseConfirm): _70.MsgChannelCloseConfirmProtoMsg;
                 };
                 MsgChannelCloseConfirmResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgChannelCloseConfirmResponse;
-                    isSDK(o: any): o is _68.MsgChannelCloseConfirmResponseSDKType;
-                    isAmino(o: any): o is _68.MsgChannelCloseConfirmResponseAmino;
-                    encode(_: _68.MsgChannelCloseConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgChannelCloseConfirmResponse;
-                    fromJSON(_: any): _68.MsgChannelCloseConfirmResponse;
-                    toJSON(_: _68.MsgChannelCloseConfirmResponse): {};
-                    fromPartial(_: Partial<_68.MsgChannelCloseConfirmResponse>): _68.MsgChannelCloseConfirmResponse;
-                    fromAmino(_: _68.MsgChannelCloseConfirmResponseAmino): _68.MsgChannelCloseConfirmResponse;
-                    toAmino(_: _68.MsgChannelCloseConfirmResponse): _68.MsgChannelCloseConfirmResponseAmino;
-                    fromAminoMsg(object: _68.MsgChannelCloseConfirmResponseAminoMsg): _68.MsgChannelCloseConfirmResponse;
-                    toAminoMsg(message: _68.MsgChannelCloseConfirmResponse): _68.MsgChannelCloseConfirmResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgChannelCloseConfirmResponseProtoMsg): _68.MsgChannelCloseConfirmResponse;
-                    toProto(message: _68.MsgChannelCloseConfirmResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgChannelCloseConfirmResponse): _68.MsgChannelCloseConfirmResponseProtoMsg;
+                    is(o: any): o is _70.MsgChannelCloseConfirmResponse;
+                    isSDK(o: any): o is _70.MsgChannelCloseConfirmResponseSDKType;
+                    isAmino(o: any): o is _70.MsgChannelCloseConfirmResponseAmino;
+                    encode(_: _70.MsgChannelCloseConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgChannelCloseConfirmResponse;
+                    fromJSON(_: any): _70.MsgChannelCloseConfirmResponse;
+                    toJSON(_: _70.MsgChannelCloseConfirmResponse): {};
+                    fromPartial(_: Partial<_70.MsgChannelCloseConfirmResponse>): _70.MsgChannelCloseConfirmResponse;
+                    fromAmino(_: _70.MsgChannelCloseConfirmResponseAmino): _70.MsgChannelCloseConfirmResponse;
+                    toAmino(_: _70.MsgChannelCloseConfirmResponse): _70.MsgChannelCloseConfirmResponseAmino;
+                    fromAminoMsg(object: _70.MsgChannelCloseConfirmResponseAminoMsg): _70.MsgChannelCloseConfirmResponse;
+                    toAminoMsg(message: _70.MsgChannelCloseConfirmResponse): _70.MsgChannelCloseConfirmResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgChannelCloseConfirmResponseProtoMsg): _70.MsgChannelCloseConfirmResponse;
+                    toProto(message: _70.MsgChannelCloseConfirmResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgChannelCloseConfirmResponse): _70.MsgChannelCloseConfirmResponseProtoMsg;
                 };
                 MsgRecvPacket: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgRecvPacket;
-                    isSDK(o: any): o is _68.MsgRecvPacketSDKType;
-                    isAmino(o: any): o is _68.MsgRecvPacketAmino;
-                    encode(message: _68.MsgRecvPacket, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgRecvPacket;
-                    fromJSON(object: any): _68.MsgRecvPacket;
-                    toJSON(message: _68.MsgRecvPacket): {
+                    is(o: any): o is _70.MsgRecvPacket;
+                    isSDK(o: any): o is _70.MsgRecvPacketSDKType;
+                    isAmino(o: any): o is _70.MsgRecvPacketAmino;
+                    encode(message: _70.MsgRecvPacket, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgRecvPacket;
+                    fromJSON(object: any): _70.MsgRecvPacket;
+                    toJSON(message: _70.MsgRecvPacket): {
                         packet: {
                             sequence: string;
                             sourcePort: string;
@@ -1151,44 +1151,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgRecvPacket>): _68.MsgRecvPacket;
-                    fromAmino(object: _68.MsgRecvPacketAmino): _68.MsgRecvPacket;
-                    toAmino(message: _68.MsgRecvPacket): _68.MsgRecvPacketAmino;
-                    fromAminoMsg(object: _68.MsgRecvPacketAminoMsg): _68.MsgRecvPacket;
-                    toAminoMsg(message: _68.MsgRecvPacket): _68.MsgRecvPacketAminoMsg;
-                    fromProtoMsg(message: _68.MsgRecvPacketProtoMsg): _68.MsgRecvPacket;
-                    toProto(message: _68.MsgRecvPacket): Uint8Array;
-                    toProtoMsg(message: _68.MsgRecvPacket): _68.MsgRecvPacketProtoMsg;
+                    fromPartial(object: Partial<_70.MsgRecvPacket>): _70.MsgRecvPacket;
+                    fromAmino(object: _70.MsgRecvPacketAmino): _70.MsgRecvPacket;
+                    toAmino(message: _70.MsgRecvPacket): _70.MsgRecvPacketAmino;
+                    fromAminoMsg(object: _70.MsgRecvPacketAminoMsg): _70.MsgRecvPacket;
+                    toAminoMsg(message: _70.MsgRecvPacket): _70.MsgRecvPacketAminoMsg;
+                    fromProtoMsg(message: _70.MsgRecvPacketProtoMsg): _70.MsgRecvPacket;
+                    toProto(message: _70.MsgRecvPacket): Uint8Array;
+                    toProtoMsg(message: _70.MsgRecvPacket): _70.MsgRecvPacketProtoMsg;
                 };
                 MsgRecvPacketResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgRecvPacketResponse;
-                    isSDK(o: any): o is _68.MsgRecvPacketResponseSDKType;
-                    isAmino(o: any): o is _68.MsgRecvPacketResponseAmino;
-                    encode(_: _68.MsgRecvPacketResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgRecvPacketResponse;
-                    fromJSON(_: any): _68.MsgRecvPacketResponse;
-                    toJSON(_: _68.MsgRecvPacketResponse): {};
-                    fromPartial(_: Partial<_68.MsgRecvPacketResponse>): _68.MsgRecvPacketResponse;
-                    fromAmino(_: _68.MsgRecvPacketResponseAmino): _68.MsgRecvPacketResponse;
-                    toAmino(_: _68.MsgRecvPacketResponse): _68.MsgRecvPacketResponseAmino;
-                    fromAminoMsg(object: _68.MsgRecvPacketResponseAminoMsg): _68.MsgRecvPacketResponse;
-                    toAminoMsg(message: _68.MsgRecvPacketResponse): _68.MsgRecvPacketResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgRecvPacketResponseProtoMsg): _68.MsgRecvPacketResponse;
-                    toProto(message: _68.MsgRecvPacketResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgRecvPacketResponse): _68.MsgRecvPacketResponseProtoMsg;
+                    is(o: any): o is _70.MsgRecvPacketResponse;
+                    isSDK(o: any): o is _70.MsgRecvPacketResponseSDKType;
+                    isAmino(o: any): o is _70.MsgRecvPacketResponseAmino;
+                    encode(_: _70.MsgRecvPacketResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgRecvPacketResponse;
+                    fromJSON(_: any): _70.MsgRecvPacketResponse;
+                    toJSON(_: _70.MsgRecvPacketResponse): {};
+                    fromPartial(_: Partial<_70.MsgRecvPacketResponse>): _70.MsgRecvPacketResponse;
+                    fromAmino(_: _70.MsgRecvPacketResponseAmino): _70.MsgRecvPacketResponse;
+                    toAmino(_: _70.MsgRecvPacketResponse): _70.MsgRecvPacketResponseAmino;
+                    fromAminoMsg(object: _70.MsgRecvPacketResponseAminoMsg): _70.MsgRecvPacketResponse;
+                    toAminoMsg(message: _70.MsgRecvPacketResponse): _70.MsgRecvPacketResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgRecvPacketResponseProtoMsg): _70.MsgRecvPacketResponse;
+                    toProto(message: _70.MsgRecvPacketResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgRecvPacketResponse): _70.MsgRecvPacketResponseProtoMsg;
                 };
                 MsgTimeout: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgTimeout;
-                    isSDK(o: any): o is _68.MsgTimeoutSDKType;
-                    isAmino(o: any): o is _68.MsgTimeoutAmino;
-                    encode(message: _68.MsgTimeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgTimeout;
-                    fromJSON(object: any): _68.MsgTimeout;
-                    toJSON(message: _68.MsgTimeout): {
+                    is(o: any): o is _70.MsgTimeout;
+                    isSDK(o: any): o is _70.MsgTimeoutSDKType;
+                    isAmino(o: any): o is _70.MsgTimeoutAmino;
+                    encode(message: _70.MsgTimeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgTimeout;
+                    fromJSON(object: any): _70.MsgTimeout;
+                    toJSON(message: _70.MsgTimeout): {
                         packet: {
                             sequence: string;
                             sourcePort: string;
@@ -1210,44 +1210,44 @@ export declare namespace ibc {
                         nextSequenceRecv: string;
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgTimeout>): _68.MsgTimeout;
-                    fromAmino(object: _68.MsgTimeoutAmino): _68.MsgTimeout;
-                    toAmino(message: _68.MsgTimeout): _68.MsgTimeoutAmino;
-                    fromAminoMsg(object: _68.MsgTimeoutAminoMsg): _68.MsgTimeout;
-                    toAminoMsg(message: _68.MsgTimeout): _68.MsgTimeoutAminoMsg;
-                    fromProtoMsg(message: _68.MsgTimeoutProtoMsg): _68.MsgTimeout;
-                    toProto(message: _68.MsgTimeout): Uint8Array;
-                    toProtoMsg(message: _68.MsgTimeout): _68.MsgTimeoutProtoMsg;
+                    fromPartial(object: Partial<_70.MsgTimeout>): _70.MsgTimeout;
+                    fromAmino(object: _70.MsgTimeoutAmino): _70.MsgTimeout;
+                    toAmino(message: _70.MsgTimeout): _70.MsgTimeoutAmino;
+                    fromAminoMsg(object: _70.MsgTimeoutAminoMsg): _70.MsgTimeout;
+                    toAminoMsg(message: _70.MsgTimeout): _70.MsgTimeoutAminoMsg;
+                    fromProtoMsg(message: _70.MsgTimeoutProtoMsg): _70.MsgTimeout;
+                    toProto(message: _70.MsgTimeout): Uint8Array;
+                    toProtoMsg(message: _70.MsgTimeout): _70.MsgTimeoutProtoMsg;
                 };
                 MsgTimeoutResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgTimeoutResponse;
-                    isSDK(o: any): o is _68.MsgTimeoutResponseSDKType;
-                    isAmino(o: any): o is _68.MsgTimeoutResponseAmino;
-                    encode(_: _68.MsgTimeoutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgTimeoutResponse;
-                    fromJSON(_: any): _68.MsgTimeoutResponse;
-                    toJSON(_: _68.MsgTimeoutResponse): {};
-                    fromPartial(_: Partial<_68.MsgTimeoutResponse>): _68.MsgTimeoutResponse;
-                    fromAmino(_: _68.MsgTimeoutResponseAmino): _68.MsgTimeoutResponse;
-                    toAmino(_: _68.MsgTimeoutResponse): _68.MsgTimeoutResponseAmino;
-                    fromAminoMsg(object: _68.MsgTimeoutResponseAminoMsg): _68.MsgTimeoutResponse;
-                    toAminoMsg(message: _68.MsgTimeoutResponse): _68.MsgTimeoutResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgTimeoutResponseProtoMsg): _68.MsgTimeoutResponse;
-                    toProto(message: _68.MsgTimeoutResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgTimeoutResponse): _68.MsgTimeoutResponseProtoMsg;
+                    is(o: any): o is _70.MsgTimeoutResponse;
+                    isSDK(o: any): o is _70.MsgTimeoutResponseSDKType;
+                    isAmino(o: any): o is _70.MsgTimeoutResponseAmino;
+                    encode(_: _70.MsgTimeoutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgTimeoutResponse;
+                    fromJSON(_: any): _70.MsgTimeoutResponse;
+                    toJSON(_: _70.MsgTimeoutResponse): {};
+                    fromPartial(_: Partial<_70.MsgTimeoutResponse>): _70.MsgTimeoutResponse;
+                    fromAmino(_: _70.MsgTimeoutResponseAmino): _70.MsgTimeoutResponse;
+                    toAmino(_: _70.MsgTimeoutResponse): _70.MsgTimeoutResponseAmino;
+                    fromAminoMsg(object: _70.MsgTimeoutResponseAminoMsg): _70.MsgTimeoutResponse;
+                    toAminoMsg(message: _70.MsgTimeoutResponse): _70.MsgTimeoutResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgTimeoutResponseProtoMsg): _70.MsgTimeoutResponse;
+                    toProto(message: _70.MsgTimeoutResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgTimeoutResponse): _70.MsgTimeoutResponseProtoMsg;
                 };
                 MsgTimeoutOnClose: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgTimeoutOnClose;
-                    isSDK(o: any): o is _68.MsgTimeoutOnCloseSDKType;
-                    isAmino(o: any): o is _68.MsgTimeoutOnCloseAmino;
-                    encode(message: _68.MsgTimeoutOnClose, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgTimeoutOnClose;
-                    fromJSON(object: any): _68.MsgTimeoutOnClose;
-                    toJSON(message: _68.MsgTimeoutOnClose): {
+                    is(o: any): o is _70.MsgTimeoutOnClose;
+                    isSDK(o: any): o is _70.MsgTimeoutOnCloseSDKType;
+                    isAmino(o: any): o is _70.MsgTimeoutOnCloseAmino;
+                    encode(message: _70.MsgTimeoutOnClose, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgTimeoutOnClose;
+                    fromJSON(object: any): _70.MsgTimeoutOnClose;
+                    toJSON(message: _70.MsgTimeoutOnClose): {
                         packet: {
                             sequence: string;
                             sourcePort: string;
@@ -1270,44 +1270,44 @@ export declare namespace ibc {
                         nextSequenceRecv: string;
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgTimeoutOnClose>): _68.MsgTimeoutOnClose;
-                    fromAmino(object: _68.MsgTimeoutOnCloseAmino): _68.MsgTimeoutOnClose;
-                    toAmino(message: _68.MsgTimeoutOnClose): _68.MsgTimeoutOnCloseAmino;
-                    fromAminoMsg(object: _68.MsgTimeoutOnCloseAminoMsg): _68.MsgTimeoutOnClose;
-                    toAminoMsg(message: _68.MsgTimeoutOnClose): _68.MsgTimeoutOnCloseAminoMsg;
-                    fromProtoMsg(message: _68.MsgTimeoutOnCloseProtoMsg): _68.MsgTimeoutOnClose;
-                    toProto(message: _68.MsgTimeoutOnClose): Uint8Array;
-                    toProtoMsg(message: _68.MsgTimeoutOnClose): _68.MsgTimeoutOnCloseProtoMsg;
+                    fromPartial(object: Partial<_70.MsgTimeoutOnClose>): _70.MsgTimeoutOnClose;
+                    fromAmino(object: _70.MsgTimeoutOnCloseAmino): _70.MsgTimeoutOnClose;
+                    toAmino(message: _70.MsgTimeoutOnClose): _70.MsgTimeoutOnCloseAmino;
+                    fromAminoMsg(object: _70.MsgTimeoutOnCloseAminoMsg): _70.MsgTimeoutOnClose;
+                    toAminoMsg(message: _70.MsgTimeoutOnClose): _70.MsgTimeoutOnCloseAminoMsg;
+                    fromProtoMsg(message: _70.MsgTimeoutOnCloseProtoMsg): _70.MsgTimeoutOnClose;
+                    toProto(message: _70.MsgTimeoutOnClose): Uint8Array;
+                    toProtoMsg(message: _70.MsgTimeoutOnClose): _70.MsgTimeoutOnCloseProtoMsg;
                 };
                 MsgTimeoutOnCloseResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgTimeoutOnCloseResponse;
-                    isSDK(o: any): o is _68.MsgTimeoutOnCloseResponseSDKType;
-                    isAmino(o: any): o is _68.MsgTimeoutOnCloseResponseAmino;
-                    encode(_: _68.MsgTimeoutOnCloseResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgTimeoutOnCloseResponse;
-                    fromJSON(_: any): _68.MsgTimeoutOnCloseResponse;
-                    toJSON(_: _68.MsgTimeoutOnCloseResponse): {};
-                    fromPartial(_: Partial<_68.MsgTimeoutOnCloseResponse>): _68.MsgTimeoutOnCloseResponse;
-                    fromAmino(_: _68.MsgTimeoutOnCloseResponseAmino): _68.MsgTimeoutOnCloseResponse;
-                    toAmino(_: _68.MsgTimeoutOnCloseResponse): _68.MsgTimeoutOnCloseResponseAmino;
-                    fromAminoMsg(object: _68.MsgTimeoutOnCloseResponseAminoMsg): _68.MsgTimeoutOnCloseResponse;
-                    toAminoMsg(message: _68.MsgTimeoutOnCloseResponse): _68.MsgTimeoutOnCloseResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgTimeoutOnCloseResponseProtoMsg): _68.MsgTimeoutOnCloseResponse;
-                    toProto(message: _68.MsgTimeoutOnCloseResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgTimeoutOnCloseResponse): _68.MsgTimeoutOnCloseResponseProtoMsg;
+                    is(o: any): o is _70.MsgTimeoutOnCloseResponse;
+                    isSDK(o: any): o is _70.MsgTimeoutOnCloseResponseSDKType;
+                    isAmino(o: any): o is _70.MsgTimeoutOnCloseResponseAmino;
+                    encode(_: _70.MsgTimeoutOnCloseResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgTimeoutOnCloseResponse;
+                    fromJSON(_: any): _70.MsgTimeoutOnCloseResponse;
+                    toJSON(_: _70.MsgTimeoutOnCloseResponse): {};
+                    fromPartial(_: Partial<_70.MsgTimeoutOnCloseResponse>): _70.MsgTimeoutOnCloseResponse;
+                    fromAmino(_: _70.MsgTimeoutOnCloseResponseAmino): _70.MsgTimeoutOnCloseResponse;
+                    toAmino(_: _70.MsgTimeoutOnCloseResponse): _70.MsgTimeoutOnCloseResponseAmino;
+                    fromAminoMsg(object: _70.MsgTimeoutOnCloseResponseAminoMsg): _70.MsgTimeoutOnCloseResponse;
+                    toAminoMsg(message: _70.MsgTimeoutOnCloseResponse): _70.MsgTimeoutOnCloseResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgTimeoutOnCloseResponseProtoMsg): _70.MsgTimeoutOnCloseResponse;
+                    toProto(message: _70.MsgTimeoutOnCloseResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgTimeoutOnCloseResponse): _70.MsgTimeoutOnCloseResponseProtoMsg;
                 };
                 MsgAcknowledgement: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgAcknowledgement;
-                    isSDK(o: any): o is _68.MsgAcknowledgementSDKType;
-                    isAmino(o: any): o is _68.MsgAcknowledgementAmino;
-                    encode(message: _68.MsgAcknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgAcknowledgement;
-                    fromJSON(object: any): _68.MsgAcknowledgement;
-                    toJSON(message: _68.MsgAcknowledgement): {
+                    is(o: any): o is _70.MsgAcknowledgement;
+                    isSDK(o: any): o is _70.MsgAcknowledgementSDKType;
+                    isAmino(o: any): o is _70.MsgAcknowledgementAmino;
+                    encode(message: _70.MsgAcknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgAcknowledgement;
+                    fromJSON(object: any): _70.MsgAcknowledgement;
+                    toJSON(message: _70.MsgAcknowledgement): {
                         packet: {
                             sequence: string;
                             sourcePort: string;
@@ -1329,69 +1329,69 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_68.MsgAcknowledgement>): _68.MsgAcknowledgement;
-                    fromAmino(object: _68.MsgAcknowledgementAmino): _68.MsgAcknowledgement;
-                    toAmino(message: _68.MsgAcknowledgement): _68.MsgAcknowledgementAmino;
-                    fromAminoMsg(object: _68.MsgAcknowledgementAminoMsg): _68.MsgAcknowledgement;
-                    toAminoMsg(message: _68.MsgAcknowledgement): _68.MsgAcknowledgementAminoMsg;
-                    fromProtoMsg(message: _68.MsgAcknowledgementProtoMsg): _68.MsgAcknowledgement;
-                    toProto(message: _68.MsgAcknowledgement): Uint8Array;
-                    toProtoMsg(message: _68.MsgAcknowledgement): _68.MsgAcknowledgementProtoMsg;
+                    fromPartial(object: Partial<_70.MsgAcknowledgement>): _70.MsgAcknowledgement;
+                    fromAmino(object: _70.MsgAcknowledgementAmino): _70.MsgAcknowledgement;
+                    toAmino(message: _70.MsgAcknowledgement): _70.MsgAcknowledgementAmino;
+                    fromAminoMsg(object: _70.MsgAcknowledgementAminoMsg): _70.MsgAcknowledgement;
+                    toAminoMsg(message: _70.MsgAcknowledgement): _70.MsgAcknowledgementAminoMsg;
+                    fromProtoMsg(message: _70.MsgAcknowledgementProtoMsg): _70.MsgAcknowledgement;
+                    toProto(message: _70.MsgAcknowledgement): Uint8Array;
+                    toProtoMsg(message: _70.MsgAcknowledgement): _70.MsgAcknowledgementProtoMsg;
                 };
                 MsgAcknowledgementResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _68.MsgAcknowledgementResponse;
-                    isSDK(o: any): o is _68.MsgAcknowledgementResponseSDKType;
-                    isAmino(o: any): o is _68.MsgAcknowledgementResponseAmino;
-                    encode(_: _68.MsgAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.MsgAcknowledgementResponse;
-                    fromJSON(_: any): _68.MsgAcknowledgementResponse;
-                    toJSON(_: _68.MsgAcknowledgementResponse): {};
-                    fromPartial(_: Partial<_68.MsgAcknowledgementResponse>): _68.MsgAcknowledgementResponse;
-                    fromAmino(_: _68.MsgAcknowledgementResponseAmino): _68.MsgAcknowledgementResponse;
-                    toAmino(_: _68.MsgAcknowledgementResponse): _68.MsgAcknowledgementResponseAmino;
-                    fromAminoMsg(object: _68.MsgAcknowledgementResponseAminoMsg): _68.MsgAcknowledgementResponse;
-                    toAminoMsg(message: _68.MsgAcknowledgementResponse): _68.MsgAcknowledgementResponseAminoMsg;
-                    fromProtoMsg(message: _68.MsgAcknowledgementResponseProtoMsg): _68.MsgAcknowledgementResponse;
-                    toProto(message: _68.MsgAcknowledgementResponse): Uint8Array;
-                    toProtoMsg(message: _68.MsgAcknowledgementResponse): _68.MsgAcknowledgementResponseProtoMsg;
+                    is(o: any): o is _70.MsgAcknowledgementResponse;
+                    isSDK(o: any): o is _70.MsgAcknowledgementResponseSDKType;
+                    isAmino(o: any): o is _70.MsgAcknowledgementResponseAmino;
+                    encode(_: _70.MsgAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.MsgAcknowledgementResponse;
+                    fromJSON(_: any): _70.MsgAcknowledgementResponse;
+                    toJSON(_: _70.MsgAcknowledgementResponse): {};
+                    fromPartial(_: Partial<_70.MsgAcknowledgementResponse>): _70.MsgAcknowledgementResponse;
+                    fromAmino(_: _70.MsgAcknowledgementResponseAmino): _70.MsgAcknowledgementResponse;
+                    toAmino(_: _70.MsgAcknowledgementResponse): _70.MsgAcknowledgementResponseAmino;
+                    fromAminoMsg(object: _70.MsgAcknowledgementResponseAminoMsg): _70.MsgAcknowledgementResponse;
+                    toAminoMsg(message: _70.MsgAcknowledgementResponse): _70.MsgAcknowledgementResponseAminoMsg;
+                    fromProtoMsg(message: _70.MsgAcknowledgementResponseProtoMsg): _70.MsgAcknowledgementResponse;
+                    toProto(message: _70.MsgAcknowledgementResponse): Uint8Array;
+                    toProtoMsg(message: _70.MsgAcknowledgementResponse): _70.MsgAcknowledgementResponseProtoMsg;
                 };
                 QueryChannelRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelRequest;
-                    isSDK(o: any): o is _67.QueryChannelRequestSDKType;
-                    isAmino(o: any): o is _67.QueryChannelRequestAmino;
-                    encode(message: _67.QueryChannelRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelRequest;
-                    fromJSON(object: any): _67.QueryChannelRequest;
-                    toJSON(message: _67.QueryChannelRequest): {
+                    is(o: any): o is _69.QueryChannelRequest;
+                    isSDK(o: any): o is _69.QueryChannelRequestSDKType;
+                    isAmino(o: any): o is _69.QueryChannelRequestAmino;
+                    encode(message: _69.QueryChannelRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelRequest;
+                    fromJSON(object: any): _69.QueryChannelRequest;
+                    toJSON(message: _69.QueryChannelRequest): {
                         portId: string;
                         channelId: string;
                     };
-                    fromPartial(object: Partial<_67.QueryChannelRequest>): _67.QueryChannelRequest;
-                    fromAmino(object: _67.QueryChannelRequestAmino): _67.QueryChannelRequest;
-                    toAmino(message: _67.QueryChannelRequest): _67.QueryChannelRequestAmino;
-                    fromAminoMsg(object: _67.QueryChannelRequestAminoMsg): _67.QueryChannelRequest;
-                    toAminoMsg(message: _67.QueryChannelRequest): _67.QueryChannelRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelRequestProtoMsg): _67.QueryChannelRequest;
-                    toProto(message: _67.QueryChannelRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelRequest): _67.QueryChannelRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelRequest>): _69.QueryChannelRequest;
+                    fromAmino(object: _69.QueryChannelRequestAmino): _69.QueryChannelRequest;
+                    toAmino(message: _69.QueryChannelRequest): _69.QueryChannelRequestAmino;
+                    fromAminoMsg(object: _69.QueryChannelRequestAminoMsg): _69.QueryChannelRequest;
+                    toAminoMsg(message: _69.QueryChannelRequest): _69.QueryChannelRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelRequestProtoMsg): _69.QueryChannelRequest;
+                    toProto(message: _69.QueryChannelRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelRequest): _69.QueryChannelRequestProtoMsg;
                 };
                 QueryChannelResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelResponse;
-                    isSDK(o: any): o is _67.QueryChannelResponseSDKType;
-                    isAmino(o: any): o is _67.QueryChannelResponseAmino;
-                    encode(message: _67.QueryChannelResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelResponse;
-                    fromJSON(object: any): _67.QueryChannelResponse;
-                    toJSON(message: _67.QueryChannelResponse): {
+                    is(o: any): o is _69.QueryChannelResponse;
+                    isSDK(o: any): o is _69.QueryChannelResponseSDKType;
+                    isAmino(o: any): o is _69.QueryChannelResponseAmino;
+                    encode(message: _69.QueryChannelResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelResponse;
+                    fromJSON(object: any): _69.QueryChannelResponse;
+                    toJSON(message: _69.QueryChannelResponse): {
                         channel?: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -1405,25 +1405,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryChannelResponse>): _67.QueryChannelResponse;
-                    fromAmino(object: _67.QueryChannelResponseAmino): _67.QueryChannelResponse;
-                    toAmino(message: _67.QueryChannelResponse): _67.QueryChannelResponseAmino;
-                    fromAminoMsg(object: _67.QueryChannelResponseAminoMsg): _67.QueryChannelResponse;
-                    toAminoMsg(message: _67.QueryChannelResponse): _67.QueryChannelResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelResponseProtoMsg): _67.QueryChannelResponse;
-                    toProto(message: _67.QueryChannelResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelResponse): _67.QueryChannelResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelResponse>): _69.QueryChannelResponse;
+                    fromAmino(object: _69.QueryChannelResponseAmino): _69.QueryChannelResponse;
+                    toAmino(message: _69.QueryChannelResponse): _69.QueryChannelResponseAmino;
+                    fromAminoMsg(object: _69.QueryChannelResponseAminoMsg): _69.QueryChannelResponse;
+                    toAminoMsg(message: _69.QueryChannelResponse): _69.QueryChannelResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelResponseProtoMsg): _69.QueryChannelResponse;
+                    toProto(message: _69.QueryChannelResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelResponse): _69.QueryChannelResponseProtoMsg;
                 };
                 QueryChannelsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelsRequest;
-                    isSDK(o: any): o is _67.QueryChannelsRequestSDKType;
-                    isAmino(o: any): o is _67.QueryChannelsRequestAmino;
-                    encode(message: _67.QueryChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelsRequest;
-                    fromJSON(object: any): _67.QueryChannelsRequest;
-                    toJSON(message: _67.QueryChannelsRequest): {
+                    is(o: any): o is _69.QueryChannelsRequest;
+                    isSDK(o: any): o is _69.QueryChannelsRequestSDKType;
+                    isAmino(o: any): o is _69.QueryChannelsRequestAmino;
+                    encode(message: _69.QueryChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelsRequest;
+                    fromJSON(object: any): _69.QueryChannelsRequest;
+                    toJSON(message: _69.QueryChannelsRequest): {
                         pagination?: {
                             key: string;
                             offset: string;
@@ -1432,28 +1432,28 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryChannelsRequest>): _67.QueryChannelsRequest;
-                    fromAmino(object: _67.QueryChannelsRequestAmino): _67.QueryChannelsRequest;
-                    toAmino(message: _67.QueryChannelsRequest): _67.QueryChannelsRequestAmino;
-                    fromAminoMsg(object: _67.QueryChannelsRequestAminoMsg): _67.QueryChannelsRequest;
-                    toAminoMsg(message: _67.QueryChannelsRequest): _67.QueryChannelsRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelsRequestProtoMsg): _67.QueryChannelsRequest;
-                    toProto(message: _67.QueryChannelsRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelsRequest): _67.QueryChannelsRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelsRequest>): _69.QueryChannelsRequest;
+                    fromAmino(object: _69.QueryChannelsRequestAmino): _69.QueryChannelsRequest;
+                    toAmino(message: _69.QueryChannelsRequest): _69.QueryChannelsRequestAmino;
+                    fromAminoMsg(object: _69.QueryChannelsRequestAminoMsg): _69.QueryChannelsRequest;
+                    toAminoMsg(message: _69.QueryChannelsRequest): _69.QueryChannelsRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelsRequestProtoMsg): _69.QueryChannelsRequest;
+                    toProto(message: _69.QueryChannelsRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelsRequest): _69.QueryChannelsRequestProtoMsg;
                 };
                 QueryChannelsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelsResponse;
-                    isSDK(o: any): o is _67.QueryChannelsResponseSDKType;
-                    isAmino(o: any): o is _67.QueryChannelsResponseAmino;
-                    encode(message: _67.QueryChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelsResponse;
-                    fromJSON(object: any): _67.QueryChannelsResponse;
-                    toJSON(message: _67.QueryChannelsResponse): {
+                    is(o: any): o is _69.QueryChannelsResponse;
+                    isSDK(o: any): o is _69.QueryChannelsResponseSDKType;
+                    isAmino(o: any): o is _69.QueryChannelsResponseAmino;
+                    encode(message: _69.QueryChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelsResponse;
+                    fromJSON(object: any): _69.QueryChannelsResponse;
+                    toJSON(message: _69.QueryChannelsResponse): {
                         channels: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -1472,25 +1472,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryChannelsResponse>): _67.QueryChannelsResponse;
-                    fromAmino(object: _67.QueryChannelsResponseAmino): _67.QueryChannelsResponse;
-                    toAmino(message: _67.QueryChannelsResponse): _67.QueryChannelsResponseAmino;
-                    fromAminoMsg(object: _67.QueryChannelsResponseAminoMsg): _67.QueryChannelsResponse;
-                    toAminoMsg(message: _67.QueryChannelsResponse): _67.QueryChannelsResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelsResponseProtoMsg): _67.QueryChannelsResponse;
-                    toProto(message: _67.QueryChannelsResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelsResponse): _67.QueryChannelsResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelsResponse>): _69.QueryChannelsResponse;
+                    fromAmino(object: _69.QueryChannelsResponseAmino): _69.QueryChannelsResponse;
+                    toAmino(message: _69.QueryChannelsResponse): _69.QueryChannelsResponseAmino;
+                    fromAminoMsg(object: _69.QueryChannelsResponseAminoMsg): _69.QueryChannelsResponse;
+                    toAminoMsg(message: _69.QueryChannelsResponse): _69.QueryChannelsResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelsResponseProtoMsg): _69.QueryChannelsResponse;
+                    toProto(message: _69.QueryChannelsResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelsResponse): _69.QueryChannelsResponseProtoMsg;
                 };
                 QueryConnectionChannelsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryConnectionChannelsRequest;
-                    isSDK(o: any): o is _67.QueryConnectionChannelsRequestSDKType;
-                    isAmino(o: any): o is _67.QueryConnectionChannelsRequestAmino;
-                    encode(message: _67.QueryConnectionChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryConnectionChannelsRequest;
-                    fromJSON(object: any): _67.QueryConnectionChannelsRequest;
-                    toJSON(message: _67.QueryConnectionChannelsRequest): {
+                    is(o: any): o is _69.QueryConnectionChannelsRequest;
+                    isSDK(o: any): o is _69.QueryConnectionChannelsRequestSDKType;
+                    isAmino(o: any): o is _69.QueryConnectionChannelsRequestAmino;
+                    encode(message: _69.QueryConnectionChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionChannelsRequest;
+                    fromJSON(object: any): _69.QueryConnectionChannelsRequest;
+                    toJSON(message: _69.QueryConnectionChannelsRequest): {
                         connection: string;
                         pagination?: {
                             key: string;
@@ -1500,28 +1500,28 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryConnectionChannelsRequest>): _67.QueryConnectionChannelsRequest;
-                    fromAmino(object: _67.QueryConnectionChannelsRequestAmino): _67.QueryConnectionChannelsRequest;
-                    toAmino(message: _67.QueryConnectionChannelsRequest): _67.QueryConnectionChannelsRequestAmino;
-                    fromAminoMsg(object: _67.QueryConnectionChannelsRequestAminoMsg): _67.QueryConnectionChannelsRequest;
-                    toAminoMsg(message: _67.QueryConnectionChannelsRequest): _67.QueryConnectionChannelsRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryConnectionChannelsRequestProtoMsg): _67.QueryConnectionChannelsRequest;
-                    toProto(message: _67.QueryConnectionChannelsRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryConnectionChannelsRequest): _67.QueryConnectionChannelsRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryConnectionChannelsRequest>): _69.QueryConnectionChannelsRequest;
+                    fromAmino(object: _69.QueryConnectionChannelsRequestAmino): _69.QueryConnectionChannelsRequest;
+                    toAmino(message: _69.QueryConnectionChannelsRequest): _69.QueryConnectionChannelsRequestAmino;
+                    fromAminoMsg(object: _69.QueryConnectionChannelsRequestAminoMsg): _69.QueryConnectionChannelsRequest;
+                    toAminoMsg(message: _69.QueryConnectionChannelsRequest): _69.QueryConnectionChannelsRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryConnectionChannelsRequestProtoMsg): _69.QueryConnectionChannelsRequest;
+                    toProto(message: _69.QueryConnectionChannelsRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryConnectionChannelsRequest): _69.QueryConnectionChannelsRequestProtoMsg;
                 };
                 QueryConnectionChannelsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryConnectionChannelsResponse;
-                    isSDK(o: any): o is _67.QueryConnectionChannelsResponseSDKType;
-                    isAmino(o: any): o is _67.QueryConnectionChannelsResponseAmino;
-                    encode(message: _67.QueryConnectionChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryConnectionChannelsResponse;
-                    fromJSON(object: any): _67.QueryConnectionChannelsResponse;
-                    toJSON(message: _67.QueryConnectionChannelsResponse): {
+                    is(o: any): o is _69.QueryConnectionChannelsResponse;
+                    isSDK(o: any): o is _69.QueryConnectionChannelsResponseSDKType;
+                    isAmino(o: any): o is _69.QueryConnectionChannelsResponseAmino;
+                    encode(message: _69.QueryConnectionChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryConnectionChannelsResponse;
+                    fromJSON(object: any): _69.QueryConnectionChannelsResponse;
+                    toJSON(message: _69.QueryConnectionChannelsResponse): {
                         channels: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -1540,47 +1540,47 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryConnectionChannelsResponse>): _67.QueryConnectionChannelsResponse;
-                    fromAmino(object: _67.QueryConnectionChannelsResponseAmino): _67.QueryConnectionChannelsResponse;
-                    toAmino(message: _67.QueryConnectionChannelsResponse): _67.QueryConnectionChannelsResponseAmino;
-                    fromAminoMsg(object: _67.QueryConnectionChannelsResponseAminoMsg): _67.QueryConnectionChannelsResponse;
-                    toAminoMsg(message: _67.QueryConnectionChannelsResponse): _67.QueryConnectionChannelsResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryConnectionChannelsResponseProtoMsg): _67.QueryConnectionChannelsResponse;
-                    toProto(message: _67.QueryConnectionChannelsResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryConnectionChannelsResponse): _67.QueryConnectionChannelsResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryConnectionChannelsResponse>): _69.QueryConnectionChannelsResponse;
+                    fromAmino(object: _69.QueryConnectionChannelsResponseAmino): _69.QueryConnectionChannelsResponse;
+                    toAmino(message: _69.QueryConnectionChannelsResponse): _69.QueryConnectionChannelsResponseAmino;
+                    fromAminoMsg(object: _69.QueryConnectionChannelsResponseAminoMsg): _69.QueryConnectionChannelsResponse;
+                    toAminoMsg(message: _69.QueryConnectionChannelsResponse): _69.QueryConnectionChannelsResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryConnectionChannelsResponseProtoMsg): _69.QueryConnectionChannelsResponse;
+                    toProto(message: _69.QueryConnectionChannelsResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryConnectionChannelsResponse): _69.QueryConnectionChannelsResponseProtoMsg;
                 };
                 QueryChannelClientStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelClientStateRequest;
-                    isSDK(o: any): o is _67.QueryChannelClientStateRequestSDKType;
-                    isAmino(o: any): o is _67.QueryChannelClientStateRequestAmino;
-                    encode(message: _67.QueryChannelClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelClientStateRequest;
-                    fromJSON(object: any): _67.QueryChannelClientStateRequest;
-                    toJSON(message: _67.QueryChannelClientStateRequest): {
+                    is(o: any): o is _69.QueryChannelClientStateRequest;
+                    isSDK(o: any): o is _69.QueryChannelClientStateRequestSDKType;
+                    isAmino(o: any): o is _69.QueryChannelClientStateRequestAmino;
+                    encode(message: _69.QueryChannelClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelClientStateRequest;
+                    fromJSON(object: any): _69.QueryChannelClientStateRequest;
+                    toJSON(message: _69.QueryChannelClientStateRequest): {
                         portId: string;
                         channelId: string;
                     };
-                    fromPartial(object: Partial<_67.QueryChannelClientStateRequest>): _67.QueryChannelClientStateRequest;
-                    fromAmino(object: _67.QueryChannelClientStateRequestAmino): _67.QueryChannelClientStateRequest;
-                    toAmino(message: _67.QueryChannelClientStateRequest): _67.QueryChannelClientStateRequestAmino;
-                    fromAminoMsg(object: _67.QueryChannelClientStateRequestAminoMsg): _67.QueryChannelClientStateRequest;
-                    toAminoMsg(message: _67.QueryChannelClientStateRequest): _67.QueryChannelClientStateRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelClientStateRequestProtoMsg): _67.QueryChannelClientStateRequest;
-                    toProto(message: _67.QueryChannelClientStateRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelClientStateRequest): _67.QueryChannelClientStateRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelClientStateRequest>): _69.QueryChannelClientStateRequest;
+                    fromAmino(object: _69.QueryChannelClientStateRequestAmino): _69.QueryChannelClientStateRequest;
+                    toAmino(message: _69.QueryChannelClientStateRequest): _69.QueryChannelClientStateRequestAmino;
+                    fromAminoMsg(object: _69.QueryChannelClientStateRequestAminoMsg): _69.QueryChannelClientStateRequest;
+                    toAminoMsg(message: _69.QueryChannelClientStateRequest): _69.QueryChannelClientStateRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelClientStateRequestProtoMsg): _69.QueryChannelClientStateRequest;
+                    toProto(message: _69.QueryChannelClientStateRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelClientStateRequest): _69.QueryChannelClientStateRequestProtoMsg;
                 };
                 QueryChannelClientStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelClientStateResponse;
-                    isSDK(o: any): o is _67.QueryChannelClientStateResponseSDKType;
-                    isAmino(o: any): o is _67.QueryChannelClientStateResponseAmino;
-                    encode(message: _67.QueryChannelClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelClientStateResponse;
-                    fromJSON(object: any): _67.QueryChannelClientStateResponse;
-                    toJSON(message: _67.QueryChannelClientStateResponse): {
+                    is(o: any): o is _69.QueryChannelClientStateResponse;
+                    isSDK(o: any): o is _69.QueryChannelClientStateResponseSDKType;
+                    isAmino(o: any): o is _69.QueryChannelClientStateResponseAmino;
+                    encode(message: _69.QueryChannelClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelClientStateResponse;
+                    fromJSON(object: any): _69.QueryChannelClientStateResponse;
+                    toJSON(message: _69.QueryChannelClientStateResponse): {
                         identifiedClientState?: {
                             clientId: string;
                             clientState?: {
@@ -1595,49 +1595,49 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryChannelClientStateResponse>): _67.QueryChannelClientStateResponse;
-                    fromAmino(object: _67.QueryChannelClientStateResponseAmino): _67.QueryChannelClientStateResponse;
-                    toAmino(message: _67.QueryChannelClientStateResponse): _67.QueryChannelClientStateResponseAmino;
-                    fromAminoMsg(object: _67.QueryChannelClientStateResponseAminoMsg): _67.QueryChannelClientStateResponse;
-                    toAminoMsg(message: _67.QueryChannelClientStateResponse): _67.QueryChannelClientStateResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelClientStateResponseProtoMsg): _67.QueryChannelClientStateResponse;
-                    toProto(message: _67.QueryChannelClientStateResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelClientStateResponse): _67.QueryChannelClientStateResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelClientStateResponse>): _69.QueryChannelClientStateResponse;
+                    fromAmino(object: _69.QueryChannelClientStateResponseAmino): _69.QueryChannelClientStateResponse;
+                    toAmino(message: _69.QueryChannelClientStateResponse): _69.QueryChannelClientStateResponseAmino;
+                    fromAminoMsg(object: _69.QueryChannelClientStateResponseAminoMsg): _69.QueryChannelClientStateResponse;
+                    toAminoMsg(message: _69.QueryChannelClientStateResponse): _69.QueryChannelClientStateResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelClientStateResponseProtoMsg): _69.QueryChannelClientStateResponse;
+                    toProto(message: _69.QueryChannelClientStateResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelClientStateResponse): _69.QueryChannelClientStateResponseProtoMsg;
                 };
                 QueryChannelConsensusStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelConsensusStateRequest;
-                    isSDK(o: any): o is _67.QueryChannelConsensusStateRequestSDKType;
-                    isAmino(o: any): o is _67.QueryChannelConsensusStateRequestAmino;
-                    encode(message: _67.QueryChannelConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelConsensusStateRequest;
-                    fromJSON(object: any): _67.QueryChannelConsensusStateRequest;
-                    toJSON(message: _67.QueryChannelConsensusStateRequest): {
+                    is(o: any): o is _69.QueryChannelConsensusStateRequest;
+                    isSDK(o: any): o is _69.QueryChannelConsensusStateRequestSDKType;
+                    isAmino(o: any): o is _69.QueryChannelConsensusStateRequestAmino;
+                    encode(message: _69.QueryChannelConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelConsensusStateRequest;
+                    fromJSON(object: any): _69.QueryChannelConsensusStateRequest;
+                    toJSON(message: _69.QueryChannelConsensusStateRequest): {
                         portId: string;
                         channelId: string;
                         revisionNumber: string;
                         revisionHeight: string;
                     };
-                    fromPartial(object: Partial<_67.QueryChannelConsensusStateRequest>): _67.QueryChannelConsensusStateRequest;
-                    fromAmino(object: _67.QueryChannelConsensusStateRequestAmino): _67.QueryChannelConsensusStateRequest;
-                    toAmino(message: _67.QueryChannelConsensusStateRequest): _67.QueryChannelConsensusStateRequestAmino;
-                    fromAminoMsg(object: _67.QueryChannelConsensusStateRequestAminoMsg): _67.QueryChannelConsensusStateRequest;
-                    toAminoMsg(message: _67.QueryChannelConsensusStateRequest): _67.QueryChannelConsensusStateRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelConsensusStateRequestProtoMsg): _67.QueryChannelConsensusStateRequest;
-                    toProto(message: _67.QueryChannelConsensusStateRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelConsensusStateRequest): _67.QueryChannelConsensusStateRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelConsensusStateRequest>): _69.QueryChannelConsensusStateRequest;
+                    fromAmino(object: _69.QueryChannelConsensusStateRequestAmino): _69.QueryChannelConsensusStateRequest;
+                    toAmino(message: _69.QueryChannelConsensusStateRequest): _69.QueryChannelConsensusStateRequestAmino;
+                    fromAminoMsg(object: _69.QueryChannelConsensusStateRequestAminoMsg): _69.QueryChannelConsensusStateRequest;
+                    toAminoMsg(message: _69.QueryChannelConsensusStateRequest): _69.QueryChannelConsensusStateRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelConsensusStateRequestProtoMsg): _69.QueryChannelConsensusStateRequest;
+                    toProto(message: _69.QueryChannelConsensusStateRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelConsensusStateRequest): _69.QueryChannelConsensusStateRequestProtoMsg;
                 };
                 QueryChannelConsensusStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryChannelConsensusStateResponse;
-                    isSDK(o: any): o is _67.QueryChannelConsensusStateResponseSDKType;
-                    isAmino(o: any): o is _67.QueryChannelConsensusStateResponseAmino;
-                    encode(message: _67.QueryChannelConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryChannelConsensusStateResponse;
-                    fromJSON(object: any): _67.QueryChannelConsensusStateResponse;
-                    toJSON(message: _67.QueryChannelConsensusStateResponse): {
+                    is(o: any): o is _69.QueryChannelConsensusStateResponse;
+                    isSDK(o: any): o is _69.QueryChannelConsensusStateResponseSDKType;
+                    isAmino(o: any): o is _69.QueryChannelConsensusStateResponseAmino;
+                    encode(message: _69.QueryChannelConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryChannelConsensusStateResponse;
+                    fromJSON(object: any): _69.QueryChannelConsensusStateResponse;
+                    toJSON(message: _69.QueryChannelConsensusStateResponse): {
                         consensusState?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -1650,48 +1650,48 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryChannelConsensusStateResponse>): _67.QueryChannelConsensusStateResponse;
-                    fromAmino(object: _67.QueryChannelConsensusStateResponseAmino): _67.QueryChannelConsensusStateResponse;
-                    toAmino(message: _67.QueryChannelConsensusStateResponse): _67.QueryChannelConsensusStateResponseAmino;
-                    fromAminoMsg(object: _67.QueryChannelConsensusStateResponseAminoMsg): _67.QueryChannelConsensusStateResponse;
-                    toAminoMsg(message: _67.QueryChannelConsensusStateResponse): _67.QueryChannelConsensusStateResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryChannelConsensusStateResponseProtoMsg): _67.QueryChannelConsensusStateResponse;
-                    toProto(message: _67.QueryChannelConsensusStateResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryChannelConsensusStateResponse): _67.QueryChannelConsensusStateResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryChannelConsensusStateResponse>): _69.QueryChannelConsensusStateResponse;
+                    fromAmino(object: _69.QueryChannelConsensusStateResponseAmino): _69.QueryChannelConsensusStateResponse;
+                    toAmino(message: _69.QueryChannelConsensusStateResponse): _69.QueryChannelConsensusStateResponseAmino;
+                    fromAminoMsg(object: _69.QueryChannelConsensusStateResponseAminoMsg): _69.QueryChannelConsensusStateResponse;
+                    toAminoMsg(message: _69.QueryChannelConsensusStateResponse): _69.QueryChannelConsensusStateResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryChannelConsensusStateResponseProtoMsg): _69.QueryChannelConsensusStateResponse;
+                    toProto(message: _69.QueryChannelConsensusStateResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryChannelConsensusStateResponse): _69.QueryChannelConsensusStateResponseProtoMsg;
                 };
                 QueryPacketCommitmentRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketCommitmentRequest;
-                    isSDK(o: any): o is _67.QueryPacketCommitmentRequestSDKType;
-                    isAmino(o: any): o is _67.QueryPacketCommitmentRequestAmino;
-                    encode(message: _67.QueryPacketCommitmentRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketCommitmentRequest;
-                    fromJSON(object: any): _67.QueryPacketCommitmentRequest;
-                    toJSON(message: _67.QueryPacketCommitmentRequest): {
+                    is(o: any): o is _69.QueryPacketCommitmentRequest;
+                    isSDK(o: any): o is _69.QueryPacketCommitmentRequestSDKType;
+                    isAmino(o: any): o is _69.QueryPacketCommitmentRequestAmino;
+                    encode(message: _69.QueryPacketCommitmentRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketCommitmentRequest;
+                    fromJSON(object: any): _69.QueryPacketCommitmentRequest;
+                    toJSON(message: _69.QueryPacketCommitmentRequest): {
                         portId: string;
                         channelId: string;
                         sequence: string;
                     };
-                    fromPartial(object: Partial<_67.QueryPacketCommitmentRequest>): _67.QueryPacketCommitmentRequest;
-                    fromAmino(object: _67.QueryPacketCommitmentRequestAmino): _67.QueryPacketCommitmentRequest;
-                    toAmino(message: _67.QueryPacketCommitmentRequest): _67.QueryPacketCommitmentRequestAmino;
-                    fromAminoMsg(object: _67.QueryPacketCommitmentRequestAminoMsg): _67.QueryPacketCommitmentRequest;
-                    toAminoMsg(message: _67.QueryPacketCommitmentRequest): _67.QueryPacketCommitmentRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketCommitmentRequestProtoMsg): _67.QueryPacketCommitmentRequest;
-                    toProto(message: _67.QueryPacketCommitmentRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketCommitmentRequest): _67.QueryPacketCommitmentRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketCommitmentRequest>): _69.QueryPacketCommitmentRequest;
+                    fromAmino(object: _69.QueryPacketCommitmentRequestAmino): _69.QueryPacketCommitmentRequest;
+                    toAmino(message: _69.QueryPacketCommitmentRequest): _69.QueryPacketCommitmentRequestAmino;
+                    fromAminoMsg(object: _69.QueryPacketCommitmentRequestAminoMsg): _69.QueryPacketCommitmentRequest;
+                    toAminoMsg(message: _69.QueryPacketCommitmentRequest): _69.QueryPacketCommitmentRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketCommitmentRequestProtoMsg): _69.QueryPacketCommitmentRequest;
+                    toProto(message: _69.QueryPacketCommitmentRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketCommitmentRequest): _69.QueryPacketCommitmentRequestProtoMsg;
                 };
                 QueryPacketCommitmentResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketCommitmentResponse;
-                    isSDK(o: any): o is _67.QueryPacketCommitmentResponseSDKType;
-                    isAmino(o: any): o is _67.QueryPacketCommitmentResponseAmino;
-                    encode(message: _67.QueryPacketCommitmentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketCommitmentResponse;
-                    fromJSON(object: any): _67.QueryPacketCommitmentResponse;
-                    toJSON(message: _67.QueryPacketCommitmentResponse): {
+                    is(o: any): o is _69.QueryPacketCommitmentResponse;
+                    isSDK(o: any): o is _69.QueryPacketCommitmentResponseSDKType;
+                    isAmino(o: any): o is _69.QueryPacketCommitmentResponseAmino;
+                    encode(message: _69.QueryPacketCommitmentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketCommitmentResponse;
+                    fromJSON(object: any): _69.QueryPacketCommitmentResponse;
+                    toJSON(message: _69.QueryPacketCommitmentResponse): {
                         commitment: string;
                         proof: string;
                         proofHeight: {
@@ -1699,25 +1699,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryPacketCommitmentResponse>): _67.QueryPacketCommitmentResponse;
-                    fromAmino(object: _67.QueryPacketCommitmentResponseAmino): _67.QueryPacketCommitmentResponse;
-                    toAmino(message: _67.QueryPacketCommitmentResponse): _67.QueryPacketCommitmentResponseAmino;
-                    fromAminoMsg(object: _67.QueryPacketCommitmentResponseAminoMsg): _67.QueryPacketCommitmentResponse;
-                    toAminoMsg(message: _67.QueryPacketCommitmentResponse): _67.QueryPacketCommitmentResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketCommitmentResponseProtoMsg): _67.QueryPacketCommitmentResponse;
-                    toProto(message: _67.QueryPacketCommitmentResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketCommitmentResponse): _67.QueryPacketCommitmentResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketCommitmentResponse>): _69.QueryPacketCommitmentResponse;
+                    fromAmino(object: _69.QueryPacketCommitmentResponseAmino): _69.QueryPacketCommitmentResponse;
+                    toAmino(message: _69.QueryPacketCommitmentResponse): _69.QueryPacketCommitmentResponseAmino;
+                    fromAminoMsg(object: _69.QueryPacketCommitmentResponseAminoMsg): _69.QueryPacketCommitmentResponse;
+                    toAminoMsg(message: _69.QueryPacketCommitmentResponse): _69.QueryPacketCommitmentResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketCommitmentResponseProtoMsg): _69.QueryPacketCommitmentResponse;
+                    toProto(message: _69.QueryPacketCommitmentResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketCommitmentResponse): _69.QueryPacketCommitmentResponseProtoMsg;
                 };
                 QueryPacketCommitmentsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketCommitmentsRequest;
-                    isSDK(o: any): o is _67.QueryPacketCommitmentsRequestSDKType;
-                    isAmino(o: any): o is _67.QueryPacketCommitmentsRequestAmino;
-                    encode(message: _67.QueryPacketCommitmentsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketCommitmentsRequest;
-                    fromJSON(object: any): _67.QueryPacketCommitmentsRequest;
-                    toJSON(message: _67.QueryPacketCommitmentsRequest): {
+                    is(o: any): o is _69.QueryPacketCommitmentsRequest;
+                    isSDK(o: any): o is _69.QueryPacketCommitmentsRequestSDKType;
+                    isAmino(o: any): o is _69.QueryPacketCommitmentsRequestAmino;
+                    encode(message: _69.QueryPacketCommitmentsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketCommitmentsRequest;
+                    fromJSON(object: any): _69.QueryPacketCommitmentsRequest;
+                    toJSON(message: _69.QueryPacketCommitmentsRequest): {
                         portId: string;
                         channelId: string;
                         pagination?: {
@@ -1728,25 +1728,25 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryPacketCommitmentsRequest>): _67.QueryPacketCommitmentsRequest;
-                    fromAmino(object: _67.QueryPacketCommitmentsRequestAmino): _67.QueryPacketCommitmentsRequest;
-                    toAmino(message: _67.QueryPacketCommitmentsRequest): _67.QueryPacketCommitmentsRequestAmino;
-                    fromAminoMsg(object: _67.QueryPacketCommitmentsRequestAminoMsg): _67.QueryPacketCommitmentsRequest;
-                    toAminoMsg(message: _67.QueryPacketCommitmentsRequest): _67.QueryPacketCommitmentsRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketCommitmentsRequestProtoMsg): _67.QueryPacketCommitmentsRequest;
-                    toProto(message: _67.QueryPacketCommitmentsRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketCommitmentsRequest): _67.QueryPacketCommitmentsRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketCommitmentsRequest>): _69.QueryPacketCommitmentsRequest;
+                    fromAmino(object: _69.QueryPacketCommitmentsRequestAmino): _69.QueryPacketCommitmentsRequest;
+                    toAmino(message: _69.QueryPacketCommitmentsRequest): _69.QueryPacketCommitmentsRequestAmino;
+                    fromAminoMsg(object: _69.QueryPacketCommitmentsRequestAminoMsg): _69.QueryPacketCommitmentsRequest;
+                    toAminoMsg(message: _69.QueryPacketCommitmentsRequest): _69.QueryPacketCommitmentsRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketCommitmentsRequestProtoMsg): _69.QueryPacketCommitmentsRequest;
+                    toProto(message: _69.QueryPacketCommitmentsRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketCommitmentsRequest): _69.QueryPacketCommitmentsRequestProtoMsg;
                 };
                 QueryPacketCommitmentsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketCommitmentsResponse;
-                    isSDK(o: any): o is _67.QueryPacketCommitmentsResponseSDKType;
-                    isAmino(o: any): o is _67.QueryPacketCommitmentsResponseAmino;
-                    encode(message: _67.QueryPacketCommitmentsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketCommitmentsResponse;
-                    fromJSON(object: any): _67.QueryPacketCommitmentsResponse;
-                    toJSON(message: _67.QueryPacketCommitmentsResponse): {
+                    is(o: any): o is _69.QueryPacketCommitmentsResponse;
+                    isSDK(o: any): o is _69.QueryPacketCommitmentsResponseSDKType;
+                    isAmino(o: any): o is _69.QueryPacketCommitmentsResponseAmino;
+                    encode(message: _69.QueryPacketCommitmentsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketCommitmentsResponse;
+                    fromJSON(object: any): _69.QueryPacketCommitmentsResponse;
+                    toJSON(message: _69.QueryPacketCommitmentsResponse): {
                         commitments: {
                             portId: string;
                             channelId: string;
@@ -1762,48 +1762,48 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryPacketCommitmentsResponse>): _67.QueryPacketCommitmentsResponse;
-                    fromAmino(object: _67.QueryPacketCommitmentsResponseAmino): _67.QueryPacketCommitmentsResponse;
-                    toAmino(message: _67.QueryPacketCommitmentsResponse): _67.QueryPacketCommitmentsResponseAmino;
-                    fromAminoMsg(object: _67.QueryPacketCommitmentsResponseAminoMsg): _67.QueryPacketCommitmentsResponse;
-                    toAminoMsg(message: _67.QueryPacketCommitmentsResponse): _67.QueryPacketCommitmentsResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketCommitmentsResponseProtoMsg): _67.QueryPacketCommitmentsResponse;
-                    toProto(message: _67.QueryPacketCommitmentsResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketCommitmentsResponse): _67.QueryPacketCommitmentsResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketCommitmentsResponse>): _69.QueryPacketCommitmentsResponse;
+                    fromAmino(object: _69.QueryPacketCommitmentsResponseAmino): _69.QueryPacketCommitmentsResponse;
+                    toAmino(message: _69.QueryPacketCommitmentsResponse): _69.QueryPacketCommitmentsResponseAmino;
+                    fromAminoMsg(object: _69.QueryPacketCommitmentsResponseAminoMsg): _69.QueryPacketCommitmentsResponse;
+                    toAminoMsg(message: _69.QueryPacketCommitmentsResponse): _69.QueryPacketCommitmentsResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketCommitmentsResponseProtoMsg): _69.QueryPacketCommitmentsResponse;
+                    toProto(message: _69.QueryPacketCommitmentsResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketCommitmentsResponse): _69.QueryPacketCommitmentsResponseProtoMsg;
                 };
                 QueryPacketReceiptRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketReceiptRequest;
-                    isSDK(o: any): o is _67.QueryPacketReceiptRequestSDKType;
-                    isAmino(o: any): o is _67.QueryPacketReceiptRequestAmino;
-                    encode(message: _67.QueryPacketReceiptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketReceiptRequest;
-                    fromJSON(object: any): _67.QueryPacketReceiptRequest;
-                    toJSON(message: _67.QueryPacketReceiptRequest): {
+                    is(o: any): o is _69.QueryPacketReceiptRequest;
+                    isSDK(o: any): o is _69.QueryPacketReceiptRequestSDKType;
+                    isAmino(o: any): o is _69.QueryPacketReceiptRequestAmino;
+                    encode(message: _69.QueryPacketReceiptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketReceiptRequest;
+                    fromJSON(object: any): _69.QueryPacketReceiptRequest;
+                    toJSON(message: _69.QueryPacketReceiptRequest): {
                         portId: string;
                         channelId: string;
                         sequence: string;
                     };
-                    fromPartial(object: Partial<_67.QueryPacketReceiptRequest>): _67.QueryPacketReceiptRequest;
-                    fromAmino(object: _67.QueryPacketReceiptRequestAmino): _67.QueryPacketReceiptRequest;
-                    toAmino(message: _67.QueryPacketReceiptRequest): _67.QueryPacketReceiptRequestAmino;
-                    fromAminoMsg(object: _67.QueryPacketReceiptRequestAminoMsg): _67.QueryPacketReceiptRequest;
-                    toAminoMsg(message: _67.QueryPacketReceiptRequest): _67.QueryPacketReceiptRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketReceiptRequestProtoMsg): _67.QueryPacketReceiptRequest;
-                    toProto(message: _67.QueryPacketReceiptRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketReceiptRequest): _67.QueryPacketReceiptRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketReceiptRequest>): _69.QueryPacketReceiptRequest;
+                    fromAmino(object: _69.QueryPacketReceiptRequestAmino): _69.QueryPacketReceiptRequest;
+                    toAmino(message: _69.QueryPacketReceiptRequest): _69.QueryPacketReceiptRequestAmino;
+                    fromAminoMsg(object: _69.QueryPacketReceiptRequestAminoMsg): _69.QueryPacketReceiptRequest;
+                    toAminoMsg(message: _69.QueryPacketReceiptRequest): _69.QueryPacketReceiptRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketReceiptRequestProtoMsg): _69.QueryPacketReceiptRequest;
+                    toProto(message: _69.QueryPacketReceiptRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketReceiptRequest): _69.QueryPacketReceiptRequestProtoMsg;
                 };
                 QueryPacketReceiptResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketReceiptResponse;
-                    isSDK(o: any): o is _67.QueryPacketReceiptResponseSDKType;
-                    isAmino(o: any): o is _67.QueryPacketReceiptResponseAmino;
-                    encode(message: _67.QueryPacketReceiptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketReceiptResponse;
-                    fromJSON(object: any): _67.QueryPacketReceiptResponse;
-                    toJSON(message: _67.QueryPacketReceiptResponse): {
+                    is(o: any): o is _69.QueryPacketReceiptResponse;
+                    isSDK(o: any): o is _69.QueryPacketReceiptResponseSDKType;
+                    isAmino(o: any): o is _69.QueryPacketReceiptResponseAmino;
+                    encode(message: _69.QueryPacketReceiptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketReceiptResponse;
+                    fromJSON(object: any): _69.QueryPacketReceiptResponse;
+                    toJSON(message: _69.QueryPacketReceiptResponse): {
                         received: boolean;
                         proof: string;
                         proofHeight: {
@@ -1811,48 +1811,48 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryPacketReceiptResponse>): _67.QueryPacketReceiptResponse;
-                    fromAmino(object: _67.QueryPacketReceiptResponseAmino): _67.QueryPacketReceiptResponse;
-                    toAmino(message: _67.QueryPacketReceiptResponse): _67.QueryPacketReceiptResponseAmino;
-                    fromAminoMsg(object: _67.QueryPacketReceiptResponseAminoMsg): _67.QueryPacketReceiptResponse;
-                    toAminoMsg(message: _67.QueryPacketReceiptResponse): _67.QueryPacketReceiptResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketReceiptResponseProtoMsg): _67.QueryPacketReceiptResponse;
-                    toProto(message: _67.QueryPacketReceiptResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketReceiptResponse): _67.QueryPacketReceiptResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketReceiptResponse>): _69.QueryPacketReceiptResponse;
+                    fromAmino(object: _69.QueryPacketReceiptResponseAmino): _69.QueryPacketReceiptResponse;
+                    toAmino(message: _69.QueryPacketReceiptResponse): _69.QueryPacketReceiptResponseAmino;
+                    fromAminoMsg(object: _69.QueryPacketReceiptResponseAminoMsg): _69.QueryPacketReceiptResponse;
+                    toAminoMsg(message: _69.QueryPacketReceiptResponse): _69.QueryPacketReceiptResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketReceiptResponseProtoMsg): _69.QueryPacketReceiptResponse;
+                    toProto(message: _69.QueryPacketReceiptResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketReceiptResponse): _69.QueryPacketReceiptResponseProtoMsg;
                 };
                 QueryPacketAcknowledgementRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketAcknowledgementRequest;
-                    isSDK(o: any): o is _67.QueryPacketAcknowledgementRequestSDKType;
-                    isAmino(o: any): o is _67.QueryPacketAcknowledgementRequestAmino;
-                    encode(message: _67.QueryPacketAcknowledgementRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketAcknowledgementRequest;
-                    fromJSON(object: any): _67.QueryPacketAcknowledgementRequest;
-                    toJSON(message: _67.QueryPacketAcknowledgementRequest): {
+                    is(o: any): o is _69.QueryPacketAcknowledgementRequest;
+                    isSDK(o: any): o is _69.QueryPacketAcknowledgementRequestSDKType;
+                    isAmino(o: any): o is _69.QueryPacketAcknowledgementRequestAmino;
+                    encode(message: _69.QueryPacketAcknowledgementRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketAcknowledgementRequest;
+                    fromJSON(object: any): _69.QueryPacketAcknowledgementRequest;
+                    toJSON(message: _69.QueryPacketAcknowledgementRequest): {
                         portId: string;
                         channelId: string;
                         sequence: string;
                     };
-                    fromPartial(object: Partial<_67.QueryPacketAcknowledgementRequest>): _67.QueryPacketAcknowledgementRequest;
-                    fromAmino(object: _67.QueryPacketAcknowledgementRequestAmino): _67.QueryPacketAcknowledgementRequest;
-                    toAmino(message: _67.QueryPacketAcknowledgementRequest): _67.QueryPacketAcknowledgementRequestAmino;
-                    fromAminoMsg(object: _67.QueryPacketAcknowledgementRequestAminoMsg): _67.QueryPacketAcknowledgementRequest;
-                    toAminoMsg(message: _67.QueryPacketAcknowledgementRequest): _67.QueryPacketAcknowledgementRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketAcknowledgementRequestProtoMsg): _67.QueryPacketAcknowledgementRequest;
-                    toProto(message: _67.QueryPacketAcknowledgementRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketAcknowledgementRequest): _67.QueryPacketAcknowledgementRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketAcknowledgementRequest>): _69.QueryPacketAcknowledgementRequest;
+                    fromAmino(object: _69.QueryPacketAcknowledgementRequestAmino): _69.QueryPacketAcknowledgementRequest;
+                    toAmino(message: _69.QueryPacketAcknowledgementRequest): _69.QueryPacketAcknowledgementRequestAmino;
+                    fromAminoMsg(object: _69.QueryPacketAcknowledgementRequestAminoMsg): _69.QueryPacketAcknowledgementRequest;
+                    toAminoMsg(message: _69.QueryPacketAcknowledgementRequest): _69.QueryPacketAcknowledgementRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketAcknowledgementRequestProtoMsg): _69.QueryPacketAcknowledgementRequest;
+                    toProto(message: _69.QueryPacketAcknowledgementRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketAcknowledgementRequest): _69.QueryPacketAcknowledgementRequestProtoMsg;
                 };
                 QueryPacketAcknowledgementResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketAcknowledgementResponse;
-                    isSDK(o: any): o is _67.QueryPacketAcknowledgementResponseSDKType;
-                    isAmino(o: any): o is _67.QueryPacketAcknowledgementResponseAmino;
-                    encode(message: _67.QueryPacketAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketAcknowledgementResponse;
-                    fromJSON(object: any): _67.QueryPacketAcknowledgementResponse;
-                    toJSON(message: _67.QueryPacketAcknowledgementResponse): {
+                    is(o: any): o is _69.QueryPacketAcknowledgementResponse;
+                    isSDK(o: any): o is _69.QueryPacketAcknowledgementResponseSDKType;
+                    isAmino(o: any): o is _69.QueryPacketAcknowledgementResponseAmino;
+                    encode(message: _69.QueryPacketAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketAcknowledgementResponse;
+                    fromJSON(object: any): _69.QueryPacketAcknowledgementResponse;
+                    toJSON(message: _69.QueryPacketAcknowledgementResponse): {
                         acknowledgement: string;
                         proof: string;
                         proofHeight: {
@@ -1860,25 +1860,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryPacketAcknowledgementResponse>): _67.QueryPacketAcknowledgementResponse;
-                    fromAmino(object: _67.QueryPacketAcknowledgementResponseAmino): _67.QueryPacketAcknowledgementResponse;
-                    toAmino(message: _67.QueryPacketAcknowledgementResponse): _67.QueryPacketAcknowledgementResponseAmino;
-                    fromAminoMsg(object: _67.QueryPacketAcknowledgementResponseAminoMsg): _67.QueryPacketAcknowledgementResponse;
-                    toAminoMsg(message: _67.QueryPacketAcknowledgementResponse): _67.QueryPacketAcknowledgementResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketAcknowledgementResponseProtoMsg): _67.QueryPacketAcknowledgementResponse;
-                    toProto(message: _67.QueryPacketAcknowledgementResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketAcknowledgementResponse): _67.QueryPacketAcknowledgementResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketAcknowledgementResponse>): _69.QueryPacketAcknowledgementResponse;
+                    fromAmino(object: _69.QueryPacketAcknowledgementResponseAmino): _69.QueryPacketAcknowledgementResponse;
+                    toAmino(message: _69.QueryPacketAcknowledgementResponse): _69.QueryPacketAcknowledgementResponseAmino;
+                    fromAminoMsg(object: _69.QueryPacketAcknowledgementResponseAminoMsg): _69.QueryPacketAcknowledgementResponse;
+                    toAminoMsg(message: _69.QueryPacketAcknowledgementResponse): _69.QueryPacketAcknowledgementResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketAcknowledgementResponseProtoMsg): _69.QueryPacketAcknowledgementResponse;
+                    toProto(message: _69.QueryPacketAcknowledgementResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketAcknowledgementResponse): _69.QueryPacketAcknowledgementResponseProtoMsg;
                 };
                 QueryPacketAcknowledgementsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketAcknowledgementsRequest;
-                    isSDK(o: any): o is _67.QueryPacketAcknowledgementsRequestSDKType;
-                    isAmino(o: any): o is _67.QueryPacketAcknowledgementsRequestAmino;
-                    encode(message: _67.QueryPacketAcknowledgementsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketAcknowledgementsRequest;
-                    fromJSON(object: any): _67.QueryPacketAcknowledgementsRequest;
-                    toJSON(message: _67.QueryPacketAcknowledgementsRequest): {
+                    is(o: any): o is _69.QueryPacketAcknowledgementsRequest;
+                    isSDK(o: any): o is _69.QueryPacketAcknowledgementsRequestSDKType;
+                    isAmino(o: any): o is _69.QueryPacketAcknowledgementsRequestAmino;
+                    encode(message: _69.QueryPacketAcknowledgementsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketAcknowledgementsRequest;
+                    fromJSON(object: any): _69.QueryPacketAcknowledgementsRequest;
+                    toJSON(message: _69.QueryPacketAcknowledgementsRequest): {
                         portId: string;
                         channelId: string;
                         pagination?: {
@@ -1890,25 +1890,25 @@ export declare namespace ibc {
                         };
                         packetCommitmentSequences: string[];
                     };
-                    fromPartial(object: Partial<_67.QueryPacketAcknowledgementsRequest>): _67.QueryPacketAcknowledgementsRequest;
-                    fromAmino(object: _67.QueryPacketAcknowledgementsRequestAmino): _67.QueryPacketAcknowledgementsRequest;
-                    toAmino(message: _67.QueryPacketAcknowledgementsRequest): _67.QueryPacketAcknowledgementsRequestAmino;
-                    fromAminoMsg(object: _67.QueryPacketAcknowledgementsRequestAminoMsg): _67.QueryPacketAcknowledgementsRequest;
-                    toAminoMsg(message: _67.QueryPacketAcknowledgementsRequest): _67.QueryPacketAcknowledgementsRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketAcknowledgementsRequestProtoMsg): _67.QueryPacketAcknowledgementsRequest;
-                    toProto(message: _67.QueryPacketAcknowledgementsRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketAcknowledgementsRequest): _67.QueryPacketAcknowledgementsRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketAcknowledgementsRequest>): _69.QueryPacketAcknowledgementsRequest;
+                    fromAmino(object: _69.QueryPacketAcknowledgementsRequestAmino): _69.QueryPacketAcknowledgementsRequest;
+                    toAmino(message: _69.QueryPacketAcknowledgementsRequest): _69.QueryPacketAcknowledgementsRequestAmino;
+                    fromAminoMsg(object: _69.QueryPacketAcknowledgementsRequestAminoMsg): _69.QueryPacketAcknowledgementsRequest;
+                    toAminoMsg(message: _69.QueryPacketAcknowledgementsRequest): _69.QueryPacketAcknowledgementsRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketAcknowledgementsRequestProtoMsg): _69.QueryPacketAcknowledgementsRequest;
+                    toProto(message: _69.QueryPacketAcknowledgementsRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketAcknowledgementsRequest): _69.QueryPacketAcknowledgementsRequestProtoMsg;
                 };
                 QueryPacketAcknowledgementsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryPacketAcknowledgementsResponse;
-                    isSDK(o: any): o is _67.QueryPacketAcknowledgementsResponseSDKType;
-                    isAmino(o: any): o is _67.QueryPacketAcknowledgementsResponseAmino;
-                    encode(message: _67.QueryPacketAcknowledgementsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryPacketAcknowledgementsResponse;
-                    fromJSON(object: any): _67.QueryPacketAcknowledgementsResponse;
-                    toJSON(message: _67.QueryPacketAcknowledgementsResponse): {
+                    is(o: any): o is _69.QueryPacketAcknowledgementsResponse;
+                    isSDK(o: any): o is _69.QueryPacketAcknowledgementsResponseSDKType;
+                    isAmino(o: any): o is _69.QueryPacketAcknowledgementsResponseAmino;
+                    encode(message: _69.QueryPacketAcknowledgementsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryPacketAcknowledgementsResponse;
+                    fromJSON(object: any): _69.QueryPacketAcknowledgementsResponse;
+                    toJSON(message: _69.QueryPacketAcknowledgementsResponse): {
                         acknowledgements: {
                             portId: string;
                             channelId: string;
@@ -1924,143 +1924,143 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryPacketAcknowledgementsResponse>): _67.QueryPacketAcknowledgementsResponse;
-                    fromAmino(object: _67.QueryPacketAcknowledgementsResponseAmino): _67.QueryPacketAcknowledgementsResponse;
-                    toAmino(message: _67.QueryPacketAcknowledgementsResponse): _67.QueryPacketAcknowledgementsResponseAmino;
-                    fromAminoMsg(object: _67.QueryPacketAcknowledgementsResponseAminoMsg): _67.QueryPacketAcknowledgementsResponse;
-                    toAminoMsg(message: _67.QueryPacketAcknowledgementsResponse): _67.QueryPacketAcknowledgementsResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryPacketAcknowledgementsResponseProtoMsg): _67.QueryPacketAcknowledgementsResponse;
-                    toProto(message: _67.QueryPacketAcknowledgementsResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryPacketAcknowledgementsResponse): _67.QueryPacketAcknowledgementsResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryPacketAcknowledgementsResponse>): _69.QueryPacketAcknowledgementsResponse;
+                    fromAmino(object: _69.QueryPacketAcknowledgementsResponseAmino): _69.QueryPacketAcknowledgementsResponse;
+                    toAmino(message: _69.QueryPacketAcknowledgementsResponse): _69.QueryPacketAcknowledgementsResponseAmino;
+                    fromAminoMsg(object: _69.QueryPacketAcknowledgementsResponseAminoMsg): _69.QueryPacketAcknowledgementsResponse;
+                    toAminoMsg(message: _69.QueryPacketAcknowledgementsResponse): _69.QueryPacketAcknowledgementsResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryPacketAcknowledgementsResponseProtoMsg): _69.QueryPacketAcknowledgementsResponse;
+                    toProto(message: _69.QueryPacketAcknowledgementsResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryPacketAcknowledgementsResponse): _69.QueryPacketAcknowledgementsResponseProtoMsg;
                 };
                 QueryUnreceivedPacketsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryUnreceivedPacketsRequest;
-                    isSDK(o: any): o is _67.QueryUnreceivedPacketsRequestSDKType;
-                    isAmino(o: any): o is _67.QueryUnreceivedPacketsRequestAmino;
-                    encode(message: _67.QueryUnreceivedPacketsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryUnreceivedPacketsRequest;
-                    fromJSON(object: any): _67.QueryUnreceivedPacketsRequest;
-                    toJSON(message: _67.QueryUnreceivedPacketsRequest): {
+                    is(o: any): o is _69.QueryUnreceivedPacketsRequest;
+                    isSDK(o: any): o is _69.QueryUnreceivedPacketsRequestSDKType;
+                    isAmino(o: any): o is _69.QueryUnreceivedPacketsRequestAmino;
+                    encode(message: _69.QueryUnreceivedPacketsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryUnreceivedPacketsRequest;
+                    fromJSON(object: any): _69.QueryUnreceivedPacketsRequest;
+                    toJSON(message: _69.QueryUnreceivedPacketsRequest): {
                         portId: string;
                         channelId: string;
                         packetCommitmentSequences: string[];
                     };
-                    fromPartial(object: Partial<_67.QueryUnreceivedPacketsRequest>): _67.QueryUnreceivedPacketsRequest;
-                    fromAmino(object: _67.QueryUnreceivedPacketsRequestAmino): _67.QueryUnreceivedPacketsRequest;
-                    toAmino(message: _67.QueryUnreceivedPacketsRequest): _67.QueryUnreceivedPacketsRequestAmino;
-                    fromAminoMsg(object: _67.QueryUnreceivedPacketsRequestAminoMsg): _67.QueryUnreceivedPacketsRequest;
-                    toAminoMsg(message: _67.QueryUnreceivedPacketsRequest): _67.QueryUnreceivedPacketsRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryUnreceivedPacketsRequestProtoMsg): _67.QueryUnreceivedPacketsRequest;
-                    toProto(message: _67.QueryUnreceivedPacketsRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryUnreceivedPacketsRequest): _67.QueryUnreceivedPacketsRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryUnreceivedPacketsRequest>): _69.QueryUnreceivedPacketsRequest;
+                    fromAmino(object: _69.QueryUnreceivedPacketsRequestAmino): _69.QueryUnreceivedPacketsRequest;
+                    toAmino(message: _69.QueryUnreceivedPacketsRequest): _69.QueryUnreceivedPacketsRequestAmino;
+                    fromAminoMsg(object: _69.QueryUnreceivedPacketsRequestAminoMsg): _69.QueryUnreceivedPacketsRequest;
+                    toAminoMsg(message: _69.QueryUnreceivedPacketsRequest): _69.QueryUnreceivedPacketsRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryUnreceivedPacketsRequestProtoMsg): _69.QueryUnreceivedPacketsRequest;
+                    toProto(message: _69.QueryUnreceivedPacketsRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryUnreceivedPacketsRequest): _69.QueryUnreceivedPacketsRequestProtoMsg;
                 };
                 QueryUnreceivedPacketsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryUnreceivedPacketsResponse;
-                    isSDK(o: any): o is _67.QueryUnreceivedPacketsResponseSDKType;
-                    isAmino(o: any): o is _67.QueryUnreceivedPacketsResponseAmino;
-                    encode(message: _67.QueryUnreceivedPacketsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryUnreceivedPacketsResponse;
-                    fromJSON(object: any): _67.QueryUnreceivedPacketsResponse;
-                    toJSON(message: _67.QueryUnreceivedPacketsResponse): {
+                    is(o: any): o is _69.QueryUnreceivedPacketsResponse;
+                    isSDK(o: any): o is _69.QueryUnreceivedPacketsResponseSDKType;
+                    isAmino(o: any): o is _69.QueryUnreceivedPacketsResponseAmino;
+                    encode(message: _69.QueryUnreceivedPacketsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryUnreceivedPacketsResponse;
+                    fromJSON(object: any): _69.QueryUnreceivedPacketsResponse;
+                    toJSON(message: _69.QueryUnreceivedPacketsResponse): {
                         sequences: string[];
                         height: {
                             revisionNumber: string;
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryUnreceivedPacketsResponse>): _67.QueryUnreceivedPacketsResponse;
-                    fromAmino(object: _67.QueryUnreceivedPacketsResponseAmino): _67.QueryUnreceivedPacketsResponse;
-                    toAmino(message: _67.QueryUnreceivedPacketsResponse): _67.QueryUnreceivedPacketsResponseAmino;
-                    fromAminoMsg(object: _67.QueryUnreceivedPacketsResponseAminoMsg): _67.QueryUnreceivedPacketsResponse;
-                    toAminoMsg(message: _67.QueryUnreceivedPacketsResponse): _67.QueryUnreceivedPacketsResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryUnreceivedPacketsResponseProtoMsg): _67.QueryUnreceivedPacketsResponse;
-                    toProto(message: _67.QueryUnreceivedPacketsResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryUnreceivedPacketsResponse): _67.QueryUnreceivedPacketsResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryUnreceivedPacketsResponse>): _69.QueryUnreceivedPacketsResponse;
+                    fromAmino(object: _69.QueryUnreceivedPacketsResponseAmino): _69.QueryUnreceivedPacketsResponse;
+                    toAmino(message: _69.QueryUnreceivedPacketsResponse): _69.QueryUnreceivedPacketsResponseAmino;
+                    fromAminoMsg(object: _69.QueryUnreceivedPacketsResponseAminoMsg): _69.QueryUnreceivedPacketsResponse;
+                    toAminoMsg(message: _69.QueryUnreceivedPacketsResponse): _69.QueryUnreceivedPacketsResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryUnreceivedPacketsResponseProtoMsg): _69.QueryUnreceivedPacketsResponse;
+                    toProto(message: _69.QueryUnreceivedPacketsResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryUnreceivedPacketsResponse): _69.QueryUnreceivedPacketsResponseProtoMsg;
                 };
                 QueryUnreceivedAcksRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryUnreceivedAcksRequest;
-                    isSDK(o: any): o is _67.QueryUnreceivedAcksRequestSDKType;
-                    isAmino(o: any): o is _67.QueryUnreceivedAcksRequestAmino;
-                    encode(message: _67.QueryUnreceivedAcksRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryUnreceivedAcksRequest;
-                    fromJSON(object: any): _67.QueryUnreceivedAcksRequest;
-                    toJSON(message: _67.QueryUnreceivedAcksRequest): {
+                    is(o: any): o is _69.QueryUnreceivedAcksRequest;
+                    isSDK(o: any): o is _69.QueryUnreceivedAcksRequestSDKType;
+                    isAmino(o: any): o is _69.QueryUnreceivedAcksRequestAmino;
+                    encode(message: _69.QueryUnreceivedAcksRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryUnreceivedAcksRequest;
+                    fromJSON(object: any): _69.QueryUnreceivedAcksRequest;
+                    toJSON(message: _69.QueryUnreceivedAcksRequest): {
                         portId: string;
                         channelId: string;
                         packetAckSequences: string[];
                     };
-                    fromPartial(object: Partial<_67.QueryUnreceivedAcksRequest>): _67.QueryUnreceivedAcksRequest;
-                    fromAmino(object: _67.QueryUnreceivedAcksRequestAmino): _67.QueryUnreceivedAcksRequest;
-                    toAmino(message: _67.QueryUnreceivedAcksRequest): _67.QueryUnreceivedAcksRequestAmino;
-                    fromAminoMsg(object: _67.QueryUnreceivedAcksRequestAminoMsg): _67.QueryUnreceivedAcksRequest;
-                    toAminoMsg(message: _67.QueryUnreceivedAcksRequest): _67.QueryUnreceivedAcksRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryUnreceivedAcksRequestProtoMsg): _67.QueryUnreceivedAcksRequest;
-                    toProto(message: _67.QueryUnreceivedAcksRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryUnreceivedAcksRequest): _67.QueryUnreceivedAcksRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryUnreceivedAcksRequest>): _69.QueryUnreceivedAcksRequest;
+                    fromAmino(object: _69.QueryUnreceivedAcksRequestAmino): _69.QueryUnreceivedAcksRequest;
+                    toAmino(message: _69.QueryUnreceivedAcksRequest): _69.QueryUnreceivedAcksRequestAmino;
+                    fromAminoMsg(object: _69.QueryUnreceivedAcksRequestAminoMsg): _69.QueryUnreceivedAcksRequest;
+                    toAminoMsg(message: _69.QueryUnreceivedAcksRequest): _69.QueryUnreceivedAcksRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryUnreceivedAcksRequestProtoMsg): _69.QueryUnreceivedAcksRequest;
+                    toProto(message: _69.QueryUnreceivedAcksRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryUnreceivedAcksRequest): _69.QueryUnreceivedAcksRequestProtoMsg;
                 };
                 QueryUnreceivedAcksResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryUnreceivedAcksResponse;
-                    isSDK(o: any): o is _67.QueryUnreceivedAcksResponseSDKType;
-                    isAmino(o: any): o is _67.QueryUnreceivedAcksResponseAmino;
-                    encode(message: _67.QueryUnreceivedAcksResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryUnreceivedAcksResponse;
-                    fromJSON(object: any): _67.QueryUnreceivedAcksResponse;
-                    toJSON(message: _67.QueryUnreceivedAcksResponse): {
+                    is(o: any): o is _69.QueryUnreceivedAcksResponse;
+                    isSDK(o: any): o is _69.QueryUnreceivedAcksResponseSDKType;
+                    isAmino(o: any): o is _69.QueryUnreceivedAcksResponseAmino;
+                    encode(message: _69.QueryUnreceivedAcksResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryUnreceivedAcksResponse;
+                    fromJSON(object: any): _69.QueryUnreceivedAcksResponse;
+                    toJSON(message: _69.QueryUnreceivedAcksResponse): {
                         sequences: string[];
                         height: {
                             revisionNumber: string;
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryUnreceivedAcksResponse>): _67.QueryUnreceivedAcksResponse;
-                    fromAmino(object: _67.QueryUnreceivedAcksResponseAmino): _67.QueryUnreceivedAcksResponse;
-                    toAmino(message: _67.QueryUnreceivedAcksResponse): _67.QueryUnreceivedAcksResponseAmino;
-                    fromAminoMsg(object: _67.QueryUnreceivedAcksResponseAminoMsg): _67.QueryUnreceivedAcksResponse;
-                    toAminoMsg(message: _67.QueryUnreceivedAcksResponse): _67.QueryUnreceivedAcksResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryUnreceivedAcksResponseProtoMsg): _67.QueryUnreceivedAcksResponse;
-                    toProto(message: _67.QueryUnreceivedAcksResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryUnreceivedAcksResponse): _67.QueryUnreceivedAcksResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryUnreceivedAcksResponse>): _69.QueryUnreceivedAcksResponse;
+                    fromAmino(object: _69.QueryUnreceivedAcksResponseAmino): _69.QueryUnreceivedAcksResponse;
+                    toAmino(message: _69.QueryUnreceivedAcksResponse): _69.QueryUnreceivedAcksResponseAmino;
+                    fromAminoMsg(object: _69.QueryUnreceivedAcksResponseAminoMsg): _69.QueryUnreceivedAcksResponse;
+                    toAminoMsg(message: _69.QueryUnreceivedAcksResponse): _69.QueryUnreceivedAcksResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryUnreceivedAcksResponseProtoMsg): _69.QueryUnreceivedAcksResponse;
+                    toProto(message: _69.QueryUnreceivedAcksResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryUnreceivedAcksResponse): _69.QueryUnreceivedAcksResponseProtoMsg;
                 };
                 QueryNextSequenceReceiveRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryNextSequenceReceiveRequest;
-                    isSDK(o: any): o is _67.QueryNextSequenceReceiveRequestSDKType;
-                    isAmino(o: any): o is _67.QueryNextSequenceReceiveRequestAmino;
-                    encode(message: _67.QueryNextSequenceReceiveRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryNextSequenceReceiveRequest;
-                    fromJSON(object: any): _67.QueryNextSequenceReceiveRequest;
-                    toJSON(message: _67.QueryNextSequenceReceiveRequest): {
+                    is(o: any): o is _69.QueryNextSequenceReceiveRequest;
+                    isSDK(o: any): o is _69.QueryNextSequenceReceiveRequestSDKType;
+                    isAmino(o: any): o is _69.QueryNextSequenceReceiveRequestAmino;
+                    encode(message: _69.QueryNextSequenceReceiveRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryNextSequenceReceiveRequest;
+                    fromJSON(object: any): _69.QueryNextSequenceReceiveRequest;
+                    toJSON(message: _69.QueryNextSequenceReceiveRequest): {
                         portId: string;
                         channelId: string;
                     };
-                    fromPartial(object: Partial<_67.QueryNextSequenceReceiveRequest>): _67.QueryNextSequenceReceiveRequest;
-                    fromAmino(object: _67.QueryNextSequenceReceiveRequestAmino): _67.QueryNextSequenceReceiveRequest;
-                    toAmino(message: _67.QueryNextSequenceReceiveRequest): _67.QueryNextSequenceReceiveRequestAmino;
-                    fromAminoMsg(object: _67.QueryNextSequenceReceiveRequestAminoMsg): _67.QueryNextSequenceReceiveRequest;
-                    toAminoMsg(message: _67.QueryNextSequenceReceiveRequest): _67.QueryNextSequenceReceiveRequestAminoMsg;
-                    fromProtoMsg(message: _67.QueryNextSequenceReceiveRequestProtoMsg): _67.QueryNextSequenceReceiveRequest;
-                    toProto(message: _67.QueryNextSequenceReceiveRequest): Uint8Array;
-                    toProtoMsg(message: _67.QueryNextSequenceReceiveRequest): _67.QueryNextSequenceReceiveRequestProtoMsg;
+                    fromPartial(object: Partial<_69.QueryNextSequenceReceiveRequest>): _69.QueryNextSequenceReceiveRequest;
+                    fromAmino(object: _69.QueryNextSequenceReceiveRequestAmino): _69.QueryNextSequenceReceiveRequest;
+                    toAmino(message: _69.QueryNextSequenceReceiveRequest): _69.QueryNextSequenceReceiveRequestAmino;
+                    fromAminoMsg(object: _69.QueryNextSequenceReceiveRequestAminoMsg): _69.QueryNextSequenceReceiveRequest;
+                    toAminoMsg(message: _69.QueryNextSequenceReceiveRequest): _69.QueryNextSequenceReceiveRequestAminoMsg;
+                    fromProtoMsg(message: _69.QueryNextSequenceReceiveRequestProtoMsg): _69.QueryNextSequenceReceiveRequest;
+                    toProto(message: _69.QueryNextSequenceReceiveRequest): Uint8Array;
+                    toProtoMsg(message: _69.QueryNextSequenceReceiveRequest): _69.QueryNextSequenceReceiveRequestProtoMsg;
                 };
                 QueryNextSequenceReceiveResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _67.QueryNextSequenceReceiveResponse;
-                    isSDK(o: any): o is _67.QueryNextSequenceReceiveResponseSDKType;
-                    isAmino(o: any): o is _67.QueryNextSequenceReceiveResponseAmino;
-                    encode(message: _67.QueryNextSequenceReceiveResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.QueryNextSequenceReceiveResponse;
-                    fromJSON(object: any): _67.QueryNextSequenceReceiveResponse;
-                    toJSON(message: _67.QueryNextSequenceReceiveResponse): {
+                    is(o: any): o is _69.QueryNextSequenceReceiveResponse;
+                    isSDK(o: any): o is _69.QueryNextSequenceReceiveResponseSDKType;
+                    isAmino(o: any): o is _69.QueryNextSequenceReceiveResponseAmino;
+                    encode(message: _69.QueryNextSequenceReceiveResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.QueryNextSequenceReceiveResponse;
+                    fromJSON(object: any): _69.QueryNextSequenceReceiveResponse;
+                    toJSON(message: _69.QueryNextSequenceReceiveResponse): {
                         nextSequenceReceive: string;
                         proof: string;
                         proofHeight: {
@@ -2068,28 +2068,28 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_67.QueryNextSequenceReceiveResponse>): _67.QueryNextSequenceReceiveResponse;
-                    fromAmino(object: _67.QueryNextSequenceReceiveResponseAmino): _67.QueryNextSequenceReceiveResponse;
-                    toAmino(message: _67.QueryNextSequenceReceiveResponse): _67.QueryNextSequenceReceiveResponseAmino;
-                    fromAminoMsg(object: _67.QueryNextSequenceReceiveResponseAminoMsg): _67.QueryNextSequenceReceiveResponse;
-                    toAminoMsg(message: _67.QueryNextSequenceReceiveResponse): _67.QueryNextSequenceReceiveResponseAminoMsg;
-                    fromProtoMsg(message: _67.QueryNextSequenceReceiveResponseProtoMsg): _67.QueryNextSequenceReceiveResponse;
-                    toProto(message: _67.QueryNextSequenceReceiveResponse): Uint8Array;
-                    toProtoMsg(message: _67.QueryNextSequenceReceiveResponse): _67.QueryNextSequenceReceiveResponseProtoMsg;
+                    fromPartial(object: Partial<_69.QueryNextSequenceReceiveResponse>): _69.QueryNextSequenceReceiveResponse;
+                    fromAmino(object: _69.QueryNextSequenceReceiveResponseAmino): _69.QueryNextSequenceReceiveResponse;
+                    toAmino(message: _69.QueryNextSequenceReceiveResponse): _69.QueryNextSequenceReceiveResponseAmino;
+                    fromAminoMsg(object: _69.QueryNextSequenceReceiveResponseAminoMsg): _69.QueryNextSequenceReceiveResponse;
+                    toAminoMsg(message: _69.QueryNextSequenceReceiveResponse): _69.QueryNextSequenceReceiveResponseAminoMsg;
+                    fromProtoMsg(message: _69.QueryNextSequenceReceiveResponseProtoMsg): _69.QueryNextSequenceReceiveResponse;
+                    toProto(message: _69.QueryNextSequenceReceiveResponse): Uint8Array;
+                    toProtoMsg(message: _69.QueryNextSequenceReceiveResponse): _69.QueryNextSequenceReceiveResponseProtoMsg;
                 };
                 GenesisState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _66.GenesisState;
-                    isSDK(o: any): o is _66.GenesisStateSDKType;
-                    isAmino(o: any): o is _66.GenesisStateAmino;
-                    encode(message: _66.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.GenesisState;
-                    fromJSON(object: any): _66.GenesisState;
-                    toJSON(message: _66.GenesisState): {
+                    is(o: any): o is _68.GenesisState;
+                    isSDK(o: any): o is _68.GenesisStateSDKType;
+                    isAmino(o: any): o is _68.GenesisStateAmino;
+                    encode(message: _68.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.GenesisState;
+                    fromJSON(object: any): _68.GenesisState;
+                    toJSON(message: _68.GenesisState): {
                         channels: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -2134,60 +2134,60 @@ export declare namespace ibc {
                         }[];
                         nextChannelSequence: string;
                     };
-                    fromPartial(object: Partial<_66.GenesisState>): _66.GenesisState;
-                    fromAmino(object: _66.GenesisStateAmino): _66.GenesisState;
-                    toAmino(message: _66.GenesisState): _66.GenesisStateAmino;
-                    fromAminoMsg(object: _66.GenesisStateAminoMsg): _66.GenesisState;
-                    toAminoMsg(message: _66.GenesisState): _66.GenesisStateAminoMsg;
-                    fromProtoMsg(message: _66.GenesisStateProtoMsg): _66.GenesisState;
-                    toProto(message: _66.GenesisState): Uint8Array;
-                    toProtoMsg(message: _66.GenesisState): _66.GenesisStateProtoMsg;
+                    fromPartial(object: Partial<_68.GenesisState>): _68.GenesisState;
+                    fromAmino(object: _68.GenesisStateAmino): _68.GenesisState;
+                    toAmino(message: _68.GenesisState): _68.GenesisStateAmino;
+                    fromAminoMsg(object: _68.GenesisStateAminoMsg): _68.GenesisState;
+                    toAminoMsg(message: _68.GenesisState): _68.GenesisStateAminoMsg;
+                    fromProtoMsg(message: _68.GenesisStateProtoMsg): _68.GenesisState;
+                    toProto(message: _68.GenesisState): Uint8Array;
+                    toProtoMsg(message: _68.GenesisState): _68.GenesisStateProtoMsg;
                 };
                 PacketSequence: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _66.PacketSequence;
-                    isSDK(o: any): o is _66.PacketSequenceSDKType;
-                    isAmino(o: any): o is _66.PacketSequenceAmino;
-                    encode(message: _66.PacketSequence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.PacketSequence;
-                    fromJSON(object: any): _66.PacketSequence;
-                    toJSON(message: _66.PacketSequence): {
+                    is(o: any): o is _68.PacketSequence;
+                    isSDK(o: any): o is _68.PacketSequenceSDKType;
+                    isAmino(o: any): o is _68.PacketSequenceAmino;
+                    encode(message: _68.PacketSequence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.PacketSequence;
+                    fromJSON(object: any): _68.PacketSequence;
+                    toJSON(message: _68.PacketSequence): {
                         portId: string;
                         channelId: string;
                         sequence: string;
                     };
-                    fromPartial(object: Partial<_66.PacketSequence>): _66.PacketSequence;
-                    fromAmino(object: _66.PacketSequenceAmino): _66.PacketSequence;
-                    toAmino(message: _66.PacketSequence): _66.PacketSequenceAmino;
-                    fromAminoMsg(object: _66.PacketSequenceAminoMsg): _66.PacketSequence;
-                    toAminoMsg(message: _66.PacketSequence): _66.PacketSequenceAminoMsg;
-                    fromProtoMsg(message: _66.PacketSequenceProtoMsg): _66.PacketSequence;
-                    toProto(message: _66.PacketSequence): Uint8Array;
-                    toProtoMsg(message: _66.PacketSequence): _66.PacketSequenceProtoMsg;
+                    fromPartial(object: Partial<_68.PacketSequence>): _68.PacketSequence;
+                    fromAmino(object: _68.PacketSequenceAmino): _68.PacketSequence;
+                    toAmino(message: _68.PacketSequence): _68.PacketSequenceAmino;
+                    fromAminoMsg(object: _68.PacketSequenceAminoMsg): _68.PacketSequence;
+                    toAminoMsg(message: _68.PacketSequence): _68.PacketSequenceAminoMsg;
+                    fromProtoMsg(message: _68.PacketSequenceProtoMsg): _68.PacketSequence;
+                    toProto(message: _68.PacketSequence): Uint8Array;
+                    toProtoMsg(message: _68.PacketSequence): _68.PacketSequenceProtoMsg;
                 };
-                stateFromJSON(object: any): _65.State;
-                stateToJSON(object: _65.State): string;
-                orderFromJSON(object: any): _65.Order;
-                orderToJSON(object: _65.Order): string;
-                State: typeof _65.State;
-                StateSDKType: typeof _65.State;
-                StateAmino: typeof _65.State;
-                Order: typeof _65.Order;
-                OrderSDKType: typeof _65.Order;
-                OrderAmino: typeof _65.Order;
+                stateFromJSON(object: any): _67.State;
+                stateToJSON(object: _67.State): string;
+                orderFromJSON(object: any): _67.Order;
+                orderToJSON(object: _67.Order): string;
+                State: typeof _67.State;
+                StateSDKType: typeof _67.State;
+                StateAmino: typeof _67.State;
+                Order: typeof _67.Order;
+                OrderSDKType: typeof _67.Order;
+                OrderAmino: typeof _67.Order;
                 Channel: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _65.Channel;
-                    isSDK(o: any): o is _65.ChannelSDKType;
-                    isAmino(o: any): o is _65.ChannelAmino;
-                    encode(message: _65.Channel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.Channel;
-                    fromJSON(object: any): _65.Channel;
-                    toJSON(message: _65.Channel): {
-                        state: _65.State;
-                        ordering: _65.Order;
+                    is(o: any): o is _67.Channel;
+                    isSDK(o: any): o is _67.ChannelSDKType;
+                    isAmino(o: any): o is _67.ChannelAmino;
+                    encode(message: _67.Channel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Channel;
+                    fromJSON(object: any): _67.Channel;
+                    toJSON(message: _67.Channel): {
+                        state: _67.State;
+                        ordering: _67.Order;
                         counterparty: {
                             portId: string;
                             channelId: string;
@@ -2195,27 +2195,27 @@ export declare namespace ibc {
                         connectionHops: string[];
                         version: string;
                     };
-                    fromPartial(object: Partial<_65.Channel>): _65.Channel;
-                    fromAmino(object: _65.ChannelAmino): _65.Channel;
-                    toAmino(message: _65.Channel): _65.ChannelAmino;
-                    fromAminoMsg(object: _65.ChannelAminoMsg): _65.Channel;
-                    toAminoMsg(message: _65.Channel): _65.ChannelAminoMsg;
-                    fromProtoMsg(message: _65.ChannelProtoMsg): _65.Channel;
-                    toProto(message: _65.Channel): Uint8Array;
-                    toProtoMsg(message: _65.Channel): _65.ChannelProtoMsg;
+                    fromPartial(object: Partial<_67.Channel>): _67.Channel;
+                    fromAmino(object: _67.ChannelAmino): _67.Channel;
+                    toAmino(message: _67.Channel): _67.ChannelAmino;
+                    fromAminoMsg(object: _67.ChannelAminoMsg): _67.Channel;
+                    toAminoMsg(message: _67.Channel): _67.ChannelAminoMsg;
+                    fromProtoMsg(message: _67.ChannelProtoMsg): _67.Channel;
+                    toProto(message: _67.Channel): Uint8Array;
+                    toProtoMsg(message: _67.Channel): _67.ChannelProtoMsg;
                 };
                 IdentifiedChannel: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _65.IdentifiedChannel;
-                    isSDK(o: any): o is _65.IdentifiedChannelSDKType;
-                    isAmino(o: any): o is _65.IdentifiedChannelAmino;
-                    encode(message: _65.IdentifiedChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.IdentifiedChannel;
-                    fromJSON(object: any): _65.IdentifiedChannel;
-                    toJSON(message: _65.IdentifiedChannel): {
-                        state: _65.State;
-                        ordering: _65.Order;
+                    is(o: any): o is _67.IdentifiedChannel;
+                    isSDK(o: any): o is _67.IdentifiedChannelSDKType;
+                    isAmino(o: any): o is _67.IdentifiedChannelAmino;
+                    encode(message: _67.IdentifiedChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.IdentifiedChannel;
+                    fromJSON(object: any): _67.IdentifiedChannel;
+                    toJSON(message: _67.IdentifiedChannel): {
+                        state: _67.State;
+                        ordering: _67.Order;
                         counterparty: {
                             portId: string;
                             channelId: string;
@@ -2225,47 +2225,47 @@ export declare namespace ibc {
                         portId: string;
                         channelId: string;
                     };
-                    fromPartial(object: Partial<_65.IdentifiedChannel>): _65.IdentifiedChannel;
-                    fromAmino(object: _65.IdentifiedChannelAmino): _65.IdentifiedChannel;
-                    toAmino(message: _65.IdentifiedChannel): _65.IdentifiedChannelAmino;
-                    fromAminoMsg(object: _65.IdentifiedChannelAminoMsg): _65.IdentifiedChannel;
-                    toAminoMsg(message: _65.IdentifiedChannel): _65.IdentifiedChannelAminoMsg;
-                    fromProtoMsg(message: _65.IdentifiedChannelProtoMsg): _65.IdentifiedChannel;
-                    toProto(message: _65.IdentifiedChannel): Uint8Array;
-                    toProtoMsg(message: _65.IdentifiedChannel): _65.IdentifiedChannelProtoMsg;
+                    fromPartial(object: Partial<_67.IdentifiedChannel>): _67.IdentifiedChannel;
+                    fromAmino(object: _67.IdentifiedChannelAmino): _67.IdentifiedChannel;
+                    toAmino(message: _67.IdentifiedChannel): _67.IdentifiedChannelAmino;
+                    fromAminoMsg(object: _67.IdentifiedChannelAminoMsg): _67.IdentifiedChannel;
+                    toAminoMsg(message: _67.IdentifiedChannel): _67.IdentifiedChannelAminoMsg;
+                    fromProtoMsg(message: _67.IdentifiedChannelProtoMsg): _67.IdentifiedChannel;
+                    toProto(message: _67.IdentifiedChannel): Uint8Array;
+                    toProtoMsg(message: _67.IdentifiedChannel): _67.IdentifiedChannelProtoMsg;
                 };
                 Counterparty: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _65.Counterparty;
-                    isSDK(o: any): o is _65.CounterpartySDKType;
-                    isAmino(o: any): o is _65.CounterpartyAmino;
-                    encode(message: _65.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.Counterparty;
-                    fromJSON(object: any): _65.Counterparty;
-                    toJSON(message: _65.Counterparty): {
+                    is(o: any): o is _67.Counterparty;
+                    isSDK(o: any): o is _67.CounterpartySDKType;
+                    isAmino(o: any): o is _67.CounterpartyAmino;
+                    encode(message: _67.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Counterparty;
+                    fromJSON(object: any): _67.Counterparty;
+                    toJSON(message: _67.Counterparty): {
                         portId: string;
                         channelId: string;
                     };
-                    fromPartial(object: Partial<_65.Counterparty>): _65.Counterparty;
-                    fromAmino(object: _65.CounterpartyAmino): _65.Counterparty;
-                    toAmino(message: _65.Counterparty): _65.CounterpartyAmino;
-                    fromAminoMsg(object: _65.CounterpartyAminoMsg): _65.Counterparty;
-                    toAminoMsg(message: _65.Counterparty): _65.CounterpartyAminoMsg;
-                    fromProtoMsg(message: _65.CounterpartyProtoMsg): _65.Counterparty;
-                    toProto(message: _65.Counterparty): Uint8Array;
-                    toProtoMsg(message: _65.Counterparty): _65.CounterpartyProtoMsg;
+                    fromPartial(object: Partial<_67.Counterparty>): _67.Counterparty;
+                    fromAmino(object: _67.CounterpartyAmino): _67.Counterparty;
+                    toAmino(message: _67.Counterparty): _67.CounterpartyAmino;
+                    fromAminoMsg(object: _67.CounterpartyAminoMsg): _67.Counterparty;
+                    toAminoMsg(message: _67.Counterparty): _67.CounterpartyAminoMsg;
+                    fromProtoMsg(message: _67.CounterpartyProtoMsg): _67.Counterparty;
+                    toProto(message: _67.Counterparty): Uint8Array;
+                    toProtoMsg(message: _67.Counterparty): _67.CounterpartyProtoMsg;
                 };
                 Packet: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _65.Packet;
-                    isSDK(o: any): o is _65.PacketSDKType;
-                    isAmino(o: any): o is _65.PacketAmino;
-                    encode(message: _65.Packet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.Packet;
-                    fromJSON(object: any): _65.Packet;
-                    toJSON(message: _65.Packet): {
+                    is(o: any): o is _67.Packet;
+                    isSDK(o: any): o is _67.PacketSDKType;
+                    isAmino(o: any): o is _67.PacketAmino;
+                    encode(message: _67.Packet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Packet;
+                    fromJSON(object: any): _67.Packet;
+                    toJSON(message: _67.Packet): {
                         sequence: string;
                         sourcePort: string;
                         sourceChannel: string;
@@ -2278,118 +2278,118 @@ export declare namespace ibc {
                         };
                         timeoutTimestamp: string;
                     };
-                    fromPartial(object: Partial<_65.Packet>): _65.Packet;
-                    fromAmino(object: _65.PacketAmino): _65.Packet;
-                    toAmino(message: _65.Packet): _65.PacketAmino;
-                    fromAminoMsg(object: _65.PacketAminoMsg): _65.Packet;
-                    toAminoMsg(message: _65.Packet): _65.PacketAminoMsg;
-                    fromProtoMsg(message: _65.PacketProtoMsg): _65.Packet;
-                    toProto(message: _65.Packet): Uint8Array;
-                    toProtoMsg(message: _65.Packet): _65.PacketProtoMsg;
+                    fromPartial(object: Partial<_67.Packet>): _67.Packet;
+                    fromAmino(object: _67.PacketAmino): _67.Packet;
+                    toAmino(message: _67.Packet): _67.PacketAmino;
+                    fromAminoMsg(object: _67.PacketAminoMsg): _67.Packet;
+                    toAminoMsg(message: _67.Packet): _67.PacketAminoMsg;
+                    fromProtoMsg(message: _67.PacketProtoMsg): _67.Packet;
+                    toProto(message: _67.Packet): Uint8Array;
+                    toProtoMsg(message: _67.Packet): _67.PacketProtoMsg;
                 };
                 PacketState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _65.PacketState;
-                    isSDK(o: any): o is _65.PacketStateSDKType;
-                    isAmino(o: any): o is _65.PacketStateAmino;
-                    encode(message: _65.PacketState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.PacketState;
-                    fromJSON(object: any): _65.PacketState;
-                    toJSON(message: _65.PacketState): {
+                    is(o: any): o is _67.PacketState;
+                    isSDK(o: any): o is _67.PacketStateSDKType;
+                    isAmino(o: any): o is _67.PacketStateAmino;
+                    encode(message: _67.PacketState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.PacketState;
+                    fromJSON(object: any): _67.PacketState;
+                    toJSON(message: _67.PacketState): {
                         portId: string;
                         channelId: string;
                         sequence: string;
                         data: string;
                     };
-                    fromPartial(object: Partial<_65.PacketState>): _65.PacketState;
-                    fromAmino(object: _65.PacketStateAmino): _65.PacketState;
-                    toAmino(message: _65.PacketState): _65.PacketStateAmino;
-                    fromAminoMsg(object: _65.PacketStateAminoMsg): _65.PacketState;
-                    toAminoMsg(message: _65.PacketState): _65.PacketStateAminoMsg;
-                    fromProtoMsg(message: _65.PacketStateProtoMsg): _65.PacketState;
-                    toProto(message: _65.PacketState): Uint8Array;
-                    toProtoMsg(message: _65.PacketState): _65.PacketStateProtoMsg;
+                    fromPartial(object: Partial<_67.PacketState>): _67.PacketState;
+                    fromAmino(object: _67.PacketStateAmino): _67.PacketState;
+                    toAmino(message: _67.PacketState): _67.PacketStateAmino;
+                    fromAminoMsg(object: _67.PacketStateAminoMsg): _67.PacketState;
+                    toAminoMsg(message: _67.PacketState): _67.PacketStateAminoMsg;
+                    fromProtoMsg(message: _67.PacketStateProtoMsg): _67.PacketState;
+                    toProto(message: _67.PacketState): Uint8Array;
+                    toProtoMsg(message: _67.PacketState): _67.PacketStateProtoMsg;
                 };
                 Acknowledgement: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _65.Acknowledgement;
-                    isSDK(o: any): o is _65.AcknowledgementSDKType;
-                    isAmino(o: any): o is _65.AcknowledgementAmino;
-                    encode(message: _65.Acknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.Acknowledgement;
-                    fromJSON(object: any): _65.Acknowledgement;
-                    toJSON(message: _65.Acknowledgement): {
+                    is(o: any): o is _67.Acknowledgement;
+                    isSDK(o: any): o is _67.AcknowledgementSDKType;
+                    isAmino(o: any): o is _67.AcknowledgementAmino;
+                    encode(message: _67.Acknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Acknowledgement;
+                    fromJSON(object: any): _67.Acknowledgement;
+                    toJSON(message: _67.Acknowledgement): {
                         result?: string;
                         error?: string;
                     };
-                    fromPartial(object: Partial<_65.Acknowledgement>): _65.Acknowledgement;
-                    fromAmino(object: _65.AcknowledgementAmino): _65.Acknowledgement;
-                    toAmino(message: _65.Acknowledgement): _65.AcknowledgementAmino;
-                    fromAminoMsg(object: _65.AcknowledgementAminoMsg): _65.Acknowledgement;
-                    toAminoMsg(message: _65.Acknowledgement): _65.AcknowledgementAminoMsg;
-                    fromProtoMsg(message: _65.AcknowledgementProtoMsg): _65.Acknowledgement;
-                    toProto(message: _65.Acknowledgement): Uint8Array;
-                    toProtoMsg(message: _65.Acknowledgement): _65.AcknowledgementProtoMsg;
+                    fromPartial(object: Partial<_67.Acknowledgement>): _67.Acknowledgement;
+                    fromAmino(object: _67.AcknowledgementAmino): _67.Acknowledgement;
+                    toAmino(message: _67.Acknowledgement): _67.AcknowledgementAmino;
+                    fromAminoMsg(object: _67.AcknowledgementAminoMsg): _67.Acknowledgement;
+                    toAminoMsg(message: _67.Acknowledgement): _67.AcknowledgementAminoMsg;
+                    fromProtoMsg(message: _67.AcknowledgementProtoMsg): _67.Acknowledgement;
+                    toProto(message: _67.Acknowledgement): Uint8Array;
+                    toProtoMsg(message: _67.Acknowledgement): _67.AcknowledgementProtoMsg;
                 };
             };
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _199.MsgClientImpl;
-                QueryClientImpl: typeof _195.QueryClientImpl;
+                MsgClientImpl: typeof _210.MsgClientImpl;
+                QueryClientImpl: typeof _206.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    clientState(request: _71.QueryClientStateRequest): Promise<_71.QueryClientStateResponse>;
-                    clientStates(request?: _71.QueryClientStatesRequest): Promise<_71.QueryClientStatesResponse>;
-                    consensusState(request: _71.QueryConsensusStateRequest): Promise<_71.QueryConsensusStateResponse>;
-                    consensusStates(request: _71.QueryConsensusStatesRequest): Promise<_71.QueryConsensusStatesResponse>;
-                    clientStatus(request: _71.QueryClientStatusRequest): Promise<_71.QueryClientStatusResponse>;
-                    clientParams(request?: _71.QueryClientParamsRequest): Promise<_71.QueryClientParamsResponse>;
-                    upgradedClientState(request?: _71.QueryUpgradedClientStateRequest): Promise<_71.QueryUpgradedClientStateResponse>;
-                    upgradedConsensusState(request?: _71.QueryUpgradedConsensusStateRequest): Promise<_71.QueryUpgradedConsensusStateResponse>;
+                    clientState(request: _73.QueryClientStateRequest): Promise<_73.QueryClientStateResponse>;
+                    clientStates(request?: _73.QueryClientStatesRequest): Promise<_73.QueryClientStatesResponse>;
+                    consensusState(request: _73.QueryConsensusStateRequest): Promise<_73.QueryConsensusStateResponse>;
+                    consensusStates(request: _73.QueryConsensusStatesRequest): Promise<_73.QueryConsensusStatesResponse>;
+                    clientStatus(request: _73.QueryClientStatusRequest): Promise<_73.QueryClientStatusResponse>;
+                    clientParams(request?: _73.QueryClientParamsRequest): Promise<_73.QueryClientParamsResponse>;
+                    upgradedClientState(request?: _73.QueryUpgradedClientStateRequest): Promise<_73.QueryUpgradedClientStateResponse>;
+                    upgradedConsensusState(request?: _73.QueryUpgradedConsensusStateRequest): Promise<_73.QueryUpgradedConsensusStateResponse>;
                 };
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        createClient(value: _72.MsgCreateClient): {
+                        createClient(value: _74.MsgCreateClient): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        updateClient(value: _72.MsgUpdateClient): {
+                        updateClient(value: _74.MsgUpdateClient): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        upgradeClient(value: _72.MsgUpgradeClient): {
+                        upgradeClient(value: _74.MsgUpgradeClient): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        submitMisbehaviour(value: _72.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _74.MsgSubmitMisbehaviour): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        createClient(value: _72.MsgCreateClient): {
+                        createClient(value: _74.MsgCreateClient): {
                             typeUrl: string;
-                            value: _72.MsgCreateClient;
+                            value: _74.MsgCreateClient;
                         };
-                        updateClient(value: _72.MsgUpdateClient): {
+                        updateClient(value: _74.MsgUpdateClient): {
                             typeUrl: string;
-                            value: _72.MsgUpdateClient;
+                            value: _74.MsgUpdateClient;
                         };
-                        upgradeClient(value: _72.MsgUpgradeClient): {
+                        upgradeClient(value: _74.MsgUpgradeClient): {
                             typeUrl: string;
-                            value: _72.MsgUpgradeClient;
+                            value: _74.MsgUpgradeClient;
                         };
-                        submitMisbehaviour(value: _72.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _74.MsgSubmitMisbehaviour): {
                             typeUrl: string;
-                            value: _72.MsgSubmitMisbehaviour;
+                            value: _74.MsgSubmitMisbehaviour;
                         };
                     };
                     toJSON: {
-                        createClient(value: _72.MsgCreateClient): {
+                        createClient(value: _74.MsgCreateClient): {
                             typeUrl: string;
                             value: {
                                 clientState?: {
@@ -2405,7 +2405,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        updateClient(value: _72.MsgUpdateClient): {
+                        updateClient(value: _74.MsgUpdateClient): {
                             typeUrl: string;
                             value: {
                                 clientId: string;
@@ -2417,7 +2417,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        upgradeClient(value: _72.MsgUpgradeClient): {
+                        upgradeClient(value: _74.MsgUpgradeClient): {
                             typeUrl: string;
                             value: {
                                 clientId: string;
@@ -2436,7 +2436,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        submitMisbehaviour(value: _72.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _74.MsgSubmitMisbehaviour): {
                             typeUrl: string;
                             value: {
                                 clientId: string;
@@ -2452,72 +2452,72 @@ export declare namespace ibc {
                     fromJSON: {
                         createClient(value: any): {
                             typeUrl: string;
-                            value: _72.MsgCreateClient;
+                            value: _74.MsgCreateClient;
                         };
                         updateClient(value: any): {
                             typeUrl: string;
-                            value: _72.MsgUpdateClient;
+                            value: _74.MsgUpdateClient;
                         };
                         upgradeClient(value: any): {
                             typeUrl: string;
-                            value: _72.MsgUpgradeClient;
+                            value: _74.MsgUpgradeClient;
                         };
                         submitMisbehaviour(value: any): {
                             typeUrl: string;
-                            value: _72.MsgSubmitMisbehaviour;
+                            value: _74.MsgSubmitMisbehaviour;
                         };
                     };
                     fromPartial: {
-                        createClient(value: _72.MsgCreateClient): {
+                        createClient(value: _74.MsgCreateClient): {
                             typeUrl: string;
-                            value: _72.MsgCreateClient;
+                            value: _74.MsgCreateClient;
                         };
-                        updateClient(value: _72.MsgUpdateClient): {
+                        updateClient(value: _74.MsgUpdateClient): {
                             typeUrl: string;
-                            value: _72.MsgUpdateClient;
+                            value: _74.MsgUpdateClient;
                         };
-                        upgradeClient(value: _72.MsgUpgradeClient): {
+                        upgradeClient(value: _74.MsgUpgradeClient): {
                             typeUrl: string;
-                            value: _72.MsgUpgradeClient;
+                            value: _74.MsgUpgradeClient;
                         };
-                        submitMisbehaviour(value: _72.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _74.MsgSubmitMisbehaviour): {
                             typeUrl: string;
-                            value: _72.MsgSubmitMisbehaviour;
+                            value: _74.MsgSubmitMisbehaviour;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.core.client.v1.MsgCreateClient": {
                         aminoType: string;
-                        toAmino: (message: _72.MsgCreateClient) => _72.MsgCreateClientAmino;
-                        fromAmino: (object: _72.MsgCreateClientAmino) => _72.MsgCreateClient;
+                        toAmino: (message: _74.MsgCreateClient) => _74.MsgCreateClientAmino;
+                        fromAmino: (object: _74.MsgCreateClientAmino) => _74.MsgCreateClient;
                     };
                     "/ibc.core.client.v1.MsgUpdateClient": {
                         aminoType: string;
-                        toAmino: (message: _72.MsgUpdateClient) => _72.MsgUpdateClientAmino;
-                        fromAmino: (object: _72.MsgUpdateClientAmino) => _72.MsgUpdateClient;
+                        toAmino: (message: _74.MsgUpdateClient) => _74.MsgUpdateClientAmino;
+                        fromAmino: (object: _74.MsgUpdateClientAmino) => _74.MsgUpdateClient;
                     };
                     "/ibc.core.client.v1.MsgUpgradeClient": {
                         aminoType: string;
-                        toAmino: (message: _72.MsgUpgradeClient) => _72.MsgUpgradeClientAmino;
-                        fromAmino: (object: _72.MsgUpgradeClientAmino) => _72.MsgUpgradeClient;
+                        toAmino: (message: _74.MsgUpgradeClient) => _74.MsgUpgradeClientAmino;
+                        fromAmino: (object: _74.MsgUpgradeClientAmino) => _74.MsgUpgradeClient;
                     };
                     "/ibc.core.client.v1.MsgSubmitMisbehaviour": {
                         aminoType: string;
-                        toAmino: (message: _72.MsgSubmitMisbehaviour) => _72.MsgSubmitMisbehaviourAmino;
-                        fromAmino: (object: _72.MsgSubmitMisbehaviourAmino) => _72.MsgSubmitMisbehaviour;
+                        toAmino: (message: _74.MsgSubmitMisbehaviour) => _74.MsgSubmitMisbehaviourAmino;
+                        fromAmino: (object: _74.MsgSubmitMisbehaviourAmino) => _74.MsgSubmitMisbehaviour;
                     };
                 };
                 MsgCreateClient: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgCreateClient;
-                    isSDK(o: any): o is _72.MsgCreateClientSDKType;
-                    isAmino(o: any): o is _72.MsgCreateClientAmino;
-                    encode(message: _72.MsgCreateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgCreateClient;
-                    fromJSON(object: any): _72.MsgCreateClient;
-                    toJSON(message: _72.MsgCreateClient): {
+                    is(o: any): o is _74.MsgCreateClient;
+                    isSDK(o: any): o is _74.MsgCreateClientSDKType;
+                    isAmino(o: any): o is _74.MsgCreateClientAmino;
+                    encode(message: _74.MsgCreateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgCreateClient;
+                    fromJSON(object: any): _74.MsgCreateClient;
+                    toJSON(message: _74.MsgCreateClient): {
                         clientState?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -2530,44 +2530,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_72.MsgCreateClient>): _72.MsgCreateClient;
-                    fromAmino(object: _72.MsgCreateClientAmino): _72.MsgCreateClient;
-                    toAmino(message: _72.MsgCreateClient): _72.MsgCreateClientAmino;
-                    fromAminoMsg(object: _72.MsgCreateClientAminoMsg): _72.MsgCreateClient;
-                    toAminoMsg(message: _72.MsgCreateClient): _72.MsgCreateClientAminoMsg;
-                    fromProtoMsg(message: _72.MsgCreateClientProtoMsg): _72.MsgCreateClient;
-                    toProto(message: _72.MsgCreateClient): Uint8Array;
-                    toProtoMsg(message: _72.MsgCreateClient): _72.MsgCreateClientProtoMsg;
+                    fromPartial(object: Partial<_74.MsgCreateClient>): _74.MsgCreateClient;
+                    fromAmino(object: _74.MsgCreateClientAmino): _74.MsgCreateClient;
+                    toAmino(message: _74.MsgCreateClient): _74.MsgCreateClientAmino;
+                    fromAminoMsg(object: _74.MsgCreateClientAminoMsg): _74.MsgCreateClient;
+                    toAminoMsg(message: _74.MsgCreateClient): _74.MsgCreateClientAminoMsg;
+                    fromProtoMsg(message: _74.MsgCreateClientProtoMsg): _74.MsgCreateClient;
+                    toProto(message: _74.MsgCreateClient): Uint8Array;
+                    toProtoMsg(message: _74.MsgCreateClient): _74.MsgCreateClientProtoMsg;
                 };
                 MsgCreateClientResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgCreateClientResponse;
-                    isSDK(o: any): o is _72.MsgCreateClientResponseSDKType;
-                    isAmino(o: any): o is _72.MsgCreateClientResponseAmino;
-                    encode(_: _72.MsgCreateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgCreateClientResponse;
-                    fromJSON(_: any): _72.MsgCreateClientResponse;
-                    toJSON(_: _72.MsgCreateClientResponse): {};
-                    fromPartial(_: Partial<_72.MsgCreateClientResponse>): _72.MsgCreateClientResponse;
-                    fromAmino(_: _72.MsgCreateClientResponseAmino): _72.MsgCreateClientResponse;
-                    toAmino(_: _72.MsgCreateClientResponse): _72.MsgCreateClientResponseAmino;
-                    fromAminoMsg(object: _72.MsgCreateClientResponseAminoMsg): _72.MsgCreateClientResponse;
-                    toAminoMsg(message: _72.MsgCreateClientResponse): _72.MsgCreateClientResponseAminoMsg;
-                    fromProtoMsg(message: _72.MsgCreateClientResponseProtoMsg): _72.MsgCreateClientResponse;
-                    toProto(message: _72.MsgCreateClientResponse): Uint8Array;
-                    toProtoMsg(message: _72.MsgCreateClientResponse): _72.MsgCreateClientResponseProtoMsg;
+                    is(o: any): o is _74.MsgCreateClientResponse;
+                    isSDK(o: any): o is _74.MsgCreateClientResponseSDKType;
+                    isAmino(o: any): o is _74.MsgCreateClientResponseAmino;
+                    encode(_: _74.MsgCreateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgCreateClientResponse;
+                    fromJSON(_: any): _74.MsgCreateClientResponse;
+                    toJSON(_: _74.MsgCreateClientResponse): {};
+                    fromPartial(_: Partial<_74.MsgCreateClientResponse>): _74.MsgCreateClientResponse;
+                    fromAmino(_: _74.MsgCreateClientResponseAmino): _74.MsgCreateClientResponse;
+                    toAmino(_: _74.MsgCreateClientResponse): _74.MsgCreateClientResponseAmino;
+                    fromAminoMsg(object: _74.MsgCreateClientResponseAminoMsg): _74.MsgCreateClientResponse;
+                    toAminoMsg(message: _74.MsgCreateClientResponse): _74.MsgCreateClientResponseAminoMsg;
+                    fromProtoMsg(message: _74.MsgCreateClientResponseProtoMsg): _74.MsgCreateClientResponse;
+                    toProto(message: _74.MsgCreateClientResponse): Uint8Array;
+                    toProtoMsg(message: _74.MsgCreateClientResponse): _74.MsgCreateClientResponseProtoMsg;
                 };
                 MsgUpdateClient: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgUpdateClient;
-                    isSDK(o: any): o is _72.MsgUpdateClientSDKType;
-                    isAmino(o: any): o is _72.MsgUpdateClientAmino;
-                    encode(message: _72.MsgUpdateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgUpdateClient;
-                    fromJSON(object: any): _72.MsgUpdateClient;
-                    toJSON(message: _72.MsgUpdateClient): {
+                    is(o: any): o is _74.MsgUpdateClient;
+                    isSDK(o: any): o is _74.MsgUpdateClientSDKType;
+                    isAmino(o: any): o is _74.MsgUpdateClientAmino;
+                    encode(message: _74.MsgUpdateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgUpdateClient;
+                    fromJSON(object: any): _74.MsgUpdateClient;
+                    toJSON(message: _74.MsgUpdateClient): {
                         clientId: string;
                         header?: {
                             $typeUrl?: string;
@@ -2576,44 +2576,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_72.MsgUpdateClient>): _72.MsgUpdateClient;
-                    fromAmino(object: _72.MsgUpdateClientAmino): _72.MsgUpdateClient;
-                    toAmino(message: _72.MsgUpdateClient): _72.MsgUpdateClientAmino;
-                    fromAminoMsg(object: _72.MsgUpdateClientAminoMsg): _72.MsgUpdateClient;
-                    toAminoMsg(message: _72.MsgUpdateClient): _72.MsgUpdateClientAminoMsg;
-                    fromProtoMsg(message: _72.MsgUpdateClientProtoMsg): _72.MsgUpdateClient;
-                    toProto(message: _72.MsgUpdateClient): Uint8Array;
-                    toProtoMsg(message: _72.MsgUpdateClient): _72.MsgUpdateClientProtoMsg;
+                    fromPartial(object: Partial<_74.MsgUpdateClient>): _74.MsgUpdateClient;
+                    fromAmino(object: _74.MsgUpdateClientAmino): _74.MsgUpdateClient;
+                    toAmino(message: _74.MsgUpdateClient): _74.MsgUpdateClientAmino;
+                    fromAminoMsg(object: _74.MsgUpdateClientAminoMsg): _74.MsgUpdateClient;
+                    toAminoMsg(message: _74.MsgUpdateClient): _74.MsgUpdateClientAminoMsg;
+                    fromProtoMsg(message: _74.MsgUpdateClientProtoMsg): _74.MsgUpdateClient;
+                    toProto(message: _74.MsgUpdateClient): Uint8Array;
+                    toProtoMsg(message: _74.MsgUpdateClient): _74.MsgUpdateClientProtoMsg;
                 };
                 MsgUpdateClientResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgUpdateClientResponse;
-                    isSDK(o: any): o is _72.MsgUpdateClientResponseSDKType;
-                    isAmino(o: any): o is _72.MsgUpdateClientResponseAmino;
-                    encode(_: _72.MsgUpdateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgUpdateClientResponse;
-                    fromJSON(_: any): _72.MsgUpdateClientResponse;
-                    toJSON(_: _72.MsgUpdateClientResponse): {};
-                    fromPartial(_: Partial<_72.MsgUpdateClientResponse>): _72.MsgUpdateClientResponse;
-                    fromAmino(_: _72.MsgUpdateClientResponseAmino): _72.MsgUpdateClientResponse;
-                    toAmino(_: _72.MsgUpdateClientResponse): _72.MsgUpdateClientResponseAmino;
-                    fromAminoMsg(object: _72.MsgUpdateClientResponseAminoMsg): _72.MsgUpdateClientResponse;
-                    toAminoMsg(message: _72.MsgUpdateClientResponse): _72.MsgUpdateClientResponseAminoMsg;
-                    fromProtoMsg(message: _72.MsgUpdateClientResponseProtoMsg): _72.MsgUpdateClientResponse;
-                    toProto(message: _72.MsgUpdateClientResponse): Uint8Array;
-                    toProtoMsg(message: _72.MsgUpdateClientResponse): _72.MsgUpdateClientResponseProtoMsg;
+                    is(o: any): o is _74.MsgUpdateClientResponse;
+                    isSDK(o: any): o is _74.MsgUpdateClientResponseSDKType;
+                    isAmino(o: any): o is _74.MsgUpdateClientResponseAmino;
+                    encode(_: _74.MsgUpdateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgUpdateClientResponse;
+                    fromJSON(_: any): _74.MsgUpdateClientResponse;
+                    toJSON(_: _74.MsgUpdateClientResponse): {};
+                    fromPartial(_: Partial<_74.MsgUpdateClientResponse>): _74.MsgUpdateClientResponse;
+                    fromAmino(_: _74.MsgUpdateClientResponseAmino): _74.MsgUpdateClientResponse;
+                    toAmino(_: _74.MsgUpdateClientResponse): _74.MsgUpdateClientResponseAmino;
+                    fromAminoMsg(object: _74.MsgUpdateClientResponseAminoMsg): _74.MsgUpdateClientResponse;
+                    toAminoMsg(message: _74.MsgUpdateClientResponse): _74.MsgUpdateClientResponseAminoMsg;
+                    fromProtoMsg(message: _74.MsgUpdateClientResponseProtoMsg): _74.MsgUpdateClientResponse;
+                    toProto(message: _74.MsgUpdateClientResponse): Uint8Array;
+                    toProtoMsg(message: _74.MsgUpdateClientResponse): _74.MsgUpdateClientResponseProtoMsg;
                 };
                 MsgUpgradeClient: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgUpgradeClient;
-                    isSDK(o: any): o is _72.MsgUpgradeClientSDKType;
-                    isAmino(o: any): o is _72.MsgUpgradeClientAmino;
-                    encode(message: _72.MsgUpgradeClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgUpgradeClient;
-                    fromJSON(object: any): _72.MsgUpgradeClient;
-                    toJSON(message: _72.MsgUpgradeClient): {
+                    is(o: any): o is _74.MsgUpgradeClient;
+                    isSDK(o: any): o is _74.MsgUpgradeClientSDKType;
+                    isAmino(o: any): o is _74.MsgUpgradeClientAmino;
+                    encode(message: _74.MsgUpgradeClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgUpgradeClient;
+                    fromJSON(object: any): _74.MsgUpgradeClient;
+                    toJSON(message: _74.MsgUpgradeClient): {
                         clientId: string;
                         clientState?: {
                             $typeUrl?: string;
@@ -2629,44 +2629,44 @@ export declare namespace ibc {
                         proofUpgradeConsensusState: string;
                         signer: string;
                     };
-                    fromPartial(object: Partial<_72.MsgUpgradeClient>): _72.MsgUpgradeClient;
-                    fromAmino(object: _72.MsgUpgradeClientAmino): _72.MsgUpgradeClient;
-                    toAmino(message: _72.MsgUpgradeClient): _72.MsgUpgradeClientAmino;
-                    fromAminoMsg(object: _72.MsgUpgradeClientAminoMsg): _72.MsgUpgradeClient;
-                    toAminoMsg(message: _72.MsgUpgradeClient): _72.MsgUpgradeClientAminoMsg;
-                    fromProtoMsg(message: _72.MsgUpgradeClientProtoMsg): _72.MsgUpgradeClient;
-                    toProto(message: _72.MsgUpgradeClient): Uint8Array;
-                    toProtoMsg(message: _72.MsgUpgradeClient): _72.MsgUpgradeClientProtoMsg;
+                    fromPartial(object: Partial<_74.MsgUpgradeClient>): _74.MsgUpgradeClient;
+                    fromAmino(object: _74.MsgUpgradeClientAmino): _74.MsgUpgradeClient;
+                    toAmino(message: _74.MsgUpgradeClient): _74.MsgUpgradeClientAmino;
+                    fromAminoMsg(object: _74.MsgUpgradeClientAminoMsg): _74.MsgUpgradeClient;
+                    toAminoMsg(message: _74.MsgUpgradeClient): _74.MsgUpgradeClientAminoMsg;
+                    fromProtoMsg(message: _74.MsgUpgradeClientProtoMsg): _74.MsgUpgradeClient;
+                    toProto(message: _74.MsgUpgradeClient): Uint8Array;
+                    toProtoMsg(message: _74.MsgUpgradeClient): _74.MsgUpgradeClientProtoMsg;
                 };
                 MsgUpgradeClientResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgUpgradeClientResponse;
-                    isSDK(o: any): o is _72.MsgUpgradeClientResponseSDKType;
-                    isAmino(o: any): o is _72.MsgUpgradeClientResponseAmino;
-                    encode(_: _72.MsgUpgradeClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgUpgradeClientResponse;
-                    fromJSON(_: any): _72.MsgUpgradeClientResponse;
-                    toJSON(_: _72.MsgUpgradeClientResponse): {};
-                    fromPartial(_: Partial<_72.MsgUpgradeClientResponse>): _72.MsgUpgradeClientResponse;
-                    fromAmino(_: _72.MsgUpgradeClientResponseAmino): _72.MsgUpgradeClientResponse;
-                    toAmino(_: _72.MsgUpgradeClientResponse): _72.MsgUpgradeClientResponseAmino;
-                    fromAminoMsg(object: _72.MsgUpgradeClientResponseAminoMsg): _72.MsgUpgradeClientResponse;
-                    toAminoMsg(message: _72.MsgUpgradeClientResponse): _72.MsgUpgradeClientResponseAminoMsg;
-                    fromProtoMsg(message: _72.MsgUpgradeClientResponseProtoMsg): _72.MsgUpgradeClientResponse;
-                    toProto(message: _72.MsgUpgradeClientResponse): Uint8Array;
-                    toProtoMsg(message: _72.MsgUpgradeClientResponse): _72.MsgUpgradeClientResponseProtoMsg;
+                    is(o: any): o is _74.MsgUpgradeClientResponse;
+                    isSDK(o: any): o is _74.MsgUpgradeClientResponseSDKType;
+                    isAmino(o: any): o is _74.MsgUpgradeClientResponseAmino;
+                    encode(_: _74.MsgUpgradeClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgUpgradeClientResponse;
+                    fromJSON(_: any): _74.MsgUpgradeClientResponse;
+                    toJSON(_: _74.MsgUpgradeClientResponse): {};
+                    fromPartial(_: Partial<_74.MsgUpgradeClientResponse>): _74.MsgUpgradeClientResponse;
+                    fromAmino(_: _74.MsgUpgradeClientResponseAmino): _74.MsgUpgradeClientResponse;
+                    toAmino(_: _74.MsgUpgradeClientResponse): _74.MsgUpgradeClientResponseAmino;
+                    fromAminoMsg(object: _74.MsgUpgradeClientResponseAminoMsg): _74.MsgUpgradeClientResponse;
+                    toAminoMsg(message: _74.MsgUpgradeClientResponse): _74.MsgUpgradeClientResponseAminoMsg;
+                    fromProtoMsg(message: _74.MsgUpgradeClientResponseProtoMsg): _74.MsgUpgradeClientResponse;
+                    toProto(message: _74.MsgUpgradeClientResponse): Uint8Array;
+                    toProtoMsg(message: _74.MsgUpgradeClientResponse): _74.MsgUpgradeClientResponseProtoMsg;
                 };
                 MsgSubmitMisbehaviour: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgSubmitMisbehaviour;
-                    isSDK(o: any): o is _72.MsgSubmitMisbehaviourSDKType;
-                    isAmino(o: any): o is _72.MsgSubmitMisbehaviourAmino;
-                    encode(message: _72.MsgSubmitMisbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgSubmitMisbehaviour;
-                    fromJSON(object: any): _72.MsgSubmitMisbehaviour;
-                    toJSON(message: _72.MsgSubmitMisbehaviour): {
+                    is(o: any): o is _74.MsgSubmitMisbehaviour;
+                    isSDK(o: any): o is _74.MsgSubmitMisbehaviourSDKType;
+                    isAmino(o: any): o is _74.MsgSubmitMisbehaviourAmino;
+                    encode(message: _74.MsgSubmitMisbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgSubmitMisbehaviour;
+                    fromJSON(object: any): _74.MsgSubmitMisbehaviour;
+                    toJSON(message: _74.MsgSubmitMisbehaviour): {
                         clientId: string;
                         misbehaviour?: {
                             $typeUrl?: string;
@@ -2675,65 +2675,65 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_72.MsgSubmitMisbehaviour>): _72.MsgSubmitMisbehaviour;
-                    fromAmino(object: _72.MsgSubmitMisbehaviourAmino): _72.MsgSubmitMisbehaviour;
-                    toAmino(message: _72.MsgSubmitMisbehaviour): _72.MsgSubmitMisbehaviourAmino;
-                    fromAminoMsg(object: _72.MsgSubmitMisbehaviourAminoMsg): _72.MsgSubmitMisbehaviour;
-                    toAminoMsg(message: _72.MsgSubmitMisbehaviour): _72.MsgSubmitMisbehaviourAminoMsg;
-                    fromProtoMsg(message: _72.MsgSubmitMisbehaviourProtoMsg): _72.MsgSubmitMisbehaviour;
-                    toProto(message: _72.MsgSubmitMisbehaviour): Uint8Array;
-                    toProtoMsg(message: _72.MsgSubmitMisbehaviour): _72.MsgSubmitMisbehaviourProtoMsg;
+                    fromPartial(object: Partial<_74.MsgSubmitMisbehaviour>): _74.MsgSubmitMisbehaviour;
+                    fromAmino(object: _74.MsgSubmitMisbehaviourAmino): _74.MsgSubmitMisbehaviour;
+                    toAmino(message: _74.MsgSubmitMisbehaviour): _74.MsgSubmitMisbehaviourAmino;
+                    fromAminoMsg(object: _74.MsgSubmitMisbehaviourAminoMsg): _74.MsgSubmitMisbehaviour;
+                    toAminoMsg(message: _74.MsgSubmitMisbehaviour): _74.MsgSubmitMisbehaviourAminoMsg;
+                    fromProtoMsg(message: _74.MsgSubmitMisbehaviourProtoMsg): _74.MsgSubmitMisbehaviour;
+                    toProto(message: _74.MsgSubmitMisbehaviour): Uint8Array;
+                    toProtoMsg(message: _74.MsgSubmitMisbehaviour): _74.MsgSubmitMisbehaviourProtoMsg;
                 };
                 MsgSubmitMisbehaviourResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _72.MsgSubmitMisbehaviourResponse;
-                    isSDK(o: any): o is _72.MsgSubmitMisbehaviourResponseSDKType;
-                    isAmino(o: any): o is _72.MsgSubmitMisbehaviourResponseAmino;
-                    encode(_: _72.MsgSubmitMisbehaviourResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.MsgSubmitMisbehaviourResponse;
-                    fromJSON(_: any): _72.MsgSubmitMisbehaviourResponse;
-                    toJSON(_: _72.MsgSubmitMisbehaviourResponse): {};
-                    fromPartial(_: Partial<_72.MsgSubmitMisbehaviourResponse>): _72.MsgSubmitMisbehaviourResponse;
-                    fromAmino(_: _72.MsgSubmitMisbehaviourResponseAmino): _72.MsgSubmitMisbehaviourResponse;
-                    toAmino(_: _72.MsgSubmitMisbehaviourResponse): _72.MsgSubmitMisbehaviourResponseAmino;
-                    fromAminoMsg(object: _72.MsgSubmitMisbehaviourResponseAminoMsg): _72.MsgSubmitMisbehaviourResponse;
-                    toAminoMsg(message: _72.MsgSubmitMisbehaviourResponse): _72.MsgSubmitMisbehaviourResponseAminoMsg;
-                    fromProtoMsg(message: _72.MsgSubmitMisbehaviourResponseProtoMsg): _72.MsgSubmitMisbehaviourResponse;
-                    toProto(message: _72.MsgSubmitMisbehaviourResponse): Uint8Array;
-                    toProtoMsg(message: _72.MsgSubmitMisbehaviourResponse): _72.MsgSubmitMisbehaviourResponseProtoMsg;
+                    is(o: any): o is _74.MsgSubmitMisbehaviourResponse;
+                    isSDK(o: any): o is _74.MsgSubmitMisbehaviourResponseSDKType;
+                    isAmino(o: any): o is _74.MsgSubmitMisbehaviourResponseAmino;
+                    encode(_: _74.MsgSubmitMisbehaviourResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.MsgSubmitMisbehaviourResponse;
+                    fromJSON(_: any): _74.MsgSubmitMisbehaviourResponse;
+                    toJSON(_: _74.MsgSubmitMisbehaviourResponse): {};
+                    fromPartial(_: Partial<_74.MsgSubmitMisbehaviourResponse>): _74.MsgSubmitMisbehaviourResponse;
+                    fromAmino(_: _74.MsgSubmitMisbehaviourResponseAmino): _74.MsgSubmitMisbehaviourResponse;
+                    toAmino(_: _74.MsgSubmitMisbehaviourResponse): _74.MsgSubmitMisbehaviourResponseAmino;
+                    fromAminoMsg(object: _74.MsgSubmitMisbehaviourResponseAminoMsg): _74.MsgSubmitMisbehaviourResponse;
+                    toAminoMsg(message: _74.MsgSubmitMisbehaviourResponse): _74.MsgSubmitMisbehaviourResponseAminoMsg;
+                    fromProtoMsg(message: _74.MsgSubmitMisbehaviourResponseProtoMsg): _74.MsgSubmitMisbehaviourResponse;
+                    toProto(message: _74.MsgSubmitMisbehaviourResponse): Uint8Array;
+                    toProtoMsg(message: _74.MsgSubmitMisbehaviourResponse): _74.MsgSubmitMisbehaviourResponseProtoMsg;
                 };
                 QueryClientStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientStateRequest;
-                    isSDK(o: any): o is _71.QueryClientStateRequestSDKType;
-                    isAmino(o: any): o is _71.QueryClientStateRequestAmino;
-                    encode(message: _71.QueryClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientStateRequest;
-                    fromJSON(object: any): _71.QueryClientStateRequest;
-                    toJSON(message: _71.QueryClientStateRequest): {
+                    is(o: any): o is _73.QueryClientStateRequest;
+                    isSDK(o: any): o is _73.QueryClientStateRequestSDKType;
+                    isAmino(o: any): o is _73.QueryClientStateRequestAmino;
+                    encode(message: _73.QueryClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientStateRequest;
+                    fromJSON(object: any): _73.QueryClientStateRequest;
+                    toJSON(message: _73.QueryClientStateRequest): {
                         clientId: string;
                     };
-                    fromPartial(object: Partial<_71.QueryClientStateRequest>): _71.QueryClientStateRequest;
-                    fromAmino(object: _71.QueryClientStateRequestAmino): _71.QueryClientStateRequest;
-                    toAmino(message: _71.QueryClientStateRequest): _71.QueryClientStateRequestAmino;
-                    fromAminoMsg(object: _71.QueryClientStateRequestAminoMsg): _71.QueryClientStateRequest;
-                    toAminoMsg(message: _71.QueryClientStateRequest): _71.QueryClientStateRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientStateRequestProtoMsg): _71.QueryClientStateRequest;
-                    toProto(message: _71.QueryClientStateRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientStateRequest): _71.QueryClientStateRequestProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientStateRequest>): _73.QueryClientStateRequest;
+                    fromAmino(object: _73.QueryClientStateRequestAmino): _73.QueryClientStateRequest;
+                    toAmino(message: _73.QueryClientStateRequest): _73.QueryClientStateRequestAmino;
+                    fromAminoMsg(object: _73.QueryClientStateRequestAminoMsg): _73.QueryClientStateRequest;
+                    toAminoMsg(message: _73.QueryClientStateRequest): _73.QueryClientStateRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientStateRequestProtoMsg): _73.QueryClientStateRequest;
+                    toProto(message: _73.QueryClientStateRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientStateRequest): _73.QueryClientStateRequestProtoMsg;
                 };
                 QueryClientStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientStateResponse;
-                    isSDK(o: any): o is _71.QueryClientStateResponseSDKType;
-                    isAmino(o: any): o is _71.QueryClientStateResponseAmino;
-                    encode(message: _71.QueryClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientStateResponse;
-                    fromJSON(object: any): _71.QueryClientStateResponse;
-                    toJSON(message: _71.QueryClientStateResponse): {
+                    is(o: any): o is _73.QueryClientStateResponse;
+                    isSDK(o: any): o is _73.QueryClientStateResponseSDKType;
+                    isAmino(o: any): o is _73.QueryClientStateResponseAmino;
+                    encode(message: _73.QueryClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientStateResponse;
+                    fromJSON(object: any): _73.QueryClientStateResponse;
+                    toJSON(message: _73.QueryClientStateResponse): {
                         clientState?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -2745,25 +2745,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryClientStateResponse>): _71.QueryClientStateResponse;
-                    fromAmino(object: _71.QueryClientStateResponseAmino): _71.QueryClientStateResponse;
-                    toAmino(message: _71.QueryClientStateResponse): _71.QueryClientStateResponseAmino;
-                    fromAminoMsg(object: _71.QueryClientStateResponseAminoMsg): _71.QueryClientStateResponse;
-                    toAminoMsg(message: _71.QueryClientStateResponse): _71.QueryClientStateResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientStateResponseProtoMsg): _71.QueryClientStateResponse;
-                    toProto(message: _71.QueryClientStateResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientStateResponse): _71.QueryClientStateResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientStateResponse>): _73.QueryClientStateResponse;
+                    fromAmino(object: _73.QueryClientStateResponseAmino): _73.QueryClientStateResponse;
+                    toAmino(message: _73.QueryClientStateResponse): _73.QueryClientStateResponseAmino;
+                    fromAminoMsg(object: _73.QueryClientStateResponseAminoMsg): _73.QueryClientStateResponse;
+                    toAminoMsg(message: _73.QueryClientStateResponse): _73.QueryClientStateResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientStateResponseProtoMsg): _73.QueryClientStateResponse;
+                    toProto(message: _73.QueryClientStateResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientStateResponse): _73.QueryClientStateResponseProtoMsg;
                 };
                 QueryClientStatesRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientStatesRequest;
-                    isSDK(o: any): o is _71.QueryClientStatesRequestSDKType;
-                    isAmino(o: any): o is _71.QueryClientStatesRequestAmino;
-                    encode(message: _71.QueryClientStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientStatesRequest;
-                    fromJSON(object: any): _71.QueryClientStatesRequest;
-                    toJSON(message: _71.QueryClientStatesRequest): {
+                    is(o: any): o is _73.QueryClientStatesRequest;
+                    isSDK(o: any): o is _73.QueryClientStatesRequestSDKType;
+                    isAmino(o: any): o is _73.QueryClientStatesRequestAmino;
+                    encode(message: _73.QueryClientStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientStatesRequest;
+                    fromJSON(object: any): _73.QueryClientStatesRequest;
+                    toJSON(message: _73.QueryClientStatesRequest): {
                         pagination?: {
                             key: string;
                             offset: string;
@@ -2772,25 +2772,25 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryClientStatesRequest>): _71.QueryClientStatesRequest;
-                    fromAmino(object: _71.QueryClientStatesRequestAmino): _71.QueryClientStatesRequest;
-                    toAmino(message: _71.QueryClientStatesRequest): _71.QueryClientStatesRequestAmino;
-                    fromAminoMsg(object: _71.QueryClientStatesRequestAminoMsg): _71.QueryClientStatesRequest;
-                    toAminoMsg(message: _71.QueryClientStatesRequest): _71.QueryClientStatesRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientStatesRequestProtoMsg): _71.QueryClientStatesRequest;
-                    toProto(message: _71.QueryClientStatesRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientStatesRequest): _71.QueryClientStatesRequestProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientStatesRequest>): _73.QueryClientStatesRequest;
+                    fromAmino(object: _73.QueryClientStatesRequestAmino): _73.QueryClientStatesRequest;
+                    toAmino(message: _73.QueryClientStatesRequest): _73.QueryClientStatesRequestAmino;
+                    fromAminoMsg(object: _73.QueryClientStatesRequestAminoMsg): _73.QueryClientStatesRequest;
+                    toAminoMsg(message: _73.QueryClientStatesRequest): _73.QueryClientStatesRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientStatesRequestProtoMsg): _73.QueryClientStatesRequest;
+                    toProto(message: _73.QueryClientStatesRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientStatesRequest): _73.QueryClientStatesRequestProtoMsg;
                 };
                 QueryClientStatesResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientStatesResponse;
-                    isSDK(o: any): o is _71.QueryClientStatesResponseSDKType;
-                    isAmino(o: any): o is _71.QueryClientStatesResponseAmino;
-                    encode(message: _71.QueryClientStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientStatesResponse;
-                    fromJSON(object: any): _71.QueryClientStatesResponse;
-                    toJSON(message: _71.QueryClientStatesResponse): {
+                    is(o: any): o is _73.QueryClientStatesResponse;
+                    isSDK(o: any): o is _73.QueryClientStatesResponseSDKType;
+                    isAmino(o: any): o is _73.QueryClientStatesResponseAmino;
+                    encode(message: _73.QueryClientStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientStatesResponse;
+                    fromJSON(object: any): _73.QueryClientStatesResponse;
+                    toJSON(message: _73.QueryClientStatesResponse): {
                         clientStates: {
                             clientId: string;
                             clientState?: {
@@ -2804,49 +2804,49 @@ export declare namespace ibc {
                             total: string;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryClientStatesResponse>): _71.QueryClientStatesResponse;
-                    fromAmino(object: _71.QueryClientStatesResponseAmino): _71.QueryClientStatesResponse;
-                    toAmino(message: _71.QueryClientStatesResponse): _71.QueryClientStatesResponseAmino;
-                    fromAminoMsg(object: _71.QueryClientStatesResponseAminoMsg): _71.QueryClientStatesResponse;
-                    toAminoMsg(message: _71.QueryClientStatesResponse): _71.QueryClientStatesResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientStatesResponseProtoMsg): _71.QueryClientStatesResponse;
-                    toProto(message: _71.QueryClientStatesResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientStatesResponse): _71.QueryClientStatesResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientStatesResponse>): _73.QueryClientStatesResponse;
+                    fromAmino(object: _73.QueryClientStatesResponseAmino): _73.QueryClientStatesResponse;
+                    toAmino(message: _73.QueryClientStatesResponse): _73.QueryClientStatesResponseAmino;
+                    fromAminoMsg(object: _73.QueryClientStatesResponseAminoMsg): _73.QueryClientStatesResponse;
+                    toAminoMsg(message: _73.QueryClientStatesResponse): _73.QueryClientStatesResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientStatesResponseProtoMsg): _73.QueryClientStatesResponse;
+                    toProto(message: _73.QueryClientStatesResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientStatesResponse): _73.QueryClientStatesResponseProtoMsg;
                 };
                 QueryConsensusStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryConsensusStateRequest;
-                    isSDK(o: any): o is _71.QueryConsensusStateRequestSDKType;
-                    isAmino(o: any): o is _71.QueryConsensusStateRequestAmino;
-                    encode(message: _71.QueryConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryConsensusStateRequest;
-                    fromJSON(object: any): _71.QueryConsensusStateRequest;
-                    toJSON(message: _71.QueryConsensusStateRequest): {
+                    is(o: any): o is _73.QueryConsensusStateRequest;
+                    isSDK(o: any): o is _73.QueryConsensusStateRequestSDKType;
+                    isAmino(o: any): o is _73.QueryConsensusStateRequestAmino;
+                    encode(message: _73.QueryConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryConsensusStateRequest;
+                    fromJSON(object: any): _73.QueryConsensusStateRequest;
+                    toJSON(message: _73.QueryConsensusStateRequest): {
                         clientId: string;
                         revisionNumber: string;
                         revisionHeight: string;
                         latestHeight: boolean;
                     };
-                    fromPartial(object: Partial<_71.QueryConsensusStateRequest>): _71.QueryConsensusStateRequest;
-                    fromAmino(object: _71.QueryConsensusStateRequestAmino): _71.QueryConsensusStateRequest;
-                    toAmino(message: _71.QueryConsensusStateRequest): _71.QueryConsensusStateRequestAmino;
-                    fromAminoMsg(object: _71.QueryConsensusStateRequestAminoMsg): _71.QueryConsensusStateRequest;
-                    toAminoMsg(message: _71.QueryConsensusStateRequest): _71.QueryConsensusStateRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryConsensusStateRequestProtoMsg): _71.QueryConsensusStateRequest;
-                    toProto(message: _71.QueryConsensusStateRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryConsensusStateRequest): _71.QueryConsensusStateRequestProtoMsg;
+                    fromPartial(object: Partial<_73.QueryConsensusStateRequest>): _73.QueryConsensusStateRequest;
+                    fromAmino(object: _73.QueryConsensusStateRequestAmino): _73.QueryConsensusStateRequest;
+                    toAmino(message: _73.QueryConsensusStateRequest): _73.QueryConsensusStateRequestAmino;
+                    fromAminoMsg(object: _73.QueryConsensusStateRequestAminoMsg): _73.QueryConsensusStateRequest;
+                    toAminoMsg(message: _73.QueryConsensusStateRequest): _73.QueryConsensusStateRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryConsensusStateRequestProtoMsg): _73.QueryConsensusStateRequest;
+                    toProto(message: _73.QueryConsensusStateRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryConsensusStateRequest): _73.QueryConsensusStateRequestProtoMsg;
                 };
                 QueryConsensusStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryConsensusStateResponse;
-                    isSDK(o: any): o is _71.QueryConsensusStateResponseSDKType;
-                    isAmino(o: any): o is _71.QueryConsensusStateResponseAmino;
-                    encode(message: _71.QueryConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryConsensusStateResponse;
-                    fromJSON(object: any): _71.QueryConsensusStateResponse;
-                    toJSON(message: _71.QueryConsensusStateResponse): {
+                    is(o: any): o is _73.QueryConsensusStateResponse;
+                    isSDK(o: any): o is _73.QueryConsensusStateResponseSDKType;
+                    isAmino(o: any): o is _73.QueryConsensusStateResponseAmino;
+                    encode(message: _73.QueryConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryConsensusStateResponse;
+                    fromJSON(object: any): _73.QueryConsensusStateResponse;
+                    toJSON(message: _73.QueryConsensusStateResponse): {
                         consensusState?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -2858,25 +2858,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryConsensusStateResponse>): _71.QueryConsensusStateResponse;
-                    fromAmino(object: _71.QueryConsensusStateResponseAmino): _71.QueryConsensusStateResponse;
-                    toAmino(message: _71.QueryConsensusStateResponse): _71.QueryConsensusStateResponseAmino;
-                    fromAminoMsg(object: _71.QueryConsensusStateResponseAminoMsg): _71.QueryConsensusStateResponse;
-                    toAminoMsg(message: _71.QueryConsensusStateResponse): _71.QueryConsensusStateResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryConsensusStateResponseProtoMsg): _71.QueryConsensusStateResponse;
-                    toProto(message: _71.QueryConsensusStateResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryConsensusStateResponse): _71.QueryConsensusStateResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryConsensusStateResponse>): _73.QueryConsensusStateResponse;
+                    fromAmino(object: _73.QueryConsensusStateResponseAmino): _73.QueryConsensusStateResponse;
+                    toAmino(message: _73.QueryConsensusStateResponse): _73.QueryConsensusStateResponseAmino;
+                    fromAminoMsg(object: _73.QueryConsensusStateResponseAminoMsg): _73.QueryConsensusStateResponse;
+                    toAminoMsg(message: _73.QueryConsensusStateResponse): _73.QueryConsensusStateResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryConsensusStateResponseProtoMsg): _73.QueryConsensusStateResponse;
+                    toProto(message: _73.QueryConsensusStateResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryConsensusStateResponse): _73.QueryConsensusStateResponseProtoMsg;
                 };
                 QueryConsensusStatesRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryConsensusStatesRequest;
-                    isSDK(o: any): o is _71.QueryConsensusStatesRequestSDKType;
-                    isAmino(o: any): o is _71.QueryConsensusStatesRequestAmino;
-                    encode(message: _71.QueryConsensusStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryConsensusStatesRequest;
-                    fromJSON(object: any): _71.QueryConsensusStatesRequest;
-                    toJSON(message: _71.QueryConsensusStatesRequest): {
+                    is(o: any): o is _73.QueryConsensusStatesRequest;
+                    isSDK(o: any): o is _73.QueryConsensusStatesRequestSDKType;
+                    isAmino(o: any): o is _73.QueryConsensusStatesRequestAmino;
+                    encode(message: _73.QueryConsensusStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryConsensusStatesRequest;
+                    fromJSON(object: any): _73.QueryConsensusStatesRequest;
+                    toJSON(message: _73.QueryConsensusStatesRequest): {
                         clientId: string;
                         pagination?: {
                             key: string;
@@ -2886,25 +2886,25 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryConsensusStatesRequest>): _71.QueryConsensusStatesRequest;
-                    fromAmino(object: _71.QueryConsensusStatesRequestAmino): _71.QueryConsensusStatesRequest;
-                    toAmino(message: _71.QueryConsensusStatesRequest): _71.QueryConsensusStatesRequestAmino;
-                    fromAminoMsg(object: _71.QueryConsensusStatesRequestAminoMsg): _71.QueryConsensusStatesRequest;
-                    toAminoMsg(message: _71.QueryConsensusStatesRequest): _71.QueryConsensusStatesRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryConsensusStatesRequestProtoMsg): _71.QueryConsensusStatesRequest;
-                    toProto(message: _71.QueryConsensusStatesRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryConsensusStatesRequest): _71.QueryConsensusStatesRequestProtoMsg;
+                    fromPartial(object: Partial<_73.QueryConsensusStatesRequest>): _73.QueryConsensusStatesRequest;
+                    fromAmino(object: _73.QueryConsensusStatesRequestAmino): _73.QueryConsensusStatesRequest;
+                    toAmino(message: _73.QueryConsensusStatesRequest): _73.QueryConsensusStatesRequestAmino;
+                    fromAminoMsg(object: _73.QueryConsensusStatesRequestAminoMsg): _73.QueryConsensusStatesRequest;
+                    toAminoMsg(message: _73.QueryConsensusStatesRequest): _73.QueryConsensusStatesRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryConsensusStatesRequestProtoMsg): _73.QueryConsensusStatesRequest;
+                    toProto(message: _73.QueryConsensusStatesRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryConsensusStatesRequest): _73.QueryConsensusStatesRequestProtoMsg;
                 };
                 QueryConsensusStatesResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryConsensusStatesResponse;
-                    isSDK(o: any): o is _71.QueryConsensusStatesResponseSDKType;
-                    isAmino(o: any): o is _71.QueryConsensusStatesResponseAmino;
-                    encode(message: _71.QueryConsensusStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryConsensusStatesResponse;
-                    fromJSON(object: any): _71.QueryConsensusStatesResponse;
-                    toJSON(message: _71.QueryConsensusStatesResponse): {
+                    is(o: any): o is _73.QueryConsensusStatesResponse;
+                    isSDK(o: any): o is _73.QueryConsensusStatesResponseSDKType;
+                    isAmino(o: any): o is _73.QueryConsensusStatesResponseAmino;
+                    encode(message: _73.QueryConsensusStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryConsensusStatesResponse;
+                    fromJSON(object: any): _73.QueryConsensusStatesResponse;
+                    toJSON(message: _73.QueryConsensusStatesResponse): {
                         consensusStates: {
                             height: {
                                 revisionNumber: string;
@@ -2921,197 +2921,197 @@ export declare namespace ibc {
                             total: string;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryConsensusStatesResponse>): _71.QueryConsensusStatesResponse;
-                    fromAmino(object: _71.QueryConsensusStatesResponseAmino): _71.QueryConsensusStatesResponse;
-                    toAmino(message: _71.QueryConsensusStatesResponse): _71.QueryConsensusStatesResponseAmino;
-                    fromAminoMsg(object: _71.QueryConsensusStatesResponseAminoMsg): _71.QueryConsensusStatesResponse;
-                    toAminoMsg(message: _71.QueryConsensusStatesResponse): _71.QueryConsensusStatesResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryConsensusStatesResponseProtoMsg): _71.QueryConsensusStatesResponse;
-                    toProto(message: _71.QueryConsensusStatesResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryConsensusStatesResponse): _71.QueryConsensusStatesResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryConsensusStatesResponse>): _73.QueryConsensusStatesResponse;
+                    fromAmino(object: _73.QueryConsensusStatesResponseAmino): _73.QueryConsensusStatesResponse;
+                    toAmino(message: _73.QueryConsensusStatesResponse): _73.QueryConsensusStatesResponseAmino;
+                    fromAminoMsg(object: _73.QueryConsensusStatesResponseAminoMsg): _73.QueryConsensusStatesResponse;
+                    toAminoMsg(message: _73.QueryConsensusStatesResponse): _73.QueryConsensusStatesResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryConsensusStatesResponseProtoMsg): _73.QueryConsensusStatesResponse;
+                    toProto(message: _73.QueryConsensusStatesResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryConsensusStatesResponse): _73.QueryConsensusStatesResponseProtoMsg;
                 };
                 QueryClientStatusRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientStatusRequest;
-                    isSDK(o: any): o is _71.QueryClientStatusRequestSDKType;
-                    isAmino(o: any): o is _71.QueryClientStatusRequestAmino;
-                    encode(message: _71.QueryClientStatusRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientStatusRequest;
-                    fromJSON(object: any): _71.QueryClientStatusRequest;
-                    toJSON(message: _71.QueryClientStatusRequest): {
+                    is(o: any): o is _73.QueryClientStatusRequest;
+                    isSDK(o: any): o is _73.QueryClientStatusRequestSDKType;
+                    isAmino(o: any): o is _73.QueryClientStatusRequestAmino;
+                    encode(message: _73.QueryClientStatusRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientStatusRequest;
+                    fromJSON(object: any): _73.QueryClientStatusRequest;
+                    toJSON(message: _73.QueryClientStatusRequest): {
                         clientId: string;
                     };
-                    fromPartial(object: Partial<_71.QueryClientStatusRequest>): _71.QueryClientStatusRequest;
-                    fromAmino(object: _71.QueryClientStatusRequestAmino): _71.QueryClientStatusRequest;
-                    toAmino(message: _71.QueryClientStatusRequest): _71.QueryClientStatusRequestAmino;
-                    fromAminoMsg(object: _71.QueryClientStatusRequestAminoMsg): _71.QueryClientStatusRequest;
-                    toAminoMsg(message: _71.QueryClientStatusRequest): _71.QueryClientStatusRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientStatusRequestProtoMsg): _71.QueryClientStatusRequest;
-                    toProto(message: _71.QueryClientStatusRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientStatusRequest): _71.QueryClientStatusRequestProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientStatusRequest>): _73.QueryClientStatusRequest;
+                    fromAmino(object: _73.QueryClientStatusRequestAmino): _73.QueryClientStatusRequest;
+                    toAmino(message: _73.QueryClientStatusRequest): _73.QueryClientStatusRequestAmino;
+                    fromAminoMsg(object: _73.QueryClientStatusRequestAminoMsg): _73.QueryClientStatusRequest;
+                    toAminoMsg(message: _73.QueryClientStatusRequest): _73.QueryClientStatusRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientStatusRequestProtoMsg): _73.QueryClientStatusRequest;
+                    toProto(message: _73.QueryClientStatusRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientStatusRequest): _73.QueryClientStatusRequestProtoMsg;
                 };
                 QueryClientStatusResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientStatusResponse;
-                    isSDK(o: any): o is _71.QueryClientStatusResponseSDKType;
-                    isAmino(o: any): o is _71.QueryClientStatusResponseAmino;
-                    encode(message: _71.QueryClientStatusResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientStatusResponse;
-                    fromJSON(object: any): _71.QueryClientStatusResponse;
-                    toJSON(message: _71.QueryClientStatusResponse): {
+                    is(o: any): o is _73.QueryClientStatusResponse;
+                    isSDK(o: any): o is _73.QueryClientStatusResponseSDKType;
+                    isAmino(o: any): o is _73.QueryClientStatusResponseAmino;
+                    encode(message: _73.QueryClientStatusResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientStatusResponse;
+                    fromJSON(object: any): _73.QueryClientStatusResponse;
+                    toJSON(message: _73.QueryClientStatusResponse): {
                         status: string;
                     };
-                    fromPartial(object: Partial<_71.QueryClientStatusResponse>): _71.QueryClientStatusResponse;
-                    fromAmino(object: _71.QueryClientStatusResponseAmino): _71.QueryClientStatusResponse;
-                    toAmino(message: _71.QueryClientStatusResponse): _71.QueryClientStatusResponseAmino;
-                    fromAminoMsg(object: _71.QueryClientStatusResponseAminoMsg): _71.QueryClientStatusResponse;
-                    toAminoMsg(message: _71.QueryClientStatusResponse): _71.QueryClientStatusResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientStatusResponseProtoMsg): _71.QueryClientStatusResponse;
-                    toProto(message: _71.QueryClientStatusResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientStatusResponse): _71.QueryClientStatusResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientStatusResponse>): _73.QueryClientStatusResponse;
+                    fromAmino(object: _73.QueryClientStatusResponseAmino): _73.QueryClientStatusResponse;
+                    toAmino(message: _73.QueryClientStatusResponse): _73.QueryClientStatusResponseAmino;
+                    fromAminoMsg(object: _73.QueryClientStatusResponseAminoMsg): _73.QueryClientStatusResponse;
+                    toAminoMsg(message: _73.QueryClientStatusResponse): _73.QueryClientStatusResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientStatusResponseProtoMsg): _73.QueryClientStatusResponse;
+                    toProto(message: _73.QueryClientStatusResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientStatusResponse): _73.QueryClientStatusResponseProtoMsg;
                 };
                 QueryClientParamsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientParamsRequest;
-                    isSDK(o: any): o is _71.QueryClientParamsRequestSDKType;
-                    isAmino(o: any): o is _71.QueryClientParamsRequestAmino;
-                    encode(_: _71.QueryClientParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientParamsRequest;
-                    fromJSON(_: any): _71.QueryClientParamsRequest;
-                    toJSON(_: _71.QueryClientParamsRequest): {};
-                    fromPartial(_: Partial<_71.QueryClientParamsRequest>): _71.QueryClientParamsRequest;
-                    fromAmino(_: _71.QueryClientParamsRequestAmino): _71.QueryClientParamsRequest;
-                    toAmino(_: _71.QueryClientParamsRequest): _71.QueryClientParamsRequestAmino;
-                    fromAminoMsg(object: _71.QueryClientParamsRequestAminoMsg): _71.QueryClientParamsRequest;
-                    toAminoMsg(message: _71.QueryClientParamsRequest): _71.QueryClientParamsRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientParamsRequestProtoMsg): _71.QueryClientParamsRequest;
-                    toProto(message: _71.QueryClientParamsRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientParamsRequest): _71.QueryClientParamsRequestProtoMsg;
+                    is(o: any): o is _73.QueryClientParamsRequest;
+                    isSDK(o: any): o is _73.QueryClientParamsRequestSDKType;
+                    isAmino(o: any): o is _73.QueryClientParamsRequestAmino;
+                    encode(_: _73.QueryClientParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientParamsRequest;
+                    fromJSON(_: any): _73.QueryClientParamsRequest;
+                    toJSON(_: _73.QueryClientParamsRequest): {};
+                    fromPartial(_: Partial<_73.QueryClientParamsRequest>): _73.QueryClientParamsRequest;
+                    fromAmino(_: _73.QueryClientParamsRequestAmino): _73.QueryClientParamsRequest;
+                    toAmino(_: _73.QueryClientParamsRequest): _73.QueryClientParamsRequestAmino;
+                    fromAminoMsg(object: _73.QueryClientParamsRequestAminoMsg): _73.QueryClientParamsRequest;
+                    toAminoMsg(message: _73.QueryClientParamsRequest): _73.QueryClientParamsRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientParamsRequestProtoMsg): _73.QueryClientParamsRequest;
+                    toProto(message: _73.QueryClientParamsRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientParamsRequest): _73.QueryClientParamsRequestProtoMsg;
                 };
                 QueryClientParamsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryClientParamsResponse;
-                    isSDK(o: any): o is _71.QueryClientParamsResponseSDKType;
-                    isAmino(o: any): o is _71.QueryClientParamsResponseAmino;
-                    encode(message: _71.QueryClientParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryClientParamsResponse;
-                    fromJSON(object: any): _71.QueryClientParamsResponse;
-                    toJSON(message: _71.QueryClientParamsResponse): {
+                    is(o: any): o is _73.QueryClientParamsResponse;
+                    isSDK(o: any): o is _73.QueryClientParamsResponseSDKType;
+                    isAmino(o: any): o is _73.QueryClientParamsResponseAmino;
+                    encode(message: _73.QueryClientParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryClientParamsResponse;
+                    fromJSON(object: any): _73.QueryClientParamsResponse;
+                    toJSON(message: _73.QueryClientParamsResponse): {
                         params?: {
                             allowedClients: string[];
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryClientParamsResponse>): _71.QueryClientParamsResponse;
-                    fromAmino(object: _71.QueryClientParamsResponseAmino): _71.QueryClientParamsResponse;
-                    toAmino(message: _71.QueryClientParamsResponse): _71.QueryClientParamsResponseAmino;
-                    fromAminoMsg(object: _71.QueryClientParamsResponseAminoMsg): _71.QueryClientParamsResponse;
-                    toAminoMsg(message: _71.QueryClientParamsResponse): _71.QueryClientParamsResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryClientParamsResponseProtoMsg): _71.QueryClientParamsResponse;
-                    toProto(message: _71.QueryClientParamsResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryClientParamsResponse): _71.QueryClientParamsResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryClientParamsResponse>): _73.QueryClientParamsResponse;
+                    fromAmino(object: _73.QueryClientParamsResponseAmino): _73.QueryClientParamsResponse;
+                    toAmino(message: _73.QueryClientParamsResponse): _73.QueryClientParamsResponseAmino;
+                    fromAminoMsg(object: _73.QueryClientParamsResponseAminoMsg): _73.QueryClientParamsResponse;
+                    toAminoMsg(message: _73.QueryClientParamsResponse): _73.QueryClientParamsResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryClientParamsResponseProtoMsg): _73.QueryClientParamsResponse;
+                    toProto(message: _73.QueryClientParamsResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryClientParamsResponse): _73.QueryClientParamsResponseProtoMsg;
                 };
                 QueryUpgradedClientStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryUpgradedClientStateRequest;
-                    isSDK(o: any): o is _71.QueryUpgradedClientStateRequestSDKType;
-                    isAmino(o: any): o is _71.QueryUpgradedClientStateRequestAmino;
-                    encode(_: _71.QueryUpgradedClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryUpgradedClientStateRequest;
-                    fromJSON(_: any): _71.QueryUpgradedClientStateRequest;
-                    toJSON(_: _71.QueryUpgradedClientStateRequest): {};
-                    fromPartial(_: Partial<_71.QueryUpgradedClientStateRequest>): _71.QueryUpgradedClientStateRequest;
-                    fromAmino(_: _71.QueryUpgradedClientStateRequestAmino): _71.QueryUpgradedClientStateRequest;
-                    toAmino(_: _71.QueryUpgradedClientStateRequest): _71.QueryUpgradedClientStateRequestAmino;
-                    fromAminoMsg(object: _71.QueryUpgradedClientStateRequestAminoMsg): _71.QueryUpgradedClientStateRequest;
-                    toAminoMsg(message: _71.QueryUpgradedClientStateRequest): _71.QueryUpgradedClientStateRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryUpgradedClientStateRequestProtoMsg): _71.QueryUpgradedClientStateRequest;
-                    toProto(message: _71.QueryUpgradedClientStateRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryUpgradedClientStateRequest): _71.QueryUpgradedClientStateRequestProtoMsg;
+                    is(o: any): o is _73.QueryUpgradedClientStateRequest;
+                    isSDK(o: any): o is _73.QueryUpgradedClientStateRequestSDKType;
+                    isAmino(o: any): o is _73.QueryUpgradedClientStateRequestAmino;
+                    encode(_: _73.QueryUpgradedClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryUpgradedClientStateRequest;
+                    fromJSON(_: any): _73.QueryUpgradedClientStateRequest;
+                    toJSON(_: _73.QueryUpgradedClientStateRequest): {};
+                    fromPartial(_: Partial<_73.QueryUpgradedClientStateRequest>): _73.QueryUpgradedClientStateRequest;
+                    fromAmino(_: _73.QueryUpgradedClientStateRequestAmino): _73.QueryUpgradedClientStateRequest;
+                    toAmino(_: _73.QueryUpgradedClientStateRequest): _73.QueryUpgradedClientStateRequestAmino;
+                    fromAminoMsg(object: _73.QueryUpgradedClientStateRequestAminoMsg): _73.QueryUpgradedClientStateRequest;
+                    toAminoMsg(message: _73.QueryUpgradedClientStateRequest): _73.QueryUpgradedClientStateRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryUpgradedClientStateRequestProtoMsg): _73.QueryUpgradedClientStateRequest;
+                    toProto(message: _73.QueryUpgradedClientStateRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryUpgradedClientStateRequest): _73.QueryUpgradedClientStateRequestProtoMsg;
                 };
                 QueryUpgradedClientStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryUpgradedClientStateResponse;
-                    isSDK(o: any): o is _71.QueryUpgradedClientStateResponseSDKType;
-                    isAmino(o: any): o is _71.QueryUpgradedClientStateResponseAmino;
-                    encode(message: _71.QueryUpgradedClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryUpgradedClientStateResponse;
-                    fromJSON(object: any): _71.QueryUpgradedClientStateResponse;
-                    toJSON(message: _71.QueryUpgradedClientStateResponse): {
+                    is(o: any): o is _73.QueryUpgradedClientStateResponse;
+                    isSDK(o: any): o is _73.QueryUpgradedClientStateResponseSDKType;
+                    isAmino(o: any): o is _73.QueryUpgradedClientStateResponseAmino;
+                    encode(message: _73.QueryUpgradedClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryUpgradedClientStateResponse;
+                    fromJSON(object: any): _73.QueryUpgradedClientStateResponse;
+                    toJSON(message: _73.QueryUpgradedClientStateResponse): {
                         upgradedClientState?: {
                             $typeUrl?: string;
                             typeUrl: string;
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryUpgradedClientStateResponse>): _71.QueryUpgradedClientStateResponse;
-                    fromAmino(object: _71.QueryUpgradedClientStateResponseAmino): _71.QueryUpgradedClientStateResponse;
-                    toAmino(message: _71.QueryUpgradedClientStateResponse): _71.QueryUpgradedClientStateResponseAmino;
-                    fromAminoMsg(object: _71.QueryUpgradedClientStateResponseAminoMsg): _71.QueryUpgradedClientStateResponse;
-                    toAminoMsg(message: _71.QueryUpgradedClientStateResponse): _71.QueryUpgradedClientStateResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryUpgradedClientStateResponseProtoMsg): _71.QueryUpgradedClientStateResponse;
-                    toProto(message: _71.QueryUpgradedClientStateResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryUpgradedClientStateResponse): _71.QueryUpgradedClientStateResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryUpgradedClientStateResponse>): _73.QueryUpgradedClientStateResponse;
+                    fromAmino(object: _73.QueryUpgradedClientStateResponseAmino): _73.QueryUpgradedClientStateResponse;
+                    toAmino(message: _73.QueryUpgradedClientStateResponse): _73.QueryUpgradedClientStateResponseAmino;
+                    fromAminoMsg(object: _73.QueryUpgradedClientStateResponseAminoMsg): _73.QueryUpgradedClientStateResponse;
+                    toAminoMsg(message: _73.QueryUpgradedClientStateResponse): _73.QueryUpgradedClientStateResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryUpgradedClientStateResponseProtoMsg): _73.QueryUpgradedClientStateResponse;
+                    toProto(message: _73.QueryUpgradedClientStateResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryUpgradedClientStateResponse): _73.QueryUpgradedClientStateResponseProtoMsg;
                 };
                 QueryUpgradedConsensusStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryUpgradedConsensusStateRequest;
-                    isSDK(o: any): o is _71.QueryUpgradedConsensusStateRequestSDKType;
-                    isAmino(o: any): o is _71.QueryUpgradedConsensusStateRequestAmino;
-                    encode(_: _71.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryUpgradedConsensusStateRequest;
-                    fromJSON(_: any): _71.QueryUpgradedConsensusStateRequest;
-                    toJSON(_: _71.QueryUpgradedConsensusStateRequest): {};
-                    fromPartial(_: Partial<_71.QueryUpgradedConsensusStateRequest>): _71.QueryUpgradedConsensusStateRequest;
-                    fromAmino(_: _71.QueryUpgradedConsensusStateRequestAmino): _71.QueryUpgradedConsensusStateRequest;
-                    toAmino(_: _71.QueryUpgradedConsensusStateRequest): _71.QueryUpgradedConsensusStateRequestAmino;
-                    fromAminoMsg(object: _71.QueryUpgradedConsensusStateRequestAminoMsg): _71.QueryUpgradedConsensusStateRequest;
-                    toAminoMsg(message: _71.QueryUpgradedConsensusStateRequest): _71.QueryUpgradedConsensusStateRequestAminoMsg;
-                    fromProtoMsg(message: _71.QueryUpgradedConsensusStateRequestProtoMsg): _71.QueryUpgradedConsensusStateRequest;
-                    toProto(message: _71.QueryUpgradedConsensusStateRequest): Uint8Array;
-                    toProtoMsg(message: _71.QueryUpgradedConsensusStateRequest): _71.QueryUpgradedConsensusStateRequestProtoMsg;
+                    is(o: any): o is _73.QueryUpgradedConsensusStateRequest;
+                    isSDK(o: any): o is _73.QueryUpgradedConsensusStateRequestSDKType;
+                    isAmino(o: any): o is _73.QueryUpgradedConsensusStateRequestAmino;
+                    encode(_: _73.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryUpgradedConsensusStateRequest;
+                    fromJSON(_: any): _73.QueryUpgradedConsensusStateRequest;
+                    toJSON(_: _73.QueryUpgradedConsensusStateRequest): {};
+                    fromPartial(_: Partial<_73.QueryUpgradedConsensusStateRequest>): _73.QueryUpgradedConsensusStateRequest;
+                    fromAmino(_: _73.QueryUpgradedConsensusStateRequestAmino): _73.QueryUpgradedConsensusStateRequest;
+                    toAmino(_: _73.QueryUpgradedConsensusStateRequest): _73.QueryUpgradedConsensusStateRequestAmino;
+                    fromAminoMsg(object: _73.QueryUpgradedConsensusStateRequestAminoMsg): _73.QueryUpgradedConsensusStateRequest;
+                    toAminoMsg(message: _73.QueryUpgradedConsensusStateRequest): _73.QueryUpgradedConsensusStateRequestAminoMsg;
+                    fromProtoMsg(message: _73.QueryUpgradedConsensusStateRequestProtoMsg): _73.QueryUpgradedConsensusStateRequest;
+                    toProto(message: _73.QueryUpgradedConsensusStateRequest): Uint8Array;
+                    toProtoMsg(message: _73.QueryUpgradedConsensusStateRequest): _73.QueryUpgradedConsensusStateRequestProtoMsg;
                 };
                 QueryUpgradedConsensusStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _71.QueryUpgradedConsensusStateResponse;
-                    isSDK(o: any): o is _71.QueryUpgradedConsensusStateResponseSDKType;
-                    isAmino(o: any): o is _71.QueryUpgradedConsensusStateResponseAmino;
-                    encode(message: _71.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryUpgradedConsensusStateResponse;
-                    fromJSON(object: any): _71.QueryUpgradedConsensusStateResponse;
-                    toJSON(message: _71.QueryUpgradedConsensusStateResponse): {
+                    is(o: any): o is _73.QueryUpgradedConsensusStateResponse;
+                    isSDK(o: any): o is _73.QueryUpgradedConsensusStateResponseSDKType;
+                    isAmino(o: any): o is _73.QueryUpgradedConsensusStateResponseAmino;
+                    encode(message: _73.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.QueryUpgradedConsensusStateResponse;
+                    fromJSON(object: any): _73.QueryUpgradedConsensusStateResponse;
+                    toJSON(message: _73.QueryUpgradedConsensusStateResponse): {
                         upgradedConsensusState?: {
                             $typeUrl?: string;
                             typeUrl: string;
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_71.QueryUpgradedConsensusStateResponse>): _71.QueryUpgradedConsensusStateResponse;
-                    fromAmino(object: _71.QueryUpgradedConsensusStateResponseAmino): _71.QueryUpgradedConsensusStateResponse;
-                    toAmino(message: _71.QueryUpgradedConsensusStateResponse): _71.QueryUpgradedConsensusStateResponseAmino;
-                    fromAminoMsg(object: _71.QueryUpgradedConsensusStateResponseAminoMsg): _71.QueryUpgradedConsensusStateResponse;
-                    toAminoMsg(message: _71.QueryUpgradedConsensusStateResponse): _71.QueryUpgradedConsensusStateResponseAminoMsg;
-                    fromProtoMsg(message: _71.QueryUpgradedConsensusStateResponseProtoMsg): _71.QueryUpgradedConsensusStateResponse;
-                    toProto(message: _71.QueryUpgradedConsensusStateResponse): Uint8Array;
-                    toProtoMsg(message: _71.QueryUpgradedConsensusStateResponse): _71.QueryUpgradedConsensusStateResponseProtoMsg;
+                    fromPartial(object: Partial<_73.QueryUpgradedConsensusStateResponse>): _73.QueryUpgradedConsensusStateResponse;
+                    fromAmino(object: _73.QueryUpgradedConsensusStateResponseAmino): _73.QueryUpgradedConsensusStateResponse;
+                    toAmino(message: _73.QueryUpgradedConsensusStateResponse): _73.QueryUpgradedConsensusStateResponseAmino;
+                    fromAminoMsg(object: _73.QueryUpgradedConsensusStateResponseAminoMsg): _73.QueryUpgradedConsensusStateResponse;
+                    toAminoMsg(message: _73.QueryUpgradedConsensusStateResponse): _73.QueryUpgradedConsensusStateResponseAminoMsg;
+                    fromProtoMsg(message: _73.QueryUpgradedConsensusStateResponseProtoMsg): _73.QueryUpgradedConsensusStateResponse;
+                    toProto(message: _73.QueryUpgradedConsensusStateResponse): Uint8Array;
+                    toProtoMsg(message: _73.QueryUpgradedConsensusStateResponse): _73.QueryUpgradedConsensusStateResponseProtoMsg;
                 };
                 GenesisState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _70.GenesisState;
-                    isSDK(o: any): o is _70.GenesisStateSDKType;
-                    isAmino(o: any): o is _70.GenesisStateAmino;
-                    encode(message: _70.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.GenesisState;
-                    fromJSON(object: any): _70.GenesisState;
-                    toJSON(message: _70.GenesisState): {
+                    is(o: any): o is _72.GenesisState;
+                    isSDK(o: any): o is _72.GenesisStateSDKType;
+                    isAmino(o: any): o is _72.GenesisStateAmino;
+                    encode(message: _72.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.GenesisState;
+                    fromJSON(object: any): _72.GenesisState;
+                    toJSON(message: _72.GenesisState): {
                         clients: {
                             clientId: string;
                             clientState?: {
@@ -3147,72 +3147,72 @@ export declare namespace ibc {
                         createLocalhost: boolean;
                         nextClientSequence: string;
                     };
-                    fromPartial(object: Partial<_70.GenesisState>): _70.GenesisState;
-                    fromAmino(object: _70.GenesisStateAmino): _70.GenesisState;
-                    toAmino(message: _70.GenesisState): _70.GenesisStateAmino;
-                    fromAminoMsg(object: _70.GenesisStateAminoMsg): _70.GenesisState;
-                    toAminoMsg(message: _70.GenesisState): _70.GenesisStateAminoMsg;
-                    fromProtoMsg(message: _70.GenesisStateProtoMsg): _70.GenesisState;
-                    toProto(message: _70.GenesisState): Uint8Array;
-                    toProtoMsg(message: _70.GenesisState): _70.GenesisStateProtoMsg;
+                    fromPartial(object: Partial<_72.GenesisState>): _72.GenesisState;
+                    fromAmino(object: _72.GenesisStateAmino): _72.GenesisState;
+                    toAmino(message: _72.GenesisState): _72.GenesisStateAmino;
+                    fromAminoMsg(object: _72.GenesisStateAminoMsg): _72.GenesisState;
+                    toAminoMsg(message: _72.GenesisState): _72.GenesisStateAminoMsg;
+                    fromProtoMsg(message: _72.GenesisStateProtoMsg): _72.GenesisState;
+                    toProto(message: _72.GenesisState): Uint8Array;
+                    toProtoMsg(message: _72.GenesisState): _72.GenesisStateProtoMsg;
                 };
                 GenesisMetadata: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _70.GenesisMetadata;
-                    isSDK(o: any): o is _70.GenesisMetadataSDKType;
-                    isAmino(o: any): o is _70.GenesisMetadataAmino;
-                    encode(message: _70.GenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.GenesisMetadata;
-                    fromJSON(object: any): _70.GenesisMetadata;
-                    toJSON(message: _70.GenesisMetadata): {
+                    is(o: any): o is _72.GenesisMetadata;
+                    isSDK(o: any): o is _72.GenesisMetadataSDKType;
+                    isAmino(o: any): o is _72.GenesisMetadataAmino;
+                    encode(message: _72.GenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.GenesisMetadata;
+                    fromJSON(object: any): _72.GenesisMetadata;
+                    toJSON(message: _72.GenesisMetadata): {
                         key: string;
                         value: string;
                     };
-                    fromPartial(object: Partial<_70.GenesisMetadata>): _70.GenesisMetadata;
-                    fromAmino(object: _70.GenesisMetadataAmino): _70.GenesisMetadata;
-                    toAmino(message: _70.GenesisMetadata): _70.GenesisMetadataAmino;
-                    fromAminoMsg(object: _70.GenesisMetadataAminoMsg): _70.GenesisMetadata;
-                    toAminoMsg(message: _70.GenesisMetadata): _70.GenesisMetadataAminoMsg;
-                    fromProtoMsg(message: _70.GenesisMetadataProtoMsg): _70.GenesisMetadata;
-                    toProto(message: _70.GenesisMetadata): Uint8Array;
-                    toProtoMsg(message: _70.GenesisMetadata): _70.GenesisMetadataProtoMsg;
+                    fromPartial(object: Partial<_72.GenesisMetadata>): _72.GenesisMetadata;
+                    fromAmino(object: _72.GenesisMetadataAmino): _72.GenesisMetadata;
+                    toAmino(message: _72.GenesisMetadata): _72.GenesisMetadataAmino;
+                    fromAminoMsg(object: _72.GenesisMetadataAminoMsg): _72.GenesisMetadata;
+                    toAminoMsg(message: _72.GenesisMetadata): _72.GenesisMetadataAminoMsg;
+                    fromProtoMsg(message: _72.GenesisMetadataProtoMsg): _72.GenesisMetadata;
+                    toProto(message: _72.GenesisMetadata): Uint8Array;
+                    toProtoMsg(message: _72.GenesisMetadata): _72.GenesisMetadataProtoMsg;
                 };
                 IdentifiedGenesisMetadata: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _70.IdentifiedGenesisMetadata;
-                    isSDK(o: any): o is _70.IdentifiedGenesisMetadataSDKType;
-                    isAmino(o: any): o is _70.IdentifiedGenesisMetadataAmino;
-                    encode(message: _70.IdentifiedGenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.IdentifiedGenesisMetadata;
-                    fromJSON(object: any): _70.IdentifiedGenesisMetadata;
-                    toJSON(message: _70.IdentifiedGenesisMetadata): {
+                    is(o: any): o is _72.IdentifiedGenesisMetadata;
+                    isSDK(o: any): o is _72.IdentifiedGenesisMetadataSDKType;
+                    isAmino(o: any): o is _72.IdentifiedGenesisMetadataAmino;
+                    encode(message: _72.IdentifiedGenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.IdentifiedGenesisMetadata;
+                    fromJSON(object: any): _72.IdentifiedGenesisMetadata;
+                    toJSON(message: _72.IdentifiedGenesisMetadata): {
                         clientId: string;
                         clientMetadata: {
                             key: string;
                             value: string;
                         }[];
                     };
-                    fromPartial(object: Partial<_70.IdentifiedGenesisMetadata>): _70.IdentifiedGenesisMetadata;
-                    fromAmino(object: _70.IdentifiedGenesisMetadataAmino): _70.IdentifiedGenesisMetadata;
-                    toAmino(message: _70.IdentifiedGenesisMetadata): _70.IdentifiedGenesisMetadataAmino;
-                    fromAminoMsg(object: _70.IdentifiedGenesisMetadataAminoMsg): _70.IdentifiedGenesisMetadata;
-                    toAminoMsg(message: _70.IdentifiedGenesisMetadata): _70.IdentifiedGenesisMetadataAminoMsg;
-                    fromProtoMsg(message: _70.IdentifiedGenesisMetadataProtoMsg): _70.IdentifiedGenesisMetadata;
-                    toProto(message: _70.IdentifiedGenesisMetadata): Uint8Array;
-                    toProtoMsg(message: _70.IdentifiedGenesisMetadata): _70.IdentifiedGenesisMetadataProtoMsg;
+                    fromPartial(object: Partial<_72.IdentifiedGenesisMetadata>): _72.IdentifiedGenesisMetadata;
+                    fromAmino(object: _72.IdentifiedGenesisMetadataAmino): _72.IdentifiedGenesisMetadata;
+                    toAmino(message: _72.IdentifiedGenesisMetadata): _72.IdentifiedGenesisMetadataAmino;
+                    fromAminoMsg(object: _72.IdentifiedGenesisMetadataAminoMsg): _72.IdentifiedGenesisMetadata;
+                    toAminoMsg(message: _72.IdentifiedGenesisMetadata): _72.IdentifiedGenesisMetadataAminoMsg;
+                    fromProtoMsg(message: _72.IdentifiedGenesisMetadataProtoMsg): _72.IdentifiedGenesisMetadata;
+                    toProto(message: _72.IdentifiedGenesisMetadata): Uint8Array;
+                    toProtoMsg(message: _72.IdentifiedGenesisMetadata): _72.IdentifiedGenesisMetadataProtoMsg;
                 };
                 IdentifiedClientState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.IdentifiedClientState;
-                    isSDK(o: any): o is _69.IdentifiedClientStateSDKType;
-                    isAmino(o: any): o is _69.IdentifiedClientStateAmino;
-                    encode(message: _69.IdentifiedClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.IdentifiedClientState;
-                    fromJSON(object: any): _69.IdentifiedClientState;
-                    toJSON(message: _69.IdentifiedClientState): {
+                    is(o: any): o is _71.IdentifiedClientState;
+                    isSDK(o: any): o is _71.IdentifiedClientStateSDKType;
+                    isAmino(o: any): o is _71.IdentifiedClientStateAmino;
+                    encode(message: _71.IdentifiedClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.IdentifiedClientState;
+                    fromJSON(object: any): _71.IdentifiedClientState;
+                    toJSON(message: _71.IdentifiedClientState): {
                         clientId: string;
                         clientState?: {
                             $typeUrl?: string;
@@ -3220,25 +3220,25 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_69.IdentifiedClientState>): _69.IdentifiedClientState;
-                    fromAmino(object: _69.IdentifiedClientStateAmino): _69.IdentifiedClientState;
-                    toAmino(message: _69.IdentifiedClientState): _69.IdentifiedClientStateAmino;
-                    fromAminoMsg(object: _69.IdentifiedClientStateAminoMsg): _69.IdentifiedClientState;
-                    toAminoMsg(message: _69.IdentifiedClientState): _69.IdentifiedClientStateAminoMsg;
-                    fromProtoMsg(message: _69.IdentifiedClientStateProtoMsg): _69.IdentifiedClientState;
-                    toProto(message: _69.IdentifiedClientState): Uint8Array;
-                    toProtoMsg(message: _69.IdentifiedClientState): _69.IdentifiedClientStateProtoMsg;
+                    fromPartial(object: Partial<_71.IdentifiedClientState>): _71.IdentifiedClientState;
+                    fromAmino(object: _71.IdentifiedClientStateAmino): _71.IdentifiedClientState;
+                    toAmino(message: _71.IdentifiedClientState): _71.IdentifiedClientStateAmino;
+                    fromAminoMsg(object: _71.IdentifiedClientStateAminoMsg): _71.IdentifiedClientState;
+                    toAminoMsg(message: _71.IdentifiedClientState): _71.IdentifiedClientStateAminoMsg;
+                    fromProtoMsg(message: _71.IdentifiedClientStateProtoMsg): _71.IdentifiedClientState;
+                    toProto(message: _71.IdentifiedClientState): Uint8Array;
+                    toProtoMsg(message: _71.IdentifiedClientState): _71.IdentifiedClientStateProtoMsg;
                 };
                 ConsensusStateWithHeight: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.ConsensusStateWithHeight;
-                    isSDK(o: any): o is _69.ConsensusStateWithHeightSDKType;
-                    isAmino(o: any): o is _69.ConsensusStateWithHeightAmino;
-                    encode(message: _69.ConsensusStateWithHeight, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.ConsensusStateWithHeight;
-                    fromJSON(object: any): _69.ConsensusStateWithHeight;
-                    toJSON(message: _69.ConsensusStateWithHeight): {
+                    is(o: any): o is _71.ConsensusStateWithHeight;
+                    isSDK(o: any): o is _71.ConsensusStateWithHeightSDKType;
+                    isAmino(o: any): o is _71.ConsensusStateWithHeightAmino;
+                    encode(message: _71.ConsensusStateWithHeight, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ConsensusStateWithHeight;
+                    fromJSON(object: any): _71.ConsensusStateWithHeight;
+                    toJSON(message: _71.ConsensusStateWithHeight): {
                         height: {
                             revisionNumber: string;
                             revisionHeight: string;
@@ -3249,25 +3249,25 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_69.ConsensusStateWithHeight>): _69.ConsensusStateWithHeight;
-                    fromAmino(object: _69.ConsensusStateWithHeightAmino): _69.ConsensusStateWithHeight;
-                    toAmino(message: _69.ConsensusStateWithHeight): _69.ConsensusStateWithHeightAmino;
-                    fromAminoMsg(object: _69.ConsensusStateWithHeightAminoMsg): _69.ConsensusStateWithHeight;
-                    toAminoMsg(message: _69.ConsensusStateWithHeight): _69.ConsensusStateWithHeightAminoMsg;
-                    fromProtoMsg(message: _69.ConsensusStateWithHeightProtoMsg): _69.ConsensusStateWithHeight;
-                    toProto(message: _69.ConsensusStateWithHeight): Uint8Array;
-                    toProtoMsg(message: _69.ConsensusStateWithHeight): _69.ConsensusStateWithHeightProtoMsg;
+                    fromPartial(object: Partial<_71.ConsensusStateWithHeight>): _71.ConsensusStateWithHeight;
+                    fromAmino(object: _71.ConsensusStateWithHeightAmino): _71.ConsensusStateWithHeight;
+                    toAmino(message: _71.ConsensusStateWithHeight): _71.ConsensusStateWithHeightAmino;
+                    fromAminoMsg(object: _71.ConsensusStateWithHeightAminoMsg): _71.ConsensusStateWithHeight;
+                    toAminoMsg(message: _71.ConsensusStateWithHeight): _71.ConsensusStateWithHeightAminoMsg;
+                    fromProtoMsg(message: _71.ConsensusStateWithHeightProtoMsg): _71.ConsensusStateWithHeight;
+                    toProto(message: _71.ConsensusStateWithHeight): Uint8Array;
+                    toProtoMsg(message: _71.ConsensusStateWithHeight): _71.ConsensusStateWithHeightProtoMsg;
                 };
                 ClientConsensusStates: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.ClientConsensusStates;
-                    isSDK(o: any): o is _69.ClientConsensusStatesSDKType;
-                    isAmino(o: any): o is _69.ClientConsensusStatesAmino;
-                    encode(message: _69.ClientConsensusStates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.ClientConsensusStates;
-                    fromJSON(object: any): _69.ClientConsensusStates;
-                    toJSON(message: _69.ClientConsensusStates): {
+                    is(o: any): o is _71.ClientConsensusStates;
+                    isSDK(o: any): o is _71.ClientConsensusStatesSDKType;
+                    isAmino(o: any): o is _71.ClientConsensusStatesAmino;
+                    encode(message: _71.ClientConsensusStates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ClientConsensusStates;
+                    fromJSON(object: any): _71.ClientConsensusStates;
+                    toJSON(message: _71.ClientConsensusStates): {
                         clientId: string;
                         consensusStates: {
                             height: {
@@ -3281,50 +3281,50 @@ export declare namespace ibc {
                             };
                         }[];
                     };
-                    fromPartial(object: Partial<_69.ClientConsensusStates>): _69.ClientConsensusStates;
-                    fromAmino(object: _69.ClientConsensusStatesAmino): _69.ClientConsensusStates;
-                    toAmino(message: _69.ClientConsensusStates): _69.ClientConsensusStatesAmino;
-                    fromAminoMsg(object: _69.ClientConsensusStatesAminoMsg): _69.ClientConsensusStates;
-                    toAminoMsg(message: _69.ClientConsensusStates): _69.ClientConsensusStatesAminoMsg;
-                    fromProtoMsg(message: _69.ClientConsensusStatesProtoMsg): _69.ClientConsensusStates;
-                    toProto(message: _69.ClientConsensusStates): Uint8Array;
-                    toProtoMsg(message: _69.ClientConsensusStates): _69.ClientConsensusStatesProtoMsg;
+                    fromPartial(object: Partial<_71.ClientConsensusStates>): _71.ClientConsensusStates;
+                    fromAmino(object: _71.ClientConsensusStatesAmino): _71.ClientConsensusStates;
+                    toAmino(message: _71.ClientConsensusStates): _71.ClientConsensusStatesAmino;
+                    fromAminoMsg(object: _71.ClientConsensusStatesAminoMsg): _71.ClientConsensusStates;
+                    toAminoMsg(message: _71.ClientConsensusStates): _71.ClientConsensusStatesAminoMsg;
+                    fromProtoMsg(message: _71.ClientConsensusStatesProtoMsg): _71.ClientConsensusStates;
+                    toProto(message: _71.ClientConsensusStates): Uint8Array;
+                    toProtoMsg(message: _71.ClientConsensusStates): _71.ClientConsensusStatesProtoMsg;
                 };
                 ClientUpdateProposal: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.ClientUpdateProposal;
-                    isSDK(o: any): o is _69.ClientUpdateProposalSDKType;
-                    isAmino(o: any): o is _69.ClientUpdateProposalAmino;
-                    encode(message: _69.ClientUpdateProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.ClientUpdateProposal;
-                    fromJSON(object: any): _69.ClientUpdateProposal;
-                    toJSON(message: _69.ClientUpdateProposal): {
+                    is(o: any): o is _71.ClientUpdateProposal;
+                    isSDK(o: any): o is _71.ClientUpdateProposalSDKType;
+                    isAmino(o: any): o is _71.ClientUpdateProposalAmino;
+                    encode(message: _71.ClientUpdateProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.ClientUpdateProposal;
+                    fromJSON(object: any): _71.ClientUpdateProposal;
+                    toJSON(message: _71.ClientUpdateProposal): {
                         $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
                         title: string;
                         description: string;
                         subjectClientId: string;
                         substituteClientId: string;
                     };
-                    fromPartial(object: Partial<_69.ClientUpdateProposal>): _69.ClientUpdateProposal;
-                    fromAmino(object: _69.ClientUpdateProposalAmino): _69.ClientUpdateProposal;
-                    toAmino(message: _69.ClientUpdateProposal): _69.ClientUpdateProposalAmino;
-                    fromAminoMsg(object: _69.ClientUpdateProposalAminoMsg): _69.ClientUpdateProposal;
-                    toAminoMsg(message: _69.ClientUpdateProposal): _69.ClientUpdateProposalAminoMsg;
-                    fromProtoMsg(message: _69.ClientUpdateProposalProtoMsg): _69.ClientUpdateProposal;
-                    toProto(message: _69.ClientUpdateProposal): Uint8Array;
-                    toProtoMsg(message: _69.ClientUpdateProposal): _69.ClientUpdateProposalProtoMsg;
+                    fromPartial(object: Partial<_71.ClientUpdateProposal>): _71.ClientUpdateProposal;
+                    fromAmino(object: _71.ClientUpdateProposalAmino): _71.ClientUpdateProposal;
+                    toAmino(message: _71.ClientUpdateProposal): _71.ClientUpdateProposalAmino;
+                    fromAminoMsg(object: _71.ClientUpdateProposalAminoMsg): _71.ClientUpdateProposal;
+                    toAminoMsg(message: _71.ClientUpdateProposal): _71.ClientUpdateProposalAminoMsg;
+                    fromProtoMsg(message: _71.ClientUpdateProposalProtoMsg): _71.ClientUpdateProposal;
+                    toProto(message: _71.ClientUpdateProposal): Uint8Array;
+                    toProtoMsg(message: _71.ClientUpdateProposal): _71.ClientUpdateProposalProtoMsg;
                 };
                 UpgradeProposal: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.UpgradeProposal;
-                    isSDK(o: any): o is _69.UpgradeProposalSDKType;
-                    isAmino(o: any): o is _69.UpgradeProposalAmino;
-                    encode(message: _69.UpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.UpgradeProposal;
-                    fromJSON(object: any): _69.UpgradeProposal;
-                    toJSON(message: _69.UpgradeProposal): {
+                    is(o: any): o is _71.UpgradeProposal;
+                    isSDK(o: any): o is _71.UpgradeProposalSDKType;
+                    isAmino(o: any): o is _71.UpgradeProposalAmino;
+                    encode(message: _71.UpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.UpgradeProposal;
+                    fromJSON(object: any): _71.UpgradeProposal;
+                    toJSON(message: _71.UpgradeProposal): {
                         $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
                         title: string;
                         description: string;
@@ -3345,57 +3345,57 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_69.UpgradeProposal>): _69.UpgradeProposal;
-                    fromAmino(object: _69.UpgradeProposalAmino): _69.UpgradeProposal;
-                    toAmino(message: _69.UpgradeProposal): _69.UpgradeProposalAmino;
-                    fromAminoMsg(object: _69.UpgradeProposalAminoMsg): _69.UpgradeProposal;
-                    toAminoMsg(message: _69.UpgradeProposal): _69.UpgradeProposalAminoMsg;
-                    fromProtoMsg(message: _69.UpgradeProposalProtoMsg): _69.UpgradeProposal;
-                    toProto(message: _69.UpgradeProposal): Uint8Array;
-                    toProtoMsg(message: _69.UpgradeProposal): _69.UpgradeProposalProtoMsg;
+                    fromPartial(object: Partial<_71.UpgradeProposal>): _71.UpgradeProposal;
+                    fromAmino(object: _71.UpgradeProposalAmino): _71.UpgradeProposal;
+                    toAmino(message: _71.UpgradeProposal): _71.UpgradeProposalAmino;
+                    fromAminoMsg(object: _71.UpgradeProposalAminoMsg): _71.UpgradeProposal;
+                    toAminoMsg(message: _71.UpgradeProposal): _71.UpgradeProposalAminoMsg;
+                    fromProtoMsg(message: _71.UpgradeProposalProtoMsg): _71.UpgradeProposal;
+                    toProto(message: _71.UpgradeProposal): Uint8Array;
+                    toProtoMsg(message: _71.UpgradeProposal): _71.UpgradeProposalProtoMsg;
                 };
                 Height: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.Height;
-                    isSDK(o: any): o is _69.HeightSDKType;
-                    isAmino(o: any): o is _69.HeightAmino;
-                    encode(message: _69.Height, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.Height;
-                    fromJSON(object: any): _69.Height;
-                    toJSON(message: _69.Height): {
+                    is(o: any): o is _71.Height;
+                    isSDK(o: any): o is _71.HeightSDKType;
+                    isAmino(o: any): o is _71.HeightAmino;
+                    encode(message: _71.Height, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.Height;
+                    fromJSON(object: any): _71.Height;
+                    toJSON(message: _71.Height): {
                         revisionNumber: string;
                         revisionHeight: string;
                     };
-                    fromPartial(object: Partial<_69.Height>): _69.Height;
-                    fromAmino(object: _69.HeightAmino): _69.Height;
-                    toAmino(message: _69.Height): _69.HeightAmino;
-                    fromAminoMsg(object: _69.HeightAminoMsg): _69.Height;
-                    toAminoMsg(message: _69.Height): _69.HeightAminoMsg;
-                    fromProtoMsg(message: _69.HeightProtoMsg): _69.Height;
-                    toProto(message: _69.Height): Uint8Array;
-                    toProtoMsg(message: _69.Height): _69.HeightProtoMsg;
+                    fromPartial(object: Partial<_71.Height>): _71.Height;
+                    fromAmino(object: _71.HeightAmino): _71.Height;
+                    toAmino(message: _71.Height): _71.HeightAmino;
+                    fromAminoMsg(object: _71.HeightAminoMsg): _71.Height;
+                    toAminoMsg(message: _71.Height): _71.HeightAminoMsg;
+                    fromProtoMsg(message: _71.HeightProtoMsg): _71.Height;
+                    toProto(message: _71.Height): Uint8Array;
+                    toProtoMsg(message: _71.Height): _71.HeightProtoMsg;
                 };
                 Params: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _69.Params;
-                    isSDK(o: any): o is _69.ParamsSDKType;
-                    isAmino(o: any): o is _69.ParamsAmino;
-                    encode(message: _69.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.Params;
-                    fromJSON(object: any): _69.Params;
-                    toJSON(message: _69.Params): {
+                    is(o: any): o is _71.Params;
+                    isSDK(o: any): o is _71.ParamsSDKType;
+                    isAmino(o: any): o is _71.ParamsAmino;
+                    encode(message: _71.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.Params;
+                    fromJSON(object: any): _71.Params;
+                    toJSON(message: _71.Params): {
                         allowedClients: string[];
                     };
-                    fromPartial(object: Partial<_69.Params>): _69.Params;
-                    fromAmino(object: _69.ParamsAmino): _69.Params;
-                    toAmino(message: _69.Params): _69.ParamsAmino;
-                    fromAminoMsg(object: _69.ParamsAminoMsg): _69.Params;
-                    toAminoMsg(message: _69.Params): _69.ParamsAminoMsg;
-                    fromProtoMsg(message: _69.ParamsProtoMsg): _69.Params;
-                    toProto(message: _69.Params): Uint8Array;
-                    toProtoMsg(message: _69.Params): _69.ParamsProtoMsg;
+                    fromPartial(object: Partial<_71.Params>): _71.Params;
+                    fromAmino(object: _71.ParamsAmino): _71.Params;
+                    toAmino(message: _71.Params): _71.ParamsAmino;
+                    fromAminoMsg(object: _71.ParamsAminoMsg): _71.Params;
+                    toAminoMsg(message: _71.Params): _71.ParamsAminoMsg;
+                    fromProtoMsg(message: _71.ParamsProtoMsg): _71.Params;
+                    toProto(message: _71.Params): Uint8Array;
+                    toProtoMsg(message: _71.Params): _71.ParamsProtoMsg;
                 };
             };
         }
@@ -3404,76 +3404,76 @@ export declare namespace ibc {
                 MerkleRoot: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _73.MerkleRoot;
-                    isSDK(o: any): o is _73.MerkleRootSDKType;
-                    isAmino(o: any): o is _73.MerkleRootAmino;
-                    encode(message: _73.MerkleRoot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.MerkleRoot;
-                    fromJSON(object: any): _73.MerkleRoot;
-                    toJSON(message: _73.MerkleRoot): {
+                    is(o: any): o is _75.MerkleRoot;
+                    isSDK(o: any): o is _75.MerkleRootSDKType;
+                    isAmino(o: any): o is _75.MerkleRootAmino;
+                    encode(message: _75.MerkleRoot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.MerkleRoot;
+                    fromJSON(object: any): _75.MerkleRoot;
+                    toJSON(message: _75.MerkleRoot): {
                         hash: string;
                     };
-                    fromPartial(object: Partial<_73.MerkleRoot>): _73.MerkleRoot;
-                    fromAmino(object: _73.MerkleRootAmino): _73.MerkleRoot;
-                    toAmino(message: _73.MerkleRoot): _73.MerkleRootAmino;
-                    fromAminoMsg(object: _73.MerkleRootAminoMsg): _73.MerkleRoot;
-                    toAminoMsg(message: _73.MerkleRoot): _73.MerkleRootAminoMsg;
-                    fromProtoMsg(message: _73.MerkleRootProtoMsg): _73.MerkleRoot;
-                    toProto(message: _73.MerkleRoot): Uint8Array;
-                    toProtoMsg(message: _73.MerkleRoot): _73.MerkleRootProtoMsg;
+                    fromPartial(object: Partial<_75.MerkleRoot>): _75.MerkleRoot;
+                    fromAmino(object: _75.MerkleRootAmino): _75.MerkleRoot;
+                    toAmino(message: _75.MerkleRoot): _75.MerkleRootAmino;
+                    fromAminoMsg(object: _75.MerkleRootAminoMsg): _75.MerkleRoot;
+                    toAminoMsg(message: _75.MerkleRoot): _75.MerkleRootAminoMsg;
+                    fromProtoMsg(message: _75.MerkleRootProtoMsg): _75.MerkleRoot;
+                    toProto(message: _75.MerkleRoot): Uint8Array;
+                    toProtoMsg(message: _75.MerkleRoot): _75.MerkleRootProtoMsg;
                 };
                 MerklePrefix: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _73.MerklePrefix;
-                    isSDK(o: any): o is _73.MerklePrefixSDKType;
-                    isAmino(o: any): o is _73.MerklePrefixAmino;
-                    encode(message: _73.MerklePrefix, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.MerklePrefix;
-                    fromJSON(object: any): _73.MerklePrefix;
-                    toJSON(message: _73.MerklePrefix): {
+                    is(o: any): o is _75.MerklePrefix;
+                    isSDK(o: any): o is _75.MerklePrefixSDKType;
+                    isAmino(o: any): o is _75.MerklePrefixAmino;
+                    encode(message: _75.MerklePrefix, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.MerklePrefix;
+                    fromJSON(object: any): _75.MerklePrefix;
+                    toJSON(message: _75.MerklePrefix): {
                         keyPrefix: string;
                     };
-                    fromPartial(object: Partial<_73.MerklePrefix>): _73.MerklePrefix;
-                    fromAmino(object: _73.MerklePrefixAmino): _73.MerklePrefix;
-                    toAmino(message: _73.MerklePrefix): _73.MerklePrefixAmino;
-                    fromAminoMsg(object: _73.MerklePrefixAminoMsg): _73.MerklePrefix;
-                    toAminoMsg(message: _73.MerklePrefix): _73.MerklePrefixAminoMsg;
-                    fromProtoMsg(message: _73.MerklePrefixProtoMsg): _73.MerklePrefix;
-                    toProto(message: _73.MerklePrefix): Uint8Array;
-                    toProtoMsg(message: _73.MerklePrefix): _73.MerklePrefixProtoMsg;
+                    fromPartial(object: Partial<_75.MerklePrefix>): _75.MerklePrefix;
+                    fromAmino(object: _75.MerklePrefixAmino): _75.MerklePrefix;
+                    toAmino(message: _75.MerklePrefix): _75.MerklePrefixAmino;
+                    fromAminoMsg(object: _75.MerklePrefixAminoMsg): _75.MerklePrefix;
+                    toAminoMsg(message: _75.MerklePrefix): _75.MerklePrefixAminoMsg;
+                    fromProtoMsg(message: _75.MerklePrefixProtoMsg): _75.MerklePrefix;
+                    toProto(message: _75.MerklePrefix): Uint8Array;
+                    toProtoMsg(message: _75.MerklePrefix): _75.MerklePrefixProtoMsg;
                 };
                 MerklePath: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _73.MerklePath;
-                    isSDK(o: any): o is _73.MerklePathSDKType;
-                    isAmino(o: any): o is _73.MerklePathAmino;
-                    encode(message: _73.MerklePath, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.MerklePath;
-                    fromJSON(object: any): _73.MerklePath;
-                    toJSON(message: _73.MerklePath): {
+                    is(o: any): o is _75.MerklePath;
+                    isSDK(o: any): o is _75.MerklePathSDKType;
+                    isAmino(o: any): o is _75.MerklePathAmino;
+                    encode(message: _75.MerklePath, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.MerklePath;
+                    fromJSON(object: any): _75.MerklePath;
+                    toJSON(message: _75.MerklePath): {
                         keyPath: string[];
                     };
-                    fromPartial(object: Partial<_73.MerklePath>): _73.MerklePath;
-                    fromAmino(object: _73.MerklePathAmino): _73.MerklePath;
-                    toAmino(message: _73.MerklePath): _73.MerklePathAmino;
-                    fromAminoMsg(object: _73.MerklePathAminoMsg): _73.MerklePath;
-                    toAminoMsg(message: _73.MerklePath): _73.MerklePathAminoMsg;
-                    fromProtoMsg(message: _73.MerklePathProtoMsg): _73.MerklePath;
-                    toProto(message: _73.MerklePath): Uint8Array;
-                    toProtoMsg(message: _73.MerklePath): _73.MerklePathProtoMsg;
+                    fromPartial(object: Partial<_75.MerklePath>): _75.MerklePath;
+                    fromAmino(object: _75.MerklePathAmino): _75.MerklePath;
+                    toAmino(message: _75.MerklePath): _75.MerklePathAmino;
+                    fromAminoMsg(object: _75.MerklePathAminoMsg): _75.MerklePath;
+                    toAminoMsg(message: _75.MerklePath): _75.MerklePathAminoMsg;
+                    fromProtoMsg(message: _75.MerklePathProtoMsg): _75.MerklePath;
+                    toProto(message: _75.MerklePath): Uint8Array;
+                    toProtoMsg(message: _75.MerklePath): _75.MerklePathProtoMsg;
                 };
                 MerkleProof: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _73.MerkleProof;
-                    isSDK(o: any): o is _73.MerkleProofSDKType;
-                    isAmino(o: any): o is _73.MerkleProofAmino;
-                    encode(message: _73.MerkleProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.MerkleProof;
-                    fromJSON(object: any): _73.MerkleProof;
-                    toJSON(message: _73.MerkleProof): {
+                    is(o: any): o is _75.MerkleProof;
+                    isSDK(o: any): o is _75.MerkleProofSDKType;
+                    isAmino(o: any): o is _75.MerkleProofAmino;
+                    encode(message: _75.MerkleProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.MerkleProof;
+                    fromJSON(object: any): _75.MerkleProof;
+                    toJSON(message: _75.MerkleProof): {
                         proofs: {
                             exist?: {
                                 key: string;
@@ -3631,69 +3631,69 @@ export declare namespace ibc {
                             };
                         }[];
                     };
-                    fromPartial(object: Partial<_73.MerkleProof>): _73.MerkleProof;
-                    fromAmino(object: _73.MerkleProofAmino): _73.MerkleProof;
-                    toAmino(message: _73.MerkleProof): _73.MerkleProofAmino;
-                    fromAminoMsg(object: _73.MerkleProofAminoMsg): _73.MerkleProof;
-                    toAminoMsg(message: _73.MerkleProof): _73.MerkleProofAminoMsg;
-                    fromProtoMsg(message: _73.MerkleProofProtoMsg): _73.MerkleProof;
-                    toProto(message: _73.MerkleProof): Uint8Array;
-                    toProtoMsg(message: _73.MerkleProof): _73.MerkleProofProtoMsg;
+                    fromPartial(object: Partial<_75.MerkleProof>): _75.MerkleProof;
+                    fromAmino(object: _75.MerkleProofAmino): _75.MerkleProof;
+                    toAmino(message: _75.MerkleProof): _75.MerkleProofAmino;
+                    fromAminoMsg(object: _75.MerkleProofAminoMsg): _75.MerkleProof;
+                    toAminoMsg(message: _75.MerkleProof): _75.MerkleProofAminoMsg;
+                    fromProtoMsg(message: _75.MerkleProofProtoMsg): _75.MerkleProof;
+                    toProto(message: _75.MerkleProof): Uint8Array;
+                    toProtoMsg(message: _75.MerkleProof): _75.MerkleProofProtoMsg;
                 };
             };
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _200.MsgClientImpl;
-                QueryClientImpl: typeof _196.QueryClientImpl;
+                MsgClientImpl: typeof _211.MsgClientImpl;
+                QueryClientImpl: typeof _207.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    connection(request: _76.QueryConnectionRequest): Promise<_76.QueryConnectionResponse>;
-                    connections(request?: _76.QueryConnectionsRequest): Promise<_76.QueryConnectionsResponse>;
-                    clientConnections(request: _76.QueryClientConnectionsRequest): Promise<_76.QueryClientConnectionsResponse>;
-                    connectionClientState(request: _76.QueryConnectionClientStateRequest): Promise<_76.QueryConnectionClientStateResponse>;
-                    connectionConsensusState(request: _76.QueryConnectionConsensusStateRequest): Promise<_76.QueryConnectionConsensusStateResponse>;
+                    connection(request: _78.QueryConnectionRequest): Promise<_78.QueryConnectionResponse>;
+                    connections(request?: _78.QueryConnectionsRequest): Promise<_78.QueryConnectionsResponse>;
+                    clientConnections(request: _78.QueryClientConnectionsRequest): Promise<_78.QueryClientConnectionsResponse>;
+                    connectionClientState(request: _78.QueryConnectionClientStateRequest): Promise<_78.QueryConnectionClientStateResponse>;
+                    connectionConsensusState(request: _78.QueryConnectionConsensusStateRequest): Promise<_78.QueryConnectionConsensusStateResponse>;
                 };
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        connectionOpenInit(value: _77.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _79.MsgConnectionOpenInit): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        connectionOpenTry(value: _77.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _79.MsgConnectionOpenTry): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        connectionOpenAck(value: _77.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _79.MsgConnectionOpenAck): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        connectionOpenConfirm(value: _77.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _79.MsgConnectionOpenConfirm): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        connectionOpenInit(value: _77.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _79.MsgConnectionOpenInit): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenInit;
+                            value: _79.MsgConnectionOpenInit;
                         };
-                        connectionOpenTry(value: _77.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _79.MsgConnectionOpenTry): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenTry;
+                            value: _79.MsgConnectionOpenTry;
                         };
-                        connectionOpenAck(value: _77.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _79.MsgConnectionOpenAck): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenAck;
+                            value: _79.MsgConnectionOpenAck;
                         };
-                        connectionOpenConfirm(value: _77.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _79.MsgConnectionOpenConfirm): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenConfirm;
+                            value: _79.MsgConnectionOpenConfirm;
                         };
                     };
                     toJSON: {
-                        connectionOpenInit(value: _77.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _79.MsgConnectionOpenInit): {
                             typeUrl: string;
                             value: {
                                 clientId: string;
@@ -3712,7 +3712,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        connectionOpenTry(value: _77.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _79.MsgConnectionOpenTry): {
                             typeUrl: string;
                             value: {
                                 clientId: string;
@@ -3748,7 +3748,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        connectionOpenAck(value: _77.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _79.MsgConnectionOpenAck): {
                             typeUrl: string;
                             value: {
                                 connectionId: string;
@@ -3776,7 +3776,7 @@ export declare namespace ibc {
                                 signer: string;
                             };
                         };
-                        connectionOpenConfirm(value: _77.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _79.MsgConnectionOpenConfirm): {
                             typeUrl: string;
                             value: {
                                 connectionId: string;
@@ -3792,72 +3792,72 @@ export declare namespace ibc {
                     fromJSON: {
                         connectionOpenInit(value: any): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenInit;
+                            value: _79.MsgConnectionOpenInit;
                         };
                         connectionOpenTry(value: any): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenTry;
+                            value: _79.MsgConnectionOpenTry;
                         };
                         connectionOpenAck(value: any): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenAck;
+                            value: _79.MsgConnectionOpenAck;
                         };
                         connectionOpenConfirm(value: any): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenConfirm;
+                            value: _79.MsgConnectionOpenConfirm;
                         };
                     };
                     fromPartial: {
-                        connectionOpenInit(value: _77.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _79.MsgConnectionOpenInit): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenInit;
+                            value: _79.MsgConnectionOpenInit;
                         };
-                        connectionOpenTry(value: _77.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _79.MsgConnectionOpenTry): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenTry;
+                            value: _79.MsgConnectionOpenTry;
                         };
-                        connectionOpenAck(value: _77.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _79.MsgConnectionOpenAck): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenAck;
+                            value: _79.MsgConnectionOpenAck;
                         };
-                        connectionOpenConfirm(value: _77.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _79.MsgConnectionOpenConfirm): {
                             typeUrl: string;
-                            value: _77.MsgConnectionOpenConfirm;
+                            value: _79.MsgConnectionOpenConfirm;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.core.connection.v1.MsgConnectionOpenInit": {
                         aminoType: string;
-                        toAmino: (message: _77.MsgConnectionOpenInit) => _77.MsgConnectionOpenInitAmino;
-                        fromAmino: (object: _77.MsgConnectionOpenInitAmino) => _77.MsgConnectionOpenInit;
+                        toAmino: (message: _79.MsgConnectionOpenInit) => _79.MsgConnectionOpenInitAmino;
+                        fromAmino: (object: _79.MsgConnectionOpenInitAmino) => _79.MsgConnectionOpenInit;
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenTry": {
                         aminoType: string;
-                        toAmino: (message: _77.MsgConnectionOpenTry) => _77.MsgConnectionOpenTryAmino;
-                        fromAmino: (object: _77.MsgConnectionOpenTryAmino) => _77.MsgConnectionOpenTry;
+                        toAmino: (message: _79.MsgConnectionOpenTry) => _79.MsgConnectionOpenTryAmino;
+                        fromAmino: (object: _79.MsgConnectionOpenTryAmino) => _79.MsgConnectionOpenTry;
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenAck": {
                         aminoType: string;
-                        toAmino: (message: _77.MsgConnectionOpenAck) => _77.MsgConnectionOpenAckAmino;
-                        fromAmino: (object: _77.MsgConnectionOpenAckAmino) => _77.MsgConnectionOpenAck;
+                        toAmino: (message: _79.MsgConnectionOpenAck) => _79.MsgConnectionOpenAckAmino;
+                        fromAmino: (object: _79.MsgConnectionOpenAckAmino) => _79.MsgConnectionOpenAck;
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenConfirm": {
                         aminoType: string;
-                        toAmino: (message: _77.MsgConnectionOpenConfirm) => _77.MsgConnectionOpenConfirmAmino;
-                        fromAmino: (object: _77.MsgConnectionOpenConfirmAmino) => _77.MsgConnectionOpenConfirm;
+                        toAmino: (message: _79.MsgConnectionOpenConfirm) => _79.MsgConnectionOpenConfirmAmino;
+                        fromAmino: (object: _79.MsgConnectionOpenConfirmAmino) => _79.MsgConnectionOpenConfirm;
                     };
                 };
                 MsgConnectionOpenInit: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenInit;
-                    isSDK(o: any): o is _77.MsgConnectionOpenInitSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenInitAmino;
-                    encode(message: _77.MsgConnectionOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenInit;
-                    fromJSON(object: any): _77.MsgConnectionOpenInit;
-                    toJSON(message: _77.MsgConnectionOpenInit): {
+                    is(o: any): o is _79.MsgConnectionOpenInit;
+                    isSDK(o: any): o is _79.MsgConnectionOpenInitSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenInitAmino;
+                    encode(message: _79.MsgConnectionOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenInit;
+                    fromJSON(object: any): _79.MsgConnectionOpenInit;
+                    toJSON(message: _79.MsgConnectionOpenInit): {
                         clientId: string;
                         counterparty: {
                             clientId: string;
@@ -3873,44 +3873,44 @@ export declare namespace ibc {
                         delayPeriod: string;
                         signer: string;
                     };
-                    fromPartial(object: Partial<_77.MsgConnectionOpenInit>): _77.MsgConnectionOpenInit;
-                    fromAmino(object: _77.MsgConnectionOpenInitAmino): _77.MsgConnectionOpenInit;
-                    toAmino(message: _77.MsgConnectionOpenInit): _77.MsgConnectionOpenInitAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenInitAminoMsg): _77.MsgConnectionOpenInit;
-                    toAminoMsg(message: _77.MsgConnectionOpenInit): _77.MsgConnectionOpenInitAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenInitProtoMsg): _77.MsgConnectionOpenInit;
-                    toProto(message: _77.MsgConnectionOpenInit): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenInit): _77.MsgConnectionOpenInitProtoMsg;
+                    fromPartial(object: Partial<_79.MsgConnectionOpenInit>): _79.MsgConnectionOpenInit;
+                    fromAmino(object: _79.MsgConnectionOpenInitAmino): _79.MsgConnectionOpenInit;
+                    toAmino(message: _79.MsgConnectionOpenInit): _79.MsgConnectionOpenInitAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenInitAminoMsg): _79.MsgConnectionOpenInit;
+                    toAminoMsg(message: _79.MsgConnectionOpenInit): _79.MsgConnectionOpenInitAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenInitProtoMsg): _79.MsgConnectionOpenInit;
+                    toProto(message: _79.MsgConnectionOpenInit): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenInit): _79.MsgConnectionOpenInitProtoMsg;
                 };
                 MsgConnectionOpenInitResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenInitResponse;
-                    isSDK(o: any): o is _77.MsgConnectionOpenInitResponseSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenInitResponseAmino;
-                    encode(_: _77.MsgConnectionOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenInitResponse;
-                    fromJSON(_: any): _77.MsgConnectionOpenInitResponse;
-                    toJSON(_: _77.MsgConnectionOpenInitResponse): {};
-                    fromPartial(_: Partial<_77.MsgConnectionOpenInitResponse>): _77.MsgConnectionOpenInitResponse;
-                    fromAmino(_: _77.MsgConnectionOpenInitResponseAmino): _77.MsgConnectionOpenInitResponse;
-                    toAmino(_: _77.MsgConnectionOpenInitResponse): _77.MsgConnectionOpenInitResponseAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenInitResponseAminoMsg): _77.MsgConnectionOpenInitResponse;
-                    toAminoMsg(message: _77.MsgConnectionOpenInitResponse): _77.MsgConnectionOpenInitResponseAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenInitResponseProtoMsg): _77.MsgConnectionOpenInitResponse;
-                    toProto(message: _77.MsgConnectionOpenInitResponse): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenInitResponse): _77.MsgConnectionOpenInitResponseProtoMsg;
+                    is(o: any): o is _79.MsgConnectionOpenInitResponse;
+                    isSDK(o: any): o is _79.MsgConnectionOpenInitResponseSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenInitResponseAmino;
+                    encode(_: _79.MsgConnectionOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenInitResponse;
+                    fromJSON(_: any): _79.MsgConnectionOpenInitResponse;
+                    toJSON(_: _79.MsgConnectionOpenInitResponse): {};
+                    fromPartial(_: Partial<_79.MsgConnectionOpenInitResponse>): _79.MsgConnectionOpenInitResponse;
+                    fromAmino(_: _79.MsgConnectionOpenInitResponseAmino): _79.MsgConnectionOpenInitResponse;
+                    toAmino(_: _79.MsgConnectionOpenInitResponse): _79.MsgConnectionOpenInitResponseAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenInitResponseAminoMsg): _79.MsgConnectionOpenInitResponse;
+                    toAminoMsg(message: _79.MsgConnectionOpenInitResponse): _79.MsgConnectionOpenInitResponseAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenInitResponseProtoMsg): _79.MsgConnectionOpenInitResponse;
+                    toProto(message: _79.MsgConnectionOpenInitResponse): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenInitResponse): _79.MsgConnectionOpenInitResponseProtoMsg;
                 };
                 MsgConnectionOpenTry: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenTry;
-                    isSDK(o: any): o is _77.MsgConnectionOpenTrySDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenTryAmino;
-                    encode(message: _77.MsgConnectionOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenTry;
-                    fromJSON(object: any): _77.MsgConnectionOpenTry;
-                    toJSON(message: _77.MsgConnectionOpenTry): {
+                    is(o: any): o is _79.MsgConnectionOpenTry;
+                    isSDK(o: any): o is _79.MsgConnectionOpenTrySDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenTryAmino;
+                    encode(message: _79.MsgConnectionOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenTry;
+                    fromJSON(object: any): _79.MsgConnectionOpenTry;
+                    toJSON(message: _79.MsgConnectionOpenTry): {
                         clientId: string;
                         previousConnectionId: string;
                         clientState?: {
@@ -3943,44 +3943,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_77.MsgConnectionOpenTry>): _77.MsgConnectionOpenTry;
-                    fromAmino(object: _77.MsgConnectionOpenTryAmino): _77.MsgConnectionOpenTry;
-                    toAmino(message: _77.MsgConnectionOpenTry): _77.MsgConnectionOpenTryAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenTryAminoMsg): _77.MsgConnectionOpenTry;
-                    toAminoMsg(message: _77.MsgConnectionOpenTry): _77.MsgConnectionOpenTryAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenTryProtoMsg): _77.MsgConnectionOpenTry;
-                    toProto(message: _77.MsgConnectionOpenTry): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenTry): _77.MsgConnectionOpenTryProtoMsg;
+                    fromPartial(object: Partial<_79.MsgConnectionOpenTry>): _79.MsgConnectionOpenTry;
+                    fromAmino(object: _79.MsgConnectionOpenTryAmino): _79.MsgConnectionOpenTry;
+                    toAmino(message: _79.MsgConnectionOpenTry): _79.MsgConnectionOpenTryAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenTryAminoMsg): _79.MsgConnectionOpenTry;
+                    toAminoMsg(message: _79.MsgConnectionOpenTry): _79.MsgConnectionOpenTryAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenTryProtoMsg): _79.MsgConnectionOpenTry;
+                    toProto(message: _79.MsgConnectionOpenTry): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenTry): _79.MsgConnectionOpenTryProtoMsg;
                 };
                 MsgConnectionOpenTryResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenTryResponse;
-                    isSDK(o: any): o is _77.MsgConnectionOpenTryResponseSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenTryResponseAmino;
-                    encode(_: _77.MsgConnectionOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenTryResponse;
-                    fromJSON(_: any): _77.MsgConnectionOpenTryResponse;
-                    toJSON(_: _77.MsgConnectionOpenTryResponse): {};
-                    fromPartial(_: Partial<_77.MsgConnectionOpenTryResponse>): _77.MsgConnectionOpenTryResponse;
-                    fromAmino(_: _77.MsgConnectionOpenTryResponseAmino): _77.MsgConnectionOpenTryResponse;
-                    toAmino(_: _77.MsgConnectionOpenTryResponse): _77.MsgConnectionOpenTryResponseAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenTryResponseAminoMsg): _77.MsgConnectionOpenTryResponse;
-                    toAminoMsg(message: _77.MsgConnectionOpenTryResponse): _77.MsgConnectionOpenTryResponseAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenTryResponseProtoMsg): _77.MsgConnectionOpenTryResponse;
-                    toProto(message: _77.MsgConnectionOpenTryResponse): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenTryResponse): _77.MsgConnectionOpenTryResponseProtoMsg;
+                    is(o: any): o is _79.MsgConnectionOpenTryResponse;
+                    isSDK(o: any): o is _79.MsgConnectionOpenTryResponseSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenTryResponseAmino;
+                    encode(_: _79.MsgConnectionOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenTryResponse;
+                    fromJSON(_: any): _79.MsgConnectionOpenTryResponse;
+                    toJSON(_: _79.MsgConnectionOpenTryResponse): {};
+                    fromPartial(_: Partial<_79.MsgConnectionOpenTryResponse>): _79.MsgConnectionOpenTryResponse;
+                    fromAmino(_: _79.MsgConnectionOpenTryResponseAmino): _79.MsgConnectionOpenTryResponse;
+                    toAmino(_: _79.MsgConnectionOpenTryResponse): _79.MsgConnectionOpenTryResponseAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenTryResponseAminoMsg): _79.MsgConnectionOpenTryResponse;
+                    toAminoMsg(message: _79.MsgConnectionOpenTryResponse): _79.MsgConnectionOpenTryResponseAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenTryResponseProtoMsg): _79.MsgConnectionOpenTryResponse;
+                    toProto(message: _79.MsgConnectionOpenTryResponse): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenTryResponse): _79.MsgConnectionOpenTryResponseProtoMsg;
                 };
                 MsgConnectionOpenAck: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenAck;
-                    isSDK(o: any): o is _77.MsgConnectionOpenAckSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenAckAmino;
-                    encode(message: _77.MsgConnectionOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenAck;
-                    fromJSON(object: any): _77.MsgConnectionOpenAck;
-                    toJSON(message: _77.MsgConnectionOpenAck): {
+                    is(o: any): o is _79.MsgConnectionOpenAck;
+                    isSDK(o: any): o is _79.MsgConnectionOpenAckSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenAckAmino;
+                    encode(message: _79.MsgConnectionOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenAck;
+                    fromJSON(object: any): _79.MsgConnectionOpenAck;
+                    toJSON(message: _79.MsgConnectionOpenAck): {
                         connectionId: string;
                         counterpartyConnectionId: string;
                         version?: {
@@ -4005,44 +4005,44 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_77.MsgConnectionOpenAck>): _77.MsgConnectionOpenAck;
-                    fromAmino(object: _77.MsgConnectionOpenAckAmino): _77.MsgConnectionOpenAck;
-                    toAmino(message: _77.MsgConnectionOpenAck): _77.MsgConnectionOpenAckAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenAckAminoMsg): _77.MsgConnectionOpenAck;
-                    toAminoMsg(message: _77.MsgConnectionOpenAck): _77.MsgConnectionOpenAckAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenAckProtoMsg): _77.MsgConnectionOpenAck;
-                    toProto(message: _77.MsgConnectionOpenAck): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenAck): _77.MsgConnectionOpenAckProtoMsg;
+                    fromPartial(object: Partial<_79.MsgConnectionOpenAck>): _79.MsgConnectionOpenAck;
+                    fromAmino(object: _79.MsgConnectionOpenAckAmino): _79.MsgConnectionOpenAck;
+                    toAmino(message: _79.MsgConnectionOpenAck): _79.MsgConnectionOpenAckAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenAckAminoMsg): _79.MsgConnectionOpenAck;
+                    toAminoMsg(message: _79.MsgConnectionOpenAck): _79.MsgConnectionOpenAckAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenAckProtoMsg): _79.MsgConnectionOpenAck;
+                    toProto(message: _79.MsgConnectionOpenAck): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenAck): _79.MsgConnectionOpenAckProtoMsg;
                 };
                 MsgConnectionOpenAckResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenAckResponse;
-                    isSDK(o: any): o is _77.MsgConnectionOpenAckResponseSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenAckResponseAmino;
-                    encode(_: _77.MsgConnectionOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenAckResponse;
-                    fromJSON(_: any): _77.MsgConnectionOpenAckResponse;
-                    toJSON(_: _77.MsgConnectionOpenAckResponse): {};
-                    fromPartial(_: Partial<_77.MsgConnectionOpenAckResponse>): _77.MsgConnectionOpenAckResponse;
-                    fromAmino(_: _77.MsgConnectionOpenAckResponseAmino): _77.MsgConnectionOpenAckResponse;
-                    toAmino(_: _77.MsgConnectionOpenAckResponse): _77.MsgConnectionOpenAckResponseAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenAckResponseAminoMsg): _77.MsgConnectionOpenAckResponse;
-                    toAminoMsg(message: _77.MsgConnectionOpenAckResponse): _77.MsgConnectionOpenAckResponseAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenAckResponseProtoMsg): _77.MsgConnectionOpenAckResponse;
-                    toProto(message: _77.MsgConnectionOpenAckResponse): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenAckResponse): _77.MsgConnectionOpenAckResponseProtoMsg;
+                    is(o: any): o is _79.MsgConnectionOpenAckResponse;
+                    isSDK(o: any): o is _79.MsgConnectionOpenAckResponseSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenAckResponseAmino;
+                    encode(_: _79.MsgConnectionOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenAckResponse;
+                    fromJSON(_: any): _79.MsgConnectionOpenAckResponse;
+                    toJSON(_: _79.MsgConnectionOpenAckResponse): {};
+                    fromPartial(_: Partial<_79.MsgConnectionOpenAckResponse>): _79.MsgConnectionOpenAckResponse;
+                    fromAmino(_: _79.MsgConnectionOpenAckResponseAmino): _79.MsgConnectionOpenAckResponse;
+                    toAmino(_: _79.MsgConnectionOpenAckResponse): _79.MsgConnectionOpenAckResponseAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenAckResponseAminoMsg): _79.MsgConnectionOpenAckResponse;
+                    toAminoMsg(message: _79.MsgConnectionOpenAckResponse): _79.MsgConnectionOpenAckResponseAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenAckResponseProtoMsg): _79.MsgConnectionOpenAckResponse;
+                    toProto(message: _79.MsgConnectionOpenAckResponse): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenAckResponse): _79.MsgConnectionOpenAckResponseProtoMsg;
                 };
                 MsgConnectionOpenConfirm: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenConfirm;
-                    isSDK(o: any): o is _77.MsgConnectionOpenConfirmSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenConfirmAmino;
-                    encode(message: _77.MsgConnectionOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenConfirm;
-                    fromJSON(object: any): _77.MsgConnectionOpenConfirm;
-                    toJSON(message: _77.MsgConnectionOpenConfirm): {
+                    is(o: any): o is _79.MsgConnectionOpenConfirm;
+                    isSDK(o: any): o is _79.MsgConnectionOpenConfirmSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenConfirmAmino;
+                    encode(message: _79.MsgConnectionOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenConfirm;
+                    fromJSON(object: any): _79.MsgConnectionOpenConfirm;
+                    toJSON(message: _79.MsgConnectionOpenConfirm): {
                         connectionId: string;
                         proofAck: string;
                         proofHeight: {
@@ -4051,72 +4051,72 @@ export declare namespace ibc {
                         };
                         signer: string;
                     };
-                    fromPartial(object: Partial<_77.MsgConnectionOpenConfirm>): _77.MsgConnectionOpenConfirm;
-                    fromAmino(object: _77.MsgConnectionOpenConfirmAmino): _77.MsgConnectionOpenConfirm;
-                    toAmino(message: _77.MsgConnectionOpenConfirm): _77.MsgConnectionOpenConfirmAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenConfirmAminoMsg): _77.MsgConnectionOpenConfirm;
-                    toAminoMsg(message: _77.MsgConnectionOpenConfirm): _77.MsgConnectionOpenConfirmAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenConfirmProtoMsg): _77.MsgConnectionOpenConfirm;
-                    toProto(message: _77.MsgConnectionOpenConfirm): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenConfirm): _77.MsgConnectionOpenConfirmProtoMsg;
+                    fromPartial(object: Partial<_79.MsgConnectionOpenConfirm>): _79.MsgConnectionOpenConfirm;
+                    fromAmino(object: _79.MsgConnectionOpenConfirmAmino): _79.MsgConnectionOpenConfirm;
+                    toAmino(message: _79.MsgConnectionOpenConfirm): _79.MsgConnectionOpenConfirmAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenConfirmAminoMsg): _79.MsgConnectionOpenConfirm;
+                    toAminoMsg(message: _79.MsgConnectionOpenConfirm): _79.MsgConnectionOpenConfirmAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenConfirmProtoMsg): _79.MsgConnectionOpenConfirm;
+                    toProto(message: _79.MsgConnectionOpenConfirm): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenConfirm): _79.MsgConnectionOpenConfirmProtoMsg;
                 };
                 MsgConnectionOpenConfirmResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _77.MsgConnectionOpenConfirmResponse;
-                    isSDK(o: any): o is _77.MsgConnectionOpenConfirmResponseSDKType;
-                    isAmino(o: any): o is _77.MsgConnectionOpenConfirmResponseAmino;
-                    encode(_: _77.MsgConnectionOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.MsgConnectionOpenConfirmResponse;
-                    fromJSON(_: any): _77.MsgConnectionOpenConfirmResponse;
-                    toJSON(_: _77.MsgConnectionOpenConfirmResponse): {};
-                    fromPartial(_: Partial<_77.MsgConnectionOpenConfirmResponse>): _77.MsgConnectionOpenConfirmResponse;
-                    fromAmino(_: _77.MsgConnectionOpenConfirmResponseAmino): _77.MsgConnectionOpenConfirmResponse;
-                    toAmino(_: _77.MsgConnectionOpenConfirmResponse): _77.MsgConnectionOpenConfirmResponseAmino;
-                    fromAminoMsg(object: _77.MsgConnectionOpenConfirmResponseAminoMsg): _77.MsgConnectionOpenConfirmResponse;
-                    toAminoMsg(message: _77.MsgConnectionOpenConfirmResponse): _77.MsgConnectionOpenConfirmResponseAminoMsg;
-                    fromProtoMsg(message: _77.MsgConnectionOpenConfirmResponseProtoMsg): _77.MsgConnectionOpenConfirmResponse;
-                    toProto(message: _77.MsgConnectionOpenConfirmResponse): Uint8Array;
-                    toProtoMsg(message: _77.MsgConnectionOpenConfirmResponse): _77.MsgConnectionOpenConfirmResponseProtoMsg;
+                    is(o: any): o is _79.MsgConnectionOpenConfirmResponse;
+                    isSDK(o: any): o is _79.MsgConnectionOpenConfirmResponseSDKType;
+                    isAmino(o: any): o is _79.MsgConnectionOpenConfirmResponseAmino;
+                    encode(_: _79.MsgConnectionOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.MsgConnectionOpenConfirmResponse;
+                    fromJSON(_: any): _79.MsgConnectionOpenConfirmResponse;
+                    toJSON(_: _79.MsgConnectionOpenConfirmResponse): {};
+                    fromPartial(_: Partial<_79.MsgConnectionOpenConfirmResponse>): _79.MsgConnectionOpenConfirmResponse;
+                    fromAmino(_: _79.MsgConnectionOpenConfirmResponseAmino): _79.MsgConnectionOpenConfirmResponse;
+                    toAmino(_: _79.MsgConnectionOpenConfirmResponse): _79.MsgConnectionOpenConfirmResponseAmino;
+                    fromAminoMsg(object: _79.MsgConnectionOpenConfirmResponseAminoMsg): _79.MsgConnectionOpenConfirmResponse;
+                    toAminoMsg(message: _79.MsgConnectionOpenConfirmResponse): _79.MsgConnectionOpenConfirmResponseAminoMsg;
+                    fromProtoMsg(message: _79.MsgConnectionOpenConfirmResponseProtoMsg): _79.MsgConnectionOpenConfirmResponse;
+                    toProto(message: _79.MsgConnectionOpenConfirmResponse): Uint8Array;
+                    toProtoMsg(message: _79.MsgConnectionOpenConfirmResponse): _79.MsgConnectionOpenConfirmResponseProtoMsg;
                 };
                 QueryConnectionRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionRequest;
-                    isSDK(o: any): o is _76.QueryConnectionRequestSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionRequestAmino;
-                    encode(message: _76.QueryConnectionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionRequest;
-                    fromJSON(object: any): _76.QueryConnectionRequest;
-                    toJSON(message: _76.QueryConnectionRequest): {
+                    is(o: any): o is _78.QueryConnectionRequest;
+                    isSDK(o: any): o is _78.QueryConnectionRequestSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionRequestAmino;
+                    encode(message: _78.QueryConnectionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionRequest;
+                    fromJSON(object: any): _78.QueryConnectionRequest;
+                    toJSON(message: _78.QueryConnectionRequest): {
                         connectionId: string;
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionRequest>): _76.QueryConnectionRequest;
-                    fromAmino(object: _76.QueryConnectionRequestAmino): _76.QueryConnectionRequest;
-                    toAmino(message: _76.QueryConnectionRequest): _76.QueryConnectionRequestAmino;
-                    fromAminoMsg(object: _76.QueryConnectionRequestAminoMsg): _76.QueryConnectionRequest;
-                    toAminoMsg(message: _76.QueryConnectionRequest): _76.QueryConnectionRequestAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionRequestProtoMsg): _76.QueryConnectionRequest;
-                    toProto(message: _76.QueryConnectionRequest): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionRequest): _76.QueryConnectionRequestProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionRequest>): _78.QueryConnectionRequest;
+                    fromAmino(object: _78.QueryConnectionRequestAmino): _78.QueryConnectionRequest;
+                    toAmino(message: _78.QueryConnectionRequest): _78.QueryConnectionRequestAmino;
+                    fromAminoMsg(object: _78.QueryConnectionRequestAminoMsg): _78.QueryConnectionRequest;
+                    toAminoMsg(message: _78.QueryConnectionRequest): _78.QueryConnectionRequestAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionRequestProtoMsg): _78.QueryConnectionRequest;
+                    toProto(message: _78.QueryConnectionRequest): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionRequest): _78.QueryConnectionRequestProtoMsg;
                 };
                 QueryConnectionResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionResponse;
-                    isSDK(o: any): o is _76.QueryConnectionResponseSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionResponseAmino;
-                    encode(message: _76.QueryConnectionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionResponse;
-                    fromJSON(object: any): _76.QueryConnectionResponse;
-                    toJSON(message: _76.QueryConnectionResponse): {
+                    is(o: any): o is _78.QueryConnectionResponse;
+                    isSDK(o: any): o is _78.QueryConnectionResponseSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionResponseAmino;
+                    encode(message: _78.QueryConnectionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionResponse;
+                    fromJSON(object: any): _78.QueryConnectionResponse;
+                    toJSON(message: _78.QueryConnectionResponse): {
                         connection?: {
                             clientId: string;
                             versions: {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            state: _74.State;
+                            state: _76.State;
                             counterparty: {
                                 clientId: string;
                                 connectionId: string;
@@ -4132,25 +4132,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionResponse>): _76.QueryConnectionResponse;
-                    fromAmino(object: _76.QueryConnectionResponseAmino): _76.QueryConnectionResponse;
-                    toAmino(message: _76.QueryConnectionResponse): _76.QueryConnectionResponseAmino;
-                    fromAminoMsg(object: _76.QueryConnectionResponseAminoMsg): _76.QueryConnectionResponse;
-                    toAminoMsg(message: _76.QueryConnectionResponse): _76.QueryConnectionResponseAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionResponseProtoMsg): _76.QueryConnectionResponse;
-                    toProto(message: _76.QueryConnectionResponse): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionResponse): _76.QueryConnectionResponseProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionResponse>): _78.QueryConnectionResponse;
+                    fromAmino(object: _78.QueryConnectionResponseAmino): _78.QueryConnectionResponse;
+                    toAmino(message: _78.QueryConnectionResponse): _78.QueryConnectionResponseAmino;
+                    fromAminoMsg(object: _78.QueryConnectionResponseAminoMsg): _78.QueryConnectionResponse;
+                    toAminoMsg(message: _78.QueryConnectionResponse): _78.QueryConnectionResponseAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionResponseProtoMsg): _78.QueryConnectionResponse;
+                    toProto(message: _78.QueryConnectionResponse): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionResponse): _78.QueryConnectionResponseProtoMsg;
                 };
                 QueryConnectionsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionsRequest;
-                    isSDK(o: any): o is _76.QueryConnectionsRequestSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionsRequestAmino;
-                    encode(message: _76.QueryConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionsRequest;
-                    fromJSON(object: any): _76.QueryConnectionsRequest;
-                    toJSON(message: _76.QueryConnectionsRequest): {
+                    is(o: any): o is _78.QueryConnectionsRequest;
+                    isSDK(o: any): o is _78.QueryConnectionsRequestSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionsRequestAmino;
+                    encode(message: _78.QueryConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionsRequest;
+                    fromJSON(object: any): _78.QueryConnectionsRequest;
+                    toJSON(message: _78.QueryConnectionsRequest): {
                         pagination?: {
                             key: string;
                             offset: string;
@@ -4159,25 +4159,25 @@ export declare namespace ibc {
                             reverse: boolean;
                         };
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionsRequest>): _76.QueryConnectionsRequest;
-                    fromAmino(object: _76.QueryConnectionsRequestAmino): _76.QueryConnectionsRequest;
-                    toAmino(message: _76.QueryConnectionsRequest): _76.QueryConnectionsRequestAmino;
-                    fromAminoMsg(object: _76.QueryConnectionsRequestAminoMsg): _76.QueryConnectionsRequest;
-                    toAminoMsg(message: _76.QueryConnectionsRequest): _76.QueryConnectionsRequestAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionsRequestProtoMsg): _76.QueryConnectionsRequest;
-                    toProto(message: _76.QueryConnectionsRequest): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionsRequest): _76.QueryConnectionsRequestProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionsRequest>): _78.QueryConnectionsRequest;
+                    fromAmino(object: _78.QueryConnectionsRequestAmino): _78.QueryConnectionsRequest;
+                    toAmino(message: _78.QueryConnectionsRequest): _78.QueryConnectionsRequestAmino;
+                    fromAminoMsg(object: _78.QueryConnectionsRequestAminoMsg): _78.QueryConnectionsRequest;
+                    toAminoMsg(message: _78.QueryConnectionsRequest): _78.QueryConnectionsRequestAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionsRequestProtoMsg): _78.QueryConnectionsRequest;
+                    toProto(message: _78.QueryConnectionsRequest): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionsRequest): _78.QueryConnectionsRequestProtoMsg;
                 };
                 QueryConnectionsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionsResponse;
-                    isSDK(o: any): o is _76.QueryConnectionsResponseSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionsResponseAmino;
-                    encode(message: _76.QueryConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionsResponse;
-                    fromJSON(object: any): _76.QueryConnectionsResponse;
-                    toJSON(message: _76.QueryConnectionsResponse): {
+                    is(o: any): o is _78.QueryConnectionsResponse;
+                    isSDK(o: any): o is _78.QueryConnectionsResponseSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionsResponseAmino;
+                    encode(message: _78.QueryConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionsResponse;
+                    fromJSON(object: any): _78.QueryConnectionsResponse;
+                    toJSON(message: _78.QueryConnectionsResponse): {
                         connections: {
                             id: string;
                             clientId: string;
@@ -4185,7 +4185,7 @@ export declare namespace ibc {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            state: _74.State;
+                            state: _76.State;
                             counterparty: {
                                 clientId: string;
                                 connectionId: string;
@@ -4204,46 +4204,46 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionsResponse>): _76.QueryConnectionsResponse;
-                    fromAmino(object: _76.QueryConnectionsResponseAmino): _76.QueryConnectionsResponse;
-                    toAmino(message: _76.QueryConnectionsResponse): _76.QueryConnectionsResponseAmino;
-                    fromAminoMsg(object: _76.QueryConnectionsResponseAminoMsg): _76.QueryConnectionsResponse;
-                    toAminoMsg(message: _76.QueryConnectionsResponse): _76.QueryConnectionsResponseAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionsResponseProtoMsg): _76.QueryConnectionsResponse;
-                    toProto(message: _76.QueryConnectionsResponse): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionsResponse): _76.QueryConnectionsResponseProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionsResponse>): _78.QueryConnectionsResponse;
+                    fromAmino(object: _78.QueryConnectionsResponseAmino): _78.QueryConnectionsResponse;
+                    toAmino(message: _78.QueryConnectionsResponse): _78.QueryConnectionsResponseAmino;
+                    fromAminoMsg(object: _78.QueryConnectionsResponseAminoMsg): _78.QueryConnectionsResponse;
+                    toAminoMsg(message: _78.QueryConnectionsResponse): _78.QueryConnectionsResponseAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionsResponseProtoMsg): _78.QueryConnectionsResponse;
+                    toProto(message: _78.QueryConnectionsResponse): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionsResponse): _78.QueryConnectionsResponseProtoMsg;
                 };
                 QueryClientConnectionsRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryClientConnectionsRequest;
-                    isSDK(o: any): o is _76.QueryClientConnectionsRequestSDKType;
-                    isAmino(o: any): o is _76.QueryClientConnectionsRequestAmino;
-                    encode(message: _76.QueryClientConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryClientConnectionsRequest;
-                    fromJSON(object: any): _76.QueryClientConnectionsRequest;
-                    toJSON(message: _76.QueryClientConnectionsRequest): {
+                    is(o: any): o is _78.QueryClientConnectionsRequest;
+                    isSDK(o: any): o is _78.QueryClientConnectionsRequestSDKType;
+                    isAmino(o: any): o is _78.QueryClientConnectionsRequestAmino;
+                    encode(message: _78.QueryClientConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryClientConnectionsRequest;
+                    fromJSON(object: any): _78.QueryClientConnectionsRequest;
+                    toJSON(message: _78.QueryClientConnectionsRequest): {
                         clientId: string;
                     };
-                    fromPartial(object: Partial<_76.QueryClientConnectionsRequest>): _76.QueryClientConnectionsRequest;
-                    fromAmino(object: _76.QueryClientConnectionsRequestAmino): _76.QueryClientConnectionsRequest;
-                    toAmino(message: _76.QueryClientConnectionsRequest): _76.QueryClientConnectionsRequestAmino;
-                    fromAminoMsg(object: _76.QueryClientConnectionsRequestAminoMsg): _76.QueryClientConnectionsRequest;
-                    toAminoMsg(message: _76.QueryClientConnectionsRequest): _76.QueryClientConnectionsRequestAminoMsg;
-                    fromProtoMsg(message: _76.QueryClientConnectionsRequestProtoMsg): _76.QueryClientConnectionsRequest;
-                    toProto(message: _76.QueryClientConnectionsRequest): Uint8Array;
-                    toProtoMsg(message: _76.QueryClientConnectionsRequest): _76.QueryClientConnectionsRequestProtoMsg;
+                    fromPartial(object: Partial<_78.QueryClientConnectionsRequest>): _78.QueryClientConnectionsRequest;
+                    fromAmino(object: _78.QueryClientConnectionsRequestAmino): _78.QueryClientConnectionsRequest;
+                    toAmino(message: _78.QueryClientConnectionsRequest): _78.QueryClientConnectionsRequestAmino;
+                    fromAminoMsg(object: _78.QueryClientConnectionsRequestAminoMsg): _78.QueryClientConnectionsRequest;
+                    toAminoMsg(message: _78.QueryClientConnectionsRequest): _78.QueryClientConnectionsRequestAminoMsg;
+                    fromProtoMsg(message: _78.QueryClientConnectionsRequestProtoMsg): _78.QueryClientConnectionsRequest;
+                    toProto(message: _78.QueryClientConnectionsRequest): Uint8Array;
+                    toProtoMsg(message: _78.QueryClientConnectionsRequest): _78.QueryClientConnectionsRequestProtoMsg;
                 };
                 QueryClientConnectionsResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryClientConnectionsResponse;
-                    isSDK(o: any): o is _76.QueryClientConnectionsResponseSDKType;
-                    isAmino(o: any): o is _76.QueryClientConnectionsResponseAmino;
-                    encode(message: _76.QueryClientConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryClientConnectionsResponse;
-                    fromJSON(object: any): _76.QueryClientConnectionsResponse;
-                    toJSON(message: _76.QueryClientConnectionsResponse): {
+                    is(o: any): o is _78.QueryClientConnectionsResponse;
+                    isSDK(o: any): o is _78.QueryClientConnectionsResponseSDKType;
+                    isAmino(o: any): o is _78.QueryClientConnectionsResponseAmino;
+                    encode(message: _78.QueryClientConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryClientConnectionsResponse;
+                    fromJSON(object: any): _78.QueryClientConnectionsResponse;
+                    toJSON(message: _78.QueryClientConnectionsResponse): {
                         connectionPaths: string[];
                         proof: string;
                         proofHeight: {
@@ -4251,46 +4251,46 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_76.QueryClientConnectionsResponse>): _76.QueryClientConnectionsResponse;
-                    fromAmino(object: _76.QueryClientConnectionsResponseAmino): _76.QueryClientConnectionsResponse;
-                    toAmino(message: _76.QueryClientConnectionsResponse): _76.QueryClientConnectionsResponseAmino;
-                    fromAminoMsg(object: _76.QueryClientConnectionsResponseAminoMsg): _76.QueryClientConnectionsResponse;
-                    toAminoMsg(message: _76.QueryClientConnectionsResponse): _76.QueryClientConnectionsResponseAminoMsg;
-                    fromProtoMsg(message: _76.QueryClientConnectionsResponseProtoMsg): _76.QueryClientConnectionsResponse;
-                    toProto(message: _76.QueryClientConnectionsResponse): Uint8Array;
-                    toProtoMsg(message: _76.QueryClientConnectionsResponse): _76.QueryClientConnectionsResponseProtoMsg;
+                    fromPartial(object: Partial<_78.QueryClientConnectionsResponse>): _78.QueryClientConnectionsResponse;
+                    fromAmino(object: _78.QueryClientConnectionsResponseAmino): _78.QueryClientConnectionsResponse;
+                    toAmino(message: _78.QueryClientConnectionsResponse): _78.QueryClientConnectionsResponseAmino;
+                    fromAminoMsg(object: _78.QueryClientConnectionsResponseAminoMsg): _78.QueryClientConnectionsResponse;
+                    toAminoMsg(message: _78.QueryClientConnectionsResponse): _78.QueryClientConnectionsResponseAminoMsg;
+                    fromProtoMsg(message: _78.QueryClientConnectionsResponseProtoMsg): _78.QueryClientConnectionsResponse;
+                    toProto(message: _78.QueryClientConnectionsResponse): Uint8Array;
+                    toProtoMsg(message: _78.QueryClientConnectionsResponse): _78.QueryClientConnectionsResponseProtoMsg;
                 };
                 QueryConnectionClientStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionClientStateRequest;
-                    isSDK(o: any): o is _76.QueryConnectionClientStateRequestSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionClientStateRequestAmino;
-                    encode(message: _76.QueryConnectionClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionClientStateRequest;
-                    fromJSON(object: any): _76.QueryConnectionClientStateRequest;
-                    toJSON(message: _76.QueryConnectionClientStateRequest): {
+                    is(o: any): o is _78.QueryConnectionClientStateRequest;
+                    isSDK(o: any): o is _78.QueryConnectionClientStateRequestSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionClientStateRequestAmino;
+                    encode(message: _78.QueryConnectionClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionClientStateRequest;
+                    fromJSON(object: any): _78.QueryConnectionClientStateRequest;
+                    toJSON(message: _78.QueryConnectionClientStateRequest): {
                         connectionId: string;
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionClientStateRequest>): _76.QueryConnectionClientStateRequest;
-                    fromAmino(object: _76.QueryConnectionClientStateRequestAmino): _76.QueryConnectionClientStateRequest;
-                    toAmino(message: _76.QueryConnectionClientStateRequest): _76.QueryConnectionClientStateRequestAmino;
-                    fromAminoMsg(object: _76.QueryConnectionClientStateRequestAminoMsg): _76.QueryConnectionClientStateRequest;
-                    toAminoMsg(message: _76.QueryConnectionClientStateRequest): _76.QueryConnectionClientStateRequestAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionClientStateRequestProtoMsg): _76.QueryConnectionClientStateRequest;
-                    toProto(message: _76.QueryConnectionClientStateRequest): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionClientStateRequest): _76.QueryConnectionClientStateRequestProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionClientStateRequest>): _78.QueryConnectionClientStateRequest;
+                    fromAmino(object: _78.QueryConnectionClientStateRequestAmino): _78.QueryConnectionClientStateRequest;
+                    toAmino(message: _78.QueryConnectionClientStateRequest): _78.QueryConnectionClientStateRequestAmino;
+                    fromAminoMsg(object: _78.QueryConnectionClientStateRequestAminoMsg): _78.QueryConnectionClientStateRequest;
+                    toAminoMsg(message: _78.QueryConnectionClientStateRequest): _78.QueryConnectionClientStateRequestAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionClientStateRequestProtoMsg): _78.QueryConnectionClientStateRequest;
+                    toProto(message: _78.QueryConnectionClientStateRequest): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionClientStateRequest): _78.QueryConnectionClientStateRequestProtoMsg;
                 };
                 QueryConnectionClientStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionClientStateResponse;
-                    isSDK(o: any): o is _76.QueryConnectionClientStateResponseSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionClientStateResponseAmino;
-                    encode(message: _76.QueryConnectionClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionClientStateResponse;
-                    fromJSON(object: any): _76.QueryConnectionClientStateResponse;
-                    toJSON(message: _76.QueryConnectionClientStateResponse): {
+                    is(o: any): o is _78.QueryConnectionClientStateResponse;
+                    isSDK(o: any): o is _78.QueryConnectionClientStateResponseSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionClientStateResponseAmino;
+                    encode(message: _78.QueryConnectionClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionClientStateResponse;
+                    fromJSON(object: any): _78.QueryConnectionClientStateResponse;
+                    toJSON(message: _78.QueryConnectionClientStateResponse): {
                         identifiedClientState?: {
                             clientId: string;
                             clientState?: {
@@ -4305,48 +4305,48 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionClientStateResponse>): _76.QueryConnectionClientStateResponse;
-                    fromAmino(object: _76.QueryConnectionClientStateResponseAmino): _76.QueryConnectionClientStateResponse;
-                    toAmino(message: _76.QueryConnectionClientStateResponse): _76.QueryConnectionClientStateResponseAmino;
-                    fromAminoMsg(object: _76.QueryConnectionClientStateResponseAminoMsg): _76.QueryConnectionClientStateResponse;
-                    toAminoMsg(message: _76.QueryConnectionClientStateResponse): _76.QueryConnectionClientStateResponseAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionClientStateResponseProtoMsg): _76.QueryConnectionClientStateResponse;
-                    toProto(message: _76.QueryConnectionClientStateResponse): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionClientStateResponse): _76.QueryConnectionClientStateResponseProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionClientStateResponse>): _78.QueryConnectionClientStateResponse;
+                    fromAmino(object: _78.QueryConnectionClientStateResponseAmino): _78.QueryConnectionClientStateResponse;
+                    toAmino(message: _78.QueryConnectionClientStateResponse): _78.QueryConnectionClientStateResponseAmino;
+                    fromAminoMsg(object: _78.QueryConnectionClientStateResponseAminoMsg): _78.QueryConnectionClientStateResponse;
+                    toAminoMsg(message: _78.QueryConnectionClientStateResponse): _78.QueryConnectionClientStateResponseAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionClientStateResponseProtoMsg): _78.QueryConnectionClientStateResponse;
+                    toProto(message: _78.QueryConnectionClientStateResponse): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionClientStateResponse): _78.QueryConnectionClientStateResponseProtoMsg;
                 };
                 QueryConnectionConsensusStateRequest: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionConsensusStateRequest;
-                    isSDK(o: any): o is _76.QueryConnectionConsensusStateRequestSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionConsensusStateRequestAmino;
-                    encode(message: _76.QueryConnectionConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionConsensusStateRequest;
-                    fromJSON(object: any): _76.QueryConnectionConsensusStateRequest;
-                    toJSON(message: _76.QueryConnectionConsensusStateRequest): {
+                    is(o: any): o is _78.QueryConnectionConsensusStateRequest;
+                    isSDK(o: any): o is _78.QueryConnectionConsensusStateRequestSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionConsensusStateRequestAmino;
+                    encode(message: _78.QueryConnectionConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionConsensusStateRequest;
+                    fromJSON(object: any): _78.QueryConnectionConsensusStateRequest;
+                    toJSON(message: _78.QueryConnectionConsensusStateRequest): {
                         connectionId: string;
                         revisionNumber: string;
                         revisionHeight: string;
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionConsensusStateRequest>): _76.QueryConnectionConsensusStateRequest;
-                    fromAmino(object: _76.QueryConnectionConsensusStateRequestAmino): _76.QueryConnectionConsensusStateRequest;
-                    toAmino(message: _76.QueryConnectionConsensusStateRequest): _76.QueryConnectionConsensusStateRequestAmino;
-                    fromAminoMsg(object: _76.QueryConnectionConsensusStateRequestAminoMsg): _76.QueryConnectionConsensusStateRequest;
-                    toAminoMsg(message: _76.QueryConnectionConsensusStateRequest): _76.QueryConnectionConsensusStateRequestAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionConsensusStateRequestProtoMsg): _76.QueryConnectionConsensusStateRequest;
-                    toProto(message: _76.QueryConnectionConsensusStateRequest): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionConsensusStateRequest): _76.QueryConnectionConsensusStateRequestProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionConsensusStateRequest>): _78.QueryConnectionConsensusStateRequest;
+                    fromAmino(object: _78.QueryConnectionConsensusStateRequestAmino): _78.QueryConnectionConsensusStateRequest;
+                    toAmino(message: _78.QueryConnectionConsensusStateRequest): _78.QueryConnectionConsensusStateRequestAmino;
+                    fromAminoMsg(object: _78.QueryConnectionConsensusStateRequestAminoMsg): _78.QueryConnectionConsensusStateRequest;
+                    toAminoMsg(message: _78.QueryConnectionConsensusStateRequest): _78.QueryConnectionConsensusStateRequestAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionConsensusStateRequestProtoMsg): _78.QueryConnectionConsensusStateRequest;
+                    toProto(message: _78.QueryConnectionConsensusStateRequest): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionConsensusStateRequest): _78.QueryConnectionConsensusStateRequestProtoMsg;
                 };
                 QueryConnectionConsensusStateResponse: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _76.QueryConnectionConsensusStateResponse;
-                    isSDK(o: any): o is _76.QueryConnectionConsensusStateResponseSDKType;
-                    isAmino(o: any): o is _76.QueryConnectionConsensusStateResponseAmino;
-                    encode(message: _76.QueryConnectionConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.QueryConnectionConsensusStateResponse;
-                    fromJSON(object: any): _76.QueryConnectionConsensusStateResponse;
-                    toJSON(message: _76.QueryConnectionConsensusStateResponse): {
+                    is(o: any): o is _78.QueryConnectionConsensusStateResponse;
+                    isSDK(o: any): o is _78.QueryConnectionConsensusStateResponseSDKType;
+                    isAmino(o: any): o is _78.QueryConnectionConsensusStateResponseAmino;
+                    encode(message: _78.QueryConnectionConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.QueryConnectionConsensusStateResponse;
+                    fromJSON(object: any): _78.QueryConnectionConsensusStateResponse;
+                    toJSON(message: _78.QueryConnectionConsensusStateResponse): {
                         consensusState?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -4359,25 +4359,25 @@ export declare namespace ibc {
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_76.QueryConnectionConsensusStateResponse>): _76.QueryConnectionConsensusStateResponse;
-                    fromAmino(object: _76.QueryConnectionConsensusStateResponseAmino): _76.QueryConnectionConsensusStateResponse;
-                    toAmino(message: _76.QueryConnectionConsensusStateResponse): _76.QueryConnectionConsensusStateResponseAmino;
-                    fromAminoMsg(object: _76.QueryConnectionConsensusStateResponseAminoMsg): _76.QueryConnectionConsensusStateResponse;
-                    toAminoMsg(message: _76.QueryConnectionConsensusStateResponse): _76.QueryConnectionConsensusStateResponseAminoMsg;
-                    fromProtoMsg(message: _76.QueryConnectionConsensusStateResponseProtoMsg): _76.QueryConnectionConsensusStateResponse;
-                    toProto(message: _76.QueryConnectionConsensusStateResponse): Uint8Array;
-                    toProtoMsg(message: _76.QueryConnectionConsensusStateResponse): _76.QueryConnectionConsensusStateResponseProtoMsg;
+                    fromPartial(object: Partial<_78.QueryConnectionConsensusStateResponse>): _78.QueryConnectionConsensusStateResponse;
+                    fromAmino(object: _78.QueryConnectionConsensusStateResponseAmino): _78.QueryConnectionConsensusStateResponse;
+                    toAmino(message: _78.QueryConnectionConsensusStateResponse): _78.QueryConnectionConsensusStateResponseAmino;
+                    fromAminoMsg(object: _78.QueryConnectionConsensusStateResponseAminoMsg): _78.QueryConnectionConsensusStateResponse;
+                    toAminoMsg(message: _78.QueryConnectionConsensusStateResponse): _78.QueryConnectionConsensusStateResponseAminoMsg;
+                    fromProtoMsg(message: _78.QueryConnectionConsensusStateResponseProtoMsg): _78.QueryConnectionConsensusStateResponse;
+                    toProto(message: _78.QueryConnectionConsensusStateResponse): Uint8Array;
+                    toProtoMsg(message: _78.QueryConnectionConsensusStateResponse): _78.QueryConnectionConsensusStateResponseProtoMsg;
                 };
                 GenesisState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _75.GenesisState;
-                    isSDK(o: any): o is _75.GenesisStateSDKType;
-                    isAmino(o: any): o is _75.GenesisStateAmino;
-                    encode(message: _75.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.GenesisState;
-                    fromJSON(object: any): _75.GenesisState;
-                    toJSON(message: _75.GenesisState): {
+                    is(o: any): o is _77.GenesisState;
+                    isSDK(o: any): o is _77.GenesisStateSDKType;
+                    isAmino(o: any): o is _77.GenesisStateAmino;
+                    encode(message: _77.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.GenesisState;
+                    fromJSON(object: any): _77.GenesisState;
+                    toJSON(message: _77.GenesisState): {
                         connections: {
                             id: string;
                             clientId: string;
@@ -4385,7 +4385,7 @@ export declare namespace ibc {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            state: _74.State;
+                            state: _76.State;
                             counterparty: {
                                 clientId: string;
                                 connectionId: string;
@@ -4404,36 +4404,36 @@ export declare namespace ibc {
                             maxExpectedTimePerBlock: string;
                         };
                     };
-                    fromPartial(object: Partial<_75.GenesisState>): _75.GenesisState;
-                    fromAmino(object: _75.GenesisStateAmino): _75.GenesisState;
-                    toAmino(message: _75.GenesisState): _75.GenesisStateAmino;
-                    fromAminoMsg(object: _75.GenesisStateAminoMsg): _75.GenesisState;
-                    toAminoMsg(message: _75.GenesisState): _75.GenesisStateAminoMsg;
-                    fromProtoMsg(message: _75.GenesisStateProtoMsg): _75.GenesisState;
-                    toProto(message: _75.GenesisState): Uint8Array;
-                    toProtoMsg(message: _75.GenesisState): _75.GenesisStateProtoMsg;
+                    fromPartial(object: Partial<_77.GenesisState>): _77.GenesisState;
+                    fromAmino(object: _77.GenesisStateAmino): _77.GenesisState;
+                    toAmino(message: _77.GenesisState): _77.GenesisStateAmino;
+                    fromAminoMsg(object: _77.GenesisStateAminoMsg): _77.GenesisState;
+                    toAminoMsg(message: _77.GenesisState): _77.GenesisStateAminoMsg;
+                    fromProtoMsg(message: _77.GenesisStateProtoMsg): _77.GenesisState;
+                    toProto(message: _77.GenesisState): Uint8Array;
+                    toProtoMsg(message: _77.GenesisState): _77.GenesisStateProtoMsg;
                 };
-                stateFromJSON(object: any): _74.State;
-                stateToJSON(object: _74.State): string;
-                State: typeof _74.State;
-                StateSDKType: typeof _74.State;
-                StateAmino: typeof _74.State;
+                stateFromJSON(object: any): _76.State;
+                stateToJSON(object: _76.State): string;
+                State: typeof _76.State;
+                StateSDKType: typeof _76.State;
+                StateAmino: typeof _76.State;
                 ConnectionEnd: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.ConnectionEnd;
-                    isSDK(o: any): o is _74.ConnectionEndSDKType;
-                    isAmino(o: any): o is _74.ConnectionEndAmino;
-                    encode(message: _74.ConnectionEnd, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConnectionEnd;
-                    fromJSON(object: any): _74.ConnectionEnd;
-                    toJSON(message: _74.ConnectionEnd): {
+                    is(o: any): o is _76.ConnectionEnd;
+                    isSDK(o: any): o is _76.ConnectionEndSDKType;
+                    isAmino(o: any): o is _76.ConnectionEndAmino;
+                    encode(message: _76.ConnectionEnd, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ConnectionEnd;
+                    fromJSON(object: any): _76.ConnectionEnd;
+                    toJSON(message: _76.ConnectionEnd): {
                         clientId: string;
                         versions: {
                             identifier: string;
                             features: string[];
                         }[];
-                        state: _74.State;
+                        state: _76.State;
                         counterparty: {
                             clientId: string;
                             connectionId: string;
@@ -4443,32 +4443,32 @@ export declare namespace ibc {
                         };
                         delayPeriod: string;
                     };
-                    fromPartial(object: Partial<_74.ConnectionEnd>): _74.ConnectionEnd;
-                    fromAmino(object: _74.ConnectionEndAmino): _74.ConnectionEnd;
-                    toAmino(message: _74.ConnectionEnd): _74.ConnectionEndAmino;
-                    fromAminoMsg(object: _74.ConnectionEndAminoMsg): _74.ConnectionEnd;
-                    toAminoMsg(message: _74.ConnectionEnd): _74.ConnectionEndAminoMsg;
-                    fromProtoMsg(message: _74.ConnectionEndProtoMsg): _74.ConnectionEnd;
-                    toProto(message: _74.ConnectionEnd): Uint8Array;
-                    toProtoMsg(message: _74.ConnectionEnd): _74.ConnectionEndProtoMsg;
+                    fromPartial(object: Partial<_76.ConnectionEnd>): _76.ConnectionEnd;
+                    fromAmino(object: _76.ConnectionEndAmino): _76.ConnectionEnd;
+                    toAmino(message: _76.ConnectionEnd): _76.ConnectionEndAmino;
+                    fromAminoMsg(object: _76.ConnectionEndAminoMsg): _76.ConnectionEnd;
+                    toAminoMsg(message: _76.ConnectionEnd): _76.ConnectionEndAminoMsg;
+                    fromProtoMsg(message: _76.ConnectionEndProtoMsg): _76.ConnectionEnd;
+                    toProto(message: _76.ConnectionEnd): Uint8Array;
+                    toProtoMsg(message: _76.ConnectionEnd): _76.ConnectionEndProtoMsg;
                 };
                 IdentifiedConnection: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.IdentifiedConnection;
-                    isSDK(o: any): o is _74.IdentifiedConnectionSDKType;
-                    isAmino(o: any): o is _74.IdentifiedConnectionAmino;
-                    encode(message: _74.IdentifiedConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.IdentifiedConnection;
-                    fromJSON(object: any): _74.IdentifiedConnection;
-                    toJSON(message: _74.IdentifiedConnection): {
+                    is(o: any): o is _76.IdentifiedConnection;
+                    isSDK(o: any): o is _76.IdentifiedConnectionSDKType;
+                    isAmino(o: any): o is _76.IdentifiedConnectionAmino;
+                    encode(message: _76.IdentifiedConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.IdentifiedConnection;
+                    fromJSON(object: any): _76.IdentifiedConnection;
+                    toJSON(message: _76.IdentifiedConnection): {
                         id: string;
                         clientId: string;
                         versions: {
                             identifier: string;
                             features: string[];
                         }[];
-                        state: _74.State;
+                        state: _76.State;
                         counterparty: {
                             clientId: string;
                             connectionId: string;
@@ -4478,125 +4478,125 @@ export declare namespace ibc {
                         };
                         delayPeriod: string;
                     };
-                    fromPartial(object: Partial<_74.IdentifiedConnection>): _74.IdentifiedConnection;
-                    fromAmino(object: _74.IdentifiedConnectionAmino): _74.IdentifiedConnection;
-                    toAmino(message: _74.IdentifiedConnection): _74.IdentifiedConnectionAmino;
-                    fromAminoMsg(object: _74.IdentifiedConnectionAminoMsg): _74.IdentifiedConnection;
-                    toAminoMsg(message: _74.IdentifiedConnection): _74.IdentifiedConnectionAminoMsg;
-                    fromProtoMsg(message: _74.IdentifiedConnectionProtoMsg): _74.IdentifiedConnection;
-                    toProto(message: _74.IdentifiedConnection): Uint8Array;
-                    toProtoMsg(message: _74.IdentifiedConnection): _74.IdentifiedConnectionProtoMsg;
+                    fromPartial(object: Partial<_76.IdentifiedConnection>): _76.IdentifiedConnection;
+                    fromAmino(object: _76.IdentifiedConnectionAmino): _76.IdentifiedConnection;
+                    toAmino(message: _76.IdentifiedConnection): _76.IdentifiedConnectionAmino;
+                    fromAminoMsg(object: _76.IdentifiedConnectionAminoMsg): _76.IdentifiedConnection;
+                    toAminoMsg(message: _76.IdentifiedConnection): _76.IdentifiedConnectionAminoMsg;
+                    fromProtoMsg(message: _76.IdentifiedConnectionProtoMsg): _76.IdentifiedConnection;
+                    toProto(message: _76.IdentifiedConnection): Uint8Array;
+                    toProtoMsg(message: _76.IdentifiedConnection): _76.IdentifiedConnectionProtoMsg;
                 };
                 Counterparty: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.Counterparty;
-                    isSDK(o: any): o is _74.CounterpartySDKType;
-                    isAmino(o: any): o is _74.CounterpartyAmino;
-                    encode(message: _74.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Counterparty;
-                    fromJSON(object: any): _74.Counterparty;
-                    toJSON(message: _74.Counterparty): {
+                    is(o: any): o is _76.Counterparty;
+                    isSDK(o: any): o is _76.CounterpartySDKType;
+                    isAmino(o: any): o is _76.CounterpartyAmino;
+                    encode(message: _76.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Counterparty;
+                    fromJSON(object: any): _76.Counterparty;
+                    toJSON(message: _76.Counterparty): {
                         clientId: string;
                         connectionId: string;
                         prefix: {
                             keyPrefix: string;
                         };
                     };
-                    fromPartial(object: Partial<_74.Counterparty>): _74.Counterparty;
-                    fromAmino(object: _74.CounterpartyAmino): _74.Counterparty;
-                    toAmino(message: _74.Counterparty): _74.CounterpartyAmino;
-                    fromAminoMsg(object: _74.CounterpartyAminoMsg): _74.Counterparty;
-                    toAminoMsg(message: _74.Counterparty): _74.CounterpartyAminoMsg;
-                    fromProtoMsg(message: _74.CounterpartyProtoMsg): _74.Counterparty;
-                    toProto(message: _74.Counterparty): Uint8Array;
-                    toProtoMsg(message: _74.Counterparty): _74.CounterpartyProtoMsg;
+                    fromPartial(object: Partial<_76.Counterparty>): _76.Counterparty;
+                    fromAmino(object: _76.CounterpartyAmino): _76.Counterparty;
+                    toAmino(message: _76.Counterparty): _76.CounterpartyAmino;
+                    fromAminoMsg(object: _76.CounterpartyAminoMsg): _76.Counterparty;
+                    toAminoMsg(message: _76.Counterparty): _76.CounterpartyAminoMsg;
+                    fromProtoMsg(message: _76.CounterpartyProtoMsg): _76.Counterparty;
+                    toProto(message: _76.Counterparty): Uint8Array;
+                    toProtoMsg(message: _76.Counterparty): _76.CounterpartyProtoMsg;
                 };
                 ClientPaths: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.ClientPaths;
-                    isSDK(o: any): o is _74.ClientPathsSDKType;
-                    isAmino(o: any): o is _74.ClientPathsAmino;
-                    encode(message: _74.ClientPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ClientPaths;
-                    fromJSON(object: any): _74.ClientPaths;
-                    toJSON(message: _74.ClientPaths): {
+                    is(o: any): o is _76.ClientPaths;
+                    isSDK(o: any): o is _76.ClientPathsSDKType;
+                    isAmino(o: any): o is _76.ClientPathsAmino;
+                    encode(message: _76.ClientPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ClientPaths;
+                    fromJSON(object: any): _76.ClientPaths;
+                    toJSON(message: _76.ClientPaths): {
                         paths: string[];
                     };
-                    fromPartial(object: Partial<_74.ClientPaths>): _74.ClientPaths;
-                    fromAmino(object: _74.ClientPathsAmino): _74.ClientPaths;
-                    toAmino(message: _74.ClientPaths): _74.ClientPathsAmino;
-                    fromAminoMsg(object: _74.ClientPathsAminoMsg): _74.ClientPaths;
-                    toAminoMsg(message: _74.ClientPaths): _74.ClientPathsAminoMsg;
-                    fromProtoMsg(message: _74.ClientPathsProtoMsg): _74.ClientPaths;
-                    toProto(message: _74.ClientPaths): Uint8Array;
-                    toProtoMsg(message: _74.ClientPaths): _74.ClientPathsProtoMsg;
+                    fromPartial(object: Partial<_76.ClientPaths>): _76.ClientPaths;
+                    fromAmino(object: _76.ClientPathsAmino): _76.ClientPaths;
+                    toAmino(message: _76.ClientPaths): _76.ClientPathsAmino;
+                    fromAminoMsg(object: _76.ClientPathsAminoMsg): _76.ClientPaths;
+                    toAminoMsg(message: _76.ClientPaths): _76.ClientPathsAminoMsg;
+                    fromProtoMsg(message: _76.ClientPathsProtoMsg): _76.ClientPaths;
+                    toProto(message: _76.ClientPaths): Uint8Array;
+                    toProtoMsg(message: _76.ClientPaths): _76.ClientPathsProtoMsg;
                 };
                 ConnectionPaths: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.ConnectionPaths;
-                    isSDK(o: any): o is _74.ConnectionPathsSDKType;
-                    isAmino(o: any): o is _74.ConnectionPathsAmino;
-                    encode(message: _74.ConnectionPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.ConnectionPaths;
-                    fromJSON(object: any): _74.ConnectionPaths;
-                    toJSON(message: _74.ConnectionPaths): {
+                    is(o: any): o is _76.ConnectionPaths;
+                    isSDK(o: any): o is _76.ConnectionPathsSDKType;
+                    isAmino(o: any): o is _76.ConnectionPathsAmino;
+                    encode(message: _76.ConnectionPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.ConnectionPaths;
+                    fromJSON(object: any): _76.ConnectionPaths;
+                    toJSON(message: _76.ConnectionPaths): {
                         clientId: string;
                         paths: string[];
                     };
-                    fromPartial(object: Partial<_74.ConnectionPaths>): _74.ConnectionPaths;
-                    fromAmino(object: _74.ConnectionPathsAmino): _74.ConnectionPaths;
-                    toAmino(message: _74.ConnectionPaths): _74.ConnectionPathsAmino;
-                    fromAminoMsg(object: _74.ConnectionPathsAminoMsg): _74.ConnectionPaths;
-                    toAminoMsg(message: _74.ConnectionPaths): _74.ConnectionPathsAminoMsg;
-                    fromProtoMsg(message: _74.ConnectionPathsProtoMsg): _74.ConnectionPaths;
-                    toProto(message: _74.ConnectionPaths): Uint8Array;
-                    toProtoMsg(message: _74.ConnectionPaths): _74.ConnectionPathsProtoMsg;
+                    fromPartial(object: Partial<_76.ConnectionPaths>): _76.ConnectionPaths;
+                    fromAmino(object: _76.ConnectionPathsAmino): _76.ConnectionPaths;
+                    toAmino(message: _76.ConnectionPaths): _76.ConnectionPathsAmino;
+                    fromAminoMsg(object: _76.ConnectionPathsAminoMsg): _76.ConnectionPaths;
+                    toAminoMsg(message: _76.ConnectionPaths): _76.ConnectionPathsAminoMsg;
+                    fromProtoMsg(message: _76.ConnectionPathsProtoMsg): _76.ConnectionPaths;
+                    toProto(message: _76.ConnectionPaths): Uint8Array;
+                    toProtoMsg(message: _76.ConnectionPaths): _76.ConnectionPathsProtoMsg;
                 };
                 Version: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.Version;
-                    isSDK(o: any): o is _74.VersionSDKType;
-                    isAmino(o: any): o is _74.VersionAmino;
-                    encode(message: _74.Version, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Version;
-                    fromJSON(object: any): _74.Version;
-                    toJSON(message: _74.Version): {
+                    is(o: any): o is _76.Version;
+                    isSDK(o: any): o is _76.VersionSDKType;
+                    isAmino(o: any): o is _76.VersionAmino;
+                    encode(message: _76.Version, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Version;
+                    fromJSON(object: any): _76.Version;
+                    toJSON(message: _76.Version): {
                         identifier: string;
                         features: string[];
                     };
-                    fromPartial(object: Partial<_74.Version>): _74.Version;
-                    fromAmino(object: _74.VersionAmino): _74.Version;
-                    toAmino(message: _74.Version): _74.VersionAmino;
-                    fromAminoMsg(object: _74.VersionAminoMsg): _74.Version;
-                    toAminoMsg(message: _74.Version): _74.VersionAminoMsg;
-                    fromProtoMsg(message: _74.VersionProtoMsg): _74.Version;
-                    toProto(message: _74.Version): Uint8Array;
-                    toProtoMsg(message: _74.Version): _74.VersionProtoMsg;
+                    fromPartial(object: Partial<_76.Version>): _76.Version;
+                    fromAmino(object: _76.VersionAmino): _76.Version;
+                    toAmino(message: _76.Version): _76.VersionAmino;
+                    fromAminoMsg(object: _76.VersionAminoMsg): _76.Version;
+                    toAminoMsg(message: _76.Version): _76.VersionAminoMsg;
+                    fromProtoMsg(message: _76.VersionProtoMsg): _76.Version;
+                    toProto(message: _76.Version): Uint8Array;
+                    toProtoMsg(message: _76.Version): _76.VersionProtoMsg;
                 };
                 Params: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _74.Params;
-                    isSDK(o: any): o is _74.ParamsSDKType;
-                    isAmino(o: any): o is _74.ParamsAmino;
-                    encode(message: _74.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.Params;
-                    fromJSON(object: any): _74.Params;
-                    toJSON(message: _74.Params): {
+                    is(o: any): o is _76.Params;
+                    isSDK(o: any): o is _76.ParamsSDKType;
+                    isAmino(o: any): o is _76.ParamsAmino;
+                    encode(message: _76.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.Params;
+                    fromJSON(object: any): _76.Params;
+                    toJSON(message: _76.Params): {
                         maxExpectedTimePerBlock: string;
                     };
-                    fromPartial(object: Partial<_74.Params>): _74.Params;
-                    fromAmino(object: _74.ParamsAmino): _74.Params;
-                    toAmino(message: _74.Params): _74.ParamsAmino;
-                    fromAminoMsg(object: _74.ParamsAminoMsg): _74.Params;
-                    toAminoMsg(message: _74.Params): _74.ParamsAminoMsg;
-                    fromProtoMsg(message: _74.ParamsProtoMsg): _74.Params;
-                    toProto(message: _74.Params): Uint8Array;
-                    toProtoMsg(message: _74.Params): _74.ParamsProtoMsg;
+                    fromPartial(object: Partial<_76.Params>): _76.Params;
+                    fromAmino(object: _76.ParamsAmino): _76.Params;
+                    toAmino(message: _76.Params): _76.ParamsAmino;
+                    fromAminoMsg(object: _76.ParamsAminoMsg): _76.Params;
+                    toAminoMsg(message: _76.Params): _76.ParamsAminoMsg;
+                    fromProtoMsg(message: _76.ParamsProtoMsg): _76.Params;
+                    toProto(message: _76.Params): Uint8Array;
+                    toProtoMsg(message: _76.Params): _76.ParamsProtoMsg;
                 };
             };
         }
@@ -4607,47 +4607,47 @@ export declare namespace ibc {
                 ClientState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _78.ClientState;
-                    isSDK(o: any): o is _78.ClientStateSDKType;
-                    isAmino(o: any): o is _78.ClientStateAmino;
-                    encode(message: _78.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.ClientState;
-                    fromJSON(object: any): _78.ClientState;
-                    toJSON(message: _78.ClientState): {
+                    is(o: any): o is _80.ClientState;
+                    isSDK(o: any): o is _80.ClientStateSDKType;
+                    isAmino(o: any): o is _80.ClientStateAmino;
+                    encode(message: _80.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ClientState;
+                    fromJSON(object: any): _80.ClientState;
+                    toJSON(message: _80.ClientState): {
                         chainId: string;
                         height: {
                             revisionNumber: string;
                             revisionHeight: string;
                         };
                     };
-                    fromPartial(object: Partial<_78.ClientState>): _78.ClientState;
-                    fromAmino(object: _78.ClientStateAmino): _78.ClientState;
-                    toAmino(message: _78.ClientState): _78.ClientStateAmino;
-                    fromAminoMsg(object: _78.ClientStateAminoMsg): _78.ClientState;
-                    toAminoMsg(message: _78.ClientState): _78.ClientStateAminoMsg;
-                    fromProtoMsg(message: _78.ClientStateProtoMsg): _78.ClientState;
-                    toProto(message: _78.ClientState): Uint8Array;
-                    toProtoMsg(message: _78.ClientState): _78.ClientStateProtoMsg;
+                    fromPartial(object: Partial<_80.ClientState>): _80.ClientState;
+                    fromAmino(object: _80.ClientStateAmino): _80.ClientState;
+                    toAmino(message: _80.ClientState): _80.ClientStateAmino;
+                    fromAminoMsg(object: _80.ClientStateAminoMsg): _80.ClientState;
+                    toAminoMsg(message: _80.ClientState): _80.ClientStateAminoMsg;
+                    fromProtoMsg(message: _80.ClientStateProtoMsg): _80.ClientState;
+                    toProto(message: _80.ClientState): Uint8Array;
+                    toProtoMsg(message: _80.ClientState): _80.ClientStateProtoMsg;
                 };
             };
         }
         namespace solomachine {
             const v1: {
-                dataTypeFromJSON(object: any): _79.DataType;
-                dataTypeToJSON(object: _79.DataType): string;
-                DataType: typeof _79.DataType;
-                DataTypeSDKType: typeof _79.DataType;
-                DataTypeAmino: typeof _79.DataType;
+                dataTypeFromJSON(object: any): _81.DataType;
+                dataTypeToJSON(object: _81.DataType): string;
+                DataType: typeof _81.DataType;
+                DataTypeSDKType: typeof _81.DataType;
+                DataTypeAmino: typeof _81.DataType;
                 ClientState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.ClientState;
-                    isSDK(o: any): o is _79.ClientStateSDKType;
-                    isAmino(o: any): o is _79.ClientStateAmino;
-                    encode(message: _79.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ClientState;
-                    fromJSON(object: any): _79.ClientState;
-                    toJSON(message: _79.ClientState): {
+                    is(o: any): o is _81.ClientState;
+                    isSDK(o: any): o is _81.ClientStateSDKType;
+                    isAmino(o: any): o is _81.ClientStateAmino;
+                    encode(message: _81.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ClientState;
+                    fromJSON(object: any): _81.ClientState;
+                    toJSON(message: _81.ClientState): {
                         sequence: string;
                         frozenSequence: string;
                         consensusState?: {
@@ -4661,25 +4661,25 @@ export declare namespace ibc {
                         };
                         allowUpdateAfterProposal: boolean;
                     };
-                    fromPartial(object: Partial<_79.ClientState>): _79.ClientState;
-                    fromAmino(object: _79.ClientStateAmino): _79.ClientState;
-                    toAmino(message: _79.ClientState): _79.ClientStateAmino;
-                    fromAminoMsg(object: _79.ClientStateAminoMsg): _79.ClientState;
-                    toAminoMsg(message: _79.ClientState): _79.ClientStateAminoMsg;
-                    fromProtoMsg(message: _79.ClientStateProtoMsg): _79.ClientState;
-                    toProto(message: _79.ClientState): Uint8Array;
-                    toProtoMsg(message: _79.ClientState): _79.ClientStateProtoMsg;
+                    fromPartial(object: Partial<_81.ClientState>): _81.ClientState;
+                    fromAmino(object: _81.ClientStateAmino): _81.ClientState;
+                    toAmino(message: _81.ClientState): _81.ClientStateAmino;
+                    fromAminoMsg(object: _81.ClientStateAminoMsg): _81.ClientState;
+                    toAminoMsg(message: _81.ClientState): _81.ClientStateAminoMsg;
+                    fromProtoMsg(message: _81.ClientStateProtoMsg): _81.ClientState;
+                    toProto(message: _81.ClientState): Uint8Array;
+                    toProtoMsg(message: _81.ClientState): _81.ClientStateProtoMsg;
                 };
                 ConsensusState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.ConsensusState;
-                    isSDK(o: any): o is _79.ConsensusStateSDKType;
-                    isAmino(o: any): o is _79.ConsensusStateAmino;
-                    encode(message: _79.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ConsensusState;
-                    fromJSON(object: any): _79.ConsensusState;
-                    toJSON(message: _79.ConsensusState): {
+                    is(o: any): o is _81.ConsensusState;
+                    isSDK(o: any): o is _81.ConsensusStateSDKType;
+                    isAmino(o: any): o is _81.ConsensusStateAmino;
+                    encode(message: _81.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ConsensusState;
+                    fromJSON(object: any): _81.ConsensusState;
+                    toJSON(message: _81.ConsensusState): {
                         publicKey?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -4688,25 +4688,25 @@ export declare namespace ibc {
                         diversifier: string;
                         timestamp: string;
                     };
-                    fromPartial(object: Partial<_79.ConsensusState>): _79.ConsensusState;
-                    fromAmino(object: _79.ConsensusStateAmino): _79.ConsensusState;
-                    toAmino(message: _79.ConsensusState): _79.ConsensusStateAmino;
-                    fromAminoMsg(object: _79.ConsensusStateAminoMsg): _79.ConsensusState;
-                    toAminoMsg(message: _79.ConsensusState): _79.ConsensusStateAminoMsg;
-                    fromProtoMsg(message: _79.ConsensusStateProtoMsg): _79.ConsensusState;
-                    toProto(message: _79.ConsensusState): Uint8Array;
-                    toProtoMsg(message: _79.ConsensusState): _79.ConsensusStateProtoMsg;
+                    fromPartial(object: Partial<_81.ConsensusState>): _81.ConsensusState;
+                    fromAmino(object: _81.ConsensusStateAmino): _81.ConsensusState;
+                    toAmino(message: _81.ConsensusState): _81.ConsensusStateAmino;
+                    fromAminoMsg(object: _81.ConsensusStateAminoMsg): _81.ConsensusState;
+                    toAminoMsg(message: _81.ConsensusState): _81.ConsensusStateAminoMsg;
+                    fromProtoMsg(message: _81.ConsensusStateProtoMsg): _81.ConsensusState;
+                    toProto(message: _81.ConsensusState): Uint8Array;
+                    toProtoMsg(message: _81.ConsensusState): _81.ConsensusStateProtoMsg;
                 };
                 Header: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.Header;
-                    isSDK(o: any): o is _79.HeaderSDKType;
-                    isAmino(o: any): o is _79.HeaderAmino;
-                    encode(message: _79.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.Header;
-                    fromJSON(object: any): _79.Header;
-                    toJSON(message: _79.Header): {
+                    is(o: any): o is _81.Header;
+                    isSDK(o: any): o is _81.HeaderSDKType;
+                    isAmino(o: any): o is _81.HeaderAmino;
+                    encode(message: _81.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Header;
+                    fromJSON(object: any): _81.Header;
+                    toJSON(message: _81.Header): {
                         sequence: string;
                         timestamp: string;
                         signature: string;
@@ -4717,130 +4717,130 @@ export declare namespace ibc {
                         };
                         newDiversifier: string;
                     };
-                    fromPartial(object: Partial<_79.Header>): _79.Header;
-                    fromAmino(object: _79.HeaderAmino): _79.Header;
-                    toAmino(message: _79.Header): _79.HeaderAmino;
-                    fromAminoMsg(object: _79.HeaderAminoMsg): _79.Header;
-                    toAminoMsg(message: _79.Header): _79.HeaderAminoMsg;
-                    fromProtoMsg(message: _79.HeaderProtoMsg): _79.Header;
-                    toProto(message: _79.Header): Uint8Array;
-                    toProtoMsg(message: _79.Header): _79.HeaderProtoMsg;
+                    fromPartial(object: Partial<_81.Header>): _81.Header;
+                    fromAmino(object: _81.HeaderAmino): _81.Header;
+                    toAmino(message: _81.Header): _81.HeaderAmino;
+                    fromAminoMsg(object: _81.HeaderAminoMsg): _81.Header;
+                    toAminoMsg(message: _81.Header): _81.HeaderAminoMsg;
+                    fromProtoMsg(message: _81.HeaderProtoMsg): _81.Header;
+                    toProto(message: _81.Header): Uint8Array;
+                    toProtoMsg(message: _81.Header): _81.HeaderProtoMsg;
                 };
                 Misbehaviour: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.Misbehaviour;
-                    isSDK(o: any): o is _79.MisbehaviourSDKType;
-                    isAmino(o: any): o is _79.MisbehaviourAmino;
-                    encode(message: _79.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.Misbehaviour;
-                    fromJSON(object: any): _79.Misbehaviour;
-                    toJSON(message: _79.Misbehaviour): {
+                    is(o: any): o is _81.Misbehaviour;
+                    isSDK(o: any): o is _81.MisbehaviourSDKType;
+                    isAmino(o: any): o is _81.MisbehaviourAmino;
+                    encode(message: _81.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Misbehaviour;
+                    fromJSON(object: any): _81.Misbehaviour;
+                    toJSON(message: _81.Misbehaviour): {
                         clientId: string;
                         sequence: string;
                         signatureOne?: {
                             signature: string;
-                            dataType: _79.DataType;
+                            dataType: _81.DataType;
                             data: string;
                             timestamp: string;
                         };
                         signatureTwo?: {
                             signature: string;
-                            dataType: _79.DataType;
+                            dataType: _81.DataType;
                             data: string;
                             timestamp: string;
                         };
                     };
-                    fromPartial(object: Partial<_79.Misbehaviour>): _79.Misbehaviour;
-                    fromAmino(object: _79.MisbehaviourAmino): _79.Misbehaviour;
-                    toAmino(message: _79.Misbehaviour): _79.MisbehaviourAmino;
-                    fromAminoMsg(object: _79.MisbehaviourAminoMsg): _79.Misbehaviour;
-                    toAminoMsg(message: _79.Misbehaviour): _79.MisbehaviourAminoMsg;
-                    fromProtoMsg(message: _79.MisbehaviourProtoMsg): _79.Misbehaviour;
-                    toProto(message: _79.Misbehaviour): Uint8Array;
-                    toProtoMsg(message: _79.Misbehaviour): _79.MisbehaviourProtoMsg;
+                    fromPartial(object: Partial<_81.Misbehaviour>): _81.Misbehaviour;
+                    fromAmino(object: _81.MisbehaviourAmino): _81.Misbehaviour;
+                    toAmino(message: _81.Misbehaviour): _81.MisbehaviourAmino;
+                    fromAminoMsg(object: _81.MisbehaviourAminoMsg): _81.Misbehaviour;
+                    toAminoMsg(message: _81.Misbehaviour): _81.MisbehaviourAminoMsg;
+                    fromProtoMsg(message: _81.MisbehaviourProtoMsg): _81.Misbehaviour;
+                    toProto(message: _81.Misbehaviour): Uint8Array;
+                    toProtoMsg(message: _81.Misbehaviour): _81.MisbehaviourProtoMsg;
                 };
                 SignatureAndData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.SignatureAndData;
-                    isSDK(o: any): o is _79.SignatureAndDataSDKType;
-                    isAmino(o: any): o is _79.SignatureAndDataAmino;
-                    encode(message: _79.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.SignatureAndData;
-                    fromJSON(object: any): _79.SignatureAndData;
-                    toJSON(message: _79.SignatureAndData): {
+                    is(o: any): o is _81.SignatureAndData;
+                    isSDK(o: any): o is _81.SignatureAndDataSDKType;
+                    isAmino(o: any): o is _81.SignatureAndDataAmino;
+                    encode(message: _81.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.SignatureAndData;
+                    fromJSON(object: any): _81.SignatureAndData;
+                    toJSON(message: _81.SignatureAndData): {
                         signature: string;
-                        dataType: _79.DataType;
+                        dataType: _81.DataType;
                         data: string;
                         timestamp: string;
                     };
-                    fromPartial(object: Partial<_79.SignatureAndData>): _79.SignatureAndData;
-                    fromAmino(object: _79.SignatureAndDataAmino): _79.SignatureAndData;
-                    toAmino(message: _79.SignatureAndData): _79.SignatureAndDataAmino;
-                    fromAminoMsg(object: _79.SignatureAndDataAminoMsg): _79.SignatureAndData;
-                    toAminoMsg(message: _79.SignatureAndData): _79.SignatureAndDataAminoMsg;
-                    fromProtoMsg(message: _79.SignatureAndDataProtoMsg): _79.SignatureAndData;
-                    toProto(message: _79.SignatureAndData): Uint8Array;
-                    toProtoMsg(message: _79.SignatureAndData): _79.SignatureAndDataProtoMsg;
+                    fromPartial(object: Partial<_81.SignatureAndData>): _81.SignatureAndData;
+                    fromAmino(object: _81.SignatureAndDataAmino): _81.SignatureAndData;
+                    toAmino(message: _81.SignatureAndData): _81.SignatureAndDataAmino;
+                    fromAminoMsg(object: _81.SignatureAndDataAminoMsg): _81.SignatureAndData;
+                    toAminoMsg(message: _81.SignatureAndData): _81.SignatureAndDataAminoMsg;
+                    fromProtoMsg(message: _81.SignatureAndDataProtoMsg): _81.SignatureAndData;
+                    toProto(message: _81.SignatureAndData): Uint8Array;
+                    toProtoMsg(message: _81.SignatureAndData): _81.SignatureAndDataProtoMsg;
                 };
                 TimestampedSignatureData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.TimestampedSignatureData;
-                    isSDK(o: any): o is _79.TimestampedSignatureDataSDKType;
-                    isAmino(o: any): o is _79.TimestampedSignatureDataAmino;
-                    encode(message: _79.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.TimestampedSignatureData;
-                    fromJSON(object: any): _79.TimestampedSignatureData;
-                    toJSON(message: _79.TimestampedSignatureData): {
+                    is(o: any): o is _81.TimestampedSignatureData;
+                    isSDK(o: any): o is _81.TimestampedSignatureDataSDKType;
+                    isAmino(o: any): o is _81.TimestampedSignatureDataAmino;
+                    encode(message: _81.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.TimestampedSignatureData;
+                    fromJSON(object: any): _81.TimestampedSignatureData;
+                    toJSON(message: _81.TimestampedSignatureData): {
                         signatureData: string;
                         timestamp: string;
                     };
-                    fromPartial(object: Partial<_79.TimestampedSignatureData>): _79.TimestampedSignatureData;
-                    fromAmino(object: _79.TimestampedSignatureDataAmino): _79.TimestampedSignatureData;
-                    toAmino(message: _79.TimestampedSignatureData): _79.TimestampedSignatureDataAmino;
-                    fromAminoMsg(object: _79.TimestampedSignatureDataAminoMsg): _79.TimestampedSignatureData;
-                    toAminoMsg(message: _79.TimestampedSignatureData): _79.TimestampedSignatureDataAminoMsg;
-                    fromProtoMsg(message: _79.TimestampedSignatureDataProtoMsg): _79.TimestampedSignatureData;
-                    toProto(message: _79.TimestampedSignatureData): Uint8Array;
-                    toProtoMsg(message: _79.TimestampedSignatureData): _79.TimestampedSignatureDataProtoMsg;
+                    fromPartial(object: Partial<_81.TimestampedSignatureData>): _81.TimestampedSignatureData;
+                    fromAmino(object: _81.TimestampedSignatureDataAmino): _81.TimestampedSignatureData;
+                    toAmino(message: _81.TimestampedSignatureData): _81.TimestampedSignatureDataAmino;
+                    fromAminoMsg(object: _81.TimestampedSignatureDataAminoMsg): _81.TimestampedSignatureData;
+                    toAminoMsg(message: _81.TimestampedSignatureData): _81.TimestampedSignatureDataAminoMsg;
+                    fromProtoMsg(message: _81.TimestampedSignatureDataProtoMsg): _81.TimestampedSignatureData;
+                    toProto(message: _81.TimestampedSignatureData): Uint8Array;
+                    toProtoMsg(message: _81.TimestampedSignatureData): _81.TimestampedSignatureDataProtoMsg;
                 };
                 SignBytes: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.SignBytes;
-                    isSDK(o: any): o is _79.SignBytesSDKType;
-                    isAmino(o: any): o is _79.SignBytesAmino;
-                    encode(message: _79.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.SignBytes;
-                    fromJSON(object: any): _79.SignBytes;
-                    toJSON(message: _79.SignBytes): {
+                    is(o: any): o is _81.SignBytes;
+                    isSDK(o: any): o is _81.SignBytesSDKType;
+                    isAmino(o: any): o is _81.SignBytesAmino;
+                    encode(message: _81.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.SignBytes;
+                    fromJSON(object: any): _81.SignBytes;
+                    toJSON(message: _81.SignBytes): {
                         sequence: string;
                         timestamp: string;
                         diversifier: string;
-                        dataType: _79.DataType;
+                        dataType: _81.DataType;
                         data: string;
                     };
-                    fromPartial(object: Partial<_79.SignBytes>): _79.SignBytes;
-                    fromAmino(object: _79.SignBytesAmino): _79.SignBytes;
-                    toAmino(message: _79.SignBytes): _79.SignBytesAmino;
-                    fromAminoMsg(object: _79.SignBytesAminoMsg): _79.SignBytes;
-                    toAminoMsg(message: _79.SignBytes): _79.SignBytesAminoMsg;
-                    fromProtoMsg(message: _79.SignBytesProtoMsg): _79.SignBytes;
-                    toProto(message: _79.SignBytes): Uint8Array;
-                    toProtoMsg(message: _79.SignBytes): _79.SignBytesProtoMsg;
+                    fromPartial(object: Partial<_81.SignBytes>): _81.SignBytes;
+                    fromAmino(object: _81.SignBytesAmino): _81.SignBytes;
+                    toAmino(message: _81.SignBytes): _81.SignBytesAmino;
+                    fromAminoMsg(object: _81.SignBytesAminoMsg): _81.SignBytes;
+                    toAminoMsg(message: _81.SignBytes): _81.SignBytesAminoMsg;
+                    fromProtoMsg(message: _81.SignBytesProtoMsg): _81.SignBytes;
+                    toProto(message: _81.SignBytes): Uint8Array;
+                    toProtoMsg(message: _81.SignBytes): _81.SignBytesProtoMsg;
                 };
                 HeaderData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.HeaderData;
-                    isSDK(o: any): o is _79.HeaderDataSDKType;
-                    isAmino(o: any): o is _79.HeaderDataAmino;
-                    encode(message: _79.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.HeaderData;
-                    fromJSON(object: any): _79.HeaderData;
-                    toJSON(message: _79.HeaderData): {
+                    is(o: any): o is _81.HeaderData;
+                    isSDK(o: any): o is _81.HeaderDataSDKType;
+                    isAmino(o: any): o is _81.HeaderDataAmino;
+                    encode(message: _81.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.HeaderData;
+                    fromJSON(object: any): _81.HeaderData;
+                    toJSON(message: _81.HeaderData): {
                         newPubKey?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -4848,25 +4848,25 @@ export declare namespace ibc {
                         };
                         newDiversifier: string;
                     };
-                    fromPartial(object: Partial<_79.HeaderData>): _79.HeaderData;
-                    fromAmino(object: _79.HeaderDataAmino): _79.HeaderData;
-                    toAmino(message: _79.HeaderData): _79.HeaderDataAmino;
-                    fromAminoMsg(object: _79.HeaderDataAminoMsg): _79.HeaderData;
-                    toAminoMsg(message: _79.HeaderData): _79.HeaderDataAminoMsg;
-                    fromProtoMsg(message: _79.HeaderDataProtoMsg): _79.HeaderData;
-                    toProto(message: _79.HeaderData): Uint8Array;
-                    toProtoMsg(message: _79.HeaderData): _79.HeaderDataProtoMsg;
+                    fromPartial(object: Partial<_81.HeaderData>): _81.HeaderData;
+                    fromAmino(object: _81.HeaderDataAmino): _81.HeaderData;
+                    toAmino(message: _81.HeaderData): _81.HeaderDataAmino;
+                    fromAminoMsg(object: _81.HeaderDataAminoMsg): _81.HeaderData;
+                    toAminoMsg(message: _81.HeaderData): _81.HeaderDataAminoMsg;
+                    fromProtoMsg(message: _81.HeaderDataProtoMsg): _81.HeaderData;
+                    toProto(message: _81.HeaderData): Uint8Array;
+                    toProtoMsg(message: _81.HeaderData): _81.HeaderDataProtoMsg;
                 };
                 ClientStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.ClientStateData;
-                    isSDK(o: any): o is _79.ClientStateDataSDKType;
-                    isAmino(o: any): o is _79.ClientStateDataAmino;
-                    encode(message: _79.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ClientStateData;
-                    fromJSON(object: any): _79.ClientStateData;
-                    toJSON(message: _79.ClientStateData): {
+                    is(o: any): o is _81.ClientStateData;
+                    isSDK(o: any): o is _81.ClientStateDataSDKType;
+                    isAmino(o: any): o is _81.ClientStateDataAmino;
+                    encode(message: _81.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ClientStateData;
+                    fromJSON(object: any): _81.ClientStateData;
+                    toJSON(message: _81.ClientStateData): {
                         path: string;
                         clientState?: {
                             $typeUrl?: string;
@@ -4874,25 +4874,25 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_79.ClientStateData>): _79.ClientStateData;
-                    fromAmino(object: _79.ClientStateDataAmino): _79.ClientStateData;
-                    toAmino(message: _79.ClientStateData): _79.ClientStateDataAmino;
-                    fromAminoMsg(object: _79.ClientStateDataAminoMsg): _79.ClientStateData;
-                    toAminoMsg(message: _79.ClientStateData): _79.ClientStateDataAminoMsg;
-                    fromProtoMsg(message: _79.ClientStateDataProtoMsg): _79.ClientStateData;
-                    toProto(message: _79.ClientStateData): Uint8Array;
-                    toProtoMsg(message: _79.ClientStateData): _79.ClientStateDataProtoMsg;
+                    fromPartial(object: Partial<_81.ClientStateData>): _81.ClientStateData;
+                    fromAmino(object: _81.ClientStateDataAmino): _81.ClientStateData;
+                    toAmino(message: _81.ClientStateData): _81.ClientStateDataAmino;
+                    fromAminoMsg(object: _81.ClientStateDataAminoMsg): _81.ClientStateData;
+                    toAminoMsg(message: _81.ClientStateData): _81.ClientStateDataAminoMsg;
+                    fromProtoMsg(message: _81.ClientStateDataProtoMsg): _81.ClientStateData;
+                    toProto(message: _81.ClientStateData): Uint8Array;
+                    toProtoMsg(message: _81.ClientStateData): _81.ClientStateDataProtoMsg;
                 };
                 ConsensusStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.ConsensusStateData;
-                    isSDK(o: any): o is _79.ConsensusStateDataSDKType;
-                    isAmino(o: any): o is _79.ConsensusStateDataAmino;
-                    encode(message: _79.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ConsensusStateData;
-                    fromJSON(object: any): _79.ConsensusStateData;
-                    toJSON(message: _79.ConsensusStateData): {
+                    is(o: any): o is _81.ConsensusStateData;
+                    isSDK(o: any): o is _81.ConsensusStateDataSDKType;
+                    isAmino(o: any): o is _81.ConsensusStateDataAmino;
+                    encode(message: _81.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ConsensusStateData;
+                    fromJSON(object: any): _81.ConsensusStateData;
+                    toJSON(message: _81.ConsensusStateData): {
                         path: string;
                         consensusState?: {
                             $typeUrl?: string;
@@ -4900,25 +4900,25 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_79.ConsensusStateData>): _79.ConsensusStateData;
-                    fromAmino(object: _79.ConsensusStateDataAmino): _79.ConsensusStateData;
-                    toAmino(message: _79.ConsensusStateData): _79.ConsensusStateDataAmino;
-                    fromAminoMsg(object: _79.ConsensusStateDataAminoMsg): _79.ConsensusStateData;
-                    toAminoMsg(message: _79.ConsensusStateData): _79.ConsensusStateDataAminoMsg;
-                    fromProtoMsg(message: _79.ConsensusStateDataProtoMsg): _79.ConsensusStateData;
-                    toProto(message: _79.ConsensusStateData): Uint8Array;
-                    toProtoMsg(message: _79.ConsensusStateData): _79.ConsensusStateDataProtoMsg;
+                    fromPartial(object: Partial<_81.ConsensusStateData>): _81.ConsensusStateData;
+                    fromAmino(object: _81.ConsensusStateDataAmino): _81.ConsensusStateData;
+                    toAmino(message: _81.ConsensusStateData): _81.ConsensusStateDataAmino;
+                    fromAminoMsg(object: _81.ConsensusStateDataAminoMsg): _81.ConsensusStateData;
+                    toAminoMsg(message: _81.ConsensusStateData): _81.ConsensusStateDataAminoMsg;
+                    fromProtoMsg(message: _81.ConsensusStateDataProtoMsg): _81.ConsensusStateData;
+                    toProto(message: _81.ConsensusStateData): Uint8Array;
+                    toProtoMsg(message: _81.ConsensusStateData): _81.ConsensusStateDataProtoMsg;
                 };
                 ConnectionStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.ConnectionStateData;
-                    isSDK(o: any): o is _79.ConnectionStateDataSDKType;
-                    isAmino(o: any): o is _79.ConnectionStateDataAmino;
-                    encode(message: _79.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ConnectionStateData;
-                    fromJSON(object: any): _79.ConnectionStateData;
-                    toJSON(message: _79.ConnectionStateData): {
+                    is(o: any): o is _81.ConnectionStateData;
+                    isSDK(o: any): o is _81.ConnectionStateDataSDKType;
+                    isAmino(o: any): o is _81.ConnectionStateDataAmino;
+                    encode(message: _81.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ConnectionStateData;
+                    fromJSON(object: any): _81.ConnectionStateData;
+                    toJSON(message: _81.ConnectionStateData): {
                         path: string;
                         connection?: {
                             clientId: string;
@@ -4926,7 +4926,7 @@ export declare namespace ibc {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            state: _74.State;
+                            state: _76.State;
                             counterparty: {
                                 clientId: string;
                                 connectionId: string;
@@ -4937,29 +4937,29 @@ export declare namespace ibc {
                             delayPeriod: string;
                         };
                     };
-                    fromPartial(object: Partial<_79.ConnectionStateData>): _79.ConnectionStateData;
-                    fromAmino(object: _79.ConnectionStateDataAmino): _79.ConnectionStateData;
-                    toAmino(message: _79.ConnectionStateData): _79.ConnectionStateDataAmino;
-                    fromAminoMsg(object: _79.ConnectionStateDataAminoMsg): _79.ConnectionStateData;
-                    toAminoMsg(message: _79.ConnectionStateData): _79.ConnectionStateDataAminoMsg;
-                    fromProtoMsg(message: _79.ConnectionStateDataProtoMsg): _79.ConnectionStateData;
-                    toProto(message: _79.ConnectionStateData): Uint8Array;
-                    toProtoMsg(message: _79.ConnectionStateData): _79.ConnectionStateDataProtoMsg;
+                    fromPartial(object: Partial<_81.ConnectionStateData>): _81.ConnectionStateData;
+                    fromAmino(object: _81.ConnectionStateDataAmino): _81.ConnectionStateData;
+                    toAmino(message: _81.ConnectionStateData): _81.ConnectionStateDataAmino;
+                    fromAminoMsg(object: _81.ConnectionStateDataAminoMsg): _81.ConnectionStateData;
+                    toAminoMsg(message: _81.ConnectionStateData): _81.ConnectionStateDataAminoMsg;
+                    fromProtoMsg(message: _81.ConnectionStateDataProtoMsg): _81.ConnectionStateData;
+                    toProto(message: _81.ConnectionStateData): Uint8Array;
+                    toProtoMsg(message: _81.ConnectionStateData): _81.ConnectionStateDataProtoMsg;
                 };
                 ChannelStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.ChannelStateData;
-                    isSDK(o: any): o is _79.ChannelStateDataSDKType;
-                    isAmino(o: any): o is _79.ChannelStateDataAmino;
-                    encode(message: _79.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ChannelStateData;
-                    fromJSON(object: any): _79.ChannelStateData;
-                    toJSON(message: _79.ChannelStateData): {
+                    is(o: any): o is _81.ChannelStateData;
+                    isSDK(o: any): o is _81.ChannelStateDataSDKType;
+                    isAmino(o: any): o is _81.ChannelStateDataAmino;
+                    encode(message: _81.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ChannelStateData;
+                    fromJSON(object: any): _81.ChannelStateData;
+                    toJSON(message: _81.ChannelStateData): {
                         path: string;
                         channel?: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -4968,119 +4968,119 @@ export declare namespace ibc {
                             version: string;
                         };
                     };
-                    fromPartial(object: Partial<_79.ChannelStateData>): _79.ChannelStateData;
-                    fromAmino(object: _79.ChannelStateDataAmino): _79.ChannelStateData;
-                    toAmino(message: _79.ChannelStateData): _79.ChannelStateDataAmino;
-                    fromAminoMsg(object: _79.ChannelStateDataAminoMsg): _79.ChannelStateData;
-                    toAminoMsg(message: _79.ChannelStateData): _79.ChannelStateDataAminoMsg;
-                    fromProtoMsg(message: _79.ChannelStateDataProtoMsg): _79.ChannelStateData;
-                    toProto(message: _79.ChannelStateData): Uint8Array;
-                    toProtoMsg(message: _79.ChannelStateData): _79.ChannelStateDataProtoMsg;
+                    fromPartial(object: Partial<_81.ChannelStateData>): _81.ChannelStateData;
+                    fromAmino(object: _81.ChannelStateDataAmino): _81.ChannelStateData;
+                    toAmino(message: _81.ChannelStateData): _81.ChannelStateDataAmino;
+                    fromAminoMsg(object: _81.ChannelStateDataAminoMsg): _81.ChannelStateData;
+                    toAminoMsg(message: _81.ChannelStateData): _81.ChannelStateDataAminoMsg;
+                    fromProtoMsg(message: _81.ChannelStateDataProtoMsg): _81.ChannelStateData;
+                    toProto(message: _81.ChannelStateData): Uint8Array;
+                    toProtoMsg(message: _81.ChannelStateData): _81.ChannelStateDataProtoMsg;
                 };
                 PacketCommitmentData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.PacketCommitmentData;
-                    isSDK(o: any): o is _79.PacketCommitmentDataSDKType;
-                    isAmino(o: any): o is _79.PacketCommitmentDataAmino;
-                    encode(message: _79.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.PacketCommitmentData;
-                    fromJSON(object: any): _79.PacketCommitmentData;
-                    toJSON(message: _79.PacketCommitmentData): {
+                    is(o: any): o is _81.PacketCommitmentData;
+                    isSDK(o: any): o is _81.PacketCommitmentDataSDKType;
+                    isAmino(o: any): o is _81.PacketCommitmentDataAmino;
+                    encode(message: _81.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.PacketCommitmentData;
+                    fromJSON(object: any): _81.PacketCommitmentData;
+                    toJSON(message: _81.PacketCommitmentData): {
                         path: string;
                         commitment: string;
                     };
-                    fromPartial(object: Partial<_79.PacketCommitmentData>): _79.PacketCommitmentData;
-                    fromAmino(object: _79.PacketCommitmentDataAmino): _79.PacketCommitmentData;
-                    toAmino(message: _79.PacketCommitmentData): _79.PacketCommitmentDataAmino;
-                    fromAminoMsg(object: _79.PacketCommitmentDataAminoMsg): _79.PacketCommitmentData;
-                    toAminoMsg(message: _79.PacketCommitmentData): _79.PacketCommitmentDataAminoMsg;
-                    fromProtoMsg(message: _79.PacketCommitmentDataProtoMsg): _79.PacketCommitmentData;
-                    toProto(message: _79.PacketCommitmentData): Uint8Array;
-                    toProtoMsg(message: _79.PacketCommitmentData): _79.PacketCommitmentDataProtoMsg;
+                    fromPartial(object: Partial<_81.PacketCommitmentData>): _81.PacketCommitmentData;
+                    fromAmino(object: _81.PacketCommitmentDataAmino): _81.PacketCommitmentData;
+                    toAmino(message: _81.PacketCommitmentData): _81.PacketCommitmentDataAmino;
+                    fromAminoMsg(object: _81.PacketCommitmentDataAminoMsg): _81.PacketCommitmentData;
+                    toAminoMsg(message: _81.PacketCommitmentData): _81.PacketCommitmentDataAminoMsg;
+                    fromProtoMsg(message: _81.PacketCommitmentDataProtoMsg): _81.PacketCommitmentData;
+                    toProto(message: _81.PacketCommitmentData): Uint8Array;
+                    toProtoMsg(message: _81.PacketCommitmentData): _81.PacketCommitmentDataProtoMsg;
                 };
                 PacketAcknowledgementData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.PacketAcknowledgementData;
-                    isSDK(o: any): o is _79.PacketAcknowledgementDataSDKType;
-                    isAmino(o: any): o is _79.PacketAcknowledgementDataAmino;
-                    encode(message: _79.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.PacketAcknowledgementData;
-                    fromJSON(object: any): _79.PacketAcknowledgementData;
-                    toJSON(message: _79.PacketAcknowledgementData): {
+                    is(o: any): o is _81.PacketAcknowledgementData;
+                    isSDK(o: any): o is _81.PacketAcknowledgementDataSDKType;
+                    isAmino(o: any): o is _81.PacketAcknowledgementDataAmino;
+                    encode(message: _81.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.PacketAcknowledgementData;
+                    fromJSON(object: any): _81.PacketAcknowledgementData;
+                    toJSON(message: _81.PacketAcknowledgementData): {
                         path: string;
                         acknowledgement: string;
                     };
-                    fromPartial(object: Partial<_79.PacketAcknowledgementData>): _79.PacketAcknowledgementData;
-                    fromAmino(object: _79.PacketAcknowledgementDataAmino): _79.PacketAcknowledgementData;
-                    toAmino(message: _79.PacketAcknowledgementData): _79.PacketAcknowledgementDataAmino;
-                    fromAminoMsg(object: _79.PacketAcknowledgementDataAminoMsg): _79.PacketAcknowledgementData;
-                    toAminoMsg(message: _79.PacketAcknowledgementData): _79.PacketAcknowledgementDataAminoMsg;
-                    fromProtoMsg(message: _79.PacketAcknowledgementDataProtoMsg): _79.PacketAcknowledgementData;
-                    toProto(message: _79.PacketAcknowledgementData): Uint8Array;
-                    toProtoMsg(message: _79.PacketAcknowledgementData): _79.PacketAcknowledgementDataProtoMsg;
+                    fromPartial(object: Partial<_81.PacketAcknowledgementData>): _81.PacketAcknowledgementData;
+                    fromAmino(object: _81.PacketAcknowledgementDataAmino): _81.PacketAcknowledgementData;
+                    toAmino(message: _81.PacketAcknowledgementData): _81.PacketAcknowledgementDataAmino;
+                    fromAminoMsg(object: _81.PacketAcknowledgementDataAminoMsg): _81.PacketAcknowledgementData;
+                    toAminoMsg(message: _81.PacketAcknowledgementData): _81.PacketAcknowledgementDataAminoMsg;
+                    fromProtoMsg(message: _81.PacketAcknowledgementDataProtoMsg): _81.PacketAcknowledgementData;
+                    toProto(message: _81.PacketAcknowledgementData): Uint8Array;
+                    toProtoMsg(message: _81.PacketAcknowledgementData): _81.PacketAcknowledgementDataProtoMsg;
                 };
                 PacketReceiptAbsenceData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.PacketReceiptAbsenceData;
-                    isSDK(o: any): o is _79.PacketReceiptAbsenceDataSDKType;
-                    isAmino(o: any): o is _79.PacketReceiptAbsenceDataAmino;
-                    encode(message: _79.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.PacketReceiptAbsenceData;
-                    fromJSON(object: any): _79.PacketReceiptAbsenceData;
-                    toJSON(message: _79.PacketReceiptAbsenceData): {
+                    is(o: any): o is _81.PacketReceiptAbsenceData;
+                    isSDK(o: any): o is _81.PacketReceiptAbsenceDataSDKType;
+                    isAmino(o: any): o is _81.PacketReceiptAbsenceDataAmino;
+                    encode(message: _81.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.PacketReceiptAbsenceData;
+                    fromJSON(object: any): _81.PacketReceiptAbsenceData;
+                    toJSON(message: _81.PacketReceiptAbsenceData): {
                         path: string;
                     };
-                    fromPartial(object: Partial<_79.PacketReceiptAbsenceData>): _79.PacketReceiptAbsenceData;
-                    fromAmino(object: _79.PacketReceiptAbsenceDataAmino): _79.PacketReceiptAbsenceData;
-                    toAmino(message: _79.PacketReceiptAbsenceData): _79.PacketReceiptAbsenceDataAmino;
-                    fromAminoMsg(object: _79.PacketReceiptAbsenceDataAminoMsg): _79.PacketReceiptAbsenceData;
-                    toAminoMsg(message: _79.PacketReceiptAbsenceData): _79.PacketReceiptAbsenceDataAminoMsg;
-                    fromProtoMsg(message: _79.PacketReceiptAbsenceDataProtoMsg): _79.PacketReceiptAbsenceData;
-                    toProto(message: _79.PacketReceiptAbsenceData): Uint8Array;
-                    toProtoMsg(message: _79.PacketReceiptAbsenceData): _79.PacketReceiptAbsenceDataProtoMsg;
+                    fromPartial(object: Partial<_81.PacketReceiptAbsenceData>): _81.PacketReceiptAbsenceData;
+                    fromAmino(object: _81.PacketReceiptAbsenceDataAmino): _81.PacketReceiptAbsenceData;
+                    toAmino(message: _81.PacketReceiptAbsenceData): _81.PacketReceiptAbsenceDataAmino;
+                    fromAminoMsg(object: _81.PacketReceiptAbsenceDataAminoMsg): _81.PacketReceiptAbsenceData;
+                    toAminoMsg(message: _81.PacketReceiptAbsenceData): _81.PacketReceiptAbsenceDataAminoMsg;
+                    fromProtoMsg(message: _81.PacketReceiptAbsenceDataProtoMsg): _81.PacketReceiptAbsenceData;
+                    toProto(message: _81.PacketReceiptAbsenceData): Uint8Array;
+                    toProtoMsg(message: _81.PacketReceiptAbsenceData): _81.PacketReceiptAbsenceDataProtoMsg;
                 };
                 NextSequenceRecvData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _79.NextSequenceRecvData;
-                    isSDK(o: any): o is _79.NextSequenceRecvDataSDKType;
-                    isAmino(o: any): o is _79.NextSequenceRecvDataAmino;
-                    encode(message: _79.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.NextSequenceRecvData;
-                    fromJSON(object: any): _79.NextSequenceRecvData;
-                    toJSON(message: _79.NextSequenceRecvData): {
+                    is(o: any): o is _81.NextSequenceRecvData;
+                    isSDK(o: any): o is _81.NextSequenceRecvDataSDKType;
+                    isAmino(o: any): o is _81.NextSequenceRecvDataAmino;
+                    encode(message: _81.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.NextSequenceRecvData;
+                    fromJSON(object: any): _81.NextSequenceRecvData;
+                    toJSON(message: _81.NextSequenceRecvData): {
                         path: string;
                         nextSeqRecv: string;
                     };
-                    fromPartial(object: Partial<_79.NextSequenceRecvData>): _79.NextSequenceRecvData;
-                    fromAmino(object: _79.NextSequenceRecvDataAmino): _79.NextSequenceRecvData;
-                    toAmino(message: _79.NextSequenceRecvData): _79.NextSequenceRecvDataAmino;
-                    fromAminoMsg(object: _79.NextSequenceRecvDataAminoMsg): _79.NextSequenceRecvData;
-                    toAminoMsg(message: _79.NextSequenceRecvData): _79.NextSequenceRecvDataAminoMsg;
-                    fromProtoMsg(message: _79.NextSequenceRecvDataProtoMsg): _79.NextSequenceRecvData;
-                    toProto(message: _79.NextSequenceRecvData): Uint8Array;
-                    toProtoMsg(message: _79.NextSequenceRecvData): _79.NextSequenceRecvDataProtoMsg;
+                    fromPartial(object: Partial<_81.NextSequenceRecvData>): _81.NextSequenceRecvData;
+                    fromAmino(object: _81.NextSequenceRecvDataAmino): _81.NextSequenceRecvData;
+                    toAmino(message: _81.NextSequenceRecvData): _81.NextSequenceRecvDataAmino;
+                    fromAminoMsg(object: _81.NextSequenceRecvDataAminoMsg): _81.NextSequenceRecvData;
+                    toAminoMsg(message: _81.NextSequenceRecvData): _81.NextSequenceRecvDataAminoMsg;
+                    fromProtoMsg(message: _81.NextSequenceRecvDataProtoMsg): _81.NextSequenceRecvData;
+                    toProto(message: _81.NextSequenceRecvData): Uint8Array;
+                    toProtoMsg(message: _81.NextSequenceRecvData): _81.NextSequenceRecvDataProtoMsg;
                 };
             };
             const v2: {
-                dataTypeFromJSON(object: any): _80.DataType;
-                dataTypeToJSON(object: _80.DataType): string;
-                DataType: typeof _80.DataType;
-                DataTypeSDKType: typeof _80.DataType;
-                DataTypeAmino: typeof _80.DataType;
+                dataTypeFromJSON(object: any): _82.DataType;
+                dataTypeToJSON(object: _82.DataType): string;
+                DataType: typeof _82.DataType;
+                DataTypeSDKType: typeof _82.DataType;
+                DataTypeAmino: typeof _82.DataType;
                 ClientState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.ClientState;
-                    isSDK(o: any): o is _80.ClientStateSDKType;
-                    isAmino(o: any): o is _80.ClientStateAmino;
-                    encode(message: _80.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ClientState;
-                    fromJSON(object: any): _80.ClientState;
-                    toJSON(message: _80.ClientState): {
+                    is(o: any): o is _82.ClientState;
+                    isSDK(o: any): o is _82.ClientStateSDKType;
+                    isAmino(o: any): o is _82.ClientStateAmino;
+                    encode(message: _82.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ClientState;
+                    fromJSON(object: any): _82.ClientState;
+                    toJSON(message: _82.ClientState): {
                         sequence: string;
                         isFrozen: boolean;
                         consensusState?: {
@@ -5094,25 +5094,25 @@ export declare namespace ibc {
                         };
                         allowUpdateAfterProposal: boolean;
                     };
-                    fromPartial(object: Partial<_80.ClientState>): _80.ClientState;
-                    fromAmino(object: _80.ClientStateAmino): _80.ClientState;
-                    toAmino(message: _80.ClientState): _80.ClientStateAmino;
-                    fromAminoMsg(object: _80.ClientStateAminoMsg): _80.ClientState;
-                    toAminoMsg(message: _80.ClientState): _80.ClientStateAminoMsg;
-                    fromProtoMsg(message: _80.ClientStateProtoMsg): _80.ClientState;
-                    toProto(message: _80.ClientState): Uint8Array;
-                    toProtoMsg(message: _80.ClientState): _80.ClientStateProtoMsg;
+                    fromPartial(object: Partial<_82.ClientState>): _82.ClientState;
+                    fromAmino(object: _82.ClientStateAmino): _82.ClientState;
+                    toAmino(message: _82.ClientState): _82.ClientStateAmino;
+                    fromAminoMsg(object: _82.ClientStateAminoMsg): _82.ClientState;
+                    toAminoMsg(message: _82.ClientState): _82.ClientStateAminoMsg;
+                    fromProtoMsg(message: _82.ClientStateProtoMsg): _82.ClientState;
+                    toProto(message: _82.ClientState): Uint8Array;
+                    toProtoMsg(message: _82.ClientState): _82.ClientStateProtoMsg;
                 };
                 ConsensusState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.ConsensusState;
-                    isSDK(o: any): o is _80.ConsensusStateSDKType;
-                    isAmino(o: any): o is _80.ConsensusStateAmino;
-                    encode(message: _80.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ConsensusState;
-                    fromJSON(object: any): _80.ConsensusState;
-                    toJSON(message: _80.ConsensusState): {
+                    is(o: any): o is _82.ConsensusState;
+                    isSDK(o: any): o is _82.ConsensusStateSDKType;
+                    isAmino(o: any): o is _82.ConsensusStateAmino;
+                    encode(message: _82.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ConsensusState;
+                    fromJSON(object: any): _82.ConsensusState;
+                    toJSON(message: _82.ConsensusState): {
                         publicKey?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -5121,25 +5121,25 @@ export declare namespace ibc {
                         diversifier: string;
                         timestamp: string;
                     };
-                    fromPartial(object: Partial<_80.ConsensusState>): _80.ConsensusState;
-                    fromAmino(object: _80.ConsensusStateAmino): _80.ConsensusState;
-                    toAmino(message: _80.ConsensusState): _80.ConsensusStateAmino;
-                    fromAminoMsg(object: _80.ConsensusStateAminoMsg): _80.ConsensusState;
-                    toAminoMsg(message: _80.ConsensusState): _80.ConsensusStateAminoMsg;
-                    fromProtoMsg(message: _80.ConsensusStateProtoMsg): _80.ConsensusState;
-                    toProto(message: _80.ConsensusState): Uint8Array;
-                    toProtoMsg(message: _80.ConsensusState): _80.ConsensusStateProtoMsg;
+                    fromPartial(object: Partial<_82.ConsensusState>): _82.ConsensusState;
+                    fromAmino(object: _82.ConsensusStateAmino): _82.ConsensusState;
+                    toAmino(message: _82.ConsensusState): _82.ConsensusStateAmino;
+                    fromAminoMsg(object: _82.ConsensusStateAminoMsg): _82.ConsensusState;
+                    toAminoMsg(message: _82.ConsensusState): _82.ConsensusStateAminoMsg;
+                    fromProtoMsg(message: _82.ConsensusStateProtoMsg): _82.ConsensusState;
+                    toProto(message: _82.ConsensusState): Uint8Array;
+                    toProtoMsg(message: _82.ConsensusState): _82.ConsensusStateProtoMsg;
                 };
                 Header: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.Header;
-                    isSDK(o: any): o is _80.HeaderSDKType;
-                    isAmino(o: any): o is _80.HeaderAmino;
-                    encode(message: _80.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.Header;
-                    fromJSON(object: any): _80.Header;
-                    toJSON(message: _80.Header): {
+                    is(o: any): o is _82.Header;
+                    isSDK(o: any): o is _82.HeaderSDKType;
+                    isAmino(o: any): o is _82.HeaderAmino;
+                    encode(message: _82.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Header;
+                    fromJSON(object: any): _82.Header;
+                    toJSON(message: _82.Header): {
                         sequence: string;
                         timestamp: string;
                         signature: string;
@@ -5150,130 +5150,130 @@ export declare namespace ibc {
                         };
                         newDiversifier: string;
                     };
-                    fromPartial(object: Partial<_80.Header>): _80.Header;
-                    fromAmino(object: _80.HeaderAmino): _80.Header;
-                    toAmino(message: _80.Header): _80.HeaderAmino;
-                    fromAminoMsg(object: _80.HeaderAminoMsg): _80.Header;
-                    toAminoMsg(message: _80.Header): _80.HeaderAminoMsg;
-                    fromProtoMsg(message: _80.HeaderProtoMsg): _80.Header;
-                    toProto(message: _80.Header): Uint8Array;
-                    toProtoMsg(message: _80.Header): _80.HeaderProtoMsg;
+                    fromPartial(object: Partial<_82.Header>): _82.Header;
+                    fromAmino(object: _82.HeaderAmino): _82.Header;
+                    toAmino(message: _82.Header): _82.HeaderAmino;
+                    fromAminoMsg(object: _82.HeaderAminoMsg): _82.Header;
+                    toAminoMsg(message: _82.Header): _82.HeaderAminoMsg;
+                    fromProtoMsg(message: _82.HeaderProtoMsg): _82.Header;
+                    toProto(message: _82.Header): Uint8Array;
+                    toProtoMsg(message: _82.Header): _82.HeaderProtoMsg;
                 };
                 Misbehaviour: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.Misbehaviour;
-                    isSDK(o: any): o is _80.MisbehaviourSDKType;
-                    isAmino(o: any): o is _80.MisbehaviourAmino;
-                    encode(message: _80.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.Misbehaviour;
-                    fromJSON(object: any): _80.Misbehaviour;
-                    toJSON(message: _80.Misbehaviour): {
+                    is(o: any): o is _82.Misbehaviour;
+                    isSDK(o: any): o is _82.MisbehaviourSDKType;
+                    isAmino(o: any): o is _82.MisbehaviourAmino;
+                    encode(message: _82.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Misbehaviour;
+                    fromJSON(object: any): _82.Misbehaviour;
+                    toJSON(message: _82.Misbehaviour): {
                         clientId: string;
                         sequence: string;
                         signatureOne?: {
                             signature: string;
-                            dataType: _80.DataType;
+                            dataType: _82.DataType;
                             data: string;
                             timestamp: string;
                         };
                         signatureTwo?: {
                             signature: string;
-                            dataType: _80.DataType;
+                            dataType: _82.DataType;
                             data: string;
                             timestamp: string;
                         };
                     };
-                    fromPartial(object: Partial<_80.Misbehaviour>): _80.Misbehaviour;
-                    fromAmino(object: _80.MisbehaviourAmino): _80.Misbehaviour;
-                    toAmino(message: _80.Misbehaviour): _80.MisbehaviourAmino;
-                    fromAminoMsg(object: _80.MisbehaviourAminoMsg): _80.Misbehaviour;
-                    toAminoMsg(message: _80.Misbehaviour): _80.MisbehaviourAminoMsg;
-                    fromProtoMsg(message: _80.MisbehaviourProtoMsg): _80.Misbehaviour;
-                    toProto(message: _80.Misbehaviour): Uint8Array;
-                    toProtoMsg(message: _80.Misbehaviour): _80.MisbehaviourProtoMsg;
+                    fromPartial(object: Partial<_82.Misbehaviour>): _82.Misbehaviour;
+                    fromAmino(object: _82.MisbehaviourAmino): _82.Misbehaviour;
+                    toAmino(message: _82.Misbehaviour): _82.MisbehaviourAmino;
+                    fromAminoMsg(object: _82.MisbehaviourAminoMsg): _82.Misbehaviour;
+                    toAminoMsg(message: _82.Misbehaviour): _82.MisbehaviourAminoMsg;
+                    fromProtoMsg(message: _82.MisbehaviourProtoMsg): _82.Misbehaviour;
+                    toProto(message: _82.Misbehaviour): Uint8Array;
+                    toProtoMsg(message: _82.Misbehaviour): _82.MisbehaviourProtoMsg;
                 };
                 SignatureAndData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.SignatureAndData;
-                    isSDK(o: any): o is _80.SignatureAndDataSDKType;
-                    isAmino(o: any): o is _80.SignatureAndDataAmino;
-                    encode(message: _80.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.SignatureAndData;
-                    fromJSON(object: any): _80.SignatureAndData;
-                    toJSON(message: _80.SignatureAndData): {
+                    is(o: any): o is _82.SignatureAndData;
+                    isSDK(o: any): o is _82.SignatureAndDataSDKType;
+                    isAmino(o: any): o is _82.SignatureAndDataAmino;
+                    encode(message: _82.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.SignatureAndData;
+                    fromJSON(object: any): _82.SignatureAndData;
+                    toJSON(message: _82.SignatureAndData): {
                         signature: string;
-                        dataType: _80.DataType;
+                        dataType: _82.DataType;
                         data: string;
                         timestamp: string;
                     };
-                    fromPartial(object: Partial<_80.SignatureAndData>): _80.SignatureAndData;
-                    fromAmino(object: _80.SignatureAndDataAmino): _80.SignatureAndData;
-                    toAmino(message: _80.SignatureAndData): _80.SignatureAndDataAmino;
-                    fromAminoMsg(object: _80.SignatureAndDataAminoMsg): _80.SignatureAndData;
-                    toAminoMsg(message: _80.SignatureAndData): _80.SignatureAndDataAminoMsg;
-                    fromProtoMsg(message: _80.SignatureAndDataProtoMsg): _80.SignatureAndData;
-                    toProto(message: _80.SignatureAndData): Uint8Array;
-                    toProtoMsg(message: _80.SignatureAndData): _80.SignatureAndDataProtoMsg;
+                    fromPartial(object: Partial<_82.SignatureAndData>): _82.SignatureAndData;
+                    fromAmino(object: _82.SignatureAndDataAmino): _82.SignatureAndData;
+                    toAmino(message: _82.SignatureAndData): _82.SignatureAndDataAmino;
+                    fromAminoMsg(object: _82.SignatureAndDataAminoMsg): _82.SignatureAndData;
+                    toAminoMsg(message: _82.SignatureAndData): _82.SignatureAndDataAminoMsg;
+                    fromProtoMsg(message: _82.SignatureAndDataProtoMsg): _82.SignatureAndData;
+                    toProto(message: _82.SignatureAndData): Uint8Array;
+                    toProtoMsg(message: _82.SignatureAndData): _82.SignatureAndDataProtoMsg;
                 };
                 TimestampedSignatureData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.TimestampedSignatureData;
-                    isSDK(o: any): o is _80.TimestampedSignatureDataSDKType;
-                    isAmino(o: any): o is _80.TimestampedSignatureDataAmino;
-                    encode(message: _80.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.TimestampedSignatureData;
-                    fromJSON(object: any): _80.TimestampedSignatureData;
-                    toJSON(message: _80.TimestampedSignatureData): {
+                    is(o: any): o is _82.TimestampedSignatureData;
+                    isSDK(o: any): o is _82.TimestampedSignatureDataSDKType;
+                    isAmino(o: any): o is _82.TimestampedSignatureDataAmino;
+                    encode(message: _82.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.TimestampedSignatureData;
+                    fromJSON(object: any): _82.TimestampedSignatureData;
+                    toJSON(message: _82.TimestampedSignatureData): {
                         signatureData: string;
                         timestamp: string;
                     };
-                    fromPartial(object: Partial<_80.TimestampedSignatureData>): _80.TimestampedSignatureData;
-                    fromAmino(object: _80.TimestampedSignatureDataAmino): _80.TimestampedSignatureData;
-                    toAmino(message: _80.TimestampedSignatureData): _80.TimestampedSignatureDataAmino;
-                    fromAminoMsg(object: _80.TimestampedSignatureDataAminoMsg): _80.TimestampedSignatureData;
-                    toAminoMsg(message: _80.TimestampedSignatureData): _80.TimestampedSignatureDataAminoMsg;
-                    fromProtoMsg(message: _80.TimestampedSignatureDataProtoMsg): _80.TimestampedSignatureData;
-                    toProto(message: _80.TimestampedSignatureData): Uint8Array;
-                    toProtoMsg(message: _80.TimestampedSignatureData): _80.TimestampedSignatureDataProtoMsg;
+                    fromPartial(object: Partial<_82.TimestampedSignatureData>): _82.TimestampedSignatureData;
+                    fromAmino(object: _82.TimestampedSignatureDataAmino): _82.TimestampedSignatureData;
+                    toAmino(message: _82.TimestampedSignatureData): _82.TimestampedSignatureDataAmino;
+                    fromAminoMsg(object: _82.TimestampedSignatureDataAminoMsg): _82.TimestampedSignatureData;
+                    toAminoMsg(message: _82.TimestampedSignatureData): _82.TimestampedSignatureDataAminoMsg;
+                    fromProtoMsg(message: _82.TimestampedSignatureDataProtoMsg): _82.TimestampedSignatureData;
+                    toProto(message: _82.TimestampedSignatureData): Uint8Array;
+                    toProtoMsg(message: _82.TimestampedSignatureData): _82.TimestampedSignatureDataProtoMsg;
                 };
                 SignBytes: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.SignBytes;
-                    isSDK(o: any): o is _80.SignBytesSDKType;
-                    isAmino(o: any): o is _80.SignBytesAmino;
-                    encode(message: _80.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.SignBytes;
-                    fromJSON(object: any): _80.SignBytes;
-                    toJSON(message: _80.SignBytes): {
+                    is(o: any): o is _82.SignBytes;
+                    isSDK(o: any): o is _82.SignBytesSDKType;
+                    isAmino(o: any): o is _82.SignBytesAmino;
+                    encode(message: _82.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.SignBytes;
+                    fromJSON(object: any): _82.SignBytes;
+                    toJSON(message: _82.SignBytes): {
                         sequence: string;
                         timestamp: string;
                         diversifier: string;
-                        dataType: _80.DataType;
+                        dataType: _82.DataType;
                         data: string;
                     };
-                    fromPartial(object: Partial<_80.SignBytes>): _80.SignBytes;
-                    fromAmino(object: _80.SignBytesAmino): _80.SignBytes;
-                    toAmino(message: _80.SignBytes): _80.SignBytesAmino;
-                    fromAminoMsg(object: _80.SignBytesAminoMsg): _80.SignBytes;
-                    toAminoMsg(message: _80.SignBytes): _80.SignBytesAminoMsg;
-                    fromProtoMsg(message: _80.SignBytesProtoMsg): _80.SignBytes;
-                    toProto(message: _80.SignBytes): Uint8Array;
-                    toProtoMsg(message: _80.SignBytes): _80.SignBytesProtoMsg;
+                    fromPartial(object: Partial<_82.SignBytes>): _82.SignBytes;
+                    fromAmino(object: _82.SignBytesAmino): _82.SignBytes;
+                    toAmino(message: _82.SignBytes): _82.SignBytesAmino;
+                    fromAminoMsg(object: _82.SignBytesAminoMsg): _82.SignBytes;
+                    toAminoMsg(message: _82.SignBytes): _82.SignBytesAminoMsg;
+                    fromProtoMsg(message: _82.SignBytesProtoMsg): _82.SignBytes;
+                    toProto(message: _82.SignBytes): Uint8Array;
+                    toProtoMsg(message: _82.SignBytes): _82.SignBytesProtoMsg;
                 };
                 HeaderData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.HeaderData;
-                    isSDK(o: any): o is _80.HeaderDataSDKType;
-                    isAmino(o: any): o is _80.HeaderDataAmino;
-                    encode(message: _80.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.HeaderData;
-                    fromJSON(object: any): _80.HeaderData;
-                    toJSON(message: _80.HeaderData): {
+                    is(o: any): o is _82.HeaderData;
+                    isSDK(o: any): o is _82.HeaderDataSDKType;
+                    isAmino(o: any): o is _82.HeaderDataAmino;
+                    encode(message: _82.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.HeaderData;
+                    fromJSON(object: any): _82.HeaderData;
+                    toJSON(message: _82.HeaderData): {
                         newPubKey?: {
                             $typeUrl?: string;
                             typeUrl: string;
@@ -5281,25 +5281,25 @@ export declare namespace ibc {
                         };
                         newDiversifier: string;
                     };
-                    fromPartial(object: Partial<_80.HeaderData>): _80.HeaderData;
-                    fromAmino(object: _80.HeaderDataAmino): _80.HeaderData;
-                    toAmino(message: _80.HeaderData): _80.HeaderDataAmino;
-                    fromAminoMsg(object: _80.HeaderDataAminoMsg): _80.HeaderData;
-                    toAminoMsg(message: _80.HeaderData): _80.HeaderDataAminoMsg;
-                    fromProtoMsg(message: _80.HeaderDataProtoMsg): _80.HeaderData;
-                    toProto(message: _80.HeaderData): Uint8Array;
-                    toProtoMsg(message: _80.HeaderData): _80.HeaderDataProtoMsg;
+                    fromPartial(object: Partial<_82.HeaderData>): _82.HeaderData;
+                    fromAmino(object: _82.HeaderDataAmino): _82.HeaderData;
+                    toAmino(message: _82.HeaderData): _82.HeaderDataAmino;
+                    fromAminoMsg(object: _82.HeaderDataAminoMsg): _82.HeaderData;
+                    toAminoMsg(message: _82.HeaderData): _82.HeaderDataAminoMsg;
+                    fromProtoMsg(message: _82.HeaderDataProtoMsg): _82.HeaderData;
+                    toProto(message: _82.HeaderData): Uint8Array;
+                    toProtoMsg(message: _82.HeaderData): _82.HeaderDataProtoMsg;
                 };
                 ClientStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.ClientStateData;
-                    isSDK(o: any): o is _80.ClientStateDataSDKType;
-                    isAmino(o: any): o is _80.ClientStateDataAmino;
-                    encode(message: _80.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ClientStateData;
-                    fromJSON(object: any): _80.ClientStateData;
-                    toJSON(message: _80.ClientStateData): {
+                    is(o: any): o is _82.ClientStateData;
+                    isSDK(o: any): o is _82.ClientStateDataSDKType;
+                    isAmino(o: any): o is _82.ClientStateDataAmino;
+                    encode(message: _82.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ClientStateData;
+                    fromJSON(object: any): _82.ClientStateData;
+                    toJSON(message: _82.ClientStateData): {
                         path: string;
                         clientState?: {
                             $typeUrl?: string;
@@ -5307,25 +5307,25 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_80.ClientStateData>): _80.ClientStateData;
-                    fromAmino(object: _80.ClientStateDataAmino): _80.ClientStateData;
-                    toAmino(message: _80.ClientStateData): _80.ClientStateDataAmino;
-                    fromAminoMsg(object: _80.ClientStateDataAminoMsg): _80.ClientStateData;
-                    toAminoMsg(message: _80.ClientStateData): _80.ClientStateDataAminoMsg;
-                    fromProtoMsg(message: _80.ClientStateDataProtoMsg): _80.ClientStateData;
-                    toProto(message: _80.ClientStateData): Uint8Array;
-                    toProtoMsg(message: _80.ClientStateData): _80.ClientStateDataProtoMsg;
+                    fromPartial(object: Partial<_82.ClientStateData>): _82.ClientStateData;
+                    fromAmino(object: _82.ClientStateDataAmino): _82.ClientStateData;
+                    toAmino(message: _82.ClientStateData): _82.ClientStateDataAmino;
+                    fromAminoMsg(object: _82.ClientStateDataAminoMsg): _82.ClientStateData;
+                    toAminoMsg(message: _82.ClientStateData): _82.ClientStateDataAminoMsg;
+                    fromProtoMsg(message: _82.ClientStateDataProtoMsg): _82.ClientStateData;
+                    toProto(message: _82.ClientStateData): Uint8Array;
+                    toProtoMsg(message: _82.ClientStateData): _82.ClientStateDataProtoMsg;
                 };
                 ConsensusStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.ConsensusStateData;
-                    isSDK(o: any): o is _80.ConsensusStateDataSDKType;
-                    isAmino(o: any): o is _80.ConsensusStateDataAmino;
-                    encode(message: _80.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ConsensusStateData;
-                    fromJSON(object: any): _80.ConsensusStateData;
-                    toJSON(message: _80.ConsensusStateData): {
+                    is(o: any): o is _82.ConsensusStateData;
+                    isSDK(o: any): o is _82.ConsensusStateDataSDKType;
+                    isAmino(o: any): o is _82.ConsensusStateDataAmino;
+                    encode(message: _82.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ConsensusStateData;
+                    fromJSON(object: any): _82.ConsensusStateData;
+                    toJSON(message: _82.ConsensusStateData): {
                         path: string;
                         consensusState?: {
                             $typeUrl?: string;
@@ -5333,25 +5333,25 @@ export declare namespace ibc {
                             value: string;
                         };
                     };
-                    fromPartial(object: Partial<_80.ConsensusStateData>): _80.ConsensusStateData;
-                    fromAmino(object: _80.ConsensusStateDataAmino): _80.ConsensusStateData;
-                    toAmino(message: _80.ConsensusStateData): _80.ConsensusStateDataAmino;
-                    fromAminoMsg(object: _80.ConsensusStateDataAminoMsg): _80.ConsensusStateData;
-                    toAminoMsg(message: _80.ConsensusStateData): _80.ConsensusStateDataAminoMsg;
-                    fromProtoMsg(message: _80.ConsensusStateDataProtoMsg): _80.ConsensusStateData;
-                    toProto(message: _80.ConsensusStateData): Uint8Array;
-                    toProtoMsg(message: _80.ConsensusStateData): _80.ConsensusStateDataProtoMsg;
+                    fromPartial(object: Partial<_82.ConsensusStateData>): _82.ConsensusStateData;
+                    fromAmino(object: _82.ConsensusStateDataAmino): _82.ConsensusStateData;
+                    toAmino(message: _82.ConsensusStateData): _82.ConsensusStateDataAmino;
+                    fromAminoMsg(object: _82.ConsensusStateDataAminoMsg): _82.ConsensusStateData;
+                    toAminoMsg(message: _82.ConsensusStateData): _82.ConsensusStateDataAminoMsg;
+                    fromProtoMsg(message: _82.ConsensusStateDataProtoMsg): _82.ConsensusStateData;
+                    toProto(message: _82.ConsensusStateData): Uint8Array;
+                    toProtoMsg(message: _82.ConsensusStateData): _82.ConsensusStateDataProtoMsg;
                 };
                 ConnectionStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.ConnectionStateData;
-                    isSDK(o: any): o is _80.ConnectionStateDataSDKType;
-                    isAmino(o: any): o is _80.ConnectionStateDataAmino;
-                    encode(message: _80.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ConnectionStateData;
-                    fromJSON(object: any): _80.ConnectionStateData;
-                    toJSON(message: _80.ConnectionStateData): {
+                    is(o: any): o is _82.ConnectionStateData;
+                    isSDK(o: any): o is _82.ConnectionStateDataSDKType;
+                    isAmino(o: any): o is _82.ConnectionStateDataAmino;
+                    encode(message: _82.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ConnectionStateData;
+                    fromJSON(object: any): _82.ConnectionStateData;
+                    toJSON(message: _82.ConnectionStateData): {
                         path: string;
                         connection?: {
                             clientId: string;
@@ -5359,7 +5359,7 @@ export declare namespace ibc {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            state: _74.State;
+                            state: _76.State;
                             counterparty: {
                                 clientId: string;
                                 connectionId: string;
@@ -5370,29 +5370,29 @@ export declare namespace ibc {
                             delayPeriod: string;
                         };
                     };
-                    fromPartial(object: Partial<_80.ConnectionStateData>): _80.ConnectionStateData;
-                    fromAmino(object: _80.ConnectionStateDataAmino): _80.ConnectionStateData;
-                    toAmino(message: _80.ConnectionStateData): _80.ConnectionStateDataAmino;
-                    fromAminoMsg(object: _80.ConnectionStateDataAminoMsg): _80.ConnectionStateData;
-                    toAminoMsg(message: _80.ConnectionStateData): _80.ConnectionStateDataAminoMsg;
-                    fromProtoMsg(message: _80.ConnectionStateDataProtoMsg): _80.ConnectionStateData;
-                    toProto(message: _80.ConnectionStateData): Uint8Array;
-                    toProtoMsg(message: _80.ConnectionStateData): _80.ConnectionStateDataProtoMsg;
+                    fromPartial(object: Partial<_82.ConnectionStateData>): _82.ConnectionStateData;
+                    fromAmino(object: _82.ConnectionStateDataAmino): _82.ConnectionStateData;
+                    toAmino(message: _82.ConnectionStateData): _82.ConnectionStateDataAmino;
+                    fromAminoMsg(object: _82.ConnectionStateDataAminoMsg): _82.ConnectionStateData;
+                    toAminoMsg(message: _82.ConnectionStateData): _82.ConnectionStateDataAminoMsg;
+                    fromProtoMsg(message: _82.ConnectionStateDataProtoMsg): _82.ConnectionStateData;
+                    toProto(message: _82.ConnectionStateData): Uint8Array;
+                    toProtoMsg(message: _82.ConnectionStateData): _82.ConnectionStateDataProtoMsg;
                 };
                 ChannelStateData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.ChannelStateData;
-                    isSDK(o: any): o is _80.ChannelStateDataSDKType;
-                    isAmino(o: any): o is _80.ChannelStateDataAmino;
-                    encode(message: _80.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.ChannelStateData;
-                    fromJSON(object: any): _80.ChannelStateData;
-                    toJSON(message: _80.ChannelStateData): {
+                    is(o: any): o is _82.ChannelStateData;
+                    isSDK(o: any): o is _82.ChannelStateDataSDKType;
+                    isAmino(o: any): o is _82.ChannelStateDataAmino;
+                    encode(message: _82.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ChannelStateData;
+                    fromJSON(object: any): _82.ChannelStateData;
+                    toJSON(message: _82.ChannelStateData): {
                         path: string;
                         channel?: {
-                            state: _65.State;
-                            ordering: _65.Order;
+                            state: _67.State;
+                            ordering: _67.Order;
                             counterparty: {
                                 portId: string;
                                 channelId: string;
@@ -5401,101 +5401,101 @@ export declare namespace ibc {
                             version: string;
                         };
                     };
-                    fromPartial(object: Partial<_80.ChannelStateData>): _80.ChannelStateData;
-                    fromAmino(object: _80.ChannelStateDataAmino): _80.ChannelStateData;
-                    toAmino(message: _80.ChannelStateData): _80.ChannelStateDataAmino;
-                    fromAminoMsg(object: _80.ChannelStateDataAminoMsg): _80.ChannelStateData;
-                    toAminoMsg(message: _80.ChannelStateData): _80.ChannelStateDataAminoMsg;
-                    fromProtoMsg(message: _80.ChannelStateDataProtoMsg): _80.ChannelStateData;
-                    toProto(message: _80.ChannelStateData): Uint8Array;
-                    toProtoMsg(message: _80.ChannelStateData): _80.ChannelStateDataProtoMsg;
+                    fromPartial(object: Partial<_82.ChannelStateData>): _82.ChannelStateData;
+                    fromAmino(object: _82.ChannelStateDataAmino): _82.ChannelStateData;
+                    toAmino(message: _82.ChannelStateData): _82.ChannelStateDataAmino;
+                    fromAminoMsg(object: _82.ChannelStateDataAminoMsg): _82.ChannelStateData;
+                    toAminoMsg(message: _82.ChannelStateData): _82.ChannelStateDataAminoMsg;
+                    fromProtoMsg(message: _82.ChannelStateDataProtoMsg): _82.ChannelStateData;
+                    toProto(message: _82.ChannelStateData): Uint8Array;
+                    toProtoMsg(message: _82.ChannelStateData): _82.ChannelStateDataProtoMsg;
                 };
                 PacketCommitmentData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.PacketCommitmentData;
-                    isSDK(o: any): o is _80.PacketCommitmentDataSDKType;
-                    isAmino(o: any): o is _80.PacketCommitmentDataAmino;
-                    encode(message: _80.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.PacketCommitmentData;
-                    fromJSON(object: any): _80.PacketCommitmentData;
-                    toJSON(message: _80.PacketCommitmentData): {
+                    is(o: any): o is _82.PacketCommitmentData;
+                    isSDK(o: any): o is _82.PacketCommitmentDataSDKType;
+                    isAmino(o: any): o is _82.PacketCommitmentDataAmino;
+                    encode(message: _82.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.PacketCommitmentData;
+                    fromJSON(object: any): _82.PacketCommitmentData;
+                    toJSON(message: _82.PacketCommitmentData): {
                         path: string;
                         commitment: string;
                     };
-                    fromPartial(object: Partial<_80.PacketCommitmentData>): _80.PacketCommitmentData;
-                    fromAmino(object: _80.PacketCommitmentDataAmino): _80.PacketCommitmentData;
-                    toAmino(message: _80.PacketCommitmentData): _80.PacketCommitmentDataAmino;
-                    fromAminoMsg(object: _80.PacketCommitmentDataAminoMsg): _80.PacketCommitmentData;
-                    toAminoMsg(message: _80.PacketCommitmentData): _80.PacketCommitmentDataAminoMsg;
-                    fromProtoMsg(message: _80.PacketCommitmentDataProtoMsg): _80.PacketCommitmentData;
-                    toProto(message: _80.PacketCommitmentData): Uint8Array;
-                    toProtoMsg(message: _80.PacketCommitmentData): _80.PacketCommitmentDataProtoMsg;
+                    fromPartial(object: Partial<_82.PacketCommitmentData>): _82.PacketCommitmentData;
+                    fromAmino(object: _82.PacketCommitmentDataAmino): _82.PacketCommitmentData;
+                    toAmino(message: _82.PacketCommitmentData): _82.PacketCommitmentDataAmino;
+                    fromAminoMsg(object: _82.PacketCommitmentDataAminoMsg): _82.PacketCommitmentData;
+                    toAminoMsg(message: _82.PacketCommitmentData): _82.PacketCommitmentDataAminoMsg;
+                    fromProtoMsg(message: _82.PacketCommitmentDataProtoMsg): _82.PacketCommitmentData;
+                    toProto(message: _82.PacketCommitmentData): Uint8Array;
+                    toProtoMsg(message: _82.PacketCommitmentData): _82.PacketCommitmentDataProtoMsg;
                 };
                 PacketAcknowledgementData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.PacketAcknowledgementData;
-                    isSDK(o: any): o is _80.PacketAcknowledgementDataSDKType;
-                    isAmino(o: any): o is _80.PacketAcknowledgementDataAmino;
-                    encode(message: _80.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.PacketAcknowledgementData;
-                    fromJSON(object: any): _80.PacketAcknowledgementData;
-                    toJSON(message: _80.PacketAcknowledgementData): {
+                    is(o: any): o is _82.PacketAcknowledgementData;
+                    isSDK(o: any): o is _82.PacketAcknowledgementDataSDKType;
+                    isAmino(o: any): o is _82.PacketAcknowledgementDataAmino;
+                    encode(message: _82.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.PacketAcknowledgementData;
+                    fromJSON(object: any): _82.PacketAcknowledgementData;
+                    toJSON(message: _82.PacketAcknowledgementData): {
                         path: string;
                         acknowledgement: string;
                     };
-                    fromPartial(object: Partial<_80.PacketAcknowledgementData>): _80.PacketAcknowledgementData;
-                    fromAmino(object: _80.PacketAcknowledgementDataAmino): _80.PacketAcknowledgementData;
-                    toAmino(message: _80.PacketAcknowledgementData): _80.PacketAcknowledgementDataAmino;
-                    fromAminoMsg(object: _80.PacketAcknowledgementDataAminoMsg): _80.PacketAcknowledgementData;
-                    toAminoMsg(message: _80.PacketAcknowledgementData): _80.PacketAcknowledgementDataAminoMsg;
-                    fromProtoMsg(message: _80.PacketAcknowledgementDataProtoMsg): _80.PacketAcknowledgementData;
-                    toProto(message: _80.PacketAcknowledgementData): Uint8Array;
-                    toProtoMsg(message: _80.PacketAcknowledgementData): _80.PacketAcknowledgementDataProtoMsg;
+                    fromPartial(object: Partial<_82.PacketAcknowledgementData>): _82.PacketAcknowledgementData;
+                    fromAmino(object: _82.PacketAcknowledgementDataAmino): _82.PacketAcknowledgementData;
+                    toAmino(message: _82.PacketAcknowledgementData): _82.PacketAcknowledgementDataAmino;
+                    fromAminoMsg(object: _82.PacketAcknowledgementDataAminoMsg): _82.PacketAcknowledgementData;
+                    toAminoMsg(message: _82.PacketAcknowledgementData): _82.PacketAcknowledgementDataAminoMsg;
+                    fromProtoMsg(message: _82.PacketAcknowledgementDataProtoMsg): _82.PacketAcknowledgementData;
+                    toProto(message: _82.PacketAcknowledgementData): Uint8Array;
+                    toProtoMsg(message: _82.PacketAcknowledgementData): _82.PacketAcknowledgementDataProtoMsg;
                 };
                 PacketReceiptAbsenceData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.PacketReceiptAbsenceData;
-                    isSDK(o: any): o is _80.PacketReceiptAbsenceDataSDKType;
-                    isAmino(o: any): o is _80.PacketReceiptAbsenceDataAmino;
-                    encode(message: _80.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.PacketReceiptAbsenceData;
-                    fromJSON(object: any): _80.PacketReceiptAbsenceData;
-                    toJSON(message: _80.PacketReceiptAbsenceData): {
+                    is(o: any): o is _82.PacketReceiptAbsenceData;
+                    isSDK(o: any): o is _82.PacketReceiptAbsenceDataSDKType;
+                    isAmino(o: any): o is _82.PacketReceiptAbsenceDataAmino;
+                    encode(message: _82.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.PacketReceiptAbsenceData;
+                    fromJSON(object: any): _82.PacketReceiptAbsenceData;
+                    toJSON(message: _82.PacketReceiptAbsenceData): {
                         path: string;
                     };
-                    fromPartial(object: Partial<_80.PacketReceiptAbsenceData>): _80.PacketReceiptAbsenceData;
-                    fromAmino(object: _80.PacketReceiptAbsenceDataAmino): _80.PacketReceiptAbsenceData;
-                    toAmino(message: _80.PacketReceiptAbsenceData): _80.PacketReceiptAbsenceDataAmino;
-                    fromAminoMsg(object: _80.PacketReceiptAbsenceDataAminoMsg): _80.PacketReceiptAbsenceData;
-                    toAminoMsg(message: _80.PacketReceiptAbsenceData): _80.PacketReceiptAbsenceDataAminoMsg;
-                    fromProtoMsg(message: _80.PacketReceiptAbsenceDataProtoMsg): _80.PacketReceiptAbsenceData;
-                    toProto(message: _80.PacketReceiptAbsenceData): Uint8Array;
-                    toProtoMsg(message: _80.PacketReceiptAbsenceData): _80.PacketReceiptAbsenceDataProtoMsg;
+                    fromPartial(object: Partial<_82.PacketReceiptAbsenceData>): _82.PacketReceiptAbsenceData;
+                    fromAmino(object: _82.PacketReceiptAbsenceDataAmino): _82.PacketReceiptAbsenceData;
+                    toAmino(message: _82.PacketReceiptAbsenceData): _82.PacketReceiptAbsenceDataAmino;
+                    fromAminoMsg(object: _82.PacketReceiptAbsenceDataAminoMsg): _82.PacketReceiptAbsenceData;
+                    toAminoMsg(message: _82.PacketReceiptAbsenceData): _82.PacketReceiptAbsenceDataAminoMsg;
+                    fromProtoMsg(message: _82.PacketReceiptAbsenceDataProtoMsg): _82.PacketReceiptAbsenceData;
+                    toProto(message: _82.PacketReceiptAbsenceData): Uint8Array;
+                    toProtoMsg(message: _82.PacketReceiptAbsenceData): _82.PacketReceiptAbsenceDataProtoMsg;
                 };
                 NextSequenceRecvData: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _80.NextSequenceRecvData;
-                    isSDK(o: any): o is _80.NextSequenceRecvDataSDKType;
-                    isAmino(o: any): o is _80.NextSequenceRecvDataAmino;
-                    encode(message: _80.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.NextSequenceRecvData;
-                    fromJSON(object: any): _80.NextSequenceRecvData;
-                    toJSON(message: _80.NextSequenceRecvData): {
+                    is(o: any): o is _82.NextSequenceRecvData;
+                    isSDK(o: any): o is _82.NextSequenceRecvDataSDKType;
+                    isAmino(o: any): o is _82.NextSequenceRecvDataAmino;
+                    encode(message: _82.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.NextSequenceRecvData;
+                    fromJSON(object: any): _82.NextSequenceRecvData;
+                    toJSON(message: _82.NextSequenceRecvData): {
                         path: string;
                         nextSeqRecv: string;
                     };
-                    fromPartial(object: Partial<_80.NextSequenceRecvData>): _80.NextSequenceRecvData;
-                    fromAmino(object: _80.NextSequenceRecvDataAmino): _80.NextSequenceRecvData;
-                    toAmino(message: _80.NextSequenceRecvData): _80.NextSequenceRecvDataAmino;
-                    fromAminoMsg(object: _80.NextSequenceRecvDataAminoMsg): _80.NextSequenceRecvData;
-                    toAminoMsg(message: _80.NextSequenceRecvData): _80.NextSequenceRecvDataAminoMsg;
-                    fromProtoMsg(message: _80.NextSequenceRecvDataProtoMsg): _80.NextSequenceRecvData;
-                    toProto(message: _80.NextSequenceRecvData): Uint8Array;
-                    toProtoMsg(message: _80.NextSequenceRecvData): _80.NextSequenceRecvDataProtoMsg;
+                    fromPartial(object: Partial<_82.NextSequenceRecvData>): _82.NextSequenceRecvData;
+                    fromAmino(object: _82.NextSequenceRecvDataAmino): _82.NextSequenceRecvData;
+                    toAmino(message: _82.NextSequenceRecvData): _82.NextSequenceRecvDataAmino;
+                    fromAminoMsg(object: _82.NextSequenceRecvDataAminoMsg): _82.NextSequenceRecvData;
+                    toAminoMsg(message: _82.NextSequenceRecvData): _82.NextSequenceRecvDataAminoMsg;
+                    fromProtoMsg(message: _82.NextSequenceRecvDataProtoMsg): _82.NextSequenceRecvData;
+                    toProto(message: _82.NextSequenceRecvData): Uint8Array;
+                    toProtoMsg(message: _82.NextSequenceRecvData): _82.NextSequenceRecvDataProtoMsg;
                 };
             };
         }
@@ -5504,13 +5504,13 @@ export declare namespace ibc {
                 ClientState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _81.ClientState;
-                    isSDK(o: any): o is _81.ClientStateSDKType;
-                    isAmino(o: any): o is _81.ClientStateAmino;
-                    encode(message: _81.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ClientState;
-                    fromJSON(object: any): _81.ClientState;
-                    toJSON(message: _81.ClientState): {
+                    is(o: any): o is _83.ClientState;
+                    isSDK(o: any): o is _83.ClientStateSDKType;
+                    isAmino(o: any): o is _83.ClientStateAmino;
+                    encode(message: _83.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.ClientState;
+                    fromJSON(object: any): _83.ClientState;
+                    toJSON(message: _83.ClientState): {
                         chainId: string;
                         trustLevel: {
                             numerator: string;
@@ -5559,50 +5559,50 @@ export declare namespace ibc {
                         allowUpdateAfterExpiry: boolean;
                         allowUpdateAfterMisbehaviour: boolean;
                     };
-                    fromPartial(object: Partial<_81.ClientState>): _81.ClientState;
-                    fromAmino(object: _81.ClientStateAmino): _81.ClientState;
-                    toAmino(message: _81.ClientState): _81.ClientStateAmino;
-                    fromAminoMsg(object: _81.ClientStateAminoMsg): _81.ClientState;
-                    toAminoMsg(message: _81.ClientState): _81.ClientStateAminoMsg;
-                    fromProtoMsg(message: _81.ClientStateProtoMsg): _81.ClientState;
-                    toProto(message: _81.ClientState): Uint8Array;
-                    toProtoMsg(message: _81.ClientState): _81.ClientStateProtoMsg;
+                    fromPartial(object: Partial<_83.ClientState>): _83.ClientState;
+                    fromAmino(object: _83.ClientStateAmino): _83.ClientState;
+                    toAmino(message: _83.ClientState): _83.ClientStateAmino;
+                    fromAminoMsg(object: _83.ClientStateAminoMsg): _83.ClientState;
+                    toAminoMsg(message: _83.ClientState): _83.ClientStateAminoMsg;
+                    fromProtoMsg(message: _83.ClientStateProtoMsg): _83.ClientState;
+                    toProto(message: _83.ClientState): Uint8Array;
+                    toProtoMsg(message: _83.ClientState): _83.ClientStateProtoMsg;
                 };
                 ConsensusState: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _81.ConsensusState;
-                    isSDK(o: any): o is _81.ConsensusStateSDKType;
-                    isAmino(o: any): o is _81.ConsensusStateAmino;
-                    encode(message: _81.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.ConsensusState;
-                    fromJSON(object: any): _81.ConsensusState;
-                    toJSON(message: _81.ConsensusState): {
+                    is(o: any): o is _83.ConsensusState;
+                    isSDK(o: any): o is _83.ConsensusStateSDKType;
+                    isAmino(o: any): o is _83.ConsensusStateAmino;
+                    encode(message: _83.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.ConsensusState;
+                    fromJSON(object: any): _83.ConsensusState;
+                    toJSON(message: _83.ConsensusState): {
                         timestamp: string;
                         root: {
                             hash: string;
                         };
                         nextValidatorsHash: string;
                     };
-                    fromPartial(object: Partial<_81.ConsensusState>): _81.ConsensusState;
-                    fromAmino(object: _81.ConsensusStateAmino): _81.ConsensusState;
-                    toAmino(message: _81.ConsensusState): _81.ConsensusStateAmino;
-                    fromAminoMsg(object: _81.ConsensusStateAminoMsg): _81.ConsensusState;
-                    toAminoMsg(message: _81.ConsensusState): _81.ConsensusStateAminoMsg;
-                    fromProtoMsg(message: _81.ConsensusStateProtoMsg): _81.ConsensusState;
-                    toProto(message: _81.ConsensusState): Uint8Array;
-                    toProtoMsg(message: _81.ConsensusState): _81.ConsensusStateProtoMsg;
+                    fromPartial(object: Partial<_83.ConsensusState>): _83.ConsensusState;
+                    fromAmino(object: _83.ConsensusStateAmino): _83.ConsensusState;
+                    toAmino(message: _83.ConsensusState): _83.ConsensusStateAmino;
+                    fromAminoMsg(object: _83.ConsensusStateAminoMsg): _83.ConsensusState;
+                    toAminoMsg(message: _83.ConsensusState): _83.ConsensusStateAminoMsg;
+                    fromProtoMsg(message: _83.ConsensusStateProtoMsg): _83.ConsensusState;
+                    toProto(message: _83.ConsensusState): Uint8Array;
+                    toProtoMsg(message: _83.ConsensusState): _83.ConsensusStateProtoMsg;
                 };
                 Misbehaviour: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _81.Misbehaviour;
-                    isSDK(o: any): o is _81.MisbehaviourSDKType;
-                    isAmino(o: any): o is _81.MisbehaviourAmino;
-                    encode(message: _81.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Misbehaviour;
-                    fromJSON(object: any): _81.Misbehaviour;
-                    toJSON(message: _81.Misbehaviour): {
+                    is(o: any): o is _83.Misbehaviour;
+                    isSDK(o: any): o is _83.MisbehaviourSDKType;
+                    isAmino(o: any): o is _83.MisbehaviourAmino;
+                    encode(message: _83.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Misbehaviour;
+                    fromJSON(object: any): _83.Misbehaviour;
+                    toJSON(message: _83.Misbehaviour): {
                         clientId: string;
                         header1?: {
                             signedHeader?: {
@@ -5789,25 +5789,25 @@ export declare namespace ibc {
                             };
                         };
                     };
-                    fromPartial(object: Partial<_81.Misbehaviour>): _81.Misbehaviour;
-                    fromAmino(object: _81.MisbehaviourAmino): _81.Misbehaviour;
-                    toAmino(message: _81.Misbehaviour): _81.MisbehaviourAmino;
-                    fromAminoMsg(object: _81.MisbehaviourAminoMsg): _81.Misbehaviour;
-                    toAminoMsg(message: _81.Misbehaviour): _81.MisbehaviourAminoMsg;
-                    fromProtoMsg(message: _81.MisbehaviourProtoMsg): _81.Misbehaviour;
-                    toProto(message: _81.Misbehaviour): Uint8Array;
-                    toProtoMsg(message: _81.Misbehaviour): _81.MisbehaviourProtoMsg;
+                    fromPartial(object: Partial<_83.Misbehaviour>): _83.Misbehaviour;
+                    fromAmino(object: _83.MisbehaviourAmino): _83.Misbehaviour;
+                    toAmino(message: _83.Misbehaviour): _83.MisbehaviourAmino;
+                    fromAminoMsg(object: _83.MisbehaviourAminoMsg): _83.Misbehaviour;
+                    toAminoMsg(message: _83.Misbehaviour): _83.MisbehaviourAminoMsg;
+                    fromProtoMsg(message: _83.MisbehaviourProtoMsg): _83.Misbehaviour;
+                    toProto(message: _83.Misbehaviour): Uint8Array;
+                    toProtoMsg(message: _83.Misbehaviour): _83.MisbehaviourProtoMsg;
                 };
                 Header: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _81.Header;
-                    isSDK(o: any): o is _81.HeaderSDKType;
-                    isAmino(o: any): o is _81.HeaderAmino;
-                    encode(message: _81.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Header;
-                    fromJSON(object: any): _81.Header;
-                    toJSON(message: _81.Header): {
+                    is(o: any): o is _83.Header;
+                    isSDK(o: any): o is _83.HeaderSDKType;
+                    isAmino(o: any): o is _83.HeaderAmino;
+                    encode(message: _83.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Header;
+                    fromJSON(object: any): _83.Header;
+                    toJSON(message: _83.Header): {
                         signedHeader?: {
                             header?: {
                                 version: {
@@ -5899,36 +5899,36 @@ export declare namespace ibc {
                             totalVotingPower: string;
                         };
                     };
-                    fromPartial(object: Partial<_81.Header>): _81.Header;
-                    fromAmino(object: _81.HeaderAmino): _81.Header;
-                    toAmino(message: _81.Header): _81.HeaderAmino;
-                    fromAminoMsg(object: _81.HeaderAminoMsg): _81.Header;
-                    toAminoMsg(message: _81.Header): _81.HeaderAminoMsg;
-                    fromProtoMsg(message: _81.HeaderProtoMsg): _81.Header;
-                    toProto(message: _81.Header): Uint8Array;
-                    toProtoMsg(message: _81.Header): _81.HeaderProtoMsg;
+                    fromPartial(object: Partial<_83.Header>): _83.Header;
+                    fromAmino(object: _83.HeaderAmino): _83.Header;
+                    toAmino(message: _83.Header): _83.HeaderAmino;
+                    fromAminoMsg(object: _83.HeaderAminoMsg): _83.Header;
+                    toAminoMsg(message: _83.Header): _83.HeaderAminoMsg;
+                    fromProtoMsg(message: _83.HeaderProtoMsg): _83.Header;
+                    toProto(message: _83.Header): Uint8Array;
+                    toProtoMsg(message: _83.Header): _83.HeaderProtoMsg;
                 };
                 Fraction: {
                     typeUrl: string;
                     aminoType: string;
-                    is(o: any): o is _81.Fraction;
-                    isSDK(o: any): o is _81.FractionSDKType;
-                    isAmino(o: any): o is _81.FractionAmino;
-                    encode(message: _81.Fraction, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.Fraction;
-                    fromJSON(object: any): _81.Fraction;
-                    toJSON(message: _81.Fraction): {
+                    is(o: any): o is _83.Fraction;
+                    isSDK(o: any): o is _83.FractionSDKType;
+                    isAmino(o: any): o is _83.FractionAmino;
+                    encode(message: _83.Fraction, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.Fraction;
+                    fromJSON(object: any): _83.Fraction;
+                    toJSON(message: _83.Fraction): {
                         numerator: string;
                         denominator: string;
                     };
-                    fromPartial(object: Partial<_81.Fraction>): _81.Fraction;
-                    fromAmino(object: _81.FractionAmino): _81.Fraction;
-                    toAmino(message: _81.Fraction): _81.FractionAmino;
-                    fromAminoMsg(object: _81.FractionAminoMsg): _81.Fraction;
-                    toAminoMsg(message: _81.Fraction): _81.FractionAminoMsg;
-                    fromProtoMsg(message: _81.FractionProtoMsg): _81.Fraction;
-                    toProto(message: _81.Fraction): Uint8Array;
-                    toProtoMsg(message: _81.Fraction): _81.FractionProtoMsg;
+                    fromPartial(object: Partial<_83.Fraction>): _83.Fraction;
+                    fromAmino(object: _83.FractionAmino): _83.Fraction;
+                    toAmino(message: _83.Fraction): _83.FractionAmino;
+                    fromAminoMsg(object: _83.FractionAminoMsg): _83.Fraction;
+                    toAminoMsg(message: _83.Fraction): _83.FractionAminoMsg;
+                    fromProtoMsg(message: _83.FractionProtoMsg): _83.Fraction;
+                    toProto(message: _83.Fraction): Uint8Array;
+                    toProtoMsg(message: _83.Fraction): _83.FractionProtoMsg;
                 };
             };
         }
@@ -5956,22 +5956,27 @@ export declare namespace ibc {
                 upgrade: {
                     v1beta1: import("../cosmos/upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
                 };
+                evm: {
+                    vm: {
+                        v1: import("../cosmos/evm/vm/v1/tx.rpc.msg").MsgClientImpl;
+                    };
+                };
             };
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _197.MsgClientImpl;
+                        v1: _208.MsgClientImpl;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _198.MsgClientImpl;
+                        v1: _209.MsgClientImpl;
                     };
                     client: {
-                        v1: _199.MsgClientImpl;
+                        v1: _210.MsgClientImpl;
                     };
                     connection: {
-                        v1: _200.MsgClientImpl;
+                        v1: _211.MsgClientImpl;
                     };
                 };
             };
@@ -6077,49 +6082,49 @@ export declare namespace ibc {
                 applications: {
                     transfer: {
                         v1: {
-                            denomTrace(request: _61.QueryDenomTraceRequest): Promise<_61.QueryDenomTraceResponse>;
-                            denomTraces(request?: _61.QueryDenomTracesRequest): Promise<_61.QueryDenomTracesResponse>;
-                            params(request?: _61.QueryParamsRequest): Promise<_61.QueryParamsResponse>;
+                            denomTrace(request: _63.QueryDenomTraceRequest): Promise<_63.QueryDenomTraceResponse>;
+                            denomTraces(request?: _63.QueryDenomTracesRequest): Promise<_63.QueryDenomTracesResponse>;
+                            params(request?: _63.QueryParamsRequest): Promise<_63.QueryParamsResponse>;
                         };
                     };
                 };
                 core: {
                     channel: {
                         v1: {
-                            channel(request: _67.QueryChannelRequest): Promise<_67.QueryChannelResponse>;
-                            channels(request?: _67.QueryChannelsRequest): Promise<_67.QueryChannelsResponse>;
-                            connectionChannels(request: _67.QueryConnectionChannelsRequest): Promise<_67.QueryConnectionChannelsResponse>;
-                            channelClientState(request: _67.QueryChannelClientStateRequest): Promise<_67.QueryChannelClientStateResponse>;
-                            channelConsensusState(request: _67.QueryChannelConsensusStateRequest): Promise<_67.QueryChannelConsensusStateResponse>;
-                            packetCommitment(request: _67.QueryPacketCommitmentRequest): Promise<_67.QueryPacketCommitmentResponse>;
-                            packetCommitments(request: _67.QueryPacketCommitmentsRequest): Promise<_67.QueryPacketCommitmentsResponse>;
-                            packetReceipt(request: _67.QueryPacketReceiptRequest): Promise<_67.QueryPacketReceiptResponse>;
-                            packetAcknowledgement(request: _67.QueryPacketAcknowledgementRequest): Promise<_67.QueryPacketAcknowledgementResponse>;
-                            packetAcknowledgements(request: _67.QueryPacketAcknowledgementsRequest): Promise<_67.QueryPacketAcknowledgementsResponse>;
-                            unreceivedPackets(request: _67.QueryUnreceivedPacketsRequest): Promise<_67.QueryUnreceivedPacketsResponse>;
-                            unreceivedAcks(request: _67.QueryUnreceivedAcksRequest): Promise<_67.QueryUnreceivedAcksResponse>;
-                            nextSequenceReceive(request: _67.QueryNextSequenceReceiveRequest): Promise<_67.QueryNextSequenceReceiveResponse>;
+                            channel(request: _69.QueryChannelRequest): Promise<_69.QueryChannelResponse>;
+                            channels(request?: _69.QueryChannelsRequest): Promise<_69.QueryChannelsResponse>;
+                            connectionChannels(request: _69.QueryConnectionChannelsRequest): Promise<_69.QueryConnectionChannelsResponse>;
+                            channelClientState(request: _69.QueryChannelClientStateRequest): Promise<_69.QueryChannelClientStateResponse>;
+                            channelConsensusState(request: _69.QueryChannelConsensusStateRequest): Promise<_69.QueryChannelConsensusStateResponse>;
+                            packetCommitment(request: _69.QueryPacketCommitmentRequest): Promise<_69.QueryPacketCommitmentResponse>;
+                            packetCommitments(request: _69.QueryPacketCommitmentsRequest): Promise<_69.QueryPacketCommitmentsResponse>;
+                            packetReceipt(request: _69.QueryPacketReceiptRequest): Promise<_69.QueryPacketReceiptResponse>;
+                            packetAcknowledgement(request: _69.QueryPacketAcknowledgementRequest): Promise<_69.QueryPacketAcknowledgementResponse>;
+                            packetAcknowledgements(request: _69.QueryPacketAcknowledgementsRequest): Promise<_69.QueryPacketAcknowledgementsResponse>;
+                            unreceivedPackets(request: _69.QueryUnreceivedPacketsRequest): Promise<_69.QueryUnreceivedPacketsResponse>;
+                            unreceivedAcks(request: _69.QueryUnreceivedAcksRequest): Promise<_69.QueryUnreceivedAcksResponse>;
+                            nextSequenceReceive(request: _69.QueryNextSequenceReceiveRequest): Promise<_69.QueryNextSequenceReceiveResponse>;
                         };
                     };
                     client: {
                         v1: {
-                            clientState(request: _71.QueryClientStateRequest): Promise<_71.QueryClientStateResponse>;
-                            clientStates(request?: _71.QueryClientStatesRequest): Promise<_71.QueryClientStatesResponse>;
-                            consensusState(request: _71.QueryConsensusStateRequest): Promise<_71.QueryConsensusStateResponse>;
-                            consensusStates(request: _71.QueryConsensusStatesRequest): Promise<_71.QueryConsensusStatesResponse>;
-                            clientStatus(request: _71.QueryClientStatusRequest): Promise<_71.QueryClientStatusResponse>;
-                            clientParams(request?: _71.QueryClientParamsRequest): Promise<_71.QueryClientParamsResponse>;
-                            upgradedClientState(request?: _71.QueryUpgradedClientStateRequest): Promise<_71.QueryUpgradedClientStateResponse>;
-                            upgradedConsensusState(request?: _71.QueryUpgradedConsensusStateRequest): Promise<_71.QueryUpgradedConsensusStateResponse>;
+                            clientState(request: _73.QueryClientStateRequest): Promise<_73.QueryClientStateResponse>;
+                            clientStates(request?: _73.QueryClientStatesRequest): Promise<_73.QueryClientStatesResponse>;
+                            consensusState(request: _73.QueryConsensusStateRequest): Promise<_73.QueryConsensusStateResponse>;
+                            consensusStates(request: _73.QueryConsensusStatesRequest): Promise<_73.QueryConsensusStatesResponse>;
+                            clientStatus(request: _73.QueryClientStatusRequest): Promise<_73.QueryClientStatusResponse>;
+                            clientParams(request?: _73.QueryClientParamsRequest): Promise<_73.QueryClientParamsResponse>;
+                            upgradedClientState(request?: _73.QueryUpgradedClientStateRequest): Promise<_73.QueryUpgradedClientStateResponse>;
+                            upgradedConsensusState(request?: _73.QueryUpgradedConsensusStateRequest): Promise<_73.QueryUpgradedConsensusStateResponse>;
                         };
                     };
                     connection: {
                         v1: {
-                            connection(request: _76.QueryConnectionRequest): Promise<_76.QueryConnectionResponse>;
-                            connections(request?: _76.QueryConnectionsRequest): Promise<_76.QueryConnectionsResponse>;
-                            clientConnections(request: _76.QueryClientConnectionsRequest): Promise<_76.QueryClientConnectionsResponse>;
-                            connectionClientState(request: _76.QueryConnectionClientStateRequest): Promise<_76.QueryConnectionClientStateResponse>;
-                            connectionConsensusState(request: _76.QueryConnectionConsensusStateRequest): Promise<_76.QueryConnectionConsensusStateResponse>;
+                            connection(request: _78.QueryConnectionRequest): Promise<_78.QueryConnectionResponse>;
+                            connections(request?: _78.QueryConnectionsRequest): Promise<_78.QueryConnectionsResponse>;
+                            clientConnections(request: _78.QueryClientConnectionsRequest): Promise<_78.QueryClientConnectionsResponse>;
+                            connectionClientState(request: _78.QueryConnectionClientStateRequest): Promise<_78.QueryConnectionClientStateResponse>;
+                            connectionConsensusState(request: _78.QueryConnectionConsensusStateRequest): Promise<_78.QueryConnectionConsensusStateResponse>;
                         };
                     };
                 };

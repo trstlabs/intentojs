@@ -1,6 +1,6 @@
 {
   "name": "intentojs",
-  "version": "0.9.4",
+  "version": "0.9.4-r2",
   "description": "package to interact with Intento",
   "author": "danieljdd <info@trstlabs.xyz>",
   "homepage": "https://github.com/trstlabs/intentojs#readme",

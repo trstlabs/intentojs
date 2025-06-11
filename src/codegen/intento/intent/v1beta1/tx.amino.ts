@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgRegisterAccount, MsgSubmitTx, MsgSubmitFlow, MsgRegisterAccountAndSubmitFlow, MsgUpdateFlow, MsgCreateHostedAccount, MsgUpdateHostedAccount } from "./tx";
+import { MsgRegisterAccount, MsgSubmitTx, MsgSubmitFlow, MsgRegisterAccountAndSubmitFlow, MsgUpdateFlow, MsgCreateHostedAccount, MsgUpdateHostedAccount, MsgUpdateParams } from "./tx";
 export const AminoConverter = {
   "/intento.intent.v1beta1.MsgRegisterAccount": {
     aminoType: "intent/MsgRegisterAccount",
@@ -35,5 +35,10 @@ export const AminoConverter = {
     aminoType: "intent/MsgUpdateHostedAccount",
     toAmino: MsgUpdateHostedAccount.toAmino,
     fromAmino: MsgUpdateHostedAccount.fromAmino
+  },
+  "/intento.intent.v1beta1.MsgUpdateParams": {
+    aminoType: "intent/MsgUpdateParams",
+    toAmino: MsgUpdateParams.toAmino,
+    fromAmino: MsgUpdateParams.fromAmino
   }
 };

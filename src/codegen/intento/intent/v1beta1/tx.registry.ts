@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgRegisterAccount, MsgSubmitTx, MsgSubmitFlow, MsgRegisterAccountAndSubmitFlow, MsgUpdateFlow, MsgCreateHostedAccount, MsgUpdateHostedAccount } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/intento.intent.v1beta1.MsgRegisterAccount", MsgRegisterAccount], ["/intento.intent.v1beta1.MsgSubmitTx", MsgSubmitTx], ["/intento.intent.v1beta1.MsgSubmitFlow", MsgSubmitFlow], ["/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow", MsgRegisterAccountAndSubmitFlow], ["/intento.intent.v1beta1.MsgUpdateFlow", MsgUpdateFlow], ["/intento.intent.v1beta1.MsgCreateHostedAccount", MsgCreateHostedAccount], ["/intento.intent.v1beta1.MsgUpdateHostedAccount", MsgUpdateHostedAccount]];
+import { MsgRegisterAccount, MsgSubmitTx, MsgSubmitFlow, MsgRegisterAccountAndSubmitFlow, MsgUpdateFlow, MsgCreateHostedAccount, MsgUpdateHostedAccount, MsgUpdateParams } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/intento.intent.v1beta1.MsgRegisterAccount", MsgRegisterAccount], ["/intento.intent.v1beta1.MsgSubmitTx", MsgSubmitTx], ["/intento.intent.v1beta1.MsgSubmitFlow", MsgSubmitFlow], ["/intento.intent.v1beta1.MsgRegisterAccountAndSubmitFlow", MsgRegisterAccountAndSubmitFlow], ["/intento.intent.v1beta1.MsgUpdateFlow", MsgUpdateFlow], ["/intento.intent.v1beta1.MsgCreateHostedAccount", MsgCreateHostedAccount], ["/intento.intent.v1beta1.MsgUpdateHostedAccount", MsgUpdateHostedAccount], ["/intento.intent.v1beta1.MsgUpdateParams", MsgUpdateParams]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -50,6 +50,12 @@ export const MessageComposer = {
         typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
         value: MsgUpdateHostedAccount.encode(value).finish()
       };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateParams",
+        value: MsgUpdateParams.encode(value).finish()
+      };
     }
   },
   withTypeUrl: {
@@ -92,6 +98,12 @@ export const MessageComposer = {
     updateHostedAccount(value: MsgUpdateHostedAccount) {
       return {
         typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
+        value
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateParams",
         value
       };
     }
@@ -138,6 +150,12 @@ export const MessageComposer = {
         typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
         value: MsgUpdateHostedAccount.toJSON(value)
       };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
     }
   },
   fromJSON: {
@@ -182,6 +200,12 @@ export const MessageComposer = {
         typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
         value: MsgUpdateHostedAccount.fromJSON(value)
       };
+    },
+    updateParams(value: any) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
     }
   },
   fromPartial: {
@@ -225,6 +249,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/intento.intent.v1beta1.MsgUpdateHostedAccount",
         value: MsgUpdateHostedAccount.fromPartial(value)
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/intento.intent.v1beta1.MsgUpdateParams",
+        value: MsgUpdateParams.fromPartial(value)
       };
     }
   }
