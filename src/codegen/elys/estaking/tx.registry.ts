@@ -76,7 +76,7 @@ export const MessageComposer = {
     withdrawElysStakingRewards(value: MsgWithdrawElysStakingRewards) {
       return {
         typeUrl: "/elys.estaking.MsgWithdrawElysStakingRewards",
-        value: MsgWithdrawElysStakingRewards.toJSON(value)
+        value: .toJSON(value)
       };
     },
     withdrawAllRewards(value: MsgWithdrawAllRewards) {

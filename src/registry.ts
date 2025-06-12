@@ -7,6 +7,11 @@ import {
 } from "./codegen/cosmwasm/wasm/v1/tx";
 import * as osmo from "./codegen/osmosis/gamm/v1beta1/gamm";
 
+import { MsgWithdrawElysStakingRewards } from "./codegen/elys/estaking/tx";
+import { MsgStake } from "./codegen/elys/commitment/tx";
+import { MsgBond } from "./codegen/elys/stablestake/tx";
+import { MsgEthereumTx } from "./codegen/cosmos/evm/vm/v1/tx";
+
 export const customMsgRegistry: ReadonlyArray<
   [string, TelescopeGeneratedCodec]
 > = [
@@ -25,4 +30,11 @@ export const customMsgRegistry: ReadonlyArray<
   ],
   ["/osmosis.gamm.v1beta1.MsgSwapExactAmountIn", osmo.MsgSwapExactAmountIn],
   ["/osmosis.gamm.v1beta1.MsgSwapExactAmountOut", osmo.MsgSwapExactAmountOut],
+  ["/cosmos.evm.vm.v1.MsgEthereumTx", MsgEthereumTx],
+  [
+    "/elys.estaking.MsgWithdrawElysStakingRewards",
+    MsgWithdrawElysStakingRewards,
+  ],
+  ["/elys.commitment.MsgStake", MsgStake],
+  ["/elys.stablestake.MsgBond", MsgBond],
 ];
