@@ -11,6 +11,10 @@ import { MsgWithdrawElysStakingRewards } from "./codegen/elys/estaking/tx";
 import { MsgStake } from "./codegen/elys/commitment/tx";
 import { MsgBond } from "./codegen/elys/stablestake/tx";
 import { MsgEthereumTx } from "./codegen/cosmos/evm/vm/v1/tx";
+import {
+  MsgSwapExactAmountIn,
+  MsgSwapExactAmountOut,
+} from "./codegen/elys/amm/tx";
 
 export const customMsgRegistry: ReadonlyArray<
   [string, TelescopeGeneratedCodec]
@@ -37,4 +41,6 @@ export const customMsgRegistry: ReadonlyArray<
   ],
   ["/elys.commitment.MsgStake", MsgStake],
   ["/elys.stablestake.MsgBond", MsgBond],
+  ["/elys.amm.MsgSwapExactAmountIn", MsgSwapExactAmountIn],
+  ["/elys.amm.MsgSwapExactAmountOut", MsgSwapExactAmountOut],
 ];
