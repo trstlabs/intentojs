@@ -36,16 +36,16 @@ export const createRPCQueryClient = async ({
     },
     intento: {
       alloc: {
-        v1beta1: (await import("./alloc/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1: (await import("./alloc/v1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       claim: {
-        v1beta1: (await import("./claim/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1: (await import("./claim/v1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       intent: {
-        v1beta1: (await import("./intent/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1: (await import("./intent/v1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       mint: {
-        v1beta1: (await import("./mint/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1: (await import("./mint/v1/query.rpc.Query")).createRpcQueryExtension(client)
       }
     }
   };

@@ -31,16 +31,16 @@ export const createRPCMsgClient = async ({
   },
   intento: {
     alloc: {
-      v1beta1: new (await import("./alloc/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1: new (await import("./alloc/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     claim: {
-      v1beta1: new (await import("./claim/v1beta1/claim.rpc.msg")).MsgClientImpl(rpc)
+      v1: new (await import("./claim/v1/claim.rpc.msg")).MsgClientImpl(rpc)
     },
     intent: {
-      v1beta1: new (await import("./intent/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1: new (await import("./intent/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     mint: {
-      v1beta1: new (await import("./mint/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1: new (await import("./mint/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });
