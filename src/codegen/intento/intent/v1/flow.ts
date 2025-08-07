@@ -111,7 +111,7 @@ export interface FlowInfo {
   endTime: Date;
   updateHistory: Date[];
   selfHostedIcaConfig?: ICAConfig;
-  trustlessAgentConfig?: TrustlessAgentExecutionConfig;
+  trustlessAgentConfig?: TrustlessAgentConfig;
   configuration?: ExecutionConfiguration;
   conditions?: ExecutionConditions;
 }
@@ -135,7 +135,7 @@ export interface FlowInfoAmino {
   end_time?: string;
   update_history?: string[];
   self_hosted_ica_config?: ICAConfigAmino;
-  trustless_agent_config?: TrustlessAgentExecutionConfigAmino;
+  trustless_agent_config?: TrustlessAgentConfigAmino;
   configuration?: ExecutionConfigurationAmino;
   conditions?: ExecutionConditionsAmino;
 }
@@ -156,7 +156,7 @@ export interface FlowInfoSDKType {
   end_time: Date;
   update_history: Date[];
   self_hosted_ica_config?: ICAConfigSDKType;
-  trustless_agent_config?: TrustlessAgentExecutionConfigSDKType;
+  trustless_agent_config?: TrustlessAgentConfigSDKType;
   configuration?: ExecutionConfigurationSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
@@ -183,26 +183,26 @@ export interface ICAConfigSDKType {
   port_id: string;
   connection_id: string;
 }
-/** config for trustless excution agent */
-export interface TrustlessAgentExecutionConfig {
+/** config for trustless agent */
+export interface TrustlessAgentConfig {
   agentAddress: string;
   feeCoinLimit: Coin;
 }
-export interface TrustlessAgentExecutionConfigProtoMsg {
-  typeUrl: "/intento.intent.v1.TrustlessAgentExecutionConfig";
+export interface TrustlessAgentConfigProtoMsg {
+  typeUrl: "/intento.intent.v1.TrustlessAgentConfig";
   value: Uint8Array;
 }
-/** config for trustless excution agent */
-export interface TrustlessAgentExecutionConfigAmino {
+/** config for trustless agent */
+export interface TrustlessAgentConfigAmino {
   agent_address?: string;
   fee_coin_limit?: CoinAmino;
 }
-export interface TrustlessAgentExecutionConfigAminoMsg {
-  type: "/intento.intent.v1.TrustlessAgentExecutionConfig";
-  value: TrustlessAgentExecutionConfigAmino;
+export interface TrustlessAgentConfigAminoMsg {
+  type: "/intento.intent.v1.TrustlessAgentConfig";
+  value: TrustlessAgentConfigAmino;
 }
-/** config for trustless excution agent */
-export interface TrustlessAgentExecutionConfigSDKType {
+/** config for trustless agent */
+export interface TrustlessAgentConfigSDKType {
   agent_address: string;
   fee_coin_limit: CoinSDKType;
 }
@@ -664,7 +664,7 @@ export const FlowInfo = {
       ICAConfig.encode(message.selfHostedIcaConfig, writer.uint32(90).fork()).ldelim();
     }
     if (message.trustlessAgentConfig !== undefined) {
-      TrustlessAgentExecutionConfig.encode(message.trustlessAgentConfig, writer.uint32(98).fork()).ldelim();
+      TrustlessAgentConfig.encode(message.trustlessAgentConfig, writer.uint32(98).fork()).ldelim();
     }
     if (message.configuration !== undefined) {
       ExecutionConfiguration.encode(message.configuration, writer.uint32(114).fork()).ldelim();
@@ -715,7 +715,7 @@ export const FlowInfo = {
           message.selfHostedIcaConfig = ICAConfig.decode(reader, reader.uint32());
           break;
         case 12:
-          message.trustlessAgentConfig = TrustlessAgentExecutionConfig.decode(reader, reader.uint32());
+          message.trustlessAgentConfig = TrustlessAgentConfig.decode(reader, reader.uint32());
           break;
         case 14:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
@@ -743,7 +743,7 @@ export const FlowInfo = {
       endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
       updateHistory: Array.isArray(object?.updateHistory) ? object.updateHistory.map((e: any) => Timestamp.fromJSON(e)) : [],
       selfHostedIcaConfig: isSet(object.selfHostedIcaConfig) ? ICAConfig.fromJSON(object.selfHostedIcaConfig) : undefined,
-      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentExecutionConfig.fromJSON(object.trustlessAgentConfig) : undefined,
+      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentConfig.fromJSON(object.trustlessAgentConfig) : undefined,
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
@@ -769,7 +769,7 @@ export const FlowInfo = {
       obj.updateHistory = [];
     }
     message.selfHostedIcaConfig !== undefined && (obj.selfHostedIcaConfig = message.selfHostedIcaConfig ? ICAConfig.toJSON(message.selfHostedIcaConfig) : undefined);
-    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentExecutionConfig.toJSON(message.trustlessAgentConfig) : undefined);
+    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentConfig.toJSON(message.trustlessAgentConfig) : undefined);
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
@@ -787,7 +787,7 @@ export const FlowInfo = {
     message.endTime = object.endTime ?? undefined;
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
     message.selfHostedIcaConfig = object.selfHostedIcaConfig !== undefined && object.selfHostedIcaConfig !== null ? ICAConfig.fromPartial(object.selfHostedIcaConfig) : undefined;
-    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentExecutionConfig.fromPartial(object.trustlessAgentConfig) : undefined;
+    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentConfig.fromPartial(object.trustlessAgentConfig) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
@@ -824,7 +824,7 @@ export const FlowInfo = {
       message.selfHostedIcaConfig = ICAConfig.fromAmino(object.self_hosted_ica_config);
     }
     if (object.trustless_agent_config !== undefined && object.trustless_agent_config !== null) {
-      message.trustlessAgentConfig = TrustlessAgentExecutionConfig.fromAmino(object.trustless_agent_config);
+      message.trustlessAgentConfig = TrustlessAgentConfig.fromAmino(object.trustless_agent_config);
     }
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
@@ -855,7 +855,7 @@ export const FlowInfo = {
       obj.update_history = message.updateHistory;
     }
     obj.self_hosted_ica_config = message.selfHostedIcaConfig ? ICAConfig.toAmino(message.selfHostedIcaConfig) : undefined;
-    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentExecutionConfig.toAmino(message.trustlessAgentConfig) : undefined;
+    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentConfig.toAmino(message.trustlessAgentConfig) : undefined;
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
@@ -974,24 +974,24 @@ export const ICAConfig = {
   }
 };
 GlobalDecoderRegistry.register(ICAConfig.typeUrl, ICAConfig);
-function createBaseTrustlessAgentExecutionConfig(): TrustlessAgentExecutionConfig {
+function createBaseTrustlessAgentConfig(): TrustlessAgentConfig {
   return {
     agentAddress: "",
     feeCoinLimit: Coin.fromPartial({})
   };
 }
-export const TrustlessAgentExecutionConfig = {
-  typeUrl: "/intento.intent.v1.TrustlessAgentExecutionConfig",
-  is(o: any): o is TrustlessAgentExecutionConfig {
-    return o && (o.$typeUrl === TrustlessAgentExecutionConfig.typeUrl || typeof o.agentAddress === "string" && Coin.is(o.feeCoinLimit));
+export const TrustlessAgentConfig = {
+  typeUrl: "/intento.intent.v1.TrustlessAgentConfig",
+  is(o: any): o is TrustlessAgentConfig {
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agentAddress === "string" && Coin.is(o.feeCoinLimit));
   },
-  isSDK(o: any): o is TrustlessAgentExecutionConfigSDKType {
-    return o && (o.$typeUrl === TrustlessAgentExecutionConfig.typeUrl || typeof o.agent_address === "string" && Coin.isSDK(o.fee_coin_limit));
+  isSDK(o: any): o is TrustlessAgentConfigSDKType {
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Coin.isSDK(o.fee_coin_limit));
   },
-  isAmino(o: any): o is TrustlessAgentExecutionConfigAmino {
-    return o && (o.$typeUrl === TrustlessAgentExecutionConfig.typeUrl || typeof o.agent_address === "string" && Coin.isAmino(o.fee_coin_limit));
+  isAmino(o: any): o is TrustlessAgentConfigAmino {
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Coin.isAmino(o.fee_coin_limit));
   },
-  encode(message: TrustlessAgentExecutionConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: TrustlessAgentConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.agentAddress !== "") {
       writer.uint32(10).string(message.agentAddress);
     }
@@ -1000,10 +1000,10 @@ export const TrustlessAgentExecutionConfig = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): TrustlessAgentExecutionConfig {
+  decode(input: BinaryReader | Uint8Array, length?: number): TrustlessAgentConfig {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTrustlessAgentExecutionConfig();
+    const message = createBaseTrustlessAgentConfig();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1020,26 +1020,26 @@ export const TrustlessAgentExecutionConfig = {
     }
     return message;
   },
-  fromJSON(object: any): TrustlessAgentExecutionConfig {
+  fromJSON(object: any): TrustlessAgentConfig {
     return {
       agentAddress: isSet(object.agentAddress) ? String(object.agentAddress) : "",
       feeCoinLimit: isSet(object.feeCoinLimit) ? Coin.fromJSON(object.feeCoinLimit) : undefined
     };
   },
-  toJSON(message: TrustlessAgentExecutionConfig): JsonSafe<TrustlessAgentExecutionConfig> {
+  toJSON(message: TrustlessAgentConfig): JsonSafe<TrustlessAgentConfig> {
     const obj: any = {};
     message.agentAddress !== undefined && (obj.agentAddress = message.agentAddress);
     message.feeCoinLimit !== undefined && (obj.feeCoinLimit = message.feeCoinLimit ? Coin.toJSON(message.feeCoinLimit) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<TrustlessAgentExecutionConfig>): TrustlessAgentExecutionConfig {
-    const message = createBaseTrustlessAgentExecutionConfig();
+  fromPartial(object: Partial<TrustlessAgentConfig>): TrustlessAgentConfig {
+    const message = createBaseTrustlessAgentConfig();
     message.agentAddress = object.agentAddress ?? "";
     message.feeCoinLimit = object.feeCoinLimit !== undefined && object.feeCoinLimit !== null ? Coin.fromPartial(object.feeCoinLimit) : undefined;
     return message;
   },
-  fromAmino(object: TrustlessAgentExecutionConfigAmino): TrustlessAgentExecutionConfig {
-    const message = createBaseTrustlessAgentExecutionConfig();
+  fromAmino(object: TrustlessAgentConfigAmino): TrustlessAgentConfig {
+    const message = createBaseTrustlessAgentConfig();
     if (object.agent_address !== undefined && object.agent_address !== null) {
       message.agentAddress = object.agent_address;
     }
@@ -1048,29 +1048,29 @@ export const TrustlessAgentExecutionConfig = {
     }
     return message;
   },
-  toAmino(message: TrustlessAgentExecutionConfig): TrustlessAgentExecutionConfigAmino {
+  toAmino(message: TrustlessAgentConfig): TrustlessAgentConfigAmino {
     const obj: any = {};
     obj.agent_address = message.agentAddress === "" ? undefined : message.agentAddress;
     obj.fee_coin_limit = message.feeCoinLimit ? Coin.toAmino(message.feeCoinLimit) : undefined;
     return obj;
   },
-  fromAminoMsg(object: TrustlessAgentExecutionConfigAminoMsg): TrustlessAgentExecutionConfig {
-    return TrustlessAgentExecutionConfig.fromAmino(object.value);
+  fromAminoMsg(object: TrustlessAgentConfigAminoMsg): TrustlessAgentConfig {
+    return TrustlessAgentConfig.fromAmino(object.value);
   },
-  fromProtoMsg(message: TrustlessAgentExecutionConfigProtoMsg): TrustlessAgentExecutionConfig {
-    return TrustlessAgentExecutionConfig.decode(message.value);
+  fromProtoMsg(message: TrustlessAgentConfigProtoMsg): TrustlessAgentConfig {
+    return TrustlessAgentConfig.decode(message.value);
   },
-  toProto(message: TrustlessAgentExecutionConfig): Uint8Array {
-    return TrustlessAgentExecutionConfig.encode(message).finish();
+  toProto(message: TrustlessAgentConfig): Uint8Array {
+    return TrustlessAgentConfig.encode(message).finish();
   },
-  toProtoMsg(message: TrustlessAgentExecutionConfig): TrustlessAgentExecutionConfigProtoMsg {
+  toProtoMsg(message: TrustlessAgentConfig): TrustlessAgentConfigProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1.TrustlessAgentExecutionConfig",
-      value: TrustlessAgentExecutionConfig.encode(message).finish()
+      typeUrl: "/intento.intent.v1.TrustlessAgentConfig",
+      value: TrustlessAgentConfig.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(TrustlessAgentExecutionConfig.typeUrl, TrustlessAgentExecutionConfig);
+GlobalDecoderRegistry.register(TrustlessAgentConfig.typeUrl, TrustlessAgentConfig);
 function createBaseExecutionConfiguration(): ExecutionConfiguration {
   return {
     saveResponses: false,

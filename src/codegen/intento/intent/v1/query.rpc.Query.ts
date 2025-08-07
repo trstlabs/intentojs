@@ -17,11 +17,11 @@ export interface Query {
   flows(request?: QueryFlowsRequest): Promise<QueryFlowsResponse>;
   /** FlowsForOwner returns all flows for a given owner */
   flowsForOwner(request: QueryFlowsForOwnerRequest): Promise<QueryFlowsForOwnerResponse>;
-  /** TrustlessAgent returns the trustless excution agent information for a given hosted address */
+  /** TrustlessAgent returns the trustless agent information for a given hosted address */
   trustlessAgent(request: QueryTrustlessAgentRequest): Promise<QueryTrustlessAgentResponse>;
-  /** TrustlessAgents returns all trustless excution agents */
+  /** TrustlessAgents returns all trustless agents */
   trustlessAgents(request?: QueryTrustlessAgentsRequest): Promise<QueryTrustlessAgentsResponse>;
-  /** TrustlessAgentsByFeeAdmin returns all trustless excution agents for a given fee admin address */
+  /** TrustlessAgentsByFeeAdmin returns all trustless agents for a given fee admin address */
   trustlessAgentsByFeeAdmin(request: QueryTrustlessAgentsByFeeAdminRequest): Promise<QueryTrustlessAgentsByFeeAdminResponse>;
   /** Params returns the total set of Intent parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;

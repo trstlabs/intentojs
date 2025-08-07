@@ -1,6 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, TrustlessAgentExecutionConfig, TrustlessAgentExecutionConfigAmino, TrustlessAgentExecutionConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./flow";
+import { ExecutionConfiguration, ExecutionConfigurationAmino, ExecutionConfigurationSDKType, TrustlessAgentConfig, TrustlessAgentConfigAmino, TrustlessAgentConfigSDKType, ExecutionConditions, ExecutionConditionsAmino, ExecutionConditionsSDKType } from "./flow";
 import { TrustlessAgentFeeConfig, TrustlessAgentFeeConfigAmino, TrustlessAgentFeeConfigSDKType } from "./trustless_agent";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
@@ -131,8 +131,8 @@ export interface MsgSubmitFlow {
   configuration?: ExecutionConfiguration;
   /** optional connection ID interchain account */
   connectionId: string;
-  /** optional use of a trustless excution agent */
-  trustlessAgentConfig?: TrustlessAgentExecutionConfig;
+  /** optional use of a trustless agent */
+  trustlessAgentConfig?: TrustlessAgentConfig;
   conditions?: ExecutionConditions;
 }
 export interface MsgSubmitFlowProtoMsg {
@@ -168,8 +168,8 @@ export interface MsgSubmitFlowAmino {
   configuration?: ExecutionConfigurationAmino;
   /** optional connection ID interchain account */
   connection_id?: string;
-  /** optional use of a trustless excution agent */
-  trustless_agent_config?: TrustlessAgentExecutionConfigAmino;
+  /** optional use of a trustless agent */
+  trustless_agent_config?: TrustlessAgentConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgSubmitFlowAminoMsg {
@@ -190,7 +190,7 @@ export interface MsgSubmitFlowSDKType {
   fee_funds: CoinSDKType[];
   configuration?: ExecutionConfigurationSDKType;
   connection_id: string;
-  trustless_agent_config?: TrustlessAgentExecutionConfigSDKType;
+  trustless_agent_config?: TrustlessAgentConfigSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
 /** MsgSubmitTxResponse defines the MsgSubmitTx response type */
@@ -348,7 +348,7 @@ export interface MsgUpdateFlow {
   feeFunds: Coin[];
   configuration?: ExecutionConfiguration;
   connectionId: string;
-  trustlessAgentConfig?: TrustlessAgentExecutionConfig;
+  trustlessAgentConfig?: TrustlessAgentConfig;
   conditions?: ExecutionConditions;
 }
 export interface MsgUpdateFlowProtoMsg {
@@ -380,7 +380,7 @@ export interface MsgUpdateFlowAmino {
   fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
   connection_id?: string;
-  trustless_agent_config?: TrustlessAgentExecutionConfigAmino;
+  trustless_agent_config?: TrustlessAgentConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
 export interface MsgUpdateFlowAminoMsg {
@@ -402,7 +402,7 @@ export interface MsgUpdateFlowSDKType {
   fee_funds: CoinSDKType[];
   configuration?: ExecutionConfigurationSDKType;
   connection_id: string;
-  trustless_agent_config?: TrustlessAgentExecutionConfigSDKType;
+  trustless_agent_config?: TrustlessAgentConfigSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
 /** MsgUpdateTxResponse defines the MsgUpdateTx response type */
@@ -985,7 +985,7 @@ export const MsgSubmitFlow = {
       writer.uint32(74).string(message.connectionId);
     }
     if (message.trustlessAgentConfig !== undefined) {
-      TrustlessAgentExecutionConfig.encode(message.trustlessAgentConfig, writer.uint32(82).fork()).ldelim();
+      TrustlessAgentConfig.encode(message.trustlessAgentConfig, writer.uint32(82).fork()).ldelim();
     }
     if (message.conditions !== undefined) {
       ExecutionConditions.encode(message.conditions, writer.uint32(90).fork()).ldelim();
@@ -1027,7 +1027,7 @@ export const MsgSubmitFlow = {
           message.connectionId = reader.string();
           break;
         case 10:
-          message.trustlessAgentConfig = TrustlessAgentExecutionConfig.decode(reader, reader.uint32());
+          message.trustlessAgentConfig = TrustlessAgentConfig.decode(reader, reader.uint32());
           break;
         case 11:
           message.conditions = ExecutionConditions.decode(reader, reader.uint32());
@@ -1050,7 +1050,7 @@ export const MsgSubmitFlow = {
       feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
       connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentExecutionConfig.fromJSON(object.trustlessAgentConfig) : undefined,
+      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentConfig.fromJSON(object.trustlessAgentConfig) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
@@ -1073,7 +1073,7 @@ export const MsgSubmitFlow = {
     }
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentExecutionConfig.toJSON(message.trustlessAgentConfig) : undefined);
+    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentConfig.toJSON(message.trustlessAgentConfig) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
@@ -1088,7 +1088,7 @@ export const MsgSubmitFlow = {
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.connectionId = object.connectionId ?? "";
-    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentExecutionConfig.fromPartial(object.trustlessAgentConfig) : undefined;
+    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentConfig.fromPartial(object.trustlessAgentConfig) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
@@ -1118,7 +1118,7 @@ export const MsgSubmitFlow = {
       message.connectionId = object.connection_id;
     }
     if (object.trustless_agent_config !== undefined && object.trustless_agent_config !== null) {
-      message.trustlessAgentConfig = TrustlessAgentExecutionConfig.fromAmino(object.trustless_agent_config);
+      message.trustlessAgentConfig = TrustlessAgentConfig.fromAmino(object.trustless_agent_config);
     }
     if (object.conditions !== undefined && object.conditions !== null) {
       message.conditions = ExecutionConditions.fromAmino(object.conditions);
@@ -1144,7 +1144,7 @@ export const MsgSubmitFlow = {
     }
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentExecutionConfig.toAmino(message.trustlessAgentConfig) : undefined;
+    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentConfig.toAmino(message.trustlessAgentConfig) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
@@ -1623,7 +1623,7 @@ export const MsgUpdateFlow = {
       writer.uint32(82).string(message.connectionId);
     }
     if (message.trustlessAgentConfig !== undefined) {
-      TrustlessAgentExecutionConfig.encode(message.trustlessAgentConfig, writer.uint32(90).fork()).ldelim();
+      TrustlessAgentConfig.encode(message.trustlessAgentConfig, writer.uint32(90).fork()).ldelim();
     }
     if (message.conditions !== undefined) {
       ExecutionConditions.encode(message.conditions, writer.uint32(98).fork()).ldelim();
@@ -1668,7 +1668,7 @@ export const MsgUpdateFlow = {
           message.connectionId = reader.string();
           break;
         case 11:
-          message.trustlessAgentConfig = TrustlessAgentExecutionConfig.decode(reader, reader.uint32());
+          message.trustlessAgentConfig = TrustlessAgentConfig.decode(reader, reader.uint32());
           break;
         case 12:
           message.conditions = ExecutionConditions.decode(reader, reader.uint32());
@@ -1692,7 +1692,7 @@ export const MsgUpdateFlow = {
       feeFunds: Array.isArray(object?.feeFunds) ? object.feeFunds.map((e: any) => Coin.fromJSON(e)) : [],
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
       connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentExecutionConfig.fromJSON(object.trustlessAgentConfig) : undefined,
+      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentConfig.fromJSON(object.trustlessAgentConfig) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
@@ -1716,7 +1716,7 @@ export const MsgUpdateFlow = {
     }
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
     message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentExecutionConfig.toJSON(message.trustlessAgentConfig) : undefined);
+    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentConfig.toJSON(message.trustlessAgentConfig) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
@@ -1732,7 +1732,7 @@ export const MsgUpdateFlow = {
     message.feeFunds = object.feeFunds?.map(e => Coin.fromPartial(e)) || [];
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.connectionId = object.connectionId ?? "";
-    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentExecutionConfig.fromPartial(object.trustlessAgentConfig) : undefined;
+    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentConfig.fromPartial(object.trustlessAgentConfig) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
@@ -1765,7 +1765,7 @@ export const MsgUpdateFlow = {
       message.connectionId = object.connection_id;
     }
     if (object.trustless_agent_config !== undefined && object.trustless_agent_config !== null) {
-      message.trustlessAgentConfig = TrustlessAgentExecutionConfig.fromAmino(object.trustless_agent_config);
+      message.trustlessAgentConfig = TrustlessAgentConfig.fromAmino(object.trustless_agent_config);
     }
     if (object.conditions !== undefined && object.conditions !== null) {
       message.conditions = ExecutionConditions.fromAmino(object.conditions);
@@ -1792,7 +1792,7 @@ export const MsgUpdateFlow = {
     }
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentExecutionConfig.toAmino(message.trustlessAgentConfig) : undefined;
+    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentConfig.toAmino(message.trustlessAgentConfig) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
