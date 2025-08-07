@@ -186,7 +186,7 @@ export interface ICAConfigSDKType {
 /** config for trustless agent */
 export interface TrustlessAgentConfig {
   agentAddress: string;
-  feeCoinLimit: Coin;
+  feeLimit: Coin[];
 }
 export interface TrustlessAgentConfigProtoMsg {
   typeUrl: "/intento.intent.v1.TrustlessAgentConfig";
@@ -195,7 +195,7 @@ export interface TrustlessAgentConfigProtoMsg {
 /** config for trustless agent */
 export interface TrustlessAgentConfigAmino {
   agent_address?: string;
-  fee_coin_limit?: CoinAmino;
+  fee_limit?: CoinAmino[];
 }
 export interface TrustlessAgentConfigAminoMsg {
   type: "/intento.intent.v1.TrustlessAgentConfig";
@@ -204,7 +204,7 @@ export interface TrustlessAgentConfigAminoMsg {
 /** config for trustless agent */
 export interface TrustlessAgentConfigSDKType {
   agent_address: string;
-  fee_coin_limit: CoinSDKType;
+  fee_limit: CoinSDKType[];
 }
 /**
  * ExecutionConfiguration provides the execution-related configuration of the
@@ -977,26 +977,26 @@ GlobalDecoderRegistry.register(ICAConfig.typeUrl, ICAConfig);
 function createBaseTrustlessAgentConfig(): TrustlessAgentConfig {
   return {
     agentAddress: "",
-    feeCoinLimit: Coin.fromPartial({})
+    feeLimit: []
   };
 }
 export const TrustlessAgentConfig = {
   typeUrl: "/intento.intent.v1.TrustlessAgentConfig",
   is(o: any): o is TrustlessAgentConfig {
-    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agentAddress === "string" && Coin.is(o.feeCoinLimit));
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agentAddress === "string" && Array.isArray(o.feeLimit) && (!o.feeLimit.length || Coin.is(o.feeLimit[0])));
   },
   isSDK(o: any): o is TrustlessAgentConfigSDKType {
-    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Coin.isSDK(o.fee_coin_limit));
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Array.isArray(o.fee_limit) && (!o.fee_limit.length || Coin.isSDK(o.fee_limit[0])));
   },
   isAmino(o: any): o is TrustlessAgentConfigAmino {
-    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Coin.isAmino(o.fee_coin_limit));
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Array.isArray(o.fee_limit) && (!o.fee_limit.length || Coin.isAmino(o.fee_limit[0])));
   },
   encode(message: TrustlessAgentConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.agentAddress !== "") {
       writer.uint32(10).string(message.agentAddress);
     }
-    if (message.feeCoinLimit !== undefined) {
-      Coin.encode(message.feeCoinLimit, writer.uint32(26).fork()).ldelim();
+    for (const v of message.feeLimit) {
+      Coin.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -1011,7 +1011,7 @@ export const TrustlessAgentConfig = {
           message.agentAddress = reader.string();
           break;
         case 3:
-          message.feeCoinLimit = Coin.decode(reader, reader.uint32());
+          message.feeLimit.push(Coin.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1023,19 +1023,23 @@ export const TrustlessAgentConfig = {
   fromJSON(object: any): TrustlessAgentConfig {
     return {
       agentAddress: isSet(object.agentAddress) ? String(object.agentAddress) : "",
-      feeCoinLimit: isSet(object.feeCoinLimit) ? Coin.fromJSON(object.feeCoinLimit) : undefined
+      feeLimit: Array.isArray(object?.feeLimit) ? object.feeLimit.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
   toJSON(message: TrustlessAgentConfig): JsonSafe<TrustlessAgentConfig> {
     const obj: any = {};
     message.agentAddress !== undefined && (obj.agentAddress = message.agentAddress);
-    message.feeCoinLimit !== undefined && (obj.feeCoinLimit = message.feeCoinLimit ? Coin.toJSON(message.feeCoinLimit) : undefined);
+    if (message.feeLimit) {
+      obj.feeLimit = message.feeLimit.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.feeLimit = [];
+    }
     return obj;
   },
   fromPartial(object: Partial<TrustlessAgentConfig>): TrustlessAgentConfig {
     const message = createBaseTrustlessAgentConfig();
     message.agentAddress = object.agentAddress ?? "";
-    message.feeCoinLimit = object.feeCoinLimit !== undefined && object.feeCoinLimit !== null ? Coin.fromPartial(object.feeCoinLimit) : undefined;
+    message.feeLimit = object.feeLimit?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: TrustlessAgentConfigAmino): TrustlessAgentConfig {
@@ -1043,15 +1047,17 @@ export const TrustlessAgentConfig = {
     if (object.agent_address !== undefined && object.agent_address !== null) {
       message.agentAddress = object.agent_address;
     }
-    if (object.fee_coin_limit !== undefined && object.fee_coin_limit !== null) {
-      message.feeCoinLimit = Coin.fromAmino(object.fee_coin_limit);
-    }
+    message.feeLimit = object.fee_limit?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: TrustlessAgentConfig): TrustlessAgentConfigAmino {
     const obj: any = {};
     obj.agent_address = message.agentAddress === "" ? undefined : message.agentAddress;
-    obj.fee_coin_limit = message.feeCoinLimit ? Coin.toAmino(message.feeCoinLimit) : undefined;
+    if (message.feeLimit) {
+      obj.fee_limit = message.feeLimit.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.fee_limit = message.feeLimit;
+    }
     return obj;
   },
   fromAminoMsg(object: TrustlessAgentConfigAminoMsg): TrustlessAgentConfig {
