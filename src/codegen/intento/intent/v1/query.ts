@@ -1,5 +1,5 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
-import { FlowInfo, FlowInfoAmino, FlowInfoSDKType, FlowHistoryEntry, FlowHistoryEntryAmino, FlowHistoryEntrySDKType } from "./flow";
+import { Flow, FlowAmino, FlowSDKType, FlowHistoryEntry, FlowHistoryEntryAmino, FlowHistoryEntrySDKType } from "./flow";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { TrustlessAgent, TrustlessAgentAmino, TrustlessAgentSDKType } from "./trustless_agent";
 import { BinaryReader, BinaryWriter } from "../../../binary";
@@ -89,7 +89,7 @@ export interface QueryFlowRequestSDKType {
 }
 /** QueryFlowResponse the response type for the Query/FlowRequest RPC */
 export interface QueryFlowResponse {
-  flowInfo: FlowInfo;
+  flow: Flow;
 }
 export interface QueryFlowResponseProtoMsg {
   typeUrl: "/intento.intent.v1.QueryFlowResponse";
@@ -97,7 +97,7 @@ export interface QueryFlowResponseProtoMsg {
 }
 /** QueryFlowResponse the response type for the Query/FlowRequest RPC */
 export interface QueryFlowResponseAmino {
-  flow_info?: FlowInfoAmino;
+  flow?: FlowAmino;
 }
 export interface QueryFlowResponseAminoMsg {
   type: "/intento.intent.v1.QueryFlowResponse";
@@ -105,7 +105,7 @@ export interface QueryFlowResponseAminoMsg {
 }
 /** QueryFlowResponse the response type for the Query/FlowRequest RPC */
 export interface QueryFlowResponseSDKType {
-  flow_info: FlowInfoSDKType;
+  flow: FlowSDKType;
 }
 /**
  * QueryFlowHistoryRequest is the request type for the
@@ -201,7 +201,7 @@ export interface QueryFlowsRequestSDKType {
 }
 /** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
 export interface QueryFlowsResponse {
-  flowInfos: FlowInfo[];
+  flows: Flow[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponse;
 }
@@ -211,7 +211,7 @@ export interface QueryFlowsResponseProtoMsg {
 }
 /** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
 export interface QueryFlowsResponseAmino {
-  flow_infos?: FlowInfoAmino[];
+  flows?: FlowAmino[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
 }
@@ -221,7 +221,7 @@ export interface QueryFlowsResponseAminoMsg {
 }
 /** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
 export interface QueryFlowsResponseSDKType {
-  flow_infos: FlowInfoSDKType[];
+  flows: FlowSDKType[];
   pagination?: PageResponseSDKType;
 }
 /**
@@ -263,7 +263,7 @@ export interface QueryFlowsForOwnerRequestSDKType {
  * Query/FlowsForOwnerRequest RPC
  */
 export interface QueryFlowsForOwnerResponse {
-  flowInfos: FlowInfo[];
+  flows: Flow[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponse;
 }
@@ -276,7 +276,7 @@ export interface QueryFlowsForOwnerResponseProtoMsg {
  * Query/FlowsForOwnerRequest RPC
  */
 export interface QueryFlowsForOwnerResponseAmino {
-  flow_infos?: FlowInfoAmino[];
+  flows?: FlowAmino[];
   /** Pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
 }
@@ -289,7 +289,7 @@ export interface QueryFlowsForOwnerResponseAminoMsg {
  * Query/FlowsForOwnerRequest RPC
  */
 export interface QueryFlowsForOwnerResponseSDKType {
-  flow_infos: FlowInfoSDKType[];
+  flows: FlowSDKType[];
   pagination?: PageResponseSDKType;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -772,23 +772,23 @@ export const QueryFlowRequest = {
 GlobalDecoderRegistry.register(QueryFlowRequest.typeUrl, QueryFlowRequest);
 function createBaseQueryFlowResponse(): QueryFlowResponse {
   return {
-    flowInfo: FlowInfo.fromPartial({})
+    flow: Flow.fromPartial({})
   };
 }
 export const QueryFlowResponse = {
   typeUrl: "/intento.intent.v1.QueryFlowResponse",
   is(o: any): o is QueryFlowResponse {
-    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || FlowInfo.is(o.flowInfo));
+    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || Flow.is(o.flow));
   },
   isSDK(o: any): o is QueryFlowResponseSDKType {
-    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || FlowInfo.isSDK(o.flow_info));
+    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || Flow.isSDK(o.flow));
   },
   isAmino(o: any): o is QueryFlowResponseAmino {
-    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || FlowInfo.isAmino(o.flow_info));
+    return o && (o.$typeUrl === QueryFlowResponse.typeUrl || Flow.isAmino(o.flow));
   },
   encode(message: QueryFlowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.flowInfo !== undefined) {
-      FlowInfo.encode(message.flowInfo, writer.uint32(10).fork()).ldelim();
+    if (message.flow !== undefined) {
+      Flow.encode(message.flow, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -800,7 +800,7 @@ export const QueryFlowResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.flowInfo = FlowInfo.decode(reader, reader.uint32());
+          message.flow = Flow.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -811,29 +811,29 @@ export const QueryFlowResponse = {
   },
   fromJSON(object: any): QueryFlowResponse {
     return {
-      flowInfo: isSet(object.flowInfo) ? FlowInfo.fromJSON(object.flowInfo) : undefined
+      flow: isSet(object.flow) ? Flow.fromJSON(object.flow) : undefined
     };
   },
   toJSON(message: QueryFlowResponse): JsonSafe<QueryFlowResponse> {
     const obj: any = {};
-    message.flowInfo !== undefined && (obj.flowInfo = message.flowInfo ? FlowInfo.toJSON(message.flowInfo) : undefined);
+    message.flow !== undefined && (obj.flow = message.flow ? Flow.toJSON(message.flow) : undefined);
     return obj;
   },
   fromPartial(object: Partial<QueryFlowResponse>): QueryFlowResponse {
     const message = createBaseQueryFlowResponse();
-    message.flowInfo = object.flowInfo !== undefined && object.flowInfo !== null ? FlowInfo.fromPartial(object.flowInfo) : undefined;
+    message.flow = object.flow !== undefined && object.flow !== null ? Flow.fromPartial(object.flow) : undefined;
     return message;
   },
   fromAmino(object: QueryFlowResponseAmino): QueryFlowResponse {
     const message = createBaseQueryFlowResponse();
-    if (object.flow_info !== undefined && object.flow_info !== null) {
-      message.flowInfo = FlowInfo.fromAmino(object.flow_info);
+    if (object.flow !== undefined && object.flow !== null) {
+      message.flow = Flow.fromAmino(object.flow);
     }
     return message;
   },
   toAmino(message: QueryFlowResponse): QueryFlowResponseAmino {
     const obj: any = {};
-    obj.flow_info = message.flowInfo ? FlowInfo.toAmino(message.flowInfo) : undefined;
+    obj.flow = message.flow ? Flow.toAmino(message.flow) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryFlowResponseAminoMsg): QueryFlowResponse {
@@ -1138,24 +1138,24 @@ export const QueryFlowsRequest = {
 GlobalDecoderRegistry.register(QueryFlowsRequest.typeUrl, QueryFlowsRequest);
 function createBaseQueryFlowsResponse(): QueryFlowsResponse {
   return {
-    flowInfos: [],
+    flows: [],
     pagination: undefined
   };
 }
 export const QueryFlowsResponse = {
   typeUrl: "/intento.intent.v1.QueryFlowsResponse",
   is(o: any): o is QueryFlowsResponse {
-    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flowInfos) && (!o.flowInfos.length || FlowInfo.is(o.flowInfos[0])));
+    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flows) && (!o.flows.length || Flow.is(o.flows[0])));
   },
   isSDK(o: any): o is QueryFlowsResponseSDKType {
-    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isSDK(o.flow_infos[0])));
+    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flows) && (!o.flows.length || Flow.isSDK(o.flows[0])));
   },
   isAmino(o: any): o is QueryFlowsResponseAmino {
-    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isAmino(o.flow_infos[0])));
+    return o && (o.$typeUrl === QueryFlowsResponse.typeUrl || Array.isArray(o.flows) && (!o.flows.length || Flow.isAmino(o.flows[0])));
   },
   encode(message: QueryFlowsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.flowInfos) {
-      FlowInfo.encode(v!, writer.uint32(10).fork()).ldelim();
+    for (const v of message.flows) {
+      Flow.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
@@ -1170,7 +1170,7 @@ export const QueryFlowsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.flowInfos.push(FlowInfo.decode(reader, reader.uint32()));
+          message.flows.push(Flow.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1184,29 +1184,29 @@ export const QueryFlowsResponse = {
   },
   fromJSON(object: any): QueryFlowsResponse {
     return {
-      flowInfos: Array.isArray(object?.flowInfos) ? object.flowInfos.map((e: any) => FlowInfo.fromJSON(e)) : [],
+      flows: Array.isArray(object?.flows) ? object.flows.map((e: any) => Flow.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
   toJSON(message: QueryFlowsResponse): JsonSafe<QueryFlowsResponse> {
     const obj: any = {};
-    if (message.flowInfos) {
-      obj.flowInfos = message.flowInfos.map(e => e ? FlowInfo.toJSON(e) : undefined);
+    if (message.flows) {
+      obj.flows = message.flows.map(e => e ? Flow.toJSON(e) : undefined);
     } else {
-      obj.flowInfos = [];
+      obj.flows = [];
     }
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
   fromPartial(object: Partial<QueryFlowsResponse>): QueryFlowsResponse {
     const message = createBaseQueryFlowsResponse();
-    message.flowInfos = object.flowInfos?.map(e => FlowInfo.fromPartial(e)) || [];
+    message.flows = object.flows?.map(e => Flow.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryFlowsResponseAmino): QueryFlowsResponse {
     const message = createBaseQueryFlowsResponse();
-    message.flowInfos = object.flow_infos?.map(e => FlowInfo.fromAmino(e)) || [];
+    message.flows = object.flows?.map(e => Flow.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1214,10 +1214,10 @@ export const QueryFlowsResponse = {
   },
   toAmino(message: QueryFlowsResponse): QueryFlowsResponseAmino {
     const obj: any = {};
-    if (message.flowInfos) {
-      obj.flow_infos = message.flowInfos.map(e => e ? FlowInfo.toAmino(e) : undefined);
+    if (message.flows) {
+      obj.flows = message.flows.map(e => e ? Flow.toAmino(e) : undefined);
     } else {
-      obj.flow_infos = message.flowInfos;
+      obj.flows = message.flows;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
@@ -1338,24 +1338,24 @@ export const QueryFlowsForOwnerRequest = {
 GlobalDecoderRegistry.register(QueryFlowsForOwnerRequest.typeUrl, QueryFlowsForOwnerRequest);
 function createBaseQueryFlowsForOwnerResponse(): QueryFlowsForOwnerResponse {
   return {
-    flowInfos: [],
+    flows: [],
     pagination: undefined
   };
 }
 export const QueryFlowsForOwnerResponse = {
   typeUrl: "/intento.intent.v1.QueryFlowsForOwnerResponse",
   is(o: any): o is QueryFlowsForOwnerResponse {
-    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flowInfos) && (!o.flowInfos.length || FlowInfo.is(o.flowInfos[0])));
+    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flows) && (!o.flows.length || Flow.is(o.flows[0])));
   },
   isSDK(o: any): o is QueryFlowsForOwnerResponseSDKType {
-    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isSDK(o.flow_infos[0])));
+    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flows) && (!o.flows.length || Flow.isSDK(o.flows[0])));
   },
   isAmino(o: any): o is QueryFlowsForOwnerResponseAmino {
-    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flow_infos) && (!o.flow_infos.length || FlowInfo.isAmino(o.flow_infos[0])));
+    return o && (o.$typeUrl === QueryFlowsForOwnerResponse.typeUrl || Array.isArray(o.flows) && (!o.flows.length || Flow.isAmino(o.flows[0])));
   },
   encode(message: QueryFlowsForOwnerResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.flowInfos) {
-      FlowInfo.encode(v!, writer.uint32(10).fork()).ldelim();
+    for (const v of message.flows) {
+      Flow.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
@@ -1370,7 +1370,7 @@ export const QueryFlowsForOwnerResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.flowInfos.push(FlowInfo.decode(reader, reader.uint32()));
+          message.flows.push(Flow.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1384,29 +1384,29 @@ export const QueryFlowsForOwnerResponse = {
   },
   fromJSON(object: any): QueryFlowsForOwnerResponse {
     return {
-      flowInfos: Array.isArray(object?.flowInfos) ? object.flowInfos.map((e: any) => FlowInfo.fromJSON(e)) : [],
+      flows: Array.isArray(object?.flows) ? object.flows.map((e: any) => Flow.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
   toJSON(message: QueryFlowsForOwnerResponse): JsonSafe<QueryFlowsForOwnerResponse> {
     const obj: any = {};
-    if (message.flowInfos) {
-      obj.flowInfos = message.flowInfos.map(e => e ? FlowInfo.toJSON(e) : undefined);
+    if (message.flows) {
+      obj.flows = message.flows.map(e => e ? Flow.toJSON(e) : undefined);
     } else {
-      obj.flowInfos = [];
+      obj.flows = [];
     }
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
   fromPartial(object: Partial<QueryFlowsForOwnerResponse>): QueryFlowsForOwnerResponse {
     const message = createBaseQueryFlowsForOwnerResponse();
-    message.flowInfos = object.flowInfos?.map(e => FlowInfo.fromPartial(e)) || [];
+    message.flows = object.flows?.map(e => Flow.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryFlowsForOwnerResponseAmino): QueryFlowsForOwnerResponse {
     const message = createBaseQueryFlowsForOwnerResponse();
-    message.flowInfos = object.flow_infos?.map(e => FlowInfo.fromAmino(e)) || [];
+    message.flows = object.flows?.map(e => Flow.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1414,10 +1414,10 @@ export const QueryFlowsForOwnerResponse = {
   },
   toAmino(message: QueryFlowsForOwnerResponse): QueryFlowsForOwnerResponseAmino {
     const obj: any = {};
-    if (message.flowInfos) {
-      obj.flow_infos = message.flowInfos.map(e => e ? FlowInfo.toAmino(e) : undefined);
+    if (message.flows) {
+      obj.flows = message.flows.map(e => e ? Flow.toAmino(e) : undefined);
     } else {
-      obj.flow_infos = message.flowInfos;
+      obj.flows = message.flows;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;

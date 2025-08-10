@@ -98,8 +98,8 @@ export function comparisonOperatorToJSON(object: ComparisonOperator): string {
       return "UNRECOGNIZED";
   }
 }
-/** FlowInfo stores the info for the flow */
-export interface FlowInfo {
+/** Flow stores the info for the flow */
+export interface Flow {
   id: bigint;
   owner: string;
   label: string;
@@ -110,20 +110,20 @@ export interface FlowInfo {
   execTime: Date;
   endTime: Date;
   updateHistory: Date[];
-  selfHostedIcaConfig?: ICAConfig;
-  trustlessAgentConfig?: TrustlessAgentConfig;
+  selfHostedIca?: ICAConfig;
+  trustlessAgent?: TrustlessAgentConfig;
   configuration?: ExecutionConfiguration;
   conditions?: ExecutionConditions;
 }
-export interface FlowInfoProtoMsg {
-  typeUrl: "/intento.intent.v1.FlowInfo";
+export interface FlowProtoMsg {
+  typeUrl: "/intento.intent.v1.Flow";
   value: Uint8Array;
 }
-export type FlowInfoEncoded = Omit<FlowInfo, "msgs"> & {
+export type FlowEncoded = Omit<Flow, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** FlowInfo stores the info for the flow */
-export interface FlowInfoAmino {
+/** Flow stores the info for the flow */
+export interface FlowAmino {
   id?: string;
   owner?: string;
   label?: string;
@@ -134,17 +134,17 @@ export interface FlowInfoAmino {
   exec_time?: string;
   end_time?: string;
   update_history?: string[];
-  self_hosted_ica_config?: ICAConfigAmino;
-  trustless_agent_config?: TrustlessAgentConfigAmino;
+  self_hosted_ica?: ICAConfigAmino;
+  trustless_agent?: TrustlessAgentConfigAmino;
   configuration?: ExecutionConfigurationAmino;
   conditions?: ExecutionConditionsAmino;
 }
-export interface FlowInfoAminoMsg {
-  type: "/intento.intent.v1.FlowInfo";
-  value: FlowInfoAmino;
+export interface FlowAminoMsg {
+  type: "/intento.intent.v1.Flow";
+  value: FlowAmino;
 }
-/** FlowInfo stores the info for the flow */
-export interface FlowInfoSDKType {
+/** Flow stores the info for the flow */
+export interface FlowSDKType {
   id: bigint;
   owner: string;
   label: string;
@@ -155,8 +155,8 @@ export interface FlowInfoSDKType {
   exec_time: Date;
   end_time: Date;
   update_history: Date[];
-  self_hosted_ica_config?: ICAConfigSDKType;
-  trustless_agent_config?: TrustlessAgentConfigSDKType;
+  self_hosted_ica?: ICAConfigSDKType;
+  trustless_agent?: TrustlessAgentConfigSDKType;
   configuration?: ExecutionConfigurationSDKType;
   conditions?: ExecutionConditionsSDKType;
 }
@@ -183,7 +183,7 @@ export interface ICAConfigSDKType {
   port_id: string;
   connection_id: string;
 }
-/** config for trustless agent */
+/** config for a trustless agent for flow execution on host chain */
 export interface TrustlessAgentConfig {
   agentAddress: string;
   feeLimit: Coin[];
@@ -192,7 +192,7 @@ export interface TrustlessAgentConfigProtoMsg {
   typeUrl: "/intento.intent.v1.TrustlessAgentConfig";
   value: Uint8Array;
 }
-/** config for trustless agent */
+/** config for a trustless agent for flow execution on host chain */
 export interface TrustlessAgentConfigAmino {
   agent_address?: string;
   fee_limit?: CoinAmino[];
@@ -201,7 +201,7 @@ export interface TrustlessAgentConfigAminoMsg {
   type: "/intento.intent.v1.TrustlessAgentConfig";
   value: TrustlessAgentConfigAmino;
 }
-/** config for trustless agent */
+/** config for a trustless agent for flow execution on host chain */
 export interface TrustlessAgentConfigSDKType {
   agent_address: string;
   fee_limit: CoinSDKType[];
@@ -600,7 +600,7 @@ export interface ICQConfigSDKType {
   query_key: string;
   response: Uint8Array;
 }
-function createBaseFlowInfo(): FlowInfo {
+function createBaseFlow(): Flow {
   return {
     id: BigInt(0),
     owner: "",
@@ -612,24 +612,24 @@ function createBaseFlowInfo(): FlowInfo {
     execTime: new Date(),
     endTime: new Date(),
     updateHistory: [],
-    selfHostedIcaConfig: undefined,
-    trustlessAgentConfig: undefined,
+    selfHostedIca: undefined,
+    trustlessAgent: undefined,
     configuration: undefined,
     conditions: undefined
   };
 }
-export const FlowInfo = {
-  typeUrl: "/intento.intent.v1.FlowInfo",
-  is(o: any): o is FlowInfo {
-    return o && (o.$typeUrl === FlowInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.feeAddress === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && Duration.is(o.interval) && Timestamp.is(o.startTime) && Timestamp.is(o.execTime) && Timestamp.is(o.endTime) && Array.isArray(o.updateHistory) && (!o.updateHistory.length || Timestamp.is(o.updateHistory[0])));
+export const Flow = {
+  typeUrl: "/intento.intent.v1.Flow",
+  is(o: any): o is Flow {
+    return o && (o.$typeUrl === Flow.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.feeAddress === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.is(o.msgs[0])) && Duration.is(o.interval) && Timestamp.is(o.startTime) && Timestamp.is(o.execTime) && Timestamp.is(o.endTime) && Array.isArray(o.updateHistory) && (!o.updateHistory.length || Timestamp.is(o.updateHistory[0])));
   },
-  isSDK(o: any): o is FlowInfoSDKType {
-    return o && (o.$typeUrl === FlowInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && Duration.isSDK(o.interval) && Timestamp.isSDK(o.start_time) && Timestamp.isSDK(o.exec_time) && Timestamp.isSDK(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isSDK(o.update_history[0])));
+  isSDK(o: any): o is FlowSDKType {
+    return o && (o.$typeUrl === Flow.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isSDK(o.msgs[0])) && Duration.isSDK(o.interval) && Timestamp.isSDK(o.start_time) && Timestamp.isSDK(o.exec_time) && Timestamp.isSDK(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isSDK(o.update_history[0])));
   },
-  isAmino(o: any): o is FlowInfoAmino {
-    return o && (o.$typeUrl === FlowInfo.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && Duration.isAmino(o.interval) && Timestamp.isAmino(o.start_time) && Timestamp.isAmino(o.exec_time) && Timestamp.isAmino(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isAmino(o.update_history[0])));
+  isAmino(o: any): o is FlowAmino {
+    return o && (o.$typeUrl === Flow.typeUrl || typeof o.id === "bigint" && typeof o.owner === "string" && typeof o.label === "string" && typeof o.fee_address === "string" && Array.isArray(o.msgs) && (!o.msgs.length || Any.isAmino(o.msgs[0])) && Duration.isAmino(o.interval) && Timestamp.isAmino(o.start_time) && Timestamp.isAmino(o.exec_time) && Timestamp.isAmino(o.end_time) && Array.isArray(o.update_history) && (!o.update_history.length || Timestamp.isAmino(o.update_history[0])));
   },
-  encode(message: FlowInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: Flow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== BigInt(0)) {
       writer.uint32(8).uint64(message.id);
     }
@@ -660,11 +660,11 @@ export const FlowInfo = {
     for (const v of message.updateHistory) {
       Timestamp.encode(v!, writer.uint32(82).fork()).ldelim();
     }
-    if (message.selfHostedIcaConfig !== undefined) {
-      ICAConfig.encode(message.selfHostedIcaConfig, writer.uint32(90).fork()).ldelim();
+    if (message.selfHostedIca !== undefined) {
+      ICAConfig.encode(message.selfHostedIca, writer.uint32(90).fork()).ldelim();
     }
-    if (message.trustlessAgentConfig !== undefined) {
-      TrustlessAgentConfig.encode(message.trustlessAgentConfig, writer.uint32(98).fork()).ldelim();
+    if (message.trustlessAgent !== undefined) {
+      TrustlessAgentConfig.encode(message.trustlessAgent, writer.uint32(98).fork()).ldelim();
     }
     if (message.configuration !== undefined) {
       ExecutionConfiguration.encode(message.configuration, writer.uint32(114).fork()).ldelim();
@@ -674,10 +674,10 @@ export const FlowInfo = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): FlowInfo {
+  decode(input: BinaryReader | Uint8Array, length?: number): Flow {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseFlowInfo();
+    const message = createBaseFlow();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -712,10 +712,10 @@ export const FlowInfo = {
           message.updateHistory.push(Timestamp.decode(reader, reader.uint32()));
           break;
         case 11:
-          message.selfHostedIcaConfig = ICAConfig.decode(reader, reader.uint32());
+          message.selfHostedIca = ICAConfig.decode(reader, reader.uint32());
           break;
         case 12:
-          message.trustlessAgentConfig = TrustlessAgentConfig.decode(reader, reader.uint32());
+          message.trustlessAgent = TrustlessAgentConfig.decode(reader, reader.uint32());
           break;
         case 14:
           message.configuration = ExecutionConfiguration.decode(reader, reader.uint32());
@@ -730,7 +730,7 @@ export const FlowInfo = {
     }
     return message;
   },
-  fromJSON(object: any): FlowInfo {
+  fromJSON(object: any): Flow {
     return {
       id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
       owner: isSet(object.owner) ? String(object.owner) : "",
@@ -742,13 +742,13 @@ export const FlowInfo = {
       execTime: isSet(object.execTime) ? fromJsonTimestamp(object.execTime) : undefined,
       endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
       updateHistory: Array.isArray(object?.updateHistory) ? object.updateHistory.map((e: any) => Timestamp.fromJSON(e)) : [],
-      selfHostedIcaConfig: isSet(object.selfHostedIcaConfig) ? ICAConfig.fromJSON(object.selfHostedIcaConfig) : undefined,
-      trustlessAgentConfig: isSet(object.trustlessAgentConfig) ? TrustlessAgentConfig.fromJSON(object.trustlessAgentConfig) : undefined,
+      selfHostedIca: isSet(object.selfHostedIca) ? ICAConfig.fromJSON(object.selfHostedIca) : undefined,
+      trustlessAgent: isSet(object.trustlessAgent) ? TrustlessAgentConfig.fromJSON(object.trustlessAgent) : undefined,
       configuration: isSet(object.configuration) ? ExecutionConfiguration.fromJSON(object.configuration) : undefined,
       conditions: isSet(object.conditions) ? ExecutionConditions.fromJSON(object.conditions) : undefined
     };
   },
-  toJSON(message: FlowInfo): JsonSafe<FlowInfo> {
+  toJSON(message: Flow): JsonSafe<Flow> {
     const obj: any = {};
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
     message.owner !== undefined && (obj.owner = message.owner);
@@ -768,14 +768,14 @@ export const FlowInfo = {
     } else {
       obj.updateHistory = [];
     }
-    message.selfHostedIcaConfig !== undefined && (obj.selfHostedIcaConfig = message.selfHostedIcaConfig ? ICAConfig.toJSON(message.selfHostedIcaConfig) : undefined);
-    message.trustlessAgentConfig !== undefined && (obj.trustlessAgentConfig = message.trustlessAgentConfig ? TrustlessAgentConfig.toJSON(message.trustlessAgentConfig) : undefined);
+    message.selfHostedIca !== undefined && (obj.selfHostedIca = message.selfHostedIca ? ICAConfig.toJSON(message.selfHostedIca) : undefined);
+    message.trustlessAgent !== undefined && (obj.trustlessAgent = message.trustlessAgent ? TrustlessAgentConfig.toJSON(message.trustlessAgent) : undefined);
     message.configuration !== undefined && (obj.configuration = message.configuration ? ExecutionConfiguration.toJSON(message.configuration) : undefined);
     message.conditions !== undefined && (obj.conditions = message.conditions ? ExecutionConditions.toJSON(message.conditions) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<FlowInfo>): FlowInfo {
-    const message = createBaseFlowInfo();
+  fromPartial(object: Partial<Flow>): Flow {
+    const message = createBaseFlow();
     message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
     message.owner = object.owner ?? "";
     message.label = object.label ?? "";
@@ -786,14 +786,14 @@ export const FlowInfo = {
     message.execTime = object.execTime ?? undefined;
     message.endTime = object.endTime ?? undefined;
     message.updateHistory = object.updateHistory?.map(e => Timestamp.fromPartial(e)) || [];
-    message.selfHostedIcaConfig = object.selfHostedIcaConfig !== undefined && object.selfHostedIcaConfig !== null ? ICAConfig.fromPartial(object.selfHostedIcaConfig) : undefined;
-    message.trustlessAgentConfig = object.trustlessAgentConfig !== undefined && object.trustlessAgentConfig !== null ? TrustlessAgentConfig.fromPartial(object.trustlessAgentConfig) : undefined;
+    message.selfHostedIca = object.selfHostedIca !== undefined && object.selfHostedIca !== null ? ICAConfig.fromPartial(object.selfHostedIca) : undefined;
+    message.trustlessAgent = object.trustlessAgent !== undefined && object.trustlessAgent !== null ? TrustlessAgentConfig.fromPartial(object.trustlessAgent) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ExecutionConfiguration.fromPartial(object.configuration) : undefined;
     message.conditions = object.conditions !== undefined && object.conditions !== null ? ExecutionConditions.fromPartial(object.conditions) : undefined;
     return message;
   },
-  fromAmino(object: FlowInfoAmino): FlowInfo {
-    const message = createBaseFlowInfo();
+  fromAmino(object: FlowAmino): Flow {
+    const message = createBaseFlow();
     if (object.id !== undefined && object.id !== null) {
       message.id = BigInt(object.id);
     }
@@ -820,11 +820,11 @@ export const FlowInfo = {
       message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
     }
     message.updateHistory = object.update_history?.map(e => Timestamp.fromAmino(e)) || [];
-    if (object.self_hosted_ica_config !== undefined && object.self_hosted_ica_config !== null) {
-      message.selfHostedIcaConfig = ICAConfig.fromAmino(object.self_hosted_ica_config);
+    if (object.self_hosted_ica !== undefined && object.self_hosted_ica !== null) {
+      message.selfHostedIca = ICAConfig.fromAmino(object.self_hosted_ica);
     }
-    if (object.trustless_agent_config !== undefined && object.trustless_agent_config !== null) {
-      message.trustlessAgentConfig = TrustlessAgentConfig.fromAmino(object.trustless_agent_config);
+    if (object.trustless_agent !== undefined && object.trustless_agent !== null) {
+      message.trustlessAgent = TrustlessAgentConfig.fromAmino(object.trustless_agent);
     }
     if (object.configuration !== undefined && object.configuration !== null) {
       message.configuration = ExecutionConfiguration.fromAmino(object.configuration);
@@ -834,7 +834,7 @@ export const FlowInfo = {
     }
     return message;
   },
-  toAmino(message: FlowInfo): FlowInfoAmino {
+  toAmino(message: Flow): FlowAmino {
     const obj: any = {};
     obj.id = message.id !== BigInt(0) ? message.id?.toString() : undefined;
     obj.owner = message.owner === "" ? undefined : message.owner;
@@ -854,29 +854,29 @@ export const FlowInfo = {
     } else {
       obj.update_history = message.updateHistory;
     }
-    obj.self_hosted_ica_config = message.selfHostedIcaConfig ? ICAConfig.toAmino(message.selfHostedIcaConfig) : undefined;
-    obj.trustless_agent_config = message.trustlessAgentConfig ? TrustlessAgentConfig.toAmino(message.trustlessAgentConfig) : undefined;
+    obj.self_hosted_ica = message.selfHostedIca ? ICAConfig.toAmino(message.selfHostedIca) : undefined;
+    obj.trustless_agent = message.trustlessAgent ? TrustlessAgentConfig.toAmino(message.trustlessAgent) : undefined;
     obj.configuration = message.configuration ? ExecutionConfiguration.toAmino(message.configuration) : undefined;
     obj.conditions = message.conditions ? ExecutionConditions.toAmino(message.conditions) : undefined;
     return obj;
   },
-  fromAminoMsg(object: FlowInfoAminoMsg): FlowInfo {
-    return FlowInfo.fromAmino(object.value);
+  fromAminoMsg(object: FlowAminoMsg): Flow {
+    return Flow.fromAmino(object.value);
   },
-  fromProtoMsg(message: FlowInfoProtoMsg): FlowInfo {
-    return FlowInfo.decode(message.value);
+  fromProtoMsg(message: FlowProtoMsg): Flow {
+    return Flow.decode(message.value);
   },
-  toProto(message: FlowInfo): Uint8Array {
-    return FlowInfo.encode(message).finish();
+  toProto(message: Flow): Uint8Array {
+    return Flow.encode(message).finish();
   },
-  toProtoMsg(message: FlowInfo): FlowInfoProtoMsg {
+  toProtoMsg(message: Flow): FlowProtoMsg {
     return {
-      typeUrl: "/intento.intent.v1.FlowInfo",
-      value: FlowInfo.encode(message).finish()
+      typeUrl: "/intento.intent.v1.Flow",
+      value: Flow.encode(message).finish()
     };
   }
 };
-GlobalDecoderRegistry.register(FlowInfo.typeUrl, FlowInfo);
+GlobalDecoderRegistry.register(Flow.typeUrl, Flow);
 function createBaseICAConfig(): ICAConfig {
   return {
     portId: "",
