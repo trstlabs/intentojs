@@ -187,6 +187,8 @@ export interface ICAConfigSDKType {
 export interface TrustlessAgentConfig {
   agentAddress: string;
   feeLimit: Coin[];
+  /** optional */
+  connectionId: string;
 }
 export interface TrustlessAgentConfigProtoMsg {
   typeUrl: "/intento.intent.v1.TrustlessAgentConfig";
@@ -196,6 +198,8 @@ export interface TrustlessAgentConfigProtoMsg {
 export interface TrustlessAgentConfigAmino {
   agent_address?: string;
   fee_limit?: CoinAmino[];
+  /** optional */
+  connection_id?: string;
 }
 export interface TrustlessAgentConfigAminoMsg {
   type: "/intento.intent.v1.TrustlessAgentConfig";
@@ -205,6 +209,7 @@ export interface TrustlessAgentConfigAminoMsg {
 export interface TrustlessAgentConfigSDKType {
   agent_address: string;
   fee_limit: CoinSDKType[];
+  connection_id: string;
 }
 /**
  * ExecutionConfiguration provides the execution-related configuration of the
@@ -312,8 +317,8 @@ export interface FlowHistoryEntry {
   msgResponses: Any[];
   /** will be empty when save_responses is false */
   queryResponses: string[];
-  /** packet sequence of the flow execution on the host chain */
-  packetSequence: bigint;
+  /** packet sequences of the flow execution on the host chain */
+  packetSequences: bigint[];
 }
 export interface FlowHistoryEntryProtoMsg {
   typeUrl: "/intento.intent.v1.FlowHistoryEntry";
@@ -337,8 +342,8 @@ export interface FlowHistoryEntryAmino {
   msg_responses?: AnyAmino[];
   /** will be empty when save_responses is false */
   query_responses?: string[];
-  /** packet sequence of the flow execution on the host chain */
-  packet_sequence?: string;
+  /** packet sequences of the flow execution on the host chain */
+  packet_sequences?: string[];
 }
 export interface FlowHistoryEntryAminoMsg {
   type: "/intento.intent.v1.FlowHistoryEntry";
@@ -354,7 +359,7 @@ export interface FlowHistoryEntrySDKType {
   errors: string[];
   msg_responses: AnySDKType[];
   query_responses: string[];
-  packet_sequence: bigint;
+  packet_sequences: bigint[];
 }
 /** ExecutionConditions provides execution conditions for the flow */
 export interface ExecutionConditions {
@@ -977,26 +982,30 @@ GlobalDecoderRegistry.register(ICAConfig.typeUrl, ICAConfig);
 function createBaseTrustlessAgentConfig(): TrustlessAgentConfig {
   return {
     agentAddress: "",
-    feeLimit: []
+    feeLimit: [],
+    connectionId: ""
   };
 }
 export const TrustlessAgentConfig = {
   typeUrl: "/intento.intent.v1.TrustlessAgentConfig",
   is(o: any): o is TrustlessAgentConfig {
-    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agentAddress === "string" && Array.isArray(o.feeLimit) && (!o.feeLimit.length || Coin.is(o.feeLimit[0])));
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agentAddress === "string" && Array.isArray(o.feeLimit) && (!o.feeLimit.length || Coin.is(o.feeLimit[0])) && typeof o.connectionId === "string");
   },
   isSDK(o: any): o is TrustlessAgentConfigSDKType {
-    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Array.isArray(o.fee_limit) && (!o.fee_limit.length || Coin.isSDK(o.fee_limit[0])));
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Array.isArray(o.fee_limit) && (!o.fee_limit.length || Coin.isSDK(o.fee_limit[0])) && typeof o.connection_id === "string");
   },
   isAmino(o: any): o is TrustlessAgentConfigAmino {
-    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Array.isArray(o.fee_limit) && (!o.fee_limit.length || Coin.isAmino(o.fee_limit[0])));
+    return o && (o.$typeUrl === TrustlessAgentConfig.typeUrl || typeof o.agent_address === "string" && Array.isArray(o.fee_limit) && (!o.fee_limit.length || Coin.isAmino(o.fee_limit[0])) && typeof o.connection_id === "string");
   },
   encode(message: TrustlessAgentConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.agentAddress !== "") {
       writer.uint32(10).string(message.agentAddress);
     }
     for (const v of message.feeLimit) {
-      Coin.encode(v!, writer.uint32(26).fork()).ldelim();
+      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.connectionId !== "") {
+      writer.uint32(26).string(message.connectionId);
     }
     return writer;
   },
@@ -1010,8 +1019,11 @@ export const TrustlessAgentConfig = {
         case 1:
           message.agentAddress = reader.string();
           break;
-        case 3:
+        case 2:
           message.feeLimit.push(Coin.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.connectionId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1023,7 +1035,8 @@ export const TrustlessAgentConfig = {
   fromJSON(object: any): TrustlessAgentConfig {
     return {
       agentAddress: isSet(object.agentAddress) ? String(object.agentAddress) : "",
-      feeLimit: Array.isArray(object?.feeLimit) ? object.feeLimit.map((e: any) => Coin.fromJSON(e)) : []
+      feeLimit: Array.isArray(object?.feeLimit) ? object.feeLimit.map((e: any) => Coin.fromJSON(e)) : [],
+      connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
     };
   },
   toJSON(message: TrustlessAgentConfig): JsonSafe<TrustlessAgentConfig> {
@@ -1034,12 +1047,14 @@ export const TrustlessAgentConfig = {
     } else {
       obj.feeLimit = [];
     }
+    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
     return obj;
   },
   fromPartial(object: Partial<TrustlessAgentConfig>): TrustlessAgentConfig {
     const message = createBaseTrustlessAgentConfig();
     message.agentAddress = object.agentAddress ?? "";
     message.feeLimit = object.feeLimit?.map(e => Coin.fromPartial(e)) || [];
+    message.connectionId = object.connectionId ?? "";
     return message;
   },
   fromAmino(object: TrustlessAgentConfigAmino): TrustlessAgentConfig {
@@ -1048,6 +1063,9 @@ export const TrustlessAgentConfig = {
       message.agentAddress = object.agent_address;
     }
     message.feeLimit = object.fee_limit?.map(e => Coin.fromAmino(e)) || [];
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
     return message;
   },
   toAmino(message: TrustlessAgentConfig): TrustlessAgentConfigAmino {
@@ -1058,6 +1076,7 @@ export const TrustlessAgentConfig = {
     } else {
       obj.fee_limit = message.feeLimit;
     }
+    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
     return obj;
   },
   fromAminoMsg(object: TrustlessAgentConfigAminoMsg): TrustlessAgentConfig {
@@ -1329,19 +1348,19 @@ function createBaseFlowHistoryEntry(): FlowHistoryEntry {
     errors: [],
     msgResponses: [],
     queryResponses: [],
-    packetSequence: BigInt(0)
+    packetSequences: []
   };
 }
 export const FlowHistoryEntry = {
   typeUrl: "/intento.intent.v1.FlowHistoryEntry",
   is(o: any): o is FlowHistoryEntry {
-    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Array.isArray(o.execFee) && (!o.execFee.length || Coin.is(o.execFee[0])) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && Array.isArray(o.queryResponses) && (!o.queryResponses.length || typeof o.queryResponses[0] === "string") && typeof o.packetSequence === "bigint");
+    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.is(o.scheduledExecTime) && Timestamp.is(o.actualExecTime) && Array.isArray(o.execFee) && (!o.execFee.length || Coin.is(o.execFee[0])) && typeof o.executed === "boolean" && typeof o.timedOut === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msgResponses) && (!o.msgResponses.length || Any.is(o.msgResponses[0])) && Array.isArray(o.queryResponses) && (!o.queryResponses.length || typeof o.queryResponses[0] === "string") && Array.isArray(o.packetSequences) && (!o.packetSequences.length || typeof o.packetSequences[0] === "bigint"));
   },
   isSDK(o: any): o is FlowHistoryEntrySDKType {
-    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Array.isArray(o.exec_fee) && (!o.exec_fee.length || Coin.isSDK(o.exec_fee[0])) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string") && typeof o.packet_sequence === "bigint");
+    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.isSDK(o.scheduled_exec_time) && Timestamp.isSDK(o.actual_exec_time) && Array.isArray(o.exec_fee) && (!o.exec_fee.length || Coin.isSDK(o.exec_fee[0])) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string") && Array.isArray(o.packet_sequences) && (!o.packet_sequences.length || typeof o.packet_sequences[0] === "bigint"));
   },
   isAmino(o: any): o is FlowHistoryEntryAmino {
-    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Array.isArray(o.exec_fee) && (!o.exec_fee.length || Coin.isAmino(o.exec_fee[0])) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string") && typeof o.packet_sequence === "bigint");
+    return o && (o.$typeUrl === FlowHistoryEntry.typeUrl || Timestamp.isAmino(o.scheduled_exec_time) && Timestamp.isAmino(o.actual_exec_time) && Array.isArray(o.exec_fee) && (!o.exec_fee.length || Coin.isAmino(o.exec_fee[0])) && typeof o.executed === "boolean" && typeof o.timed_out === "boolean" && Array.isArray(o.errors) && (!o.errors.length || typeof o.errors[0] === "string") && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])) && Array.isArray(o.query_responses) && (!o.query_responses.length || typeof o.query_responses[0] === "string") && Array.isArray(o.packet_sequences) && (!o.packet_sequences.length || typeof o.packet_sequences[0] === "bigint"));
   },
   encode(message: FlowHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.scheduledExecTime !== undefined) {
@@ -1368,9 +1387,11 @@ export const FlowHistoryEntry = {
     for (const v of message.queryResponses) {
       writer.uint32(66).string(v!);
     }
-    if (message.packetSequence !== BigInt(0)) {
-      writer.uint32(72).uint64(message.packetSequence);
+    writer.uint32(74).fork();
+    for (const v of message.packetSequences) {
+      writer.uint64(v);
     }
+    writer.ldelim();
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): FlowHistoryEntry {
@@ -1405,7 +1426,14 @@ export const FlowHistoryEntry = {
           message.queryResponses.push(reader.string());
           break;
         case 9:
-          message.packetSequence = reader.uint64();
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.packetSequences.push(reader.uint64());
+            }
+          } else {
+            message.packetSequences.push(reader.uint64());
+          }
           break;
         default:
           reader.skipType(tag & 7);
@@ -1424,7 +1452,7 @@ export const FlowHistoryEntry = {
       errors: Array.isArray(object?.errors) ? object.errors.map((e: any) => String(e)) : [],
       msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : [],
       queryResponses: Array.isArray(object?.queryResponses) ? object.queryResponses.map((e: any) => String(e)) : [],
-      packetSequence: isSet(object.packetSequence) ? BigInt(object.packetSequence.toString()) : BigInt(0)
+      packetSequences: Array.isArray(object?.packetSequences) ? object.packetSequences.map((e: any) => BigInt(e.toString())) : []
     };
   },
   toJSON(message: FlowHistoryEntry): JsonSafe<FlowHistoryEntry> {
@@ -1453,7 +1481,11 @@ export const FlowHistoryEntry = {
     } else {
       obj.queryResponses = [];
     }
-    message.packetSequence !== undefined && (obj.packetSequence = (message.packetSequence || BigInt(0)).toString());
+    if (message.packetSequences) {
+      obj.packetSequences = message.packetSequences.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.packetSequences = [];
+    }
     return obj;
   },
   fromPartial(object: Partial<FlowHistoryEntry>): FlowHistoryEntry {
@@ -1466,7 +1498,7 @@ export const FlowHistoryEntry = {
     message.errors = object.errors?.map(e => e) || [];
     message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
     message.queryResponses = object.queryResponses?.map(e => e) || [];
-    message.packetSequence = object.packetSequence !== undefined && object.packetSequence !== null ? BigInt(object.packetSequence.toString()) : BigInt(0);
+    message.packetSequences = object.packetSequences?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: FlowHistoryEntryAmino): FlowHistoryEntry {
@@ -1487,9 +1519,7 @@ export const FlowHistoryEntry = {
     message.errors = object.errors?.map(e => e) || [];
     message.msgResponses = object.msg_responses?.map(e => Any.fromAmino(e)) || [];
     message.queryResponses = object.query_responses?.map(e => e) || [];
-    if (object.packet_sequence !== undefined && object.packet_sequence !== null) {
-      message.packetSequence = BigInt(object.packet_sequence);
-    }
+    message.packetSequences = object.packet_sequences?.map(e => BigInt(e)) || [];
     return message;
   },
   toAmino(message: FlowHistoryEntry): FlowHistoryEntryAmino {
@@ -1518,7 +1548,11 @@ export const FlowHistoryEntry = {
     } else {
       obj.query_responses = message.queryResponses;
     }
-    obj.packet_sequence = message.packetSequence !== BigInt(0) ? message.packetSequence?.toString() : undefined;
+    if (message.packetSequences) {
+      obj.packet_sequences = message.packetSequences.map(e => e.toString());
+    } else {
+      obj.packet_sequences = message.packetSequences;
+    }
     return obj;
   },
   fromAminoMsg(object: FlowHistoryEntryAminoMsg): FlowHistoryEntry {
