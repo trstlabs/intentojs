@@ -223,19 +223,19 @@ export interface ExecutionConfiguration {
   /** if true, the flow is not updatable */
   updatingDisabled: boolean;
   /**
-   * If true, will execute until we get a successful Flow, if false/unset will
+   * If true, will execute until we get a successful flow execution, if false/unset will
    * always execute
    */
   stopOnSuccess: boolean;
   /**
-   * If true, will execute until successful Flow, if false/unset will always
+   * If true, will execute until flow execution is successful, if false/unset will always
    * execute
    */
   stopOnFailure: boolean;
-  /** If true, will stop if message times oiut */
+  /** If true, will stop if flow execution on the host chain times out */
   stopOnTimeout: boolean;
-  /** If true, owner account balance is used when trigger account funds run out */
-  fallbackToOwnerBalance: boolean;
+  /** If true, will use the owner account balance when flow account funds run out */
+  walletFallback: boolean;
 }
 export interface ExecutionConfigurationProtoMsg {
   typeUrl: "/intento.intent.v1.ExecutionConfiguration";
@@ -251,19 +251,19 @@ export interface ExecutionConfigurationAmino {
   /** if true, the flow is not updatable */
   updating_disabled?: boolean;
   /**
-   * If true, will execute until we get a successful Flow, if false/unset will
+   * If true, will execute until we get a successful flow execution, if false/unset will
    * always execute
    */
   stop_on_success?: boolean;
   /**
-   * If true, will execute until successful Flow, if false/unset will always
+   * If true, will execute until flow execution is successful, if false/unset will always
    * execute
    */
   stop_on_failure?: boolean;
-  /** If true, will stop if message times oiut */
+  /** If true, will stop if flow execution on the host chain times out */
   stop_on_timeout?: boolean;
-  /** If true, owner account balance is used when trigger account funds run out */
-  fallback_to_owner_balance?: boolean;
+  /** If true, will use the owner account balance when flow account funds run out */
+  wallet_fallback?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
   type: "/intento.intent.v1.ExecutionConfiguration";
@@ -279,7 +279,7 @@ export interface ExecutionConfigurationSDKType {
   stop_on_success: boolean;
   stop_on_failure: boolean;
   stop_on_timeout: boolean;
-  fallback_to_owner_balance: boolean;
+  wallet_fallback: boolean;
 }
 /** FlowHistory execution history */
 export interface FlowHistory {
@@ -1105,19 +1105,19 @@ function createBaseExecutionConfiguration(): ExecutionConfiguration {
     stopOnSuccess: false,
     stopOnFailure: false,
     stopOnTimeout: false,
-    fallbackToOwnerBalance: false
+    walletFallback: false
   };
 }
 export const ExecutionConfiguration = {
   typeUrl: "/intento.intent.v1.ExecutionConfiguration",
   is(o: any): o is ExecutionConfiguration {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.stopOnTimeout === "boolean" && typeof o.fallbackToOwnerBalance === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.saveResponses === "boolean" && typeof o.updatingDisabled === "boolean" && typeof o.stopOnSuccess === "boolean" && typeof o.stopOnFailure === "boolean" && typeof o.stopOnTimeout === "boolean" && typeof o.walletFallback === "boolean");
   },
   isSDK(o: any): o is ExecutionConfigurationSDKType {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.stop_on_timeout === "boolean" && typeof o.fallback_to_owner_balance === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.stop_on_timeout === "boolean" && typeof o.wallet_fallback === "boolean");
   },
   isAmino(o: any): o is ExecutionConfigurationAmino {
-    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.stop_on_timeout === "boolean" && typeof o.fallback_to_owner_balance === "boolean");
+    return o && (o.$typeUrl === ExecutionConfiguration.typeUrl || typeof o.save_responses === "boolean" && typeof o.updating_disabled === "boolean" && typeof o.stop_on_success === "boolean" && typeof o.stop_on_failure === "boolean" && typeof o.stop_on_timeout === "boolean" && typeof o.wallet_fallback === "boolean");
   },
   encode(message: ExecutionConfiguration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.saveResponses === true) {
@@ -1135,8 +1135,8 @@ export const ExecutionConfiguration = {
     if (message.stopOnTimeout === true) {
       writer.uint32(40).bool(message.stopOnTimeout);
     }
-    if (message.fallbackToOwnerBalance === true) {
-      writer.uint32(48).bool(message.fallbackToOwnerBalance);
+    if (message.walletFallback === true) {
+      writer.uint32(48).bool(message.walletFallback);
     }
     return writer;
   },
@@ -1163,7 +1163,7 @@ export const ExecutionConfiguration = {
           message.stopOnTimeout = reader.bool();
           break;
         case 6:
-          message.fallbackToOwnerBalance = reader.bool();
+          message.walletFallback = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1179,7 +1179,7 @@ export const ExecutionConfiguration = {
       stopOnSuccess: isSet(object.stopOnSuccess) ? Boolean(object.stopOnSuccess) : false,
       stopOnFailure: isSet(object.stopOnFailure) ? Boolean(object.stopOnFailure) : false,
       stopOnTimeout: isSet(object.stopOnTimeout) ? Boolean(object.stopOnTimeout) : false,
-      fallbackToOwnerBalance: isSet(object.fallbackToOwnerBalance) ? Boolean(object.fallbackToOwnerBalance) : false
+      walletFallback: isSet(object.walletFallback) ? Boolean(object.walletFallback) : false
     };
   },
   toJSON(message: ExecutionConfiguration): JsonSafe<ExecutionConfiguration> {
@@ -1189,7 +1189,7 @@ export const ExecutionConfiguration = {
     message.stopOnSuccess !== undefined && (obj.stopOnSuccess = message.stopOnSuccess);
     message.stopOnFailure !== undefined && (obj.stopOnFailure = message.stopOnFailure);
     message.stopOnTimeout !== undefined && (obj.stopOnTimeout = message.stopOnTimeout);
-    message.fallbackToOwnerBalance !== undefined && (obj.fallbackToOwnerBalance = message.fallbackToOwnerBalance);
+    message.walletFallback !== undefined && (obj.walletFallback = message.walletFallback);
     return obj;
   },
   fromPartial(object: Partial<ExecutionConfiguration>): ExecutionConfiguration {
@@ -1199,7 +1199,7 @@ export const ExecutionConfiguration = {
     message.stopOnSuccess = object.stopOnSuccess ?? false;
     message.stopOnFailure = object.stopOnFailure ?? false;
     message.stopOnTimeout = object.stopOnTimeout ?? false;
-    message.fallbackToOwnerBalance = object.fallbackToOwnerBalance ?? false;
+    message.walletFallback = object.walletFallback ?? false;
     return message;
   },
   fromAmino(object: ExecutionConfigurationAmino): ExecutionConfiguration {
@@ -1219,8 +1219,8 @@ export const ExecutionConfiguration = {
     if (object.stop_on_timeout !== undefined && object.stop_on_timeout !== null) {
       message.stopOnTimeout = object.stop_on_timeout;
     }
-    if (object.fallback_to_owner_balance !== undefined && object.fallback_to_owner_balance !== null) {
-      message.fallbackToOwnerBalance = object.fallback_to_owner_balance;
+    if (object.wallet_fallback !== undefined && object.wallet_fallback !== null) {
+      message.walletFallback = object.wallet_fallback;
     }
     return message;
   },
@@ -1231,7 +1231,7 @@ export const ExecutionConfiguration = {
     obj.stop_on_success = message.stopOnSuccess === false ? undefined : message.stopOnSuccess;
     obj.stop_on_failure = message.stopOnFailure === false ? undefined : message.stopOnFailure;
     obj.stop_on_timeout = message.stopOnTimeout === false ? undefined : message.stopOnTimeout;
-    obj.fallback_to_owner_balance = message.fallbackToOwnerBalance === false ? undefined : message.fallbackToOwnerBalance;
+    obj.wallet_fallback = message.walletFallback === false ? undefined : message.walletFallback;
     return obj;
   },
   fromAminoMsg(object: ExecutionConfigurationAminoMsg): ExecutionConfiguration {
