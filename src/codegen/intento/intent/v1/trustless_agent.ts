@@ -28,7 +28,9 @@ export interface TrustlessAgentSDKType {
   fee_config?: TrustlessAgentFeeConfigSDKType;
 }
 export interface TrustlessAgentFeeConfig {
+  /** can set fee coins supported, which can be charged per message executed if a fee limit is set in the flow */
   feeAdmin: string;
+  /** can be empty */
   feeCoinsSupported: Coin[];
 }
 export interface TrustlessAgentFeeConfigProtoMsg {
@@ -36,7 +38,9 @@ export interface TrustlessAgentFeeConfigProtoMsg {
   value: Uint8Array;
 }
 export interface TrustlessAgentFeeConfigAmino {
+  /** can set fee coins supported, which can be charged per message executed if a fee limit is set in the flow */
   fee_admin?: string;
+  /** can be empty */
   fee_coins_supported?: CoinAmino[];
 }
 export interface TrustlessAgentFeeConfigAminoMsg {

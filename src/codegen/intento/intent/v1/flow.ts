@@ -186,8 +186,9 @@ export interface ICAConfigSDKType {
 /** config for a trustless agent for flow execution on host chain */
 export interface TrustlessAgentConfig {
   agentAddress: string;
+  /** optional, if set to empty array, no fee limit is set and no fees are charged */
   feeLimit: Coin[];
-  /** optional */
+  /** optional for display */
   connectionId: string;
 }
 export interface TrustlessAgentConfigProtoMsg {
@@ -197,8 +198,9 @@ export interface TrustlessAgentConfigProtoMsg {
 /** config for a trustless agent for flow execution on host chain */
 export interface TrustlessAgentConfigAmino {
   agent_address?: string;
+  /** optional, if set to empty array, no fee limit is set and no fees are charged */
   fee_limit?: CoinAmino[];
-  /** optional */
+  /** optional for display */
   connection_id?: string;
 }
 export interface TrustlessAgentConfigAminoMsg {
