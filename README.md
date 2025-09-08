@@ -18,12 +18,15 @@ npm install intentojs
 
 ### Initializing the Stargate Client
 
-We recommend manually making the `SigningStargateClient` instance yourself by using `getTrstSigningClientOptions`:
+We recommend manually making the `SigningStargateClient` instance yourself by using `getIntentoSigningClientOptions`:
 
 ```ts
-import { getTrstSigningClientOptions, trstAccountParser } from "@intentojs";
+import {
+  getIntentoSigningClientOptions,
+  IntentoAccountParser,
+} from "@intentojs";
 
-const { registry, aminoTypes } = getTrstSigningClientOptions();
+const { registry, aminoTypes } = getIntentoSigningClientOptions();
 
 const client = await SigningStargateClient.connectWithSigner(
   rpc,
@@ -31,53 +34,53 @@ const client = await SigningStargateClient.connectWithSigner(
   {
     registry,
     aminoTypes,
-    accountParser: trstAccountParser,
+    accountParser: intentoAccountParser,
   }
 );
 ```
 
 ## Usage
 
-We strongly recommend that you check the generated files in `src/codegen/trst` and use it as source of truth for which functions you could use.
+We strongly recommend that you check the generated files in `src/codegen/intento` and use it as source of truth for which functions you could use.
 
 The rest of our documentation will cover only the tip of the iceberg &mdash; examples you can take ideas from.
 
 ### RPC Client
 
 ```ts
-import { trst } from "intentojs";
+import { intento } from "intentojs";
 
-const client = await trst.ClientFactory.createRPCQueryClient({
+const client = await intento.ClientFactory.createRPCQueryClient({
   rpcEndpoint: RPC_ENDPOINT,
 });
 
 const balance = await client.cosmos.bank.v1beta1.allBalances({
-  address: "trst1addresshere",
+  address: "intento1addresshere",
 });
 ```
 
-### Composing & Broadcasting Trst Messages
+### Composing & Broadcasting Intento Messages
 
 ```ts
-import { trst } from "intentojs";
+import { intento } from "intentojs";
 
 const msgClaimFreeAmount =
-  trst.claim.MessageComposer.withTypeUrl.claimFreeAmount({
-    user: "trst1addresshere",
+  intento.claim.MessageComposer.withTypeUrl.claimFreeAmount({
+    user: "into1addresshere",
   });
 
 const fee = {
   amount: [
     {
       amount: "0",
-      denom: "utrst",
+      denom: "uinto",
     },
   ],
   gas: 250_000,
 };
 
-const tx = await trstAccount.client.signAndBroadcast(
-  "trst1addresshere",
+const tx = await intentoAccount.client.signAndBroadcast(
+  "intento1addresshere",
   [msgClaimFreeAmount],
   fee,
   ""
