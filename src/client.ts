@@ -6,7 +6,14 @@ import {
 } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import { customMsgRegistry } from "./registry";
-import { intentoProtoRegistry, intentoAminoConverters } from "./codegen";
+import {
+  intentoProtoRegistry,
+  intentoAminoConverters,
+  cosmosAminoConverters,
+  elysAminoConverters,
+  osmosisAminoConverters,
+  cosmwasmAminoConverters,
+} from "./codegen";
 
 export const getIntentoSigningClientOptions = ({
   defaultTypes = defaultRegistryTypes,
@@ -21,8 +28,13 @@ export const getIntentoSigningClientOptions = ({
     ...intentoProtoRegistry,
     ...customMsgRegistry,
   ]);
+
   const aminoTypes = new AminoTypes({
     ...intentoAminoConverters,
+    ...cosmosAminoConverters,
+    ...osmosisAminoConverters,
+    ...cosmwasmAminoConverters,
+    ...elysAminoConverters,
   });
   return {
     registry,
