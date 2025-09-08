@@ -15,6 +15,11 @@ export interface PoolProtoMsg {
   typeUrl: "/elys.leveragelp.Pool";
   value: Uint8Array;
 }
+/**
+ * @name PoolAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.Pool
+ */
 export interface PoolAmino {
   amm_pool_id?: string;
   health?: string;
@@ -45,6 +50,11 @@ export interface LegacyPoolProtoMsg {
   typeUrl: "/elys.leveragelp.LegacyPool";
   value: Uint8Array;
 }
+/**
+ * @name LegacyPoolAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.LegacyPool
+ */
 export interface LegacyPoolAmino {
   amm_pool_id?: string;
   health?: string;
@@ -69,6 +79,11 @@ export interface AssetLeverageAmountProtoMsg {
   typeUrl: "/elys.leveragelp.AssetLeverageAmount";
   value: Uint8Array;
 }
+/**
+ * @name AssetLeverageAmountAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.AssetLeverageAmount
+ */
 export interface AssetLeverageAmountAmino {
   denom?: string;
   leveraged_amount?: string;

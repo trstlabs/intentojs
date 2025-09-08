@@ -19,14 +19,23 @@ export interface LegacyParamsProtoMsg {
   typeUrl: "/elys.estaking.LegacyParams";
   value: Uint8Array;
 }
+/**
+ * @name LegacyParamsAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.LegacyParams
+ */
 export interface LegacyParamsAmino {
   stake_incentives?: IncentiveInfoAmino;
   eden_commit_val?: string;
   edenb_commit_val?: string;
-  /** Maximum eden reward apr for stakers - [0 - 0.3] */
+  /**
+   * Maximum eden reward apr for stakers - [0 - 0.3]
+   */
   max_eden_reward_apr_stakers?: string;
   eden_boost_apr?: string;
-  /** Tracking dex rewards given to stakers */
+  /**
+   * Tracking dex rewards given to stakers
+   */
   dex_rewards_stakers?: DexRewardsTrackerAmino;
 }
 export interface LegacyParamsAminoMsg {
@@ -56,12 +65,19 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.estaking.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name ParamsAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.Params
+ */
 export interface ParamsAmino {
   stake_incentives?: IncentiveInfoAmino;
   eden_commit_val?: string;
   edenb_commit_val?: string;
-  /** Maximum eden reward apr for stakers - [0 - 0.3] */
+  /**
+   * Maximum eden reward apr for stakers - [0 - 0.3]
+   */
   max_eden_reward_apr_stakers?: string;
   eden_boost_apr?: string;
   provider_vesting_epoch_identifier?: string;

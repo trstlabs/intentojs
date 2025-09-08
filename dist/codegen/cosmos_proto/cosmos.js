@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSON = exports.scalarTypeFromJSON = exports.ScalarTypeAmino = exports.ScalarTypeSDKType = exports.ScalarType = void 0;
+exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.ScalarTypeAmino = exports.ScalarTypeSDKType = exports.ScalarType = void 0;
+exports.scalarTypeFromJSON = scalarTypeFromJSON;
+exports.scalarTypeToJSON = scalarTypeToJSON;
 const binary_1 = require("../binary");
 const helpers_1 = require("../helpers");
 const registry_1 = require("../registry");
@@ -30,7 +32,6 @@ function scalarTypeFromJSON(object) {
             return ScalarType.UNRECOGNIZED;
     }
 }
-exports.scalarTypeFromJSON = scalarTypeFromJSON;
 function scalarTypeToJSON(object) {
     switch (object) {
         case ScalarType.SCALAR_TYPE_UNSPECIFIED:
@@ -44,7 +45,6 @@ function scalarTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.scalarTypeToJSON = scalarTypeToJSON;
 function createBaseInterfaceDescriptor() {
     return {
         name: "",

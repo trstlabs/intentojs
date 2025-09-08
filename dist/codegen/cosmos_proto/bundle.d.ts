@@ -11,12 +11,9 @@ export declare const cosmos_proto: {
         isSDK(o: any): o is _2.InterfaceDescriptorSDKType;
         isAmino(o: any): o is _2.InterfaceDescriptorAmino;
         encode(message: _2.InterfaceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _2.InterfaceDescriptor;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _2.InterfaceDescriptor;
         fromJSON(object: any): _2.InterfaceDescriptor;
-        toJSON(message: _2.InterfaceDescriptor): {
-            name: string;
-            description: string;
-        };
+        toJSON(message: _2.InterfaceDescriptor): import("..").JsonSafe<_2.InterfaceDescriptor>;
         fromPartial(object: Partial<_2.InterfaceDescriptor>): _2.InterfaceDescriptor;
         fromAmino(object: _2.InterfaceDescriptorAmino): _2.InterfaceDescriptor;
         toAmino(message: _2.InterfaceDescriptor): _2.InterfaceDescriptorAmino;
@@ -31,13 +28,9 @@ export declare const cosmos_proto: {
         isSDK(o: any): o is _2.ScalarDescriptorSDKType;
         isAmino(o: any): o is _2.ScalarDescriptorAmino;
         encode(message: _2.ScalarDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _2.ScalarDescriptor;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _2.ScalarDescriptor;
         fromJSON(object: any): _2.ScalarDescriptor;
-        toJSON(message: _2.ScalarDescriptor): {
-            name: string;
-            description: string;
-            fieldType: _2.ScalarType[];
-        };
+        toJSON(message: _2.ScalarDescriptor): import("..").JsonSafe<_2.ScalarDescriptor>;
         fromPartial(object: Partial<_2.ScalarDescriptor>): _2.ScalarDescriptor;
         fromAmino(object: _2.ScalarDescriptorAmino): _2.ScalarDescriptor;
         toAmino(message: _2.ScalarDescriptor): _2.ScalarDescriptorAmino;

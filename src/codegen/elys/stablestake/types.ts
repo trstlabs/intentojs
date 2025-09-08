@@ -11,6 +11,11 @@ export interface BalanceBorrowedProtoMsg {
   typeUrl: "/elys.stablestake.BalanceBorrowed";
   value: Uint8Array;
 }
+/**
+ * @name BalanceBorrowedAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.BalanceBorrowed
+ */
 export interface BalanceBorrowedAmino {
   usd_amount?: string;
   percentage?: string;
@@ -33,6 +38,11 @@ export interface InterestBlockProtoMsg {
   typeUrl: "/elys.stablestake.InterestBlock";
   value: Uint8Array;
 }
+/**
+ * @name InterestBlockAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.InterestBlock
+ */
 export interface InterestBlockAmino {
   interest_rate?: string;
   block_time?: string;

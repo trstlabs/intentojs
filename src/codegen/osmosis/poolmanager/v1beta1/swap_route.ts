@@ -10,6 +10,11 @@ export interface SwapAmountInRouteProtoMsg {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute";
   value: Uint8Array;
 }
+/**
+ * @name SwapAmountInRouteAmino
+ * @package osmosis.poolmanager.v1beta1
+ * @see proto type: osmosis.poolmanager.v1beta1.SwapAmountInRoute
+ */
 export interface SwapAmountInRouteAmino {
   pool_id?: string;
   token_out_denom?: string;
@@ -30,6 +35,11 @@ export interface SwapAmountOutRouteProtoMsg {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute";
   value: Uint8Array;
 }
+/**
+ * @name SwapAmountOutRouteAmino
+ * @package osmosis.poolmanager.v1beta1
+ * @see proto type: osmosis.poolmanager.v1beta1.SwapAmountOutRoute
+ */
 export interface SwapAmountOutRouteAmino {
   pool_id?: string;
   token_in_denom?: string;

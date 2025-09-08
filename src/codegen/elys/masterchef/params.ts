@@ -25,6 +25,11 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.masterchef.Params";
   value: Uint8Array;
 }
+/**
+ * @name ParamsAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.Params
+ */
 export interface ParamsAmino {
   lp_incentives?: IncentiveInfoAmino;
   /**
@@ -37,7 +42,9 @@ export interface ParamsAmino {
    * reward_portion_for_stakers = revenue percent for protocol`.
    */
   reward_portion_for_stakers?: string;
-  /** Maximum eden reward apr for lps - [0 - 0.3] */
+  /**
+   * Maximum eden reward apr for lps - [0 - 0.3]
+   */
   max_eden_reward_apr_lps?: string;
   supported_reward_denoms?: SupportedRewardDenomAmino[];
   protocol_revenue_address?: string;
@@ -62,6 +69,11 @@ export interface SupportedRewardDenomProtoMsg {
   typeUrl: "/elys.masterchef.SupportedRewardDenom";
   value: Uint8Array;
 }
+/**
+ * @name SupportedRewardDenomAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.SupportedRewardDenom
+ */
 export interface SupportedRewardDenomAmino {
   denom?: string;
   min_amount?: string;

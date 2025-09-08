@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NextSequenceRecvData = exports.PacketReceiptAbsenceData = exports.PacketAcknowledgementData = exports.PacketCommitmentData = exports.ChannelStateData = exports.ConnectionStateData = exports.ConsensusStateData = exports.ClientStateData = exports.HeaderData = exports.SignBytes = exports.TimestampedSignatureData = exports.SignatureAndData = exports.Misbehaviour = exports.Header = exports.ConsensusState = exports.ClientState = exports.dataTypeToJSON = exports.dataTypeFromJSON = exports.DataTypeAmino = exports.DataTypeSDKType = exports.DataType = void 0;
+exports.NextSequenceRecvData = exports.PacketReceiptAbsenceData = exports.PacketAcknowledgementData = exports.PacketCommitmentData = exports.ChannelStateData = exports.ConnectionStateData = exports.ConsensusStateData = exports.ClientStateData = exports.HeaderData = exports.SignBytes = exports.TimestampedSignatureData = exports.SignatureAndData = exports.Misbehaviour = exports.Header = exports.ConsensusState = exports.ClientState = exports.DataTypeAmino = exports.DataTypeSDKType = exports.DataType = void 0;
+exports.dataTypeFromJSON = dataTypeFromJSON;
+exports.dataTypeToJSON = dataTypeToJSON;
 const any_1 = require("../../../../google/protobuf/any");
 const connection_1 = require("../../../core/connection/v1/connection");
 const channel_1 = require("../../../core/channel/v1/channel");
@@ -75,7 +77,6 @@ function dataTypeFromJSON(object) {
             return DataType.UNRECOGNIZED;
     }
 }
-exports.dataTypeFromJSON = dataTypeFromJSON;
 function dataTypeToJSON(object) {
     switch (object) {
         case DataType.DATA_TYPE_UNINITIALIZED_UNSPECIFIED:
@@ -103,7 +104,6 @@ function dataTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.dataTypeToJSON = dataTypeToJSON;
 function createBaseClientState() {
     return {
         sequence: BigInt(0),

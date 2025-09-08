@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.TextProposal = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = void 0;
+exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.TextProposal = exports.WeightedVoteOption = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = void 0;
+exports.voteOptionFromJSON = voteOptionFromJSON;
+exports.voteOptionToJSON = voteOptionToJSON;
+exports.proposalStatusFromJSON = proposalStatusFromJSON;
+exports.proposalStatusToJSON = proposalStatusToJSON;
 const coin_1 = require("../../base/v1beta1/coin");
 const any_1 = require("../../../google/protobuf/any");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
@@ -49,7 +53,6 @@ function voteOptionFromJSON(object) {
             return VoteOption.UNRECOGNIZED;
     }
 }
-exports.voteOptionFromJSON = voteOptionFromJSON;
 function voteOptionToJSON(object) {
     switch (object) {
         case VoteOption.VOTE_OPTION_UNSPECIFIED:
@@ -67,7 +70,6 @@ function voteOptionToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.voteOptionToJSON = voteOptionToJSON;
 /** ProposalStatus enumerates the valid statuses of a proposal. */
 var ProposalStatus;
 (function (ProposalStatus) {
@@ -128,7 +130,6 @@ function proposalStatusFromJSON(object) {
             return ProposalStatus.UNRECOGNIZED;
     }
 }
-exports.proposalStatusFromJSON = proposalStatusFromJSON;
 function proposalStatusToJSON(object) {
     switch (object) {
         case ProposalStatus.PROPOSAL_STATUS_UNSPECIFIED:
@@ -148,7 +149,6 @@ function proposalStatusToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.proposalStatusToJSON = proposalStatusToJSON;
 function createBaseWeightedVoteOption() {
     return {
         option: 0,

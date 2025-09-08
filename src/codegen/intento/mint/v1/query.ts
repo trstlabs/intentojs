@@ -9,7 +9,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/intento.mint.v1.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is the request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/intento.mint.v1.QueryParamsRequest";
@@ -26,9 +31,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/intento.mint.v1.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is the response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params defines the parameters of the module. */
+  /**
+   * params defines the parameters of the module.
+   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -51,6 +63,9 @@ export interface QueryAnnualProvisionsRequestProtoMsg {
 /**
  * QueryAnnualProvisionsRequest is the request type for the
  * Query/AnnualProvisions RPC method.
+ * @name QueryAnnualProvisionsRequestAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.QueryAnnualProvisionsRequest
  */
 export interface QueryAnnualProvisionsRequestAmino {}
 export interface QueryAnnualProvisionsRequestAminoMsg {
@@ -77,9 +92,14 @@ export interface QueryAnnualProvisionsResponseProtoMsg {
 /**
  * QueryAnnualProvisionsResponse is the response type for the
  * Query/AnnualProvisions RPC method.
+ * @name QueryAnnualProvisionsResponseAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.QueryAnnualProvisionsResponse
  */
 export interface QueryAnnualProvisionsResponseAmino {
-  /** annual_provisions is the current minting annual provisions value. */
+  /**
+   * annual_provisions is the current minting annual provisions value.
+   */
   annual_provisions?: string;
 }
 export interface QueryAnnualProvisionsResponseAminoMsg {

@@ -95,6 +95,11 @@ export interface LegacyOrderPriceV1ProtoMsg {
   typeUrl: "/elys.tradeshield.LegacyOrderPriceV1";
   value: Uint8Array;
 }
+/**
+ * @name LegacyOrderPriceV1Amino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.LegacyOrderPriceV1
+ */
 export interface LegacyOrderPriceV1Amino {
   base_denom?: string;
   quote_denom?: string;
@@ -117,6 +122,11 @@ export interface LegacyTriggerPriceV1ProtoMsg {
   typeUrl: "/elys.tradeshield.LegacyTriggerPriceV1";
   value: Uint8Array;
 }
+/**
+ * @name LegacyTriggerPriceV1Amino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.LegacyTriggerPriceV1
+ */
 export interface LegacyTriggerPriceV1Amino {
   trading_asset_denom?: string;
   rate?: string;

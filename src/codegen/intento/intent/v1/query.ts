@@ -21,6 +21,9 @@ export interface QueryInterchainAccountFromAddressRequestProtoMsg {
 /**
  * QueryInterchainAccountFromAddressRequest is the request type for the
  * Query/InterchainAccountAddress RPC
+ * @name QueryInterchainAccountFromAddressRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryInterchainAccountFromAddressRequest
  */
 export interface QueryInterchainAccountFromAddressRequestAmino {
   owner?: string;
@@ -52,6 +55,9 @@ export interface QueryInterchainAccountFromAddressResponseProtoMsg {
 /**
  * QueryInterchainAccountFromAddressResponse the response type for the
  * Query/InterchainAccountAddress RPC
+ * @name QueryInterchainAccountFromAddressResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryInterchainAccountFromAddressResponse
  */
 export interface QueryInterchainAccountFromAddressResponseAmino {
   interchain_account_address?: string;
@@ -75,7 +81,12 @@ export interface QueryFlowRequestProtoMsg {
   typeUrl: "/intento.intent.v1.QueryFlowRequest";
   value: Uint8Array;
 }
-/** QueryFlowRequest is the request type for the Query/FlowRequest RPC */
+/**
+ * QueryFlowRequest is the request type for the Query/FlowRequest RPC
+ * @name QueryFlowRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowRequest
+ */
 export interface QueryFlowRequestAmino {
   id?: string;
 }
@@ -95,7 +106,12 @@ export interface QueryFlowResponseProtoMsg {
   typeUrl: "/intento.intent.v1.QueryFlowResponse";
   value: Uint8Array;
 }
-/** QueryFlowResponse the response type for the Query/FlowRequest RPC */
+/**
+ * QueryFlowResponse the response type for the Query/FlowRequest RPC
+ * @name QueryFlowResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowResponse
+ */
 export interface QueryFlowResponseAmino {
   flow?: FlowAmino;
 }
@@ -124,11 +140,18 @@ export interface QueryFlowHistoryRequestProtoMsg {
 /**
  * QueryFlowHistoryRequest is the request type for the
  * Query/QueryFlowHistoryRequest RPC
+ * @name QueryFlowHistoryRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowHistoryRequest
  */
 export interface QueryFlowHistoryRequestAmino {
-  /** id of the flow */
+  /**
+   * id of the flow
+   */
   id?: string;
-  /** Pagination defines an optional pagination for the request. */
+  /**
+   * Pagination defines an optional pagination for the request.
+   */
   pagination?: PageRequestAmino;
 }
 export interface QueryFlowHistoryRequestAminoMsg {
@@ -159,10 +182,15 @@ export interface QueryFlowHistoryResponseProtoMsg {
 /**
  * QueryFlowHistoryResponse the response type for the
  * Query/QueryFlowHistoryResponse RPC
+ * @name QueryFlowHistoryResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowHistoryResponse
  */
 export interface QueryFlowHistoryResponseAmino {
   history?: FlowHistoryEntryAmino[];
-  /** Pagination defines the pagination in the response. */
+  /**
+   * Pagination defines the pagination in the response.
+   */
   pagination?: PageResponseAmino;
 }
 export interface QueryFlowHistoryResponseAminoMsg {
@@ -186,9 +214,16 @@ export interface QueryFlowsRequestProtoMsg {
   typeUrl: "/intento.intent.v1.QueryFlowsRequest";
   value: Uint8Array;
 }
-/** QueryFlowsRequest is the request type for the Query/FlowsRequest RPC */
+/**
+ * QueryFlowsRequest is the request type for the Query/FlowsRequest RPC
+ * @name QueryFlowsRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowsRequest
+ */
 export interface QueryFlowsRequestAmino {
-  /** Pagination defines an optional pagination for the request. */
+  /**
+   * Pagination defines an optional pagination for the request.
+   */
   pagination?: PageRequestAmino;
 }
 export interface QueryFlowsRequestAminoMsg {
@@ -209,10 +244,17 @@ export interface QueryFlowsResponseProtoMsg {
   typeUrl: "/intento.intent.v1.QueryFlowsResponse";
   value: Uint8Array;
 }
-/** QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ */
+/**
+ * QueryFlowsResponse the response type for the Query/FlowsRequest RPCπ
+ * @name QueryFlowsResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowsResponse
+ */
 export interface QueryFlowsResponseAmino {
   flows?: FlowAmino[];
-  /** Pagination defines the pagination in the response. */
+  /**
+   * Pagination defines the pagination in the response.
+   */
   pagination?: PageResponseAmino;
 }
 export interface QueryFlowsResponseAminoMsg {
@@ -240,10 +282,15 @@ export interface QueryFlowsForOwnerRequestProtoMsg {
 /**
  * QueryFlowsForOwnerRequest is the request type for the
  * Query/FlowsForOwnerRequest RPC
+ * @name QueryFlowsForOwnerRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowsForOwnerRequest
  */
 export interface QueryFlowsForOwnerRequestAmino {
   owner?: string;
-  /** Pagination defines an optional pagination for the request. */
+  /**
+   * Pagination defines an optional pagination for the request.
+   */
   pagination?: PageRequestAmino;
 }
 export interface QueryFlowsForOwnerRequestAminoMsg {
@@ -274,10 +321,15 @@ export interface QueryFlowsForOwnerResponseProtoMsg {
 /**
  * QueryFlowsForOwnerResponse the response type for the
  * Query/FlowsForOwnerRequest RPC
+ * @name QueryFlowsForOwnerResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryFlowsForOwnerResponse
  */
 export interface QueryFlowsForOwnerResponseAmino {
   flows?: FlowAmino[];
-  /** Pagination defines the pagination in the response. */
+  /**
+   * Pagination defines the pagination in the response.
+   */
   pagination?: PageResponseAmino;
 }
 export interface QueryFlowsForOwnerResponseAminoMsg {
@@ -298,7 +350,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/intento.intent.v1.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is the request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/intento.intent.v1.QueryParamsRequest";
@@ -315,9 +372,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/intento.intent.v1.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is the response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params defines the parameters of the module. */
+  /**
+   * params defines the parameters of the module.
+   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -336,7 +400,12 @@ export interface QueryTrustlessAgentRequestProtoMsg {
   typeUrl: "/intento.intent.v1.QueryTrustlessAgentRequest";
   value: Uint8Array;
 }
-/** QueryTrustlessAgent is the request type for the Query/Params RPC method. */
+/**
+ * QueryTrustlessAgent is the request type for the Query/Params RPC method.
+ * @name QueryTrustlessAgentRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTrustlessAgentRequest
+ */
 export interface QueryTrustlessAgentRequestAmino {
   agent_address?: string;
 }
@@ -363,9 +432,14 @@ export interface QueryTrustlessAgentResponseProtoMsg {
 /**
  * QueryTrustlessAgentResponse is the response type for the Query/TrustlessAgent
  * RPC method.
+ * @name QueryTrustlessAgentResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTrustlessAgentResponse
  */
 export interface QueryTrustlessAgentResponseAmino {
-  /** TrustlessAgent */
+  /**
+   * TrustlessAgent
+   */
   trustless_agent?: TrustlessAgentAmino;
 }
 export interface QueryTrustlessAgentResponseAminoMsg {
@@ -394,9 +468,14 @@ export interface QueryTrustlessAgentsRequestProtoMsg {
 /**
  * QueryTrustlessAgents is the request type for the Query/TrustlessAgent RPC
  * method.
+ * @name QueryTrustlessAgentsRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTrustlessAgentsRequest
  */
 export interface QueryTrustlessAgentsRequestAmino {
-  /** Pagination defines an optional pagination for the request. */
+  /**
+   * Pagination defines an optional pagination for the request.
+   */
   pagination?: PageRequestAmino;
 }
 export interface QueryTrustlessAgentsRequestAminoMsg {
@@ -427,11 +506,18 @@ export interface QueryTrustlessAgentsResponseProtoMsg {
 /**
  * QueryTrustlessAgentsResponse is the response type for the Query/TrustlessAgent
  * RPC method.
+ * @name QueryTrustlessAgentsResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTrustlessAgentsResponse
  */
 export interface QueryTrustlessAgentsResponseAmino {
-  /** TrustlessAgents */
+  /**
+   * TrustlessAgents
+   */
   trustless_agents?: TrustlessAgentAmino[];
-  /** Pagination defines the pagination in the response. */
+  /**
+   * Pagination defines the pagination in the response.
+   */
   pagination?: PageResponseAmino;
 }
 export interface QueryTrustlessAgentsResponseAminoMsg {
@@ -456,10 +542,17 @@ export interface QueryTrustlessAgentsByFeeAdminRequestProtoMsg {
   typeUrl: "/intento.intent.v1.QueryTrustlessAgentsByFeeAdminRequest";
   value: Uint8Array;
 }
-/** QueryTrustlessAgentsByFeeAdminRequest */
+/**
+ * QueryTrustlessAgentsByFeeAdminRequest
+ * @name QueryTrustlessAgentsByFeeAdminRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTrustlessAgentsByFeeAdminRequest
+ */
 export interface QueryTrustlessAgentsByFeeAdminRequestAmino {
   fee_admin?: string;
-  /** Pagination defines an optional pagination for the request. */
+  /**
+   * Pagination defines an optional pagination for the request.
+   */
   pagination?: PageRequestAmino;
 }
 export interface QueryTrustlessAgentsByFeeAdminRequestAminoMsg {
@@ -488,11 +581,18 @@ export interface QueryTrustlessAgentsByFeeAdminResponseProtoMsg {
 /**
  * QueryTrustlessAgentResponse is the response type for the Query/TrustlessAgent
  * RPC method.
+ * @name QueryTrustlessAgentsByFeeAdminResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTrustlessAgentsByFeeAdminResponse
  */
 export interface QueryTrustlessAgentsByFeeAdminResponseAmino {
-  /** TrustlessAgents */
+  /**
+   * TrustlessAgents
+   */
   trustless_agents?: TrustlessAgentAmino[];
-  /** Pagination defines the pagination in the response. */
+  /**
+   * Pagination defines the pagination in the response.
+   */
   pagination?: PageResponseAmino;
 }
 export interface QueryTrustlessAgentsByFeeAdminResponseAminoMsg {

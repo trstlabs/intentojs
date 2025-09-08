@@ -11,6 +11,11 @@ export interface MsgCommitClaimedRewardsProtoMsg {
   typeUrl: "/elys.commitment.MsgCommitClaimedRewards";
   value: Uint8Array;
 }
+/**
+ * @name MsgCommitClaimedRewardsAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgCommitClaimedRewards
+ */
 export interface MsgCommitClaimedRewardsAmino {
   creator?: string;
   amount?: string;
@@ -30,6 +35,11 @@ export interface MsgCommitClaimedRewardsResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgCommitClaimedRewardsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCommitClaimedRewardsResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgCommitClaimedRewardsResponse
+ */
 export interface MsgCommitClaimedRewardsResponseAmino {}
 export interface MsgCommitClaimedRewardsResponseAminoMsg {
   type: "/elys.commitment.MsgCommitClaimedRewardsResponse";
@@ -45,6 +55,11 @@ export interface MsgUncommitTokensProtoMsg {
   typeUrl: "/elys.commitment.MsgUncommitTokens";
   value: Uint8Array;
 }
+/**
+ * @name MsgUncommitTokensAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUncommitTokens
+ */
 export interface MsgUncommitTokensAmino {
   creator?: string;
   amount?: string;
@@ -64,6 +79,11 @@ export interface MsgUncommitTokensResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgUncommitTokensResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUncommitTokensResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUncommitTokensResponse
+ */
 export interface MsgUncommitTokensResponseAmino {}
 export interface MsgUncommitTokensResponseAminoMsg {
   type: "/elys.commitment.MsgUncommitTokensResponse";
@@ -79,6 +99,11 @@ export interface MsgVestProtoMsg {
   typeUrl: "/elys.commitment.MsgVest";
   value: Uint8Array;
 }
+/**
+ * @name MsgVestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgVest
+ */
 export interface MsgVestAmino {
   creator?: string;
   amount?: string;
@@ -98,6 +123,11 @@ export interface MsgVestResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgVestResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgVestResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgVestResponse
+ */
 export interface MsgVestResponseAmino {}
 export interface MsgVestResponseAminoMsg {
   type: "/elys.commitment.MsgVestResponse";
@@ -113,6 +143,11 @@ export interface MsgCancelVestProtoMsg {
   typeUrl: "/elys.commitment.MsgCancelVest";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelVestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgCancelVest
+ */
 export interface MsgCancelVestAmino {
   creator?: string;
   amount?: string;
@@ -132,6 +167,11 @@ export interface MsgCancelVestResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgCancelVestResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelVestResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgCancelVestResponse
+ */
 export interface MsgCancelVestResponseAmino {}
 export interface MsgCancelVestResponseAminoMsg {
   type: "/elys.commitment.MsgCancelVestResponse";
@@ -145,6 +185,11 @@ export interface MsgClaimVestingProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimVesting";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimVestingAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimVesting
+ */
 export interface MsgClaimVestingAmino {
   sender?: string;
 }
@@ -160,6 +205,11 @@ export interface MsgClaimVestingResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimVestingResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimVestingResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimVestingResponse
+ */
 export interface MsgClaimVestingResponseAmino {}
 export interface MsgClaimVestingResponseAminoMsg {
   type: "/elys.commitment.MsgClaimVestingResponse";
@@ -175,6 +225,11 @@ export interface MsgVestNowProtoMsg {
   typeUrl: "/elys.commitment.MsgVestNow";
   value: Uint8Array;
 }
+/**
+ * @name MsgVestNowAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgVestNow
+ */
 export interface MsgVestNowAmino {
   creator?: string;
   amount?: string;
@@ -194,6 +249,11 @@ export interface MsgVestNowResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgVestNowResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgVestNowResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgVestNowResponse
+ */
 export interface MsgVestNowResponseAmino {}
 export interface MsgVestNowResponseAminoMsg {
   type: "/elys.commitment.MsgVestNowResponse";
@@ -212,6 +272,11 @@ export interface MsgUpdateVestingInfoProtoMsg {
   typeUrl: "/elys.commitment.MsgUpdateVestingInfo";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateVestingInfoAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUpdateVestingInfo
+ */
 export interface MsgUpdateVestingInfoAmino {
   authority?: string;
   base_denom?: string;
@@ -237,6 +302,11 @@ export interface MsgUpdateVestingInfoResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgUpdateVestingInfoResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateVestingInfoResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUpdateVestingInfoResponse
+ */
 export interface MsgUpdateVestingInfoResponseAmino {}
 export interface MsgUpdateVestingInfoResponseAminoMsg {
   type: "/elys.commitment.MsgUpdateVestingInfoResponse";
@@ -251,6 +321,11 @@ export interface MsgUpdateEnableVestNowProtoMsg {
   typeUrl: "/elys.commitment.MsgUpdateEnableVestNow";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateEnableVestNowAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUpdateEnableVestNow
+ */
 export interface MsgUpdateEnableVestNowAmino {
   authority?: string;
   enable_vest_now?: boolean;
@@ -268,6 +343,11 @@ export interface MsgUpdateEnableVestNowResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgUpdateEnableVestNowResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateEnableVestNowResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUpdateEnableVestNowResponse
+ */
 export interface MsgUpdateEnableVestNowResponseAmino {}
 export interface MsgUpdateEnableVestNowResponseAminoMsg {
   type: "/elys.commitment.MsgUpdateEnableVestNowResponse";
@@ -283,6 +363,11 @@ export interface MsgVestLiquidProtoMsg {
   typeUrl: "/elys.commitment.MsgVestLiquid";
   value: Uint8Array;
 }
+/**
+ * @name MsgVestLiquidAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgVestLiquid
+ */
 export interface MsgVestLiquidAmino {
   creator?: string;
   amount?: string;
@@ -302,6 +387,11 @@ export interface MsgVestLiquidResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgVestLiquidResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgVestLiquidResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgVestLiquidResponse
+ */
 export interface MsgVestLiquidResponseAmino {}
 export interface MsgVestLiquidResponseAminoMsg {
   type: "/elys.commitment.MsgVestLiquidResponse";
@@ -318,6 +408,11 @@ export interface MsgStakeProtoMsg {
   typeUrl: "/elys.commitment.MsgStake";
   value: Uint8Array;
 }
+/**
+ * @name MsgStakeAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgStake
+ */
 export interface MsgStakeAmino {
   creator?: string;
   amount?: string;
@@ -342,6 +437,11 @@ export interface MsgStakeResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgStakeResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgStakeResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgStakeResponse
+ */
 export interface MsgStakeResponseAmino {
   code?: string;
   result?: string;
@@ -364,6 +464,11 @@ export interface MsgUnstakeProtoMsg {
   typeUrl: "/elys.commitment.MsgUnstake";
   value: Uint8Array;
 }
+/**
+ * @name MsgUnstakeAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUnstake
+ */
 export interface MsgUnstakeAmino {
   creator?: string;
   amount?: string;
@@ -388,6 +493,11 @@ export interface MsgUnstakeResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgUnstakeResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUnstakeResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUnstakeResponse
+ */
 export interface MsgUnstakeResponseAmino {
   code?: string;
   result?: string;
@@ -407,6 +517,11 @@ export interface MsgClaimAirdropProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimAirdrop";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimAirdropAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimAirdrop
+ */
 export interface MsgClaimAirdropAmino {
   claim_address?: string;
 }
@@ -425,6 +540,11 @@ export interface MsgClaimAirdropResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimAirdropResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimAirdropResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimAirdropResponse
+ */
 export interface MsgClaimAirdropResponseAmino {
   elys_amount?: string;
   eden_amount?: string;
@@ -445,6 +565,11 @@ export interface MsgClaimKolProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimKol";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimKolAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimKol
+ */
 export interface MsgClaimKolAmino {
   claim_address?: string;
   refund?: boolean;
@@ -465,6 +590,11 @@ export interface MsgClaimKolResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimKolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimKolResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimKolResponse
+ */
 export interface MsgClaimKolResponseAmino {
   elys_amount?: string;
   vested_elys_amount?: string;
@@ -491,6 +621,11 @@ export interface MsgUpdateAirdropParamsProtoMsg {
   typeUrl: "/elys.commitment.MsgUpdateAirdropParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateAirdropParamsAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUpdateAirdropParams
+ */
 export interface MsgUpdateAirdropParamsAmino {
   authority?: string;
   enable_claim?: boolean;
@@ -520,6 +655,11 @@ export interface MsgUpdateAirdropParamsResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgUpdateAirdropParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateAirdropParamsResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgUpdateAirdropParamsResponse
+ */
 export interface MsgUpdateAirdropParamsResponseAmino {}
 export interface MsgUpdateAirdropParamsResponseAminoMsg {
   type: "/elys.commitment.MsgUpdateAirdropParamsResponse";
@@ -533,6 +673,11 @@ export interface MsgClaimRewardProgramProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimRewardProgram";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimRewardProgramAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimRewardProgram
+ */
 export interface MsgClaimRewardProgramAmino {
   claim_address?: string;
 }
@@ -550,6 +695,11 @@ export interface MsgClaimRewardProgramResponseProtoMsg {
   typeUrl: "/elys.commitment.MsgClaimRewardProgramResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimRewardProgramResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.MsgClaimRewardProgramResponse
+ */
 export interface MsgClaimRewardProgramResponseAmino {
   eden_amount?: string;
 }

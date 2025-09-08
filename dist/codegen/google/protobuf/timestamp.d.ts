@@ -186,6 +186,9 @@ export interface TimestampProtoMsg {
  * the Joda Time's [`ISODateTimeFormat.dateTime()`](
  * http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D
  * ) to obtain a formatter capable of generating timestamps in this format.
+ * @name TimestampAmino
+ * @package google.protobuf
+ * @see proto type: google.protobuf.Timestamp
  */
 export type TimestampAmino = string;
 export interface TimestampAminoMsg {
@@ -284,7 +287,7 @@ export declare const Timestamp: {
     typeUrl: string;
     is(o: any): o is Timestamp;
     isSDK(o: any): o is TimestampSDKType;
-    isAmino(o: any): o is string;
+    isAmino(o: any): o is TimestampAmino;
     encode(message: Timestamp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Timestamp;
     fromJSON(object: any): Timestamp;

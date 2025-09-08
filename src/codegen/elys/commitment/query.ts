@@ -11,7 +11,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/elys.commitment.QueryParamsRequest";
@@ -28,9 +33,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params holds all the parameters of this module. */
+  /**
+   * params holds all the parameters of this module.
+   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -48,6 +60,11 @@ export interface QueryShowCommitmentsRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryShowCommitmentsRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryShowCommitmentsRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryShowCommitmentsRequest
+ */
 export interface QueryShowCommitmentsRequestAmino {
   creator?: string;
 }
@@ -65,6 +82,11 @@ export interface QueryShowCommitmentsResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryShowCommitmentsResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryShowCommitmentsResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryShowCommitmentsResponse
+ */
 export interface QueryShowCommitmentsResponseAmino {
   commitments: CommitmentsAmino;
 }
@@ -80,6 +102,11 @@ export interface QueryNumberOfCommitmentsRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryNumberOfCommitmentsRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryNumberOfCommitmentsRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryNumberOfCommitmentsRequest
+ */
 export interface QueryNumberOfCommitmentsRequestAmino {}
 export interface QueryNumberOfCommitmentsRequestAminoMsg {
   type: "/elys.commitment.QueryNumberOfCommitmentsRequest";
@@ -93,6 +120,11 @@ export interface QueryNumberOfCommitmentsResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryNumberOfCommitmentsResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryNumberOfCommitmentsResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryNumberOfCommitmentsResponse
+ */
 export interface QueryNumberOfCommitmentsResponseAmino {
   number?: string;
 }
@@ -110,6 +142,11 @@ export interface QueryCommittedTokensLockedRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryCommittedTokensLockedRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryCommittedTokensLockedRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryCommittedTokensLockedRequest
+ */
 export interface QueryCommittedTokensLockedRequestAmino {
   address?: string;
 }
@@ -129,6 +166,11 @@ export interface QueryCommittedTokensLockedResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryCommittedTokensLockedResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryCommittedTokensLockedResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryCommittedTokensLockedResponse
+ */
 export interface QueryCommittedTokensLockedResponseAmino {
   address?: string;
   locked_committed?: CoinAmino[];
@@ -150,6 +192,11 @@ export interface QueryCommitmentVestingInfoRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryCommitmentVestingInfoRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryCommitmentVestingInfoRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryCommitmentVestingInfoRequest
+ */
 export interface QueryCommitmentVestingInfoRequestAmino {
   address?: string;
 }
@@ -168,6 +215,11 @@ export interface QueryCommitmentVestingInfoResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryCommitmentVestingInfoResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryCommitmentVestingInfoResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryCommitmentVestingInfoResponse
+ */
 export interface QueryCommitmentVestingInfoResponseAmino {
   total?: string;
   vesting_details: VestingDetailsAmino[];
@@ -191,6 +243,11 @@ export interface VestingDetailsProtoMsg {
   typeUrl: "/elys.commitment.VestingDetails";
   value: Uint8Array;
 }
+/**
+ * @name VestingDetailsAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.VestingDetails
+ */
 export interface VestingDetailsAmino {
   id?: string;
   total_vesting?: string;
@@ -216,6 +273,11 @@ export interface QueryAirDropRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryAirDropRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAirDropRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryAirDropRequest
+ */
 export interface QueryAirDropRequestAmino {
   address?: string;
 }
@@ -237,6 +299,11 @@ export interface QueryAirDropResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryAirDropResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAirDropResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryAirDropResponse
+ */
 export interface QueryAirDropResponseAmino {
   atom_staking?: string;
   cadet?: string;
@@ -260,6 +327,11 @@ export interface QueryTotalAirDropClaimedRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryTotalAirDropClaimedRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalAirDropClaimedRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryTotalAirDropClaimedRequest
+ */
 export interface QueryTotalAirDropClaimedRequestAmino {}
 export interface QueryTotalAirDropClaimedRequestAminoMsg {
   type: "/elys.commitment.QueryTotalAirDropClaimedRequest";
@@ -274,6 +346,11 @@ export interface QueryTotalAirDropClaimedResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryTotalAirDropClaimedResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalAirDropClaimedResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryTotalAirDropClaimedResponse
+ */
 export interface QueryTotalAirDropClaimedResponseAmino {
   total_elys_claimed?: string;
   total_eden_claimed?: string;
@@ -293,6 +370,11 @@ export interface QueryKolRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryKolRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryKolRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryKolRequest
+ */
 export interface QueryKolRequestAmino {
   address?: string;
 }
@@ -312,6 +394,11 @@ export interface QueryKolResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryKolResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryKolResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryKolResponse
+ */
 export interface QueryKolResponseAmino {
   elys_amount?: string;
   claimed?: boolean;
@@ -331,6 +418,11 @@ export interface QueryTotalSupplyRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryTotalSupplyRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalSupplyRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryTotalSupplyRequest
+ */
 export interface QueryTotalSupplyRequestAmino {}
 export interface QueryTotalSupplyRequestAminoMsg {
   type: "/elys.commitment.QueryTotalSupplyRequest";
@@ -346,6 +438,11 @@ export interface QueryTotalSupplyResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryTotalSupplyResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalSupplyResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryTotalSupplyResponse
+ */
 export interface QueryTotalSupplyResponseAmino {
   total_eden?: string;
   total_edenb?: string;
@@ -367,6 +464,11 @@ export interface QueryRewardProgramRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryRewardProgramRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryRewardProgramRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryRewardProgramRequest
+ */
 export interface QueryRewardProgramRequestAmino {
   address?: string;
 }
@@ -385,6 +487,11 @@ export interface QueryRewardProgramResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryRewardProgramResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryRewardProgramResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryRewardProgramResponse
+ */
 export interface QueryRewardProgramResponseAmino {
   amount?: string;
   claimed?: boolean;
@@ -402,6 +509,11 @@ export interface QueryTotalRewardProgramClaimedRequestProtoMsg {
   typeUrl: "/elys.commitment.QueryTotalRewardProgramClaimedRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalRewardProgramClaimedRequestAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryTotalRewardProgramClaimedRequest
+ */
 export interface QueryTotalRewardProgramClaimedRequestAmino {}
 export interface QueryTotalRewardProgramClaimedRequestAminoMsg {
   type: "/elys.commitment.QueryTotalRewardProgramClaimedRequest";
@@ -415,6 +527,11 @@ export interface QueryTotalRewardProgramClaimedResponseProtoMsg {
   typeUrl: "/elys.commitment.QueryTotalRewardProgramClaimedResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalRewardProgramClaimedResponseAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.QueryTotalRewardProgramClaimedResponse
+ */
 export interface QueryTotalRewardProgramClaimedResponseAmino {
   total_eden_claimed?: string;
 }

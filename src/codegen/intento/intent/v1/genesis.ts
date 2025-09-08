@@ -15,7 +15,12 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/intento.intent.v1.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState - genesis state of x/intent */
+/**
+ * GenesisState - genesis state of x/intent
+ * @name GenesisStateAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.GenesisState
+ */
 export interface GenesisStateAmino {
   params?: ParamsAmino;
   interchain_account_addresses?: string[];
@@ -42,7 +47,12 @@ export interface SequenceProtoMsg {
   typeUrl: "/intento.intent.v1.Sequence";
   value: Uint8Array;
 }
-/** Sequence id and value of a counter */
+/**
+ * Sequence id and value of a counter
+ * @name SequenceAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.Sequence
+ */
 export interface SequenceAmino {
   id_key?: string;
   value?: string;

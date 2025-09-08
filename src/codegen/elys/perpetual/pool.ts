@@ -16,6 +16,11 @@ export interface PoolAssetProtoMsg {
   typeUrl: "/elys.perpetual.PoolAsset";
   value: Uint8Array;
 }
+/**
+ * @name PoolAssetAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.PoolAsset
+ */
 export interface PoolAssetAmino {
   liabilities?: string;
   custody?: string;
@@ -51,6 +56,11 @@ export interface LegacyPoolProtoMsg {
   typeUrl: "/elys.perpetual.LegacyPool";
   value: Uint8Array;
 }
+/**
+ * @name LegacyPoolAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.LegacyPool
+ */
 export interface LegacyPoolAmino {
   amm_pool_id?: string;
   health?: string;
@@ -58,7 +68,9 @@ export interface LegacyPoolAmino {
   pool_assets_long?: PoolAssetAmino[];
   pool_assets_short?: PoolAssetAmino[];
   last_height_borrow_interest_rate_computed?: string;
-  /** funding rate, if positive longs pay shorts, if negative shorts pay longs */
+  /**
+   * funding rate, if positive longs pay shorts, if negative shorts pay longs
+   */
   funding_rate?: string;
   fees_collected?: CoinAmino[];
 }
@@ -92,6 +104,11 @@ export interface PoolProtoMsg {
   typeUrl: "/elys.perpetual.Pool";
   value: Uint8Array;
 }
+/**
+ * @name PoolAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.Pool
+ */
 export interface PoolAmino {
   amm_pool_id?: string;
   health?: string;
@@ -99,7 +116,9 @@ export interface PoolAmino {
   pool_assets_long?: PoolAssetAmino[];
   pool_assets_short?: PoolAssetAmino[];
   last_height_borrow_interest_rate_computed?: string;
-  /** funding rate, if positive longs pay shorts, if negative shorts pay longs */
+  /**
+   * funding rate, if positive longs pay shorts, if negative shorts pay longs
+   */
   funding_rate?: string;
   fees_collected?: CoinAmino[];
   leverage_max?: string;

@@ -20,6 +20,9 @@ export interface ConsensusParamsProtoMsg {
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
+ * @name ConsensusParamsAmino
+ * @package tendermint.types
+ * @see proto type: tendermint.types.ConsensusParams
  */
 export interface ConsensusParamsAmino {
   block?: BlockParamsAmino;
@@ -65,7 +68,12 @@ export interface BlockParamsProtoMsg {
   typeUrl: "/tendermint.types.BlockParams";
   value: Uint8Array;
 }
-/** BlockParams contains limits on the block size. */
+/**
+ * BlockParams contains limits on the block size.
+ * @name BlockParamsAmino
+ * @package tendermint.types
+ * @see proto type: tendermint.types.BlockParams
+ */
 export interface BlockParamsAmino {
   /**
    * Max block size, in bytes.
@@ -123,7 +131,12 @@ export interface EvidenceParamsProtoMsg {
   typeUrl: "/tendermint.types.EvidenceParams";
   value: Uint8Array;
 }
-/** EvidenceParams determine how we handle evidence of malfeasance. */
+/**
+ * EvidenceParams determine how we handle evidence of malfeasance.
+ * @name EvidenceParamsAmino
+ * @package tendermint.types
+ * @see proto type: tendermint.types.EvidenceParams
+ */
 export interface EvidenceParamsAmino {
   /**
    * Max age of evidence, in blocks.
@@ -171,6 +184,9 @@ export interface ValidatorParamsProtoMsg {
 /**
  * ValidatorParams restrict the public key types validators can use.
  * NOTE: uses ABCI pubkey naming, not Amino names.
+ * @name ValidatorParamsAmino
+ * @package tendermint.types
+ * @see proto type: tendermint.types.ValidatorParams
  */
 export interface ValidatorParamsAmino {
   pub_key_types?: string[];
@@ -194,7 +210,12 @@ export interface VersionParamsProtoMsg {
   typeUrl: "/tendermint.types.VersionParams";
   value: Uint8Array;
 }
-/** VersionParams contains the ABCI application version. */
+/**
+ * VersionParams contains the ABCI application version.
+ * @name VersionParamsAmino
+ * @package tendermint.types
+ * @see proto type: tendermint.types.VersionParams
+ */
 export interface VersionParamsAmino {
   app_version?: string;
 }
@@ -223,6 +244,9 @@ export interface HashedParamsProtoMsg {
  * HashedParams is a subset of ConsensusParams.
  * 
  * It is hashed into the Header.ConsensusHash.
+ * @name HashedParamsAmino
+ * @package tendermint.types
+ * @see proto type: tendermint.types.HashedParams
  */
 export interface HashedParamsAmino {
   block_max_bytes?: string;

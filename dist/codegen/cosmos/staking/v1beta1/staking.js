@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Pool = exports.RedelegationResponse = exports.RedelegationEntryResponse = exports.DelegationResponse = exports.Params = exports.Redelegation = exports.RedelegationEntry = exports.UnbondingDelegationEntry = exports.UnbondingDelegation = exports.Delegation = exports.DVVTriplets = exports.DVVTriplet = exports.DVPairs = exports.DVPair = exports.ValAddresses = exports.Validator = exports.Description = exports.Commission = exports.CommissionRates = exports.HistoricalInfo = exports.bondStatusToJSON = exports.bondStatusFromJSON = exports.BondStatusAmino = exports.BondStatusSDKType = exports.BondStatus = void 0;
+exports.Pool = exports.RedelegationResponse = exports.RedelegationEntryResponse = exports.DelegationResponse = exports.Params = exports.Redelegation = exports.RedelegationEntry = exports.UnbondingDelegationEntry = exports.UnbondingDelegation = exports.Delegation = exports.DVVTriplets = exports.DVVTriplet = exports.DVPairs = exports.DVPair = exports.ValAddresses = exports.Validator = exports.Description = exports.Commission = exports.CommissionRates = exports.HistoricalInfo = exports.BondStatusAmino = exports.BondStatusSDKType = exports.BondStatus = void 0;
+exports.bondStatusFromJSON = bondStatusFromJSON;
+exports.bondStatusToJSON = bondStatusToJSON;
 const types_1 = require("../../../tendermint/types/types");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const any_1 = require("../../../google/protobuf/any");
@@ -46,7 +48,6 @@ function bondStatusFromJSON(object) {
             return BondStatus.UNRECOGNIZED;
     }
 }
-exports.bondStatusFromJSON = bondStatusFromJSON;
 function bondStatusToJSON(object) {
     switch (object) {
         case BondStatus.BOND_STATUS_UNSPECIFIED:
@@ -62,7 +63,6 @@ function bondStatusToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.bondStatusToJSON = bondStatusToJSON;
 function createBaseHistoricalInfo() {
     return {
         header: types_1.Header.fromPartial({}),

@@ -12,6 +12,11 @@ export interface LegacyPoolAssetProtoMsg {
   typeUrl: "/elys.amm.LegacyPoolAsset";
   value: Uint8Array;
 }
+/**
+ * @name LegacyPoolAssetAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.LegacyPoolAsset
+ */
 export interface LegacyPoolAssetAmino {
   token?: CoinAmino;
   weight?: string;
@@ -33,6 +38,11 @@ export interface PoolAssetProtoMsg {
   typeUrl: "/elys.amm.PoolAsset";
   value: Uint8Array;
 }
+/**
+ * @name PoolAssetAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.PoolAsset
+ */
 export interface PoolAssetAmino {
   token?: CoinAmino;
   weight?: string;

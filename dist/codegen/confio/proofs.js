@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CompressedNonExistenceProof = exports.CompressedExistenceProof = exports.CompressedBatchEntry = exports.CompressedBatchProof = exports.BatchEntry = exports.BatchProof = exports.InnerSpec = exports.ProofSpec = exports.InnerOp = exports.LeafOp = exports.CommitmentProof = exports.NonExistenceProof = exports.ExistenceProof = exports.lengthOpToJSON = exports.lengthOpFromJSON = exports.LengthOpAmino = exports.LengthOpSDKType = exports.LengthOp = exports.hashOpToJSON = exports.hashOpFromJSON = exports.HashOpAmino = exports.HashOpSDKType = exports.HashOp = void 0;
+exports.CompressedNonExistenceProof = exports.CompressedExistenceProof = exports.CompressedBatchEntry = exports.CompressedBatchProof = exports.BatchEntry = exports.BatchProof = exports.InnerSpec = exports.ProofSpec = exports.InnerOp = exports.LeafOp = exports.CommitmentProof = exports.NonExistenceProof = exports.ExistenceProof = exports.LengthOpAmino = exports.LengthOpSDKType = exports.LengthOp = exports.HashOpAmino = exports.HashOpSDKType = exports.HashOp = void 0;
+exports.hashOpFromJSON = hashOpFromJSON;
+exports.hashOpToJSON = hashOpToJSON;
+exports.lengthOpFromJSON = lengthOpFromJSON;
+exports.lengthOpToJSON = lengthOpToJSON;
 const binary_1 = require("../binary");
 const registry_1 = require("../registry");
 const helpers_1 = require("../helpers");
@@ -44,7 +48,6 @@ function hashOpFromJSON(object) {
             return HashOp.UNRECOGNIZED;
     }
 }
-exports.hashOpFromJSON = hashOpFromJSON;
 function hashOpToJSON(object) {
     switch (object) {
         case HashOp.NO_HASH:
@@ -64,7 +67,6 @@ function hashOpToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.hashOpToJSON = hashOpToJSON;
 /**
  * LengthOp defines how to process the key and value of the LeafOp
  * to include length information. After encoding the length with the given
@@ -130,7 +132,6 @@ function lengthOpFromJSON(object) {
             return LengthOp.UNRECOGNIZED;
     }
 }
-exports.lengthOpFromJSON = lengthOpFromJSON;
 function lengthOpToJSON(object) {
     switch (object) {
         case LengthOp.NO_PREFIX:
@@ -156,7 +157,6 @@ function lengthOpToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.lengthOpToJSON = lengthOpToJSON;
 function createBaseExistenceProof() {
     return {
         key: new Uint8Array(),

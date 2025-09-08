@@ -122,7 +122,12 @@ export interface FlowProtoMsg {
 export type FlowEncoded = Omit<Flow, "msgs"> & {
   msgs: (AnyProtoMsg)[];
 };
-/** Flow stores the info for the flow */
+/**
+ * Flow stores the info for the flow
+ * @name FlowAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.Flow
+ */
 export interface FlowAmino {
   id?: string;
   owner?: string;
@@ -169,7 +174,12 @@ export interface ICAConfigProtoMsg {
   typeUrl: "/intento.intent.v1.ICAConfig";
   value: Uint8Array;
 }
-/** base config for ICA */
+/**
+ * base config for ICA
+ * @name ICAConfigAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.ICAConfig
+ */
 export interface ICAConfigAmino {
   port_id?: string;
   connection_id?: string;
@@ -195,12 +205,21 @@ export interface TrustlessAgentConfigProtoMsg {
   typeUrl: "/intento.intent.v1.TrustlessAgentConfig";
   value: Uint8Array;
 }
-/** config for a trustless agent for flow execution on host chain */
+/**
+ * config for a trustless agent for flow execution on host chain
+ * @name TrustlessAgentConfigAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.TrustlessAgentConfig
+ */
 export interface TrustlessAgentConfigAmino {
   agent_address?: string;
-  /** optional, if set to empty array, no fee limit is set and no fees are charged */
+  /**
+   * optional, if set to empty array, no fee limit is set and no fees are charged
+   */
   fee_limit?: CoinAmino[];
-  /** optional for display */
+  /**
+   * optional for display
+   */
   connection_id?: string;
 }
 export interface TrustlessAgentConfigAminoMsg {
@@ -244,11 +263,18 @@ export interface ExecutionConfigurationProtoMsg {
 /**
  * ExecutionConfiguration provides the execution-related configuration of the
  * flow
+ * @name ExecutionConfigurationAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.ExecutionConfiguration
  */
 export interface ExecutionConfigurationAmino {
-  /** if true, the flow response outputs are saved and can be used in logic */
+  /**
+   * if true, the flow response outputs are saved and can be used in logic
+   */
   save_responses?: boolean;
-  /** if true, the flow is not updatable */
+  /**
+   * if true, the flow is not updatable
+   */
   updating_disabled?: boolean;
   /**
    * If true, will execute until we get a successful flow execution, if false/unset will
@@ -260,9 +286,13 @@ export interface ExecutionConfigurationAmino {
    * execute
    */
   stop_on_failure?: boolean;
-  /** If true, will stop if flow execution on the host chain times out */
+  /**
+   * If true, will stop if flow execution on the host chain times out
+   */
   stop_on_timeout?: boolean;
-  /** If true, will use the owner account balance when flow account funds run out */
+  /**
+   * If true, will use the owner account balance when flow account funds run out
+   */
   wallet_fallback?: boolean;
 }
 export interface ExecutionConfigurationAminoMsg {
@@ -289,7 +319,12 @@ export interface FlowHistoryProtoMsg {
   typeUrl: "/intento.intent.v1.FlowHistory";
   value: Uint8Array;
 }
-/** FlowHistory execution history */
+/**
+ * FlowHistory execution history
+ * @name FlowHistoryAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.FlowHistory
+ */
 export interface FlowHistoryAmino {
   history?: FlowHistoryEntryAmino[];
 }
@@ -326,25 +361,40 @@ export interface FlowHistoryEntryProtoMsg {
   typeUrl: "/intento.intent.v1.FlowHistoryEntry";
   value: Uint8Array;
 }
-/** FlowHistoryEntry provides a the history of flow interchain tx call */
+/**
+ * FlowHistoryEntry provides a the history of flow interchain tx call
+ * @name FlowHistoryEntryAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.FlowHistoryEntry
+ */
 export interface FlowHistoryEntryAmino {
   scheduled_exec_time?: string;
   actual_exec_time?: string;
   exec_fee?: CoinAmino[];
-  /** whether all messages are executed, independent of succesfull result */
+  /**
+   * whether all messages are executed, independent of succesfull result
+   */
   executed?: boolean;
-  /** timed out from execution over IBC */
+  /**
+   * timed out from execution over IBC
+   */
   timed_out?: boolean;
   /**
    * errors from execution, if executed and no error the execution was
    * succesfull
    */
   errors?: string[];
-  /** will be empty when save_responses is false */
+  /**
+   * will be empty when save_responses is false
+   */
   msg_responses?: AnyAmino[];
-  /** will be empty when save_responses is false */
+  /**
+   * will be empty when save_responses is false
+   */
   query_responses?: string[];
-  /** packet sequences of the flow execution on the host chain */
+  /**
+   * packet sequences of the flow execution on the host chain
+   */
   packet_sequences?: string[];
 }
 export interface FlowHistoryEntryAminoMsg {
@@ -399,14 +449,21 @@ export interface ExecutionConditionsProtoMsg {
   typeUrl: "/intento.intent.v1.ExecutionConditions";
   value: Uint8Array;
 }
-/** ExecutionConditions provides execution conditions for the flow */
+/**
+ * ExecutionConditions provides execution conditions for the flow
+ * @name ExecutionConditionsAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.ExecutionConditions
+ */
 export interface ExecutionConditionsAmino {
   /**
    * Replace value with value from message or response from another flow’s
    * latest output
    */
   feedback_loops?: FeedbackLoopAmino[];
-  /** Comparison with response response value */
+  /**
+   * Comparison with response response value
+   */
   comparisons?: ComparisonAmino[];
   /**
    * optional array of dependent intents that when executing succesfully, stops
@@ -428,7 +485,9 @@ export interface ExecutionConditionsAmino {
    * call before execution is allowed
    */
   skip_on_success_of?: string[];
-  /** True: Use AND for combining comparisons. False: Use OR for combining comparisons. */
+  /**
+   * True: Use AND for combining comparisons. False: Use OR for combining comparisons.
+   */
   use_and_for_comparisons?: boolean;
 }
 export interface ExecutionConditionsAminoMsg {
@@ -472,21 +531,38 @@ export interface FeedbackLoopProtoMsg {
 /**
  * Replace value with value from message or response from another flow’s
  * latest output before execution
+ * @name FeedbackLoopAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.FeedbackLoop
  */
 export interface FeedbackLoopAmino {
-  /** flow to get the latest response value from, optional */
+  /**
+   * flow to get the latest response value from, optional
+   */
   flow_id?: string;
-  /** index of the responses */
+  /**
+   * index of the responses
+   */
   response_index?: number;
-  /** for example "Amount" */
+  /**
+   * for example "Amount"
+   */
   response_key?: string;
-  /** index of the msg to replace */
+  /**
+   * index of the msg to replace
+   */
   msgs_index?: number;
-  /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
+  /**
+   * key of the message to replace (e.g. Amount[0].Amount, FromAddress)
+   */
   msg_key?: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /**
+   * can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int
+   */
   value_type?: string;
-  /** bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly. */
+  /**
+   * bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly.
+   */
   icq_config?: ICQConfigAmino;
 }
 export interface FeedbackLoopAminoMsg {
@@ -531,19 +607,32 @@ export interface ComparisonProtoMsg {
 /**
  * Comparison is checked on the response in JSON before execution of
  * flow and outputs true or false
+ * @name ComparisonAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.Comparison
  */
 export interface ComparisonAmino {
-  /** get the latest response value from other flow, optional */
+  /**
+   * get the latest response value from other flow, optional
+   */
   flow_id?: string;
-  /** index of the message response, optional */
+  /**
+   * index of the message response, optional
+   */
   response_index?: number;
-  /** e.g. Amount[0].Amount, FromAddress, optional */
+  /**
+   * e.g. Amount[0].Amount, FromAddress, optional
+   */
   response_key?: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /**
+   * can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int
+   */
   value_type?: string;
   operator?: ComparisonOperator;
   operand?: string;
-  /** bool calculate_difference = 7; //True: Calculate the difference with the previous value. */
+  /**
+   * bool calculate_difference = 7; //True: Calculate the difference with the previous value.
+   */
   icq_config?: ICQConfigAmino;
 }
 export interface ComparisonAminoMsg {
@@ -580,17 +669,28 @@ export interface ICQConfigProtoMsg {
   typeUrl: "/intento.intent.v1.ICQConfig";
   value: Uint8Array;
 }
-/** config for using interchain queries */
+/**
+ * config for using interchain queries
+ * @name ICQConfigAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.ICQConfig
+ */
 export interface ICQConfigAmino {
   connection_id?: string;
   chain_id?: string;
   timeout_policy?: TimeoutPolicy;
   timeout_duration?: DurationAmino;
-  /** e.g. store/bank/key store/staking/key */
+  /**
+   * e.g. store/bank/key store/staking/key
+   */
   query_type?: string;
-  /** key in the store that stores the query e.g. stakingtypes.GetValidatorKey(validatorAddressBz) */
+  /**
+   * key in the store that stores the query e.g. stakingtypes.GetValidatorKey(validatorAddressBz)
+   */
   query_key?: string;
-  /** should be reset after execution */
+  /**
+   * should be reset after execution
+   */
   response?: string;
 }
 export interface ICQConfigAminoMsg {

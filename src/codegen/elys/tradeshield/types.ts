@@ -96,6 +96,11 @@ export interface DateProtoMsg {
   typeUrl: "/elys.tradeshield.Date";
   value: Uint8Array;
 }
+/**
+ * @name DateAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.Date
+ */
 export interface DateAmino {
   height?: string;
   timestamp?: string;
@@ -123,6 +128,11 @@ export interface SpotOrderProtoMsg {
   typeUrl: "/elys.tradeshield.SpotOrder";
   value: Uint8Array;
 }
+/**
+ * @name SpotOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.SpotOrder
+ */
 export interface SpotOrderAmino {
   order_type?: SpotOrderType;
   order_id?: string;
@@ -169,6 +179,11 @@ export interface PerpetualOrderProtoMsg {
   typeUrl: "/elys.tradeshield.PerpetualOrder";
   value: Uint8Array;
 }
+/**
+ * @name PerpetualOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.PerpetualOrder
+ */
 export interface PerpetualOrderAmino {
   order_id?: string;
   owner_address?: string;
@@ -216,6 +231,11 @@ export interface PerpetualOrderExtraInfoProtoMsg {
   typeUrl: "/elys.tradeshield.PerpetualOrderExtraInfo";
   value: Uint8Array;
 }
+/**
+ * @name PerpetualOrderExtraInfoAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.PerpetualOrderExtraInfo
+ */
 export interface PerpetualOrderExtraInfoAmino {
   perpetual_order?: PerpetualOrderAmino;
   position_size?: CoinAmino;

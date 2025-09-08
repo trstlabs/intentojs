@@ -72,23 +72,34 @@ export interface ParamsProtoMsg {
   typeUrl: "/cosmos.evm.vm.v1.Params";
   value: Uint8Array;
 }
-/** Params defines the EVM module parameters */
+/**
+ * Params defines the EVM module parameters
+ * @name ParamsAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.Params
+ */
 export interface ParamsAmino {
   /**
    * evm_denom represents the token denomination used to run the EVM state
    * transitions.
    */
   evm_denom?: string;
-  /** extra_eips defines the additional EIPs for the vm.Config */
+  /**
+   * extra_eips defines the additional EIPs for the vm.Config
+   */
   extra_eips?: string[];
   /**
    * allow_unprotected_txs defines if replay-protected (i.e non EIP155
    * signed) transactions can be executed on the state machine.
    */
   allow_unprotected_txs?: boolean;
-  /** evm_channels is the list of channel identifiers from EVM compatible chains */
+  /**
+   * evm_channels is the list of channel identifiers from EVM compatible chains
+   */
   evm_channels?: string[];
-  /** access_control defines the permission policy of the EVM */
+  /**
+   * access_control defines the permission policy of the EVM
+   */
   access_control?: AccessControlAmino;
   /**
    * active_static_precompiles defines the slice of hex addresses of the
@@ -126,11 +137,18 @@ export interface AccessControlProtoMsg {
 /**
  * AccessControl defines the permission policy of the EVM
  * for creating and calling contracts
+ * @name AccessControlAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.AccessControl
  */
 export interface AccessControlAmino {
-  /** create defines the permission policy for creating contracts */
+  /**
+   * create defines the permission policy for creating contracts
+   */
   create?: AccessControlTypeAmino;
-  /** call defines the permission policy for calling contracts */
+  /**
+   * call defines the permission policy for calling contracts
+   */
   call?: AccessControlTypeAmino;
 }
 export interface AccessControlAminoMsg {
@@ -164,9 +182,16 @@ export interface AccessControlTypeProtoMsg {
   typeUrl: "/cosmos.evm.vm.v1.AccessControlType";
   value: Uint8Array;
 }
-/** AccessControlType defines the permission type for policies */
+/**
+ * AccessControlType defines the permission type for policies
+ * @name AccessControlTypeAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.AccessControlType
+ */
 export interface AccessControlTypeAmino {
-  /** access_type defines which type of permission is required for the operation */
+  /**
+   * access_type defines which type of permission is required for the operation
+   */
   access_type?: AccessType;
   /**
    * access_control_list defines defines different things depending on the
@@ -279,11 +304,18 @@ export interface ChainConfigProtoMsg {
 /**
  * ChainConfig defines the Ethereum ChainConfig parameters using *sdk.Int values
  * instead of *big.Int.
+ * @name ChainConfigAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.ChainConfig
  */
 export interface ChainConfigAmino {
-  /** homestead_block switch (nil no fork, 0 = already homestead) */
+  /**
+   * homestead_block switch (nil no fork, 0 = already homestead)
+   */
   homestead_block?: string;
-  /** dao_fork_block corresponds to TheDAO hard-fork switch block (nil no fork) */
+  /**
+   * dao_fork_block corresponds to TheDAO hard-fork switch block (nil no fork)
+   */
   dao_fork_block?: string;
   /**
    * dao_fork_support defines whether the nodes supports or opposes the DAO
@@ -295,9 +327,13 @@ export interface ChainConfigAmino {
    * (https://github.com/ethereum/EIPs/issues/150) EIP150 HF block (nil no fork)
    */
   eip150_block?: string;
-  /** eip155_block: EIP155Block HF block */
+  /**
+   * eip155_block: EIP155Block HF block
+   */
   eip155_block?: string;
-  /** eip158_block: EIP158 HF block */
+  /**
+   * eip158_block: EIP158 HF block
+   */
   eip158_block?: string;
   /**
    * byzantium_block: Byzantium switch block (nil no fork, 0 = already on
@@ -309,7 +345,9 @@ export interface ChainConfigAmino {
    * activated)
    */
   constantinople_block?: string;
-  /** petersburg_block: Petersburg switch block (nil same as Constantinople) */
+  /**
+   * petersburg_block: Petersburg switch block (nil same as Constantinople)
+   */
   petersburg_block?: string;
   /**
    * istanbul_block: Istanbul switch block (nil no fork, 0 = already on
@@ -321,9 +359,13 @@ export interface ChainConfigAmino {
    * already activated)
    */
   muir_glacier_block?: string;
-  /** berlin_block: Berlin switch block (nil = no fork, 0 = already on berlin) */
+  /**
+   * berlin_block: Berlin switch block (nil = no fork, 0 = already on berlin)
+   */
   berlin_block?: string;
-  /** london_block: London switch block (nil = no fork, 0 = already on london) */
+  /**
+   * london_block: London switch block (nil = no fork, 0 = already on london)
+   */
   london_block?: string;
   /**
    * arrow_glacier_block: Eip-4345 (bomb delay) switch block (nil = no fork, 0 =
@@ -340,24 +382,38 @@ export interface ChainConfigAmino {
    * splitter
    */
   merge_netsplit_block?: string;
-  /** chain_id is the id of the chain (EIP-155) */
+  /**
+   * chain_id is the id of the chain (EIP-155)
+   */
   chain_id?: string;
-  /** denom is the denomination used on the EVM */
+  /**
+   * denom is the denomination used on the EVM
+   */
   denom?: string;
-  /** decimals is the real decimal precision of the denomination used on the EVM */
+  /**
+   * decimals is the real decimal precision of the denomination used on the EVM
+   */
   decimals?: string;
   /**
    * shanghai_time: Shanghai switch time (nil = no fork, 0 = already on
    * shanghai)
    */
   shanghai_time?: string;
-  /** cancun_time: Cancun switch time (nil = no fork, 0 = already on cancun) */
+  /**
+   * cancun_time: Cancun switch time (nil = no fork, 0 = already on cancun)
+   */
   cancun_time?: string;
-  /** prague_time: Prague switch time (nil = no fork, 0 = already on prague) */
+  /**
+   * prague_time: Prague switch time (nil = no fork, 0 = already on prague)
+   */
   prague_time?: string;
-  /** verkle_time: Verkle switch time (nil = no fork, 0 = already on verkle) */
+  /**
+   * verkle_time: Verkle switch time (nil = no fork, 0 = already on verkle)
+   */
   verkle_time?: string;
-  /** osaka_time: Osaka switch time (nil = no fork, 0 = already on osaka) */
+  /**
+   * osaka_time: Osaka switch time (nil = no fork, 0 = already on osaka)
+   */
   osaka_time?: string;
 }
 export interface ChainConfigAminoMsg {
@@ -405,11 +461,20 @@ export interface StateProtoMsg {
   typeUrl: "/cosmos.evm.vm.v1.State";
   value: Uint8Array;
 }
-/** State represents a single Storage key value pair item. */
+/**
+ * State represents a single Storage key value pair item.
+ * @name StateAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.State
+ */
 export interface StateAmino {
-  /** key is the stored key */
+  /**
+   * key is the stored key
+   */
   key?: string;
-  /** value is the stored value for the given key */
+  /**
+   * value is the stored value for the given key
+   */
   value?: string;
 }
 export interface StateAminoMsg {
@@ -440,11 +505,18 @@ export interface TransactionLogsProtoMsg {
  * TransactionLogs define the logs generated from a transaction execution
  * with a given hash. It it used for import/export data as transactions are not
  * persisted on blockchain state after an upgrade.
+ * @name TransactionLogsAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.TransactionLogs
  */
 export interface TransactionLogsAmino {
-  /** hash of the transaction */
+  /**
+   * hash of the transaction
+   */
   hash?: string;
-  /** logs is an array of Logs for the given transaction hash */
+  /**
+   * logs is an array of Logs for the given transaction hash
+   */
   logs?: LogAmino[];
 }
 export interface TransactionLogsAminoMsg {
@@ -503,23 +575,42 @@ export interface LogProtoMsg {
  * 
  * NOTE: address, topics and data are consensus fields. The rest of the fields
  * are derived, i.e. filled in by the nodes, but not secured by consensus.
+ * @name LogAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.Log
  */
 export interface LogAmino {
-  /** address of the contract that generated the event */
+  /**
+   * address of the contract that generated the event
+   */
   address?: string;
-  /** topics is a list of topics provided by the contract. */
+  /**
+   * topics is a list of topics provided by the contract.
+   */
   topics?: string[];
-  /** data which is supplied by the contract, usually ABI-encoded */
+  /**
+   * data which is supplied by the contract, usually ABI-encoded
+   */
   data?: string;
-  /** block_number of the block in which the transaction was included */
+  /**
+   * block_number of the block in which the transaction was included
+   */
   block_number: string;
-  /** tx_hash is the transaction hash */
+  /**
+   * tx_hash is the transaction hash
+   */
   tx_hash: string;
-  /** tx_index of the transaction in the block */
+  /**
+   * tx_index of the transaction in the block
+   */
   tx_index: string;
-  /** block_hash of the block in which the transaction was included */
+  /**
+   * block_hash of the block in which the transaction was included
+   */
   block_hash: string;
-  /** index of the log in the block */
+  /**
+   * index of the log in the block
+   */
   index: string;
   /**
    * removed is true if this log was reverted due to a chain
@@ -577,7 +668,12 @@ export interface TxResultProtoMsg {
   typeUrl: "/cosmos.evm.vm.v1.TxResult";
   value: Uint8Array;
 }
-/** TxResult stores results of Tx execution. */
+/**
+ * TxResult stores results of Tx execution.
+ * @name TxResultAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.TxResult
+ */
 export interface TxResultAmino {
   /**
    * contract_address contains the ethereum address of the created contract (if
@@ -585,18 +681,26 @@ export interface TxResultAmino {
    * empty.
    */
   contract_address?: string;
-  /** bloom represents the bloom filter bytes */
+  /**
+   * bloom represents the bloom filter bytes
+   */
   bloom?: string;
   /**
    * tx_logs contains the transaction hash and the proto-compatible ethereum
    * logs.
    */
   tx_logs: TransactionLogsAmino;
-  /** ret defines the bytes from the execution. */
+  /**
+   * ret defines the bytes from the execution.
+   */
   ret?: string;
-  /** reverted flag is set to true when the call has been reverted */
+  /**
+   * reverted flag is set to true when the call has been reverted
+   */
   reverted?: boolean;
-  /** gas_used notes the amount of gas consumed while execution */
+  /**
+   * gas_used notes the amount of gas consumed while execution
+   */
   gas_used?: string;
 }
 export interface TxResultAminoMsg {
@@ -623,11 +727,20 @@ export interface AccessTupleProtoMsg {
   typeUrl: "/cosmos.evm.vm.v1.AccessTuple";
   value: Uint8Array;
 }
-/** AccessTuple is the element type of an access list. */
+/**
+ * AccessTuple is the element type of an access list.
+ * @name AccessTupleAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.AccessTuple
+ */
 export interface AccessTupleAmino {
-  /** address is a hex formatted ethereum address */
+  /**
+   * address is a hex formatted ethereum address
+   */
   address?: string;
-  /** storage_keys are hex formatted hashes of the storage keys */
+  /**
+   * storage_keys are hex formatted hashes of the storage keys
+   */
   storage_keys: string[];
 }
 export interface AccessTupleAminoMsg {
@@ -671,32 +784,57 @@ export interface TraceConfigProtoMsg {
   typeUrl: "/cosmos.evm.vm.v1.TraceConfig";
   value: Uint8Array;
 }
-/** TraceConfig holds extra parameters to trace functions. */
+/**
+ * TraceConfig holds extra parameters to trace functions.
+ * @name TraceConfigAmino
+ * @package cosmos.evm.vm.v1
+ * @see proto type: cosmos.evm.vm.v1.TraceConfig
+ */
 export interface TraceConfigAmino {
-  /** tracer is a custom javascript tracer */
+  /**
+   * tracer is a custom javascript tracer
+   */
   tracer?: string;
   /**
    * timeout overrides the default timeout of 5 seconds for JavaScript-based
    * tracing calls
    */
   timeout?: string;
-  /** reexec defines the number of blocks the tracer is willing to go back */
+  /**
+   * reexec defines the number of blocks the tracer is willing to go back
+   */
   reexec?: string;
-  /** disable_stack switches stack capture */
+  /**
+   * disable_stack switches stack capture
+   */
   disable_stack: boolean;
-  /** disable_storage switches storage capture */
+  /**
+   * disable_storage switches storage capture
+   */
   disable_storage: boolean;
-  /** debug can be used to print output during capture end */
+  /**
+   * debug can be used to print output during capture end
+   */
   debug?: boolean;
-  /** limit defines the maximum length of output, but zero means unlimited */
+  /**
+   * limit defines the maximum length of output, but zero means unlimited
+   */
   limit?: number;
-  /** overrides can be used to execute a trace using future fork rules */
+  /**
+   * overrides can be used to execute a trace using future fork rules
+   */
   overrides?: ChainConfigAmino;
-  /** enable_memory switches memory capture */
+  /**
+   * enable_memory switches memory capture
+   */
   enable_memory: boolean;
-  /** enable_return_data switches the capture of return data */
+  /**
+   * enable_return_data switches the capture of return data
+   */
   enable_return_data: boolean;
-  /** tracer_json_config configures the tracer using a JSON string */
+  /**
+   * tracer_json_config configures the tracer using a JSON string
+   */
   tracer_json_config: string;
 }
 export interface TraceConfigAminoMsg {

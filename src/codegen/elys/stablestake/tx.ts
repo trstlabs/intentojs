@@ -13,6 +13,11 @@ export interface MsgBondProtoMsg {
   typeUrl: "/elys.stablestake.MsgBond";
   value: Uint8Array;
 }
+/**
+ * @name MsgBondAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgBond
+ */
 export interface MsgBondAmino {
   creator?: string;
   amount?: string;
@@ -32,6 +37,11 @@ export interface MsgBondResponseProtoMsg {
   typeUrl: "/elys.stablestake.MsgBondResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgBondResponseAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgBondResponse
+ */
 export interface MsgBondResponseAmino {}
 export interface MsgBondResponseAminoMsg {
   type: "/elys.stablestake.MsgBondResponse";
@@ -47,6 +57,11 @@ export interface MsgUnbondProtoMsg {
   typeUrl: "/elys.stablestake.MsgUnbond";
   value: Uint8Array;
 }
+/**
+ * @name MsgUnbondAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgUnbond
+ */
 export interface MsgUnbondAmino {
   creator?: string;
   amount?: string;
@@ -66,6 +81,11 @@ export interface MsgUnbondResponseProtoMsg {
   typeUrl: "/elys.stablestake.MsgUnbondResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUnbondResponseAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgUnbondResponse
+ */
 export interface MsgUnbondResponseAmino {}
 export interface MsgUnbondResponseAminoMsg {
   type: "/elys.stablestake.MsgUnbondResponse";
@@ -85,13 +105,20 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.stablestake.MsgUpdateParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
    * overwritten).
    */
   authority?: string;
-  /** NOTE: All parameters must be supplied. */
+  /**
+   * NOTE: All parameters must be supplied.
+   */
   params?: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
@@ -107,6 +134,11 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/elys.stablestake.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/elys.stablestake.MsgUpdateParamsResponse";
@@ -129,6 +161,11 @@ export interface MsgAddPoolProtoMsg {
   typeUrl: "/elys.stablestake.MsgAddPool";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddPoolAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgAddPool
+ */
 export interface MsgAddPoolAmino {
   sender?: string;
   deposit_denom?: string;
@@ -164,6 +201,11 @@ export interface MsgAddPoolResponseProtoMsg {
   typeUrl: "/elys.stablestake.MsgAddPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddPoolResponseAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgAddPoolResponse
+ */
 export interface MsgAddPoolResponseAmino {
   pool_id?: string;
 }
@@ -188,6 +230,11 @@ export interface MsgUpdatePoolProtoMsg {
   typeUrl: "/elys.stablestake.MsgUpdatePool";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgUpdatePool
+ */
 export interface MsgUpdatePoolAmino {
   authority?: string;
   interest_rate_max?: string;
@@ -217,6 +264,11 @@ export interface MsgUpdatePoolResponseProtoMsg {
   typeUrl: "/elys.stablestake.MsgUpdatePoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolResponseAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.MsgUpdatePoolResponse
+ */
 export interface MsgUpdatePoolResponseAmino {}
 export interface MsgUpdatePoolResponseAminoMsg {
   type: "/elys.stablestake.MsgUpdatePoolResponse";

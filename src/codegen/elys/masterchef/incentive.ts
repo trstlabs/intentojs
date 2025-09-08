@@ -17,15 +17,28 @@ export interface LegacyIncentiveInfoProtoMsg {
   typeUrl: "/elys.masterchef.LegacyIncentiveInfo";
   value: Uint8Array;
 }
-/** Incentive Info */
+/**
+ * Incentive Info
+ * @name LegacyIncentiveInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.LegacyIncentiveInfo
+ */
 export interface LegacyIncentiveInfoAmino {
-  /** reward amount in eden for 1 year */
+  /**
+   * reward amount in eden for 1 year
+   */
   eden_amount_per_year?: string;
-  /** starting block height of the distribution */
+  /**
+   * starting block height of the distribution
+   */
   distribution_start_block?: string;
-  /** distribution duration - block number per year */
+  /**
+   * distribution duration - block number per year
+   */
   total_blocks_per_year?: string;
-  /** blocks distributed */
+  /**
+   * blocks distributed
+   */
   blocks_distributed?: string;
 }
 export interface LegacyIncentiveInfoAminoMsg {
@@ -49,10 +62,19 @@ export interface IncentiveInfoProtoMsg {
   typeUrl: "/elys.masterchef.IncentiveInfo";
   value: Uint8Array;
 }
+/**
+ * @name IncentiveInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.IncentiveInfo
+ */
 export interface IncentiveInfoAmino {
-  /** reward amount in eden for 1 year */
+  /**
+   * reward amount in eden for 1 year
+   */
   eden_amount_per_year?: string;
-  /** blocks distributed */
+  /**
+   * blocks distributed
+   */
   blocks_distributed?: string;
 }
 export interface IncentiveInfoAminoMsg {

@@ -17,6 +17,11 @@ export interface MsgOpenProtoMsg {
   typeUrl: "/elys.leveragelp.MsgOpen";
   value: Uint8Array;
 }
+/**
+ * @name MsgOpenAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgOpen
+ */
 export interface MsgOpenAmino {
   creator?: string;
   collateral_asset?: string;
@@ -42,6 +47,11 @@ export interface MsgOpenResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgOpenResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgOpenResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgOpenResponse
+ */
 export interface MsgOpenResponseAmino {}
 export interface MsgOpenResponseAminoMsg {
   type: "/elys.leveragelp.MsgOpenResponse";
@@ -57,6 +67,11 @@ export interface MsgCloseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgClose";
   value: Uint8Array;
 }
+/**
+ * @name MsgCloseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgClose
+ */
 export interface MsgCloseAmino {
   creator?: string;
   id?: string;
@@ -76,6 +91,11 @@ export interface MsgCloseResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgCloseResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCloseResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgCloseResponse
+ */
 export interface MsgCloseResponseAmino {}
 export interface MsgCloseResponseAminoMsg {
   type: "/elys.leveragelp.MsgCloseResponse";
@@ -90,6 +110,11 @@ export interface MsgClaimRewardsProtoMsg {
   typeUrl: "/elys.leveragelp.MsgClaimRewards";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimRewardsAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgClaimRewards
+ */
 export interface MsgClaimRewardsAmino {
   sender?: string;
   ids?: string[];
@@ -107,6 +132,11 @@ export interface MsgClaimRewardsResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgClaimRewardsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimRewardsResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgClaimRewardsResponse
+ */
 export interface MsgClaimRewardsResponseAmino {}
 export interface MsgClaimRewardsResponseAminoMsg {
   type: "/elys.leveragelp.MsgClaimRewardsResponse";
@@ -126,13 +156,20 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdateParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
    * overwritten).
    */
   authority?: string;
-  /** NOTE: All parameters must be supplied. */
+  /**
+   * NOTE: All parameters must be supplied.
+   */
   params?: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
@@ -148,6 +185,11 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/elys.leveragelp.MsgUpdateParamsResponse";
@@ -162,6 +204,11 @@ export interface MsgWhitelistProtoMsg {
   typeUrl: "/elys.leveragelp.MsgWhitelist";
   value: Uint8Array;
 }
+/**
+ * @name MsgWhitelistAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgWhitelist
+ */
 export interface MsgWhitelistAmino {
   authority?: string;
   whitelisted_address?: string;
@@ -179,6 +226,11 @@ export interface MsgWhitelistResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgWhitelistResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgWhitelistResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgWhitelistResponse
+ */
 export interface MsgWhitelistResponseAmino {}
 export interface MsgWhitelistResponseAminoMsg {
   type: "/elys.leveragelp.MsgWhitelistResponse";
@@ -193,6 +245,11 @@ export interface MsgDewhitelistProtoMsg {
   typeUrl: "/elys.leveragelp.MsgDewhitelist";
   value: Uint8Array;
 }
+/**
+ * @name MsgDewhitelistAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgDewhitelist
+ */
 export interface MsgDewhitelistAmino {
   authority?: string;
   whitelisted_address?: string;
@@ -210,6 +267,11 @@ export interface MsgDewhitelistResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgDewhitelistResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgDewhitelistResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgDewhitelistResponse
+ */
 export interface MsgDewhitelistResponseAmino {}
 export interface MsgDewhitelistResponseAminoMsg {
   type: "/elys.leveragelp.MsgDewhitelistResponse";
@@ -225,6 +287,11 @@ export interface MsgUpdateStopLossProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdateStopLoss";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateStopLossAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdateStopLoss
+ */
 export interface MsgUpdateStopLossAmino {
   creator?: string;
   position?: string;
@@ -244,6 +311,11 @@ export interface MsgUpdateStopLossResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdateStopLossResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateStopLossResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdateStopLossResponse
+ */
 export interface MsgUpdateStopLossResponseAmino {}
 export interface MsgUpdateStopLossResponseAminoMsg {
   type: "/elys.leveragelp.MsgUpdateStopLossResponse";
@@ -258,6 +330,11 @@ export interface AddPoolProtoMsg {
   typeUrl: "/elys.leveragelp.AddPool";
   value: Uint8Array;
 }
+/**
+ * @name AddPoolAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.AddPool
+ */
 export interface AddPoolAmino {
   amm_pool_id?: string;
   leverage_max?: string;
@@ -278,6 +355,11 @@ export interface MsgAddPoolProtoMsg {
   typeUrl: "/elys.leveragelp.MsgAddPool";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddPoolAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgAddPool
+ */
 export interface MsgAddPoolAmino {
   authority?: string;
   pool?: AddPoolAmino;
@@ -295,6 +377,11 @@ export interface MsgAddPoolResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgAddPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddPoolResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgAddPoolResponse
+ */
 export interface MsgAddPoolResponseAmino {}
 export interface MsgAddPoolResponseAminoMsg {
   type: "/elys.leveragelp.MsgAddPoolResponse";
@@ -309,6 +396,11 @@ export interface MsgRemovePoolProtoMsg {
   typeUrl: "/elys.leveragelp.MsgRemovePool";
   value: Uint8Array;
 }
+/**
+ * @name MsgRemovePoolAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgRemovePool
+ */
 export interface MsgRemovePoolAmino {
   authority?: string;
   id?: string;
@@ -326,6 +418,11 @@ export interface MsgRemovePoolResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgRemovePoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgRemovePoolResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgRemovePoolResponse
+ */
 export interface MsgRemovePoolResponseAmino {}
 export interface MsgRemovePoolResponseAminoMsg {
   type: "/elys.leveragelp.MsgRemovePoolResponse";
@@ -341,6 +438,11 @@ export interface MsgClosePositionsProtoMsg {
   typeUrl: "/elys.leveragelp.MsgClosePositions";
   value: Uint8Array;
 }
+/**
+ * @name MsgClosePositionsAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgClosePositions
+ */
 export interface MsgClosePositionsAmino {
   creator?: string;
   liquidate?: PositionRequestAmino[];
@@ -360,6 +462,11 @@ export interface MsgClosePositionsResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgClosePositionsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClosePositionsResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgClosePositionsResponse
+ */
 export interface MsgClosePositionsResponseAmino {}
 export interface MsgClosePositionsResponseAminoMsg {
   type: "/elys.leveragelp.MsgClosePositionsResponse";
@@ -380,6 +487,11 @@ export interface MsgUpdatePoolProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdatePool";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdatePool
+ */
 export interface MsgUpdatePoolAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
@@ -405,6 +517,11 @@ export interface MsgUpdatePoolResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdatePoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdatePoolResponse
+ */
 export interface MsgUpdatePoolResponseAmino {}
 export interface MsgUpdatePoolResponseAminoMsg {
   type: "/elys.leveragelp.MsgUpdatePoolResponse";
@@ -423,6 +540,11 @@ export interface MsgUpdateEnabledPoolsProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdateEnabledPools";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateEnabledPoolsAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdateEnabledPools
+ */
 export interface MsgUpdateEnabledPoolsAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
@@ -444,6 +566,11 @@ export interface MsgUpdateEnabledPoolsResponseProtoMsg {
   typeUrl: "/elys.leveragelp.MsgUpdateEnabledPoolsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateEnabledPoolsResponseAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.MsgUpdateEnabledPoolsResponse
+ */
 export interface MsgUpdateEnabledPoolsResponseAmino {}
 export interface MsgUpdateEnabledPoolsResponseAminoMsg {
   type: "/elys.leveragelp.MsgUpdateEnabledPoolsResponse";

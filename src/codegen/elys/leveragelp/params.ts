@@ -19,7 +19,12 @@ export interface LegacyParamsProtoMsg {
   typeUrl: "/elys.leveragelp.LegacyParams";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name LegacyParamsAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.LegacyParams
+ */
 export interface LegacyParamsAmino {
   leverage_max?: string;
   max_open_positions?: string;
@@ -28,7 +33,9 @@ export interface LegacyParamsAmino {
   whitelisting_enabled?: boolean;
   epoch_length?: string;
   fallback_enabled?: boolean;
-  /** Number of positions to process per block */
+  /**
+   * Number of positions to process per block
+   */
   number_per_block?: string;
 }
 export interface LegacyParamsAminoMsg {
@@ -64,7 +71,12 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.leveragelp.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name ParamsAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.Params
+ */
 export interface ParamsAmino {
   leverage_max?: string;
   max_open_positions?: string;
@@ -73,7 +85,9 @@ export interface ParamsAmino {
   whitelisting_enabled?: boolean;
   epoch_length?: string;
   fallback_enabled?: boolean;
-  /** Number of positions to process per block */
+  /**
+   * Number of positions to process per block
+   */
   number_per_block?: string;
   enabled_pools?: string[];
   exit_buffer?: string;

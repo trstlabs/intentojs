@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Params = exports.Version = exports.ConnectionPaths = exports.ClientPaths = exports.Counterparty = exports.IdentifiedConnection = exports.ConnectionEnd = exports.stateToJSON = exports.stateFromJSON = exports.StateAmino = exports.StateSDKType = exports.State = void 0;
+exports.Params = exports.Version = exports.ConnectionPaths = exports.ClientPaths = exports.Counterparty = exports.IdentifiedConnection = exports.ConnectionEnd = exports.StateAmino = exports.StateSDKType = exports.State = void 0;
+exports.stateFromJSON = stateFromJSON;
+exports.stateToJSON = stateToJSON;
 const commitment_1 = require("../../commitment/v1/commitment");
 const helpers_1 = require("../../../../helpers");
 const binary_1 = require("../../../../binary");
@@ -46,7 +48,6 @@ function stateFromJSON(object) {
             return State.UNRECOGNIZED;
     }
 }
-exports.stateFromJSON = stateFromJSON;
 function stateToJSON(object) {
     switch (object) {
         case State.STATE_UNINITIALIZED_UNSPECIFIED:
@@ -62,7 +63,6 @@ function stateToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.stateToJSON = stateToJSON;
 function createBaseConnectionEnd() {
     return {
         clientId: "",

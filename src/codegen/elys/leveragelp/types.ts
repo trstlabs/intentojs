@@ -12,6 +12,11 @@ export interface PositionRequestProtoMsg {
   typeUrl: "/elys.leveragelp.PositionRequest";
   value: Uint8Array;
 }
+/**
+ * @name PositionRequestAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.PositionRequest
+ */
 export interface PositionRequestAmino {
   address?: string;
   id?: string;
@@ -39,6 +44,11 @@ export interface PositionProtoMsg {
   typeUrl: "/elys.leveragelp.Position";
   value: Uint8Array;
 }
+/**
+ * @name PositionAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.Position
+ */
 export interface PositionAmino {
   address?: string;
   collateral?: CoinAmino;
@@ -74,6 +84,11 @@ export interface QueryPositionProtoMsg {
   typeUrl: "/elys.leveragelp.QueryPosition";
   value: Uint8Array;
 }
+/**
+ * @name QueryPositionAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.QueryPosition
+ */
 export interface QueryPositionAmino {
   position?: PositionAmino;
   updated_leverage?: string;
@@ -97,6 +112,11 @@ export interface PositionAndInterestProtoMsg {
   typeUrl: "/elys.leveragelp.PositionAndInterest";
   value: Uint8Array;
 }
+/**
+ * @name PositionAndInterestAmino
+ * @package elys.leveragelp
+ * @see proto type: elys.leveragelp.PositionAndInterest
+ */
 export interface PositionAndInterestAmino {
   position?: QueryPositionAmino;
   interest_rate_hour?: string;

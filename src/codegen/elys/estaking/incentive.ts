@@ -12,10 +12,19 @@ export interface IncentiveInfoProtoMsg {
   typeUrl: "/elys.estaking.IncentiveInfo";
   value: Uint8Array;
 }
+/**
+ * @name IncentiveInfoAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.IncentiveInfo
+ */
 export interface IncentiveInfoAmino {
-  /** reward amount in eden for 1 year */
+  /**
+   * reward amount in eden for 1 year
+   */
   eden_amount_per_year?: string;
-  /** blocks distributed */
+  /**
+   * blocks distributed
+   */
   blocks_distributed?: string;
 }
 export interface IncentiveInfoAminoMsg {

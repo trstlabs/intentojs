@@ -16,24 +16,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.ExistenceProofSDKType;
         isAmino(o: any): o is _1.ExistenceProofAmino;
         encode(message: _1.ExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.ExistenceProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.ExistenceProof;
         fromJSON(object: any): _1.ExistenceProof;
-        toJSON(message: _1.ExistenceProof): {
-            key: string;
-            value: string;
-            leaf?: {
-                hash: _1.HashOp;
-                prehashKey: _1.HashOp;
-                prehashValue: _1.HashOp;
-                length: _1.LengthOp;
-                prefix: string;
-            };
-            path: {
-                hash: _1.HashOp;
-                prefix: string;
-                suffix: string;
-            }[];
-        };
+        toJSON(message: _1.ExistenceProof): import("..").JsonSafe<_1.ExistenceProof>;
         fromPartial(object: Partial<_1.ExistenceProof>): _1.ExistenceProof;
         fromAmino(object: _1.ExistenceProofAmino): _1.ExistenceProof;
         toAmino(message: _1.ExistenceProof): _1.ExistenceProofAmino;
@@ -48,43 +33,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.NonExistenceProofSDKType;
         isAmino(o: any): o is _1.NonExistenceProofAmino;
         encode(message: _1.NonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.NonExistenceProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.NonExistenceProof;
         fromJSON(object: any): _1.NonExistenceProof;
-        toJSON(message: _1.NonExistenceProof): {
-            key: string;
-            left?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: {
-                    hash: _1.HashOp;
-                    prefix: string;
-                    suffix: string;
-                }[];
-            };
-            right?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: {
-                    hash: _1.HashOp;
-                    prefix: string;
-                    suffix: string;
-                }[];
-            };
-        };
+        toJSON(message: _1.NonExistenceProof): import("..").JsonSafe<_1.NonExistenceProof>;
         fromPartial(object: Partial<_1.NonExistenceProof>): _1.NonExistenceProof;
         fromAmino(object: _1.NonExistenceProofAmino): _1.NonExistenceProof;
         toAmino(message: _1.NonExistenceProof): _1.NonExistenceProofAmino;
@@ -99,164 +50,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.CommitmentProofSDKType;
         isAmino(o: any): o is _1.CommitmentProofAmino;
         encode(message: _1.CommitmentProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CommitmentProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.CommitmentProof;
         fromJSON(object: any): _1.CommitmentProof;
-        toJSON(message: _1.CommitmentProof): {
-            exist?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: {
-                    hash: _1.HashOp;
-                    prefix: string;
-                    suffix: string;
-                }[];
-            };
-            nonexist?: {
-                key: string;
-                left?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: {
-                        hash: _1.HashOp;
-                        prefix: string;
-                        suffix: string;
-                    }[];
-                };
-                right?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: {
-                        hash: _1.HashOp;
-                        prefix: string;
-                        suffix: string;
-                    }[];
-                };
-            };
-            batch?: {
-                entries: {
-                    exist?: {
-                        key: string;
-                        value: string;
-                        leaf?: {
-                            hash: _1.HashOp;
-                            prehashKey: _1.HashOp;
-                            prehashValue: _1.HashOp;
-                            length: _1.LengthOp;
-                            prefix: string;
-                        };
-                        path: {
-                            hash: _1.HashOp;
-                            prefix: string;
-                            suffix: string;
-                        }[];
-                    };
-                    nonexist?: {
-                        key: string;
-                        left?: {
-                            key: string;
-                            value: string;
-                            leaf?: {
-                                hash: _1.HashOp;
-                                prehashKey: _1.HashOp;
-                                prehashValue: _1.HashOp;
-                                length: _1.LengthOp;
-                                prefix: string;
-                            };
-                            path: {
-                                hash: _1.HashOp;
-                                prefix: string;
-                                suffix: string;
-                            }[];
-                        };
-                        right?: {
-                            key: string;
-                            value: string;
-                            leaf?: {
-                                hash: _1.HashOp;
-                                prehashKey: _1.HashOp;
-                                prehashValue: _1.HashOp;
-                                length: _1.LengthOp;
-                                prefix: string;
-                            };
-                            path: {
-                                hash: _1.HashOp;
-                                prefix: string;
-                                suffix: string;
-                            }[];
-                        };
-                    };
-                }[];
-            };
-            compressed?: {
-                entries: {
-                    exist?: {
-                        key: string;
-                        value: string;
-                        leaf?: {
-                            hash: _1.HashOp;
-                            prehashKey: _1.HashOp;
-                            prehashValue: _1.HashOp;
-                            length: _1.LengthOp;
-                            prefix: string;
-                        };
-                        path: number[];
-                    };
-                    nonexist?: {
-                        key: string;
-                        left?: {
-                            key: string;
-                            value: string;
-                            leaf?: {
-                                hash: _1.HashOp;
-                                prehashKey: _1.HashOp;
-                                prehashValue: _1.HashOp;
-                                length: _1.LengthOp;
-                                prefix: string;
-                            };
-                            path: number[];
-                        };
-                        right?: {
-                            key: string;
-                            value: string;
-                            leaf?: {
-                                hash: _1.HashOp;
-                                prehashKey: _1.HashOp;
-                                prehashValue: _1.HashOp;
-                                length: _1.LengthOp;
-                                prefix: string;
-                            };
-                            path: number[];
-                        };
-                    };
-                }[];
-                lookupInners: {
-                    hash: _1.HashOp;
-                    prefix: string;
-                    suffix: string;
-                }[];
-            };
-        };
+        toJSON(message: _1.CommitmentProof): import("..").JsonSafe<_1.CommitmentProof>;
         fromPartial(object: Partial<_1.CommitmentProof>): _1.CommitmentProof;
         fromAmino(object: _1.CommitmentProofAmino): _1.CommitmentProof;
         toAmino(message: _1.CommitmentProof): _1.CommitmentProofAmino;
@@ -271,15 +67,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.LeafOpSDKType;
         isAmino(o: any): o is _1.LeafOpAmino;
         encode(message: _1.LeafOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.LeafOp;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.LeafOp;
         fromJSON(object: any): _1.LeafOp;
-        toJSON(message: _1.LeafOp): {
-            hash: _1.HashOp;
-            prehashKey: _1.HashOp;
-            prehashValue: _1.HashOp;
-            length: _1.LengthOp;
-            prefix: string;
-        };
+        toJSON(message: _1.LeafOp): import("..").JsonSafe<_1.LeafOp>;
         fromPartial(object: Partial<_1.LeafOp>): _1.LeafOp;
         fromAmino(object: _1.LeafOpAmino): _1.LeafOp;
         toAmino(message: _1.LeafOp): _1.LeafOpAmino;
@@ -294,13 +84,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.InnerOpSDKType;
         isAmino(o: any): o is _1.InnerOpAmino;
         encode(message: _1.InnerOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.InnerOp;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.InnerOp;
         fromJSON(object: any): _1.InnerOp;
-        toJSON(message: _1.InnerOp): {
-            hash: _1.HashOp;
-            prefix: string;
-            suffix: string;
-        };
+        toJSON(message: _1.InnerOp): import("..").JsonSafe<_1.InnerOp>;
         fromPartial(object: Partial<_1.InnerOp>): _1.InnerOp;
         fromAmino(object: _1.InnerOpAmino): _1.InnerOp;
         toAmino(message: _1.InnerOp): _1.InnerOpAmino;
@@ -315,27 +101,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.ProofSpecSDKType;
         isAmino(o: any): o is _1.ProofSpecAmino;
         encode(message: _1.ProofSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.ProofSpec;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.ProofSpec;
         fromJSON(object: any): _1.ProofSpec;
-        toJSON(message: _1.ProofSpec): {
-            leafSpec?: {
-                hash: _1.HashOp;
-                prehashKey: _1.HashOp;
-                prehashValue: _1.HashOp;
-                length: _1.LengthOp;
-                prefix: string;
-            };
-            innerSpec?: {
-                childOrder: number[];
-                childSize: number;
-                minPrefixLength: number;
-                maxPrefixLength: number;
-                emptyChild: string;
-                hash: _1.HashOp;
-            };
-            maxDepth: number;
-            minDepth: number;
-        };
+        toJSON(message: _1.ProofSpec): import("..").JsonSafe<_1.ProofSpec>;
         fromPartial(object: Partial<_1.ProofSpec>): _1.ProofSpec;
         fromAmino(object: _1.ProofSpecAmino): _1.ProofSpec;
         toAmino(message: _1.ProofSpec): _1.ProofSpecAmino;
@@ -350,16 +118,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.InnerSpecSDKType;
         isAmino(o: any): o is _1.InnerSpecAmino;
         encode(message: _1.InnerSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.InnerSpec;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.InnerSpec;
         fromJSON(object: any): _1.InnerSpec;
-        toJSON(message: _1.InnerSpec): {
-            childOrder: number[];
-            childSize: number;
-            minPrefixLength: number;
-            maxPrefixLength: number;
-            emptyChild: string;
-            hash: _1.HashOp;
-        };
+        toJSON(message: _1.InnerSpec): import("..").JsonSafe<_1.InnerSpec>;
         fromPartial(object: Partial<_1.InnerSpec>): _1.InnerSpec;
         fromAmino(object: _1.InnerSpecAmino): _1.InnerSpec;
         toAmino(message: _1.InnerSpec): _1.InnerSpecAmino;
@@ -374,63 +135,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.BatchProofSDKType;
         isAmino(o: any): o is _1.BatchProofAmino;
         encode(message: _1.BatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.BatchProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.BatchProof;
         fromJSON(object: any): _1.BatchProof;
-        toJSON(message: _1.BatchProof): {
-            entries: {
-                exist?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: {
-                        hash: _1.HashOp;
-                        prefix: string;
-                        suffix: string;
-                    }[];
-                };
-                nonexist?: {
-                    key: string;
-                    left?: {
-                        key: string;
-                        value: string;
-                        leaf?: {
-                            hash: _1.HashOp;
-                            prehashKey: _1.HashOp;
-                            prehashValue: _1.HashOp;
-                            length: _1.LengthOp;
-                            prefix: string;
-                        };
-                        path: {
-                            hash: _1.HashOp;
-                            prefix: string;
-                            suffix: string;
-                        }[];
-                    };
-                    right?: {
-                        key: string;
-                        value: string;
-                        leaf?: {
-                            hash: _1.HashOp;
-                            prehashKey: _1.HashOp;
-                            prehashValue: _1.HashOp;
-                            length: _1.LengthOp;
-                            prefix: string;
-                        };
-                        path: {
-                            hash: _1.HashOp;
-                            prefix: string;
-                            suffix: string;
-                        }[];
-                    };
-                };
-            }[];
-        };
+        toJSON(message: _1.BatchProof): import("..").JsonSafe<_1.BatchProof>;
         fromPartial(object: Partial<_1.BatchProof>): _1.BatchProof;
         fromAmino(object: _1.BatchProofAmino): _1.BatchProof;
         toAmino(message: _1.BatchProof): _1.BatchProofAmino;
@@ -445,61 +152,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.BatchEntrySDKType;
         isAmino(o: any): o is _1.BatchEntryAmino;
         encode(message: _1.BatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.BatchEntry;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.BatchEntry;
         fromJSON(object: any): _1.BatchEntry;
-        toJSON(message: _1.BatchEntry): {
-            exist?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: {
-                    hash: _1.HashOp;
-                    prefix: string;
-                    suffix: string;
-                }[];
-            };
-            nonexist?: {
-                key: string;
-                left?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: {
-                        hash: _1.HashOp;
-                        prefix: string;
-                        suffix: string;
-                    }[];
-                };
-                right?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: {
-                        hash: _1.HashOp;
-                        prefix: string;
-                        suffix: string;
-                    }[];
-                };
-            };
-        };
+        toJSON(message: _1.BatchEntry): import("..").JsonSafe<_1.BatchEntry>;
         fromPartial(object: Partial<_1.BatchEntry>): _1.BatchEntry;
         fromAmino(object: _1.BatchEntryAmino): _1.BatchEntry;
         toAmino(message: _1.BatchEntry): _1.BatchEntryAmino;
@@ -514,56 +169,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.CompressedBatchProofSDKType;
         isAmino(o: any): o is _1.CompressedBatchProofAmino;
         encode(message: _1.CompressedBatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedBatchProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.CompressedBatchProof;
         fromJSON(object: any): _1.CompressedBatchProof;
-        toJSON(message: _1.CompressedBatchProof): {
-            entries: {
-                exist?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: number[];
-                };
-                nonexist?: {
-                    key: string;
-                    left?: {
-                        key: string;
-                        value: string;
-                        leaf?: {
-                            hash: _1.HashOp;
-                            prehashKey: _1.HashOp;
-                            prehashValue: _1.HashOp;
-                            length: _1.LengthOp;
-                            prefix: string;
-                        };
-                        path: number[];
-                    };
-                    right?: {
-                        key: string;
-                        value: string;
-                        leaf?: {
-                            hash: _1.HashOp;
-                            prehashKey: _1.HashOp;
-                            prehashValue: _1.HashOp;
-                            length: _1.LengthOp;
-                            prefix: string;
-                        };
-                        path: number[];
-                    };
-                };
-            }[];
-            lookupInners: {
-                hash: _1.HashOp;
-                prefix: string;
-                suffix: string;
-            }[];
-        };
+        toJSON(message: _1.CompressedBatchProof): import("..").JsonSafe<_1.CompressedBatchProof>;
         fromPartial(object: Partial<_1.CompressedBatchProof>): _1.CompressedBatchProof;
         fromAmino(object: _1.CompressedBatchProofAmino): _1.CompressedBatchProof;
         toAmino(message: _1.CompressedBatchProof): _1.CompressedBatchProofAmino;
@@ -578,49 +186,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.CompressedBatchEntrySDKType;
         isAmino(o: any): o is _1.CompressedBatchEntryAmino;
         encode(message: _1.CompressedBatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedBatchEntry;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.CompressedBatchEntry;
         fromJSON(object: any): _1.CompressedBatchEntry;
-        toJSON(message: _1.CompressedBatchEntry): {
-            exist?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: number[];
-            };
-            nonexist?: {
-                key: string;
-                left?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: number[];
-                };
-                right?: {
-                    key: string;
-                    value: string;
-                    leaf?: {
-                        hash: _1.HashOp;
-                        prehashKey: _1.HashOp;
-                        prehashValue: _1.HashOp;
-                        length: _1.LengthOp;
-                        prefix: string;
-                    };
-                    path: number[];
-                };
-            };
-        };
+        toJSON(message: _1.CompressedBatchEntry): import("..").JsonSafe<_1.CompressedBatchEntry>;
         fromPartial(object: Partial<_1.CompressedBatchEntry>): _1.CompressedBatchEntry;
         fromAmino(object: _1.CompressedBatchEntryAmino): _1.CompressedBatchEntry;
         toAmino(message: _1.CompressedBatchEntry): _1.CompressedBatchEntryAmino;
@@ -635,20 +203,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.CompressedExistenceProofSDKType;
         isAmino(o: any): o is _1.CompressedExistenceProofAmino;
         encode(message: _1.CompressedExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedExistenceProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.CompressedExistenceProof;
         fromJSON(object: any): _1.CompressedExistenceProof;
-        toJSON(message: _1.CompressedExistenceProof): {
-            key: string;
-            value: string;
-            leaf?: {
-                hash: _1.HashOp;
-                prehashKey: _1.HashOp;
-                prehashValue: _1.HashOp;
-                length: _1.LengthOp;
-                prefix: string;
-            };
-            path: number[];
-        };
+        toJSON(message: _1.CompressedExistenceProof): import("..").JsonSafe<_1.CompressedExistenceProof>;
         fromPartial(object: Partial<_1.CompressedExistenceProof>): _1.CompressedExistenceProof;
         fromAmino(object: _1.CompressedExistenceProofAmino): _1.CompressedExistenceProof;
         toAmino(message: _1.CompressedExistenceProof): _1.CompressedExistenceProofAmino;
@@ -663,35 +220,9 @@ export declare const ics23: {
         isSDK(o: any): o is _1.CompressedNonExistenceProofSDKType;
         isAmino(o: any): o is _1.CompressedNonExistenceProofAmino;
         encode(message: _1.CompressedNonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.CompressedNonExistenceProof;
+        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.CompressedNonExistenceProof;
         fromJSON(object: any): _1.CompressedNonExistenceProof;
-        toJSON(message: _1.CompressedNonExistenceProof): {
-            key: string;
-            left?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: number[];
-            };
-            right?: {
-                key: string;
-                value: string;
-                leaf?: {
-                    hash: _1.HashOp;
-                    prehashKey: _1.HashOp;
-                    prehashValue: _1.HashOp;
-                    length: _1.LengthOp;
-                    prefix: string;
-                };
-                path: number[];
-            };
-        };
+        toJSON(message: _1.CompressedNonExistenceProof): import("..").JsonSafe<_1.CompressedNonExistenceProof>;
         fromPartial(object: Partial<_1.CompressedNonExistenceProof>): _1.CompressedNonExistenceProof;
         fromAmino(object: _1.CompressedNonExistenceProofAmino): _1.CompressedNonExistenceProof;
         toAmino(message: _1.CompressedNonExistenceProof): _1.CompressedNonExistenceProofAmino;

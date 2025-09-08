@@ -22,6 +22,9 @@ export interface DenomTraceProtoMsg {
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
  * source tracing information path.
+ * @name DenomTraceAmino
+ * @package ibc.applications.transfer.v1
+ * @see proto type: ibc.applications.transfer.v1.DenomTrace
  */
 export interface DenomTraceAmino {
   /**
@@ -29,7 +32,9 @@ export interface DenomTraceAmino {
    * source of the fungible token.
    */
   path?: string;
-  /** base denomination of the relayed fungible token. */
+  /**
+   * base denomination of the relayed fungible token.
+   */
   base_denom?: string;
 }
 export interface DenomTraceAminoMsg {
@@ -71,6 +76,9 @@ export interface ParamsProtoMsg {
  * NOTE: To prevent a single token from being transferred, set the
  * TransfersEnabled parameter to true and then set the bank module's SendEnabled
  * parameter for the denomination to false.
+ * @name ParamsAmino
+ * @package ibc.applications.transfer.v1
+ * @see proto type: ibc.applications.transfer.v1.Params
  */
 export interface ParamsAmino {
   /**

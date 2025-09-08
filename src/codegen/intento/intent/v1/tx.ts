@@ -23,6 +23,9 @@ export interface MsgRegisterAccountProtoMsg {
 /**
  * MsgRegisterAccount registers an interchain account for the given owner over
  * the specified connection pair
+ * @name MsgRegisterAccountAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgRegisterAccount
  */
 export interface MsgRegisterAccountAmino {
   owner?: string;
@@ -48,7 +51,12 @@ export interface MsgRegisterAccountResponseProtoMsg {
   typeUrl: "/intento.intent.v1.MsgRegisterAccountResponse";
   value: Uint8Array;
 }
-/** MsgRegisterAccountResponse is the response type for Msg/RegisterAccount */
+/**
+ * MsgRegisterAccountResponse is the response type for Msg/RegisterAccount
+ * @name MsgRegisterAccountResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgRegisterAccountResponse
+ */
 export interface MsgRegisterAccountResponseAmino {}
 export interface MsgRegisterAccountResponseAminoMsg {
   type: "/intento.intent.v1.MsgRegisterAccountResponse";
@@ -72,6 +80,9 @@ export interface MsgSubmitTxProtoMsg {
 /**
  * MsgSubmitTx creates and submits an arbitrary msg to be executed
  * locally or using an interchain account
+ * @name MsgSubmitTxAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgSubmitTx
  */
 export interface MsgSubmitTxAmino {
   owner?: string;
@@ -97,7 +108,12 @@ export interface MsgSubmitTxResponseProtoMsg {
   typeUrl: "/intento.intent.v1.MsgSubmitTxResponse";
   value: Uint8Array;
 }
-/** MsgSubmitTxResponse defines the MsgSubmitTx response type */
+/**
+ * MsgSubmitTxResponse defines the MsgSubmitTx response type
+ * @name MsgSubmitTxResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgSubmitTxResponse
+ */
 export interface MsgSubmitTxResponseAmino {}
 export interface MsgSubmitTxResponseAminoMsg {
   type: "/intento.intent.v1.MsgSubmitTxResponse";
@@ -145,30 +161,43 @@ export type MsgSubmitFlowEncoded = Omit<MsgSubmitFlow, "msgs"> & {
 /**
  * MsgSubmitFlow creates, submits and schedules msgs
  * to be executed locally or over IBC with conditions
+ * @name MsgSubmitFlowAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgSubmitFlow
  */
 export interface MsgSubmitFlowAmino {
   owner?: string;
   label?: string;
   msgs?: AnyAmino[];
-  /** duration defines the time that the code should run for */
+  /**
+   * duration defines the time that the code should run for
+   */
   duration?: string;
   /**
    * start_at when set as a unix time after block inclusion, creates a custom
    * start time for execution
    */
   start_at?: string;
-  /** interval defines the interval between auto_msg calls */
+  /**
+   * interval defines the interval between auto_msg calls
+   */
   interval?: string;
   /**
    * optional fees to be used for flow execution limiting the amount of fees
    * incurred
    */
   fee_funds?: CoinAmino[];
-  /** optional configuration parameters */
+  /**
+   * optional configuration parameters
+   */
   configuration?: ExecutionConfigurationAmino;
-  /** optional connection ID interchain account */
+  /**
+   * optional connection ID interchain account
+   */
   connection_id?: string;
-  /** optional use of a trustless agent */
+  /**
+   * optional use of a trustless agent
+   */
   trustless_agent?: TrustlessAgentConfigAmino;
   conditions?: ExecutionConditionsAmino;
 }
@@ -199,7 +228,12 @@ export interface MsgSubmitFlowResponseProtoMsg {
   typeUrl: "/intento.intent.v1.MsgSubmitFlowResponse";
   value: Uint8Array;
 }
-/** MsgSubmitTxResponse defines the MsgSubmitTx response type */
+/**
+ * MsgSubmitTxResponse defines the MsgSubmitTx response type
+ * @name MsgSubmitFlowResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgSubmitFlowResponse
+ */
 export interface MsgSubmitFlowResponseAmino {}
 export interface MsgSubmitFlowResponseAminoMsg {
   type: "/intento.intent.v1.MsgSubmitFlowResponse";
@@ -251,20 +285,27 @@ export type MsgRegisterAccountAndSubmitFlowEncoded = Omit<MsgRegisterAccountAndS
  * MsgRegisterAccountAndSubmitFlow creates an interchain account, submits and
  * schedules an arbitrary msg to be executed by this interchain
  * account
+ * @name MsgRegisterAccountAndSubmitFlowAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgRegisterAccountAndSubmitFlow
  */
 export interface MsgRegisterAccountAndSubmitFlowAmino {
   owner?: string;
   connection_id?: string;
   label?: string;
   msgs?: AnyAmino[];
-  /** duration defines the time that the code should run for */
+  /**
+   * duration defines the time that the code should run for
+   */
   duration?: string;
   /**
    * start_at when set as a unix time after block inclusion, creates a custom
    * start time for execution
    */
   start_at?: string;
-  /** interval defines the interval between auto_msg calls */
+  /**
+   * interval defines the interval between auto_msg calls
+   */
   interval?: string;
   /**
    * optional fees to be used for flow execution limiting the amount of fees
@@ -315,6 +356,9 @@ export interface MsgRegisterAccountAndSubmitFlowResponseProtoMsg {
 /**
  * MsgRegisterAccountAndSubmitFlowResponse defines the MsgSubmitTx response
  * type
+ * @name MsgRegisterAccountAndSubmitFlowResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgRegisterAccountAndSubmitFlowResponse
  */
 export interface MsgRegisterAccountAndSubmitFlowResponseAmino {}
 export interface MsgRegisterAccountAndSubmitFlowResponseAminoMsg {
@@ -361,22 +405,31 @@ export type MsgUpdateFlowEncoded = Omit<MsgUpdateFlow, "msgs"> & {
 /**
  * MsgUpdateFlow updates an arbitrary msg to be executed locally
  * or using an interchain account
+ * @name MsgUpdateFlowAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgUpdateFlow
  */
 export interface MsgUpdateFlowAmino {
   owner?: string;
   id?: string;
   label?: string;
   msgs?: AnyAmino[];
-  /** end_time when set defines the time that the code should run for */
+  /**
+   * end_time when set defines the time that the code should run for
+   */
   end_time?: string;
   /**
    * start_at when set as a unix time after block inclusion, creates a custom
    * start time for execution
    */
   start_at?: string;
-  /** interval defines the interval between auto_msg calls */
+  /**
+   * interval defines the interval between auto_msg calls
+   */
   interval?: string;
-  /** add fees for flow execution, optional */
+  /**
+   * add fees for flow execution, optional
+   */
   fee_funds?: CoinAmino[];
   configuration?: ExecutionConfigurationAmino;
   connection_id?: string;
@@ -411,7 +464,12 @@ export interface MsgUpdateFlowResponseProtoMsg {
   typeUrl: "/intento.intent.v1.MsgUpdateFlowResponse";
   value: Uint8Array;
 }
-/** MsgUpdateTxResponse defines the MsgUpdateTx response type */
+/**
+ * MsgUpdateTxResponse defines the MsgUpdateTx response type
+ * @name MsgUpdateFlowResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgUpdateFlowResponse
+ */
 export interface MsgUpdateFlowResponseAmino {}
 export interface MsgUpdateFlowResponseAminoMsg {
   type: "/intento.intent.v1.MsgUpdateFlowResponse";
@@ -430,6 +488,11 @@ export interface MsgCreateTrustlessAgentProtoMsg {
   typeUrl: "/intento.intent.v1.MsgCreateTrustlessAgent";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreateTrustlessAgentAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgCreateTrustlessAgent
+ */
 export interface MsgCreateTrustlessAgentAmino {
   creator?: string;
   connection_id?: string;
@@ -455,6 +518,11 @@ export interface MsgCreateTrustlessAgentResponseProtoMsg {
   typeUrl: "/intento.intent.v1.MsgCreateTrustlessAgentResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreateTrustlessAgentResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgCreateTrustlessAgentResponse
+ */
 export interface MsgCreateTrustlessAgentResponseAmino {
   address?: string;
 }
@@ -474,6 +542,11 @@ export interface MsgUpdateTrustlessAgentFeeConfigProtoMsg {
   typeUrl: "/intento.intent.v1.MsgUpdateTrustlessAgentFeeConfig";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateTrustlessAgentFeeConfigAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgUpdateTrustlessAgentFeeConfig
+ */
 export interface MsgUpdateTrustlessAgentFeeConfigAmino {
   fee_admin?: string;
   agent_address?: string;
@@ -493,6 +566,11 @@ export interface MsgUpdateTrustlessAgentFeeConfigResponseProtoMsg {
   typeUrl: "/intento.intent.v1.MsgUpdateTrustlessAgentFeeConfigResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateTrustlessAgentFeeConfigResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgUpdateTrustlessAgentFeeConfigResponse
+ */
 export interface MsgUpdateTrustlessAgentFeeConfigResponseAmino {}
 export interface MsgUpdateTrustlessAgentFeeConfigResponseAminoMsg {
   type: "/intento.intent.v1.MsgUpdateTrustlessAgentFeeConfigResponse";
@@ -514,9 +592,16 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/intento.intent.v1.MsgUpdateParams";
   value: Uint8Array;
 }
-/** MsgUpdateParams is the Msg/UpdateParams request type. */
+/**
+ * MsgUpdateParams is the Msg/UpdateParams request type.
+ * @name MsgUpdateParamsAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
   authority?: string;
   /**
    * params defines the x/intent parameters to update.
@@ -546,6 +631,9 @@ export interface MsgUpdateParamsResponseProtoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
+ * @name MsgUpdateParamsResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.MsgUpdateParamsResponse
  */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {

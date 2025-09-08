@@ -15,7 +15,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/elys.amm.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/elys.amm.QueryParamsRequest";
@@ -32,9 +37,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/elys.amm.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params holds all the parameters of this module. */
+  /**
+   * params holds all the parameters of this module.
+   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -53,6 +65,11 @@ export interface QueryGetPoolRequestProtoMsg {
   typeUrl: "/elys.amm.QueryGetPoolRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetPoolRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryGetPoolRequest
+ */
 export interface QueryGetPoolRequestAmino {
   pool_id?: string;
   days?: string;
@@ -73,6 +90,11 @@ export interface QueryGetPoolResponseProtoMsg {
   typeUrl: "/elys.amm.QueryGetPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetPoolResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryGetPoolResponse
+ */
 export interface QueryGetPoolResponseAmino {
   pool?: PoolAmino;
   extra_info?: PoolExtraInfoAmino;
@@ -93,6 +115,11 @@ export interface QueryAllPoolRequestProtoMsg {
   typeUrl: "/elys.amm.QueryAllPoolRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllPoolRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryAllPoolRequest
+ */
 export interface QueryAllPoolRequestAmino {
   days?: string;
   pagination?: PageRequestAmino;
@@ -114,6 +141,11 @@ export interface QueryAllPoolResponseProtoMsg {
   typeUrl: "/elys.amm.QueryAllPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllPoolResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryAllPoolResponse
+ */
 export interface QueryAllPoolResponseAmino {
   pool?: PoolAmino[];
   extra_infos?: PoolExtraInfoAmino[];
@@ -135,6 +167,11 @@ export interface QueryGetDenomLiquidityRequestProtoMsg {
   typeUrl: "/elys.amm.QueryGetDenomLiquidityRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetDenomLiquidityRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryGetDenomLiquidityRequest
+ */
 export interface QueryGetDenomLiquidityRequestAmino {
   denom?: string;
 }
@@ -152,6 +189,11 @@ export interface QueryGetDenomLiquidityResponseProtoMsg {
   typeUrl: "/elys.amm.QueryGetDenomLiquidityResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetDenomLiquidityResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryGetDenomLiquidityResponse
+ */
 export interface QueryGetDenomLiquidityResponseAmino {
   denom_liquidity?: DenomLiquidityAmino;
 }
@@ -169,6 +211,11 @@ export interface QueryAllDenomLiquidityRequestProtoMsg {
   typeUrl: "/elys.amm.QueryAllDenomLiquidityRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllDenomLiquidityRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryAllDenomLiquidityRequest
+ */
 export interface QueryAllDenomLiquidityRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -187,6 +234,11 @@ export interface QueryAllDenomLiquidityResponseProtoMsg {
   typeUrl: "/elys.amm.QueryAllDenomLiquidityResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllDenomLiquidityResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryAllDenomLiquidityResponse
+ */
 export interface QueryAllDenomLiquidityResponseAmino {
   denom_liquidity?: DenomLiquidityAmino[];
   pagination?: PageResponseAmino;
@@ -208,6 +260,11 @@ export interface QuerySwapEstimationRequestProtoMsg {
   typeUrl: "/elys.amm.QuerySwapEstimationRequest";
   value: Uint8Array;
 }
+/**
+ * @name QuerySwapEstimationRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySwapEstimationRequest
+ */
 export interface QuerySwapEstimationRequestAmino {
   routes?: SwapAmountInRouteAmino[];
   token_in?: CoinAmino;
@@ -231,6 +288,11 @@ export interface QuerySwapEstimationExactAmountOutRequestProtoMsg {
   typeUrl: "/elys.amm.QuerySwapEstimationExactAmountOutRequest";
   value: Uint8Array;
 }
+/**
+ * @name QuerySwapEstimationExactAmountOutRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySwapEstimationExactAmountOutRequest
+ */
 export interface QuerySwapEstimationExactAmountOutRequestAmino {
   routes?: SwapAmountOutRouteAmino[];
   token_out?: CoinAmino;
@@ -253,6 +315,11 @@ export interface QueryJoinPoolEstimationRequestProtoMsg {
   typeUrl: "/elys.amm.QueryJoinPoolEstimationRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryJoinPoolEstimationRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryJoinPoolEstimationRequest
+ */
 export interface QueryJoinPoolEstimationRequestAmino {
   pool_id?: string;
   amounts_in?: CoinAmino[];
@@ -278,6 +345,11 @@ export interface QueryJoinPoolEstimationResponseProtoMsg {
   typeUrl: "/elys.amm.QueryJoinPoolEstimationResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryJoinPoolEstimationResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryJoinPoolEstimationResponse
+ */
 export interface QueryJoinPoolEstimationResponseAmino {
   share_amount_out?: CoinAmino;
   amounts_in?: CoinAmino[];
@@ -309,6 +381,11 @@ export interface QueryExitPoolEstimationRequestProtoMsg {
   typeUrl: "/elys.amm.QueryExitPoolEstimationRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryExitPoolEstimationRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryExitPoolEstimationRequest
+ */
 export interface QueryExitPoolEstimationRequestAmino {
   pool_id?: string;
   share_amount_in?: string;
@@ -335,6 +412,11 @@ export interface QueryExitPoolEstimationResponseProtoMsg {
   typeUrl: "/elys.amm.QueryExitPoolEstimationResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryExitPoolEstimationResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryExitPoolEstimationResponse
+ */
 export interface QueryExitPoolEstimationResponseAmino {
   amounts_out?: CoinAmino[];
   weight_balance_ratio?: string;
@@ -368,6 +450,11 @@ export interface QuerySwapEstimationResponseProtoMsg {
   typeUrl: "/elys.amm.QuerySwapEstimationResponse";
   value: Uint8Array;
 }
+/**
+ * @name QuerySwapEstimationResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySwapEstimationResponse
+ */
 export interface QuerySwapEstimationResponseAmino {
   spot_price?: string;
   token_out?: CoinAmino;
@@ -403,6 +490,11 @@ export interface QuerySwapEstimationExactAmountOutResponseProtoMsg {
   typeUrl: "/elys.amm.QuerySwapEstimationExactAmountOutResponse";
   value: Uint8Array;
 }
+/**
+ * @name QuerySwapEstimationExactAmountOutResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySwapEstimationExactAmountOutResponse
+ */
 export interface QuerySwapEstimationExactAmountOutResponseAmino {
   spot_price?: string;
   token_in?: CoinAmino;
@@ -432,6 +524,11 @@ export interface QuerySlippageTrackRequestProtoMsg {
   typeUrl: "/elys.amm.QuerySlippageTrackRequest";
   value: Uint8Array;
 }
+/**
+ * @name QuerySlippageTrackRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySlippageTrackRequest
+ */
 export interface QuerySlippageTrackRequestAmino {
   pool_id?: string;
 }
@@ -449,6 +546,11 @@ export interface QuerySlippageTrackResponseProtoMsg {
   typeUrl: "/elys.amm.QuerySlippageTrackResponse";
   value: Uint8Array;
 }
+/**
+ * @name QuerySlippageTrackResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySlippageTrackResponse
+ */
 export interface QuerySlippageTrackResponseAmino {
   track?: OraclePoolSlippageTrackAmino;
 }
@@ -464,6 +566,11 @@ export interface QuerySlippageTrackAllRequestProtoMsg {
   typeUrl: "/elys.amm.QuerySlippageTrackAllRequest";
   value: Uint8Array;
 }
+/**
+ * @name QuerySlippageTrackAllRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySlippageTrackAllRequest
+ */
 export interface QuerySlippageTrackAllRequestAmino {}
 export interface QuerySlippageTrackAllRequestAminoMsg {
   type: "/elys.amm.QuerySlippageTrackAllRequest";
@@ -477,6 +584,11 @@ export interface QuerySlippageTrackAllResponseProtoMsg {
   typeUrl: "/elys.amm.QuerySlippageTrackAllResponse";
   value: Uint8Array;
 }
+/**
+ * @name QuerySlippageTrackAllResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySlippageTrackAllResponse
+ */
 export interface QuerySlippageTrackAllResponseAmino {
   tracks?: OraclePoolSlippageTrackAmino[];
 }
@@ -495,6 +607,11 @@ export interface QueryBalanceRequestProtoMsg {
   typeUrl: "/elys.amm.QueryBalanceRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryBalanceRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryBalanceRequest
+ */
 export interface QueryBalanceRequestAmino {
   address?: string;
   denom?: string;
@@ -514,6 +631,11 @@ export interface QueryBalanceResponseProtoMsg {
   typeUrl: "/elys.amm.QueryBalanceResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryBalanceResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryBalanceResponse
+ */
 export interface QueryBalanceResponseAmino {
   balance?: CoinAmino;
 }
@@ -532,6 +654,11 @@ export interface QueryInRouteByDenomRequestProtoMsg {
   typeUrl: "/elys.amm.QueryInRouteByDenomRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryInRouteByDenomRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryInRouteByDenomRequest
+ */
 export interface QueryInRouteByDenomRequestAmino {
   denom_in?: string;
   denom_out?: string;
@@ -551,6 +678,11 @@ export interface QueryInRouteByDenomResponseProtoMsg {
   typeUrl: "/elys.amm.QueryInRouteByDenomResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryInRouteByDenomResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryInRouteByDenomResponse
+ */
 export interface QueryInRouteByDenomResponseAmino {
   in_route?: SwapAmountInRouteAmino[];
 }
@@ -569,6 +701,11 @@ export interface QueryOutRouteByDenomRequestProtoMsg {
   typeUrl: "/elys.amm.QueryOutRouteByDenomRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryOutRouteByDenomRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryOutRouteByDenomRequest
+ */
 export interface QueryOutRouteByDenomRequestAmino {
   denom_out?: string;
   denom_in?: string;
@@ -588,6 +725,11 @@ export interface QueryOutRouteByDenomResponseProtoMsg {
   typeUrl: "/elys.amm.QueryOutRouteByDenomResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryOutRouteByDenomResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryOutRouteByDenomResponse
+ */
 export interface QueryOutRouteByDenomResponseAmino {
   out_route?: SwapAmountOutRouteAmino[];
 }
@@ -608,6 +750,11 @@ export interface QuerySwapEstimationByDenomRequestProtoMsg {
   typeUrl: "/elys.amm.QuerySwapEstimationByDenomRequest";
   value: Uint8Array;
 }
+/**
+ * @name QuerySwapEstimationByDenomRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySwapEstimationByDenomRequest
+ */
 export interface QuerySwapEstimationByDenomRequestAmino {
   amount?: CoinAmino;
   denom_in?: string;
@@ -641,6 +788,11 @@ export interface QuerySwapEstimationByDenomResponseProtoMsg {
   typeUrl: "/elys.amm.QuerySwapEstimationByDenomResponse";
   value: Uint8Array;
 }
+/**
+ * @name QuerySwapEstimationByDenomResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QuerySwapEstimationByDenomResponse
+ */
 export interface QuerySwapEstimationByDenomResponseAmino {
   in_route?: SwapAmountInRouteAmino[];
   out_route?: SwapAmountOutRouteAmino[];
@@ -679,6 +831,11 @@ export interface QueryAMMPriceRequestProtoMsg {
   typeUrl: "/elys.amm.QueryAMMPriceRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAMMPriceRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryAMMPriceRequest
+ */
 export interface QueryAMMPriceRequestAmino {
   token_in?: CoinAmino;
   discount?: string;
@@ -699,6 +856,11 @@ export interface QueryWeightAndSlippageFeeRequestProtoMsg {
   typeUrl: "/elys.amm.QueryWeightAndSlippageFeeRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryWeightAndSlippageFeeRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryWeightAndSlippageFeeRequest
+ */
 export interface QueryWeightAndSlippageFeeRequestAmino {
   pool_id?: string;
   date?: string;
@@ -718,6 +880,11 @@ export interface QueryWeightAndSlippageFeeResponseProtoMsg {
   typeUrl: "/elys.amm.QueryWeightAndSlippageFeeResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryWeightAndSlippageFeeResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryWeightAndSlippageFeeResponse
+ */
 export interface QueryWeightAndSlippageFeeResponseAmino {
   value?: string;
 }

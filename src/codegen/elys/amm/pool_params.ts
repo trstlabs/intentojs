@@ -19,6 +19,11 @@ export interface LegacyPoolParamsProtoMsg {
   typeUrl: "/elys.amm.LegacyPoolParams";
   value: Uint8Array;
 }
+/**
+ * @name LegacyPoolParamsAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.LegacyPoolParams
+ */
 export interface LegacyPoolParamsAmino {
   swap_fee?: string;
   exit_fee?: string;
@@ -28,7 +33,9 @@ export interface LegacyPoolParamsAmino {
   weight_recovery_fee_portion?: string;
   threshold_weight_difference?: string;
   weight_breaking_fee_portion?: string;
-  /** denom for fee collection */
+  /**
+   * denom for fee collection
+   */
   fee_denom?: string;
 }
 export interface LegacyPoolParamsAminoMsg {
@@ -56,10 +63,17 @@ export interface PoolParamsProtoMsg {
   typeUrl: "/elys.amm.PoolParams";
   value: Uint8Array;
 }
+/**
+ * @name PoolParamsAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.PoolParams
+ */
 export interface PoolParamsAmino {
   swap_fee?: string;
   use_oracle?: boolean;
-  /** denom for fee collection */
+  /**
+   * denom for fee collection
+   */
   fee_denom?: string;
 }
 export interface PoolParamsAminoMsg {

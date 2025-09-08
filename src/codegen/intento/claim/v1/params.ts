@@ -17,12 +17,19 @@ export interface ParamsProtoMsg {
   typeUrl: "/intento.claim.v1.Params";
   value: Uint8Array;
 }
-/** Params defines the claim module's parameters. */
+/**
+ * Params defines the claim module's parameters.
+ * @name ParamsAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.Params
+ */
 export interface ParamsAmino {
   airdrop_start_time?: string;
   duration_until_decay?: DurationAmino;
   duration_of_decay?: DurationAmino;
-  /** denom of claimable asset */
+  /**
+   * denom of claimable asset
+   */
   claim_denom?: string;
   duration_vesting_periods?: DurationAmino[];
 }

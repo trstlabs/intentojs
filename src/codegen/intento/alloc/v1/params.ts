@@ -13,7 +13,12 @@ export interface WeightedAddressProtoMsg {
   typeUrl: "/intento.alloc.v1.WeightedAddress";
   value: Uint8Array;
 }
-/** WeightedAddress defines an address with a weight. */
+/**
+ * WeightedAddress defines an address with a weight.
+ * @name WeightedAddressAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.WeightedAddress
+ */
 export interface WeightedAddressAmino {
   address?: string;
   weight: string;
@@ -37,7 +42,12 @@ export interface DistributionProportionsProtoMsg {
   typeUrl: "/intento.alloc.v1.DistributionProportions";
   value: Uint8Array;
 }
-/** DistributionProportions defines the proportion that each bucket  receives. */
+/**
+ * DistributionProportions defines the proportion that each bucket  receives.
+ * @name DistributionProportionsAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.DistributionProportions
+ */
 export interface DistributionProportionsAmino {
   developer_rewards: string;
   community_pool: string;
@@ -69,11 +79,20 @@ export interface ParamsProtoMsg {
   typeUrl: "/intento.alloc.v1.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the alloc module. */
+/**
+ * Params defines the parameters for the alloc module.
+ * @name ParamsAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.Params
+ */
 export interface ParamsAmino {
-  /** distribution_proportions defines the proportion of the minted denom */
+  /**
+   * distribution_proportions defines the proportion of the minted denom
+   */
   distribution_proportions: DistributionProportionsAmino;
-  /** addresses to receive developer rewards */
+  /**
+   * addresses to receive developer rewards
+   */
   weighted_developer_rewards_receivers: WeightedAddressAmino[];
   /**
    * SupplementAmount is the amount to be supplemented from the pool on top of

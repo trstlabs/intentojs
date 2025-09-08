@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetBlockWithTxsResponse = exports.GetBlockWithTxsRequest = exports.GetTxResponse = exports.GetTxRequest = exports.SimulateResponse = exports.SimulateRequest = exports.BroadcastTxResponse = exports.BroadcastTxRequest = exports.GetTxsEventResponse = exports.GetTxsEventRequest = exports.broadcastModeToJSON = exports.broadcastModeFromJSON = exports.BroadcastModeAmino = exports.BroadcastModeSDKType = exports.BroadcastMode = exports.orderByToJSON = exports.orderByFromJSON = exports.OrderByAmino = exports.OrderBySDKType = exports.OrderBy = void 0;
+exports.GetBlockWithTxsResponse = exports.GetBlockWithTxsRequest = exports.GetTxResponse = exports.GetTxRequest = exports.SimulateResponse = exports.SimulateRequest = exports.BroadcastTxResponse = exports.BroadcastTxRequest = exports.GetTxsEventResponse = exports.GetTxsEventRequest = exports.BroadcastModeAmino = exports.BroadcastModeSDKType = exports.BroadcastMode = exports.OrderByAmino = exports.OrderBySDKType = exports.OrderBy = void 0;
+exports.orderByFromJSON = orderByFromJSON;
+exports.orderByToJSON = orderByToJSON;
+exports.broadcastModeFromJSON = broadcastModeFromJSON;
+exports.broadcastModeToJSON = broadcastModeToJSON;
 const tx_1 = require("./tx");
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const abci_1 = require("../../base/abci/v1beta1/abci");
@@ -39,7 +43,6 @@ function orderByFromJSON(object) {
             return OrderBy.UNRECOGNIZED;
     }
 }
-exports.orderByFromJSON = orderByFromJSON;
 function orderByToJSON(object) {
     switch (object) {
         case OrderBy.ORDER_BY_UNSPECIFIED:
@@ -53,7 +56,6 @@ function orderByToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.orderByToJSON = orderByToJSON;
 /** BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC method. */
 var BroadcastMode;
 (function (BroadcastMode) {
@@ -98,7 +100,6 @@ function broadcastModeFromJSON(object) {
             return BroadcastMode.UNRECOGNIZED;
     }
 }
-exports.broadcastModeFromJSON = broadcastModeFromJSON;
 function broadcastModeToJSON(object) {
     switch (object) {
         case BroadcastMode.BROADCAST_MODE_UNSPECIFIED:
@@ -114,7 +115,6 @@ function broadcastModeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.broadcastModeToJSON = broadcastModeToJSON;
 function createBaseGetTxsEventRequest() {
     return {
         events: [],

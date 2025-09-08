@@ -13,7 +13,12 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.estaking.MsgUpdateParams";
   value: Uint8Array;
 }
-/** MsgUpdateParams is the Msg/UpdateParams request type. */
+/**
+ * MsgUpdateParams is the Msg/UpdateParams request type.
+ * @name MsgUpdateParamsAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   authority?: string;
   params?: ParamsAmino;
@@ -39,6 +44,9 @@ export interface MsgUpdateParamsResponseProtoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgUpdateParamsResponse
  */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
@@ -65,6 +73,9 @@ export interface MsgWithdrawRewardProtoMsg {
 /**
  * MsgWithdrawReward represents delegation withdrawal to a delegator from a
  * single validator.
+ * @name MsgWithdrawRewardAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgWithdrawReward
  */
 export interface MsgWithdrawRewardAmino {
   delegator_address?: string;
@@ -96,6 +107,9 @@ export interface MsgWithdrawRewardResponseProtoMsg {
 /**
  * MsgWithdrawRewardResponse defines the Msg/WithdrawDelegatorReward response
  * type.
+ * @name MsgWithdrawRewardResponseAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgWithdrawRewardResponse
  */
 export interface MsgWithdrawRewardResponseAmino {
   amount?: CoinAmino[];
@@ -125,6 +139,9 @@ export interface MsgWithdrawElysStakingRewardsProtoMsg {
 /**
  * MsgWithdrawElysStakingRewards represents delegation withdrawal to a delegator
  * from all the validators.
+ * @name MsgWithdrawElysStakingRewardsAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgWithdrawElysStakingRewards
  */
 export interface MsgWithdrawElysStakingRewardsAmino {
   delegator_address?: string;
@@ -154,6 +171,9 @@ export interface MsgWithdrawElysStakingRewardsResponseProtoMsg {
 /**
  * MsgWithdrawElysStakingRewards defines the Msg/WithdrawElysStakingRewards
  * response type.
+ * @name MsgWithdrawElysStakingRewardsResponseAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgWithdrawElysStakingRewardsResponse
  */
 export interface MsgWithdrawElysStakingRewardsResponseAmino {
   amount?: CoinAmino[];
@@ -183,6 +203,9 @@ export interface MsgWithdrawAllRewardsProtoMsg {
 /**
  * MsgWithdrawAllRewards represents delegation withdrawal to a delegator from
  * all the validators and Eden/EdenB commitment.
+ * @name MsgWithdrawAllRewardsAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgWithdrawAllRewards
  */
 export interface MsgWithdrawAllRewardsAmino {
   delegator_address?: string;
@@ -212,6 +235,9 @@ export interface MsgWithdrawAllRewardsResponseProtoMsg {
 /**
  * MsgWithdrawAllRewardsResponse defines the Msg/WithdrawAllRewards response
  * type.
+ * @name MsgWithdrawAllRewardsResponseAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.MsgWithdrawAllRewardsResponse
  */
 export interface MsgWithdrawAllRewardsResponseAmino {
   amount?: CoinAmino[];

@@ -20,6 +20,11 @@ export interface MsgOpenProtoMsg {
   typeUrl: "/elys.perpetual.MsgOpen";
   value: Uint8Array;
 }
+/**
+ * @name MsgOpenAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgOpen
+ */
 export interface MsgOpenAmino {
   creator?: string;
   position?: Position;
@@ -51,6 +56,11 @@ export interface MsgOpenResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgOpenResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgOpenResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgOpenResponse
+ */
 export interface MsgOpenResponseAmino {
   id?: string;
 }
@@ -70,6 +80,11 @@ export interface MsgCloseProtoMsg {
   typeUrl: "/elys.perpetual.MsgClose";
   value: Uint8Array;
 }
+/**
+ * @name MsgCloseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgClose
+ */
 export interface MsgCloseAmino {
   creator?: string;
   id?: string;
@@ -92,6 +107,11 @@ export interface MsgCloseResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgCloseResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCloseResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgCloseResponse
+ */
 export interface MsgCloseResponseAmino {
   id?: string;
   amount?: string;
@@ -117,13 +137,20 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
    * overwritten).
    */
   authority?: string;
-  /** NOTE: All parameters must be supplied. */
+  /**
+   * NOTE: All parameters must be supplied.
+   */
   params?: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
@@ -139,6 +166,11 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/elys.perpetual.MsgUpdateParamsResponse";
@@ -153,6 +185,11 @@ export interface MsgWhitelistProtoMsg {
   typeUrl: "/elys.perpetual.MsgWhitelist";
   value: Uint8Array;
 }
+/**
+ * @name MsgWhitelistAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgWhitelist
+ */
 export interface MsgWhitelistAmino {
   authority?: string;
   whitelisted_address?: string;
@@ -170,6 +207,11 @@ export interface MsgWhitelistResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgWhitelistResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgWhitelistResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgWhitelistResponse
+ */
 export interface MsgWhitelistResponseAmino {}
 export interface MsgWhitelistResponseAminoMsg {
   type: "/elys.perpetual.MsgWhitelistResponse";
@@ -184,6 +226,11 @@ export interface MsgDewhitelistProtoMsg {
   typeUrl: "/elys.perpetual.MsgDewhitelist";
   value: Uint8Array;
 }
+/**
+ * @name MsgDewhitelistAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgDewhitelist
+ */
 export interface MsgDewhitelistAmino {
   authority?: string;
   whitelisted_address?: string;
@@ -201,6 +248,11 @@ export interface MsgDewhitelistResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgDewhitelistResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgDewhitelistResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgDewhitelistResponse
+ */
 export interface MsgDewhitelistResponseAmino {}
 export interface MsgDewhitelistResponseAminoMsg {
   type: "/elys.perpetual.MsgDewhitelistResponse";
@@ -217,6 +269,11 @@ export interface MsgClosePositionsProtoMsg {
   typeUrl: "/elys.perpetual.MsgClosePositions";
   value: Uint8Array;
 }
+/**
+ * @name MsgClosePositionsAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgClosePositions
+ */
 export interface MsgClosePositionsAmino {
   creator?: string;
   liquidate?: PositionRequestAmino[];
@@ -238,6 +295,11 @@ export interface MsgClosePositionsResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgClosePositionsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClosePositionsResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgClosePositionsResponse
+ */
 export interface MsgClosePositionsResponseAmino {}
 export interface MsgClosePositionsResponseAminoMsg {
   type: "/elys.perpetual.MsgClosePositionsResponse";
@@ -253,6 +315,11 @@ export interface MsgUpdateStopLossProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateStopLoss";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateStopLossAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateStopLoss
+ */
 export interface MsgUpdateStopLossAmino {
   creator?: string;
   id?: string;
@@ -272,6 +339,11 @@ export interface MsgUpdateStopLossResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateStopLossResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateStopLossResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateStopLossResponse
+ */
 export interface MsgUpdateStopLossResponseAmino {}
 export interface MsgUpdateStopLossResponseAminoMsg {
   type: "/elys.perpetual.MsgUpdateStopLossResponse";
@@ -287,6 +359,11 @@ export interface MsgUpdateTakeProfitPriceProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateTakeProfitPrice";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateTakeProfitPriceAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateTakeProfitPrice
+ */
 export interface MsgUpdateTakeProfitPriceAmino {
   creator?: string;
   id?: string;
@@ -306,6 +383,11 @@ export interface MsgUpdateTakeProfitPriceResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateTakeProfitPriceResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateTakeProfitPriceResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateTakeProfitPriceResponse
+ */
 export interface MsgUpdateTakeProfitPriceResponseAmino {}
 export interface MsgUpdateTakeProfitPriceResponseAminoMsg {
   type: "/elys.perpetual.MsgUpdateTakeProfitPriceResponse";
@@ -325,6 +407,11 @@ export interface MsgUpdateMaxLeverageForPoolProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateMaxLeverageForPool";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateMaxLeverageForPoolAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateMaxLeverageForPool
+ */
 export interface MsgUpdateMaxLeverageForPoolAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
@@ -348,6 +435,11 @@ export interface MsgUpdateMaxLeverageForPoolResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateMaxLeverageForPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateMaxLeverageForPoolResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateMaxLeverageForPoolResponse
+ */
 export interface MsgUpdateMaxLeverageForPoolResponseAmino {}
 export interface MsgUpdateMaxLeverageForPoolResponseAminoMsg {
   type: "/elys.perpetual.MsgUpdateMaxLeverageForPoolResponse";
@@ -366,6 +458,11 @@ export interface MsgUpdateEnabledPoolsProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateEnabledPools";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateEnabledPoolsAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateEnabledPools
+ */
 export interface MsgUpdateEnabledPoolsAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
@@ -387,6 +484,11 @@ export interface MsgUpdateEnabledPoolsResponseProtoMsg {
   typeUrl: "/elys.perpetual.MsgUpdateEnabledPoolsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateEnabledPoolsResponseAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MsgUpdateEnabledPoolsResponse
+ */
 export interface MsgUpdateEnabledPoolsResponseAmino {}
 export interface MsgUpdateEnabledPoolsResponseAminoMsg {
   type: "/elys.perpetual.MsgUpdateEnabledPoolsResponse";

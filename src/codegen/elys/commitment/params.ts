@@ -77,6 +77,11 @@ export interface LegacyParamsProtoMsg {
   typeUrl: "/elys.commitment.LegacyParams";
   value: Uint8Array;
 }
+/**
+ * @name LegacyParamsAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.LegacyParams
+ */
 export interface LegacyParamsAmino {
   vesting_infos?: VestingInfoAmino[];
   total_committed?: CoinAmino[];
@@ -126,6 +131,11 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.commitment.Params";
   value: Uint8Array;
 }
+/**
+ * @name ParamsAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.Params
+ */
 export interface ParamsAmino {
   vesting_infos?: VestingInfoAmino[];
   total_committed?: CoinAmino[];
@@ -167,6 +177,11 @@ export interface VestingInfoProtoMsg {
   typeUrl: "/elys.commitment.VestingInfo";
   value: Uint8Array;
 }
+/**
+ * @name VestingInfoAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.VestingInfo
+ */
 export interface VestingInfoAmino {
   base_denom?: string;
   vesting_denom?: string;

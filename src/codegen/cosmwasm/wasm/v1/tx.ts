@@ -21,11 +21,20 @@ export interface MsgStoreCodeProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgStoreCode";
   value: Uint8Array;
 }
-/** MsgStoreCode submit Wasm code to the system */
+/**
+ * MsgStoreCode submit Wasm code to the system
+ * @name MsgStoreCodeAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgStoreCode
+ */
 export interface MsgStoreCodeAmino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** WASMByteCode can be raw or gzip compressed */
+  /**
+   * WASMByteCode can be raw or gzip compressed
+   */
   wasm_byte_code?: string;
   /**
    * InstantiatePermission access control to apply on contract creation,
@@ -54,11 +63,20 @@ export interface MsgStoreCodeResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgStoreCodeResponse";
   value: Uint8Array;
 }
-/** MsgStoreCodeResponse returns store result data. */
+/**
+ * MsgStoreCodeResponse returns store result data.
+ * @name MsgStoreCodeResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgStoreCodeResponse
+ */
 export interface MsgStoreCodeResponseAmino {
-  /** CodeID is the reference to the stored WASM code */
+  /**
+   * CodeID is the reference to the stored WASM code
+   */
   code_id?: string;
-  /** Checksum is the sha256 hash of the stored code */
+  /**
+   * Checksum is the sha256 hash of the stored code
+   */
   checksum?: string;
 }
 export interface MsgStoreCodeResponseAminoMsg {
@@ -95,19 +113,34 @@ export interface MsgInstantiateContractProtoMsg {
 /**
  * MsgInstantiateContract create a new smart contract instance for the given
  * code id.
+ * @name MsgInstantiateContractAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgInstantiateContract
  */
 export interface MsgInstantiateContractAmino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** Admin is an optional address that can execute migrations */
+  /**
+   * Admin is an optional address that can execute migrations
+   */
   admin?: string;
-  /** CodeID is the reference to the stored WASM code */
+  /**
+   * CodeID is the reference to the stored WASM code
+   */
   code_id?: string;
-  /** Label is optional metadata to be stored with a contract instance. */
+  /**
+   * Label is optional metadata to be stored with a contract instance.
+   */
   label?: string;
-  /** Msg json encoded message to be passed to the contract on instantiation */
+  /**
+   * Msg json encoded message to be passed to the contract on instantiation
+   */
   msg?: any;
-  /** Funds coins that are transferred to the contract on instantiation */
+  /**
+   * Funds coins that are transferred to the contract on instantiation
+   */
   funds?: CoinAmino[];
 }
 export interface MsgInstantiateContractAminoMsg {
@@ -158,21 +191,38 @@ export interface MsgInstantiateContract2ProtoMsg {
 /**
  * MsgInstantiateContract2 create a new smart contract instance for the given
  * code id with a predicable address.
+ * @name MsgInstantiateContract2Amino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgInstantiateContract2
  */
 export interface MsgInstantiateContract2Amino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** Admin is an optional address that can execute migrations */
+  /**
+   * Admin is an optional address that can execute migrations
+   */
   admin?: string;
-  /** CodeID is the reference to the stored WASM code */
+  /**
+   * CodeID is the reference to the stored WASM code
+   */
   code_id?: string;
-  /** Label is optional metadata to be stored with a contract instance. */
+  /**
+   * Label is optional metadata to be stored with a contract instance.
+   */
   label?: string;
-  /** Msg json encoded message to be passed to the contract on instantiation */
+  /**
+   * Msg json encoded message to be passed to the contract on instantiation
+   */
   msg?: any;
-  /** Funds coins that are transferred to the contract on instantiation */
+  /**
+   * Funds coins that are transferred to the contract on instantiation
+   */
   funds?: CoinAmino[];
-  /** Salt is an arbitrary value provided by the sender. Size can be 1 to 64. */
+  /**
+   * Salt is an arbitrary value provided by the sender. Size can be 1 to 64.
+   */
   salt?: string;
   /**
    * FixMsg include the msg value into the hash for the predictable address.
@@ -209,11 +259,20 @@ export interface MsgInstantiateContractResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContractResponse";
   value: Uint8Array;
 }
-/** MsgInstantiateContractResponse return instantiation result data */
+/**
+ * MsgInstantiateContractResponse return instantiation result data
+ * @name MsgInstantiateContractResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgInstantiateContractResponse
+ */
 export interface MsgInstantiateContractResponseAmino {
-  /** Address is the bech32 address of the new contract instance. */
+  /**
+   * Address is the bech32 address of the new contract instance.
+   */
   address?: string;
-  /** Data contains bytes to returned from the contract */
+  /**
+   * Data contains bytes to returned from the contract
+   */
   data?: string;
 }
 export interface MsgInstantiateContractResponseAminoMsg {
@@ -236,11 +295,20 @@ export interface MsgInstantiateContract2ResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2Response";
   value: Uint8Array;
 }
-/** MsgInstantiateContract2Response return instantiation result data */
+/**
+ * MsgInstantiateContract2Response return instantiation result data
+ * @name MsgInstantiateContract2ResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgInstantiateContract2Response
+ */
 export interface MsgInstantiateContract2ResponseAmino {
-  /** Address is the bech32 address of the new contract instance. */
+  /**
+   * Address is the bech32 address of the new contract instance.
+   */
   address?: string;
-  /** Data contains bytes to returned from the contract */
+  /**
+   * Data contains bytes to returned from the contract
+   */
   data?: string;
 }
 export interface MsgInstantiateContract2ResponseAminoMsg {
@@ -267,15 +335,28 @@ export interface MsgExecuteContractProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract";
   value: Uint8Array;
 }
-/** MsgExecuteContract submits the given message data to a smart contract */
+/**
+ * MsgExecuteContract submits the given message data to a smart contract
+ * @name MsgExecuteContractAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgExecuteContract
+ */
 export interface MsgExecuteContractAmino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
-  /** Msg json encoded message to be passed to the contract */
+  /**
+   * Msg json encoded message to be passed to the contract
+   */
   msg?: any;
-  /** Funds coins that are transferred to the contract on execution */
+  /**
+   * Funds coins that are transferred to the contract on execution
+   */
   funds?: CoinAmino[];
 }
 export interface MsgExecuteContractAminoMsg {
@@ -298,9 +379,16 @@ export interface MsgExecuteContractResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContractResponse";
   value: Uint8Array;
 }
-/** MsgExecuteContractResponse returns execution result data. */
+/**
+ * MsgExecuteContractResponse returns execution result data.
+ * @name MsgExecuteContractResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgExecuteContractResponse
+ */
 export interface MsgExecuteContractResponseAmino {
-  /** Data contains bytes to returned from the contract */
+  /**
+   * Data contains bytes to returned from the contract
+   */
   data?: string;
 }
 export interface MsgExecuteContractResponseAminoMsg {
@@ -326,15 +414,28 @@ export interface MsgMigrateContractProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgMigrateContract";
   value: Uint8Array;
 }
-/** MsgMigrateContract runs a code upgrade/ downgrade for a smart contract */
+/**
+ * MsgMigrateContract runs a code upgrade/ downgrade for a smart contract
+ * @name MsgMigrateContractAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgMigrateContract
+ */
 export interface MsgMigrateContractAmino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
-  /** CodeID references the new WASM code */
+  /**
+   * CodeID references the new WASM code
+   */
   code_id?: string;
-  /** Msg json encoded message to be passed to the contract on migration */
+  /**
+   * Msg json encoded message to be passed to the contract on migration
+   */
   msg?: any;
 }
 export interface MsgMigrateContractAminoMsg {
@@ -360,7 +461,12 @@ export interface MsgMigrateContractResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgMigrateContractResponse";
   value: Uint8Array;
 }
-/** MsgMigrateContractResponse returns contract migration result data. */
+/**
+ * MsgMigrateContractResponse returns contract migration result data.
+ * @name MsgMigrateContractResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgMigrateContractResponse
+ */
 export interface MsgMigrateContractResponseAmino {
   /**
    * Data contains same raw bytes returned as data from the wasm contract.
@@ -389,13 +495,24 @@ export interface MsgUpdateAdminProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgUpdateAdmin";
   value: Uint8Array;
 }
-/** MsgUpdateAdmin sets a new admin for a smart contract */
+/**
+ * MsgUpdateAdmin sets a new admin for a smart contract
+ * @name MsgUpdateAdminAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgUpdateAdmin
+ */
 export interface MsgUpdateAdminAmino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** NewAdmin address to be set */
+  /**
+   * NewAdmin address to be set
+   */
   new_admin?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
 }
 export interface MsgUpdateAdminAminoMsg {
@@ -414,7 +531,12 @@ export interface MsgUpdateAdminResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgUpdateAdminResponse";
   value: Uint8Array;
 }
-/** MsgUpdateAdminResponse returns empty data */
+/**
+ * MsgUpdateAdminResponse returns empty data
+ * @name MsgUpdateAdminResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgUpdateAdminResponse
+ */
 export interface MsgUpdateAdminResponseAmino {}
 export interface MsgUpdateAdminResponseAminoMsg {
   type: "wasm/MsgUpdateAdminResponse";
@@ -433,11 +555,20 @@ export interface MsgClearAdminProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgClearAdmin";
   value: Uint8Array;
 }
-/** MsgClearAdmin removes any admin stored for a smart contract */
+/**
+ * MsgClearAdmin removes any admin stored for a smart contract
+ * @name MsgClearAdminAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgClearAdmin
+ */
 export interface MsgClearAdminAmino {
-  /** Sender is the that actor that signed the messages */
+  /**
+   * Sender is the that actor that signed the messages
+   */
   sender?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
 }
 export interface MsgClearAdminAminoMsg {
@@ -455,7 +586,12 @@ export interface MsgClearAdminResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgClearAdminResponse";
   value: Uint8Array;
 }
-/** MsgClearAdminResponse returns empty data */
+/**
+ * MsgClearAdminResponse returns empty data
+ * @name MsgClearAdminResponseAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MsgClearAdminResponse
+ */
 export interface MsgClearAdminResponseAmino {}
 export interface MsgClearAdminResponseAminoMsg {
   type: "wasm/MsgClearAdminResponse";

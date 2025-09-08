@@ -14,6 +14,11 @@ export interface MsgAddExternalRewardDenomProtoMsg {
   typeUrl: "/elys.masterchef.MsgAddExternalRewardDenom";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddExternalRewardDenomAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgAddExternalRewardDenom
+ */
 export interface MsgAddExternalRewardDenomAmino {
   authority?: string;
   reward_denom?: string;
@@ -35,6 +40,11 @@ export interface MsgAddExternalRewardDenomResponseProtoMsg {
   typeUrl: "/elys.masterchef.MsgAddExternalRewardDenomResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddExternalRewardDenomResponseAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgAddExternalRewardDenomResponse
+ */
 export interface MsgAddExternalRewardDenomResponseAmino {}
 export interface MsgAddExternalRewardDenomResponseAminoMsg {
   type: "/elys.masterchef.MsgAddExternalRewardDenomResponse";
@@ -53,6 +63,11 @@ export interface MsgAddExternalIncentiveProtoMsg {
   typeUrl: "/elys.masterchef.MsgAddExternalIncentive";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddExternalIncentiveAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgAddExternalIncentive
+ */
 export interface MsgAddExternalIncentiveAmino {
   sender?: string;
   reward_denom?: string;
@@ -78,6 +93,11 @@ export interface MsgAddExternalIncentiveResponseProtoMsg {
   typeUrl: "/elys.masterchef.MsgAddExternalIncentiveResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgAddExternalIncentiveResponseAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgAddExternalIncentiveResponse
+ */
 export interface MsgAddExternalIncentiveResponseAmino {}
 export interface MsgAddExternalIncentiveResponseAminoMsg {
   type: "/elys.masterchef.MsgAddExternalIncentiveResponse";
@@ -92,6 +112,11 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.masterchef.MsgUpdateParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   authority?: string;
   params?: ParamsAmino;
@@ -109,6 +134,11 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/elys.masterchef.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/elys.masterchef.MsgUpdateParamsResponse";
@@ -123,6 +153,11 @@ export interface PoolMultiplierProtoMsg {
   typeUrl: "/elys.masterchef.PoolMultiplier";
   value: Uint8Array;
 }
+/**
+ * @name PoolMultiplierAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.PoolMultiplier
+ */
 export interface PoolMultiplierAmino {
   pool_id?: string;
   multiplier?: string;
@@ -143,6 +178,11 @@ export interface MsgUpdatePoolMultipliersProtoMsg {
   typeUrl: "/elys.masterchef.MsgUpdatePoolMultipliers";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolMultipliersAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgUpdatePoolMultipliers
+ */
 export interface MsgUpdatePoolMultipliersAmino {
   authority?: string;
   pool_multipliers?: PoolMultiplierAmino[];
@@ -160,6 +200,11 @@ export interface MsgUpdatePoolMultipliersResponseProtoMsg {
   typeUrl: "/elys.masterchef.MsgUpdatePoolMultipliersResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolMultipliersResponseAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgUpdatePoolMultipliersResponse
+ */
 export interface MsgUpdatePoolMultipliersResponseAmino {}
 export interface MsgUpdatePoolMultipliersResponseAminoMsg {
   type: "/elys.masterchef.MsgUpdatePoolMultipliersResponse";
@@ -174,6 +219,11 @@ export interface MsgClaimRewardsProtoMsg {
   typeUrl: "/elys.masterchef.MsgClaimRewards";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimRewardsAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgClaimRewards
+ */
 export interface MsgClaimRewardsAmino {
   sender?: string;
   pool_ids?: string[];
@@ -191,6 +241,11 @@ export interface MsgClaimRewardsResponseProtoMsg {
   typeUrl: "/elys.masterchef.MsgClaimRewardsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimRewardsResponseAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgClaimRewardsResponse
+ */
 export interface MsgClaimRewardsResponseAmino {}
 export interface MsgClaimRewardsResponseAminoMsg {
   type: "/elys.masterchef.MsgClaimRewardsResponse";
@@ -206,6 +261,11 @@ export interface MsgTogglePoolEdenRewardsProtoMsg {
   typeUrl: "/elys.masterchef.MsgTogglePoolEdenRewards";
   value: Uint8Array;
 }
+/**
+ * @name MsgTogglePoolEdenRewardsAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgTogglePoolEdenRewards
+ */
 export interface MsgTogglePoolEdenRewardsAmino {
   authority?: string;
   pool_id?: string;
@@ -225,6 +285,11 @@ export interface MsgTogglePoolEdenRewardsResponseProtoMsg {
   typeUrl: "/elys.masterchef.MsgTogglePoolEdenRewardsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgTogglePoolEdenRewardsResponseAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.MsgTogglePoolEdenRewardsResponse
+ */
 export interface MsgTogglePoolEdenRewardsResponseAmino {}
 export interface MsgTogglePoolEdenRewardsResponseAminoMsg {
   type: "/elys.masterchef.MsgTogglePoolEdenRewardsResponse";

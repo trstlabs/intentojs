@@ -26,23 +26,44 @@ export interface PoolInfoProtoMsg {
   typeUrl: "/elys.masterchef.PoolInfo";
   value: Uint8Array;
 }
+/**
+ * @name PoolInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.PoolInfo
+ */
 export interface PoolInfoAmino {
   pool_id?: string;
-  /** reward wallet address */
+  /**
+   * reward wallet address
+   */
   reward_wallet?: string;
-  /** multiplier for lp rewards */
+  /**
+   * multiplier for lp rewards
+   */
   multiplier?: string;
-  /** Eden APR, updated at every distribution */
+  /**
+   * Eden APR, updated at every distribution
+   */
   eden_apr?: string;
-  /** Dex APR, updated based on 24hr accumulation */
+  /**
+   * Dex APR, updated based on 24hr accumulation
+   */
   dex_apr?: string;
-  /** Gas APR, updated based on 24hr accumulation */
+  /**
+   * Gas APR, updated based on 24hr accumulation
+   */
   gas_apr?: string;
-  /** External Incentive APR, updated at every distribution */
+  /**
+   * External Incentive APR, updated at every distribution
+   */
   external_incentive_apr?: string;
-  /** external reward denoms on the pool */
+  /**
+   * external reward denoms on the pool
+   */
   external_reward_denoms?: string[];
-  /** Enable or disable eden rewards */
+  /**
+   * Enable or disable eden rewards
+   */
   enable_eden_rewards?: boolean;
 }
 export interface PoolInfoAminoMsg {
@@ -81,21 +102,40 @@ export interface LegacyPoolInfoProtoMsg {
   typeUrl: "/elys.masterchef.LegacyPoolInfo";
   value: Uint8Array;
 }
+/**
+ * @name LegacyPoolInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.LegacyPoolInfo
+ */
 export interface LegacyPoolInfoAmino {
   pool_id?: string;
-  /** reward wallet address */
+  /**
+   * reward wallet address
+   */
   reward_wallet?: string;
-  /** multiplier for lp rewards */
+  /**
+   * multiplier for lp rewards
+   */
   multiplier?: string;
-  /** Eden APR, updated at every distribution */
+  /**
+   * Eden APR, updated at every distribution
+   */
   eden_apr?: string;
-  /** Dex APR, updated based on 24hr accumulation */
+  /**
+   * Dex APR, updated based on 24hr accumulation
+   */
   dex_apr?: string;
-  /** Gas APR, updated based on 24hr accumulation */
+  /**
+   * Gas APR, updated based on 24hr accumulation
+   */
   gas_apr?: string;
-  /** External Incentive APR, updated at every distribution */
+  /**
+   * External Incentive APR, updated at every distribution
+   */
   external_incentive_apr?: string;
-  /** external reward denoms on the pool */
+  /**
+   * external reward denoms on the pool
+   */
   external_reward_denoms?: string[];
 }
 export interface LegacyPoolInfoAminoMsg {
@@ -122,6 +162,11 @@ export interface PoolRewardInfoProtoMsg {
   typeUrl: "/elys.masterchef.PoolRewardInfo";
   value: Uint8Array;
 }
+/**
+ * @name PoolRewardInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.PoolRewardInfo
+ */
 export interface PoolRewardInfoAmino {
   pool_id?: string;
   reward_denom?: string;
@@ -149,6 +194,11 @@ export interface UserRewardInfoProtoMsg {
   typeUrl: "/elys.masterchef.UserRewardInfo";
   value: Uint8Array;
 }
+/**
+ * @name UserRewardInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.UserRewardInfo
+ */
 export interface UserRewardInfoAmino {
   user?: string;
   pool_id?: string;
@@ -179,6 +229,11 @@ export interface PoolRewardsAccumProtoMsg {
   typeUrl: "/elys.masterchef.PoolRewardsAccum";
   value: Uint8Array;
 }
+/**
+ * @name PoolRewardsAccumAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.PoolRewardsAccum
+ */
 export interface PoolRewardsAccumAmino {
   pool_id?: string;
   block_height?: string;

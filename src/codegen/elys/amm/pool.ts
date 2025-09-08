@@ -19,6 +19,11 @@ export interface LegacyPoolProtoMsg {
   typeUrl: "/elys.amm.LegacyPool";
   value: Uint8Array;
 }
+/**
+ * @name LegacyPoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.LegacyPool
+ */
 export interface LegacyPoolAmino {
   pool_id?: string;
   address?: string;
@@ -54,6 +59,11 @@ export interface PoolProtoMsg {
   typeUrl: "/elys.amm.Pool";
   value: Uint8Array;
 }
+/**
+ * @name PoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.Pool
+ */
 export interface PoolAmino {
   pool_id?: string;
   address?: string;
@@ -85,6 +95,11 @@ export interface PoolExtraInfoProtoMsg {
   typeUrl: "/elys.amm.PoolExtraInfo";
   value: Uint8Array;
 }
+/**
+ * @name PoolExtraInfoAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.PoolExtraInfo
+ */
 export interface PoolExtraInfoAmino {
   tvl?: string;
   lp_token_price?: string;
@@ -108,6 +123,11 @@ export interface OraclePoolSlippageTrackProtoMsg {
   typeUrl: "/elys.amm.OraclePoolSlippageTrack";
   value: Uint8Array;
 }
+/**
+ * @name OraclePoolSlippageTrackAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.OraclePoolSlippageTrack
+ */
 export interface OraclePoolSlippageTrackAmino {
   pool_id?: string;
   timestamp?: string;
@@ -131,6 +151,11 @@ export interface WeightBreakingSlippageProtoMsg {
   typeUrl: "/elys.amm.WeightBreakingSlippage";
   value: Uint8Array;
 }
+/**
+ * @name WeightBreakingSlippageAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.WeightBreakingSlippage
+ */
 export interface WeightBreakingSlippageAmino {
   pool_id?: string;
   date?: string;

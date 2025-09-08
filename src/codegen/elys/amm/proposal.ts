@@ -14,6 +14,11 @@ export interface ProposalCreateBalancerPoolProtoMsg {
   typeUrl: "/elys.amm.ProposalCreateBalancerPool";
   value: Uint8Array;
 }
+/**
+ * @name ProposalCreateBalancerPoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.ProposalCreateBalancerPool
+ */
 export interface ProposalCreateBalancerPoolAmino {
   title?: string;
   description?: string;
@@ -40,6 +45,11 @@ export interface ProposalUpdatePoolParamsProtoMsg {
   typeUrl: "/elys.amm.ProposalUpdatePoolParams";
   value: Uint8Array;
 }
+/**
+ * @name ProposalUpdatePoolParamsAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.ProposalUpdatePoolParams
+ */
 export interface ProposalUpdatePoolParamsAmino {
   title?: string;
   description?: string;

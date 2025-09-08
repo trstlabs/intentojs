@@ -30,21 +30,40 @@ export interface ParamsProtoMsg {
   typeUrl: "/intento.intent.v1.Params";
   value: Uint8Array;
 }
-/** Params defines the params for activeness of Flows on governance proposals. */
+/**
+ * Params defines the params for activeness of Flows on governance proposals.
+ * @name ParamsAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.Params
+ */
 export interface ParamsAmino {
-  /** Commision rate percentage for returning remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250 */
+  /**
+   * Commision rate percentage for returning remaining funds in flow fee account after final execution, e.g. 100 = 1X, 250 = 250
+   */
   flow_funds_commission?: string;
-  /** Multiplier to the flexible flow gas fee in promille, e.g. 1000 = 1X, 2500 = 2,5x */
+  /**
+   * Multiplier to the flexible flow gas fee in promille, e.g. 1000 = 1X, 2500 = 2,5x
+   */
   flow_flex_fee_mul?: string;
-  /** Fixed burn fee per message execution to burn native denom */
+  /**
+   * Fixed burn fee per message execution to burn native denom
+   */
   burn_fee_per_msg?: string;
-  /** Array of denoms that can be used for fee payment together with an amount */
+  /**
+   * Array of denoms that can be used for fee payment together with an amount
+   */
   gas_fee_coins?: CoinAmino[];
-  /** Maximum period for a flow */
+  /**
+   * Maximum period for a flow
+   */
   max_flow_duration?: DurationAmino;
-  /** Minimum period for a flow */
+  /**
+   * Minimum period for a flow
+   */
   min_flow_duration?: DurationAmino;
-  /** Minimum period for a flow */
+  /**
+   * Minimum period for a flow
+   */
   min_flow_interval?: DurationAmino;
   /**
    * relayer rewards in uinto for each message class 0=Low,1=Medium, 2=High, 3=AuthZExec
@@ -77,10 +96,19 @@ export interface ConnectionRelayerRewardProtoMsg {
   typeUrl: "/intento.intent.v1.ConnectionRelayerReward";
   value: Uint8Array;
 }
+/**
+ * @name ConnectionRelayerRewardAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.ConnectionRelayerReward
+ */
 export interface ConnectionRelayerRewardAmino {
-  /** e.g. "connection-12" */
+  /**
+   * e.g. "connection-12"
+   */
   connection_id?: string;
-  /** same format: 0=Low, 1=Medium, 2=High */
+  /**
+   * same format: 0=Low, 1=Medium, 2=High
+   */
   relayer_rewards?: string[];
 }
 export interface ConnectionRelayerRewardAminoMsg {

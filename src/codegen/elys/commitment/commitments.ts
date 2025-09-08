@@ -14,7 +14,12 @@ export interface CommitmentsProtoMsg {
   typeUrl: "/elys.commitment.Commitments";
   value: Uint8Array;
 }
-/** GenesisState defines the commitment module's genesis state. */
+/**
+ * GenesisState defines the commitment module's genesis state.
+ * @name CommitmentsAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.Commitments
+ */
 export interface CommitmentsAmino {
   creator?: string;
   committed_tokens?: CommittedTokensAmino[];
@@ -40,6 +45,11 @@ export interface LockupProtoMsg {
   typeUrl: "/elys.commitment.Lockup";
   value: Uint8Array;
 }
+/**
+ * @name LockupAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.Lockup
+ */
 export interface LockupAmino {
   amount?: string;
   unlock_timestamp?: string;
@@ -61,6 +71,11 @@ export interface CommittedTokensProtoMsg {
   typeUrl: "/elys.commitment.CommittedTokens";
   value: Uint8Array;
 }
+/**
+ * @name CommittedTokensAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.CommittedTokens
+ */
 export interface CommittedTokensAmino {
   denom?: string;
   amount?: string;
@@ -87,6 +102,11 @@ export interface VestingTokensProtoMsg {
   typeUrl: "/elys.commitment.VestingTokens";
   value: Uint8Array;
 }
+/**
+ * @name VestingTokensAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.VestingTokens
+ */
 export interface VestingTokensAmino {
   denom?: string;
   total_amount?: string;
@@ -116,6 +136,11 @@ export interface TotalSupplyProtoMsg {
   typeUrl: "/elys.commitment.TotalSupply";
   value: Uint8Array;
 }
+/**
+ * @name TotalSupplyAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.TotalSupply
+ */
 export interface TotalSupplyAmino {
   total_eden_supply?: string;
   total_edenb_supply?: string;

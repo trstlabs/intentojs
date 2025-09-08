@@ -11,7 +11,12 @@ export interface QueryModuleAccountBalanceRequestProtoMsg {
   typeUrl: "/intento.claim.v1.QueryModuleAccountBalanceRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is the request type for the Query/Params RPC method.
+ * @name QueryModuleAccountBalanceRequestAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryModuleAccountBalanceRequest
+ */
 export interface QueryModuleAccountBalanceRequestAmino {}
 export interface QueryModuleAccountBalanceRequestAminoMsg {
   type: "/intento.claim.v1.QueryModuleAccountBalanceRequest";
@@ -28,9 +33,16 @@ export interface QueryModuleAccountBalanceResponseProtoMsg {
   typeUrl: "/intento.claim.v1.QueryModuleAccountBalanceResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is the response type for the Query/Params RPC method.
+ * @name QueryModuleAccountBalanceResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryModuleAccountBalanceResponse
+ */
 export interface QueryModuleAccountBalanceResponseAmino {
-  /** params defines the parameters of the module. */
+  /**
+   * params defines the parameters of the module.
+   */
   moduleAccountBalance?: CoinAmino[];
 }
 export interface QueryModuleAccountBalanceResponseAminoMsg {
@@ -47,7 +59,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/intento.claim.v1.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is the request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/intento.claim.v1.QueryParamsRequest";
@@ -64,9 +81,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/intento.claim.v1.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is the response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params defines the parameters of the module. */
+  /**
+   * params defines the parameters of the module.
+   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -84,6 +108,11 @@ export interface QueryClaimRecordRequestProtoMsg {
   typeUrl: "/intento.claim.v1.QueryClaimRecordRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryClaimRecordRequestAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryClaimRecordRequest
+ */
 export interface QueryClaimRecordRequestAmino {
   address?: string;
 }
@@ -101,6 +130,11 @@ export interface QueryClaimRecordResponseProtoMsg {
   typeUrl: "/intento.claim.v1.QueryClaimRecordResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryClaimRecordResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryClaimRecordResponse
+ */
 export interface QueryClaimRecordResponseAmino {
   claim_record?: ClaimRecordAmino;
 }
@@ -119,6 +153,11 @@ export interface QueryClaimableForActionRequestProtoMsg {
   typeUrl: "/intento.claim.v1.QueryClaimableForActionRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryClaimableForActionRequestAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryClaimableForActionRequest
+ */
 export interface QueryClaimableForActionRequestAmino {
   address?: string;
   action?: Action;
@@ -138,6 +177,11 @@ export interface QueryClaimableForActionResponseProtoMsg {
   typeUrl: "/intento.claim.v1.QueryClaimableForActionResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryClaimableForActionResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryClaimableForActionResponse
+ */
 export interface QueryClaimableForActionResponseAmino {
   total?: CoinAmino;
 }
@@ -155,6 +199,11 @@ export interface QueryTotalClaimableRequestProtoMsg {
   typeUrl: "/intento.claim.v1.QueryTotalClaimableRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalClaimableRequestAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryTotalClaimableRequest
+ */
 export interface QueryTotalClaimableRequestAmino {
   address?: string;
 }
@@ -172,6 +221,11 @@ export interface QueryTotalClaimableResponseProtoMsg {
   typeUrl: "/intento.claim.v1.QueryTotalClaimableResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryTotalClaimableResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.QueryTotalClaimableResponse
+ */
 export interface QueryTotalClaimableResponseAmino {
   total?: CoinAmino;
 }

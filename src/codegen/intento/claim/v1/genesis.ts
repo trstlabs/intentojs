@@ -18,13 +18,24 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/intento.claim.v1.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the claim module's genesis state. */
+/**
+ * GenesisState defines the claim module's genesis state.
+ * @name GenesisStateAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.GenesisState
+ */
 export interface GenesisStateAmino {
-  /** balance of the claim module's account */
+  /**
+   * balance of the claim module's account
+   */
   module_account_balance?: CoinAmino;
-  /** params defines all the parameters of the module. */
+  /**
+   * params defines all the parameters of the module.
+   */
   params?: ParamsAmino;
-  /** list of claim records, one for every airdrop recipient */
+  /**
+   * list of claim records, one for every airdrop recipient
+   */
   claim_records?: ClaimRecordAmino[];
 }
 export interface GenesisStateAminoMsg {

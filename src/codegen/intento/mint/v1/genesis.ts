@@ -14,11 +14,20 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/intento.mint.v1.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the mint module's genesis state. */
+/**
+ * GenesisState defines the mint module's genesis state.
+ * @name GenesisStateAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.GenesisState
+ */
 export interface GenesisStateAmino {
-  /** minter is a space for holding current inflation information. */
+  /**
+   * minter is a space for holding current inflation information.
+   */
   minter?: MinterAmino;
-  /** params defines all the paramaters of the module. */
+  /**
+   * params defines all the paramaters of the module.
+   */
   params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {

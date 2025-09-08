@@ -10,6 +10,11 @@ export interface AtomStakerProtoMsg {
   typeUrl: "/elys.commitment.AtomStaker";
   value: Uint8Array;
 }
+/**
+ * @name AtomStakerAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.AtomStaker
+ */
 export interface AtomStakerAmino {
   address?: string;
   amount?: string;
@@ -30,6 +35,11 @@ export interface NftHolderProtoMsg {
   typeUrl: "/elys.commitment.NftHolder";
   value: Uint8Array;
 }
+/**
+ * @name NftHolderAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.NftHolder
+ */
 export interface NftHolderAmino {
   address?: string;
   amount?: string;
@@ -50,6 +60,11 @@ export interface CadetProtoMsg {
   typeUrl: "/elys.commitment.Cadet";
   value: Uint8Array;
 }
+/**
+ * @name CadetAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.Cadet
+ */
 export interface CadetAmino {
   address?: string;
   amount?: string;
@@ -70,6 +85,11 @@ export interface GovernorProtoMsg {
   typeUrl: "/elys.commitment.Governor";
   value: Uint8Array;
 }
+/**
+ * @name GovernorAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.Governor
+ */
 export interface GovernorAmino {
   address?: string;
   amount?: string;
@@ -90,6 +110,11 @@ export interface AirdropClaimedProtoMsg {
   typeUrl: "/elys.commitment.AirdropClaimed";
   value: Uint8Array;
 }
+/**
+ * @name AirdropClaimedAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.AirdropClaimed
+ */
 export interface AirdropClaimedAmino {
   address?: string;
   claimed?: boolean;
@@ -110,6 +135,11 @@ export interface TotalClaimedProtoMsg {
   typeUrl: "/elys.commitment.TotalClaimed";
   value: Uint8Array;
 }
+/**
+ * @name TotalClaimedAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.TotalClaimed
+ */
 export interface TotalClaimedAmino {
   total_elys_claimed?: string;
   total_eden_claimed?: string;
@@ -132,6 +162,11 @@ export interface KolListProtoMsg {
   typeUrl: "/elys.commitment.KolList";
   value: Uint8Array;
 }
+/**
+ * @name KolListAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.KolList
+ */
 export interface KolListAmino {
   address?: string;
   amount?: string;
@@ -157,6 +192,11 @@ export interface RewardProgramProtoMsg {
   typeUrl: "/elys.commitment.RewardProgram";
   value: Uint8Array;
 }
+/**
+ * @name RewardProgramAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.RewardProgram
+ */
 export interface RewardProgramAmino {
   address?: string;
   amount?: string;

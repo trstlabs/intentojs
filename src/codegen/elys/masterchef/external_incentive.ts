@@ -17,7 +17,12 @@ export interface ExternalIncentiveProtoMsg {
   typeUrl: "/elys.masterchef.ExternalIncentive";
   value: Uint8Array;
 }
-/** ExternalIncentive defines the external incentives. */
+/**
+ * ExternalIncentive defines the external incentives.
+ * @name ExternalIncentiveAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.ExternalIncentive
+ */
 export interface ExternalIncentiveAmino {
   id?: string;
   reward_denom?: string;

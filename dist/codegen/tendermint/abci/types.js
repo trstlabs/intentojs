@@ -1,7 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ResponseListSnapshots = exports.ResponseCommit = exports.ResponseEndBlock = exports.ResponseDeliverTx = exports.ResponseCheckTx = exports.ResponseBeginBlock = exports.ResponseQuery = exports.ResponseInitChain = exports.ResponseSetOption = exports.ResponseInfo = exports.ResponseFlush = exports.ResponseEcho = exports.ResponseException = exports.Response = exports.RequestApplySnapshotChunk = exports.RequestLoadSnapshotChunk = exports.RequestOfferSnapshot = exports.RequestListSnapshots = exports.RequestCommit = exports.RequestEndBlock = exports.RequestDeliverTx = exports.RequestCheckTx = exports.RequestBeginBlock = exports.RequestQuery = exports.RequestInitChain = exports.RequestSetOption = exports.RequestInfo = exports.RequestFlush = exports.RequestEcho = exports.Request = exports.evidenceTypeToJSON = exports.evidenceTypeFromJSON = exports.EvidenceTypeAmino = exports.EvidenceTypeSDKType = exports.EvidenceType = exports.responseApplySnapshotChunk_ResultToJSON = exports.responseApplySnapshotChunk_ResultFromJSON = exports.ResponseApplySnapshotChunk_ResultAmino = exports.ResponseApplySnapshotChunk_ResultSDKType = exports.ResponseApplySnapshotChunk_Result = exports.responseOfferSnapshot_ResultToJSON = exports.responseOfferSnapshot_ResultFromJSON = exports.ResponseOfferSnapshot_ResultAmino = exports.ResponseOfferSnapshot_ResultSDKType = exports.ResponseOfferSnapshot_Result = exports.checkTxTypeToJSON = exports.checkTxTypeFromJSON = exports.CheckTxTypeAmino = exports.CheckTxTypeSDKType = exports.CheckTxType = void 0;
-exports.Snapshot = exports.Evidence = exports.VoteInfo = exports.ValidatorUpdate = exports.Validator = exports.TxResult = exports.EventAttribute = exports.Event = exports.LastCommitInfo = exports.BlockParams = exports.ConsensusParams = exports.ResponseApplySnapshotChunk = exports.ResponseLoadSnapshotChunk = exports.ResponseOfferSnapshot = void 0;
+exports.EventAttribute = exports.Event = exports.LastCommitInfo = exports.BlockParams = exports.ConsensusParams = exports.ResponseApplySnapshotChunk = exports.ResponseLoadSnapshotChunk = exports.ResponseOfferSnapshot = exports.ResponseListSnapshots = exports.ResponseCommit = exports.ResponseEndBlock = exports.ResponseDeliverTx = exports.ResponseCheckTx = exports.ResponseBeginBlock = exports.ResponseQuery = exports.ResponseInitChain = exports.ResponseSetOption = exports.ResponseInfo = exports.ResponseFlush = exports.ResponseEcho = exports.ResponseException = exports.Response = exports.RequestApplySnapshotChunk = exports.RequestLoadSnapshotChunk = exports.RequestOfferSnapshot = exports.RequestListSnapshots = exports.RequestCommit = exports.RequestEndBlock = exports.RequestDeliverTx = exports.RequestCheckTx = exports.RequestBeginBlock = exports.RequestQuery = exports.RequestInitChain = exports.RequestSetOption = exports.RequestInfo = exports.RequestFlush = exports.RequestEcho = exports.Request = exports.EvidenceTypeAmino = exports.EvidenceTypeSDKType = exports.EvidenceType = exports.ResponseApplySnapshotChunk_ResultAmino = exports.ResponseApplySnapshotChunk_ResultSDKType = exports.ResponseApplySnapshotChunk_Result = exports.ResponseOfferSnapshot_ResultAmino = exports.ResponseOfferSnapshot_ResultSDKType = exports.ResponseOfferSnapshot_Result = exports.CheckTxTypeAmino = exports.CheckTxTypeSDKType = exports.CheckTxType = void 0;
+exports.Snapshot = exports.Evidence = exports.VoteInfo = exports.ValidatorUpdate = exports.Validator = exports.TxResult = void 0;
+exports.checkTxTypeFromJSON = checkTxTypeFromJSON;
+exports.checkTxTypeToJSON = checkTxTypeToJSON;
+exports.responseOfferSnapshot_ResultFromJSON = responseOfferSnapshot_ResultFromJSON;
+exports.responseOfferSnapshot_ResultToJSON = responseOfferSnapshot_ResultToJSON;
+exports.responseApplySnapshotChunk_ResultFromJSON = responseApplySnapshotChunk_ResultFromJSON;
+exports.responseApplySnapshotChunk_ResultToJSON = responseApplySnapshotChunk_ResultToJSON;
+exports.evidenceTypeFromJSON = evidenceTypeFromJSON;
+exports.evidenceTypeToJSON = evidenceTypeToJSON;
 const timestamp_1 = require("../../google/protobuf/timestamp");
 const types_1 = require("../types/types");
 const proof_1 = require("../crypto/proof");
@@ -32,7 +40,6 @@ function checkTxTypeFromJSON(object) {
             return CheckTxType.UNRECOGNIZED;
     }
 }
-exports.checkTxTypeFromJSON = checkTxTypeFromJSON;
 function checkTxTypeToJSON(object) {
     switch (object) {
         case CheckTxType.NEW:
@@ -44,7 +51,6 @@ function checkTxTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.checkTxTypeToJSON = checkTxTypeToJSON;
 var ResponseOfferSnapshot_Result;
 (function (ResponseOfferSnapshot_Result) {
     /** UNKNOWN - Unknown result, abort all snapshot restoration */
@@ -89,7 +95,6 @@ function responseOfferSnapshot_ResultFromJSON(object) {
             return ResponseOfferSnapshot_Result.UNRECOGNIZED;
     }
 }
-exports.responseOfferSnapshot_ResultFromJSON = responseOfferSnapshot_ResultFromJSON;
 function responseOfferSnapshot_ResultToJSON(object) {
     switch (object) {
         case ResponseOfferSnapshot_Result.UNKNOWN:
@@ -109,7 +114,6 @@ function responseOfferSnapshot_ResultToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.responseOfferSnapshot_ResultToJSON = responseOfferSnapshot_ResultToJSON;
 var ResponseApplySnapshotChunk_Result;
 (function (ResponseApplySnapshotChunk_Result) {
     /** UNKNOWN - Unknown result, abort all snapshot restoration */
@@ -154,7 +158,6 @@ function responseApplySnapshotChunk_ResultFromJSON(object) {
             return ResponseApplySnapshotChunk_Result.UNRECOGNIZED;
     }
 }
-exports.responseApplySnapshotChunk_ResultFromJSON = responseApplySnapshotChunk_ResultFromJSON;
 function responseApplySnapshotChunk_ResultToJSON(object) {
     switch (object) {
         case ResponseApplySnapshotChunk_Result.UNKNOWN:
@@ -174,7 +177,6 @@ function responseApplySnapshotChunk_ResultToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.responseApplySnapshotChunk_ResultToJSON = responseApplySnapshotChunk_ResultToJSON;
 var EvidenceType;
 (function (EvidenceType) {
     EvidenceType[EvidenceType["UNKNOWN"] = 0] = "UNKNOWN";
@@ -201,7 +203,6 @@ function evidenceTypeFromJSON(object) {
             return EvidenceType.UNRECOGNIZED;
     }
 }
-exports.evidenceTypeFromJSON = evidenceTypeFromJSON;
 function evidenceTypeToJSON(object) {
     switch (object) {
         case EvidenceType.UNKNOWN:
@@ -215,7 +216,6 @@ function evidenceTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.evidenceTypeToJSON = evidenceTypeToJSON;
 function createBaseRequest() {
     return {
         echo: undefined,

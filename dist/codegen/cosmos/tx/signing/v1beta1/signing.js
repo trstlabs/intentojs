@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SignatureDescriptor_Data_Multi = exports.SignatureDescriptor_Data_Single = exports.SignatureDescriptor_Data = exports.SignatureDescriptor = exports.SignatureDescriptors = exports.signModeToJSON = exports.signModeFromJSON = exports.SignModeAmino = exports.SignModeSDKType = exports.SignMode = void 0;
+exports.SignatureDescriptor_Data_Multi = exports.SignatureDescriptor_Data_Single = exports.SignatureDescriptor_Data = exports.SignatureDescriptor = exports.SignatureDescriptors = exports.SignModeAmino = exports.SignModeSDKType = exports.SignMode = void 0;
+exports.signModeFromJSON = signModeFromJSON;
+exports.signModeToJSON = signModeToJSON;
 const multisig_1 = require("../../../crypto/multisig/v1beta1/multisig");
 const any_1 = require("../../../../google/protobuf/any");
 const binary_1 = require("../../../../binary");
@@ -75,7 +77,6 @@ function signModeFromJSON(object) {
             return SignMode.UNRECOGNIZED;
     }
 }
-exports.signModeFromJSON = signModeFromJSON;
 function signModeToJSON(object) {
     switch (object) {
         case SignMode.SIGN_MODE_UNSPECIFIED:
@@ -93,7 +94,6 @@ function signModeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.signModeToJSON = signModeToJSON;
 function createBaseSignatureDescriptors() {
     return {
         signatures: []

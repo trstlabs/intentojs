@@ -23,7 +23,12 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.tradeshield.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name ParamsAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.Params
+ */
 export interface ParamsAmino {
   market_order_enabled?: boolean;
   stake_enabled?: boolean;
@@ -33,7 +38,9 @@ export interface ParamsAmino {
   reward_enabled?: boolean;
   leverage_enabled?: boolean;
   limit_process_order?: string;
-  /** For incentive system v2 */
+  /**
+   * For incentive system v2
+   */
   reward_percentage?: string;
   margin_error?: string;
   minimum_deposit?: string;

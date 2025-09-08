@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Acknowledgement = exports.PacketState = exports.Packet = exports.Counterparty = exports.IdentifiedChannel = exports.Channel = exports.orderToJSON = exports.orderFromJSON = exports.OrderAmino = exports.OrderSDKType = exports.Order = exports.stateToJSON = exports.stateFromJSON = exports.StateAmino = exports.StateSDKType = exports.State = void 0;
+exports.Acknowledgement = exports.PacketState = exports.Packet = exports.Counterparty = exports.IdentifiedChannel = exports.Channel = exports.OrderAmino = exports.OrderSDKType = exports.Order = exports.StateAmino = exports.StateSDKType = exports.State = void 0;
+exports.stateFromJSON = stateFromJSON;
+exports.stateToJSON = stateToJSON;
+exports.orderFromJSON = orderFromJSON;
+exports.orderToJSON = orderToJSON;
 const client_1 = require("../../client/v1/client");
 const helpers_1 = require("../../../../helpers");
 const binary_1 = require("../../../../binary");
@@ -54,7 +58,6 @@ function stateFromJSON(object) {
             return State.UNRECOGNIZED;
     }
 }
-exports.stateFromJSON = stateFromJSON;
 function stateToJSON(object) {
     switch (object) {
         case State.STATE_UNINITIALIZED_UNSPECIFIED:
@@ -72,7 +75,6 @@ function stateToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.stateToJSON = stateToJSON;
 /** Order defines if a channel is ORDERED or UNORDERED */
 var Order;
 (function (Order) {
@@ -106,7 +108,6 @@ function orderFromJSON(object) {
             return Order.UNRECOGNIZED;
     }
 }
-exports.orderFromJSON = orderFromJSON;
 function orderToJSON(object) {
     switch (object) {
         case Order.ORDER_NONE_UNSPECIFIED:
@@ -120,7 +121,6 @@ function orderToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.orderToJSON = orderToJSON;
 function createBaseChannel() {
     return {
         state: 0,

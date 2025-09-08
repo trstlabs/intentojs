@@ -13,9 +13,16 @@ export interface MinterProtoMsg {
   typeUrl: "/intento.mint.v1.Minter";
   value: Uint8Array;
 }
-/** Minter represents the minting state. */
+/**
+ * Minter represents the minting state.
+ * @name MinterAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.Minter
+ */
 export interface MinterAmino {
-  /** current annual expected provisions */
+  /**
+   * current annual expected provisions
+   */
   annual_provisions?: string;
 }
 export interface MinterAminoMsg {
@@ -43,17 +50,32 @@ export interface ParamsProtoMsg {
   typeUrl: "/intento.mint.v1.Params";
   value: Uint8Array;
 }
-/** Params holds parameters for the mint module. */
+/**
+ * Params holds parameters for the mint module.
+ * @name ParamsAmino
+ * @package intento.mint.v1
+ * @see proto type: intento.mint.v1.Params
+ */
 export interface ParamsAmino {
-  /** type of coin to mint */
+  /**
+   * type of coin to mint
+   */
   mint_denom?: string;
-  /** the time the chain starts */
+  /**
+   * the time the chain starts
+   */
   start_time?: string;
-  /** initial annual provisions */
+  /**
+   * initial annual provisions
+   */
   initial_annual_provisions?: string;
-  /** factor to reduce inflation by each year */
+  /**
+   * factor to reduce inflation by each year
+   */
   reduction_factor?: string;
-  /** expected blocks per year */
+  /**
+   * expected blocks per year
+   */
   blocks_per_year?: string;
 }
 export interface ParamsAminoMsg {

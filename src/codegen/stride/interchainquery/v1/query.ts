@@ -7,6 +7,11 @@ export interface QueryPendingQueriesRequestProtoMsg {
   typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryPendingQueriesRequestAmino
+ * @package stride.interchainquery.v1
+ * @see proto type: stride.interchainquery.v1.QueryPendingQueriesRequest
+ */
 export interface QueryPendingQueriesRequestAmino {}
 export interface QueryPendingQueriesRequestAminoMsg {
   type: "/stride.interchainquery.v1.QueryPendingQueriesRequest";
@@ -20,6 +25,11 @@ export interface QueryPendingQueriesResponseProtoMsg {
   typeUrl: "/stride.interchainquery.v1.QueryPendingQueriesResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryPendingQueriesResponseAmino
+ * @package stride.interchainquery.v1
+ * @see proto type: stride.interchainquery.v1.QueryPendingQueriesResponse
+ */
 export interface QueryPendingQueriesResponseAmino {
   pending_queries?: QueryAmino[];
 }

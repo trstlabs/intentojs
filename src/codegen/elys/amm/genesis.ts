@@ -16,7 +16,12 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/elys.amm.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the amm module's genesis state. */
+/**
+ * GenesisState defines the amm module's genesis state.
+ * @name GenesisStateAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.GenesisState
+ */
 export interface GenesisStateAmino {
   params?: ParamsAmino;
   pool_list?: PoolAmino[];

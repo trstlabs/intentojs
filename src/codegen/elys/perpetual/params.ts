@@ -58,7 +58,12 @@ export interface LegacyParamsProtoMsg {
   typeUrl: "/elys.perpetual.LegacyParams";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name LegacyParamsAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.LegacyParams
+ */
 export interface LegacyParamsAmino {
   leverage_max?: string;
   borrow_interest_rate_max?: string;
@@ -192,6 +197,11 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.perpetual.Params";
   value: Uint8Array;
 }
+/**
+ * @name ParamsAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.Params
+ */
 export interface ParamsAmino {
   leverage_max?: string;
   borrow_interest_rate_max?: string;

@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StakeAuthorization_Validators = exports.StakeAuthorization = exports.authorizationTypeToJSON = exports.authorizationTypeFromJSON = exports.AuthorizationTypeAmino = exports.AuthorizationTypeSDKType = exports.AuthorizationType = void 0;
+exports.StakeAuthorization_Validators = exports.StakeAuthorization = exports.AuthorizationTypeAmino = exports.AuthorizationTypeSDKType = exports.AuthorizationType = void 0;
+exports.authorizationTypeFromJSON = authorizationTypeFromJSON;
+exports.authorizationTypeToJSON = authorizationTypeToJSON;
 const coin_1 = require("../../base/v1beta1/coin");
 const helpers_1 = require("../../../helpers");
 const binary_1 = require("../../../binary");
@@ -44,7 +46,6 @@ function authorizationTypeFromJSON(object) {
             return AuthorizationType.UNRECOGNIZED;
     }
 }
-exports.authorizationTypeFromJSON = authorizationTypeFromJSON;
 function authorizationTypeToJSON(object) {
     switch (object) {
         case AuthorizationType.AUTHORIZATION_TYPE_UNSPECIFIED:
@@ -60,7 +61,6 @@ function authorizationTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.authorizationTypeToJSON = authorizationTypeToJSON;
 function createBaseStakeAuthorization() {
     return {
         $typeUrl: "/cosmos.staking.v1beta1.StakeAuthorization",

@@ -19,6 +19,9 @@ export interface MsgFundFairburnPoolProtoMsg {
 /**
  * MsgFundFairburnPool allows an account to directly
  * fund the fee collector pool.
+ * @name MsgFundFairburnPoolAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.MsgFundFairburnPool
  */
 export interface MsgFundFairburnPoolAmino {
   sender?: string;
@@ -48,6 +51,9 @@ export interface MsgFundFairburnPoolResponseProtoMsg {
 /**
  * MsgFundFairburnPoolResponse defines the Msg/MsgFundFairburnPool response
  * type.
+ * @name MsgFundFairburnPoolResponseAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.MsgFundFairburnPoolResponse
  */
 export interface MsgFundFairburnPoolResponseAmino {}
 export interface MsgFundFairburnPoolResponseAminoMsg {
@@ -78,11 +84,18 @@ export interface MsgUpdateParamsProtoMsg {
  * MsgUpdateParams is the request type for updating module's params.
  * 
  * Since: v14
+ * @name MsgUpdateParamsAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.MsgUpdateParams
  */
 export interface MsgUpdateParamsAmino {
-  /** Authority is the address of the governance account. */
+  /**
+   * Authority is the address of the governance account.
+   */
   authority?: string;
-  /** NOTE: All parameters must be supplied. */
+  /**
+   * NOTE: All parameters must be supplied.
+   */
   params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
@@ -112,6 +125,9 @@ export interface MsgUpdateParamsResponseProtoMsg {
  * MsgUpdateParamsResponse is the response type for executing
  * an update.
  * Since: v14
+ * @name MsgUpdateParamsResponseAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.MsgUpdateParamsResponse
  */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {

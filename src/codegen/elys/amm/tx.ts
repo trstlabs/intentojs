@@ -17,6 +17,11 @@ export interface MsgCreatePoolProtoMsg {
   typeUrl: "/elys.amm.MsgCreatePool";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreatePoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgCreatePool
+ */
 export interface MsgCreatePoolAmino {
   sender?: string;
   pool_params?: PoolParamsAmino;
@@ -38,6 +43,11 @@ export interface MsgCreatePoolResponseProtoMsg {
   typeUrl: "/elys.amm.MsgCreatePoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreatePoolResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgCreatePoolResponse
+ */
 export interface MsgCreatePoolResponseAmino {
   pool_id?: string;
 }
@@ -58,6 +68,11 @@ export interface MsgJoinPoolProtoMsg {
   typeUrl: "/elys.amm.MsgJoinPool";
   value: Uint8Array;
 }
+/**
+ * @name MsgJoinPoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgJoinPool
+ */
 export interface MsgJoinPoolAmino {
   sender?: string;
   pool_id?: string;
@@ -82,6 +97,11 @@ export interface MsgJoinPoolResponseProtoMsg {
   typeUrl: "/elys.amm.MsgJoinPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgJoinPoolResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgJoinPoolResponse
+ */
 export interface MsgJoinPoolResponseAmino {
   share_amount_out?: string;
   token_in?: CoinAmino[];
@@ -105,6 +125,11 @@ export interface MsgExitPoolProtoMsg {
   typeUrl: "/elys.amm.MsgExitPool";
   value: Uint8Array;
 }
+/**
+ * @name MsgExitPoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgExitPool
+ */
 export interface MsgExitPoolAmino {
   sender?: string;
   pool_id?: string;
@@ -133,6 +158,11 @@ export interface MsgExitPoolResponseProtoMsg {
   typeUrl: "/elys.amm.MsgExitPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgExitPoolResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgExitPoolResponse
+ */
 export interface MsgExitPoolResponseAmino {
   token_out?: CoinAmino[];
   weight_balance_ratio?: string;
@@ -159,6 +189,11 @@ export interface MsgUpFrontSwapExactAmountInProtoMsg {
   typeUrl: "/elys.amm.MsgUpFrontSwapExactAmountIn";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpFrontSwapExactAmountInAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgUpFrontSwapExactAmountIn
+ */
 export interface MsgUpFrontSwapExactAmountInAmino {
   sender?: string;
   routes?: SwapAmountInRouteAmino[];
@@ -184,6 +219,11 @@ export interface MsgUpFrontSwapExactAmountInResponseProtoMsg {
   typeUrl: "/elys.amm.MsgUpFrontSwapExactAmountInResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpFrontSwapExactAmountInResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgUpFrontSwapExactAmountInResponse
+ */
 export interface MsgUpFrontSwapExactAmountInResponseAmino {
   token_out_amount?: string;
   swap_fee?: string;
@@ -209,6 +249,11 @@ export interface MsgSwapExactAmountInProtoMsg {
   typeUrl: "/elys.amm.MsgSwapExactAmountIn";
   value: Uint8Array;
 }
+/**
+ * @name MsgSwapExactAmountInAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgSwapExactAmountIn
+ */
 export interface MsgSwapExactAmountInAmino {
   sender?: string;
   routes?: SwapAmountInRouteAmino[];
@@ -237,6 +282,11 @@ export interface MsgSwapExactAmountInResponseProtoMsg {
   typeUrl: "/elys.amm.MsgSwapExactAmountInResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgSwapExactAmountInResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgSwapExactAmountInResponse
+ */
 export interface MsgSwapExactAmountInResponseAmino {
   token_out_amount?: string;
   swap_fee?: string;
@@ -264,6 +314,11 @@ export interface MsgSwapExactAmountOutProtoMsg {
   typeUrl: "/elys.amm.MsgSwapExactAmountOut";
   value: Uint8Array;
 }
+/**
+ * @name MsgSwapExactAmountOutAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgSwapExactAmountOut
+ */
 export interface MsgSwapExactAmountOutAmino {
   sender?: string;
   routes?: SwapAmountOutRouteAmino[];
@@ -292,6 +347,11 @@ export interface MsgSwapExactAmountOutResponseProtoMsg {
   typeUrl: "/elys.amm.MsgSwapExactAmountOutResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgSwapExactAmountOutResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgSwapExactAmountOutResponse
+ */
 export interface MsgSwapExactAmountOutResponseAmino {
   token_in_amount?: string;
   swap_fee?: string;
@@ -316,6 +376,11 @@ export interface MsgFeedMultipleExternalLiquidityProtoMsg {
   typeUrl: "/elys.amm.MsgFeedMultipleExternalLiquidity";
   value: Uint8Array;
 }
+/**
+ * @name MsgFeedMultipleExternalLiquidityAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgFeedMultipleExternalLiquidity
+ */
 export interface MsgFeedMultipleExternalLiquidityAmino {
   sender?: string;
   liquidity?: ExternalLiquidityAmino[];
@@ -333,6 +398,11 @@ export interface MsgFeedMultipleExternalLiquidityResponseProtoMsg {
   typeUrl: "/elys.amm.MsgFeedMultipleExternalLiquidityResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgFeedMultipleExternalLiquidityResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgFeedMultipleExternalLiquidityResponse
+ */
 export interface MsgFeedMultipleExternalLiquidityResponseAmino {}
 export interface MsgFeedMultipleExternalLiquidityResponseAminoMsg {
   type: "/elys.amm.MsgFeedMultipleExternalLiquidityResponse";
@@ -348,6 +418,11 @@ export interface AssetAmountDepthProtoMsg {
   typeUrl: "/elys.amm.AssetAmountDepth";
   value: Uint8Array;
 }
+/**
+ * @name AssetAmountDepthAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.AssetAmountDepth
+ */
 export interface AssetAmountDepthAmino {
   asset?: string;
   amount?: string;
@@ -377,6 +452,9 @@ export interface ExternalLiquidityProtoMsg {
 /**
  * ExternalLiquidity defines price, volume, and time information for an exchange
  * rate.
+ * @name ExternalLiquidityAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.ExternalLiquidity
  */
 export interface ExternalLiquidityAmino {
   pool_id?: string;
@@ -407,6 +485,11 @@ export interface MsgSwapByDenomProtoMsg {
   typeUrl: "/elys.amm.MsgSwapByDenom";
   value: Uint8Array;
 }
+/**
+ * @name MsgSwapByDenomAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgSwapByDenom
+ */
 export interface MsgSwapByDenomAmino {
   sender?: string;
   amount?: CoinAmino;
@@ -444,6 +527,11 @@ export interface MsgSwapByDenomResponseProtoMsg {
   typeUrl: "/elys.amm.MsgSwapByDenomResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgSwapByDenomResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgSwapByDenomResponse
+ */
 export interface MsgSwapByDenomResponseAmino {
   amount?: CoinAmino;
   in_route?: SwapAmountInRouteAmino[];
@@ -479,6 +567,11 @@ export interface MsgUpdatePoolParamsProtoMsg {
   typeUrl: "/elys.amm.MsgUpdatePoolParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolParamsAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgUpdatePoolParams
+ */
 export interface MsgUpdatePoolParamsAmino {
   authority?: string;
   pool_id?: string;
@@ -501,6 +594,11 @@ export interface MsgUpdatePoolParamsResponseProtoMsg {
   typeUrl: "/elys.amm.MsgUpdatePoolParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePoolParamsResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgUpdatePoolParamsResponse
+ */
 export interface MsgUpdatePoolParamsResponseAmino {
   pool_id?: string;
   pool_params?: PoolParamsAmino;
@@ -521,6 +619,11 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.amm.MsgUpdateParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   authority?: string;
   params?: ParamsAmino;
@@ -538,6 +641,11 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/elys.amm.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/elys.amm.MsgUpdateParamsResponse";

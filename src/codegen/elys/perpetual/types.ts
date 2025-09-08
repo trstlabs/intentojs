@@ -73,6 +73,11 @@ export interface MTPProtoMsg {
   typeUrl: "/elys.perpetual.MTP";
   value: Uint8Array;
 }
+/**
+ * @name MTPAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.MTP
+ */
 export interface MTPAmino {
   address?: string;
   collateral_asset?: string;
@@ -142,6 +147,11 @@ export interface InterestBlockProtoMsg {
   typeUrl: "/elys.perpetual.InterestBlock";
   value: Uint8Array;
 }
+/**
+ * @name InterestBlockAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.InterestBlock
+ */
 export interface InterestBlockAmino {
   interest_rate?: string;
   block_height?: string;
@@ -168,6 +178,11 @@ export interface FundingRateBlockProtoMsg {
   typeUrl: "/elys.perpetual.FundingRateBlock";
   value: Uint8Array;
 }
+/**
+ * @name FundingRateBlockAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.FundingRateBlock
+ */
 export interface FundingRateBlockAmino {
   funding_rate_long?: string;
   funding_rate_short?: string;
@@ -195,6 +210,11 @@ export interface WhiteListProtoMsg {
   typeUrl: "/elys.perpetual.WhiteList";
   value: Uint8Array;
 }
+/**
+ * @name WhiteListAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.WhiteList
+ */
 export interface WhiteListAmino {
   validator_list?: string[];
 }
@@ -213,6 +233,11 @@ export interface PositionRequestProtoMsg {
   typeUrl: "/elys.perpetual.PositionRequest";
   value: Uint8Array;
 }
+/**
+ * @name PositionRequestAmino
+ * @package elys.perpetual
+ * @see proto type: elys.perpetual.PositionRequest
+ */
 export interface PositionRequestAmino {
   address?: string;
   id?: string;

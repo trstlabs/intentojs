@@ -18,6 +18,9 @@ export interface MsgSetWithdrawAddressProtoMsg {
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).
+ * @name MsgSetWithdrawAddressAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgSetWithdrawAddress
  */
 export interface MsgSetWithdrawAddressAmino {
   delegator_address?: string;
@@ -41,7 +44,12 @@ export interface MsgSetWithdrawAddressResponseProtoMsg {
   typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse";
   value: Uint8Array;
 }
-/** MsgSetWithdrawAddressResponse defines the Msg/SetWithdrawAddress response type. */
+/**
+ * MsgSetWithdrawAddressResponse defines the Msg/SetWithdrawAddress response type.
+ * @name MsgSetWithdrawAddressResponseAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse
+ */
 export interface MsgSetWithdrawAddressResponseAmino {}
 export interface MsgSetWithdrawAddressResponseAminoMsg {
   type: "cosmos-sdk/MsgSetWithdrawAddressResponse";
@@ -64,6 +72,9 @@ export interface MsgWithdrawDelegatorRewardProtoMsg {
 /**
  * MsgWithdrawDelegatorReward represents delegation withdrawal to a delegator
  * from a single validator.
+ * @name MsgWithdrawDelegatorRewardAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward
  */
 export interface MsgWithdrawDelegatorRewardAmino {
   delegator_address?: string;
@@ -89,7 +100,12 @@ export interface MsgWithdrawDelegatorRewardResponseProtoMsg {
   typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse";
   value: Uint8Array;
 }
-/** MsgWithdrawDelegatorRewardResponse defines the Msg/WithdrawDelegatorReward response type. */
+/**
+ * MsgWithdrawDelegatorRewardResponse defines the Msg/WithdrawDelegatorReward response type.
+ * @name MsgWithdrawDelegatorRewardResponseAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse
+ */
 export interface MsgWithdrawDelegatorRewardResponseAmino {
   amount?: CoinAmino[];
 }
@@ -115,6 +131,9 @@ export interface MsgWithdrawValidatorCommissionProtoMsg {
 /**
  * MsgWithdrawValidatorCommission withdraws the full commission to the validator
  * address.
+ * @name MsgWithdrawValidatorCommissionAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission
  */
 export interface MsgWithdrawValidatorCommissionAmino {
   validator_address?: string;
@@ -138,7 +157,12 @@ export interface MsgWithdrawValidatorCommissionResponseProtoMsg {
   typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse";
   value: Uint8Array;
 }
-/** MsgWithdrawValidatorCommissionResponse defines the Msg/WithdrawValidatorCommission response type. */
+/**
+ * MsgWithdrawValidatorCommissionResponse defines the Msg/WithdrawValidatorCommission response type.
+ * @name MsgWithdrawValidatorCommissionResponseAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse
+ */
 export interface MsgWithdrawValidatorCommissionResponseAmino {
   amount?: CoinAmino[];
 }
@@ -165,6 +189,9 @@ export interface MsgFundCommunityPoolProtoMsg {
 /**
  * MsgFundCommunityPool allows an account to directly
  * fund the community pool.
+ * @name MsgFundCommunityPoolAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgFundCommunityPool
  */
 export interface MsgFundCommunityPoolAmino {
   amount?: CoinAmino[];
@@ -188,7 +215,12 @@ export interface MsgFundCommunityPoolResponseProtoMsg {
   typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse";
   value: Uint8Array;
 }
-/** MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type. */
+/**
+ * MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
+ * @name MsgFundCommunityPoolResponseAmino
+ * @package cosmos.distribution.v1beta1
+ * @see proto type: cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse
+ */
 export interface MsgFundCommunityPoolResponseAmino {}
 export interface MsgFundCommunityPoolResponseAminoMsg {
   type: "cosmos-sdk/MsgFundCommunityPoolResponse";

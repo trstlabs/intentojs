@@ -16,6 +16,11 @@ export interface DebtProtoMsg {
   typeUrl: "/elys.stablestake.Debt";
   value: Uint8Array;
 }
+/**
+ * @name DebtAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.Debt
+ */
 export interface DebtAmino {
   address?: string;
   borrowed?: string;

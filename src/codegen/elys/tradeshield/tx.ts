@@ -18,6 +18,11 @@ export interface MsgCreateSpotOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCreateSpotOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreateSpotOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCreateSpotOrder
+ */
 export interface MsgCreateSpotOrderAmino {
   order_type?: SpotOrderType;
   legacy_order_price_v1?: LegacyOrderPriceV1Amino;
@@ -45,6 +50,11 @@ export interface MsgCreateSpotOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCreateSpotOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreateSpotOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCreateSpotOrderResponse
+ */
 export interface MsgCreateSpotOrderResponseAmino {
   order_id?: string;
 }
@@ -65,6 +75,11 @@ export interface MsgUpdateSpotOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgUpdateSpotOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateSpotOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgUpdateSpotOrder
+ */
 export interface MsgUpdateSpotOrderAmino {
   owner_address?: string;
   order_id?: string;
@@ -86,6 +101,11 @@ export interface MsgUpdateSpotOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgUpdateSpotOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateSpotOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgUpdateSpotOrderResponse
+ */
 export interface MsgUpdateSpotOrderResponseAmino {}
 export interface MsgUpdateSpotOrderResponseAminoMsg {
   type: "/elys.tradeshield.MsgUpdateSpotOrderResponse";
@@ -100,6 +120,11 @@ export interface MsgCancelSpotOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelSpotOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelSpotOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelSpotOrder
+ */
 export interface MsgCancelSpotOrderAmino {
   owner_address?: string;
   order_id?: string;
@@ -119,6 +144,11 @@ export interface MsgCancelSpotOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelSpotOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelSpotOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelSpotOrderResponse
+ */
 export interface MsgCancelSpotOrderResponseAmino {
   order_id?: string;
 }
@@ -137,6 +167,11 @@ export interface MsgCancelSpotOrdersProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelSpotOrders";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelSpotOrdersAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelSpotOrders
+ */
 export interface MsgCancelSpotOrdersAmino {
   creator?: string;
   spot_order_ids?: string[];
@@ -154,6 +189,11 @@ export interface MsgCancelSpotOrdersResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelSpotOrdersResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelSpotOrdersResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelSpotOrdersResponse
+ */
 export interface MsgCancelSpotOrdersResponseAmino {}
 export interface MsgCancelSpotOrdersResponseAminoMsg {
   type: "/elys.tradeshield.MsgCancelSpotOrdersResponse";
@@ -176,6 +216,11 @@ export interface MsgCreatePerpetualOpenOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCreatePerpetualOpenOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreatePerpetualOpenOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCreatePerpetualOpenOrder
+ */
 export interface MsgCreatePerpetualOpenOrderAmino {
   owner_address?: string;
   legacy_trigger_price_v1?: LegacyTriggerPriceV1Amino;
@@ -211,6 +256,11 @@ export interface MsgCreatePerpetualOpenOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCreatePerpetualOpenOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreatePerpetualOpenOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCreatePerpetualOpenOrderResponse
+ */
 export interface MsgCreatePerpetualOpenOrderResponseAmino {
   order_id?: string;
 }
@@ -231,6 +281,11 @@ export interface MsgCreatePerpetualCloseOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCreatePerpetualCloseOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreatePerpetualCloseOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCreatePerpetualCloseOrder
+ */
 export interface MsgCreatePerpetualCloseOrderAmino {
   owner_address?: string;
   legacy_trigger_price_v1?: LegacyTriggerPriceV1Amino;
@@ -254,6 +309,11 @@ export interface MsgCreatePerpetualCloseOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCreatePerpetualCloseOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCreatePerpetualCloseOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCreatePerpetualCloseOrderResponse
+ */
 export interface MsgCreatePerpetualCloseOrderResponseAmino {
   order_id?: string;
 }
@@ -274,6 +334,11 @@ export interface MsgUpdatePerpetualOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgUpdatePerpetualOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePerpetualOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgUpdatePerpetualOrder
+ */
 export interface MsgUpdatePerpetualOrderAmino {
   owner_address?: string;
   order_id?: string;
@@ -295,6 +360,11 @@ export interface MsgUpdatePerpetualOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgUpdatePerpetualOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdatePerpetualOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgUpdatePerpetualOrderResponse
+ */
 export interface MsgUpdatePerpetualOrderResponseAmino {}
 export interface MsgUpdatePerpetualOrderResponseAminoMsg {
   type: "/elys.tradeshield.MsgUpdatePerpetualOrderResponse";
@@ -309,6 +379,11 @@ export interface MsgCancelPerpetualOrderProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelPerpetualOrder";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelPerpetualOrderAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelPerpetualOrder
+ */
 export interface MsgCancelPerpetualOrderAmino {
   owner_address?: string;
   order_id?: string;
@@ -328,6 +403,11 @@ export interface MsgCancelPerpetualOrderResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelPerpetualOrderResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelPerpetualOrderResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelPerpetualOrderResponse
+ */
 export interface MsgCancelPerpetualOrderResponseAmino {
   order_id?: string;
 }
@@ -346,6 +426,11 @@ export interface MsgCancelPerpetualOrdersProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelPerpetualOrders";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelPerpetualOrdersAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelPerpetualOrders
+ */
 export interface MsgCancelPerpetualOrdersAmino {
   owner_address?: string;
   order_ids?: string[];
@@ -363,6 +448,11 @@ export interface MsgCancelPerpetualOrdersResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgCancelPerpetualOrdersResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgCancelPerpetualOrdersResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgCancelPerpetualOrdersResponse
+ */
 export interface MsgCancelPerpetualOrdersResponseAmino {}
 export interface MsgCancelPerpetualOrdersResponseAminoMsg {
   type: "/elys.tradeshield.MsgCancelPerpetualOrdersResponse";
@@ -382,13 +472,20 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/elys.tradeshield.MsgUpdateParams";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   /**
    * authority is the address that controls the module (defaults to x/gov unless
    * overwritten).
    */
   authority?: string;
-  /** NOTE: All parameters must be supplied. */
+  /**
+   * NOTE: All parameters must be supplied.
+   */
   params?: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
@@ -404,6 +501,11 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgUpdateParamsResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/elys.tradeshield.MsgUpdateParamsResponse";
@@ -419,6 +521,11 @@ export interface MsgExecuteOrdersProtoMsg {
   typeUrl: "/elys.tradeshield.MsgExecuteOrders";
   value: Uint8Array;
 }
+/**
+ * @name MsgExecuteOrdersAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgExecuteOrders
+ */
 export interface MsgExecuteOrdersAmino {
   creator?: string;
   spot_order_ids?: string[];
@@ -438,6 +545,11 @@ export interface MsgExecuteOrdersResponseProtoMsg {
   typeUrl: "/elys.tradeshield.MsgExecuteOrdersResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgExecuteOrdersResponseAmino
+ * @package elys.tradeshield
+ * @see proto type: elys.tradeshield.MsgExecuteOrdersResponse
+ */
 export interface MsgExecuteOrdersResponseAmino {}
 export interface MsgExecuteOrdersResponseAminoMsg {
   type: "/elys.tradeshield.MsgExecuteOrdersResponse";

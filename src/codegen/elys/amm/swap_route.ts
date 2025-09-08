@@ -10,6 +10,11 @@ export interface SwapAmountInRouteProtoMsg {
   typeUrl: "/elys.amm.SwapAmountInRoute";
   value: Uint8Array;
 }
+/**
+ * @name SwapAmountInRouteAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.SwapAmountInRoute
+ */
 export interface SwapAmountInRouteAmino {
   pool_id?: string;
   token_out_denom?: string;
@@ -30,6 +35,11 @@ export interface SwapAmountOutRouteProtoMsg {
   typeUrl: "/elys.amm.SwapAmountOutRoute";
   value: Uint8Array;
 }
+/**
+ * @name SwapAmountOutRouteAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.SwapAmountOutRoute
+ */
 export interface SwapAmountOutRouteAmino {
   pool_id?: string;
   token_in_denom?: string;

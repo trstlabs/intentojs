@@ -62,11 +62,18 @@ export interface GetTxsEventRequestProtoMsg {
 /**
  * GetTxsEventRequest is the request type for the Service.TxsByEvents
  * RPC method.
+ * @name GetTxsEventRequestAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.GetTxsEventRequest
  */
 export interface GetTxsEventRequestAmino {
-    /** events is the list of transaction event type. */
+    /**
+     * events is the list of transaction event type.
+     */
     events?: string[];
-    /** pagination defines a pagination for the request. */
+    /**
+     * pagination defines a pagination for the request.
+     */
     pagination?: PageRequestAmino;
     order_by?: OrderBy;
 }
@@ -102,13 +109,22 @@ export interface GetTxsEventResponseProtoMsg {
 /**
  * GetTxsEventResponse is the response type for the Service.TxsByEvents
  * RPC method.
+ * @name GetTxsEventResponseAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.GetTxsEventResponse
  */
 export interface GetTxsEventResponseAmino {
-    /** txs is the list of queried transactions. */
+    /**
+     * txs is the list of queried transactions.
+     */
     txs?: TxAmino[];
-    /** tx_responses is the list of queried TxResponses. */
+    /**
+     * tx_responses is the list of queried TxResponses.
+     */
     tx_responses?: TxResponseAmino[];
-    /** pagination defines a pagination for the response. */
+    /**
+     * pagination defines a pagination for the response.
+     */
     pagination?: PageResponseAmino;
 }
 export interface GetTxsEventResponseAminoMsg {
@@ -140,9 +156,14 @@ export interface BroadcastTxRequestProtoMsg {
 /**
  * BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
  * RPC method.
+ * @name BroadcastTxRequestAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.BroadcastTxRequest
  */
 export interface BroadcastTxRequestAmino {
-    /** tx_bytes is the raw transaction. */
+    /**
+     * tx_bytes is the raw transaction.
+     */
     tx_bytes?: string;
     mode?: BroadcastMode;
 }
@@ -173,9 +194,14 @@ export interface BroadcastTxResponseProtoMsg {
 /**
  * BroadcastTxResponse is the response type for the
  * Service.BroadcastTx method.
+ * @name BroadcastTxResponseAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.BroadcastTxResponse
  */
 export interface BroadcastTxResponseAmino {
-    /** tx_response is the queried TxResponses. */
+    /**
+     * tx_response is the queried TxResponses.
+     */
     tx_response?: TxResponseAmino;
 }
 export interface BroadcastTxResponseAminoMsg {
@@ -214,13 +240,16 @@ export interface SimulateRequestProtoMsg {
 /**
  * SimulateRequest is the request type for the Service.Simulate
  * RPC method.
+ * @name SimulateRequestAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.SimulateRequest
  */
 export interface SimulateRequestAmino {
     /**
      * tx is the transaction to simulate.
      * Deprecated. Send raw tx bytes instead.
+     * @deprecated
      */
-    /** @deprecated */
     tx?: TxAmino;
     /**
      * tx_bytes is the raw transaction.
@@ -259,11 +288,18 @@ export interface SimulateResponseProtoMsg {
 /**
  * SimulateResponse is the response type for the
  * Service.SimulateRPC method.
+ * @name SimulateResponseAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.SimulateResponse
  */
 export interface SimulateResponseAmino {
-    /** gas_info is the information about gas used in the simulation. */
+    /**
+     * gas_info is the information about gas used in the simulation.
+     */
     gas_info?: GasInfoAmino;
-    /** result is the result of the simulation. */
+    /**
+     * result is the result of the simulation.
+     */
     result?: ResultAmino;
 }
 export interface SimulateResponseAminoMsg {
@@ -293,9 +329,14 @@ export interface GetTxRequestProtoMsg {
 /**
  * GetTxRequest is the request type for the Service.GetTx
  * RPC method.
+ * @name GetTxRequestAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.GetTxRequest
  */
 export interface GetTxRequestAmino {
-    /** hash is the tx hash to query, encoded as a hex string. */
+    /**
+     * hash is the tx hash to query, encoded as a hex string.
+     */
     hash?: string;
 }
 export interface GetTxRequestAminoMsg {
@@ -320,11 +361,20 @@ export interface GetTxResponseProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.GetTxResponse";
     value: Uint8Array;
 }
-/** GetTxResponse is the response type for the Service.GetTx method. */
+/**
+ * GetTxResponse is the response type for the Service.GetTx method.
+ * @name GetTxResponseAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.GetTxResponse
+ */
 export interface GetTxResponseAmino {
-    /** tx is the queried transaction. */
+    /**
+     * tx is the queried transaction.
+     */
     tx?: TxAmino;
-    /** tx_response is the queried TxResponses. */
+    /**
+     * tx_response is the queried TxResponses.
+     */
     tx_response?: TxResponseAmino;
 }
 export interface GetTxResponseAminoMsg {
@@ -357,11 +407,18 @@ export interface GetBlockWithTxsRequestProtoMsg {
  * RPC method.
  *
  * Since: cosmos-sdk 0.45.2
+ * @name GetBlockWithTxsRequestAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.GetBlockWithTxsRequest
  */
 export interface GetBlockWithTxsRequestAmino {
-    /** height is the height of the block to query. */
+    /**
+     * height is the height of the block to query.
+     */
     height?: string;
-    /** pagination defines a pagination for the request. */
+    /**
+     * pagination defines a pagination for the request.
+     */
     pagination?: PageRequestAmino;
 }
 export interface GetBlockWithTxsRequestAminoMsg {
@@ -399,13 +456,20 @@ export interface GetBlockWithTxsResponseProtoMsg {
  * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
  *
  * Since: cosmos-sdk 0.45.2
+ * @name GetBlockWithTxsResponseAmino
+ * @package cosmos.tx.v1beta1
+ * @see proto type: cosmos.tx.v1beta1.GetBlockWithTxsResponse
  */
 export interface GetBlockWithTxsResponseAmino {
-    /** txs are the transactions in the block. */
+    /**
+     * txs are the transactions in the block.
+     */
     txs?: TxAmino[];
     block_id?: BlockIDAmino;
     block?: BlockAmino;
-    /** pagination defines a pagination for the response. */
+    /**
+     * pagination defines a pagination for the response.
+     */
     pagination?: PageResponseAmino;
 }
 export interface GetBlockWithTxsResponseAminoMsg {

@@ -13,6 +13,11 @@ export interface TrustlessAgentProtoMsg {
   typeUrl: "/intento.intent.v1.TrustlessAgent";
   value: Uint8Array;
 }
+/**
+ * @name TrustlessAgentAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.TrustlessAgent
+ */
 export interface TrustlessAgentAmino {
   agent_address?: string;
   ica_config?: ICAConfigAmino;
@@ -37,10 +42,19 @@ export interface TrustlessAgentFeeConfigProtoMsg {
   typeUrl: "/intento.intent.v1.TrustlessAgentFeeConfig";
   value: Uint8Array;
 }
+/**
+ * @name TrustlessAgentFeeConfigAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.TrustlessAgentFeeConfig
+ */
 export interface TrustlessAgentFeeConfigAmino {
-  /** can set fee coins supported, which can be charged per message executed if a fee limit is set in the flow */
+  /**
+   * can set fee coins supported, which can be charged per message executed if a fee limit is set in the flow
+   */
   fee_admin?: string;
-  /** can be empty */
+  /**
+   * can be empty
+   */
   fee_coins_supported?: CoinAmino[];
 }
 export interface TrustlessAgentFeeConfigAminoMsg {

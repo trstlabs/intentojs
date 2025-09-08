@@ -23,6 +23,9 @@ export interface BaseAccountProtoMsg {
  * BaseAccount defines a base account type. It contains all the necessary fields
  * for basic account functionality. Any custom account type should extend this
  * type for additional functionality (e.g. vesting).
+ * @name BaseAccountAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.BaseAccount
  */
 export interface BaseAccountAmino {
   address?: string;
@@ -57,7 +60,12 @@ export interface ModuleAccountProtoMsg {
   typeUrl: "/cosmos.auth.v1beta1.ModuleAccount";
   value: Uint8Array;
 }
-/** ModuleAccount defines an account for modules that holds coins on a pool. */
+/**
+ * ModuleAccount defines an account for modules that holds coins on a pool.
+ * @name ModuleAccountAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.ModuleAccount
+ */
 export interface ModuleAccountAmino {
   base_account?: BaseAccountAmino;
   name?: string;
@@ -86,7 +94,12 @@ export interface ParamsProtoMsg {
   typeUrl: "/cosmos.auth.v1beta1.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the auth module. */
+/**
+ * Params defines the parameters for the auth module.
+ * @name ParamsAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.Params
+ */
 export interface ParamsAmino {
   max_memo_characters?: string;
   tx_sig_limit?: string;

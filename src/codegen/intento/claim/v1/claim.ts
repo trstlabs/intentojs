@@ -61,13 +61,24 @@ export interface ClaimRecordProtoMsg {
   typeUrl: "/intento.claim.v1.ClaimRecord";
   value: Uint8Array;
 }
-/** A Claim Records is the metadata of claim data per address */
+/**
+ * A Claim Records is the metadata of claim data per address
+ * @name ClaimRecordAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.ClaimRecord
+ */
 export interface ClaimRecordAmino {
-  /** address of recipient */
+  /**
+   * address of recipient
+   */
   address?: string;
-  /** maximum claimable amount for the address */
+  /**
+   * maximum claimable amount for the address
+   */
   maximum_claimable_amount?: CoinAmino;
-  /** index of status array refers to action enum # */
+  /**
+   * index of status array refers to action enum #
+   */
   status?: StatusAmino[];
 }
 export interface ClaimRecordAminoMsg {
@@ -99,9 +110,16 @@ export interface StatusProtoMsg {
   typeUrl: "/intento.claim.v1.Status";
   value: Uint8Array;
 }
-/** Status contains for an action if it is completed and claimed */
+/**
+ * Status contains for an action if it is completed and claimed
+ * @name StatusAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.Status
+ */
 export interface StatusAmino {
-  /** true if action is completed */
+  /**
+   * true if action is completed
+   */
   action_completed?: boolean;
   /**
    * true if action is completed
@@ -131,6 +149,11 @@ export interface MsgClaimClaimableProtoMsg {
   typeUrl: "/intento.claim.v1.MsgClaimClaimable";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimClaimableAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.MsgClaimClaimable
+ */
 export interface MsgClaimClaimableAmino {
   sender?: string;
 }
@@ -149,8 +172,15 @@ export interface MsgClaimClaimableResponseProtoMsg {
   typeUrl: "/intento.claim.v1.MsgClaimClaimableResponse";
   value: Uint8Array;
 }
+/**
+ * @name MsgClaimClaimableResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.MsgClaimClaimableResponse
+ */
 export interface MsgClaimClaimableResponseAmino {
-  /** returned claimable amount for the address */
+  /**
+   * returned claimable amount for the address
+   */
   claimed_amount?: CoinAmino[];
 }
 export interface MsgClaimClaimableResponseAminoMsg {
@@ -169,7 +199,12 @@ export interface MsgUpdateParamsProtoMsg {
   typeUrl: "/intento.claim.v1.MsgUpdateParams";
   value: Uint8Array;
 }
-/** MsgUpdateParams is the request type for updating claim module's params. */
+/**
+ * MsgUpdateParams is the request type for updating claim module's params.
+ * @name MsgUpdateParamsAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.MsgUpdateParams
+ */
 export interface MsgUpdateParamsAmino {
   authority?: string;
   params: ParamsAmino;
@@ -189,7 +224,12 @@ export interface MsgUpdateParamsResponseProtoMsg {
   typeUrl: "/intento.claim.v1.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
-/** MsgUpdateParamsResponse is the response type for executing MsgUpdateParams. */
+/**
+ * MsgUpdateParamsResponse is the response type for executing MsgUpdateParams.
+ * @name MsgUpdateParamsResponseAmino
+ * @package intento.claim.v1
+ * @see proto type: intento.claim.v1.MsgUpdateParamsResponse
+ */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
   type: "/intento.claim.v1.MsgUpdateParamsResponse";

@@ -21,6 +21,11 @@ export interface PoolProtoMsg {
   typeUrl: "/elys.stablestake.Pool";
   value: Uint8Array;
 }
+/**
+ * @name PoolAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.Pool
+ */
 export interface PoolAmino {
   deposit_denom?: string;
   interest_rate?: string;
@@ -59,6 +64,11 @@ export interface AmmPoolProtoMsg {
   typeUrl: "/elys.stablestake.AmmPool";
   value: Uint8Array;
 }
+/**
+ * @name AmmPoolAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.AmmPool
+ */
 export interface AmmPoolAmino {
   id?: string;
   total_liabilities?: CoinAmino[];

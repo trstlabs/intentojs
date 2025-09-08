@@ -18,6 +18,11 @@ export interface FeeInfoProtoMsg {
   typeUrl: "/elys.masterchef.FeeInfo";
   value: Uint8Array;
 }
+/**
+ * @name FeeInfoAmino
+ * @package elys.masterchef
+ * @see proto type: elys.masterchef.FeeInfo
+ */
 export interface FeeInfoAmino {
   gas_lp?: string;
   gas_stakers?: string;

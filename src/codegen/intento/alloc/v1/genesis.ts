@@ -11,7 +11,12 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/intento.alloc.v1.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the alloc module's genesis state. */
+/**
+ * GenesisState defines the alloc module's genesis state.
+ * @name GenesisStateAmino
+ * @package intento.alloc.v1
+ * @see proto type: intento.alloc.v1.GenesisState
+ */
 export interface GenesisStateAmino {
   params?: ParamsAmino;
 }

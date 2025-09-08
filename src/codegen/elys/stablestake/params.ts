@@ -19,6 +19,11 @@ export interface LegacyParamsProtoMsg {
   typeUrl: "/elys.stablestake.LegacyParams";
   value: Uint8Array;
 }
+/**
+ * @name LegacyParamsAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.LegacyParams
+ */
 export interface LegacyParamsAmino {
   deposit_denom?: string;
   redemption_rate?: string;
@@ -66,7 +71,12 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.stablestake.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name ParamsAmino
+ * @package elys.stablestake
+ * @see proto type: elys.stablestake.Params
+ */
 export interface ParamsAmino {
   legacy_deposit_denom?: string;
   legacy_redemption_rate?: string;

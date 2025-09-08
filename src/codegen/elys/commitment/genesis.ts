@@ -19,7 +19,12 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/elys.commitment.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the commitment module's genesis state. */
+/**
+ * GenesisState defines the commitment module's genesis state.
+ * @name GenesisStateAmino
+ * @package elys.commitment
+ * @see proto type: elys.commitment.GenesisState
+ */
 export interface GenesisStateAmino {
   params?: ParamsAmino;
   commitments?: CommitmentsAmino[];

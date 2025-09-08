@@ -23,9 +23,16 @@ export interface ParamsProtoMsg {
   typeUrl: "/elys.amm.Params";
   value: Uint8Array;
 }
+/**
+ * @name ParamsAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.Params
+ */
 export interface ParamsAmino {
   pool_creation_fee?: string;
-  /** default 1 week: 604,800 */
+  /**
+   * default 1 week: 604,800
+   */
   slippage_track_duration?: string;
   base_assets?: string[];
   weight_breaking_fee_exponent?: string;

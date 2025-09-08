@@ -10,6 +10,11 @@ export interface DenomLiquidityProtoMsg {
   typeUrl: "/elys.amm.DenomLiquidity";
   value: Uint8Array;
 }
+/**
+ * @name DenomLiquidityAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.DenomLiquidity
+ */
 export interface DenomLiquidityAmino {
   denom?: string;
   liquidity?: string;

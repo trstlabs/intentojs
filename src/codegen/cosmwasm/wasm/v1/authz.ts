@@ -21,9 +21,14 @@ export interface ContractExecutionAuthorizationProtoMsg {
 /**
  * ContractExecutionAuthorization defines authorization for wasm execute.
  * Since: wasmd 0.30
+ * @name ContractExecutionAuthorizationAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.ContractExecutionAuthorization
  */
 export interface ContractExecutionAuthorizationAmino {
-  /** Grants for contract executions */
+  /**
+   * Grants for contract executions
+   */
   grants?: ContractGrantAmino[];
 }
 export interface ContractExecutionAuthorizationAminoMsg {
@@ -54,9 +59,14 @@ export interface ContractMigrationAuthorizationProtoMsg {
 /**
  * ContractMigrationAuthorization defines authorization for wasm contract
  * migration. Since: wasmd 0.30
+ * @name ContractMigrationAuthorizationAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.ContractMigrationAuthorization
  */
 export interface ContractMigrationAuthorizationAmino {
-  /** Grants for contract migrations */
+  /**
+   * Grants for contract migrations
+   */
   grants?: ContractGrantAmino[];
 }
 export interface ContractMigrationAuthorizationAminoMsg {
@@ -110,9 +120,14 @@ export type ContractGrantEncoded = Omit<ContractGrant, "limit" | "filter"> & {
 /**
  * ContractGrant a granted permission for a single contract
  * Since: wasmd 0.30
+ * @name ContractGrantAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.ContractGrant
  */
 export interface ContractGrantAmino {
-  /** Contract is the bech32 address of the smart contract */
+  /**
+   * Contract is the bech32 address of the smart contract
+   */
   contract?: string;
   /**
    * Limit defines execution limits that are enforced and updated when the grant
@@ -155,9 +170,14 @@ export interface MaxCallsLimitProtoMsg {
 /**
  * MaxCallsLimit limited number of calls to the contract. No funds transferable.
  * Since: wasmd 0.30
+ * @name MaxCallsLimitAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MaxCallsLimit
  */
 export interface MaxCallsLimitAmino {
-  /** Remaining number that is decremented on each execution */
+  /**
+   * Remaining number that is decremented on each execution
+   */
   remaining?: string;
 }
 export interface MaxCallsLimitAminoMsg {
@@ -188,9 +208,14 @@ export interface MaxFundsLimitProtoMsg {
 /**
  * MaxFundsLimit defines the maximal amounts that can be sent to the contract.
  * Since: wasmd 0.30
+ * @name MaxFundsLimitAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MaxFundsLimit
  */
 export interface MaxFundsLimitAmino {
-  /** Amounts is the maximal amount of tokens transferable to the contract. */
+  /**
+   * Amounts is the maximal amount of tokens transferable to the contract.
+   */
   amounts?: CoinAmino[];
 }
 export interface MaxFundsLimitAminoMsg {
@@ -225,11 +250,18 @@ export interface CombinedLimitProtoMsg {
  * CombinedLimit defines the maximal amounts that can be sent to a contract and
  * the maximal number of calls executable. Both need to remain >0 to be valid.
  * Since: wasmd 0.30
+ * @name CombinedLimitAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.CombinedLimit
  */
 export interface CombinedLimitAmino {
-  /** Remaining number that is decremented on each execution */
+  /**
+   * Remaining number that is decremented on each execution
+   */
   calls_remaining?: string;
-  /** Amounts is the maximal amount of tokens transferable to the contract. */
+  /**
+   * Amounts is the maximal amount of tokens transferable to the contract.
+   */
   amounts?: CoinAmino[];
 }
 export interface CombinedLimitAminoMsg {
@@ -262,6 +294,9 @@ export interface AllowAllMessagesFilterProtoMsg {
  * AllowAllMessagesFilter is a wildcard to allow any type of contract payload
  * message.
  * Since: wasmd 0.30
+ * @name AllowAllMessagesFilterAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.AllowAllMessagesFilter
  */
 export interface AllowAllMessagesFilterAmino {}
 export interface AllowAllMessagesFilterAminoMsg {
@@ -294,9 +329,14 @@ export interface AcceptedMessageKeysFilterProtoMsg {
  * AcceptedMessageKeysFilter accept only the specific contract message keys in
  * the json object to be executed.
  * Since: wasmd 0.30
+ * @name AcceptedMessageKeysFilterAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.AcceptedMessageKeysFilter
  */
 export interface AcceptedMessageKeysFilterAmino {
-  /** Messages is the list of unique keys */
+  /**
+   * Messages is the list of unique keys
+   */
   keys?: string[];
 }
 export interface AcceptedMessageKeysFilterAminoMsg {
@@ -330,9 +370,14 @@ export interface AcceptedMessagesFilterProtoMsg {
  * AcceptedMessagesFilter accept only the specific raw contract messages to be
  * executed.
  * Since: wasmd 0.30
+ * @name AcceptedMessagesFilterAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.AcceptedMessagesFilter
  */
 export interface AcceptedMessagesFilterAmino {
-  /** Messages is the list of raw contract messages */
+  /**
+   * Messages is the list of raw contract messages
+   */
   messages?: any[];
 }
 export interface AcceptedMessagesFilterAminoMsg {

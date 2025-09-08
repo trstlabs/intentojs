@@ -19,6 +19,9 @@ export interface ElysStakedProtoMsg {
  * Elys staked amount is tracked because EdenBoost has to be burnt when unstake
  * ELYS event happens, and there's no way to track staked amount change from
  * staking hook and this struct is added.
+ * @name ElysStakedAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.ElysStaked
  */
 export interface ElysStakedAmino {
   address?: string;

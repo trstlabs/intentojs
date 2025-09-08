@@ -65,6 +65,11 @@ export interface QueryEarnPoolRequestProtoMsg {
   typeUrl: "/elys.amm.QueryEarnPoolRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryEarnPoolRequestAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryEarnPoolRequest
+ */
 export interface QueryEarnPoolRequestAmino {
   pool_ids?: string[];
   filter_type?: FilterType;
@@ -101,6 +106,11 @@ export interface EarnPoolProtoMsg {
   typeUrl: "/elys.amm.EarnPool";
   value: Uint8Array;
 }
+/**
+ * @name EarnPoolAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.EarnPool
+ */
 export interface EarnPoolAmino {
   pool_id?: string;
   assets?: PoolAssetAmino[];
@@ -148,6 +158,11 @@ export interface QueryEarnPoolResponseProtoMsg {
   typeUrl: "/elys.amm.QueryEarnPoolResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryEarnPoolResponseAmino
+ * @package elys.amm
+ * @see proto type: elys.amm.QueryEarnPoolResponse
+ */
 export interface QueryEarnPoolResponseAmino {
   pools?: EarnPoolAmino[];
 }

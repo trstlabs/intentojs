@@ -23,9 +23,14 @@ export interface DexRewardsTrackerProtoMsg {
 /**
  * DexRewardsTracker is used for tracking rewards for stakers and LPs, all
  * amount here is in USDC
+ * @name DexRewardsTrackerAmino
+ * @package elys.estaking
+ * @see proto type: elys.estaking.DexRewardsTracker
  */
 export interface DexRewardsTrackerAmino {
-  /** Number of blocks since start of epoch (distribution epoch) */
+  /**
+   * Number of blocks since start of epoch (distribution epoch)
+   */
   num_blocks?: string;
   /**
    * Accumulated amount at distribution epoch - recalculated at every

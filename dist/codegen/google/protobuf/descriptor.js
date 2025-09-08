@@ -1,7 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ServiceOptions = exports.EnumValueOptions = exports.EnumOptions = exports.OneofOptions = exports.FieldOptions = exports.MessageOptions = exports.FileOptions = exports.MethodDescriptorProto = exports.ServiceDescriptorProto = exports.EnumValueDescriptorProto = exports.EnumDescriptorProto_EnumReservedRange = exports.EnumDescriptorProto = exports.OneofDescriptorProto = exports.FieldDescriptorProto = exports.ExtensionRangeOptions = exports.DescriptorProto_ReservedRange = exports.DescriptorProto_ExtensionRange = exports.DescriptorProto = exports.FileDescriptorProto = exports.FileDescriptorSet = exports.methodOptions_IdempotencyLevelToJSON = exports.methodOptions_IdempotencyLevelFromJSON = exports.MethodOptions_IdempotencyLevelAmino = exports.MethodOptions_IdempotencyLevelSDKType = exports.MethodOptions_IdempotencyLevel = exports.fieldOptions_JSTypeToJSON = exports.fieldOptions_JSTypeFromJSON = exports.FieldOptions_JSTypeAmino = exports.FieldOptions_JSTypeSDKType = exports.FieldOptions_JSType = exports.fieldOptions_CTypeToJSON = exports.fieldOptions_CTypeFromJSON = exports.FieldOptions_CTypeAmino = exports.FieldOptions_CTypeSDKType = exports.FieldOptions_CType = exports.fileOptions_OptimizeModeToJSON = exports.fileOptions_OptimizeModeFromJSON = exports.FileOptions_OptimizeModeAmino = exports.FileOptions_OptimizeModeSDKType = exports.FileOptions_OptimizeMode = exports.fieldDescriptorProto_LabelToJSON = exports.fieldDescriptorProto_LabelFromJSON = exports.FieldDescriptorProto_LabelAmino = exports.FieldDescriptorProto_LabelSDKType = exports.FieldDescriptorProto_Label = exports.fieldDescriptorProto_TypeToJSON = exports.fieldDescriptorProto_TypeFromJSON = exports.FieldDescriptorProto_TypeAmino = exports.FieldDescriptorProto_TypeSDKType = exports.FieldDescriptorProto_Type = void 0;
-exports.GeneratedCodeInfo_Annotation = exports.GeneratedCodeInfo = exports.SourceCodeInfo_Location = exports.SourceCodeInfo = exports.UninterpretedOption_NamePart = exports.UninterpretedOption = exports.MethodOptions = void 0;
+exports.GeneratedCodeInfo_Annotation = exports.GeneratedCodeInfo = exports.SourceCodeInfo_Location = exports.SourceCodeInfo = exports.UninterpretedOption_NamePart = exports.UninterpretedOption = exports.MethodOptions = exports.ServiceOptions = exports.EnumValueOptions = exports.EnumOptions = exports.OneofOptions = exports.FieldOptions = exports.MessageOptions = exports.FileOptions = exports.MethodDescriptorProto = exports.ServiceDescriptorProto = exports.EnumValueDescriptorProto = exports.EnumDescriptorProto_EnumReservedRange = exports.EnumDescriptorProto = exports.OneofDescriptorProto = exports.FieldDescriptorProto = exports.ExtensionRangeOptions = exports.DescriptorProto_ReservedRange = exports.DescriptorProto_ExtensionRange = exports.DescriptorProto = exports.FileDescriptorProto = exports.FileDescriptorSet = exports.MethodOptions_IdempotencyLevelAmino = exports.MethodOptions_IdempotencyLevelSDKType = exports.MethodOptions_IdempotencyLevel = exports.FieldOptions_JSTypeAmino = exports.FieldOptions_JSTypeSDKType = exports.FieldOptions_JSType = exports.FieldOptions_CTypeAmino = exports.FieldOptions_CTypeSDKType = exports.FieldOptions_CType = exports.FileOptions_OptimizeModeAmino = exports.FileOptions_OptimizeModeSDKType = exports.FileOptions_OptimizeMode = exports.FieldDescriptorProto_LabelAmino = exports.FieldDescriptorProto_LabelSDKType = exports.FieldDescriptorProto_Label = exports.FieldDescriptorProto_TypeAmino = exports.FieldDescriptorProto_TypeSDKType = exports.FieldDescriptorProto_Type = void 0;
+exports.fieldDescriptorProto_TypeFromJSON = fieldDescriptorProto_TypeFromJSON;
+exports.fieldDescriptorProto_TypeToJSON = fieldDescriptorProto_TypeToJSON;
+exports.fieldDescriptorProto_LabelFromJSON = fieldDescriptorProto_LabelFromJSON;
+exports.fieldDescriptorProto_LabelToJSON = fieldDescriptorProto_LabelToJSON;
+exports.fileOptions_OptimizeModeFromJSON = fileOptions_OptimizeModeFromJSON;
+exports.fileOptions_OptimizeModeToJSON = fileOptions_OptimizeModeToJSON;
+exports.fieldOptions_CTypeFromJSON = fieldOptions_CTypeFromJSON;
+exports.fieldOptions_CTypeToJSON = fieldOptions_CTypeToJSON;
+exports.fieldOptions_JSTypeFromJSON = fieldOptions_JSTypeFromJSON;
+exports.fieldOptions_JSTypeToJSON = fieldOptions_JSTypeToJSON;
+exports.methodOptions_IdempotencyLevelFromJSON = methodOptions_IdempotencyLevelFromJSON;
+exports.methodOptions_IdempotencyLevelToJSON = methodOptions_IdempotencyLevelToJSON;
 const binary_1 = require("../../binary");
 const registry_1 = require("../../registry");
 const helpers_1 = require("../../helpers");
@@ -113,7 +124,6 @@ function fieldDescriptorProto_TypeFromJSON(object) {
             return FieldDescriptorProto_Type.UNRECOGNIZED;
     }
 }
-exports.fieldDescriptorProto_TypeFromJSON = fieldDescriptorProto_TypeFromJSON;
 function fieldDescriptorProto_TypeToJSON(object) {
     switch (object) {
         case FieldDescriptorProto_Type.TYPE_DOUBLE:
@@ -157,7 +167,6 @@ function fieldDescriptorProto_TypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.fieldDescriptorProto_TypeToJSON = fieldDescriptorProto_TypeToJSON;
 var FieldDescriptorProto_Label;
 (function (FieldDescriptorProto_Label) {
     /** LABEL_OPTIONAL - 0 is reserved for errors */
@@ -185,7 +194,6 @@ function fieldDescriptorProto_LabelFromJSON(object) {
             return FieldDescriptorProto_Label.UNRECOGNIZED;
     }
 }
-exports.fieldDescriptorProto_LabelFromJSON = fieldDescriptorProto_LabelFromJSON;
 function fieldDescriptorProto_LabelToJSON(object) {
     switch (object) {
         case FieldDescriptorProto_Label.LABEL_OPTIONAL:
@@ -199,7 +207,6 @@ function fieldDescriptorProto_LabelToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.fieldDescriptorProto_LabelToJSON = fieldDescriptorProto_LabelToJSON;
 /** Generated classes can be optimized for speed or code size. */
 var FileOptions_OptimizeMode;
 (function (FileOptions_OptimizeMode) {
@@ -230,7 +237,6 @@ function fileOptions_OptimizeModeFromJSON(object) {
             return FileOptions_OptimizeMode.UNRECOGNIZED;
     }
 }
-exports.fileOptions_OptimizeModeFromJSON = fileOptions_OptimizeModeFromJSON;
 function fileOptions_OptimizeModeToJSON(object) {
     switch (object) {
         case FileOptions_OptimizeMode.SPEED:
@@ -244,7 +250,6 @@ function fileOptions_OptimizeModeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.fileOptions_OptimizeModeToJSON = fileOptions_OptimizeModeToJSON;
 var FieldOptions_CType;
 (function (FieldOptions_CType) {
     /** STRING - Default mode. */
@@ -272,7 +277,6 @@ function fieldOptions_CTypeFromJSON(object) {
             return FieldOptions_CType.UNRECOGNIZED;
     }
 }
-exports.fieldOptions_CTypeFromJSON = fieldOptions_CTypeFromJSON;
 function fieldOptions_CTypeToJSON(object) {
     switch (object) {
         case FieldOptions_CType.STRING:
@@ -286,7 +290,6 @@ function fieldOptions_CTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.fieldOptions_CTypeToJSON = fieldOptions_CTypeToJSON;
 var FieldOptions_JSType;
 (function (FieldOptions_JSType) {
     /** JS_NORMAL - Use the default type. */
@@ -316,7 +319,6 @@ function fieldOptions_JSTypeFromJSON(object) {
             return FieldOptions_JSType.UNRECOGNIZED;
     }
 }
-exports.fieldOptions_JSTypeFromJSON = fieldOptions_JSTypeFromJSON;
 function fieldOptions_JSTypeToJSON(object) {
     switch (object) {
         case FieldOptions_JSType.JS_NORMAL:
@@ -330,7 +332,6 @@ function fieldOptions_JSTypeToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.fieldOptions_JSTypeToJSON = fieldOptions_JSTypeToJSON;
 /**
  * Is this method side-effect-free (or safe in HTTP parlance), or idempotent,
  * or neither? HTTP based RPC implementation may choose GET verb for safe
@@ -364,7 +365,6 @@ function methodOptions_IdempotencyLevelFromJSON(object) {
             return MethodOptions_IdempotencyLevel.UNRECOGNIZED;
     }
 }
-exports.methodOptions_IdempotencyLevelFromJSON = methodOptions_IdempotencyLevelFromJSON;
 function methodOptions_IdempotencyLevelToJSON(object) {
     switch (object) {
         case MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN:
@@ -378,7 +378,6 @@ function methodOptions_IdempotencyLevelToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-exports.methodOptions_IdempotencyLevelToJSON = methodOptions_IdempotencyLevelToJSON;
 function createBaseFileDescriptorSet() {
     return {
         file: []
