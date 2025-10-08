@@ -3,6 +3,7 @@ import {
   defaultRegistryTypes,
   AminoTypes,
   SigningStargateClient,
+  createDefaultAminoConverters,
 } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import { customMsgRegistry } from "./registry";
@@ -14,7 +15,6 @@ import {
   osmosisAminoConverters,
   cosmwasmAminoConverters,
 } from "./codegen";
-
 export const getIntentoSigningClientOptions = ({
   defaultTypes = defaultRegistryTypes,
 }: {
@@ -30,6 +30,7 @@ export const getIntentoSigningClientOptions = ({
   ]);
 
   const aminoTypes = new AminoTypes({
+    ...createDefaultAminoConverters(), // THIS INCLUDES AUTHZ AND ALL STANDARD COSMOS TYPES
     ...intentoAminoConverters,
     ...cosmosAminoConverters,
     ...osmosisAminoConverters,
