@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { GenericAuthorization } from "./authz";
 import { MsgGrant, MsgExec, MsgRevoke } from "./tx";
 export const AminoConverter = {
   "/cosmos.authz.v1beta1.MsgGrant": {
