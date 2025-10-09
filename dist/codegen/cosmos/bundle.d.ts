@@ -635,6 +635,11 @@ export declare namespace cosmos {
                     toAmino: (message: _10.MsgRevoke) => _10.MsgRevokeAmino;
                     fromAmino: (object: _10.MsgRevokeAmino) => _10.MsgRevoke;
                 };
+                "/cosmos.authz.v1beta1.GenericAuthorization": {
+                    aminoType: string;
+                    toAmino: any;
+                    fromAmino: any;
+                };
             };
             MsgGrant: {
                 typeUrl: string;

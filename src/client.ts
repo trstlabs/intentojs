@@ -15,6 +15,7 @@ import {
   osmosisAminoConverters,
   cosmwasmAminoConverters,
 } from "./codegen";
+import { GenericAuthorization } from "./codegen/cosmos/authz/v1beta1/authz";
 export const getIntentoSigningClientOptions = ({
   defaultTypes = defaultRegistryTypes,
 }: {

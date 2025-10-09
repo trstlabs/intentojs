@@ -15,6 +15,7 @@ import {
   MsgSwapExactAmountIn,
   MsgSwapExactAmountOut,
 } from "./codegen/elys/amm/tx";
+import { GenericAuthorization } from "./codegen/cosmos/authz/v1beta1/authz";
 
 export const customMsgRegistry: ReadonlyArray<
   [string, TelescopeGeneratedCodec]
@@ -43,4 +44,5 @@ export const customMsgRegistry: ReadonlyArray<
   ["/elys.stablestake.MsgBond", MsgBond],
   ["/elys.amm.MsgSwapExactAmountIn", MsgSwapExactAmountIn],
   ["/elys.amm.MsgSwapExactAmountOut", MsgSwapExactAmountOut],
+  ["/cosmos.authz.v1beta1.GenericAuthorization", GenericAuthorization],
 ];
