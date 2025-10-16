@@ -68,7 +68,13 @@ telescope({
           "ibc.core.types.v1",
         ]
       },
-
+      // These conflict with mesage encoding (e.g. QuerySupplyOfResponse, QueryValidatorOutstandingRewardsRequest, QueryGranteeGrantsRequest, QueryValidatorOutstandingRewardsRequest)
+      hardProtos: [
+        "cosmos/authz/v1beta1/query.proto",
+        "cosmos/staking/v1beta1/query.proto",
+        "cosmos/bank/v1beta1/query.proto",
+        "cosmos/distribution/v1beta1/query.proto",
+      ],
       methods: {
         fromJSON: true,
         toJSON: true,
