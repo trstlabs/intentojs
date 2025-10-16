@@ -1,22 +1,22 @@
-import * as _160 from "./interchainquery/v1/genesis";
-import * as _161 from "./interchainquery/v1/messages";
-import * as _162 from "./interchainquery/v1/query";
-import * as _257 from "./interchainquery/v1/messages.amino";
-import * as _258 from "./interchainquery/v1/messages.registry";
-import * as _259 from "./interchainquery/v1/messages.rpc.msg";
-import * as _271 from "./rpc.tx";
+import * as _156 from "./interchainquery/v1/genesis";
+import * as _157 from "./interchainquery/v1/messages";
+import * as _158 from "./interchainquery/v1/query";
+import * as _249 from "./interchainquery/v1/messages.amino";
+import * as _250 from "./interchainquery/v1/messages.registry";
+import * as _251 from "./interchainquery/v1/messages.rpc.msg";
+import * as _263 from "./rpc.tx";
 export namespace stride {
   export namespace interchainquery {
     export const v1 = {
-      ..._160,
-      ..._161,
-      ..._162,
-      ..._257,
-      ..._258,
-      ..._259
+      ..._156,
+      ..._157,
+      ..._158,
+      ..._249,
+      ..._250,
+      ..._251
     };
   }
   export const ClientFactory = {
-    ..._271
+    ..._263
   };
 }
