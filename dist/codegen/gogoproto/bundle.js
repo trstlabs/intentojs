@@ -34,8 +34,8 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gogoproto = void 0;
-const _50 = __importStar(require("./gogo"));
+const _54 = __importStar(require("./gogo"));
 exports.gogoproto = {
-    ..._50
+    ..._54
 };
 //# sourceMappingURL=bundle.js.map

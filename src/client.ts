@@ -31,7 +31,6 @@ export const getIntentoSigningClientOptions = ({
   ]);
 
   const aminoTypes = new AminoTypes({
-    ...createDefaultAminoConverters(), // THIS INCLUDES AUTHZ AND ALL STANDARD COSMOS TYPES
     ...intentoAminoConverters,
     ...cosmosAminoConverters,
     ...osmosisAminoConverters,
