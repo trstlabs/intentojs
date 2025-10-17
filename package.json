@@ -1,6 +1,6 @@
 {
   "name": "intentojs",
-  "version": "1.0.4-proto.0-beta.9",
+  "version": "1.0.4-proto.0-beta.10",
   "description": "package to interact with the Intento blockchain",
   "author": "danieljdd <info@trstlabs.xyz>",
   "homepage": "https://github.com/trstlabs/intentojs#readme",

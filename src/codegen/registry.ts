@@ -36,12 +36,33 @@ export class GlobalDecoderRegistry {
    * Check if a typeUrl is a query type (should not be used in transactions)
    */
   static isQueryType(typeUrl: string): boolean {
-    // Query types contain "Query" in the message name or path
-    return (
-      typeUrl.includes("Query") ||
-      typeUrl.includes("Request") ||
-      typeUrl.includes("Response")
-    );
+    // Query types contain "Query" in the message name
+    // But exclude MsgResponse types which are legitimate transaction responses
+    if (typeUrl.includes("Query")) {
+      return true;
+    }
+
+    // Block Request/Response only if they're part of query services
+    // Transaction responses follow pattern: MsgXxxResponse
+    // Query requests/responses follow pattern: QueryXxxRequest/Response
+    const parts = typeUrl.split(".");
+    const messageName = parts[parts.length - 1];
+
+    // If it starts with "Query", it's a query type
+    if (messageName.startsWith("Query")) {
+      return true;
+    }
+
+    // Allow MsgXxxResponse (transaction responses)
+    // Block other Request/Response patterns
+    if (
+      messageName.endsWith("Request") ||
+      (messageName.endsWith("Response") && !messageName.startsWith("Msg"))
+    ) {
+      return true;
+    }
+
+    return false;
   }
 
   static register<T, SDK, Amino>(
@@ -56,7 +77,6 @@ export class GlobalDecoderRegistry {
 
     GlobalDecoderRegistry.registry[key] = decoder;
   }
-
   static getDecoder<T, SDK, Amino>(
     key: string
   ): TelescopeGeneratedCodec<T, SDK, Amino> {
