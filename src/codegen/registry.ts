@@ -29,6 +29,10 @@ export class GlobalDecoderRegistry {
   }
 
   static registerAminoProtoMapping(aminoType: string, typeUrl: string) {
+    // Don't register amino mappings for query types
+    if (GlobalDecoderRegistry.isQueryType(typeUrl)) {
+      return;
+    }
     GlobalDecoderRegistry.aminoProtoMapping[aminoType] = typeUrl;
   }
 
@@ -77,11 +81,13 @@ export class GlobalDecoderRegistry {
 
     GlobalDecoderRegistry.registry[key] = decoder;
   }
+
   static getDecoder<T, SDK, Amino>(
     key: string
   ): TelescopeGeneratedCodec<T, SDK, Amino> {
     return GlobalDecoderRegistry.registry[key];
   }
+
   static getDecoderByInstance<T, SDK, Amino>(
     obj: unknown
   ): TelescopeGeneratedCodec<T, SDK, Amino> | null {
@@ -96,6 +102,7 @@ export class GlobalDecoderRegistry {
       );
     }
 
+    // Try all registered decoders using their type checking methods
     for (const key in GlobalDecoderRegistry.registry) {
       if (
         Object.prototype.hasOwnProperty.call(
@@ -105,15 +112,25 @@ export class GlobalDecoderRegistry {
       ) {
         const element = GlobalDecoderRegistry.registry[key];
 
-        if (element.is!(obj)) {
+        if (element.is && element.is(obj)) {
+          // Found a match! Add $typeUrl to help future lookups
+          if (obj && typeof obj === "object") {
+            (obj as any).$typeUrl = element.typeUrl;
+          }
           return element;
         }
 
         if (element.isSDK && element.isSDK(obj)) {
+          if (obj && typeof obj === "object") {
+            (obj as any).$typeUrl = element.typeUrl;
+          }
           return element;
         }
 
         if (element.isAmino && element.isAmino(obj)) {
+          if (obj && typeof obj === "object") {
+            (obj as any).$typeUrl = element.typeUrl;
+          }
           return element;
         }
       }
@@ -121,6 +138,7 @@ export class GlobalDecoderRegistry {
 
     return null;
   }
+
   static getDecoderByAminoType<T, SDK, Amino>(
     type: string
   ): TelescopeGeneratedCodec<T, SDK, Amino> | null {
@@ -136,6 +154,7 @@ export class GlobalDecoderRegistry {
 
     return GlobalDecoderRegistry.getDecoder<T, SDK, Amino>(typeUrl);
   }
+
   static wrapAny(obj: unknown): Any {
     if (Any.is(obj)) {
       return obj;
@@ -148,6 +167,7 @@ export class GlobalDecoderRegistry {
       value: decoder.encode(obj).finish(),
     };
   }
+
   static unwrapAny<T, SDK, Amino>(input: BinaryReader | Uint8Array | Any) {
     let data;
 
@@ -170,34 +190,49 @@ export class GlobalDecoderRegistry {
 
     return decoder.decode(data.value);
   }
+
   static fromJSON<T>(object: any): T {
     const decoder = getDecoderByInstance<T>(object);
     return decoder.fromJSON!(object);
   }
+
   static toJSON<T>(message: T): any {
     const decoder = getDecoderByInstance<T>(message);
     return decoder.toJSON!(message);
   }
+
   static fromPartial<T>(object: unknown): T {
     const decoder = getDecoderByInstance<T>(object);
     return decoder ? decoder.fromPartial(object) : (object as T);
   }
+
   static fromSDK<T = unknown, SDK = unknown>(object: SDK): T {
     const decoder = getDecoderByInstance<T, SDK>(object);
     return decoder.fromSDK!(object);
   }
+
   static fromSDKJSON<SDK = unknown>(object: any): SDK {
     const decoder = getDecoderByInstance<unknown, SDK>(object);
     return decoder.fromSDKJSON!(object);
   }
+
   static toSDK<T = unknown, SDK = unknown>(object: T): SDK {
     const decoder = getDecoderByInstance<T, SDK>(object);
     return decoder.toSDK!(object);
   }
+
   static fromAmino<T = unknown, Amino = unknown>(object: Amino): T {
     const decoder = getDecoderByInstance<T, unknown, Amino>(object);
-    return decoder.fromAmino!(object);
+    const result = decoder.fromAmino!(object);
+
+    // CRITICAL: Ensure the result has $typeUrl for later encoder lookups
+    if (result && typeof result === "object" && !("$typeUrl" in result)) {
+      (result as any).$typeUrl = decoder.typeUrl;
+    }
+
+    return result;
   }
+
   static fromAminoMsg<T = unknown, Amino = unknown>(object: AnyAmino): T {
     const decoder = GlobalDecoderRegistry.getDecoderByAminoType<
       T,
@@ -209,8 +244,17 @@ export class GlobalDecoderRegistry {
       throw new Error(`There's no decoder for the amino type ${object.type}`);
     }
 
-    return decoder.fromAminoMsg!(object);
+    const result = decoder.fromAminoMsg!(object);
+
+    // CRITICAL: Ensure the result has $typeUrl for later encoder lookups
+    // This is needed because fromAminoMsg often returns plain objects without $typeUrl
+    if (result && typeof result === "object" && !("$typeUrl" in result)) {
+      (result as any).$typeUrl = decoder.typeUrl;
+    }
+
+    return result;
   }
+
   static toAmino<T = unknown, Amino = unknown>(object: T): Amino {
     let data: any;
     let decoder: TelescopeGeneratedCodec<any, any, any>;
@@ -229,6 +273,7 @@ export class GlobalDecoderRegistry {
 
     return decoder.toAmino!(data);
   }
+
   static toAminoMsg<T = unknown, Amino = unknown>(object: T): AnyAmino {
     let data: any;
     let decoder: TelescopeGeneratedCodec<any, any, any>;

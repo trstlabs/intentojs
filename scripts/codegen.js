@@ -1,4 +1,5 @@
 const { join } = require("path");
+const { readFileSync, writeFileSync, existsSync, mkdirSync } = require("fs");
 const telescope = require("@cosmology/telescope").default;
 const rimraf = require("rimraf").rimrafSync;
 const { AMINO_MAP } = require("./aminos");
@@ -8,8 +9,23 @@ const protoDirs = [
   join(__dirname, "/../intento/proto"),
 ];
 const outPath = join(__dirname, "../src/codegen");
+const registryPath = join(outPath, "registry.ts");
+
+// Backup custom registry.ts if it exists
+let customRegistryContent = null;
+if (existsSync(registryPath)) {
+  console.log("Backing up custom registry.ts...");
+  customRegistryContent = readFileSync(registryPath, 'utf-8');
+}
+
+// Clean and regenerate code
+console.log("Cleaning and regenerating code...");
 rimraf(outPath);
 
+// Create the codegen directory if it doesn't exist
+mkdirSync(outPath, { recursive: true });
+
+// Run the code generation
 telescope({
   protoDirs,
   outPath,
@@ -21,9 +37,7 @@ telescope({
       ],
       patterns: ["**/*amino.ts", "**/*registry.ts"],
     },
-
     includePackageVar: false,
-    // removeUnusedImports: true,
     experimentalGlobalProtoNamespace: true,
     interfaces: {
       enabled: true,
@@ -31,15 +45,11 @@ telescope({
       useGlobalDecoderRegistry: true,
       registerAllDecodersToGlobal: true,
       useByDefault: false,
-      // useByDefaultRpc: false,
-      // useUseInterfacesParams: false,
     },
     prototypes: {
       enabled: true,
       excluded: {
         packages: [
-          // 'ibc.applications.fee.v1',
-
           "cosmos.app.v1alpha1",
           "cosmos.app.v1beta1",
           "cosmos.autocli.v1",
@@ -64,12 +74,10 @@ telescope({
           "cosmos.params.v1beta1",
           "cosmos.slashing.v1beta1",
           "cosmos.vesting.v1beta1",
-          // 'google.api',
           "ibc.core.port.v1",
           "ibc.core.types.v1",
         ],
       },
-
       methods: {
         fromJSON: true,
         toJSON: true,
@@ -79,7 +87,6 @@ telescope({
         toAmino: true,
         fromAmino: true,
       },
-
       addTypeUrlToDecoders: true,
       addTypeUrlToObjects: true,
       addAminoTypeToObjects: true,
@@ -97,10 +104,6 @@ telescope({
         },
       },
     },
-
-    aminoEncoding: {
-      enabled: true,
-    },
     lcdClients: {
       enabled: false,
     },
@@ -108,12 +111,22 @@ telescope({
       enabled: true,
       camelCase: true,
     },
+    reactQuery: {
+      enabled: false,
+    },
+    aminoEncoding: {
+      enabled: true
+    },
   },
-})
-  .then(() => {
-    console.log("✨ all done!");
-  })
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
+}).then(() => {
+  // After code generation is complete, restore the custom registry.ts if it existed
+  if (customRegistryContent) {
+    console.log("Restoring custom registry.ts...");
+    writeFileSync(registryPath, customRegistryContent, 'utf-8');
+    console.log("Custom registry.ts has been restored successfully!");
+  }
+  console.log("Code generation completed successfully!");
+}).catch((e) => {
+  console.error("Error during code generation:", e);
+  process.exit(1);
+});
