@@ -202,8 +202,19 @@ export class GlobalDecoderRegistry {
   }
 
   static fromPartial<T>(object: unknown): T {
-    const decoder = getDecoderByInstance<T>(object);
-    return decoder ? decoder.fromPartial(object) : (object as T);
+    // First try to get decoder by instance
+    const decoder = GlobalDecoderRegistry.getDecoderByInstance<T>(object);
+
+    if (decoder) {
+      // Ensure $typeUrl is present before calling fromPartial
+      if (object && typeof object === "object" && !("$typeUrl" in object)) {
+        (object as any).$typeUrl = decoder.typeUrl;
+      }
+      return decoder.fromPartial(object);
+    }
+
+    // If no decoder found, return as-is (fallback behavior)
+    return object as T;
   }
 
   static fromSDK<T = unknown, SDK = unknown>(object: SDK): T {
@@ -302,8 +313,10 @@ function getDecoderByInstance<T = unknown, SDK = unknown, Amino = unknown>(
   );
 
   if (!decoder) {
+    // Add more helpful error message
+    const objPreview = JSON.stringify(obj).substring(0, 200);
     throw new Error(
-      `There's no decoder for the instance ${JSON.stringify(obj)}`
+      `There's no decoder for the instance ${objPreview}... (Make sure the object has $typeUrl property or matches a registered type)`
     );
   }
 

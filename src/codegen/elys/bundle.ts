@@ -43,34 +43,34 @@ import * as _136 from "./tradeshield/order";
 import * as _137 from "./tradeshield/params";
 import * as _138 from "./tradeshield/tx";
 import * as _139 from "./tradeshield/types";
-import * as _212 from "./amm/tx.amino";
-import * as _213 from "./commitment/tx.amino";
-import * as _214 from "./estaking/tx.amino";
-import * as _215 from "./leveragelp/tx.amino";
-import * as _216 from "./masterchef/tx.amino";
-import * as _217 from "./perpetual/tx.amino";
-import * as _218 from "./stablestake/tx.amino";
-import * as _219 from "./tradeshield/tx.amino";
-import * as _220 from "./amm/tx.registry";
-import * as _221 from "./commitment/tx.registry";
-import * as _222 from "./estaking/tx.registry";
-import * as _223 from "./leveragelp/tx.registry";
-import * as _224 from "./masterchef/tx.registry";
-import * as _225 from "./perpetual/tx.registry";
-import * as _226 from "./stablestake/tx.registry";
-import * as _227 from "./tradeshield/tx.registry";
-import * as _228 from "./amm/query.rpc.Query";
-import * as _229 from "./commitment/query.rpc.Query";
-import * as _230 from "./amm/tx.rpc.msg";
-import * as _231 from "./commitment/tx.rpc.msg";
-import * as _232 from "./estaking/tx.rpc.msg";
-import * as _233 from "./leveragelp/tx.rpc.msg";
-import * as _234 from "./masterchef/tx.rpc.msg";
-import * as _235 from "./perpetual/tx.rpc.msg";
-import * as _236 from "./stablestake/tx.rpc.msg";
-import * as _237 from "./tradeshield/tx.rpc.msg";
-import * as _266 from "./rpc.query";
-import * as _267 from "./rpc.tx";
+import * as _213 from "./amm/tx.amino";
+import * as _214 from "./commitment/tx.amino";
+import * as _215 from "./estaking/tx.amino";
+import * as _216 from "./leveragelp/tx.amino";
+import * as _217 from "./masterchef/tx.amino";
+import * as _218 from "./perpetual/tx.amino";
+import * as _219 from "./stablestake/tx.amino";
+import * as _220 from "./tradeshield/tx.amino";
+import * as _221 from "./amm/tx.registry";
+import * as _222 from "./commitment/tx.registry";
+import * as _223 from "./estaking/tx.registry";
+import * as _224 from "./leveragelp/tx.registry";
+import * as _225 from "./masterchef/tx.registry";
+import * as _226 from "./perpetual/tx.registry";
+import * as _227 from "./stablestake/tx.registry";
+import * as _228 from "./tradeshield/tx.registry";
+import * as _229 from "./amm/query.rpc.Query";
+import * as _230 from "./commitment/query.rpc.Query";
+import * as _231 from "./amm/tx.rpc.msg";
+import * as _232 from "./commitment/tx.rpc.msg";
+import * as _233 from "./estaking/tx.rpc.msg";
+import * as _234 from "./leveragelp/tx.rpc.msg";
+import * as _235 from "./masterchef/tx.rpc.msg";
+import * as _236 from "./perpetual/tx.rpc.msg";
+import * as _237 from "./stablestake/tx.rpc.msg";
+import * as _238 from "./tradeshield/tx.rpc.msg";
+import * as _267 from "./rpc.query";
+import * as _268 from "./rpc.tx";
 export namespace elys {
   export const amm = {
     ..._95,
@@ -84,10 +84,10 @@ export namespace elys {
     ..._103,
     ..._104,
     ..._105,
-    ..._212,
-    ..._220,
-    ..._228,
-    ..._230
+    ..._213,
+    ..._221,
+    ..._229,
+    ..._231
   };
   export const commitment = {
     ..._106,
@@ -96,10 +96,10 @@ export namespace elys {
     ..._109,
     ..._110,
     ..._111,
-    ..._213,
-    ..._221,
-    ..._229,
-    ..._231
+    ..._214,
+    ..._222,
+    ..._230,
+    ..._232
   };
   export const estaking = {
     ..._112,
@@ -107,18 +107,18 @@ export namespace elys {
     ..._114,
     ..._115,
     ..._116,
-    ..._214,
-    ..._222,
-    ..._232
+    ..._215,
+    ..._223,
+    ..._233
   };
   export const leveragelp = {
     ..._117,
     ..._118,
     ..._119,
     ..._120,
-    ..._215,
-    ..._223,
-    ..._233
+    ..._216,
+    ..._224,
+    ..._234
   };
   export const masterchef = {
     ..._121,
@@ -127,18 +127,18 @@ export namespace elys {
     ..._124,
     ..._125,
     ..._126,
-    ..._216,
-    ..._224,
-    ..._234
+    ..._217,
+    ..._225,
+    ..._235
   };
   export const perpetual = {
     ..._127,
     ..._128,
     ..._129,
     ..._130,
-    ..._217,
-    ..._225,
-    ..._235
+    ..._218,
+    ..._226,
+    ..._236
   };
   export const stablestake = {
     ..._131,
@@ -146,21 +146,21 @@ export namespace elys {
     ..._133,
     ..._134,
     ..._135,
-    ..._218,
-    ..._226,
-    ..._236
+    ..._219,
+    ..._227,
+    ..._237
   };
   export const tradeshield = {
     ..._136,
     ..._137,
     ..._138,
     ..._139,
-    ..._219,
-    ..._227,
-    ..._237
+    ..._220,
+    ..._228,
+    ..._238
   };
   export const ClientFactory = {
-    ..._266,
-    ..._267
+    ..._267,
+    ..._268
   };
 }

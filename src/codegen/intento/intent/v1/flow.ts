@@ -519,9 +519,11 @@ export interface FeedbackLoop {
   msgsIndex: number;
   /** key of the message to replace (e.g. Amount[0].Amount, FromAddress) */
   msgKey: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /** can be anything from math.Int, sdk.Coin, sdk.Coins, string, []string, []math.Int, math.Dec */
   valueType: string;
-  /** bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly. */
+  /** True: calculate the difference with the previous value instead of using the value directly. */
+  differenceMode: boolean;
+  /** config of ICQ to perform */
   icqConfig?: ICQConfig;
 }
 export interface FeedbackLoopProtoMsg {
@@ -557,11 +559,15 @@ export interface FeedbackLoopAmino {
    */
   msg_key?: string;
   /**
-   * can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int
+   * can be anything from math.Int, sdk.Coin, sdk.Coins, string, []string, []math.Int, math.Dec
    */
   value_type?: string;
   /**
-   * bool calculate_difference = 7; //True: calculate the difference with the previous value instead of using the value directly.
+   * True: calculate the difference with the previous value instead of using the value directly.
+   */
+  difference_mode?: boolean;
+  /**
+   * config of ICQ to perform
    */
   icq_config?: ICQConfigAmino;
 }
@@ -580,6 +586,7 @@ export interface FeedbackLoopSDKType {
   msgs_index: number;
   msg_key: string;
   value_type: string;
+  difference_mode: boolean;
   icq_config?: ICQConfigSDKType;
 }
 /**
@@ -593,11 +600,13 @@ export interface Comparison {
   responseIndex: number;
   /** e.g. Amount[0].Amount, FromAddress, optional */
   responseKey: string;
-  /** can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int */
+  /** can be anything from math.Int, sdk.Coin, sdk.Coins, string, []string, []math.Int,  math.Dec */
   valueType: string;
   operator: ComparisonOperator;
   operand: string;
-  /** bool calculate_difference = 7; //True: Calculate the difference with the previous value. */
+  /** True: Calculate the difference with the previous value. */
+  differenceMode: boolean;
+  /** config of ICQ to perform */
   icqConfig?: ICQConfig;
 }
 export interface ComparisonProtoMsg {
@@ -625,13 +634,17 @@ export interface ComparisonAmino {
    */
   response_key?: string;
   /**
-   * can be anything from sdk.Int, sdk.Coin, sdk.Coins, string, []string, []sdk.Int
+   * can be anything from math.Int, sdk.Coin, sdk.Coins, string, []string, []math.Int,  math.Dec
    */
   value_type?: string;
   operator?: ComparisonOperator;
   operand?: string;
   /**
-   * bool calculate_difference = 7; //True: Calculate the difference with the previous value.
+   * True: Calculate the difference with the previous value.
+   */
+  difference_mode?: boolean;
+  /**
+   * config of ICQ to perform
    */
   icq_config?: ICQConfigAmino;
 }
@@ -650,6 +663,7 @@ export interface ComparisonSDKType {
   value_type: string;
   operator: ComparisonOperator;
   operand: string;
+  difference_mode: boolean;
   icq_config?: ICQConfigSDKType;
 }
 /** config for using interchain queries */
@@ -1921,19 +1935,20 @@ function createBaseFeedbackLoop(): FeedbackLoop {
     msgsIndex: 0,
     msgKey: "",
     valueType: "",
+    differenceMode: false,
     icqConfig: undefined
   };
 }
 export const FeedbackLoop = {
   typeUrl: "/intento.intent.v1.FeedbackLoop",
   is(o: any): o is FeedbackLoop {
-    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flowId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string");
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flowId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.msgsIndex === "number" && typeof o.msgKey === "string" && typeof o.valueType === "string" && typeof o.differenceMode === "boolean");
   },
   isSDK(o: any): o is FeedbackLoopSDKType {
-    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.difference_mode === "boolean");
   },
   isAmino(o: any): o is FeedbackLoopAmino {
-    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string");
+    return o && (o.$typeUrl === FeedbackLoop.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.msgs_index === "number" && typeof o.msg_key === "string" && typeof o.value_type === "string" && typeof o.difference_mode === "boolean");
   },
   encode(message: FeedbackLoop, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.flowId !== BigInt(0)) {
@@ -1953,6 +1968,9 @@ export const FeedbackLoop = {
     }
     if (message.valueType !== "") {
       writer.uint32(50).string(message.valueType);
+    }
+    if (message.differenceMode === true) {
+      writer.uint32(56).bool(message.differenceMode);
     }
     if (message.icqConfig !== undefined) {
       ICQConfig.encode(message.icqConfig, writer.uint32(66).fork()).ldelim();
@@ -1984,6 +2002,9 @@ export const FeedbackLoop = {
         case 6:
           message.valueType = reader.string();
           break;
+        case 7:
+          message.differenceMode = reader.bool();
+          break;
         case 8:
           message.icqConfig = ICQConfig.decode(reader, reader.uint32());
           break;
@@ -2002,6 +2023,7 @@ export const FeedbackLoop = {
       msgsIndex: isSet(object.msgsIndex) ? Number(object.msgsIndex) : 0,
       msgKey: isSet(object.msgKey) ? String(object.msgKey) : "",
       valueType: isSet(object.valueType) ? String(object.valueType) : "",
+      differenceMode: isSet(object.differenceMode) ? Boolean(object.differenceMode) : false,
       icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
     };
   },
@@ -2013,6 +2035,7 @@ export const FeedbackLoop = {
     message.msgsIndex !== undefined && (obj.msgsIndex = Math.round(message.msgsIndex));
     message.msgKey !== undefined && (obj.msgKey = message.msgKey);
     message.valueType !== undefined && (obj.valueType = message.valueType);
+    message.differenceMode !== undefined && (obj.differenceMode = message.differenceMode);
     message.icqConfig !== undefined && (obj.icqConfig = message.icqConfig ? ICQConfig.toJSON(message.icqConfig) : undefined);
     return obj;
   },
@@ -2024,6 +2047,7 @@ export const FeedbackLoop = {
     message.msgsIndex = object.msgsIndex ?? 0;
     message.msgKey = object.msgKey ?? "";
     message.valueType = object.valueType ?? "";
+    message.differenceMode = object.differenceMode ?? false;
     message.icqConfig = object.icqConfig !== undefined && object.icqConfig !== null ? ICQConfig.fromPartial(object.icqConfig) : undefined;
     return message;
   },
@@ -2047,6 +2071,9 @@ export const FeedbackLoop = {
     if (object.value_type !== undefined && object.value_type !== null) {
       message.valueType = object.value_type;
     }
+    if (object.difference_mode !== undefined && object.difference_mode !== null) {
+      message.differenceMode = object.difference_mode;
+    }
     if (object.icq_config !== undefined && object.icq_config !== null) {
       message.icqConfig = ICQConfig.fromAmino(object.icq_config);
     }
@@ -2060,6 +2087,7 @@ export const FeedbackLoop = {
     obj.msgs_index = message.msgsIndex === 0 ? undefined : message.msgsIndex;
     obj.msg_key = message.msgKey === "" ? undefined : message.msgKey;
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
+    obj.difference_mode = message.differenceMode === false ? undefined : message.differenceMode;
     obj.icq_config = message.icqConfig ? ICQConfig.toAmino(message.icqConfig) : undefined;
     return obj;
   },
@@ -2088,19 +2116,20 @@ function createBaseComparison(): Comparison {
     valueType: "",
     operator: 0,
     operand: "",
+    differenceMode: false,
     icqConfig: undefined
   };
 }
 export const Comparison = {
   typeUrl: "/intento.intent.v1.Comparison",
   is(o: any): o is Comparison {
-    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flowId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.operator) && typeof o.operand === "string");
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flowId === "bigint" && typeof o.responseIndex === "number" && typeof o.responseKey === "string" && typeof o.valueType === "string" && isSet(o.operator) && typeof o.operand === "string" && typeof o.differenceMode === "boolean");
   },
   isSDK(o: any): o is ComparisonSDKType {
-    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string");
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string" && typeof o.difference_mode === "boolean");
   },
   isAmino(o: any): o is ComparisonAmino {
-    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string");
+    return o && (o.$typeUrl === Comparison.typeUrl || typeof o.flow_id === "bigint" && typeof o.response_index === "number" && typeof o.response_key === "string" && typeof o.value_type === "string" && isSet(o.operator) && typeof o.operand === "string" && typeof o.difference_mode === "boolean");
   },
   encode(message: Comparison, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.flowId !== BigInt(0)) {
@@ -2120,6 +2149,9 @@ export const Comparison = {
     }
     if (message.operand !== "") {
       writer.uint32(50).string(message.operand);
+    }
+    if (message.differenceMode === true) {
+      writer.uint32(56).bool(message.differenceMode);
     }
     if (message.icqConfig !== undefined) {
       ICQConfig.encode(message.icqConfig, writer.uint32(66).fork()).ldelim();
@@ -2151,6 +2183,9 @@ export const Comparison = {
         case 6:
           message.operand = reader.string();
           break;
+        case 7:
+          message.differenceMode = reader.bool();
+          break;
         case 8:
           message.icqConfig = ICQConfig.decode(reader, reader.uint32());
           break;
@@ -2169,6 +2204,7 @@ export const Comparison = {
       valueType: isSet(object.valueType) ? String(object.valueType) : "",
       operator: isSet(object.operator) ? comparisonOperatorFromJSON(object.operator) : -1,
       operand: isSet(object.operand) ? String(object.operand) : "",
+      differenceMode: isSet(object.differenceMode) ? Boolean(object.differenceMode) : false,
       icqConfig: isSet(object.icqConfig) ? ICQConfig.fromJSON(object.icqConfig) : undefined
     };
   },
@@ -2180,6 +2216,7 @@ export const Comparison = {
     message.valueType !== undefined && (obj.valueType = message.valueType);
     message.operator !== undefined && (obj.operator = comparisonOperatorToJSON(message.operator));
     message.operand !== undefined && (obj.operand = message.operand);
+    message.differenceMode !== undefined && (obj.differenceMode = message.differenceMode);
     message.icqConfig !== undefined && (obj.icqConfig = message.icqConfig ? ICQConfig.toJSON(message.icqConfig) : undefined);
     return obj;
   },
@@ -2191,6 +2228,7 @@ export const Comparison = {
     message.valueType = object.valueType ?? "";
     message.operator = object.operator ?? 0;
     message.operand = object.operand ?? "";
+    message.differenceMode = object.differenceMode ?? false;
     message.icqConfig = object.icqConfig !== undefined && object.icqConfig !== null ? ICQConfig.fromPartial(object.icqConfig) : undefined;
     return message;
   },
@@ -2214,6 +2252,9 @@ export const Comparison = {
     if (object.operand !== undefined && object.operand !== null) {
       message.operand = object.operand;
     }
+    if (object.difference_mode !== undefined && object.difference_mode !== null) {
+      message.differenceMode = object.difference_mode;
+    }
     if (object.icq_config !== undefined && object.icq_config !== null) {
       message.icqConfig = ICQConfig.fromAmino(object.icq_config);
     }
@@ -2227,6 +2268,7 @@ export const Comparison = {
     obj.value_type = message.valueType === "" ? undefined : message.valueType;
     obj.operator = message.operator === 0 ? undefined : message.operator;
     obj.operand = message.operand === "" ? undefined : message.operand;
+    obj.difference_mode = message.differenceMode === false ? undefined : message.differenceMode;
     obj.icq_config = message.icqConfig ? ICQConfig.toAmino(message.icqConfig) : undefined;
     return obj;
   },

@@ -16,24 +16,24 @@ import * as _154 from "./mint/v1/genesis";
 import * as _155 from "./mint/v1/mint";
 import * as _156 from "./mint/v1/query";
 import * as _157 from "./mint/v1/tx";
-import * as _238 from "./alloc/v1/tx.amino";
-import * as _239 from "./claim/v1/claim.amino";
-import * as _240 from "./intent/v1/tx.amino";
-import * as _241 from "./mint/v1/tx.amino";
-import * as _242 from "./alloc/v1/tx.registry";
-import * as _243 from "./claim/v1/claim.registry";
-import * as _244 from "./intent/v1/tx.registry";
-import * as _245 from "./mint/v1/tx.registry";
-import * as _246 from "./alloc/v1/query.rpc.Query";
-import * as _247 from "./claim/v1/query.rpc.Query";
-import * as _248 from "./intent/v1/query.rpc.Query";
-import * as _249 from "./mint/v1/query.rpc.Query";
-import * as _250 from "./alloc/v1/tx.rpc.msg";
-import * as _251 from "./claim/v1/claim.rpc.msg";
-import * as _252 from "./intent/v1/tx.rpc.msg";
-import * as _253 from "./mint/v1/tx.rpc.msg";
-import * as _268 from "./rpc.query";
-import * as _269 from "./rpc.tx";
+import * as _239 from "./alloc/v1/tx.amino";
+import * as _240 from "./claim/v1/claim.amino";
+import * as _241 from "./intent/v1/tx.amino";
+import * as _242 from "./mint/v1/tx.amino";
+import * as _243 from "./alloc/v1/tx.registry";
+import * as _244 from "./claim/v1/claim.registry";
+import * as _245 from "./intent/v1/tx.registry";
+import * as _246 from "./mint/v1/tx.registry";
+import * as _247 from "./alloc/v1/query.rpc.Query";
+import * as _248 from "./claim/v1/query.rpc.Query";
+import * as _249 from "./intent/v1/query.rpc.Query";
+import * as _250 from "./mint/v1/query.rpc.Query";
+import * as _251 from "./alloc/v1/tx.rpc.msg";
+import * as _252 from "./claim/v1/claim.rpc.msg";
+import * as _253 from "./intent/v1/tx.rpc.msg";
+import * as _254 from "./mint/v1/tx.rpc.msg";
+import * as _269 from "./rpc.query";
+import * as _270 from "./rpc.tx";
 export namespace intento {
   export namespace alloc {
     export const v1 = {
@@ -41,10 +41,10 @@ export namespace intento {
       ..._141,
       ..._142,
       ..._143,
-      ..._238,
-      ..._242,
-      ..._246,
-      ..._250
+      ..._239,
+      ..._243,
+      ..._247,
+      ..._251
     };
   }
   export namespace claim {
@@ -53,10 +53,10 @@ export namespace intento {
       ..._145,
       ..._146,
       ..._147,
-      ..._239,
-      ..._243,
-      ..._247,
-      ..._251
+      ..._240,
+      ..._244,
+      ..._248,
+      ..._252
     };
   }
   export namespace intent {
@@ -67,10 +67,10 @@ export namespace intento {
       ..._151,
       ..._152,
       ..._153,
-      ..._240,
-      ..._244,
-      ..._248,
-      ..._252
+      ..._241,
+      ..._245,
+      ..._249,
+      ..._253
     };
   }
   export namespace mint {
@@ -79,14 +79,14 @@ export namespace intento {
       ..._155,
       ..._156,
       ..._157,
-      ..._241,
-      ..._245,
-      ..._249,
-      ..._253
+      ..._242,
+      ..._246,
+      ..._250,
+      ..._254
     };
   }
   export const ClientFactory = {
-    ..._268,
-    ..._269
+    ..._269,
+    ..._270
   };
 }

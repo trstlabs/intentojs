@@ -2,6 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Flow, FlowAmino, FlowSDKType, FlowHistoryEntry, FlowHistoryEntryAmino, FlowHistoryEntrySDKType } from "./flow";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { TrustlessAgent, TrustlessAgentAmino, TrustlessAgentSDKType } from "./trustless_agent";
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 import { JsonSafe } from "../../../json-safe";
@@ -606,6 +607,54 @@ export interface QueryTrustlessAgentsByFeeAdminResponseAminoMsg {
 export interface QueryTrustlessAgentsByFeeAdminResponseSDKType {
   trustless_agents: TrustlessAgentSDKType[];
   pagination?: PageResponseSDKType;
+}
+/** QueryTotalBurntRequest is the request type for the Query/TotalBurnt RPC method. */
+export interface QueryTotalBurntRequest {}
+export interface QueryTotalBurntRequestProtoMsg {
+  typeUrl: "/intento.intent.v1.QueryTotalBurntRequest";
+  value: Uint8Array;
+}
+/**
+ * QueryTotalBurntRequest is the request type for the Query/TotalBurnt RPC method.
+ * @name QueryTotalBurntRequestAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTotalBurntRequest
+ */
+export interface QueryTotalBurntRequestAmino {}
+export interface QueryTotalBurntRequestAminoMsg {
+  type: "/intento.intent.v1.QueryTotalBurntRequest";
+  value: QueryTotalBurntRequestAmino;
+}
+/** QueryTotalBurntRequest is the request type for the Query/TotalBurnt RPC method. */
+export interface QueryTotalBurntRequestSDKType {}
+/** QueryTotalBurntResponse is the response type for the Query/TotalBurnt RPC method. */
+export interface QueryTotalBurntResponse {
+  /** total_burnt defines the total amount that has been burnt */
+  totalBurnt: Coin;
+}
+export interface QueryTotalBurntResponseProtoMsg {
+  typeUrl: "/intento.intent.v1.QueryTotalBurntResponse";
+  value: Uint8Array;
+}
+/**
+ * QueryTotalBurntResponse is the response type for the Query/TotalBurnt RPC method.
+ * @name QueryTotalBurntResponseAmino
+ * @package intento.intent.v1
+ * @see proto type: intento.intent.v1.QueryTotalBurntResponse
+ */
+export interface QueryTotalBurntResponseAmino {
+  /**
+   * total_burnt defines the total amount that has been burnt
+   */
+  total_burnt?: CoinAmino;
+}
+export interface QueryTotalBurntResponseAminoMsg {
+  type: "/intento.intent.v1.QueryTotalBurntResponse";
+  value: QueryTotalBurntResponseAmino;
+}
+/** QueryTotalBurntResponse is the response type for the Query/TotalBurnt RPC method. */
+export interface QueryTotalBurntResponseSDKType {
+  total_burnt: CoinSDKType;
 }
 function createBaseQueryInterchainAccountFromAddressRequest(): QueryInterchainAccountFromAddressRequest {
   return {
@@ -2241,3 +2290,153 @@ export const QueryTrustlessAgentsByFeeAdminResponse = {
   }
 };
 GlobalDecoderRegistry.register(QueryTrustlessAgentsByFeeAdminResponse.typeUrl, QueryTrustlessAgentsByFeeAdminResponse);
+function createBaseQueryTotalBurntRequest(): QueryTotalBurntRequest {
+  return {};
+}
+export const QueryTotalBurntRequest = {
+  typeUrl: "/intento.intent.v1.QueryTotalBurntRequest",
+  is(o: any): o is QueryTotalBurntRequest {
+    return o && o.$typeUrl === QueryTotalBurntRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryTotalBurntRequestSDKType {
+    return o && o.$typeUrl === QueryTotalBurntRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryTotalBurntRequestAmino {
+    return o && o.$typeUrl === QueryTotalBurntRequest.typeUrl;
+  },
+  encode(_: QueryTotalBurntRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalBurntRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalBurntRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(_: any): QueryTotalBurntRequest {
+    return {};
+  },
+  toJSON(_: QueryTotalBurntRequest): JsonSafe<QueryTotalBurntRequest> {
+    const obj: any = {};
+    return obj;
+  },
+  fromPartial(_: Partial<QueryTotalBurntRequest>): QueryTotalBurntRequest {
+    const message = createBaseQueryTotalBurntRequest();
+    return message;
+  },
+  fromAmino(_: QueryTotalBurntRequestAmino): QueryTotalBurntRequest {
+    const message = createBaseQueryTotalBurntRequest();
+    return message;
+  },
+  toAmino(_: QueryTotalBurntRequest): QueryTotalBurntRequestAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: QueryTotalBurntRequestAminoMsg): QueryTotalBurntRequest {
+    return QueryTotalBurntRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryTotalBurntRequestProtoMsg): QueryTotalBurntRequest {
+    return QueryTotalBurntRequest.decode(message.value);
+  },
+  toProto(message: QueryTotalBurntRequest): Uint8Array {
+    return QueryTotalBurntRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryTotalBurntRequest): QueryTotalBurntRequestProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1.QueryTotalBurntRequest",
+      value: QueryTotalBurntRequest.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryTotalBurntRequest.typeUrl, QueryTotalBurntRequest);
+function createBaseQueryTotalBurntResponse(): QueryTotalBurntResponse {
+  return {
+    totalBurnt: Coin.fromPartial({})
+  };
+}
+export const QueryTotalBurntResponse = {
+  typeUrl: "/intento.intent.v1.QueryTotalBurntResponse",
+  is(o: any): o is QueryTotalBurntResponse {
+    return o && (o.$typeUrl === QueryTotalBurntResponse.typeUrl || Coin.is(o.totalBurnt));
+  },
+  isSDK(o: any): o is QueryTotalBurntResponseSDKType {
+    return o && (o.$typeUrl === QueryTotalBurntResponse.typeUrl || Coin.isSDK(o.total_burnt));
+  },
+  isAmino(o: any): o is QueryTotalBurntResponseAmino {
+    return o && (o.$typeUrl === QueryTotalBurntResponse.typeUrl || Coin.isAmino(o.total_burnt));
+  },
+  encode(message: QueryTotalBurntResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.totalBurnt !== undefined) {
+      Coin.encode(message.totalBurnt, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalBurntResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalBurntResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.totalBurnt = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): QueryTotalBurntResponse {
+    return {
+      totalBurnt: isSet(object.totalBurnt) ? Coin.fromJSON(object.totalBurnt) : undefined
+    };
+  },
+  toJSON(message: QueryTotalBurntResponse): JsonSafe<QueryTotalBurntResponse> {
+    const obj: any = {};
+    message.totalBurnt !== undefined && (obj.totalBurnt = message.totalBurnt ? Coin.toJSON(message.totalBurnt) : undefined);
+    return obj;
+  },
+  fromPartial(object: Partial<QueryTotalBurntResponse>): QueryTotalBurntResponse {
+    const message = createBaseQueryTotalBurntResponse();
+    message.totalBurnt = object.totalBurnt !== undefined && object.totalBurnt !== null ? Coin.fromPartial(object.totalBurnt) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryTotalBurntResponseAmino): QueryTotalBurntResponse {
+    const message = createBaseQueryTotalBurntResponse();
+    if (object.total_burnt !== undefined && object.total_burnt !== null) {
+      message.totalBurnt = Coin.fromAmino(object.total_burnt);
+    }
+    return message;
+  },
+  toAmino(message: QueryTotalBurntResponse): QueryTotalBurntResponseAmino {
+    const obj: any = {};
+    obj.total_burnt = message.totalBurnt ? Coin.toAmino(message.totalBurnt) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryTotalBurntResponseAminoMsg): QueryTotalBurntResponse {
+    return QueryTotalBurntResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryTotalBurntResponseProtoMsg): QueryTotalBurntResponse {
+    return QueryTotalBurntResponse.decode(message.value);
+  },
+  toProto(message: QueryTotalBurntResponse): Uint8Array {
+    return QueryTotalBurntResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryTotalBurntResponse): QueryTotalBurntResponseProtoMsg {
+    return {
+      typeUrl: "/intento.intent.v1.QueryTotalBurntResponse",
+      value: QueryTotalBurntResponse.encode(message).finish()
+    };
+  }
+};
+GlobalDecoderRegistry.register(QueryTotalBurntResponse.typeUrl, QueryTotalBurntResponse);

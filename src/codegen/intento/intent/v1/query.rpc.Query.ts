@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryFlowRequest, QueryFlowResponse, QueryFlowHistoryRequest, QueryFlowHistoryResponse, QueryFlowsRequest, QueryFlowsResponse, QueryFlowsForOwnerRequest, QueryFlowsForOwnerResponse, QueryTrustlessAgentRequest, QueryTrustlessAgentResponse, QueryTrustlessAgentsRequest, QueryTrustlessAgentsResponse, QueryTrustlessAgentsByFeeAdminRequest, QueryTrustlessAgentsByFeeAdminResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { QueryInterchainAccountFromAddressRequest, QueryInterchainAccountFromAddressResponse, QueryFlowRequest, QueryFlowResponse, QueryFlowHistoryRequest, QueryFlowHistoryResponse, QueryFlowsRequest, QueryFlowsResponse, QueryFlowsForOwnerRequest, QueryFlowsForOwnerResponse, QueryTrustlessAgentRequest, QueryTrustlessAgentResponse, QueryTrustlessAgentsRequest, QueryTrustlessAgentsResponse, QueryTrustlessAgentsByFeeAdminRequest, QueryTrustlessAgentsByFeeAdminResponse, QueryParamsRequest, QueryParamsResponse, QueryTotalBurntRequest, QueryTotalBurntResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -25,6 +25,8 @@ export interface Query {
   trustlessAgentsByFeeAdmin(request: QueryTrustlessAgentsByFeeAdminRequest): Promise<QueryTrustlessAgentsByFeeAdminResponse>;
   /** Params returns the total set of Intent parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+  /** TotalBurnt returns the total amount of coins that have been burnt */
+  totalBurnt(request?: QueryTotalBurntRequest): Promise<QueryTotalBurntResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -39,6 +41,7 @@ export class QueryClientImpl implements Query {
     this.trustlessAgents = this.trustlessAgents.bind(this);
     this.trustlessAgentsByFeeAdmin = this.trustlessAgentsByFeeAdmin.bind(this);
     this.params = this.params.bind(this);
+    this.totalBurnt = this.totalBurnt.bind(this);
   }
   interchainAccountFromAddress(request: QueryInterchainAccountFromAddressRequest): Promise<QueryInterchainAccountFromAddressResponse> {
     const data = QueryInterchainAccountFromAddressRequest.encode(request).finish();
@@ -89,6 +92,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("intento.intent.v1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
   }
+  totalBurnt(request: QueryTotalBurntRequest = {}): Promise<QueryTotalBurntResponse> {
+    const data = QueryTotalBurntRequest.encode(request).finish();
+    const promise = this.rpc.request("intento.intent.v1.Query", "TotalBurnt", data);
+    return promise.then(data => QueryTotalBurntResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -120,6 +128,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
+    },
+    totalBurnt(request?: QueryTotalBurntRequest): Promise<QueryTotalBurntResponse> {
+      return queryService.totalBurnt(request);
     }
   };
 };
